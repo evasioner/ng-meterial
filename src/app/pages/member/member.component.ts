@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MemberService} from '../../services/member.service';
 import {Member} from '../../interfaces/member';
 
@@ -8,10 +8,11 @@ import {Member} from '../../interfaces/member';
   styleUrls: ['./member.component.css']
 })
 export class MemberComponent implements OnInit {
-  public members: Member[];
-  public dataSource: any;
-  displayedColumns: string[] = ['memberNo', 'memberName'];
-  constructor(private memberService: MemberService) { }
+  public members: Array<Member> = new Array<Member>();
+  displayedColumns: string[] = ['memberNo', 'username'];
+
+  constructor(private memberService: MemberService) {
+  }
 
 
   ngOnInit() {
@@ -20,7 +21,6 @@ export class MemberComponent implements OnInit {
 
   private async getMemberInfo(): Promise<void> {
     const res = await this.memberService.getMembers();
-    this.members = res;
-    this.dataSource = this.members;
+    this.members = res.data;
   }
 }

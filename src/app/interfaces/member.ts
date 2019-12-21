@@ -1,8 +1,7 @@
 export interface Member {
   memberNo: number;
-  memberName: string;
-  memberId: string;
-  memberEmail: string;
+  username: string;
+  role: string;
   createdAt: string;
   updatedAt: string;
 }
