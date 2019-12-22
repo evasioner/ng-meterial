@@ -9,7 +9,7 @@ import {Member} from '../../interfaces/member';
 })
 export class MemberComponent implements OnInit {
   public members: Array<Member> = new Array<Member>();
-  displayedColumns: string[] = ['memberNo', 'username'];
+  displayedColumns: string[] = ['memberNo', 'username', 'role', 'createdAt'];
 
   constructor(private memberService: MemberService) {
   }
