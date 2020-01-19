@@ -1,24 +1,17 @@
-<table mat-table [dataSource]="members" class="mat-elevation-z8">
-  <ng-container matColumnDef="memberNo">
-    <th mat-header-cell *matHeaderCellDef> UUID</th>
-    <td mat-cell *matCellDef="let element"> {{element.memberNo}} </td>
-  </ng-container>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Pick one" aria-label="Number" (keyup)="search()" matInput [formControl]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option?.rawData">
+        {{option?.rawData?.ko}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
 
-  <ng-container matColumnDef="username">
-    <th mat-header-cell *matHeaderCellDef> 아이디</th>
-    <td mat-cell *matCellDef="let element"> {{element.username}} </td>
-  </ng-container>
 
-  <ng-container matColumnDef="role">
-    <th mat-header-cell *matHeaderCellDef> 권한</th>
-    <td mat-cell *matCellDef="let element"> {{element.role}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="createdAt">
-    <th mat-header-cell *matHeaderCellDef> 가입일</th>
-    <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+<!--<form [formGroup]="testForm">-->
+<!--  <input type="text" formControlName="rawData"/>-->
+<!--  <button (click)="register()">tewst</button>-->
+<!--</form>-->
