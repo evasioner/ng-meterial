@@ -5,7 +5,7 @@ import {SignUpComponent} from './pages/sign/sign-up/sign-up.component';
 import {MemberComponent} from './pages/member/member.component';
 
 const appRoutes: Routes = [
-  {path: '**', component: SignInComponent},
+  // {path: '**', component: SignInComponent},
   {path: 'sign-in', component: SignInComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'members', component: MemberComponent},

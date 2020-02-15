@@ -1,16 +1,18 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService {
+  static headers: Headers;
+
   constructor(private http: HttpClient) {
   }
 
-  async get(url, params?): Promise<any> {
+  protected async get(url, params?): Promise<any> {
     let httpParams = new HttpParams();
     if (params) {
       Object.keys(params).forEach(param => {
@@ -26,15 +28,15 @@ export class BaseService {
     });
   }
 
-  public post(url, params): Observable<any> {
+  protected post(url, params): Observable<any> {
     return this.http.post(url, JSON.stringify(params)).pipe(map(res => res));
   }
 
-  public put(url, params): Observable<any> {
-    return this.http.post(url, JSON.stringify(params)).pipe(map(res => res));
+  protected put(url, params): Observable<any> {
+    return this.http.put(url, JSON.stringify(params)).pipe(map(res => res));
   }
 
-  async delete(url): Promise<any> {
+  protected async delete(url): Promise<any> {
     return this.http.delete(url).toPromise().then(res => {
       return res;
     }).catch(err => {

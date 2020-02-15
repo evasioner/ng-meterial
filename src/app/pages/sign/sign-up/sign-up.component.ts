@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthCheckService} from '../../../services/auth-check.service';
+import {MustMatch} from '../../../validators/must-match';
+import {MemberService} from '../../../services/member.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,19 +12,27 @@ export class SignUpComponent implements OnInit {
 
   signUpForm: FormGroup;
 
-  constructor(private authCheckService: AuthCheckService) {
+  constructor(private memberService: MemberService) {
   }
 
   ngOnInit() {
+    this.init();
+  }
+
+  init() {
     this.signUpForm = new FormGroup({
       username: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required])
-    });
+      firstName: new FormControl(null, [Validators.required]),
+      lastName: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required]),
+      passwordConfirm: new FormControl(null, [Validators.required])
+    }, MustMatch('password', 'passwordConfirm'));
   }
 
-  async signUp() {
-    const res = this.authCheckService.signUp(this.signUpForm.getRawValue());
-    console.log(res);
+  signUp() {
+    this.memberService.singUp(this.signUpForm.getRawValue()).subscribe(
+      res => console.log(res),
+      error => console.log(error),
+      () => console.log(this.init()));
   }
-
 }
