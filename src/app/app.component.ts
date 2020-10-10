@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {MemberService} from './services/member.service';
 import {OwlOptions} from 'ngx-owl-carousel-o';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
+
 
   customOptions: OwlOptions = {
     loop: true,
@@ -47,15 +49,36 @@ export class AppComponent implements OnDestroy, OnInit {
     'https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2019/09/1862/1048/d8836bf5-list-pic-2.jpg?ve=1&tl=1',
     'https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2019/09/1862/1048/d8836bf5-list-pic-2.jpg?ve=1&tl=1'
   ];
+  public testForm;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  imageUploads = [];
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private fb: FormBuilder) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   ngOnInit(): void {
+    this.testForm  = this.fb.group({
+      images : ['']
+    });
   }
+
+  async fileRead(event) {
+    let files = [...event.target.files];
+    this.imageUploads.push(await Promise.all(files.map(f=>{return this.readFileStream(f)})));
+    console.log(this.imageUploads, 123123);
+  }
+  readFileStream(file){
+    return new Promise((resolve, reject)=>{
+      let fileReader = new FileReader();
+      fileReader.onload = function(){
+        return resolve({data : fileReader.result , name: 'aaaa'});
+      };
+      fileReader.readAsDataURL(file);
+    });
+  }
+
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);

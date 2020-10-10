@@ -29,6 +29,12 @@
 
       </owl-carousel-o>
       <div>Some tags after</div>
+
+
+      <input type="file" (change)="fileRead($event)">
+
+      <img *ngFor="let test of imageUploads" [src]="test.data">
+
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
