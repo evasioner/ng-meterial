@@ -73,7 +73,7 @@ export class AppComponent implements OnDestroy, OnInit {
     return new Promise((resolve, reject)=>{
       let fileReader = new FileReader();
       fileReader.onload = function(){
-        return resolve({data : fileReader.result , name: 'aaaa'});
+        return resolve({data : fileReader.result , name: file.name});
       };
       fileReader.readAsDataURL(file);
     });
