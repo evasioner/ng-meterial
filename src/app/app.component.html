@@ -15,6 +15,20 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
+
+      <div>Some tags before</div>
+      <button (click)="owlCar.prev()">prev</button>
+      <button (click)="owlCar.next()">next</button>
+      <owl-carousel-o [options]="customOptions" #owlCar>
+
+        <ng-container *ngFor="let image of images;">
+          <ng-template carouselSlide>
+            <img [src]="image">
+          </ng-template>
+        </ng-container>
+
+      </owl-carousel-o>
+      <div>Some tags after</div>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

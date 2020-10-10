@@ -23,6 +23,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {SignUpComponent} from './pages/sign/sign-up/sign-up.component';
 import {SignInComponent} from './pages/sign/sign-in/sign-in.component';
+import {MatCarouselModule} from '@ngmodule/material-carousel';
+import {CarouselModule} from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import {SignInComponent} from './pages/sign/sign-in/sign-in.component';
     ReactiveFormsModule,
     FormsModule,
     MatCardModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatCarouselModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
