@@ -1,0 +1,52 @@
+<div class="modal">
+  <!-- modal header -->
+  <div class="modal-header">
+    <h1>약관 확인</h1>
+    <div class="right">
+      <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+    </div>
+  </div>
+  <!-- modal contents -->
+  <div class="modal-contents fixed-btn-footer">
+    <div class="tab-wrap">
+      <tabset class="m-ngx-bootstrap-tabs">
+        <tab [active]="storeId === 'agreementNormal'" (selectTab)="onTabClick($event, 'agreementNormal')">
+          <ng-template tabHeading>
+            <span>일반 규정</span>
+          </ng-template>
+          <div class="page-contents-type2 pb0">
+            <ul class="text-list spacing">
+              <li [innerHTML]="this.viewModel.common">
+              </li>
+            </ul>
+          </div>
+        </tab>
+        <tab [active]="storeId === 'agreementFlight'" (selectTab)="onTabClick($event, 'agreementFlight')">
+          <ng-template tabHeading>
+            <span>취소/환불 규정</span>
+          </ng-template>
+          <div class="page-contents-type2 pb0">
+            <ul class="text-list spacing">
+              <li [innerHTML]="this.viewModel.cancel">
+              </li>
+            </ul>
+          </div>
+        </tab>
+        <tab [active]="storeId === 'agreementHotel'" (selectTab)="onTabClick($event, 'agreementHotel')">
+          <ng-template tabHeading>
+            <span>개인정보취급방침</span>
+          </ng-template>
+          <div class="page-contents-type2 pb0">
+            <ul class="text-list spacing">
+              <li [innerHTML]="this.viewModel.personal">
+              </li>
+            </ul>
+          </div>
+        </tab>
+      </tabset>
+      <div class="btn-group pd bg fixed-bottom">
+        <button (click)="onOkClick($event)" class="btn lg default" role="button">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
