@@ -1,0 +1,10 @@
+<div class="rentalcar-recent-item" *ngFor="let item of viewModel.recentList; index as index;">
+    <a (click)="onDeleteItem($event, index, item.index)" class="btn-common-close">삭제</a>
+    <a (click)="onSearchResult($event, item.index)" class="rentalcar-recent-item-contents">
+        <dl>
+            <dt><i class="icon sm location"></i><strong>{{item.locationAccept}}</strong><i class="icon sm oneway"></i><strong>{{item.locationReturn}}</strong></dt>
+            <dd>{{item.dateRange}}</dd>
+            <dd>{{item.pickLocation}}</dd>
+        </dl>
+    </a>
+</div>

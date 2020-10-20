@@ -1,0 +1,100 @@
+<!-- 모달 -->
+<div class="modal type1">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">이용후기 작성</h1>
+            <a (click)="modalClose()" class="btn-common-modal-close">닫기</a>
+        </div>
+        <div class="modal-body pd-all">
+            <div class="modal-review-contents">
+                <!-- 액티비티 상품 정보 -->
+                <div class="contents-round-box md pd-all">
+                    <div class="product-name">
+                        <h2>로스앤젤레스 자연사 박물관 입장권</h2>
+                        <p>Tripadvisor Experiences</p>
+                    </div>
+                    <ul class="column-contents md between">
+                        <li>
+                            <span class="title">이용일</span>
+                            <span class="text">2019.09.15(금) - 2019.09.21(목), 09:00</span>
+                        </li>
+                        <li>
+                            <span class="title">옵션</span>
+                            <span class="text align-r">서울/인천 제2터미널 면세구역 탑승동<br>4GB(데이터+통화)</span>
+                        </li>
+                        <li>
+                            <span class="title">수량</span>
+                            <span class="text">성인*2/아동*2/유아*2</span>
+                        </li>
+                        <li>
+                            <span class="title">별점</span>
+                            <span class="text">
+                                <!-- .s0 ~ .s5까지 클랙스를 추가하며 표시한다. 0.5는 뒤에 h를 붙인다. 예 : s0h, s1h, .s2h, .s3h, .s4h -->
+                                <div class="review-rate sm s4"></div>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 호텔 상품 정보 -->
+                <div class="contents-round-box md pd-all">
+                    <div class="product-name">
+                        <h2>밀레니엄 빌트모어 로스앤젤레스</h2>
+                        <p>Millennium Biltmore LosAngeles</p>
+                    </div>
+                    <ul class="column-contents md between">
+                        <li>
+                            <span class="title">이용일</span>
+                            <span class="text">2019.12.20(금) - 2019.12.30(수), 4박</span>
+                        </li>
+                        <li>
+                            <span class="title">객실 정보</span>
+                            <span class="text align-r">성인 2, 객실 1, 조식포함, 무료 Wifi</span>
+                        </li>
+                        <li>
+                            <span class="title">별점</span>
+                            <span class="text">
+                                <!-- .s0 ~ .s5까지 클랙스를 추가하며 표시한다. 0.5는 뒤에 h를 붙인다. 예 : s0h, s1h, .s2h, .s3h, .s4h -->
+                                <div class="review-rate sm s4"></div>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <p class="mt30 mb10"><strong>후기 내용</strong><span class="color-point2 ml5">+1,000P</span></p>
+                <div class="textarea lg line">
+                    <textarea name="" id="" cols="30" rows="6" placeholder="상품에 대한 전체 후기를 공유해 주세요!"></textarea>
+                </div>
+                <p class="mt30 mb10"><strong>후기 사진</strong><span class="color-point2 ml5">+1,000P</span></p>
+                <div class="scroll-box-list">
+                    <label class="review-photo-item add">
+                        <input type="file">
+                    </label>
+                    <div class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');">
+                        <a href="#" class="btn-delete">삭제</a>
+                    </div>
+                    <div class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');">
+                        <a href="#" class="btn-delete">삭제</a>
+                    </div>
+                    <div class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');">
+                        <a href="#" class="btn-delete">삭제</a>
+                    </div>
+                    <div class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');">
+                        <a href="#" class="btn-delete">삭제</a>
+                    </div>
+                    <div class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');">
+                        <a href="#" class="btn-delete">삭제</a>
+                    </div>
+                    <div class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');">
+                        <a href="#" class="btn-delete">삭제</a>
+                    </div>
+                </div>
+                <ul class="text-list dot md mt30">
+                    <li>게시판의 성격과 맞지 않을 경우 관리자에 의해 게시물이 이동 혹은 삭제될 수 있습니다.</li>
+                </ul>
+            </div>
+            <div class="btn-group flex-both mt30">
+                <a (click)="modalClose()" class="btn lg grey">취소</a>
+                <a (click)="writeComplete()" class="btn lg default">등록</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div id="wrap" class="p-activity-search-result">
+
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+        <div id="contents">
+
+            <!-- timer | is-hide-->
+            <countdown-timer class="is-hide"></countdown-timer>
+
+            <!-- 재검색 영역 -->
+            <app-activity-research-form *ngIf="viewModel.researchBool"></app-activity-research-form>
+
+            <!-- search-form-top -->
+            <app-activity-search-form [pageState]="viewModel.pageState" (openResearchEvt)="openResearchEvt()"></app-activity-search-form>
+
+            <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+            <div *ngIf="viewModel.loadingBool" class="c-list-loading">
+                <div class="list-loading">
+                    <p class="loading-msg">
+                        더 많은 액티비티를 검색중입니다.<br>잠시만 기다려주세요.
+                    </p>
+                </div>
+            </div>
+
+            <div *ngIf="!viewModel.loadingBool" class="contents-area">
+                <!-- 예약 단계 표시 -->
+                <app-activity-breadcrumbs class="breadcrumbs"></app-activity-breadcrumbs>
+
+                <ng-container>
+
+                    <!-- 필터 -->
+                    <app-activity-aside-filter (searchEvt)="onSearchOutEvt($event)" class="aside filter"></app-activity-aside-filter>
+
+                    <div class="contents">
+                        <div class="tab-wrap">
+
+                            <app-activity-tab-header (searchEvt)="onSearchOutEvt($event)" class="tab-header type2 round border mb20" style="display: block;"></app-activity-tab-header>
+
+                            <ng-container *ngIf="!errorFlag; else elseList">
+                                <app-activity-tab-body (goPageEvt)="goPageEvt($event)" class="tab-body"></app-activity-tab-body>
+                            </ng-container>
+
+                            <ng-template #elseList>
+                                <!-- 검색 결과 없음 -->
+                                <div class="list-nodata">
+                                    <div class="nodata-msg">
+                                        <i class="icon lg caution"></i>
+                                        <p>조건에 맞는 검색 결과가 없습니다.</p>
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                        </div>
+
+                        <!-- 비교하기 -->
+                        <app-activity-compare class="compare-wrap"></app-activity-compare>
+
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <app-footer *ngIf="!viewModel.loadingBool"></app-footer>
+
+</div>

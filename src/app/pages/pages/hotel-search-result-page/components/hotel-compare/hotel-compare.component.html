@@ -1,0 +1,25 @@
+<div *ngIf="apiLoadingBool && hotelTabBodyStateInfo.state === 'isCompare'" class="compare-box">
+    <!-- .btn-compare-toggle 클릭할때마다 .active 토글 -->
+    <a (click)="onToggleClick()" class="btn-compare-toggle" [class.active]="hotelTabBodyStateInfo.btnCompareToggleBool">호텔 비교하기</a>
+    <div class="compare-area">
+        <div class="compare-list">
+            <!-- 최대 3개만 들어갈 수 있음 -->
+            <!-- 비교 호텔 선택한 상태 -->
+            <div class="compare-item hotel" *ngFor="let compareItem of compareList; index as i;" [ngStyle]="{background: 'url(' + compareItem.result.defaultPhotoUrl + '), url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}">
+                <a (click)="onTgDelete($event, i)" class="btn-delete">삭제</a>
+            </div>
+            <!-- 기본 상태 -->
+            <div class="compare-item default" *ngFor="let defalutItem of defalutList; index as i"></div>
+        </div>
+        <div class="compare-control">
+            <div class="title">비교대상 호텔<strong>{{compareList.length}}</strong>개</div>
+            <div class="count">
+                <span>{{compareList.length}}</span>개의 호텔을 선택하셨습니다.
+            </div>
+            <div class="btn-group flex-around">
+                <a (click)="onAllDelete()" class="btn md grey">모두삭제</a>
+                <a (click)="onCompare()" class="btn md default">비교하기</a>
+            </div>
+        </div>
+    </div>
+</div>

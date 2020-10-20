@@ -1,0 +1,61 @@
+<div class="modal type2 auto">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">상품 비교</h1>
+            <a (click)="onCloseClick($event)" class="btn-common-modal-close">닫기</a>
+        </div>
+        <div class="modal-body">
+            <div class="modal-compare">
+
+                <!-- 액티비티 비교 아이템 -->
+                <ng-container *ngFor="let item of compareList">
+                    <div class="compare-global-item">
+                        <div class="compare-information-top" [ngStyle]="{background: 'url(' + item.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}"></div>
+                        <ul class="compare-information">
+                            <li>
+                                <dl>
+                                    <dt>상품명</dt>
+                                    <dd>{{ (item.activityNameLn) ? item.activityNameLn : item.activityNameEn }}</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>가격</dt>
+                                    <dd>{{ item.amountSum | number }}원</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>평점</dt>
+                                    <dd>{{ item.reviewAverage }}</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>후기</dt>
+                                    <dd>{{ item.reviewCount }}</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>공급사명</dt>
+                                    <dd>{{ item.vendorCompName }}</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>즉시 확정 여부</dt>
+                                    <dd>{{ item.instantConfirmType }}</dd>
+                                </dl>
+                            </li>
+                        </ul>
+                        <div class="btn-group">
+                            <a (click)="onSelectItemClick($event, item)" class="btn lg default">선택하기</a>
+                        </div>
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</div>

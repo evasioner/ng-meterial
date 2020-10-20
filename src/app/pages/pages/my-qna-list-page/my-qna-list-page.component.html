@@ -1,0 +1,379 @@
+<div id="wrap" class="p-my-qna-list">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+
+        <!-- 로딩 바 -->
+        <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+        <div id="contents" class="middle default">
+            <div class="contents-area">
+
+                <div class="aside left">
+                    <dl class="aside-menu">
+                        <dt>마이페이지</dt>
+                        <!-- 예약목록은 회원일때만 보여짐 -->
+                        <dd>
+                            <a (click)="goToReservation()">예약목록
+                                <span class="icon sm reservation"></span>
+                            </a>
+                        </dd>
+                        <!-- <dd><a href="#">예약조회(비회원/제휴사)</a></dd> 비회원 일때 나옴 -->
+                        <dd>
+                            <a (click)="goToRecent()">최근 본 상품
+                                <span class="icon sm recent"></span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a (click)="goToWish()">장바구니
+                                <span class="icon sm wish"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToCoupon()">쿠폰&할인코드
+                                <span class="icon sm coupon"></span>
+                            </a>
+                        </dd>
+
+                        <dd>
+                            <a (click)="goToQna()">문의내역
+                                <span class="icon sm qna"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToReview()">이용후기
+                                <span class="icon sm review"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToCustomer()">고객센터
+                                <span class="icon sm customer"></span>
+                            </a>
+                        </dd>
+
+                        <dd>
+                            <a href="https://www.ybtour.co.kr/cs/noticeList.yb">공지사항
+                                <span class="icon sm notice"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToEvent()">이벤트&amp;기획전
+                                <span class="icon sm event"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToShare()">친구초대
+                                <span class="icon sm share"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToSeller()">판매 및 입점
+                                <span class="icon sm seller"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToAgreement()">이용약관
+                                <span class="icon sm document"></span>
+                            </a>
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="contents">
+                    <h2 class="heading-title2 mb20">고객 문의</h2>
+                    <div class="tab-wrap">
+                        <div class="tab-header type2 border round flex-start mb20">
+                            <div class="tab-header-outer">
+                                <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>예약문의</span></a>
+                                <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>상품문의</span></a>
+                            </div>
+                        </div>
+                        <div class="tab-body" [ngSwitch]="tabNo">
+                            <!-- 예약문의 -->
+                            <ng-container *ngSwitchDefault>
+                                <div class="tab-pane active">
+                                    <!-- 검색 결과 -->
+                                    <div class="list-contents-header">전체<span class="count">9</span>건
+                                        <div class="select-box line md ml-auto">
+                                            <select name="" id="">
+                                                <option value="">전체</option>
+                                                <option value="">항공</option>
+                                                <option value="">호텔</option>
+                                                <option value="">렌터카</option>
+                                                <option value="">묶음할인</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- 항공 문의 내역 아이템 -->
+                                    <div class="reservation-qna-item">
+                                        <div class="reservation-qna-item-header">
+                                            <i class="icon sm flight"></i>
+                                            <span class="text">YB12341231231</span>
+                                            <span class="label square type4">문의접수</span>
+                                        </div>
+                                        <div class="reservation-qna-item-summary">
+                                            <p class="product-title">인천 - 로스앤젤레스 - 샌프란시스코-인천</p>
+                                            <div class="summary">
+                                                <ul class="column-contents lg">
+                                                    <li>
+                                                        <span class="title">이용일</span>
+                                                        <span class="text">2019.12.20 13:00</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담분류</span>
+                                                        <span class="text">결제 시한 연장</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담내용</span>
+                                                        <span class="text">결제 시한 연장 부탁드립니다.</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">접수일시</span>
+                                                        <span class="text">2020.10.10 13:00</span>
+                                                    </li>
+                                                </ul>
+                                                <div class="control">
+                                                    <a (click)="clickDetail()" class="btn md default">문의 상세</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 호텔 문의 내역 아이템 -->
+                                    <div class="reservation-qna-item">
+                                        <div class="reservation-qna-item-header">
+                                            <i class="icon sm hotel"></i>
+                                            <span class="text">YB12341231231</span>
+                                            <span class="label square type4">문의접수</span>
+                                        </div>
+                                        <div class="reservation-qna-item-summary">
+                                            <p class="product-title">밀레니엄 빌트모어 로스앤젤레스 Millennium Biltmore Hotel</p>
+                                            <div class="summary">
+                                                <ul class="column-contents lg">
+                                                    <li>
+                                                        <span class="title">이용일</span>
+                                                        <span class="text">2019.12.20 - 2019.12.30</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담분류</span>
+                                                        <span class="text">결제 시한 연장</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담내용</span>
+                                                        <span class="text">결제 시한 연장 부탁드립니다.</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">접수일시</span>
+                                                        <span class="text">2020.10.10 13:00</span>
+                                                    </li>
+                                                </ul>
+                                                <div class="control">
+                                                    <a href="#" class="btn md default">문의 상세</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 렌터카 문의 내역 아이템 -->
+                                    <div class="reservation-qna-item">
+                                        <div class="reservation-qna-item-header">
+                                            <i class="icon sm rentalcar"></i>
+                                            <span class="text">YB12341231231</span>
+                                            <span class="label square type2">답변완료</span>
+                                        </div>
+                                        <div class="reservation-qna-item-summary">
+                                            <p class="product-title">[Herz] Mitsubishi Mirage</p>
+                                            <div class="summary">
+                                                <ul class="column-contents lg">
+                                                    <li>
+                                                        <span class="title">이용일</span>
+                                                        <span class="text">2019.12.20 - 2019.12.30</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담분류</span>
+                                                        <span class="text">결제 시한 연장</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담내용</span>
+                                                        <span class="text">결제 시한 연장 부탁드립니다.</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">접수일시</span>
+                                                        <span class="text">2020.10.10 13:00</span>
+                                                    </li>
+                                                </ul>
+                                                <div class="control">
+                                                    <a href="#" class="btn md default">문의 상세</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 액티비티 문의 내역 아이템 -->
+                                    <div class="reservation-qna-item">
+                                        <div class="reservation-qna-item-header">
+                                            <i class="icon sm activity"></i>
+                                            <span class="text">YB12341231231</span>
+                                            <span class="label square type2">답변완료</span>
+                                        </div>
+                                        <div class="reservation-qna-item-summary">
+                                            <p class="product-title">[치앙마이] 도이인타논/야근 도이수텝+왓우몽</p>
+                                            <div class="summary">
+                                                <ul class="column-contents lg">
+                                                    <li>
+                                                        <span class="title">이용일</span>
+                                                        <span class="text">2019.12.20 13:30</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담분류</span>
+                                                        <span class="text">결제 시한 연장</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담내용</span>
+                                                        <span class="text">결제 시한 연장 부탁드립니다.</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">접수일시</span>
+                                                        <span class="text">2020.10.10 13:00</span>
+                                                    </li>
+                                                </ul>
+                                                <div class="control">
+                                                    <a href="#" class="btn md default">문의 상세</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 묶음할인 문의 내역 아이템 -->
+                                    <div class="reservation-qna-item">
+                                        <div class="reservation-qna-item-header">
+                                            <i class="icon sm flight"></i>
+                                            <span class="figure">+</span>
+                                            <i class="icon sm hotel"></i>
+                                            <span class="text">YB12341231231</span>
+                                            <span class="label square type2">답변완료</span>
+                                        </div>
+                                        <div class="reservation-qna-item-summary">
+                                            <p class="product-title">내 마음속 버킷 리스트 로스앤젤레스</p>
+                                            <div class="summary">
+                                                <ul class="column-contents lg">
+                                                    <li>
+                                                        <span class="title">이용일</span>
+                                                        <span class="text">2019.12.20 - 2019.12.31</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담분류</span>
+                                                        <span class="text">증빙확인</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">상담내용</span>
+                                                        <span class="text">안녕하세요. 현금 결제를 했는데 현금영수증 발급 신청을 못했습니다. 결제한 금액 현금 영수증 부탁드립니다.</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="title">접수일시</span>
+                                                        <span class="text">2020.10.10 13:00</span>
+                                                    </li>
+                                                </ul>
+                                                <div class="control">
+                                                    <a href="#" class="btn md default">문의 상세</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- pagination -->
+                                    <div class="pagination">
+                                        <a href="#" class="btn-first" title="맨처음">맨처음</a>
+                                        <a href="#" class="btn-prev" title="이전">이전</a>
+                                        <strong>1</strong>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#" class="btn-next" title="다음">다음</a>
+                                        <a href="#" class="btn-last" title="맨끝">맨끝</a>
+                                    </div>
+                                    <!-- 문의내역 없음 -->
+                                    <div class="list-nodata">
+                                        <div class="nodata-msg">
+                                            <i class="icon lg caution"></i>
+                                            <p>등록하신 문의내역이 없습니다.</p>
+                                            <div class="btn-group">
+                                                <a (click)="clickWrite()" class="btn lg default">문의하기</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+
+                            <!-- 상품문의 -->
+                            <ng-container *ngSwitchCase="1">
+                                <div class="tab-pane active">
+                                    <!-- 검색 결과 -->
+                                    <div class="list-contents-header">전체<span class="" count>9</span>건</div>
+                                    <!-- 상품문의 아이템 -->
+                                    <div class="product-qna-item">
+                                        <div class="product-image" style="background:url('../../assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('../../assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;"></div>
+                                        <div class="product-information">
+                                            <p class="name">로스앤젤레스 자연사 박물관 입장권</p>
+                                            <p class="vendor">Tripadvisor Experiences</p>
+                                            <p class="state"><span class="label square type4">문의접수</span></p>
+                                            <p class="date">2019.09.20 11:00</p>
+                                        </div>
+                                        <div class="control">
+                                            <a href="#" class="btn md default">문의 상세</a>
+                                        </div>
+                                    </div>
+                                    <!-- 상품문의 아이템 -->
+                                    <div class="product-qna-item">
+                                        <div class="product-image" style="background:url('../../assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('../../assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;"></div>
+                                        <div class="product-information">
+                                            <p class="name">로스앤젤레스 자연사 박물관 입장권</p>
+                                            <p class="vendor">Tripadvisor Experiences</p>
+                                            <p class="state"><span class="label square type2">답변완료</span></p>
+                                            <p class="date">2019.09.20 11:00</p>
+                                        </div>
+                                        <div class="control">
+                                            <a href="#" class="btn md default">문의 상세</a>
+                                        </div>
+                                    </div>
+                                    <!-- pagination -->
+                                    <div class="pagination">
+                                        <a href="#" class="btn-first" title="맨처음">맨처음</a>
+                                        <a href="#" class="btn-prev" title="이전">이전</a>
+                                        <strong>1</strong>
+                                        <a href="#">2</a>
+                                        <a href="#">3</a>
+                                        <a href="#" class="btn-next" title="다음">다음</a>
+                                        <a href="#" class="btn-last" title="맨끝">맨끝</a>
+                                    </div>
+                                    <!-- 문의내역 없음 -->
+                                    <div class="list-nodata">
+                                        <div class="nodata-msg">
+                                            <i class="icon lg caution"></i>
+                                            <p>등록하신 문의내역이 없습니다.</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn lg default">문의하기</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,172 @@
+<div class="tab-pane" [class.active]="viewModel.apiComplete">
+
+    <!-- 상단 옵션 영역 -->
+    <div class="search-result-header">
+
+        <p class="total"><span>{{ viewModel.pagination.totalItems | number}}</span>개의 상품이 검색되었습니다.</p>
+
+        <div class="control">
+            <!-- 비교하기 -->
+            <ng-container *ngFor="let item of viewModel.compareMenuList">
+                <a *ngIf="viewModel.uiState.state === item.state" class="btn-common-compare sm" [class.active]="viewModel.uiState.state === 'isCompare'" (click)="onCompare($event, item.state)">
+                    {{ item.text }}
+                </a>
+            </ng-container>
+
+            <!-- 뷰모드 -->
+            <div class="view-change-button">
+                <a *ngFor="let item of viewModel.listMenuList" [ngClass]="item.className" [class.active]="viewModel.uiState.listState === item.state" (click)="onChangeMode($event, item.state)">
+                    {{ item.text }}
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 리스트 -->
+    <ng-container *ngIf="viewModel.carList.length > 0">
+        <ng-container *ngIf="viewModel.uiState.listState === viewModel.listEnums.IS_LIST">
+            <!-- 체크박스에 체크되면 .rentalcar-list-item에 .compare-checked를 추가한다. -->
+            <div *ngFor="let vehicleItem of viewModel.carList; index as index;" class="rentalcar-list-item" [class.compare-checked]="vehicleItem.checked">
+
+                <ng-container *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_COMPARE">
+                    <!-- 비교하기를 눌렀을때만 체크박스를 노출한다. -->
+                    <label class="checkbox lg only">
+                        <input (change)="onCompareCheck($event, index)" type="checkbox" class="checkbox-control-input" [checked]="vehicleItem.checked">
+                        <span class="checkbox-control-text"></span>
+                    </label>
+                </ng-container>
+
+                <!-- 이미지 -->
+                <div class="rentalcar-image" [ngClass]="{'no-image': (vehicleItem.photoUrls) ? false : true}">
+                    <img [src]="vehicleItem.photoUrls" (error)="imgLoadError($event, vehicleItem.vehicleTypeCode)" alt="">
+                </div>
+
+
+                <div class="rentalcar-information">
+                    <p class="name">
+                        <img [src]="'/assets/images/car/' + vehicleItem.vehicleVendorCode + '.png'" alt="" class="rentalcar-logo">
+                        <strong>{{ vehicleItem.vehicleName || vehicleItem.vehicleTypeName }}</strong>
+                    </p>
+                    <ul class="include">
+                        <li class="person">{{ vehicleItem.option.passengerCount }}인승</li>
+                        <li class="door">{{ vehicleItem.option.doorCount }}도어</li>
+                        <li *ngIf="vehicleItem.option.airConditionYn" class="air">에어컨</li>
+                        <li *ngIf="vehicleItem.option.transmissionType === 'Automatic'" class="gear">자동변속</li>
+                    </ul>
+                    <ul class="info">
+                        <li>
+                            <a href="#" class="icon-link inline-text-over">
+                                <i class="icon xs location2"></i><span class="text">{{ vehicleItem.pickup.locationTypeName }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- 마우스 오버하면 .tooltip이 보여짐 -->
+                            <a class="icon-link" *ngIf="vehicleItem.limit.unlimitedMileageYn === false">
+                                <i class="icon xs information"></i><span class="text">주행거리 제한</span>
+                                <div class="tooltip">
+                                    기본거리는 {{ vehicleItem.limit.freeDistance | number }}{{ vehicleItem.limit.freeUnits }}이며
+                                    <br>
+                                    추가요금은 {{ vehicleItem.limit.surchargeUnits }} 당 <strong>{{ vehicleItem.vendorCurrencyCode }} {{ vehicleItem.limit.surchargeAmount }}</strong>입니다.
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="price" *ngIf="this.locationType===false">
+                    <p class="secondary">약{{ vehicleItem.vendorAmountSumKrw | number}}원</p>
+                    <p class="primary">{{ vehicleItem.vendorCurrencyCode }} {{ vehicleItem.vendorAmountSum | number }}</p>
+                </div>
+                <div class="price" *ngIf="this.locationType===true">
+                    <p class="primary">{{ vehicleItem.vendorAmountSumKrw | number}}<span>원</span></p>
+                </div>
+                <ng-container *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_DEFAULT">
+                    <div class="control">
+                        <a class="btn inline md light hover line" (click)="onItemClick($event, vehicleItem)">선택</a>
+                    </div>
+                </ng-container>
+
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="viewModel.uiState.listState === viewModel.listEnums.IS_CARD">
+            <div class="result-card-list">
+
+                <!-- 체크박스에 체크되면 .rentalcar-card-item에 .compare-checked를 추가한다. -->
+                <div *ngFor="let vehicleItem of viewModel.carList; index as index;" class="rentalcar-card-item" [class.compare-checked]="vehicleItem.checked">
+                    <ng-container *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_COMPARE">
+                        <!-- 비교하기를 눌렀을때만 체크박스를 노출한다. -->
+                        <label class="checkbox lg only">
+                            <input (change)="onCompareCheck($event, index)" type="checkbox" class="checkbox-control-input" [checked]="vehicleItem.checked">
+                            <span class="checkbox-control-text"></span>
+                        </label>
+                    </ng-container>
+
+                    <div class="rentalcar-image" [class]="vehicleItem.className">
+                        <img *ngIf="!vehicleItem.className" [src]="vehicleItem.photoUrls" (error)="imgLoadError($event, index)" alt="">
+                    </div>
+
+                    <div class="rentalcar-information">
+                        <p class="name">
+                            <img [src]="'/assets/images/car/' + vehicleItem.vehicleVendorCode + '.png'" alt="" class="rentalcar-logo">
+                            <strong>{{ vehicleItem.vehicleName || vehicleItem.vehicleTypeName }}</strong>
+                        </p>
+                        <ul class="include">
+                            <li class="person">{{ vehicleItem.option.passengerCount }}인승</li>
+                            <li class="door">{{ vehicleItem.option.doorCount }}도어</li>
+                            <li *ngIf="vehicleItem.option.airConditionYn" class="air">에어컨</li>
+                            <li *ngIf="vehicleItem.option.transmissionType === 'Automatic'" class="gear">자동변속</li>
+                        </ul>
+
+                        <div class="flex-group">
+                            <!-- 마우스 오버하면 .tooltip이 보여짐 -->
+                            <ul class="info">
+                                <li>
+                                    <a href="#" class="icon-link inline-text-over">
+                                        <i class="icon xs location2"></i><span class="text">{{ vehicleItem.pickup.locationTypeName }}</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="icon-link" *ngIf="vehicleItem.limit.unlimitedMileageYn === false">
+                                        <i class="icon xs information"></i><span class="text">주행거리 제한</span>
+                                        <div class="tooltip">
+                                            기본거리는 {{ vehicleItem.limit.freeDistance | number }}{{ vehicleItem.limit.freeUnits }}이며
+                                            <br>
+                                            추가요금은 {{ vehicleItem.limit.surchargeUnits }} 당 <strong>{{ vehicleItem.vendorCurrencyCode }} {{ vehicleItem.limit.surchargeAmount }}</strong>입니다.
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="price">
+                                <p class="secondary">약{{ vehicleItem.vendorAmountSumKrw | number}}원</p>
+                                <p class="primary">{{ vehicleItem.vendorCurrencyCode }} {{ vehicleItem.vendorAmountSum | number }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="btn-group" *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_DEFAULT">
+                            <a (click)="onItemClick($event, vehicleItem)" class="btn md light hover line">선택</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </ng-container>
+
+        <div *ngIf="viewModel.pagination.totalItems > 0" class="pagination c-pagination">
+            <pagination [boundaryLinks]="true" [(ngModel)]="viewModel.pagination.currentPage" [totalItems]="viewModel.pagination.totalItems" [itemsPerPage]="viewModel.pagination.itemsPerPage" [maxSize]="viewModel.pagination.maxSize" [disabled]="viewModel.pagination.disabled" (pageChanged)="onPageChange($event)" previousText="이전" nextText="다음" firstText="맨처음" lastText="맨끝"></pagination>
+        </div>
+    </ng-container>
+
+
+    <!-- 검색 결과 없음 -->
+    <div *ngIf="viewModel.carList.length === 0" class="list-nodata">
+        <div class="nodata-msg">
+            <i class="icon lg caution"></i>
+            <p>조건에 맞는 검색 결과가 없습니다.</p>
+            <div class="btn-group">
+                <a (click)="onGoToMain($event)" class="btn lg default">다시 검색</a>
+            </div>
+        </div>
+    </div>
+
+</div>

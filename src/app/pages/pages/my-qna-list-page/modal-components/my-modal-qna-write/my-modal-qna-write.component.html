@@ -1,0 +1,85 @@
+<div class="modal type1">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">고객문의 작성</h1>
+            <a class="btn-common-modal-close" (click)="onCloseClick()">닫기</a>
+        </div>
+        <div class="modal-body pd-all">
+            <div class="row-list">
+                <div class="row-item column">
+                    <h2 class="row-item-title">예약번호</h2>
+                    <div class="select-box lg line">
+                        <select name="" id="" required>
+                            <option value="" disabled selected>선택하세요.</option>
+                            <option value="">YB1911123980192</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row-item column">
+                    <h2 class="row-item-title">상담 분류</h2>
+                    <div class="select-box lg line">
+                        <select name="" id="" required>
+                            <option value="" disabled selected>선택하세요.</option>
+                            <option value="">옵션1</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row-item column">
+                    <h2 class="row-item-title">BEST 5 FAQ</h2>
+                    <!-- FAQ 아이템 -->
+                    <div class="modal-faq-item">
+                        <!-- .title을 클릭할때마다 .active를 토글한다. .detail은 .title에 .active가 추가되면 자동으로 보여진다. (CSS) -->
+                        <a href="#" class="title active"><span>[호텔] 취소/환불/변경이 가능한가요?</span></a>
+                        <div class="detail">
+                            취소/환불/변경 모두 가능합니다.
+                        </div>
+                    </div>
+                    <!-- FAQ 아이템 -->
+                    <div class="modal-faq-item">
+                        <!-- .title을 클릭할때마다 .active를 토글한다. .detail은 .title에 .active가 추가되면 자동으로 보여진다. (CSS) -->
+                        <a href="#" class="title"><span>[호텔] 취소 마감일은 현지시간 기준인가요?</span></a>
+                        <div class="detail">
+                            취소/환불/변경 모두 가능합니다.
+                        </div>
+                    </div>
+                    <!-- FAQ 아이템 -->
+                    <div class="modal-faq-item">
+                        <!-- .title을 클릭할때마다 .active를 토글한다. .detail은 .title에 .active가 추가되면 자동으로 보여진다. (CSS) -->
+                        <a href="#" class="title"><span>[호텔] 방금 예약했는데 취소가 가능 한가요?</span></a>
+                        <div class="detail">
+                            취소/환불/변경 모두 가능합니다.
+                        </div>
+                    </div>
+                    <!-- FAQ 아이템 -->
+                    <div class="modal-faq-item">
+                        <!-- .title을 클릭할때마다 .active를 토글한다. .detail은 .title에 .active가 추가되면 자동으로 보여진다. (CSS) -->
+                        <a href="#" class="title"><span>[호텔] 예약 추천이나 견적을 받아볼 수 있나요?</span></a>
+                        <div class="detail">
+                            취소/환불/변경 모두 가능합니다.
+                        </div>
+                    </div>
+                    <!-- FAQ 아이템 -->
+                    <div class="modal-faq-item">
+                        <!-- .title을 클릭할때마다 .active를 토글한다. .detail은 .title에 .active가 추가되면 자동으로 보여진다. (CSS) -->
+                        <a href="#" class="title"><span>[호텔] 입금은 언제까지 하면 되나요?</span></a>
+                        <div class="detail">
+                            취소/환불/변경 모두 가능합니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="row-item column">
+                    <h2 class="row-item-title">상담 내용</h2>
+                    <div class="textarea lg line">
+                        <textarea name="" id="" cols="30" rows="8" placeholder="내용을 입력해 주세요."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group mt30">
+                <a class="btn lg default" (click)="onCloseClick()">등록하기</a>
+            </div>
+            <ul class="text-list dot md mt20">
+                <li>업무시간(오전9시~오후6시) 중 평균 1시간 내 응답</li>
+            </ul>
+        </div>
+    </div>
+</div>

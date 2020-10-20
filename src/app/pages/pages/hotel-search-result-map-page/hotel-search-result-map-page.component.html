@@ -1,0 +1,191 @@
+<!-- 호텔 지도보기 일때만 .overflow-x 추가 -->
+<!-- <body class="overflow-x"> -->
+<div id="wrap" class="p-hotel-search-result-map">
+
+    <!-- 재검색 영역 -->
+    <app-hotel-research-form *ngIf="researchBool" [pageState]="'map'" (closeResearchEvt)="closeResearchEvt($event)"></app-hotel-research-form>
+
+    <!-- 컨덴츠 -->
+    <div id="container" class="full">
+        <div id="contents">
+            <!-- 호텔 지도보기 -->
+            <div class="hotel-map-view">
+                <!-- 상단 검색 영역 -->
+                <div class="hotel-map-view-header">
+                    <div class="logo">
+                        <a href="#"><img src="/assets/images/common/ico-common-header-logo.png" alt="노랑풍선"></a>
+                    </div>
+
+                    <!-- search-form-top -->
+                    <app-hotel-search-form [pageState]="'map'" (openResearchEvt)="openResearchEvt($event)"></app-hotel-search-form>
+                </div>
+
+                <!-- 로딩 바 -->
+                <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+                <ng-container *ngIf="loadingBool">
+                    <!-- 사이드 필터, 검색 결과 영역 -->
+                    <div class="aside-hotel-map">
+                        <!-- .btn-aside 클릭할때마다 .active 토글 -->
+                        <!-- .active가 추가되면 .result-column 자동으로 보여짐 -->
+                        <a (click)="btnAsideEvt($event)" [class.active]="asideBool" class="btn-aside">열기/닫기</a>
+                        <!-- 필터 영역 -->
+                        <!-- <ng-container *ngIf="!(hotelList.length === 0 && !isForFilter)"> -->
+                        <app-hotel-aside-filter [pageState]="'map'" (searchEvt)="onSearchOutEvt($event)" (pageMove)="onPageMvoe($event)" class="filter-column aside filter"></app-hotel-aside-filter>
+                        <!-- </ng-container> -->
+                        <!-- 검색 결과 영역 -->
+                        <div class="result-column">
+
+                            <!-- 호텔 검색 결과 아이템 -->
+                            <ng-container *ngIf="apiLoadingBool && hotelList.length > 0;else elseApi">
+                                <div *ngFor="let hotItem of hotelList" class="hotel-map-item">
+                                    <a (click)="mapItemEvt(hotItem)" class="hotel-map-item-contents">
+                                        <!-- <span class="label round type1">오늘<br>특가</span> -->
+                                        <div class="hotel-image" [ngStyle]="{background: 'url(' + hotItem.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}"></div>
+                                        <div class="hotel-information">
+                                            <p class="name">
+                                                <ng-container *ngIf="hotItem.hotelNameLn;else elseif1">
+                                                    {{hotItem.hotelNameLn}}
+                                                </ng-container>
+
+                                                <ng-template #elseif1>
+                                                    <ng-container *ngIf="hotItem.hotelNameEn">{{hotItem.hotelNameEn}}
+                                                    </ng-container>
+                                                </ng-template>
+                                            </p>
+                                            <p *ngIf="hotItem.addressLn || hotItem.addressEn" class="name2">
+                                                <ng-container *ngIf="hotItem.addressLn;else elseif2">
+                                                    {{hotItem.addressLn}}
+                                                </ng-container>
+
+                                                <ng-template #elseif2>
+                                                    <ng-container *ngIf="hotItem.addressEn">{{hotItem.addressEn}}
+                                                    </ng-container>
+                                                </ng-template>
+                                            </p>
+
+                                            <ng-container *ngIf="hotItem.starRating">
+                                                <p *ngIf="hotItem.starRating.length > 0" class="rate">
+                                                    <span class="hotel-rating">
+                                                        <span class="rating sm s{{getHotelStarRating(hotItem.starRating)}}"></span>
+                                                        <span class="text">{{hotItem.starRating | number  : '1.0-1'}}성급</span>
+                                                    </span>
+                                                </p>
+                                            </ng-container>
+
+                                            <p class="review">4.0 (999+)</p>
+                                            <div class="bottom">
+                                                <p class="poi">로스엔젤레스 국제공함(LAX)</p>
+                                                <p class="price">
+                                                    <strong>{{hotItem.productAmount | number}}</strong><span>원</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </ng-container>
+
+                            <ng-template #elseApi>
+                                <div class="hotel-map-item"></div>
+                                <!-- 검색 결과 없을때 -->
+                                <div class="components-nodata">
+                                    <div class="nodata-msg">
+                                        <i class="icon lg caution"></i>
+                                        <p>검색 결과가 없습니다.<br>다른 키워드로 검색하세요.</p>
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                        </div>
+                        <!-- </ng-template> -->
+                    </div>
+                    <!-- 지도 영역 -->
+                    <div class="hotel-map-area">
+                        <!-- 구글 지도는 여기 -->
+                        <div id="google-map">
+                            <!-- 구글 맵 들어오는 영역 -->
+                            <!-- 호텔 핀 -->
+                            <!-- .hotel-pin에 있는 style은 임시로 넣어둔 것, 맵에 표시되는 위치로 뿌려지게 수정 -->
+                            <!-- .price-bubble을 클릭할때 .active 토글되고 다른 .price-bubble은 모두 .active 반대로 토글 -->
+                            <!-- .price-bublle에 .active가 추가되면 아래에 있는 .hotel-map-item이 자동으로 보여지고 누르면 룸타입 선택화면으로 이동함 -->
+                            <agm-map [latitude]="mapInfo.centerLat" [longitude]="mapInfo.centerLng" [zoom]="18" [mapDraggable]="mapInfo.draggable" (mapReady)="onMapReady($event)">
+
+                                <ng-container *ngIf="apiLoadingBool">
+
+                                    <ng-container *ngFor="let hotItem of hotelList; let i=index">
+
+                                        <agm-overlay [latitude]="hotItem.latitude" [longitude]="hotItem.longitude" [zIndex]="hotItem.hotelCode === selectedHotelCode ? hotelListLen+1 : i">
+                                            <div [style.zIndex]="hotItem.hotelCode === selectedHotelCode ? hotelListLen+1 : i" class="hotel-pin">
+                                                <a (click)="onOverlayClick($event, i)" [class.active]="hotItem.hotelCode === selectedHotelCode" class="price-bubble">
+                                                    <strong>{{hotItem.productAmount | number}}</strong><span>원</span>
+                                                </a>
+
+                                                <div *ngIf="apiLoadingBool && selectedHotelCode" class="hotel-map-item">
+                                                    <a (click)="onMapHotelDtl(selectedHotel)" class="hotel-map-item-contents">
+                                                        <span class="label round type1">오늘<br>특가</span>
+
+                                                        <div class="label recommend" *ngIf="selectedHotel?.recommendYn">
+                                                            <span>추천</span>
+                                                        </div>
+
+                                                        <div class="hotel-image" [ngStyle]="{background: 'url(' + selectedHotel.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}"></div>
+                                                        <div class="hotel-information">
+                                                            <p class="name">
+
+                                                                <ng-container *ngIf="selectedHotel.hotelNameLn;else elseif1">
+                                                                    {{selectedHotel.hotelNameLn}}
+                                                                </ng-container>
+
+                                                                <ng-template #elseif1>
+                                                                    <ng-container *ngIf="selectedHotel.hotelNameEn">
+                                                                        {{selectedHotel.hotelNameEn}}
+                                                                    </ng-container>
+                                                                </ng-template>
+
+                                                            </p>
+                                                            <p *ngIf="selectedHotel.addressLn || selectedHotel.addressEn" class="name2">
+
+                                                                <ng-container *ngIf="selectedHotel.addressLn;else elseif2">
+                                                                    {{selectedHotel.addressLn}}
+                                                                </ng-container>
+
+                                                                <ng-template #elseif2>
+                                                                    <ng-container *ngIf="selectedHotel.addressEn">
+                                                                        {{selectedHotel.addressEn}}
+                                                                    </ng-container>
+                                                                </ng-template>
+
+                                                            </p>
+                                                            <p class="rate">
+
+                                                                <ng-container *ngIf="selectedHotel.starRating">
+                                                                    <span *ngIf="selectedHotel.starRating.length > 0" class="hotel-rating">
+                                                                        <span class="rating sm s{{getHotelStarRating(selectedHotel.starRating)}}"></span>
+                                                                        <span class="text">{{selectedHotel.starRating | number  : '1.0-1'}}성급</span>
+                                                                    </span>
+                                                                </ng-container>
+
+                                                                <span class="reserved">30분전 예약됨</span>
+                                                            </p>
+                                                            <p class="review">4.0 (999+)</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </agm-overlay>
+
+                                    </ng-container>
+
+                                </ng-container>
+
+                            </agm-map>
+
+                        </div>
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </body> -->

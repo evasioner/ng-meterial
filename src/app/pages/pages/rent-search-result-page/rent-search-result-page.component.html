@@ -1,0 +1,90 @@
+<div id="wrap" class="p-rent-result">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <div id="container">
+
+        <div id="contents">
+
+            <!-- timer | is-hide-->
+            <countdown-timer class="is-hide"></countdown-timer>
+
+            <!-- 재검색 모달 -->
+            <app-rent-research-form *ngIf="researchOpenBool" (closeResearchEvt)="closeResearchEvt()"></app-rent-research-form>
+
+            <!-- 현재 검색 정보 -->
+            <app-rent-search-form (openResearchEvt)="openResearchEvt()"></app-rent-search-form>
+
+            <!-- 로딩 바 -->
+            <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+            <div *ngIf="!loadingBool" class="c-list-loading">
+                <div class="list-loading">
+                    <p class="loading-msg">
+                        더 많은 렌터카를 검색중입니다.<br>잠시만 기다려주세요.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 컨텐츠 -->
+            <div *ngIf="loadingBool" class="contents-area">
+
+                <!-- 상단 : 타이틀, 날짜, 위치 -->
+                <app-rent-breadcrumbs class="breadcrumbs"></app-rent-breadcrumbs>
+
+                <ng-container *ngIf="!(!isFilter && vehiclesLength === 0); else elseSearchResult">
+                    <!-- 왼쪽 : 필터 -->
+                    <app-rent-aside-filter (searchEvt)="onSearchOutEvt($event)" class="aside filter"></app-rent-aside-filter>
+
+                    <!-- 오른쪽 : 정렬, 리스트 -->
+                    <div class="contents">
+                        <div class="tab-wrap">
+
+                            <!-- 정렬 -->
+                            <app-rent-tab-header (searchEvt)="onSearchOutEvt($event)" class="tab-header type2 round border mb20" style="display: block;"></app-rent-tab-header>
+
+                            <ng-container *ngIf="!errorFlag; else elseList">
+                                <!-- 리스트 -->
+                                <app-rent-tab-body *ngIf="apiLoadingBool" (goPageEvt)="goPageEvt($event)" class="tab-body"></app-rent-tab-body>
+                            </ng-container>
+
+                            <ng-template #elseList>
+                                <!-- 검색 결과 없음 -->
+                                <div class="list-nodata">
+                                    <div class="nodata-msg">
+                                        <i class="icon lg caution"></i>
+                                        <p>조건에 맞는 검색 결과가 없습니다.</p>
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                        </div>
+
+                        <!-- 비교하기 -->
+                        <app-rent-compare class="compare-wrap"></app-rent-compare>
+                    </div>
+                </ng-container>
+
+                <!-- isFilter : false, vehicles.length === 0 -->
+                <ng-template #elseSearchResult>
+                    <!-- 검색 결과 없음 -->
+                    <div class="list-nodata">
+                        <div class="nodata-msg">
+                            <i class="icon lg caution"></i>
+                            <p>조건에 맞는 검색 결과가 없습니다.</p>
+                            <div class="btn-group">
+                                <a (click)="onGoToMain()" class="btn lg default">다시 검색</a>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 푸터 -->
+    <app-footer *ngIf="loadingBool"></app-footer>
+</div>

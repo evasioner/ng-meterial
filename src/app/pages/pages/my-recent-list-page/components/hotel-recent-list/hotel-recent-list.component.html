@@ -1,0 +1,24 @@
+<div class="recent-product-item" *ngFor="let item of viewModel.recentList; index as index;">
+    <div class="item-summary">
+        <div class="product-image">
+            <img [src]="item.photoUrl" alt="">
+        </div>
+        <div class="summary">
+            <p class="product-title">{{item.hotelName}}</p>
+            <ul class="column-contents lg mt15">
+                <li>
+                    <span class="title">이용일</span>
+                    <span class="text">{{item.dateRange}}</span>
+                </li>
+                <li>
+                    <span class="title">객실정보</span>
+                    <span class="text">{{item.travelerInfo}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="control">
+            <a (click)="onDeleteItem($event, index, item.index)" class="btn md grey">삭제하기</a>
+            <a (click)="onSearchResult($event, item.index)" class="btn md default basis2">예약하기</a>
+        </div>
+    </div>
+</div>

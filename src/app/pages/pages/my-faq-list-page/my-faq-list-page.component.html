@@ -1,0 +1,236 @@
+<div *ngIf="isBrowser" id="wrap" class="p-my-faq-list">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+
+        <!-- 로딩 바 -->
+        <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+        <div id="contents" class="middle default">
+            <div class="contents-area">
+
+                <div class="aside left">
+                    <dl class="aside-menu">
+                        <dt>마이페이지</dt>
+                        <!-- 예약목록은 회원일때만 보여짐 -->
+                        <dd>
+                            <a (click)="goToReservation()">예약목록
+                                <span class="icon sm reservation"></span>
+                            </a>
+                        </dd>
+                        <!-- <dd><a href="#">예약조회(비회원/제휴사)</a></dd> 비회원 일때 나옴 -->
+                        <dd>
+                            <a (click)="goToRecent()">최근 본 상품
+                                <span class="icon sm recent"></span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a (click)="goToWish()">장바구니
+                                <span class="icon sm wish"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToCoupon()">쿠폰&할인코드
+                                <span class="icon sm coupon"></span>
+                            </a>
+                        </dd>
+
+                        <dd>
+                            <a (click)="goToQna()">문의내역
+                                <span class="icon sm qna"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToReview()">이용후기
+                                <span class="icon sm review"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToCustomer()">고객센터
+                                <span class="icon sm customer"></span>
+                            </a>
+                        </dd>
+
+                        <dd>
+                            <a href="https://www.ybtour.co.kr/cs/noticeList.yb">공지사항
+                                <span class="icon sm notice"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToEvent()">이벤트&amp;기획전
+                                <span class="icon sm event"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToShare()">친구초대
+                                <span class="icon sm share"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToSeller()">판매 및 입점
+                                <span class="icon sm seller"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToAgreement()">이용약관
+                                <span class="icon sm document"></span>
+                            </a>
+                        </dd>
+
+                    </dl>
+                </div>
+
+                <div id="container">
+                    <div id="contents" class="middle default">
+                        <div class="contents-area">
+                            <div class="aside left">
+                                <h2 class="heading-title3">마이페이지</h2>
+                                <ul class="lnb-nav">
+                                    <li>
+                                        <!-- .active추가되면 자동으로 .lnb-sub 보여짐 -->
+                                        <a href="#" class="lnb-menu">예약/취소내역</a>
+                                        <ul class="lnb-sub">
+                                            <li><a href="#">예약내역</a></li>
+                                            <li><a href="#">취소내역</a></li>
+                                            <li><a href="#">내 예약 찾기</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="lnb-menu">상품</a>
+                                        <ul class="lnb-sub">
+                                            <li><a href="#">최근 본 상품</a></li>
+                                            <li><a href="#">관심 상품</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="lnb-menu">마일리지</a>
+                                        <ul class="lnb-sub">
+                                            <li><a href="#">마일리지 가입</a></li>
+                                            <li><a href="#">내 마일리지</a></li>
+                                            <li><a href="#">마일리지 선물</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="lnb-menu">고객문의</a>
+                                        <ul class="lnb-sub">
+                                            <li><a href="#">1:1 문의 내역</a></li>
+                                            <li><a href="#">견적 문의 내역</a></li>
+                                            <li><a href="#">개선/건의하기 내역</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="lnb-menu">참여내역</a>
+                                        <ul class="lnb-sub">
+                                            <li><a href="#">이벤트</a></li>
+                                            <li><a href="#">여행후기</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="lnb-menu">개인정보</a>
+                                        <ul class="lnb-sub">
+                                            <li><a href="#">개인정보 수정</a></li>
+                                            <li><a href="#">비밀번호 변경</a></li>
+                                            <li><a href="#">SNS 연결 설정</a></li>
+                                            <li><a href="#">회원탈퇴</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="contents">
+                                <h2 class="heading-title2 mb20">FAQ</h2>
+                                <!-- 검색 폼 -->
+                                <div class="list-search-form">
+                                    <div class="tab-wrap">
+                                        <div class="tab-header type2 border-bottom">
+                                            <div class="tab-header-outer">
+                                                <a href="#" class="tab-header-item active"><span>전체</span></a>
+                                                <a href="#" class="tab-header-item"><span>상품 예약</span></a>
+                                                <a href="#" class="tab-header-item"><span>상품 결제</span></a>
+                                                <a href="#" class="tab-header-item"><span>마일리지</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="search-form-option">
+                                            <div class="input md line">
+                                                <i class="icon sm search"></i>
+                                                <input type="text" placeholder="찾고 있는 내용을 검색하세요.">
+                                            </div>
+                                            <a href="#" class="btn md inline default">검색</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ 목록 -->
+                                <!-- FAQ 아이템 반복 -->
+                                <div class="faq-item">
+                                    <div class="accordion type1">
+                                        <!-- .accordion-header에 .active가 추가되면 .accordion-body가 자동으로 보여진다. -->
+                                        <div class="accordion-header active">
+                                            <a href="#" class="accordion-title">
+                                                <strong>[호텔] 취소/환불/변경이 가능한가요?</strong>
+                                            </a>
+                                        </div>
+                                        <div class="accordion-body">
+                                            예약 시 취소나 변경 규정은 노랑풍선 호텔 요금 조회 시 확인이 가능합니다.<br>요금 검색 결과에서 취소 규정 보기를 클릭하시어 해당 호텔의 취소 규정 및 수수료에 대한 시점을 확인하실 수 있으며 예약 시 반드시 취소 규정을 확인 후 예약 진행을 해주시면 되겠습니다.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ 아이템 반복 -->
+                                <div class="faq-item">
+                                    <div class="accordion type1">
+                                        <!-- .accordion-header에 .active가 추가되면 .accordion-body가 자동으로 보여진다. -->
+                                        <div class="accordion-header">
+                                            <a href="#" class="accordion-title">
+                                                <strong>[호텔] 취소/환불/변경이 가능한가요?</strong>
+                                            </a>
+                                        </div>
+                                        <div class="accordion-body">
+                                            예약 시 취소나 변경 규정은 노랑풍선 호텔 요금 조회 시 확인이 가능합니다.<br>요금 검색 결과에서 취소 규정 보기를 클릭하시어 해당 호텔의 취소 규정 및 수수료에 대한 시점을 확인하실 수 있으며 예약 시 반드시 취소 규정을 확인 후 예약 진행을 해주시면 되겠습니다.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- pagination -->
+                                <div class="pagination">
+                                    <a href="#" class="btn-first" title="맨처음">맨처음</a>
+                                    <a href="#" class="btn-prev" title="이전">이전</a>
+                                    <strong>1</strong>
+                                    <a href="#">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#" class="btn-next" title="다음">다음</a>
+                                    <a href="#" class="btn-last" title="맨끝">맨끝</a>
+                                </div>
+                                <!-- FAQ 없음 -->
+                                <div class="list-nodata">
+                                    <div class="nodata-msg">
+                                        <i class="icon lg caution"></i>
+                                        <p>등록된 FAQ가 없습니다.</p>
+                                    </div>
+                                </div>
+                                <!-- 검색결과 없음 -->
+                                <div class="list-nodata">
+                                    <div class="nodata-msg">
+                                        <i class="icon lg caution"></i>
+                                        <p>조건에 맞는 검색 결과가 없습니다.</p>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn lg default">다시 검색</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

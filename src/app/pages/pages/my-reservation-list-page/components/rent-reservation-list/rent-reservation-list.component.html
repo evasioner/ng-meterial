@@ -1,0 +1,72 @@
+<div class="search-result-header">
+    <span>전체 <span class="color-point2"> {{totalCount}}</span>건</span>
+    <label class="checkbox md rtl" data-target="resCancel">
+        <input (change)="onEexcludeCancelYnChange($event)" type="checkbox" class="checkbox-control-input">
+        <span class="checkbox-control-text">취소 예약 제외</span>
+    </label>
+</div>
+
+<ng-container *ngFor="let resItem of reservationList; index as i; ">
+    <div *ngIf="resItem.categories[0].code === 'IC03'" class="reservation-list-item">
+        <div class="reservation-list-item-header">
+            <div class="state">
+                <i class="icon sm rentalcar"></i>
+                <span class="text">{{resItem['items'][0]['bookingStatusName']}}/{{getBookedState(resItem)}}</span>
+                <span *ngIf="resItem['items'][0]['cancellableYn']" class="label square type2">무료취소</span>
+                <span *ngIf="!resItem['items'][0]['cancellableYn']" class="label square type1">환불불가</span>
+            </div>
+            <a href="#" class="text-link">문의하기</a>
+        </div>
+        <div class="reservation-list-item-summary">
+            <p class="product-title">[렌터카] [{{resItem['items'][0]['rent']['vehicleVendorName']}}] ???</p>
+            <div class="summary">
+                <ul>
+                    <li>
+                        <span>이용일</span>
+                        <span>{{resItem['travelFromDate'] | amDateFormat: 'YYYY.MM.DD'}} - {{resItem['travelToDate'] | amDateFormat: 'YYYY.MM.DD'}}</span>
+                    </li>
+                    <li>
+                        <span>차량인수</span>
+                        <!--                      <span>2019.12.20 12:00 / San Francisco Intl Airport</span>-->
+                        <span>{{resItem['travelFromDate'] | amDateFormat: 'YYYY.MM.DD HH:mm'}} / {{resItem['items'][0]['rent']['pickupLocationName']}}</span>
+                    </li>
+                    <li>
+                        <span>차량반납</span>
+                        <!--                      <span>2019.12.20 12:00 / San Francisco Intl Airport</span>-->
+                        <span>{{resItem['travelToDate'] | amDateFormat: 'YYYY.MM.DD HH:mm'}} / {{resItem['items'][0]['rent']['returnLocationName']}}</span>
+                    </li>
+                </ul>
+                <div class="price">
+                    <p><strong>{{resItem['sumAmount'] | number}}</strong><span>원</span></p>
+                </div>
+                <div class="control">
+                    <a (click)="onBookedCancelClick(resItem)" class="btn md grey">예약취소</a>
+                    <a (click)="onBookedDetailClick(resItem)" class="btn md default basis2">예약상세</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<!-- 예약 내역 없음 -->
+<div *ngIf="totalCount === 0" class="list-nodata">
+    <div class="nodata-msg">
+        <i class="icon lg caution"></i>
+        <p>예약 내역이 없습니다.</p>
+    </div>
+</div>
+
+<!-- pagination -->
+<!-- <div *ngIf="viewModel.pagination.totalItems > 0" class="pagination c-pagination">
+        <pagination [boundaryLinks]="true" [(ngModel)]="viewModel.pagination.currentPage" [totalItems]="viewModel.pagination.totalItems" [itemsPerPage]="viewModel.pagination.itemsPerPage" [maxSize]="viewModel.pagination.maxSize" [disabled]="viewModel.pagination.disabled" (pageChanged)="onPageChange($event)" previousText="이전" nextText="다음" firstText="맨처음" lastText="맨끝"></pagination>
+    </div> -->
+
+<!-- pagination -->
+<div class="pagination">
+    <a href="#" class="btn-first" title="맨처음">맨처음</a>
+    <a href="#" class="btn-prev" title="이전">이전</a>
+    <strong>1</strong>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#" class="btn-next" title="다음">다음</a>
+    <a href="#" class="btn-last" title="맨끝">맨끝</a>
+</div>

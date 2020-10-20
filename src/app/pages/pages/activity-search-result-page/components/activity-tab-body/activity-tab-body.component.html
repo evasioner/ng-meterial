@@ -1,0 +1,110 @@
+<div class="tab-pane active">
+
+    <!-- 상단 옵션 영역 -->
+    <div class="search-result-header">
+        <p class="total"><span>{{ viewModel.pagination.totalItems | number }}</span>개의 상품이 검색되었습니다.</p>
+        <div class="control">
+            <ng-container *ngFor="let item of viewModel.compareMenuList">
+                <a *ngIf="viewModel.uiState.state === item.state" class="btn-common-compare sm" [class.active]="viewModel.uiState.state === 'isCompare'" (click)="onCompare($event, item.state)">
+                    {{ item.text }}
+                </a>
+            </ng-container>
+
+            <div class="view-change-button">
+                <a *ngFor="let item of viewModel.listMenuList" [ngClass]="item.className" [class.active]="viewModel.uiState.listState === item.state" (click)="onChangeMode($event, item.state)">
+                    {{ item.text }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <ng-container *ngIf="viewModel.activityList.length > 0">
+
+        <!-- 액티비티 검색 결과 아이템(리스트 타입) -->
+        <ng-container *ngIf="viewModel.uiState.listState === viewModel.listEnums.IS_LIST">
+            <div *ngFor="let item of viewModel.activityList; index as index;" [class.compare-checked]="item.checked" class="activity-list-item">
+
+                <!-- 비교하기를 눌렀을때만 체크박스를 노출한다. -->
+                <ng-container *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_COMPARE">
+                    <label class="checkbox lg only">
+                        <input [checked]="item.checked" (change)="onCompareCheck($event, index)" type="checkbox" class="checkbox-control-input">
+                        <span class="checkbox-control-text"></span>
+                    </label>
+                </ng-container>
+
+                <div class="activity-image" [ngStyle]="{background: 'url(' + item.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}"></div>
+                <div class="activity-information">
+                    <p class="name">{{ (item.activityNameLn) ? item.activityNameLn : item.activityNameEn }}</p>
+                    <p class="vendor">{{ item.vendorCompName }}</p>
+                    <p class="review">{{ item.reviewAverage  }} ({{ item.reviewCount }})</p>
+                    <p class="now" *ngIf="item.instantConfirmYn">즉시 확정</p>
+                </div>
+                <div class="price">
+                    <strong>{{ item.amountSum | number }}</strong><span>원</span>
+                </div>
+
+                <ng-container *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_DEFAULT">
+                    <div class="control">
+                        <a (click)="onGoDetailPage($event, item)" class="btn inline md light line hover">선택</a>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="viewModel.uiState.listState === viewModel.listEnums.IS_CARD">
+
+            <!-- 액티비티 검색 결과 아이템(카드타입) -->
+            <div class="result-card-list">
+
+                <div *ngFor="let item of viewModel.activityList; index as index;" [class.compare-checked]="item.checked" class="activity-card-item">
+
+                    <ng-container *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_COMPARE">
+                        <label class="checkbox lg only">
+                            <input [checked]="item.checked" (change)="onCompareCheck($event, index)" type="checkbox" class="checkbox-control-input">
+                            <span class="checkbox-control-text"></span>
+                        </label>
+                    </ng-container>
+
+                    <!-- 액티비티 검색 결과 아이템(카드 타입) -->
+                    <div class="activity-image" [ngStyle]="{background: 'url(' + item.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}"></div>
+                    <div class="activity-information">
+                        <div class="information-group">
+                            <p class="name">{{ (item.activityNameLn) ? item.activityNameLn : item.activityNameEn }}</p>
+                            <p class="vendor">{{ item.vendorCompName }}</p>
+                            <p class="review">{{ item.reviewAverage }} ({{ item.reviewCount }})</p>
+                        </div>
+                        <div class="flex-group">
+                            <p class="now" *ngIf="item.instantConfirmYn">즉시 확정</p>
+                            <div class="price">
+                                <strong>{{ item.amountSum | number }}</strong><span>원</span>
+                            </div>
+                        </div>
+
+                        <ng-container *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_DEFAULT">
+                            <div class="btn-group">
+                                <a href="#" class="btn md light line hover">선택</a>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <div *ngIf="viewModel.pagination.totalItems > 0" class="pagination c-pagination">
+            <pagination [boundaryLinks]="true" [(ngModel)]="viewModel.pagination.currentPage" [totalItems]="viewModel.pagination.totalItems" [itemsPerPage]="viewModel.pagination.itemsPerPage" [maxSize]="viewModel.pagination.maxSize" [disabled]="viewModel.pagination.disabled" (pageChanged)="onPageChange($event)" previousText="이전" nextText="다음" firstText="맨처음" lastText="맨끝"></pagination>
+        </div>
+
+    </ng-container>
+
+    <!-- 검색 결과 없음 -->
+    <div *ngIf="viewModel.activityList.length === 0" class="list-nodata">
+        <div class="nodata-msg">
+            <i class="icon lg caution"></i>
+            <p>조건에 맞는 검색 결과가 없습니다.</p>
+            <div class="btn-group">
+                <a (click)="onGoToMain($event)" class="btn lg default">다시 검색</a>
+            </div>
+        </div>
+    </div>
+
+</div>

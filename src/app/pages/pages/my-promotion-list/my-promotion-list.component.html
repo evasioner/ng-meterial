@@ -1,0 +1,111 @@
+<body class="bg">
+    <div id="wrap">
+        <!-- 노랑풍선 공통 헤더 -->
+        <app-header [headerConfig]="headerConfig"></app-header>
+
+        <!-- 컨덴츠 -->
+        <div id="container">
+            <div id="contents" class="middle default">
+                <h2 class="heading-title3 mb20">프로모션</h2>
+                <div class="tab-wrap">
+                    <div class="tab-header type2 flex-start round border mb20">
+                        <div class="tab-header-outer">
+                            <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>진행중</span></a>
+                            <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>종료</span></a>
+                            <a (click)="selectTab(2)" class="tab-header-item" [ngClass]="{'active': tabNo === 2}"><span>당첨자 발표</span></a>
+                        </div>
+                    </div>
+                    <div class="tab-body" [ngSwitch]="tabNo">
+                        <!-- 진행중 프로모션 리스트 -->
+                        <ng-container *ngSwitchDefault>
+                            <div class="tab-pane active">
+                                <div class="align-r mb10">
+                                    <div class="select-box md line inline">
+                                        <select name="" id="">
+                                            <option value="">전체</option>
+                                            <option value="">카드 프로모션</option>
+                                            <option value="">면세점 프로모션</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="promotion-list">
+                                    <!-- 프로모션 아이템 -->
+                                    <a (click)="detailClick()" class="promotion-item">
+                                        <div class="promotion-image">
+                                            <img src="../../assets/images/temp/@temp-promotion-image.png" alt="">
+                                        </div>
+                                        <div class="promotion-information">
+                                            <p class="title">롯데면세점 LDF PAY 1만원 증정</p>
+                                            <p class="text">해외패키지, 자유여행, 허니문, 크루즈/골프 고객 대상</p>
+                                            <p class="date">2019.02.12 ~ 2019.08.31</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <!-- 종료된 프로모션 리스트 -->
+                        <ng-container *ngSwitchCase="1">
+                            <div class="tab-pane active">
+                                <div class="align-r mb10">
+                                    <div class="select-box md line inline">
+                                        <select name="" id="">
+                                            <option value="">전체</option>
+                                            <option value="">카드 프로모션</option>
+                                            <option value="">면세점 프로모션</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="promotion-list">
+                                    <!-- 프로모션 아이템 -->
+                                    <a href="#" class="promotion-item">
+                                        <div class="promotion-image">
+                                            <img src="../../assets/images/temp/@temp-promotion-image.png" alt="">
+                                        </div>
+                                        <div class="promotion-information">
+                                            <p class="title">롯데면세점 LDF PAY 1만원 증정</p>
+                                            <p class="text">해외패키지, 자유여행, 허니문, 크루즈/골프 고객 대상</p>
+                                            <p class="date">2019.02.12 ~ 2019.08.31</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <!-- 당청자 발표 -->
+                        <ng-container *ngSwitchCase="2">
+                            <div class="tab-pane active">
+                                <div class="tab-pane">
+                                    <div class="align-r mb10">
+                                        <div class="select-box md line inline">
+                                            <select name="" id="">
+                                                <option value="">전체</option>
+                                                <option value="">카드 프로모션</option>
+                                                <option value="">면세점 프로모션</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="promotion-list">
+                                        <!-- 프로모션 아이템 -->
+                                        <a href="#" class="promotion-item">
+                                            <div class="promotion-image">
+                                                <img src="../../assets/images/temp/@temp-promotion-image.png" alt="">
+                                            </div>
+                                            <div class="promotion-information">
+                                                <p class="title">롯데면세점 LDF PAY 1만원 증정</p>
+                                                <p class="text">해외패키지, 자유여행, 허니문, 크루즈/골프 고객 대상</p>
+                                                <p class="date">2019.02.12 ~ 2019.08.31</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 노랑풍선 공통 푸터 -->
+        <app-footer></app-footer>
+    </div>
+</body>

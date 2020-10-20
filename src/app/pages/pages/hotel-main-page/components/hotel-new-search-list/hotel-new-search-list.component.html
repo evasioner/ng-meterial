@@ -1,0 +1,10 @@
+<div class="hotel-recent-item" *ngFor="let item of viewModel.recentList; index as index;">
+    <a (click)="onDeleteItem($event, index, item.index)" class="btn-common-close">삭제</a>
+    <a (click)="onSearchResult($event, item.index)" class="hotel-recent-item-contents">
+        <dl>
+            <dt><i class="icon sm hotel"></i><strong>{{item.hotelName}}</strong></dt>
+            <dd>{{item.dateRange}}</dd>
+            <dd>{{item.travelerInfo}}</dd>
+        </dl>
+    </a>
+</div>

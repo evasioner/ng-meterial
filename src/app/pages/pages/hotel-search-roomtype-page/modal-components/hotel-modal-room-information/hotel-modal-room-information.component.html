@@ -1,0 +1,92 @@
+<!-- 모달 -->
+<div class="modal type2 c-ngx-slick-carousel-room-photo-d">
+    <div *ngIf="loadingBool" class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">객실 정보</h1>
+            <a (click)="onCloseClick($event)" class="btn-common-modal-close">닫기</a>
+        </div>
+        <div class="modal-body">
+            <div class="side-layout modal-hotel-room-information">
+                <div class="left-contents">
+                    <h2 class="type">{{roomInfo.roomTypeName}}</h2>
+                    <div class="round-box">
+                        <ul class="summary">
+                            <li><span class="title">객실 크기</span>{{roomInfo.roomSize}}㎡</li>
+                            <li><span class="title">침대 정보</span>{{roomInfo.bedTypeName}}</li>
+                            <li><span class="title">최대 인원</span>{{roomInfo.occupancy.totalCount}}인</li>
+                            <li *ngIf="wifiBool">
+                                <span class="title">인터넷</span>
+                                <span class="color-point2">무료 Wi-Fi</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <ng-template [ngIf]="'amenities.length > 0'">
+                        <h3 class="box-title">객실 서비스</h3>
+                        <div class="round-box">
+                            <ul class="service">
+                                <li>에어컨</li>
+                                <li>타월 제공</li>
+                                <li>린넨 제공</li>
+                                <li>매일 하우스키핑</li>
+                                <li>저자극성 침구 이용 가능</li>
+                                <li>전화</li>
+                                <li>무료 시내 통화</li>
+                                <li>전용 욕시</li>
+                                <li>무료 세면용품</li>
+                                <li>헤어드라이기</li>
+                                <li>객실 금고</li>
+                                <li>책상</li>
+                                <li>객실 내 온도 조절기</li>
+                                <li>유료 영화</li>
+                                <li>턴다운 서비스</li>
+                                <li>프리미엄 TV채널</li>
+                                <li>샤워기 있는 욕조</li>
+                                <li>냉장고</li>
+                                <li>케이블 TV 서비스</li>
+                                <li>모닝콜 서비스</li>
+                            </ul>
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="right-contents">
+                    <div *ngIf="photoList.length > 0" class="hotel-photo-gallery">
+                        <div class="image-big slick-hotel-photo-gallery">
+                            <ngx-slick-carousel class="c-ngx-slick-carousel carousel slider-for"
+                                #slickModal="slick-carousel" [config]="imagesSlider" (breakpoint)="breakpoint($event)"
+                                (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+                                <div ngxSlickItem *ngFor="let item of photoList" class="slide">
+                                    <img src="{{item.photoUrl}}" class="ngx-slick-carousel-img"
+                                        alt="{{item.photoCaption}}">
+                                </div>
+                            </ngx-slick-carousel>
+                            <a (click)="prev()" class="btn-prev">이전</a>
+                            <a (click)="next()" class="btn-next">다음</a>
+                            <div class="item-count"><span>{{currentSlide + 1}}</span><span>{{photoList.length}}</span>
+                            </div>
+                        </div>
+                        <!--
+                - 썸네일 리스트
+                - 선택한 썸네일에 .active 추가, 해당 이미지를 .image-big에 뿌림
+              -->
+                        <div class="thumbnail-list slick-thumbnail-list">
+                            <div class="ngx-slick-carousel-area">
+                                <div class="ngx-slick-carousel-wrap">
+                                    <ngx-slick-carousel class="c-ngx-slick-carousel carousel slider-nav"
+                                        #slickModal="slick-carousel" [config]="thumbnailsSlider"
+                                        (init)="slickInit($event)">
+                                        <div ngxSlickItem *ngFor="let item of photoList;index as i" class="slide">
+                                            <!-- <a (click)="onThumbnailEvt($event, i)"> -->
+                                            <div class="image" [ngStyle]="{background: 'url(' + item.photoUrl + ')'}">
+                                            </div>
+                                            <!-- </a> -->
+                                        </div>
+                                    </ngx-slick-carousel>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

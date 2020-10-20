@@ -1,0 +1,123 @@
+<!-- 메인 검색 박스 -->
+<div class="search-box-outer">
+
+    <app-category-header></app-category-header>
+
+    <!-- 렌터카 검색기 영역 > 레이어 팝업 메뉴 보여주기 위해 수정 : overflow: visible;  -->
+    <div class="rentalcar-search-area" style="overflow: visible;">
+        <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate #f="ngForm">
+
+            <div class="tab-wrap" data-target="tg-wrap-date-time">
+                <div class="tab-header type3">
+                    <div class="tab-header-outer">
+                        <a class="tab-header-item" (click)="onReturnChkClick()" [ngClass]="{'active':vm.locationReturnBool}"><span>반납 장소 같음</span></a>
+                        <a class="tab-header-item" (click)="onReturnChkClick()" [ngClass]="{'active':!vm.locationReturnBool}"><span>반납 장소 다름</span></a>
+                    </div>
+                    <div class="select-box md line ml30" *ngIf="this.locationType===true">
+                        <select name="" id="" required>
+                            <option value="" selected disabled>차량 보험을 선택하세요.</option>
+                            <option value="">차량 보험 옵션</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="tab-body">
+
+                    <!-- 반납 장소 다름 -->
+                    <div class="tab-pane active">
+
+                        <div class="search-area-form" [ngClass]="{'same-area':vm.locationReturnBool}">
+
+                            <!-- 인수 장소 -->
+                            <div class="form-column" [class.valid-error]="isValidError('locationAccept', f.submitted)">
+                                <p class="title" *ngIf="this.locationType===false">인수 장소</p>
+                                <p class="title" *ngIf="this.locationType===true">인수 도시</p>
+                                <p class="text">
+                                    <input [formControlName]="'locationAccept'" data-target="tgLaInput" data-click-ignore="true" type="text" value="" placeholder="도시명 또는 공항명" (focus)="onDestinationPickupFocus($event)" (keyup)="onDestinationPickupKeyup($event)">
+                                </p>
+                            </div>
+
+                            <!-- 반납 장소 -->
+                            <div *ngIf="!vm.locationReturnBool" class="form-column" [class.valid-error]="isValidError('locationReturn', f.submitted)">
+                                <p class="title">반납 장소</p>
+                                <p class="text">
+                                    <input [formControlName]="'locationReturn'" data-target="tgLrInput" data-click-ignore="true" type="text" placeholder="도시명 또는 공항명" (focus)="onDestinationReturnFocus($event)" (keyup)="onDestinationReturnKeyup($event)">
+                                </p>
+                            </div>
+
+                            <!-- 운전자 연령 -->
+                            <div class="form-column" [class.valid-error]="isValidError('driverBirthday', f.submitted)">
+                                <p class="title">운전자 연령</p>
+                                <p class="text">
+                                    <input [formControlName]="'driverBirthday'" [value]="vm.driverBirthday  | amDateFormat:'YYYY-MM-DD'" [numOnly]="mainForm.controls.driverBirthday" style="font-size: 16px; font-weight: 700" type="text" maxlength="8" class="isBaseFont" placeholder="생년월일 8자리 입력">
+                                </p>
+                            </div>
+
+                            <!-- 인수 일시 -->
+                            <div class="form-column" data-target="tg-form-date" [class.valid-error]="isValidError('formDateStr', f.submitted)" (click)="onFromDateClick($event)">
+
+                                <p class="title">인수 일시</p>
+
+                                <div class="text calendar">
+                                    <div class="output-calendar-area">
+                                        {{vm.formDateStr | amDateFormat:'MM.DD(dd), '}}{{vm.formTimeVal}}
+                                    </div>
+                                    <input type="text" class="is-hidden" readonly [formControlName]="'formDateStr'">
+                                    <input type="text" class="is-hidden" readonly [formControlName]="'formTimeVal'">
+                                </div>
+
+                            </div>
+
+                            <!-- 반납 일시 -->
+                            <div class="form-column" data-target="tg-to-date" [class.valid-error]="isValidError('toDateStr', f.submitted)" (click)="onToDateClick($event)">
+                                <p class="title">반납 일시</p>
+                                <div class="text calendar">
+                                    <div class="output-calendar-area">
+                                        {{vm.toDateStr | amDateFormat:'MM.DD(dd), '}}{{vm.toTimeVal}}
+                                    </div>
+                                    <input type="text" class="is-hidden" readonly [formControlName]="'toDateStr'">
+                                    <input type="text" class="is-hidden" readonly [formControlName]="'toTimeVal'">
+                                </div>
+                            </div>
+
+                            <button class="btn-form-search" role="button">검색</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- 렌터카 인수장소 목적지 검색-->
+                <div *ngIf="isDestinationPickup" class="c-destination" [ngStyle]="{'top.px':destinationPickup.top, 'left.px':destinationPickup.left}">
+                    <app-modal-destination [storeCategoryType]="destinationPickup.storeCategoryType" [isState]="destinationPickup.state" [storeId]="destinationPickup.storeId" [majorDestinationRq]="destinationPickup.majorDestinationRq" [destinationRq]="destinationPickup.destinationRq" [inputId]="destinationPickup.inputId" (appClickOutside)="onDestinationClose($event)"></app-modal-destination>
+                </div>
+
+                <!-- 렌터카 반납장소 목적지 검색-->
+                <div *ngIf="isDestinationReturn" class="c-destination" [ngStyle]="{'top.px':destinationReturn.top, 'left.px':destinationReturn.left}">
+                    <app-modal-destination [storeCategoryType]="destinationReturn.storeCategoryType" [isState]="destinationReturn.state" [storeId]="destinationReturn.storeId" [majorDestinationRq]="destinationReturn.majorDestinationRq" [destinationRq]="destinationReturn.destinationRq" [inputId]="destinationReturn.inputId" (appClickOutside)="onDestinationClose($event)"></app-modal-destination>
+                </div>
+
+                <div class="c-calendar-time" [ngStyle]="{'top.px':calendarTimeObjFrom.top, 'left.px':calendarTimeObjFrom.left}">
+                    <app-rent-modal-calendar-time-from *ngIf="calendarTimeObjFrom.state === 'isOpen'" [typeId]="calendarTimeObjFrom.typeId" [initialState]="calendarTimeObjFrom.initialState" (close)="calendarTimeObjFrom.closeEvt(this)"></app-rent-modal-calendar-time-from>
+                </div>
+
+                <div class="c-calendar-time" [ngStyle]="{'top.px':calendarTimeObjTo.top, 'left.px':calendarTimeObjTo.left}">
+
+                    <app-rent-modal-calendar-time-to *ngIf="calendarTimeObjTo.state === 'isOpen'" [typeId]="calendarTimeObjTo.typeId" [initialState]="calendarTimeObjTo.initialState" (close)="calendarTimeObjTo.closeEvt(this)"></app-rent-modal-calendar-time-to>
+                </div>
+
+            </div>
+
+
+        </form>
+
+        <ul class="rentalcar-reservation-tip">
+            <li><a (click)="demandClick()" class="tip1">예약 전 참고사항</a></li>
+            <li><a (click)="americaClick()" class="tip2">미주 Tip</a></li>
+            <li><a (click)="canadaClick()" class="tip3">캐나다 Tip</a></li>
+            <li><a (click)="europeClick()" class="tip4">유럽 Tip</a></li>
+        </ul>
+    </div>
+
+
+</div>

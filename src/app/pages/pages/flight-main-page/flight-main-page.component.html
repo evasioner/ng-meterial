@@ -1,0 +1,528 @@
+<div id="wrap" class="p-flight-main">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+        <div id="contents">
+            <!-- 메인 비주얼 -->
+            <div id="main-visual" class="flight">
+                <h2 class="visual-title">
+                    <strong>전 세계 항공+호텔 최대 <span class="color-point2">20% 할인</span></strong>
+                    <span>노랑풍선에서 자유롭게 여행 계획하고, 가장 합리적인 가격으로 여행을 떠나세요.</span>
+                </h2>
+            </div>
+
+            <!-- 메인 검색 박스 -->
+            <app-flight-main-search class="main-search-box"></app-flight-main-search>
+
+            <!-- 이벤트 -->
+            <div class="contents-item middle">
+                <h3 class="contents-title"><strong>홍길동</strong> 님만을 위한 이벤트<a href="#" class="text-link">전체보기</a></h3>
+                <div class="contents-box">
+                    <div class="main-event-area">
+                        <div class="event-banner type1">
+                            <ul>
+                                <li class="active"><a href="#"><img src="/assets/images/temp/@temp-event-banner1.png" alt=""></a></li>
+                                <li><a href="#"><img src="/assets/images/temp/@temp-event-banner1.png" alt=""></a></li>
+                                <li><a href="#"><img src="/assets/images/temp/@temp-event-banner1.png" alt=""></a></li>
+                            </ul>
+                            <div class="indicator">
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                            </div>
+                        </div>
+                        <div class="event-banner type2">
+                            <ul>
+                                <li class="active"><a href="#"><img src="/assets/images/temp/@temp-event-banner2.png" alt=""></a></li>
+                                <li><a href="#"><img src="/assets/images/temp/@temp-event-banner2.png" alt=""></a></li>
+                                <li><a href="#"><img src="/assets/images/temp/@temp-event-banner2.png" alt=""></a></li>
+                            </ul>
+                            <div class="indicator">
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 풀 배너 -->
+            <div class="main-full-banner type1">
+                <div class="inner">
+                    <div class="banner-text">
+                        <p class="text1"><strong>노랑풍선 자유여행 플랜</strong> 으로 예약하면<br>여행 계획은 <strong>더 쉽게,</strong> 가격은 더 <strong>저렴하게.</strong></p>
+                        <p class="text2">전 세계 항공권, 호텔, 액티비티, 렌터카, 크루즈, 기차표 예약을 한번에!<br>이미 여행을 다녀온 다른 회원들의 예산 정보, 여행계획대로 떠나는 여행은 물론,<br>세상에 하나 뿐이 없는 나만의 여행 플랜으로 마음대로 만들 수 있습니다!</p>
+                        <p class="text3"><a href="#" class="btn md light inline pd">자유여행 플랜보기</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="main-space">
+                <!-- 최근 검색한 여행지 -->
+                <div class="contents-item middle">
+                    <h3 class="contents-title">최근 <strong>검색한</strong> 항공편
+                        <span class="horizontal-control-button">
+                            <a href="#" class="btn-control prev">이전</a>
+                            <a href="#" class="btn-control next">다음</a>
+                        </span>
+                    </h3>
+                    <app-flight-new-search-list class="contents-box flex-between"></app-flight-new-search-list>
+                </div>
+                <!-- 가장 인기 있는 항공권 -->
+                <div class="contents-item middle">
+                    <h3 class="contents-title">가장 인기 있는 <strong>로스엔젤레스</strong> 항공권
+                        <span class="horizontal-control-button">
+                            <a href="#" class="btn-control prev">이전</a>
+                            <a href="#" class="btn-control next">다음</a>
+                        </span>
+                    </h3>
+                    <div class="contents-box flex-between">
+                        <!-- 가장 인기 있는 항공권 아이템 -->
+                        <div class="flight-popularity-item">
+                            <dl>
+                                <dt class="airline">
+                                    <img src="/assets/images/temp/@temp-airline-logo.png" alt="" class="airline-logo"><strong>델타항공</strong>
+                                </dt>
+                                <dd class="departure">
+                                    <div>
+                                        <p class="code"><i class="icon sm flight-departure"></i><strong>ICN</strong></p>
+                                        <p class="time">08.31 19:40</p>
+                                    </div>
+                                    <div>
+                                        <p class="code"><strong>LAX</strong></p>
+                                        <p class="time">09.01 12:00</p>
+                                    </div>
+                                    <div>
+                                        <p class="layover"><strong>직항</strong></p>
+                                        <p class="time">12시간04분</p>
+                                    </div>
+                                </dd>
+                                <dd class="destination">
+                                    <div>
+                                        <p class="code"><i class="icon sm flight-destination"></i><strong>LAX</strong></p>
+                                        <p class="time">08.31 19:40</p>
+                                    </div>
+                                    <div>
+                                        <p class="code"><strong>ICN</strong></p>
+                                        <p class="time">09.01 12:00</p>
+                                    </div>
+                                    <div>
+                                        <p class="layover"><strong>직항</strong></p>
+                                        <p class="time">12시간04분</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <div class="price">
+                                <strong>1,250,000</strong><span>원</span>
+                            </div>
+                        </div>
+                        <!-- 가장 인기 있는 항공권 아이템 -->
+                        <div class="flight-popularity-item">
+                            <dl>
+                                <dt class="airline">
+                                    <img src="/assets/images/temp/@temp-airline-logo.png" alt="" class="airline-logo"><strong>델타항공</strong>
+                                </dt>
+                                <dd class="departure">
+                                    <div>
+                                        <p class="code"><i class="icon sm flight-departure"></i><strong>ICN</strong></p>
+                                        <p class="time">08.31 19:40</p>
+                                    </div>
+                                    <div>
+                                        <p class="code"><strong>LAX</strong></p>
+                                        <p class="time">09.01 12:00</p>
+                                    </div>
+                                    <div>
+                                        <p class="layover"><strong>직항</strong></p>
+                                        <p class="time">12시간04분</p>
+                                    </div>
+                                </dd>
+                                <dd class="destination">
+                                    <div>
+                                        <p class="code"><i class="icon sm flight-destination"></i><strong>LAX</strong></p>
+                                        <p class="time">08.31 19:40</p>
+                                    </div>
+                                    <div>
+                                        <p class="code"><strong>ICN</strong></p>
+                                        <p class="time">09.01 12:00</p>
+                                    </div>
+                                    <div>
+                                        <p class="layover"><strong>직항</strong></p>
+                                        <p class="time">12시간04분</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <div class="price">
+                                <strong>1,250,000</strong><span>원</span>
+                            </div>
+                        </div>
+                        <!-- 가장 인기 있는 항공권 아이템 -->
+                        <div class="flight-popularity-item">
+                            <dl>
+                                <dt class="airline">
+                                    <img src="/assets/images/temp/@temp-airline-logo.png" alt="" class="airline-logo"><strong>델타항공</strong>
+                                </dt>
+                                <dd class="departure">
+                                    <div>
+                                        <p class="code"><i class="icon sm flight-departure"></i><strong>ICN</strong></p>
+                                        <p class="time">08.31 19:40</p>
+                                    </div>
+                                    <div>
+                                        <p class="code"><strong>LAX</strong></p>
+                                        <p class="time">09.01 12:00</p>
+                                    </div>
+                                    <div>
+                                        <p class="layover"><strong>직항</strong></p>
+                                        <p class="time">12시간04분</p>
+                                    </div>
+                                </dd>
+                                <dd class="destination">
+                                    <div>
+                                        <p class="code"><i class="icon sm flight-destination"></i><strong>LAX</strong></p>
+                                        <p class="time">08.31 19:40</p>
+                                    </div>
+                                    <div>
+                                        <p class="code"><strong>ICN</strong></p>
+                                        <p class="time">09.01 12:00</p>
+                                    </div>
+                                    <div>
+                                        <p class="layover"><strong>직항</strong></p>
+                                        <p class="time">12시간04분</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <div class="price">
+                                <strong>1,250,000</strong><span>원</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 추천 맞춤 여행 -->
+            <div class="contents-item middle">
+                <h3 class="contents-title"><strong>홍길동</strong> 님을 위한 맞춤 자유여행</h3>
+                <div class="category-filter">
+                    <a href="#" class="category-item active">#휴양</a>
+                    <a href="#" class="category-item">#가족</a>
+                    <a href="#" class="category-item">#연인</a>
+                    <a href="#" class="category-item">#축제</a>
+                    <a href="#" class="category-item">#혼자</a>
+                    <a href="#" class="text-link">전체보기</a>
+                </div>
+                <div class="contents-box flex-wrap">
+                    <!-- 자유여행 아이템 타입1 -->
+                    <div class="freestyle-item type1">
+                        <div class="item-radius">
+                            <div class="freestyle-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-freestyle-item-image.jpg');">
+                                <a href="#" class="btn-common-cart">장바구니</a>
+                                <div class="article">
+                                    <span class="item-name">치앙마이 5박 7일</span>
+                                    <span class="label mean">4.5</span>
+                                </div>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                        <div class="freestyle-information">
+                            <p class="title">놀라운 모험의 세계로</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입2 -->
+                    <div class="freestyle-item type2">
+                        <div class="item-radius">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="freestyle-information">
+                                <p class="item-name">코사무이 5박 7일</p>
+                                <p class="title">놀라운 모험의 세계로</p>
+                                <div class="freestyle-image" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg');"></div>
+                                <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입1 -->
+                    <div class="freestyle-item type1">
+                        <div class="item-radius">
+                            <div class="freestyle-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-freestyle-item-image.jpg');">
+                                <a href="#" class="btn-common-cart">장바구니</a>
+                                <div class="article">
+                                    <span class="item-name">치앙마이 5박 7일</span>
+                                    <span class="label mean">4.5</span>
+                                </div>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                        <div class="freestyle-information">
+                            <p class="title">놀라운 모험의 세계로</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입1 -->
+                    <div class="freestyle-item type1">
+                        <div class="item-radius">
+                            <div class="freestyle-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-freestyle-item-image.jpg');">
+                                <a href="#" class="btn-common-cart">장바구니</a>
+                                <div class="article">
+                                    <span class="item-name">치앙마이 5박 7일</span>
+                                    <span class="label mean">4.5</span>
+                                </div>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                        <div class="freestyle-information">
+                            <p class="title">놀라운 모험의 세계로</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입1 -->
+                    <div class="freestyle-item type1">
+                        <div class="item-radius">
+                            <div class="freestyle-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-freestyle-item-image.jpg');">
+                                <a href="#" class="btn-common-cart">장바구니</a>
+                                <div class="article">
+                                    <span class="item-name">치앙마이 5박 7일</span>
+                                    <span class="label mean">4.5</span>
+                                </div>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                        <div class="freestyle-information">
+                            <p class="title">놀라운 모험의 세계로</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입2 -->
+                    <div class="freestyle-item type2">
+                        <div class="item-radius">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="freestyle-information">
+                                <p class="item-name">코사무이 5박 7일</p>
+                                <p class="title">놀라운 모험의 세계로</p>
+                                <div class="freestyle-image" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg');"></div>
+                                <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item middle">
+                <h3 class="contents-title">노랑풍선 고객의 <strong>실시간</strong> 여행플랜</h3>
+                <div class="category-filter">
+                    <a href="#" class="category-item active">공유 많은 순</a>
+                    <a href="#" class="category-item">회원 추천 순</a>
+                    <a href="#" class="category-item">가격 낮은 순</a>
+                    <a href="#" class="category-item">여행 기간 짧은 순</a>
+                    <a href="#" class="category-item">예약 많은 순</a>
+                    <a href="#" class="text-link">전체보기</a>
+                </div>
+                <div class="contents-box flex-wrap">
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-plan-item-image.png');">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-plan-item-image.png');">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-plan-item-image.png');">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-plan-item-image.png');">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-plan-item-image.png');">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url('/assets/images/temp/@temp-plan-item-image.png');">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 쿠폰 다운로드 -->
+            <div class="contents-item">
+                <h3 class="contents-title"><strong>쿠폰 다운로드</strong></h3>
+                <div class="category-filter">
+                    <a href="#" class="category-item active">회원전용</a>
+                    <a href="#" class="category-item">비회원전용</a>
+                    <a href="#" class="category-item">아무나가능</a>
+                    <a href="#" class="text-link">전체보기</a>
+                </div>
+                <!-- 쿠폰 리스트 -->
+                <div class="main-coupon-list">
+                    <div class="inner">
+                        <!-- 쿠폰 아이템 -->
+                        <div class="coupon-item">
+                            <div class="coupon-item-top">
+                                <p class="discount">
+                                    <em>5,000</em>원
+                                </p>
+                                <p class="text">호텔+액티비티<br>동시 예약 할인 쿠폰</p>
+                            </div>
+                            <div class="coupon-item-middle"></div>
+                            <div class="coupon-item-bottom">
+                                <a href="#" class="icon-link"><span class="icon sm coupon-download"></span><strong class="text">Down</strong></a>
+                            </div>
+                        </div>
+                        <!-- 쿠폰 아이템 -->
+                        <div class="coupon-item">
+                            <div class="coupon-item-top">
+                                <p class="discount">
+                                    <em>5,000</em>원
+                                </p>
+                                <p class="text">호텔+액티비티<br>동시 예약 할인 쿠폰</p>
+                            </div>
+                            <div class="coupon-item-middle"></div>
+                            <div class="coupon-item-bottom">
+                                <a href="#" class="icon-link"><span class="icon sm coupon-download"></span><strong class="text">Down</strong></a>
+                            </div>
+                        </div>
+                        <!-- 쿠폰 아이템 -->
+                        <div class="coupon-item">
+                            <div class="coupon-item-top">
+                                <p class="discount">
+                                    <em>5,000</em>원
+                                </p>
+                                <p class="text">호텔+액티비티<br>동시 예약 할인 쿠폰</p>
+                            </div>
+                            <div class="coupon-item-middle"></div>
+                            <div class="coupon-item-bottom">
+                                <a href="#" class="icon-link"><span class="icon sm coupon-download"></span><strong class="text">Down</strong></a>
+                            </div>
+                        </div>
+                        <!-- 쿠폰 아이템 -->
+                        <div class="coupon-item">
+                            <div class="coupon-item-top">
+                                <p class="discount">
+                                    <em>5,000</em>원
+                                </p>
+                                <p class="text">호텔+액티비티<br>동시 예약 할인 쿠폰</p>
+                            </div>
+                            <div class="coupon-item-middle"></div>
+                            <div class="coupon-item-bottom">
+                                <a href="#" class="icon-link"><span class="icon sm coupon-download"></span><strong class="text">Down</strong></a>
+                            </div>
+                        </div>
+                        <!-- 쿠폰 아이템 -->
+                        <div class="coupon-item">
+                            <div class="coupon-item-top">
+                                <p class="discount">
+                                    <em>5,000</em>원
+                                </p>
+                                <p class="text">호텔+액티비티<br>동시 예약 할인 쿠폰</p>
+                            </div>
+                            <div class="coupon-item-middle"></div>
+                            <div class="coupon-item-bottom">
+                                <a href="#" class="icon-link"><span class="icon sm coupon-download"></span><strong class="text">Down</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <app-footer></app-footer>
+</div>

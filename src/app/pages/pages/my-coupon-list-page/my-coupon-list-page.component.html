@@ -1,0 +1,403 @@
+<div *ngIf="isBrowser" id="wrap" class="p-my-coupon-list">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+
+        <!-- 로딩 바 -->
+        <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+        <div id="contents" class="middle default">
+            <div class="contents-area">
+
+                <div class="aside left">
+                    <dl class="aside-menu">
+                        <dt>마이페이지</dt>
+                        <!-- 예약목록은 회원일때만 보여짐 -->
+                        <dd>
+                            <a (click)="goToReservation()">예약목록
+                                <span class="icon sm reservation"></span>
+                            </a>
+                        </dd>
+                        <!-- <dd><a href="#">예약조회(비회원/제휴사)</a></dd> 비회원 일때 나옴 -->
+                        <dd>
+                            <a (click)="goToRecent()">최근 본 상품
+                                <span class="icon sm recent"></span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a (click)="goToWish()">장바구니
+                                <span class="icon sm wish"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToCoupon()">쿠폰&할인코드
+                                <span class="icon sm coupon"></span>
+                            </a>
+                        </dd>
+
+                        <dd>
+                            <a (click)="goToQna()">문의내역
+                                <span class="icon sm qna"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToReview()">이용후기
+                                <span class="icon sm review"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToCustomer()">고객센터
+                                <span class="icon sm customer"></span>
+                            </a>
+                        </dd>
+
+                        <dd>
+                            <a href="https://www.ybtour.co.kr/cs/noticeList.yb">공지사항
+                                <span class="icon sm notice"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToEvent()">이벤트&amp;기획전
+                                <span class="icon sm event"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToShare()">친구초대
+                                <span class="icon sm share"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToSeller()">판매 및 입점
+                                <span class="icon sm seller"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToAgreement()">이용약관
+                                <span class="icon sm document"></span>
+                            </a>
+                        </dd>
+
+                    </dl>
+                </div>
+
+                <div class="contents">
+                    <h2 class="heading-title2 mb20">쿠폰</h2>
+                    <div class="tab-wrap">
+                        <div class="tab-wrap">
+                            <div class="tab-header type2 round flex-start mb20">
+                                <div class="tab-header-outer">
+                                    <a href="#" class="tab-header-item active"><span>보유쿠폰</span></a>
+                                    <a href="#" class="tab-header-item"><span>쿠폰존</span></a>
+                                </div>
+                            </div>
+                            <div class="tab-body">
+                                <div class="tab-pane">
+                                    <div class="list-contents-header">사용 가능한 쿠폰<span class="count">6</span>장</div>
+                                    <div class="coupon-list">
+                                        <!-- 쿠폰 리스트 아이템 : 항공 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-flight"></i>
+                                                <p>항공</p>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 항공 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-flight"></i>
+                                                <p>항공</p>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 호텔 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-hotel"></i>
+                                                <p>호텔</p>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 호텔 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-hotel"></i>
+                                                <p>호텔</p>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 묶음할인 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">호텔+액티비티 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-bundle"></i>
+                                                <p>묶음할인</p>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 묶음할인 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">호텔+액티비티 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-bundle"></i>
+                                                <p>묶음할인</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 쿠폰 없음 내역 없음 -->
+                                    <div class="list-nodata">
+                                        <div class="nodata-msg">
+                                            <i class="icon lg caution"></i>
+                                            <p>사용 가능한 쿠폰이 없습니다.</p>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn lg default">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane active">
+                                    <h2 class="heading-title1 line-bottom flex-between">등급 전용 혜택 <a href="#" class="text-link">자세히보기</a></h2>
+                                    <div class="coupon-list">
+                                        <!-- 쿠폰 리스트 아이템 : 항공 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-flight"></i>
+                                                <p>항공</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 항공 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-flight"></i>
+                                                <p>항공</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 호텔 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-hotel"></i>
+                                                <p>호텔</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 호텔 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-hotel"></i>
+                                                <p>호텔</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 묶음할인 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">호텔+액티비티 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-bundle"></i>
+                                                <p>묶음할인</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 묶음할인 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">호텔+액티비티 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-bundle"></i>
+                                                <p>묶음할인</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 class="heading-title1 line-bottom">10월 한정 혜택</h2>
+                                    <div class="coupon-list">
+                                        <!-- 쿠폰 리스트 아이템 : 항공 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-flight"></i>
+                                                <p>항공</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 항공 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-flight"></i>
+                                                <p>항공</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 호텔 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-hotel"></i>
+                                                <p>호텔</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 호텔 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">미주 노선 전 지역 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-hotel"></i>
+                                                <p>호텔</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 묶음할인 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">호텔+액티비티 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-bundle"></i>
+                                                <p>묶음할인</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                        <!-- 쿠폰 리스트 아이템 : 묶음할인 -->
+                                        <div class="coupon-list-item">
+                                            <div class="coupon-left">
+                                                <p class="font-lg-b">호텔+액티비티 할인 쿠폰</p>
+                                                <p class="discount"><strong>10</strong>% 할인</p>
+                                                <p class="color-sub5">1,000,000원 이상 구매시<br>최대 5,000원 할인</p>
+                                                <p class="font-xs color-sub3">기간 : 2020.02.05 - 2020.03.05</p>
+                                            </div>
+                                            <div class="coupon-middle"></div>
+                                            <div class="coupon-right">
+                                                <i class="icon lg coupon-bundle"></i>
+                                                <p>묶음할인</p>
+                                                <a href="#" class="icon sm coupon-download">쿠폰 다운로드</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

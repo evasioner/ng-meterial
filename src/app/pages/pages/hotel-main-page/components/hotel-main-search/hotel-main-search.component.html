@@ -1,0 +1,51 @@
+<div class="search-box-outer">
+
+    <app-category-header></app-category-header>
+
+    <!-- 호텔 검색기 영역 -->
+    <div class="hotel-search-area">
+        <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate #f="ngForm">
+            <div class="search-area-form" data-target="tg-search-area-form">
+                <div class="form-column" [class.valid-error]="mainForm.get('hotelCity').errors && (f.submitted ||  mainForm.get('hotelCity').dirty || mainForm.get('hotelCity').touched)">
+                    <p class="title">목적지</p>
+                    <p class="text">
+                        <input [formControlName]="'hotelCityName'" data-target="tgDesInput" data-click-ignore="true" (focus)="onDestinationFocus($event)" (keyup)="onDestinationKeyup($event)" type="text" placeholder="도시명 또는 공항명">
+                    </p>
+                </div>
+                <div class="form-column" [class.valid-error]="mainForm.get('checkInOut').errors && (f.submitted ||  mainForm.get('checkInOut').dirty || mainForm.get('checkInOut').touched)">
+                    <p class="title">여행일정</p>
+                    <!-- <p class="text calendar"><strong>09.31(금) - 10.02(일), 3박</strong></p> -->
+                    <p class="text calendar" (click)="onDateClick($event)">
+                        <!-- <strong class=" placeholder">날짜 선택</strong> -->
+                        <input [formControlName]="'checkInOutStr'" type="text" readonly placeholder="날짜 선택">
+                    </p>
+
+                </div>
+                <div class="form-column" [class.valid-error]="mainForm.get('travelerOption').errors && (f.submitted ||  mainForm.get('travelerOption').dirty || mainForm.get('travelerOption').touched)">
+                    <p class="title">여행인원</p>
+                    <!-- <p class="text user"><strong>성인 2, 객실 1</strong></p> -->
+                    <p class="text user" (click)="onTravelerClick($event)">
+                        <input [formControlName]="'travelerInfo'" type="text" readonly placeholder="인원, 좌석 선택">
+                        <!-- <strong class="placeholder">인원, 좌석 선택</strong> -->
+                    </p>
+                </div>
+                <!-- <a href="#" class="btn-form-search">검색</a> -->
+                <button class="btn-form-search" role="button">검색</button>
+            </div>
+            <!-- 목적지 검색-->
+            <div class="c-destination" [ngStyle]="{'top.px':destinationObj.top, 'left.px':destinationObj.left}">
+                <app-modal-destination *ngIf="destinationObj.state !== 'isDefault'" [storeCategoryType]="destinationObj.storeCategoryType" [isState]="destinationObj.state" [storeId]="destinationObj.storeId" [majorDestinationRq]="destinationObj.majorDestinationRq" [destinationRq]="destinationObj.destinationRq" [inputId]="destinationObj.inputId" (appClickOutside)="clickOutsideDest($event)"></app-modal-destination>
+            </div>
+
+            <!-- 캘린더-->
+            <div class="c-calendar" [ngStyle]="{'top.px':calendarObj.top, 'right.px':calendarObj.right}">
+                <app-common-modal-calendar *ngIf="calendarObj.state === 'isOpen'" [storeCategoryType]="calendarObj.storeCategoryType" [initialState]="calendarObj.initialState" (close)="calendarObj.closeEvt(this)" class="calendar-wrap"></app-common-modal-calendar>
+            </div>
+
+            <div class="c-traveler-option" [ngStyle]="{'position': travelerObj.position, 'top.px':travelerObj.top,'right.px':travelerObj.right, 'z-index': travelerObj.zIndex}">
+                <app-hotel-modal-traveler-option *ngIf="travelerObj.state === 'isOpen'" [pageState]="'main'" (close)="travelerObj.closeEvt(this)"></app-hotel-modal-traveler-option>
+            </div>
+        </form>
+    </div>
+
+</div>

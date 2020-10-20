@@ -1,0 +1,5 @@
+<div class="tab-header-outer">
+    <a *ngFor="let item of viewModel.sortOrder index as index" (click)="selectSortOrder($event, index)" class="tab-header-item" [class.active]="item.active">
+        <span>{{ item.text }}</span>
+    </a>
+</div>

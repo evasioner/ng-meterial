@@ -1,0 +1,132 @@
+<div *ngIf="isBrowser" id="wrap" class="p-rent-booking-complete">
+
+    <!-- 헤더 -->
+    <app-header *ngIf="loadingBool" [headerConfig]="headerConfig"></app-header>
+
+    <div *ngIf="loadingBool" id="container">
+
+        <div id="contents">
+            <div class="bg-space">
+
+                <div class="contents-item middle">
+                    <div class="booking-complete">
+                        <h2 class="complete-title"><strong>{{vm.userInfo.user.name}}</strong> 님 예약이 완료되었습니다.</h2>
+
+                        <p class="complete-sub-title">노랑풍선과 함께 즐거운 여행이 되길 바랍니다.</p>
+
+                        <div class="reservation-summary">
+
+                            <div class="summary-header">
+                                <strong>렌터카 예약 내역</strong>
+                                <div class="btn-group">
+                                    <a (click)="detailLink()" class="btn md light inline">상세보기</a>
+                                    <a class="btn md light inline"><i class="icon xs share"></i>공유하기</a>
+                                    <a (click)="listLink()" class="btn md light inline"><i
+                                            class="icon xs user"></i>마이페이지</a>
+                                </div>
+                            </div>
+
+                            <div class="summary-body">
+                                <div class="reservation-information rentalcar">
+
+                                    <div class="column">
+                                        <p class="title">차량</p>
+                                        <p class="text"><img
+                                                [src]="'/assets/images/car/' + vm.vehicle.vehicleVendorCode + '.png'"
+                                                alt="" class="rentalcar-logo">{{vm.vehicle.vehicleName}}</p>
+                                    </div>
+
+                                    <div class="column">
+                                        <p class="title">이용일</p>
+                                        <!--                    <p class="text">2019.08.31(금) 10:00 - 09.03(월) 11:00</p>-->
+                                        <p class="text">
+                                            {{vm.vehicle.pickup.datetime | amDateFormat: 'YYYY.MM.DD(dd) HH:mm'}}
+                                            - {{vm.vehicle.return.datetime | amDateFormat: 'YYYY.MM.DD(dd) HH:mm'}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <p class="title">예약번호</p>
+                                        <p class="text">{{vm.result.bookingItems[0].bookingItemCode}}</p>
+                                    </div>
+                                    <div class="column">
+                                        <p class="title">결제 방법</p>
+                                        <p class="text"><strong>현장결제</strong></p>
+                                    </div>
+                                </div>
+                                <ul class="text-list dot">
+                                    <li>결제 마감 시까지 결제가 되지 않으면 예약은 자동 취소되며 예약취소, 변경 요청은 예약 상세내역에서 처리할 수 있습니다.</li>
+                                    <li>항공권 eTicket, 호텔 Voucher 등은 예약 시 입력한 메일로 발송해드립니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="contents-item middle">
+                <h4 class="contents-title">비슷한 시기에 <strong>많이 예약한 상품</strong></h4>
+                <p class="contents-sub-title">회원님과 비슷한 시기에 로스앤젤레스를 여행하는 회원들이 많이 예약한 상품입니다.</p>
+                <div class="category-filter">
+                    <a href="#" class="category-item active">호텔</a>
+                    <a href="#" class="category-item">액티비티</a>
+                    <a href="#" class="category-item">렌터카</a>
+                    <a href="#" class="text-link">더보기</a>
+                </div>
+                <!-- 3개식 반복 -->
+                <div class="contents-box flex-between">
+                    <!-- 호텔 눌렀을때 -->
+                    <a href="#" class="hotel-popularity-item">
+                        <div class="hotel-image"
+                            style="background-image:url('/assets/images/temp/@temp-hotel-image.jpg');"></div>
+                        <div class="hotel-information">
+                            <p class="name">헐리우드 히스토릭 호텔</p>
+                            <p class="name2">506 S Grand Ave, Los Angeles, CA 90071 미국</p>
+                            <p class="rate"><span class="hotel-rating"><span class="rating sm s5"></span><span
+                                        class="text">5성급</span></span><span class="reserved">30분전 예약됨</span></p>
+                            <p class="price"><strong>30,000</strong><span>원</span></p>
+                        </div>
+                    </a>
+                    <!-- 액티비티 눌렀을때 -->
+                    <a href="#" class="activity-popularity-item type2">
+                        <div class="activity-image"
+                            style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg');">
+                        </div>
+                        <div class="activity-information">
+                            <p class="title">LA Photoshoot Session with Professional Photographer</p>
+                            <ul>
+                                <li class="user">1인</li>
+                                <li class="luggage">2개</li>
+                                <li class="time">1시간</li>
+                            </ul>
+                            <p class="price"><strong>30,000</strong><span>원</span><span class="free">무료취소</span></p>
+                        </div>
+                    </a>
+                    <!-- 렌터카 눌렀을때 -->
+                    <a href="#" class="rentalcar-popularity-item">
+                        <div class="rentalcar-image">
+                            <img src="/assets/images/temp/@temp-rentalcar-image.png" alt="">
+                        </div>
+                        <div class="rentalcar-information">
+                            <p class="name"><img src="/assets/images/temp/@temp-rentalcar-logo.png" alt=""
+                                    class="rentalcar-logo"><strong>Mitsubishi Mirageitsubishi Mirageitsubishi
+                                    Mirageitsubishi Mirageitsubishi Mirage</strong></p>
+                            <ul class="include">
+                                <li class="person">4인승</li>
+                                <li class="door">4도어</li>
+                                <li class="air">에어컨</li>
+                                <li class="gear">자동 변속</li>
+                            </ul>
+                            <p class="price"><strong>USD 224.93</strong></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 푸터 -->
+    <app-footer *ngIf="loadingBool"></app-footer>
+
+</div>

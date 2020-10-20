@@ -1,0 +1,25 @@
+<div class="recent-product-item" *ngFor="let item of viewModel.recentList; index as index;">
+    <div class="item-summary">
+        <div class="summary">
+            <p class="product-title mb15">[{{item.tripType}}] {{item.bookingname}}</p>
+            <ul class="column-contents lg">
+                <li>
+                    <span class="title">이용일</span>
+                    <span class="text">{{item.dateRange}}</span>
+                </li>
+                <li>
+                    <span class="title">항공사</span>
+                    <span class="text">대한항공, 델타항공, 아메리칸항공</span>
+                </li>
+                <li>
+                    <span class="title">좌석정보</span>
+                    <span class="text">{{item.cabinClass}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="control">
+            <a (click)="onDeleteItem($event, index, item.index)" class="btn md grey">삭제하기</a>
+            <a (click)="onSearchResult($event, item.index)" class="btn md default basis2">예약하기</a>
+        </div>
+    </div>
+</div>

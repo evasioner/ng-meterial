@@ -1,0 +1,31 @@
+<div *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_COMPARE" class="compare-box">
+    <div class="compare-box">
+        <!-- .btn-compare-toggle 클릭할때마다 .active 토글 -->
+        <a [class.active]="viewModel.viewFlag" (click)="onToggle($event)" class="btn-compare-toggle">액티비티 비교하기</a>
+
+        <div class="compare-area">
+            <div class="compare-list">
+                <!-- 최대 3개만 들어갈 수 있음 -->
+                <!-- 비교 액티비티 상품 선택한 상태 -->
+                <ng-container *ngFor="let item of viewModel.compareList; index as index; trackBy : trackByActivityIndex">
+                    <div *ngIf="item.checked" [ngStyle]="{background: 'url(' + item.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}" class="compare-item activity">
+                        <a (click)="onDelete($event, index)" class="btn-delete">삭제</a>
+                    </div>
+
+                    <div *ngIf="!item.checked" class="compare-item default"></div>
+                </ng-container>
+                <!-- 기본 상태 -->
+            </div>
+            <div class="compare-control">
+                <div class="title">비교대상 상품<strong>{{ viewModel.compareCount }}</strong>개</div>
+                <div class="count">
+                    <span>{{ viewModel.compareCount }}</span>개의 상품을 선택하셨습니다.
+                </div>
+                <div class="btn-group flex-around">
+                    <a (click)="onAllDelete($event)" class="btn md grey">모두삭제</a>
+                    <a (click)="onCompare($event)" class="btn md default">비교하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

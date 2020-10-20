@@ -1,0 +1,144 @@
+<div *ngIf="isBrowser" id="wrap" class="p-my-recent-list">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+
+        <!-- 로딩 바 -->
+        <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+        <div id="contents" class="middle default">
+            <div class="contents-area">
+
+                <div class="aside left">
+                    <dl class="aside-menu">
+                        <dt>마이페이지</dt>
+                        <!-- 예약목록은 회원일때만 보여짐 -->
+                        <dd>
+                            <a (click)="goToReservation()">예약목록
+                                <span class="icon sm reservation"></span>
+                            </a>
+                        </dd>
+                        <!-- <dd><a href="#">예약조회(비회원/제휴사)</a></dd> 비회원 일때 나옴 -->
+                        <dd>
+                            <a (click)="goToRecent()">최근 본 상품
+                                <span class="icon sm recent"></span>
+                            </a>
+                        </dd>
+                        <dd>
+                            <a (click)="goToWish()">장바구니
+                                <span class="icon sm wish"></span>
+                            </a>
+                        </dd>
+
+                        <dd *ngIf="false">
+                            <a (click)="goToCoupon()">쿠폰&할인코드
+                                <span class="icon sm coupon"></span>
+                            </a>
+                        </dd>
+
+                        <dd>
+                            <a (click)="goToQna()">문의내역
+                                <span class="icon sm qna"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToReview()">이용후기
+                                <span class="icon sm review"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToCustomer()">고객센터
+                                <span class="icon sm customer"></span>
+                            </a>
+                        </dd>
+
+                        <dd>
+                            <a href="https://www.ybtour.co.kr/cs/noticeList.yb">공지사항
+                                <span class="icon sm notice"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToEvent()">이벤트&amp;기획전
+                                <span class="icon sm event"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToShare()">친구초대
+                                <span class="icon sm share"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd>
+                            <a (click)="goToSeller()">판매 및 입점
+                                <span class="icon sm seller"></span>
+                            </a>
+                        </dd>
+
+
+                        <dd *ngIf="false">
+                            <a (click)="goToAgreement()">이용약관
+                                <span class="icon sm document"></span>
+                            </a>
+                        </dd>
+
+                    </dl>
+                </div>
+
+                <div class="contents">
+
+                    <h2 class="heading-title2 mb20">최근 본 상품</h2>
+                    <div id="contents" class="content-area">
+                        <div class="tab-wrap">
+                            <div class="tab-header type2 top-blank fixed">
+                                <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>전체</span></a>
+                                <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>항공</span></a>
+                                <a (click)="selectTab(2)" class="tab-header-item" [ngClass]="{'active': tabNo === 2}"><span>호텔</span></a>
+                                <a (click)="selectTab(3)" class="tab-header-item" [ngClass]="{'active': tabNo === 3}"><span>액티비티</span></a>
+                                <a (click)="selectTab(4)" class="tab-header-item" [ngClass]="{'active': tabNo === 4}"><span>렌터카</span></a>
+                            </div>
+                            <div class="tab-body" [ngSwitch]="tabNo">
+                                <!-- 탭 아이템 -->
+                                <div class="tab-pane active">
+
+                                    <!-- Tab content 전체 최근 본 상품 내역 -->
+                                    <ng-container *ngSwitchDefault>
+                                        <app-all-recent-list class="contents-item-area"></app-all-recent-list>
+                                    </ng-container>
+                                    <!-- Tab content 항공 최근 본 상품 내역 -->
+                                    <ng-container *ngSwitchCase="1">
+                                        <app-flight-recent-list class="contents-item-area"></app-flight-recent-list>
+                                    </ng-container>
+                                    <!-- Tab content 호텔 최근 본 상품 내역 -->
+                                    <ng-container *ngSwitchCase="2">
+                                        <app-hotel-recent-list class="contents-item-area"></app-hotel-recent-list>
+                                    </ng-container>
+                                    <!-- Tab content 액티비티 최근 본 상품 내역 -->
+                                    <ng-container *ngSwitchCase="3">
+                                        <app-activity-recent-list class="contents-item-area"></app-activity-recent-list>
+                                    </ng-container>
+                                    <!-- Tab content 렌트카 최근 본 상품 내역 -->
+                                    <ng-container *ngSwitchCase="4">
+                                        <app-rent-recent-list class="contents-item-area"></app-rent-recent-list>
+                                    </ng-container>
+
+                                </div>
+                                <div class="tab-item"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <app-footer></app-footer>
+
+<router-outlet></router-outlet> -->

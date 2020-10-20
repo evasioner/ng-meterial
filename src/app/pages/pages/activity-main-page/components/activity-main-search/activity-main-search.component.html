@@ -1,0 +1,30 @@
+<div class="search-box-outer">
+
+    <app-category-header></app-category-header>
+
+    <!-- 액티비티 검색기 영역 -->
+    <div class="activity-search-area">
+        <form [formGroup]="mainForm" (ngSubmit)="onSubmit()" novalidate #form="ngForm">
+            <div class="search-area-form" data-target="tg-search-area-form">
+                <div class="form-column">
+                    <p class="title">여행지, 상품명</p>
+                    <p class="text">
+                        <input formControlName="name" data-target="tgDesInput" data-click-ignore="true" (focus)="onDestinationFocus($event)" (keyup)="onDestinationKeyup($event)" type="text" placeholder="여행지 또는 상품명을 검색하세요">
+                    </p>
+                </div>
+                <button class="btn-form-search" role="button">검색</button>
+            </div>
+        </form>
+
+        <ul class="activity-category">
+            <li *ngFor="let item of viewModel.categoryList; index as index" (click)="onGoCategorySearch($event, index)">
+                <a [class]="item.styleType">{{ item.categoryName }}</a>
+            </li>
+        </ul>
+
+        <!-- 목적지 검색-->
+        <div *ngIf="destinationObj.state !== 'isDefault'" class="c-destination" [ngStyle]="{'top.px':destinationObj.top, 'left.px':destinationObj.left}">
+            <app-modal-destination [storeCategoryType]="destinationObj.storeCategoryType" [isState]="destinationObj.state" [storeId]="destinationObj.storeId" [majorDestinationRq]="destinationObj.majorDestinationRq" [destinationRq]="destinationObj.destinationRq" [inputId]="destinationObj.inputId" (appClickOutside)="clickOutsideDest($event)"></app-modal-destination>
+        </div>
+    </div>
+</div>

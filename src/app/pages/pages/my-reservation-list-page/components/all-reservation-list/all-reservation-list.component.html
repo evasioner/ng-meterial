@@ -1,0 +1,318 @@
+<div class="search-result-header">
+    <span>전체 <span class="color-point2"> {{totalCount}}</span>건</span>
+    <label class="checkbox md rtl" data-target="resCancel">
+        <input (change)="onEexcludeCancelYnChange($event)" type="checkbox" class="checkbox-control-input">
+        <span class="checkbox-control-text">취소 예약 제외</span>
+    </label>
+</div>
+
+<ng-container *ngFor="let resItem of reservationList; index as i; ">
+
+    <!-- IC01 | 항공 예약 내역 아이템 -->
+    <div *ngIf="resItem.categories[0].code === 'IC01'" class="reservation-list-item">
+
+        <div class="reservation-list-item-header">
+            <div class="state">
+                <i class="icon sm flight"></i>
+                <span class="text">{{resItem['items'][0]['bookingStatusName']}}/{{getBookedState(resItem)}}</span>
+                <span *ngIf="resItem['items'][0]['cancellableYn']" class="label square type2">무료취소</span>
+                <span *ngIf="!resItem['items'][0]['cancellableYn']" class="label square type1">환불불가</span>
+            </div>
+            <a href="#" class="text-link">문의하기</a>
+        </div>
+
+        <div class="reservation-list-item-summary">
+            <p class="product-title">
+                [항공] <span *ngIf="false">[다구간]</span> {{resItem['bookingName']}}
+            </p>
+            <div class="summary">
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>{{resItem['travelFromDate'] | amDateFormat: 'YYYY.MM.DD'}} - {{resItem['travelToDate'] | amDateFormat: 'YYYY.MM.DD'}}</span>
+                    </li>
+                    <li>
+                        <span>항공사</span>
+                        <span>{{resItem['items'][0]['flight']['airlineNameList']}}</span>
+                    </li>
+                    <li>
+                        <span>여행자</span>
+                        <!--                      <span>김노랑 외 8명<span class="label square type4">미발권</span></span>-->
+                        <span>{{resItem['items'][0]['travelerName']}}<span class="label square type4">미발권</span></span>
+                    </li>
+                </ul>
+                <div class="price">
+                    <p><strong>{{resItem['sumAmount'] | number}}</strong><span>원</span></p>
+                </div>
+                <div class="control">
+                    <a (click)="onBookedCancelClick(resItem)" class="btn md grey">예약취소</a>
+                    <a (click)="onBookedDetailClick(resItem)" class="btn md default basis2">예약상세</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end IC01 | 항공 예약 내역 아이템 -->
+
+
+    <!-- IC02 | 호텔 예약 내역 아이템 -->
+    <div *ngIf="resItem.categories[0].code === 'IC02'" class="reservation-list-item">
+        <div class="reservation-list-item-header">
+            <div class="state">
+                <i class="icon sm hotel"></i>
+                <span class="text">{{resItem['items'][0]['bookingStatusName']}}/{{getBookedState(resItem)}}</span>
+                <span *ngIf="resItem['items'][0]['cancellableYn']" class="label square type2">무료취소</span>
+                <span *ngIf="!resItem['items'][0]['cancellableYn']" class="label square type1">환불불가</span>
+            </div>
+            <a href="#" class="text-link">문의하기</a>
+        </div>
+        <div class="reservation-list-item-summary">
+            <p class="product-title">[호텔] {{resItem['bookingName']}}</p>
+            <div class="summary">
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>{{resItem['travelFromDate'] | amDateFormat: 'YYYY.MM.DD'}} - {{resItem['travelToDate'] | amDateFormat: 'YYYY.MM.DD'}}</span>
+                    </li>
+                    <li>
+                        <span>객실수</span>
+                        <span>{{resItem['items'][0]['hotel']['roomCount']}}</span>
+                    </li>
+                    <li>
+                        <span>여행자</span>
+                        <!--                      <span>김노랑 외 2명</span>-->
+                        <span>
+                            {{resItem['items'][0]['travelerName']}}
+                        </span>
+                    </li>
+                </ul>
+                <div class="price">
+                    <p><strong>{{resItem['sumAmount'] | number}}</strong><span>원</span></p>
+                </div>
+                <div class="control">
+                    <a (click)="onBookedCancelClick(resItem)" class="btn md grey">예약취소</a>
+                    <a (click)="onBookedDetailClick(resItem)" class="btn md default basis2">예약상세</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end IC02 | 호텔 예약 내역 아이템 -->
+
+
+    <!-- IC03 | 렌터카 예약 내역 아이템 -->
+    <div *ngIf="resItem.categories[0].code === 'IC03'" class="reservation-list-item">
+        <div class="reservation-list-item-header">
+            <div class="state">
+                <i class="icon sm rentalcar"></i>
+                <span class="text">{{resItem['items'][0]['bookingStatusName']}}/{{getBookedState(resItem)}}</span>
+                <span *ngIf="resItem['items'][0]['cancellableYn']" class="label square type2">무료취소</span>
+                <span *ngIf="!resItem['items'][0]['cancellableYn']" class="label square type1">환불불가</span>
+            </div>
+            <a href="#" class="text-link">문의하기</a>
+        </div>
+        <div class="reservation-list-item-summary">
+            <p class="product-title">[렌터카] [{{resItem['items'][0]['rent']['vehicleVendorName']}}] ???</p>
+            <div class="summary">
+                <ul>
+                    <li>
+                        <span>이용일</span>
+                        <span>{{resItem['travelFromDate'] | amDateFormat: 'YYYY.MM.DD'}} - {{resItem['travelToDate'] | amDateFormat: 'YYYY.MM.DD'}}</span>
+                    </li>
+                    <li>
+                        <span>차량인수</span>
+                        <!--                      <span>2019.12.20 12:00 / San Francisco Intl Airport</span>-->
+                        <span>{{resItem['travelFromDate'] | amDateFormat: 'YYYY.MM.DD HH:mm'}} / {{resItem['items'][0]['rent']['pickupLocationName']}}</span>
+                    </li>
+                    <li>
+                        <span>차량반납</span>
+                        <!--                      <span>2019.12.20 12:00 / San Francisco Intl Airport</span>-->
+                        <span>{{resItem['travelToDate'] | amDateFormat: 'YYYY.MM.DD HH:mm'}} / {{resItem['items'][0]['rent']['returnLocationName']}}</span>
+                    </li>
+                </ul>
+                <div class="price">
+                    <p><strong>{{resItem['sumAmount'] | number}}</strong><span>원</span></p>
+                </div>
+                <div class="control">
+                    <a (click)="onBookedCancelClick(resItem)" class="btn md grey">예약취소</a>
+                    <a (click)="onBookedDetailClick(resItem)" class="btn md default basis2">예약상세</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end IC03 | 렌터카 예약 내역 아이템 -->
+
+
+    <!-- IC04 | 액티비티 예약 내역 아이템 -->
+    <div *ngIf="resItem.categories[0].code === 'IC04'" class="reservation-list-item">
+        <div class="reservation-list-item-header">
+            <div class="state">
+                <i class="icon sm activity"></i>
+                <span class="text">{{resItem['items'][0]['bookingStatusName']}}/{{getBookedState(resItem)}}</span>
+                <span *ngIf="resItem['items'][0]['cancellableYn']" class="label square type2">무료취소</span>
+                <span *ngIf="!resItem['items'][0]['cancellableYn']" class="label square type1">환불불가</span>
+            </div>
+            <a href="#" class="text-link">문의하기</a>
+        </div>
+        <div class="reservation-list-item-summary">
+            <p class="product-title">[투어] {{resItem['bookingName']}} </p>
+            <div class="summary">
+                <ul>
+                    <li>
+                        <span>이용일</span>
+                        <span>{{resItem['travelFromDate'] | amDateFormat: 'YYYY.MM.DD'}} - {{resItem['travelToDate'] | amDateFormat: 'YYYY.MM.DD'}}</span>
+                    </li>
+                    <li>
+                        <span>여행자</span>
+                        <span>{{resItem['items'][0]['travelerName']}}</span>
+                    </li>
+                </ul>
+                <div class="price">
+                    <p><strong>{{resItem['sumAmount'] | number}}</strong><span>원</span></p>
+                </div>
+                <div class="control">
+                    <a (click)="onBookedCancelClick(resItem)" class="btn md grey">예약취소</a>
+                    <a (click)="onBookedDetailClick(resItem)" class="btn md default basis2">예약상세</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end IC04 | 액티비티 예약 내역 아이템 -->
+
+
+    <!-- IC05 | 묶음할인 예약 내역 아이템 :: 비활성화 상태 -->
+    <div *ngIf="resItem.categories[0].code === 'IC05'" class="reservation-list-item">
+        <div class="reservation-list-item-header">
+            <div class="state">
+                <i class="icon sm flight"></i>
+                <span class="figure">+</span>
+                <i class="icon sm hotel"></i>
+                <span class="text">로스앤젤레스, 김노랑 외 3명</span>
+            </div>
+            <a href="#" class="text-link">일정표</a>
+        </div>
+        <div class="reservation-list-item-summary">
+            <p class="product-title">[묶음할인] 내 마음속 버킷 리스트 로스앤젤레스</p>
+            <div class="summary">
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>2019.12.20 - 2019.12.30</span>
+                    </li>
+                </ul>
+                <div class="price">
+                    <p><strong>760,000</strong><span>원</span></p>
+                </div>
+                <div class="control airtel">
+                    <!-- 클릭할때 마다 .active 토글 되고 .reservation-detail 에도 .active 토글 -->
+                    <a href="#" class="btn inline md light line toggle">상세</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="reservation-detail active">
+            <!-- active -->
+            <!-- 내부에 있는 아이템 반복 -->
+            <div class="reservation-inner-item">
+                <div class="reservation-list-item-header">
+                    <div class="state">
+                        <i class="icon sm flight"></i>
+                        <span class="text">예약확정/결제완료</span>
+                        <span class="label square type2">무료취소</span>
+                    </div>
+                    <a href="#" class="text-link">문의하기</a>
+                </div>
+                <div class="reservation-list-item-summary">
+                    <p class="product-title">[항공] [다구간] 인천 - 로스앤젤레스 - 샌프란시스코-인천</p>
+                    <div class="summary">
+                        <ul>
+                            <li>
+                                <span>여행일</span>
+                                <span>2019.12.20 - 2019.12.30</span>
+                            </li>
+                            <li>
+                                <span>항공사</span>
+                                <span>대한항공, 델타항공, 아메리칸항공</span>
+                            </li>
+                            <li>
+                                <span>여행자</span>
+                                <span>김노랑 외 3명<span class="label square type4">미발권</span></span>
+                            </li>
+                        </ul>
+                        <div class="price">
+                            <p><strong>760,000</strong><span>원</span></p>
+                        </div>
+                        <div class="control">
+                            <a href="#" class="btn md grey">예약취소</a>
+                            <a href="#" class="btn md default basis2">예약상세</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 내부에 있는 아이템 반복 -->
+            <div class="reservation-inner-item">
+                <div class="reservation-list-item-header">
+                    <div class="state">
+                        <i class="icon sm hotel"></i>
+                        <span class="text">예약확정/결제완료</span>
+                        <span class="label square type3">환불시위약금</span>
+                    </div>
+                    <a href="#" class="text-link">문의하기</a>
+                </div>
+                <div class="reservation-list-item-summary">
+                    <p class="product-title">[호텔] 밀레니엄 빌트모어 로스앤젤레스 Millennium Biltmore Hotel</p>
+                    <div class="summary">
+                        <ul>
+                            <li>
+                                <span>여행일</span>
+                                <span>2019.12.20 - 2019.12.30</span>
+                            </li>
+                            <li>
+                                <span>객실수</span>
+                                <span>2</span>
+                            </li>
+                            <li>
+                                <span>여행자</span>
+                                <span>김노랑 외 3명</span>
+                            </li>
+                        </ul>
+                        <div class="price">
+                            <p><strong>760,000</strong><span>원</span></p>
+                        </div>
+                        <div class="control">
+                            <a href="#" class="btn md grey">예약취소</a>
+                            <a href="#" class="btn md default basis2">예약상세</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end IC05 | 묶음할인 예약 내역 아이템 :: 비활성화 상태 -->
+
+</ng-container>
+
+
+
+
+<!-- 예약 내역 없음 -->
+<div *ngIf="totalCount === 0" class="list-nodata">
+    <div class="nodata-msg">
+        <i class="icon lg caution"></i>
+        <p>예약 내역이 없습니다.</p>
+    </div>
+</div>
+
+<!-- pagination -->
+<!-- <div *ngIf="viewModel.pagination.totalItems > 0" class="pagination c-pagination">
+        <pagination [boundaryLinks]="true" [(ngModel)]="viewModel.pagination.currentPage" [totalItems]="viewModel.pagination.totalItems" [itemsPerPage]="viewModel.pagination.itemsPerPage" [maxSize]="viewModel.pagination.maxSize" [disabled]="viewModel.pagination.disabled" (pageChanged)="onPageChange($event)" previousText="이전" nextText="다음" firstText="맨처음" lastText="맨끝"></pagination>
+    </div> -->
+
+<!-- pagination -->
+<div class="pagination">
+    <a href="#" class="btn-first" title="맨처음">맨처음</a>
+    <a href="#" class="btn-prev" title="이전">이전</a>
+    <strong>1</strong>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#" class="btn-next" title="다음">다음</a>
+    <a href="#" class="btn-last" title="맨끝">맨끝</a>
+</div>

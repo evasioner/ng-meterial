@@ -1,0 +1,458 @@
+<div id="wrap" class="p-hotel-search-roomtype">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div *ngIf="loadingBool" id="container">
+        <div id="contents">
+            <!-- 재검색 영역 / .research-form에 .active 추가되면 보여지고, .btn-search-close 클릭하면 .active 삭제 -->
+            <app-hotel-research-form *ngIf="researchBool" [pageState]="'roomtype'" (closeResearchEvt)="closeResearchEvt($event)"></app-hotel-research-form>
+            <!-- search-form-top -->
+            <app-hotel-search-form [pageState]="'roomtype'" (openResearchEvt)="openResearchEvt($event)"></app-hotel-search-form>
+            <!-- loading bar -->
+            <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+            <div class="contents-area">
+                <!-- 예약 단계 표시 -->
+                <div class="breadcrumbs">
+                    <div class="text-article">
+                        <p class="text">선택하신 호텔의 룸타입을 선택해 주세요.</p>
+                    </div>
+                    <ul class="step">
+                        <li>
+                            <p class="num">1</p>
+                            <p class="text">호텔선택</p>
+                        </li>
+                        <li class="active">
+                            <p class="num">2</p>
+                            <p class="text">룸타입선택</p>
+                        </li>
+                        <li>
+                            <p class="num">3</p>
+                            <p class="text">결제하기</p>
+                        </li>
+                    </ul>
+                </div>
+                <ng-template [ngIf]="hotelInfoLoadingBool">
+                    <div *ngIf="photoList?.length > 0" class="page-thumbnail-list">
+                        <div class="main-thumbnail">
+                            <a (click)="onThumbnailClick($event, 0)" [ngStyle]="{background: 'url(' + photoList[0].photoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}"></a>
+                        </div>
+                        <ul>
+                            <ng-container *ngFor="let item of photoList | slice:0:5; index as i ">
+                                <li *ngIf="i>0">
+                                    <a (click)="onThumbnailClick($event, i)" [ngStyle]="{background: 'url(' + item.photoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}" [attr.photo-total-count]="'+'+(photoList.length-4)"></a>
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                    <div class="hotel-roomtype-title">
+                        <!-- .hotel-rating의 .icon.md.s5로 성급을 표시한다. .s1, .s1h, .s2, .s2h, .s3, .s3h, .s4, .s4h, .5 -->
+                        <div class="hotel-name">
+                            <h2>
+                                <strong>{{hotelInfo.hotelNameLn}}</strong>
+                                <span class="hotel-rating"><i class="rating md s{{getHotelStarRating(hotelInfo.starRating)}}"></i></span>
+                            </h2>
+                            <p *ngIf="hotelInfo.hotelNameEn && (hotelInfo.hotelNameLn !== hotelInfo.hotelNameEn)">
+                                {{hotelInfo.hotelNameEn}}
+                            </p>
+                        </div>
+                        <div class="control">
+                            <!-- 알림설정은 클릭시 .active 토글 -->
+                            <a href="#" class="btn md line icon-only alarm2">알림설정</a>
+                            <a href="#" class="btn md line icon-only share">공유하기</a>
+                            <!-- 공유하기 클릭하면 .share-layer에 .active 추가 -->
+                            <div class="share-layer">
+                                <p class="title">공유하기</p>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-facebook"></i>
+                                            <span>페이스북</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-kakaotalk"></i>
+                                            <span>카카오톡</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-url"></i>
+                                            <span>URL</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-header type1 round mb60">
+                        <div class="tab-header-outer" data-target="tab-header-outer">
+                            <a (click)="onTabClick($event, 'room-price')" data-target="room-price" class="tab-header-item active"><span>객실요금</span></a>
+                            <a (click)="onTabClick($event, 'hotel-information')" data-target="hotel-information" class="tab-header-item"><span>호텔정보</span></a>
+                            <a (click)="onTabClick($event, 'travel-review')" data-target="travel-review" class="tab-header-item"><span>여행후기</span></a>
+                        </div>
+                    </div>
+
+                    <div class="contents">
+                        <div class="hotel-roomtype-contents">
+                            <div class="contents-item" [attr.id]="'room-price'">
+                                <h3><strong>객실선택</strong><span>(세금, 봉사료 포함)</span></h3>
+                                <div class="roomtype-search" data-target="tg-roomtype-search">
+                                    <a (click)="onTravelerClick($event)" class="option-column">
+                                        <i class="icon sm user"></i><span>{{mySearchInfo.travelerInfo}}</span>
+                                    </a>
+                                    <a (click)="onDateClick($event)" class="option-column">
+                                        <span class="group">
+                                            <i class="icon sm calendar2"></i><span>체크인 {{mySearchInfo.checkDate.in | amDateFormat:'MM.DD(dd)'}}</span>
+                                        </span>
+                                        <span class="group">
+                                            <i class="icon sm calendar2"></i><span>체크아웃 {{mySearchInfo.checkDate.out | amDateFormat:'MM.DD(dd)'}}</span>
+                                        </span>
+                                    </a>
+                                    <a (click)="onResearchRoomtype()" class="btn lg default">객실검색</a>
+
+                                    <!-- 여행자 옵션-->
+                                    <div class="c-traveler-option" [ngStyle]="{'position': travelerObj.position, 'top.px':travelerObj.top,'left.px':travelerObj.left, 'z-index': travelerObj.zIndex}">
+                                        <app-hotel-modal-traveler-option *ngIf="travelerObj.state === 'isOpen'" [pageState]="'roomtype'" (close)="travelerObj.closeEvt(this)"></app-hotel-modal-traveler-option>
+                                    </div>
+
+                                    <!-- 캘린더-->
+                                    <div class="c-calendar" [ngStyle]="{'top.px':calendarObj.top, 'right.px':calendarObj.right}">
+                                        <app-common-modal-calendar *ngIf="calendarObj.state === 'isOpen'" [storeCategoryType]="calendarObj.storeCategoryType" [initialState]="calendarObj.initialState" (close)="calendarObj.closeEvt(this)" class="calendar-wrap"></app-common-modal-calendar>
+                                    </div>
+                                </div>
+
+                                <!-- 룸 리스트 -->
+                                <div class="contents-item-box roomtype-list">
+                                    <ng-container *ngIf="roomLoadingBool && hotelRoomListRs;else elseRoom">
+                                        <!-- 룸 리스트 아이템 반복 -->
+                                        <ng-container *ngFor="let roomType of hotelRoomListRs.result.roomTypes | slice:0:moreIndex.room; index as roomIdx">
+                                            <div class="roomtype-list-item">
+                                                <div class="name">{{roomType.roomTypeName}}</div>
+                                                <div class="option">
+                                                    <ng-container *ngIf="roomType?.freeBreakfastYn === true|| roomType?.freeWifiYn === true; else roomOption">
+                                                        <span *ngIf="roomType?.freeBreakfastYn" class="breakfast">조식포함</span>
+                                                        <span *ngIf="roomType?.freeWifiYn" class="wifi">무료 Wi-Fi</span>
+                                                    </ng-container>
+                                                    <ng-template #roomOption>
+                                                        <span>포함내역 없음</span>
+                                                    </ng-template>
+                                                    <a *ngIf="roomType?.additionalInfoYn === true" (click)="openRoomInfo(roomType)" class="box-link sm">객실정보</a>
+                                                    <span class="reserved-msg">30분전 예약됨</span>
+                                                </div>
+                                                <!-- <span *ngIf="roomType?.refundableYn;else elseRefundable" class="label square type2">무료취소</span>
+                                                <ng-template #elseRefundable>
+                                                    <span class="label square type1">환불불가</span>
+                                                </ng-template> -->
+                                                <div class="price">
+                                                    <strong>{{roomType.amountSum | number}}</strong><span>원</span>
+                                                </div>
+                                                <div class="control">
+                                                    <a (click)="addCart(roomType)" class="btn md line icon-only cart">장바구니</a>
+                                                    <!-- 910003 : 호텔패스 / 910004 : RTS 예약 테스트 시, 실제 예약 되므로 예약 테스트 막기 -->
+                                                    <!-- <ng-container *ngIf="roomType.vendorCompCode === 910003 || roomType.vendorCompCode === 910004;else bookingBtn">
+                                                        <a href="#" class="btn inline md point">예약테스트X</a>
+                                                    </ng-container>
+                                                    <ng-template #bookingBtn>
+                                                        <a (click)="goBookingInformation(roomType)" class="btn inline md point">예약</a>
+                                                    </ng-template> -->
+                                                    <a (click)="goBookingInformation(roomType)" class="btn inline md point">예약</a>
+
+                                                    <strong *ngIf="roomType?.leftRooms <= 3" class="last-msg">마지막 3방</strong>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        <a *ngIf="hotelRoomListRs?.result?.roomTypes?.length > moreIndex.room" (click)="viewMore('room', 3)" [ngStyle]="{'margin': '0px'}" class="btn-contents-more">더보기</a>
+                                    </ng-container>
+                                    <ng-template #elseRoom>
+                                        <!-- 결과 없음-->
+                                        <div class="components-nodata">
+                                            <div class="nodata-msg">
+                                                <i class="icon lg caution"></i>
+                                                <p>예약 가능한 객실이 없습니다.<br>다른 조건으로 검색하세요.</p>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+
+                            </div>
+                            <div class="contents-item" [attr.id]="'hotel-information'">
+                                <h3><strong>호텔정보</strong></h3>
+                                <div class="contents-item-box detail-information">
+                                    <div class="map-area">
+                                        <div id="google-map">
+                                            <!-- 여기에 구글맵 넣기 -->
+                                            <agm-map (mapReady)="onMapReady($event)" [latitude]="hotelInfo.latitude" [longitude]="hotelInfo.longitude" [clickableIcons]="false" [disableDoubleClickZoom]="true" [scrollwheel]="false" [streetViewControl]="false" [mapDraggable]="false" [zoom]="18" [zoomControl]="false">
+                                                <agm-marker [markerDraggable]="false" [latitude]="hotelInfo.latitude" [longitude]="hotelInfo.longitude" [label]="{color: 'white', text: 'H'}">
+                                                    <agm-info-window [isOpen]="true">
+                                                        <ng-container *ngIf="hotelInfo.hotelNameLn;else elseif1">
+                                                            {{hotelInfo.hotelNameLn}}
+                                                        </ng-container>
+                                                        <ng-template #elseif1>
+                                                            <ng-container *ngIf="hotelInfo.hotelNameEn">
+                                                                {{hotelInfo.hotelNameEn}}
+                                                            </ng-container>
+                                                        </ng-template>
+                                                    </agm-info-window>
+                                                </agm-marker>
+                                            </agm-map>
+                                        </div>
+                                    </div>
+                                    <div class="information-area">
+                                        <div class="check-time">
+                                            <strong>체크인 : {{hotelInfo.checkInTime}}</strong>
+                                            <strong>체크아웃 : {{hotelInfo.checkOutTime}}</strong>
+                                        </div>
+                                        <dl *ngFor="let info of information; index as i" [class.inline]="info.txt && (info.title === 'contact')">
+                                            <ng-container [ngSwitch]="info.title">
+                                                <ng-container *ngSwitchCase="'contact'">
+                                                    <ng-template [ngIf]="hotelInfo.phoneNo">
+                                                        <dt>전화</dt>
+                                                        <dd>{{hotelInfo.phoneNo}}</dd>
+                                                    </ng-template>
+                                                    <ng-template [ngIf]="hotelInfo.faxNo">
+                                                        <dt>팩스</dt>
+                                                        <dd>{{hotelInfo.faxNo}}</dd>
+                                                    </ng-template>
+                                                </ng-container>
+                                                <ng-container *ngSwitchCase="'homepageUrl'">
+                                                    <dt>{{info.dtTxt}}</dt>
+                                                    <dd>
+                                                        <a href="info.txt" class="text-link"><span class="text">{{info.txt}}</span></a>
+                                                    </dd>
+                                                </ng-container>
+                                                <ng-container *ngSwitchDefault>
+                                                    <dt>{{info.dtTxt}}</dt>
+                                                    <dd>{{info.txt}}</dd>
+                                                </ng-container>
+                                            </ng-container>
+                                        </dl>
+                                        <dl *ngIf="attractions?.length > 0">
+                                            <dt>인근명소</dt>
+                                            <dd *ngFor="let attr of attractions| slice:0:4; index as aIdx" class="place">
+                                                <span class="name">
+                                                    <ng-container *ngIf="attr.nameLn;else elseAttr">{{attr.nameLn}}
+                                                    </ng-container>
+                                                    <ng-template #elseAttr>
+                                                        <ng-container *ngIf="attr.nameEn">{{attr.nameEn}}</ng-container>
+                                                    </ng-template>
+                                                </span>
+                                                <span>{{attr.distance | number:'.1-1'}}km</span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="generalInfo?.length > 0" class="contents-item">
+                                <h3><strong>일반사항</strong></h3>
+                                <div class="contents-item-box information general-information">
+                                    <dl *ngFor="let general of generalInfo; index as i" [class.hide]="!(moreIndex.general > i)">
+                                        <dt [innerHTML]="general.title"></dt>
+                                        <dd [innerHTML]="general.txt"></dd>
+                                    </dl>
+                                    <!-- 더보기 클릭시 .hide를 삭제한다 -->
+                                    <a *ngIf="generalInfo?.length > moreIndex.general" (click)="viewMore('general', 1)" class="btn-contents-more">더보기</a>
+                                </div>
+                            </div>
+                            <div *ngIf="hotelInfo?.safetyInfos?.length > 0" class="contents-item">
+                                <h3><strong>위생 및 안전조치</strong></h3>
+                                <div class="contents-item-box safety">
+                                    <ul class="text-list dot lg color-sub6">
+                                        <li *ngFor="let safety of hotelInfo.safetyInfos; index as safetyIndex">{{safety}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div *ngIf="false" class="contents-item" [attr.id]="'travel-review'">
+                                <h3><strong>여행후기</strong></h3>
+                                <div class="contents-item-box review-contents">
+                                    <div class="review-contents-header type1">
+                                        <div class="rating-total">
+                                            <strong class="rating-average">4.5</strong>
+                                            <strong class="rating-text">아주좋음</strong>
+                                            <span class="review-total">(총 1,000건)</span>
+                                            <!-- 별점은 .s0, s0h, s1, .s1h ~ .s5까지 있음 -->
+                                            <span class="review-star-rating lg s5"></span>
+                                        </div>
+                                        <ul class="filter">
+                                            <li><a href="#" class="active">최신순</a></li>
+                                            <li><a href="#">평점순</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="review-item">
+                                        <div class="customer">
+                                            <div class="review-item-header">
+                                                <strong class="rate">5.0</strong>
+                                                <strong class="user">ten****</strong>
+                                                <!-- 별점은 .s0, s0h, s1, .s1h ~ .s5까지 있음 -->
+                                                <span class="review-star-rating md s5"></span>
+                                                <span class="ml-auto">2019.08.29</span>
+                                            </div>
+                                            <div class="review-text">
+                                                <div class="review-text-box reduce">
+                                                    위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                                                </div>
+                                                <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                                                <a href="#" class="btn-more active">더보기</a>
+                                            </div>
+                                            <ul class="review-photo-list lg">
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')" photo-total-count="+3"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="seller">
+                                            <div class="review-item-header">
+                                                <strong>판매자</strong>
+                                                <span>2020.07.09</span>
+                                            </div>
+                                            <div class="review-text">
+                                                기분 좋게 사용하셨다고 하니 다행입니다.<br>앞으로도 많이 이용해주세요.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-item">
+                                        <div class="customer">
+                                            <div class="review-item-header">
+                                                <strong class="rate">5.0</strong>
+                                                <strong class="user">ten****</strong>
+                                                <!-- 별점은 .s0, s0h, s1, .s1h ~ .s5까지 있음 -->
+                                                <span class="review-star-rating md s5"></span>
+                                                <span class="ml-auto">2019.08.29</span>
+                                            </div>
+                                            <div class="review-text">
+                                                <div class="review-text-box reduce">
+                                                    위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                                                </div>
+                                                <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                                                <a href="#" class="btn-more active">더보기</a>
+                                            </div>
+                                            <ul class="review-photo-list lg">
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')" photo-total-count="+3"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="seller">
+                                            <div class="review-item-header">
+                                                <strong>판매자</strong>
+                                                <span>2020.07.09</span>
+                                            </div>
+                                            <div class="review-text">
+                                                기분 좋게 사용하셨다고 하니 다행입니다.<br>앞으로도 많이 이용해주세요.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 더보기 클릭시 .hide를 삭제한다 -->
+                                    <a href="#" class="btn-contents-more">더보기</a>
+                                </div>
+                            </div>
+                            <div *ngIf="facility?.length > 0" class="contents-item">
+                                <h3><strong>편의시설</strong></h3>
+                                <div class="contents-item-box information">
+                                    <ul>
+                                        <li *ngFor="let fItem of facility; index as i" [class.hide]="!(moreIndex.facility > i)">
+                                            <span [class]="fItem.codeName">{{fItem.name}}</span>
+                                        </li>
+                                    </ul>
+                                    <!-- 더보기 클릭시 .hide를 삭제한다 -->
+                                    <a *ngIf="facility?.length > moreIndex.facility" (click)="viewMore('facility', 4)" class="btn-contents-more">더보기</a>
+                                </div>
+                            </div>
+                            <div *ngIf="recommendHotels?.length > 0" class="contents-item middle">
+                                <h3>
+                                    <strong>주변 추천 호텔</strong>
+                                    <span class="horizontal-control-button">
+                                        <a (click)="prev()" class="btn-control prev">이전</a>
+                                        <a (click)="next()" class="btn-control next">다음</a>
+                                    </span>
+                                </h3>
+                                <!-- 추천 호텔 아이템 -->
+                                <div class="contents-box flex-between">
+                                    <ngx-slick-carousel class="c-ngx-slick-carousel c-ngx-slick-carousel-hotel-roomtype carousel" #slickModal="slick-carousel" [config]="slideConfig">
+                                        <div ngxSlickItem *ngFor="let recommend of recommendHotels;index as recommendIdx" class="slide">
+                                            <a (click)="onRoomtypeHotelDtl(recommend.hotelCode)" class="hotel-recommend-item">
+                                                <div class="hotel-image" [ngStyle]="{background: 'url(' + recommend.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}">
+                                                </div>
+                                                <div class="hotel-information">
+                                                    <p class="name">
+                                                        <ng-container *ngIf="recommend.hotelNameLn;else elseif1">
+                                                            {{recommend.hotelNameLn}}
+                                                        </ng-container>
+                                                        <ng-template #elseif1>
+                                                            <ng-container *ngIf="recommend.hotelNameEn">
+                                                                {{recommend.hotelNameEn}}
+                                                            </ng-container>
+                                                        </ng-template>
+                                                    </p>
+                                                    <p class="name2">
+                                                        <ng-container *ngIf="recommend.addressLn;else elseif2">
+                                                            {{recommend.addressLn}}
+                                                        </ng-container>
+                                                        <ng-template #elseif2>
+                                                            <ng-container *ngIf="recommend.addressEn">
+                                                                {{recommend.addressEn}}
+                                                            </ng-container>
+                                                        </ng-template>
+                                                    </p>
+                                                    <p class="rate">
+                                                        <span class="hotel-rating">
+                                                            <span class="rating sm s{{getHotelStarRating(recommend.starRating)}}"></span>
+                                                            <span class="text">{{recommend.starRating | number  : '1.0-1'}}성급</span>
+                                                        </span>
+                                                        <span class="reserved">30분전 예약됨</span>
+                                                    </p>
+                                                    <p class="price">
+                                                        <strong>{{ recommend.billingAmount | number }}</strong><span>원</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </ngx-slick-carousel>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 현재 페이지를 보고 있는 사람 표시 -->
+                        <div *ngIf="false" class="page-viewing-msg">
+                            <div><i class="icon xs location mr5"></i>현재 5,400명이 같은 호텔 확인중</div>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <app-footer></app-footer>
+</div>

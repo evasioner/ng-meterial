@@ -1,0 +1,72 @@
+<div class="modal type1">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">도시 정보</h1>
+            <a (click)="onCloseClick($event);" class="btn-common-modal-close">닫기</a>
+        </div>
+        <div class="modal-body pd-all">
+            <div class="activity-city-information">
+                <div class="weather-now">
+                    <h2>{{ viewModel.cityName }}</h2>
+                    <p *ngFor="let item of viewModel.weather | slice: 0:1">
+                        <img [attr.src]="'/assets/images/icons/weather/' + (item.weatherCode | weatherIcon)" class="weather" />
+                        <strong class="temp">{{ item.maxTemperature | number: "1.0-0" }}</strong>
+                    </p>
+                </div>
+
+                <div class="weather-list">
+                    <div class="weather-item" *ngFor="let item of viewModel.weather | slice: 0 : 6; let i = index;">
+                        <div class="date">
+                            <strong>{{ item.weatherDate }}</strong>
+                            <span *ngIf="i === 0">오늘</span>
+                        </div>
+                        <div class="weather">
+                            <img [attr.src]="'/assets/images/icons/weather/' + (item.weatherCode | weatherIcon)" />
+                        </div>
+                        <div class="temp high">
+                            {{ item.maxTemperature | number: "1.0-0" }}
+                        </div>
+                        <div class="temp low">
+                            {{ item.minTemperature | number: "1.0-0" }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="city-addition-item">
+                    <div class="title">
+                        <p>시차</p>
+                        <p>{{ viewModel.time.difference }}시간</p>
+                    </div>
+                    <div class="result">
+                        <span>{{ viewModel.time.fullLocalTime | timeAmPm: "YYYY.MM.DD hh:mm" }}</span>
+                        <strong>{{ viewModel.time.fullLocalTime | date: "hh:mm" }}</strong>
+                    </div>
+                </div>
+
+                <div class="city-addition-item">
+                    <div class="title">
+                        <p>환율</p>
+                        <p>
+                            1
+                            <span class="color-sub5">{{ viewModel.currency.originCurrencyCode }}</span>
+                            <span>{{ viewModel.currency.now | date: "yyyy.MM.dd" }}</span>
+                        </p>
+                    </div>
+                    <div class="result">
+                        <strong>{{ viewModel.currency.convertRate | number }}원</strong>
+                    </div>
+                </div>
+
+                <div class="city-addition-item">
+                    <div class="title">
+                        <p>전압</p>
+                        <p>콘센트 타입</p>
+                    </div>
+                    <div class="result">
+                        <strong>{{ viewModel.plug.voltage }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

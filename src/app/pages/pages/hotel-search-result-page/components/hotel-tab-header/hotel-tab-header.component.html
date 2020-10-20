@@ -1,0 +1,5 @@
+<div class="tab-header-outer">
+    <a *ngFor="let sortOrder of sortOrderData; index as index" (click)="selectSortOrder(index)" class="tab-header-item" [class.active]="sortOrder.active">
+        <span>{{sortOrder.txt}}</span>
+    </a>
+</div>

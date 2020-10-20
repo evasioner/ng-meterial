@@ -1,0 +1,64 @@
+<div id="wrap" class="p-flight-result">
+
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+        <!-- timer | is-hide-->
+        <countdown-timer class="is-hide"></countdown-timer>
+
+        <div id="contents">
+            <!-- 재검색 영역 / .research-form에 .active 추가되면 보여지고, .btn-search-close 클릭하면 .active 삭제 -->
+            <app-flight-research-form *ngIf="researchBool" (closeResearchEvt)="closeResearchEvt($event)"></app-flight-research-form>
+
+            <app-flight-search-form (openResearchEvt)="openResearchEvt($event)"></app-flight-search-form>
+
+            <!-- 로딩 바 -->
+            <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+            <!-- 리스트 로딩 -->
+            <div class="c-list-loading" *ngIf="!loadingBool">
+                <div class="list-loading">
+                    <p class="loading-msg">
+                        더 많은 항공편을 검색중입니다.<br>잠시만 기다려주세요.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 메인 영역 -->
+            <div *ngIf="loadingBool" class="contents-area">
+
+                <!-- 예약 단계 표시 -->
+                <app-flight-breadcrumbs class="breadcrumbs"></app-flight-breadcrumbs>
+
+                <!-- 좌측 상세 필터 -->
+                <app-flight-aside-filter (searchEvt)="onSearchOutEvt($event)" class="aside filter"></app-flight-aside-filter>
+
+                <!-- 상단 옵션 영역 -->
+                <div class="contents">
+                    <ng-container *ngIf="true; else elseList">
+                        <!-- 리스트 -->
+                        <app-flight-tab-body *ngIf="apiLoadingBool" (goPageEvt)="goPageEvt($event)" (searchEvt)="onSearchOutEvt($event)"></app-flight-tab-body>
+                    </ng-container>
+
+                    <ng-template #elseList>
+                        <!-- 검색 결과 없음 -->
+                        <div class="list-nodata">
+                            <div class="nodata-msg">
+                                <i class="icon lg caution"></i>
+                                <p>조건에 맞는 검색 결과가 없습니다.</p>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <!-- 비교하기 -->
+                    <app-flight-compare class="compare-wrap"></app-flight-compare>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <app-footer *ngIf="loadingBool"></app-footer>
+</div>

@@ -1,0 +1,25 @@
+<div class="modal type1">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">여행편의 업체</h1>
+            <a (click)="modalClose()" class="btn-common-modal-close">닫기</a>
+        </div>
+        <div class="modal-body">
+            <!-- 모달 컨텐츠 영역 -->
+            <!-- 탭이 있을 경우 -->
+            <div class="modal-tab-wrap">
+                <div class="modal-tab-body">
+                    <!-- 활성화된 탭에 .active 추가 -->
+                    <div class="tab-pane active">
+                        <ul>
+                            <li>업체 리스트</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-group pd-all bg-white">
+                    <a (click)="goToSite()" class="btn lg default">바로 가기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

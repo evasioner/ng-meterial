@@ -1,0 +1,115 @@
+<!-- <div class="tab-body"> -->
+<div class="tab-pane" [ngClass]="{'active': chkActive()}">
+    <!-- 상단 옵션 영역 -->
+    <div class="search-result-header">
+        <p class="total"><span>{{vm.rs.result.count.nowItem | number}}</span>개의 상품이 검색되었습니다.</p>
+        <div class="control">
+            <ng-template [ngIf]="hotelTabBodyStateInfo.state !== 'isCompare'">
+                <a (click)="onCompare(true)" class="btn-common-compare sm">비교하기</a>
+            </ng-template>
+
+            <ng-template [ngIf]="hotelTabBodyStateInfo.state === 'isCompare'">
+                <a (click)="onCompare(false)" class="btn-common-compare sm active">비교해제</a>
+            </ng-template>
+        </div>
+    </div>
+    <!-- 체크박스에 체크되면 .hotel-list-item에 .compare-checked를 추가한다. -->
+    <!-- 호텔 검색 결과 아이템 -->
+    <div *ngFor="let hotItem of hotelList; index as i" [attr.data-target]="'hotItemIndex_' + hotItem.hotelCode" class="hotel-list-item">
+        <!-- <span class="label round type1">오늘<br>특가</span> -->
+        <span *ngIf="hotItem?.recommendYn" class="label round type1">추천</span>
+        <!-- <a href="#" class="btn-common-cart">장바구니</a> -->
+        <!-- 비교하기를 눌렀을때만 체크박스를 노출한다. -->
+        <ng-template [ngIf]="hotelTabBodyStateInfo.state === 'isCompare'">
+
+            <!-- 비교하기를 눌렀을때만 체크박스를 노출한다. -->
+            <label class="checkbox lg only">
+                <input (change)="onListItemInputChange($event, hotItem)" type="checkbox" class="checkbox-control-input">
+                <span class="checkbox-control-text"></span>
+            </label>
+
+        </ng-template>
+        <div class="hotel-image" [ngStyle]="{background: 'url(' + hotItem.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}">
+        </div>
+        <div class="hotel-information">
+            <p class="name">
+                <ng-container *ngIf="hotItem.hotelNameLn;else elseHotelName">
+                    {{hotItem.hotelNameLn}}
+                </ng-container>
+                <ng-template #elseHotelName>
+                    <ng-container *ngIf="hotItem.hotelNameEn">{{hotItem.hotelNameEn}}
+                    </ng-container>
+                </ng-template>
+            </p>
+            <p class="name2">
+                <ng-container *ngIf="hotItem.hotelNameEn">
+                    {{hotItem.hotelNameEn}}
+                </ng-container>
+            </p>
+            <ng-container *ngIf="hotItem.starRating">
+                <p *ngIf="hotItem.starRating.length > 0" class="rate">
+                    <span class="hotel-rating">
+                        <span class="rating sm s{{getHotelStarRating(hotItem.starRating)}}"></span>
+                        <span class="text">{{hotItem.starRating | number  : '1.0-1'}}성급</span>
+                    </span>
+                    <span class="reserved">30분전 예약됨</span>
+                </p>
+            </ng-container>
+            <p class="review">4.0 (999+)</p>
+            <ng-container *ngIf="hotItem.pois">
+                <p *ngIf="hotItem.pois.length > 0" class="poi">{{hotItem.pois[0].poiCode}}</p>
+            </ng-container>
+        </div>
+        <div class="price">
+            <strong>{{ hotItem.roomType.amountSum | number }}</strong><span>원</span>
+        </div>
+        <ng-container *ngIf="hotelTabBodyStateInfo.state !== 'isCompare'">
+            <div class="control">
+                <a (click)="onHotelDtl(hotItem)" class="btn inline md light hover line">선택</a>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf="paginationInfo && paginationInfo.totalItems > 0" class="pagination c-pagination">
+    <pagination [boundaryLinks]="true" [(ngModel)]="paginationInfo.currentPage" [totalItems]="paginationInfo.totalItems" [itemsPerPage]="paginationInfo.itemsPerPage" [maxSize]="paginationInfo.maxSize" [disabled]="paginationInfo.disabled" (pageChanged)="onPageChange($event)" previousText="이전" nextText="다음" firstText="맨처음" lastText="맨끝"></pagination>
+</div>
+
+<div class="tab-pane">
+    <!-- 상단 옵션 영역 -->
+    <div class="search-result-header">
+        <p class="total"><span>1,000</span>개의 상품이 검색되었습니다.</p>
+        <div class="control">
+            <ng-template [ngIf]="hotelTabBodyStateInfo.state !== 'isCompare'">
+                <a (click)="onCompare(true)" class="btn-common-compare sm">비교하기</a>
+            </ng-template>
+            <ng-template [ngIf]="hotelTabBodyStateInfo.state === 'isCompare'">
+                <a (click)="onCompare(false)" class="btn-common-compare sm active">비교해제</a>
+            </ng-template>
+        </div>
+    </div>
+    <!-- 검색결과 없을때 -->
+    <div *ngIf="vm.rs.result.hotels.length === 0" class="list-nodata">
+        <div class="nodata-msg">
+            <i class="icon lg caution"></i>
+            <p>조건에 맞는 검색 결과가 없습니다.</p>
+            <div class="btn-group">
+                <a href="#" class="btn lg default">다시 검색</a>
+            </div>
+        </div>
+    </div>
+    <!-- 낮은 가격 아이템 -->
+</div>
+
+<div class="tab-pane">
+    <!-- 호텔성급 아이템 -->
+</div>
+
+<div class="tab-pane">
+    <!-- 이용자평점 아이템 -->
+</div>
+
+<div class="tab-pane">
+    <!-- 거리 아이템 -->
+</div>
+<!-- </div> -->

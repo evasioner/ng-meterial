@@ -1,0 +1,458 @@
+<div *ngIf="isBrowser" id="wrap" class="p-hotel-booking-information">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+        <div id="contents">
+            <!-- 로딩 바 -->
+            <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+            <form *ngIf="loadingBool" [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate #f="ngForm">
+                <div class="contents-area">
+                    <div class="breadcrumbs">
+                        <div class="text-article">
+                            <p class="text"><strong>여행자 확인 및 결제</strong></p>
+                            <p class="sub-text">여행 일정을 확인하고 투숙자 정보를 입력해주세요.</p>
+                        </div>
+                        <ul class="step">
+                            <li>
+                                <p class="num">1</p>
+                                <p class="text">호텔선택</p>
+                            </li>
+                            <li>
+                                <p class="num">2</p>
+                                <p class="text">룸타입선택</p>
+                            </li>
+                            <li class="active">
+                                <p class="num">3</p>
+                                <p class="text">결제하기</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contents left">
+                        <div class="contents-item">
+                            <h2 class="heading-title1 line-bottom">호텔 정보</h2>
+                            <!-- 호텔 정보 -->
+                            <div class="hotel-schedule-box">
+                                <div class="schedule-image" [ngStyle]="{background: 'url(' + hotelInfoRs.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}">
+                                </div>
+                                <div class="schedule-information">
+                                    <p class="name">{{hotelInfoRs.hotelNameLn}}</p>
+                                    <p class="name2">
+                                        <ng-container *ngIf="hotelInfoRs.hotelNameEn">
+                                            {{hotelInfoRs.hotelNameEn}}
+                                        </ng-container>
+                                    </p>
+                                    <p class="rate"><span class="hotel-rating">
+                                            <span class="rating sm s{{getHotelStarRating(hotelInfoRs.starRating)}}"></span>
+                                            <span class="text">{{hotelInfoRs.starRating | number  : '1.0-1'}}성급</span></span>
+                                    </p>
+                                    <ul class="option-list">
+                                        <li>
+                                            <span class="option date">이용일</span>
+                                            <span>{{useDate}}</span>
+                                        </li>
+                                        <li>
+                                            <span class="option bed">객실 수</span>
+                                            <span>{{roomList.length}}개</span>
+                                        </li>
+                                        <li>
+                                            <span class="option bed">객실명</span><br />
+                                            <span class="txt-right">{{roomType.roomTypeName}}</span>
+                                        </li>
+                                        <li>
+                                            <span class="option user">인원 수</span>
+                                            <span>{{guestNumInfo}}</span>
+                                        </li>
+                                        <li *ngIf="roomType?.freeBreakfastYn === true">
+                                            <span class="option breakfast">조식</span>
+                                            <span>포함</span>
+                                        </li>
+                                        <li *ngIf="roomType?.freeWifiYn === true">
+                                            <span class="option wifi">와이파이</span>
+                                            <span>무료</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contents-item">
+                            <h2 class="heading-title1 line-bottom">예약자 정보 입력</h2>
+                            <p class="color-sub6">예약과 관련된 중요사항을 연락처로 발송해 드립니다.</p>
+                            <div class="row-list mt40">
+                                <div class="row-item">
+                                    <div class="row-label">예약자 명</div>
+                                    <div class="row-form">
+                                        <div class="input lg line">
+                                            <input formControlName="userName" [class.valid-error]="mainForm.controls.userName.errors && (f.submitted || mainForm.controls.userName.dirty || mainForm.controls.userName.touched)" type="text" placeholder="예약자명 입력" readonly>
+
+                                            <ng-container *ngIf="mainForm.controls.userName.errors">
+                                                <span *ngIf="mainForm.controls.userName.errors.required" class="valid-msg">예약자명은 필수값입니다.</span>
+                                                <span *ngIf="mainForm.controls.userName.errors.invalidMsg" class="valid-msg">{{mainForm.controls.userName.errors.invalidMsg}}</span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-item">
+                                    <div class="row-label">휴대폰 번호</div>
+                                    <div class="row-form">
+                                        <div class="input lg line">
+                                            <input formControlName="userPhone" [numOnly]="mainForm.controls.userPhone" [class.valid-error]="mainForm.controls.userPhone.errors && (f.submitted ||  mainForm.controls.userPhone.dirty || mainForm.controls.userPhone.touched)" type="text" placeholder="'-' 제외하고 입력">
+
+                                            <a *ngIf="mainForm.controls.userPhone.value" (click)="userInfoReset($event, 2)" class="icon sm input-delete">삭제</a>
+                                            <ng-container *ngIf="mainForm.controls.userPhone.errors">
+                                                <span *ngIf="mainForm.controls.userPhone.errors.required" class="valid-msg">휴대폰 번호는 10자리 이상으로 입력해야 합니다.</span>
+                                                <span *ngIf="mainForm.controls.userPhone.errors.invalidMsg" class="valid-msg">{{mainForm.controls.userPhone.errors.invalidMsg}}</span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-item">
+                                    <div class="row-label">이메일 주소</div>
+                                    <div class="row-form">
+                                        <div class="input lg line">
+                                            <input formControlName="userEmail" [class.valid-error]="mainForm.controls.userEmail.errors && (f.submitted ||  mainForm.controls.userEmail.dirty || mainForm.controls.userEmail.touched)" type="text" placeholder="example@mail.com">
+
+                                            <a *ngIf="mainForm.controls.userEmail.value" (click)="userInfoReset($event, 3)" class="icon sm input-delete">삭제</a>
+                                            <ng-container *ngIf="mainForm.controls.userEmail.errors">
+                                                <span *ngIf="mainForm.controls.userEmail.errors.required" class="valid-msg">이메일주소는 필수값입니다.</span>
+                                                <span *ngIf="mainForm.controls.userEmail.errors.email" class="valid-msg">이메일 정보를 정확히 확인해주세요.</span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contents-item">
+                            <h2 class="heading-title1 line-bottom">투숙객 정보 입력</h2>
+                            <p class="color-sub6">여권상의 영문성, 영문이름과 같지 않으면 투숙이 거부되거나 서비스를 이용할 수 없습니다.</p>
+                            <div class="reservation-group mt40" formArrayName="rooms">
+                                <!-- 반복 -->
+                                <ng-container *ngFor="let roomItem of rooms.controls; index as roomIndex;">
+                                    <ng-container [formGroupName]="roomIndex">
+                                        <ng-container *ngFor="let adultItem of roomItem['controls'].adultList.controls; index as adultIndex;">
+                                            <div class="row-list" [formGroup]="adultItem">
+                                                <h3 class="row-title">
+                                                    <strong>
+                                                        객실{{roomIndex + 1}}(성인{{adultIndex + 1}})
+                                                    </strong>
+                                                </h3>
+                                                <div class="row-item">
+                                                    <div class="row-label">여행자 선택</div>
+                                                    <div class="row-form">
+                                                        <div class="select-box lg line">
+                                                            <select (change)="onGuestChange($event, roomIndex, adultIndex)">
+                                                                <option value="">신규 여행자를 추가합니다 - 새로운 여행자를 입력합니다</option>
+                                                                <option *ngFor="let aTravelerItem of traveler; index as aTravelerIndex;" [value]="aTravelerIndex" [class.displayNone]="!aTravelerItem.active">
+                                                                    {{aTravelerItem.name}} : {{aTravelerItem.lastName}} / {{aTravelerItem.firstName}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row-item">
+                                                    <div class="row-label">한글 이름</div>
+                                                    <div class="row-form">
+                                                        <div class="input lg line">
+                                                            <input data-target="input-traveler-name-kr" formControlName="guestNameKr" [koOnly]="adultItem.controls.guestNameKr" [class.valid-error]="adultItem.controls.guestNameKr.errors && (f.submitted ||  adultItem.controls.guestNameKr.dirty || adultItem.controls.guestNameKr.touched)" type="text" placeholder="이름 입력">
+                                                            <ng-container *ngIf="adultItem.controls.guestNameKr.errors">
+                                                                <span *ngIf="adultItem.controls.guestNameKr.errors.required" class="valid-msg">한글 이름은 필수값입니다.</span>
+                                                                <span *ngIf="adultItem.controls.guestNameKr.errors.maxlength" class="valid-msg">한글 이름의 글자수는 33자 까지 입력 가능합니다.</span>
+                                                                <span *ngIf="adultItem.controls.guestNameKr.errors.invalidMsg" class="valid-msg">{{adultItem.controls.guestNameKr.errors.invalidMsg}}</span>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row-item">
+                                                    <div class="row-label">영문 성/이름</div>
+                                                    <div class="row-form en-name">
+                                                        <div class="input lg line">
+                                                            <input formControlName="guestLastName" [enOnly]="adultItem.controls.guestLastName" [class.valid-error]="adultItem.controls.guestLastName.errors && (f.submitted ||  adultItem.controls.guestLastName.dirty || adultItem.controls.guestLastName.touched)" type="text" style="text-transform: uppercase;" placeholder="영문 성">
+                                                            <ng-container *ngIf="adultItem.controls.guestLastName.errors">
+                                                                <span *ngIf="adultItem.controls.guestLastName.errors.required" class="valid-msg">영문 성(은) 필수값입니다.</span>
+                                                                <span *ngIf="adultItem.controls.guestLastName.errors.maxlength" class="valid-msg">영문 성의 글자수는 50자 까지 입력 가능합니다.</span>
+                                                                <span *ngIf="adultItem.controls.guestLastName.errors.invalidMsg" class="valid-msg">{{adultItem.controls.guestLastName.errors.invalidMsg}}</span>
+                                                            </ng-container>
+                                                        </div>
+                                                        <div class="input lg line">
+                                                            <input formControlName="guestFirstName" [enOnly]="adultItem.controls.guestFirstName" [class.valid-error]="adultItem.controls.guestFirstName.errors && (f.submitted ||  adultItem.controls.guestFirstName.dirty || adultItem.controls.guestFirstName.touched)" type="text" style="text-transform: uppercase;" placeholder="영문 이름">
+                                                            <ng-container *ngIf="adultItem.controls.guestFirstName.errors">
+                                                                <span *ngIf="adultItem.controls.guestFirstName.errors.required" class="valid-msg">영문 이름은 필수값입니다.</span>
+                                                                <span *ngIf="adultItem.controls.guestFirstName.errors.maxlength" class="valid-msg">영문 이름의 글자수는 50자 까지 입력 가능합니다.</span>
+                                                                <span *ngIf="adultItem.controls.guestFirstName.errors.invalidMsg" class="valid-msg">{{adultItem.controls.guestFirstName.errors.invalidMsg}}</span>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row-item">
+                                                    <div class="row-label">성별선택</div>
+                                                    <div class="row-form">
+                                                        <label class="radio lg">
+                                                            <input formControlName="guestGender" value="M" type="radio" class="radio-control-input">
+                                                            <span class="radio-control-text">남성</span>
+                                                        </label>
+                                                        <label class="radio lg">
+                                                            <input formControlName="guestGender" value="F" type="radio" class="radio-control-input">
+                                                            <span class="radio-control-text">여성</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="roomItem['controls'].childList">
+                                            <div *ngFor="let childItem of roomItem['controls'].childList.controls; index as childIndex;" [formGroup]="childItem" class="row-list">
+                                                <h3 class="row-title">
+                                                    <strong>
+                                                        객실{{roomIndex + 1}}(아동{{childIndex + 1}})
+                                                    </strong>
+                                                </h3>
+                                                <div class="row-item">
+                                                    <div class="row-label">여행자 선택</div>
+                                                    <div class="row-form">
+                                                        <div class="select-box lg line">
+                                                            <select (change)="onChildGuestChange($event, roomIndex, childIndex)">
+                                                                <option value="">신규 여행자를 추가합니다 - 새로운 여행자를 입력합니다</option>
+                                                                <option *ngFor="let cTravelerItem of traveler; index as cTravelerIndex;" [value]="cTravelerIndex" [class.displayNone]="!cTravelerItem.active">
+                                                                    {{cTravelerItem.name}} : {{cTravelerItem.lastName}} /
+                                                                    {{cTravelerItem.firstName}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row-item">
+                                                    <div class="row-label">한글 이름</div>
+                                                    <div class="row-form">
+                                                        <div class="input lg line">
+                                                            <input data-target="input-traveler-name-kr" formControlName="guestNameKr" [koOnly]="childItem.controls.guestNameKr" [class.valid-error]="childItem.controls.guestNameKr.errors && (f.submitted ||  childItem.controls.guestNameKr.dirty || childItem.controls.guestNameKr.touched)" type="text" placeholder="이름 입력">
+                                                            <ng-container *ngIf="childItem.controls.guestNameKr.errors">
+                                                                <span *ngIf="childItem.controls.guestNameKr.errors.required" class="valid-msg">한글 이름은 필수값입니다.</span>
+                                                                <span *ngIf="childItem.controls.guestNameKr.errors.maxlength" class="valid-msg">한글 이름의 글자수는 33자 까지 입력 가능합니다.</span>
+                                                                <span *ngIf="childItem.controls.guestNameKr.errors.invalidMsg" class="valid-msg">{{childItem.controls.guestNameKr.errors.invalidMsg}}</span>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row-item">
+                                                    <div class="row-label">영문 성/이름</div>
+                                                    <div class="row-form en-name">
+                                                        <div class="input lg line">
+                                                            <input formControlName="guestLastName" [enOnly]="childItem.controls.guestLastName" [class.valid-error]="childItem.controls.guestLastName.errors && (f.submitted ||  childItem.controls.guestLastName.dirty || childItem.controls.guestLastName.touched)" type="text" style="text-transform: uppercase;" placeholder="영문 성">
+                                                            <ng-container *ngIf="childItem.controls.guestLastName.errors">
+                                                                <span *ngIf="childItem.controls.guestLastName.errors.required" class="valid-msg">영문 성(은) 필수값입니다.</span>
+                                                                <span *ngIf="childItem.controls.guestLastName.errors.maxlength" class="valid-msg">영문 성의 글자수는 50자 까지 입력 가능합니다.</span>
+                                                                <span *ngIf="childItem.controls.guestLastName.errors.invalidMsg" class="valid-msg">{{childItem.controls.guestLastName.errors.invalidMsg}}</span>
+                                                            </ng-container>
+                                                        </div>
+                                                        <div class="input lg line">
+                                                            <input formControlName="guestFirstName" [enOnly]="childItem.controls.guestFirstName" [class.valid-error]="childItem.controls.guestFirstName.errors && (f.submitted ||  childItem.controls.guestFirstName.dirty || childItem.controls.guestFirstName.touched)" type="text" style="text-transform: uppercase;" placeholder="영문 이름">
+                                                            <ng-container *ngIf="childItem.controls.guestFirstName.errors">
+                                                                <span *ngIf="childItem.controls.guestFirstName.errors.required" class="valid-msg">영문 이름은 필수값입니다.</span>
+                                                                <span *ngIf="childItem.controls.guestFirstName.errors.maxlength" class="valid-msg">영문 이름의 글자수는 50자 까지 입력 가능합니다.</span>
+                                                                <span *ngIf="childItem.controls.guestFirstName.errors.invalidMsg" class="valid-msg">{{childItem.controls.guestFirstName.errors.invalidMsg}}</span>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row-item">
+                                                    <div class="row-label">생년월일</div>
+                                                    <div class="row-form">
+                                                        <div class="input lg line">
+                                                            <input formControlName="birthday" [numOnly]="childItem.controls.birthday" [class.valid-error]="childItem.controls.birthday.errors && (f.submitted ||  childItem.controls.birthday.dirty || childItem.controls.birthday.touched)" type="text" placeholder="생년월일 입력(8자리)" maxlength="8">
+                                                            <ng-container *ngIf="childItem.controls.birthday.errors">
+                                                                <span *ngIf="childItem.controls.birthday.errors.required" class="valid-msg">생년월일은 필수값입니다.</span>
+                                                                <span *ngIf="childItem.controls.birthday.errors.invalidMsg" class="valid-msg">{{childItem.controls.birthday.errors.invalidMsg}}</span>
+                                                            </ng-container>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row-item">
+                                                    <div class="row-label">성별선택</div>
+                                                    <div class="row-form">
+                                                        <label class="radio lg">
+                                                            <input formControlName="guestGender" value="M" type="radio" class="radio-control-input">
+                                                            <span class="radio-control-text">남성</span>
+                                                        </label>
+                                                        <label class="radio lg">
+                                                            <input formControlName="guestGender" value="F" type="radio" class="radio-control-input">
+                                                            <span class="radio-control-text">여성</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="contents-item">
+                            <h2 class="heading-title1 line-bottom">선택 요청사항</h2>
+                            <div class="row-list">
+                                <div class="row-item">
+                                    <div class="row-label">선택 요청사항</div>
+                                    <div class="row-form" data-target="requestChk">
+                                        <label class="checkbox lg">
+                                            <input (change)="onRequestCheckboxChange($event,0)" value="BRQ01" type="checkbox" class="checkbox-control-input">
+                                            <span class="checkbox-control-text">금연객실</span>
+                                        </label>
+                                        <label class="checkbox lg" data-target="requestChk">
+                                            <input (change)="onRequestCheckboxChange($event,1)" value="BRQ04" type="checkbox" class="checkbox-control-input">
+                                            <span class="checkbox-control-text">고층객실</span>
+                                        </label>
+                                        <label class="checkbox lg" data-target="requestChk">
+                                            <input (change)="onRequestCheckboxChange($event,2)" value="BRQ03" type="checkbox" class="checkbox-control-input">
+                                            <span class="checkbox-control-text">Late Check-in</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div *ngIf="mainForm.controls.requestList.value[2]" class="row-item">
+                                    <div class="row-label">숙소 도착 예정 시간</div>
+                                    <div class="row-form">
+                                        <div class="select-box lg line">
+                                            <i class="icon xs time"></i>
+                                            <select (change)="onArrivalTimeChange($event)" formControlName="arrivalTime" [class.valid-error]="f.submitted && mainForm.controls.arrivalTime.errors">
+                                                <option value="">숙소 도착 예정 시간</option>
+                                                <option *ngFor="let aTime of arrivalTime;" [ngValue]="aTime">
+                                                    {{aTime.txt+' '+aTime.time}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-item">
+                                    <div class="row-label">특별 요청</div>
+                                    <div class="row-form">
+                                        <div class="textarea lg line">
+                                            <textarea formControlName="specialRequest" [class.valid-error]="mainForm.controls.specialRequest.errors && (f.submitted || mainForm.controls.specialRequest.dirty || mainForm.controls.specialRequest.touched)" cols="30" rows="5" placeholder="내용을 입력해 주세요."></textarea>
+                                            <ng-container *ngIf="mainForm.controls.specialRequest.errors">
+                                                <span *ngIf="mainForm.controls.specialRequest.errors.maxlength" class="valid-msg">요청사항의 글자수는 50자 까지 입력 가능합니다.</span>
+                                                <span *ngIf="mainForm.controls.specialRequest.errors.invalidMsg" class="valid-msg">{{mainForm.controls.specialRequest.errors.invalidMsg}}</span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="text-list dot mt30">
+                                <li>요청 사항은 확정 내역이 아니며 호텔의 사정에 의하여 변경될 수 있습니다.</li>
+                                <li>20:00 이후 체크인 시 도착예정시간을 꼭 기재 부탁드립니다.</li>
+                                <li>Early Check in, Late Check Out은 호텔 객실 사정에 따라 배정되는 관계로 현지에서 직접 요청해주세요.</li>
+                            </ul>
+                        </div>
+                        <div *ngIf="hotelInfoRs?.hotelCaution || hotelInfoRs?.specialInstructions" class="contents-item">
+                            <h2 class="heading-title1 line-bottom">유의사항</h2>
+                            <div class="data-area font-lg" data-target="hotelCautionArea">
+                                <ng-container *ngIf="hotelInfoRs?.specialInstructions">
+                                    <b>알아두실 사항</b><br />
+                                    <p [innerHTML]="hotelInfoRs?.specialInstructions"></p><br />
+                                </ng-container>
+                                <div *ngIf="hotelInfoRs?.hotelCaution" [innerHTML]="hotelInfoRs?.hotelCaution"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="aside right">
+                        <h2 class="heading-title1 mb10">취소 마감일</h2>
+                        <div class="aside-cancel-deadline mb60">
+                            <ng-container *ngIf="roomConditoinRs.cancelDeadline.refundableYn;else elseRefundableYn">
+                                <ng-container *ngIf="clientCancelDeadline;else elseNoFreeBool">
+                                    <div class="check-time">
+                                        <strong class="date">취소 마감일 :
+                                            {{clientCancelDeadline | amDateFormat:'MM.DD(dd)'}}</strong>
+                                        <strong class="time">{{clientCancelDeadline | amDateFormat:'HH:mm'}}</strong>
+                                    </div>
+                                </ng-container>
+                                <ng-template #elseNoFreeBool>
+                                    <div class="check-time">
+                                        <strong class="date">취소 마감일 :
+                                            {{roomConditoinRs.cancelDeadline.clientCancelDeadline | amDateFormat:'MM.DD(dd)'}}</strong>
+                                        <strong class="time">{{roomConditoinRs.cancelDeadline.clientCancelDeadline | amDateFormat:'HH:mm'}}</strong>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+                            <ng-template #elseRefundableYn>
+                                <div class="check-time">
+                                    <strong class="date">취소 마감일 : 환불불가</strong>
+                                </div>
+                            </ng-template>
+                            <ul class="text-list dash md color-sub6 mt20">
+                                <li *ngFor="let chargeCondition of roomConditoinRs.chargeConditions; index as i;">
+                                    {{chargeCondition.clientFromTime}} - {{chargeCondition.clientToTime}}
+                                    <br>취소 시 :
+                                    <ng-container *ngIf="chargeCondition.chargeAmount === 0;else billingElseif">
+                                        취소 수수료 없이 취소 가능
+                                    </ng-container>
+                                    <ng-template #billingElseif>
+                                        <strong class="cancel-price">{{chargeCondition.chargeAmount | number}}원
+                                            청구</strong>
+                                    </ng-template>
+                                </li>
+                                <li>위 날짜 이후 취소 시, 전체 상품요금이 청구됩니다.</li>
+                            </ul>
+                            <ul class="text-list md color-sub3 mt20">
+                                <li>※ 취소 마감일 이전까지 결제를 완료해주세요.</li>
+                                <li>※ 무료 취소 가능 기간 이후 취소 시, 수수료가 발생합니다.</li>
+                            </ul>
+                        </div>
+                        <h2 class="heading-title1 mb10">최종 결제 정보</h2>
+                        <div class="aside-payment">
+                            <ul class="payment">
+                                <li *ngIf="!noRoomUpgradeBool">
+                                    <span>호텔 룸 업그레이드</span>
+                                    <span>{{roomUpgrade | number}}원</span>
+                                </li>
+                                <li [class.noRoomUpgrade]="noRoomUpgradeBool">
+                                    <span class="color-main2">총 결제 금액</span>
+                                    <strong class="color-point2">{{roomType.amountSum | number}}원</strong>
+                                </li>
+                            </ul>
+                            <div class="payment-rule">
+                                <p class="font-lg-b mb10">요금 규정, 취소수수료 규정을 확인하세요.</p>
+                                <p class="color-sub6 lh160">아래 규정 및 약관을 읽어보고, 동의하는 경우에 체크하고 최종 예약을 완료해 주세요.</p>
+                                <ul class="mt20">
+                                    <li class="line" data-target="agreeAllChk">
+                                        <label class="checkbox lg">
+                                            <input (change)="onChangeAllAgreement($event)" type="checkbox" class="checkbox-control-input">
+                                            <span class="checkbox-control-text">모든 약관에 동의함</span>
+                                        </label>
+                                    </li>
+                                    <ng-container formArrayName="agreeList">
+                                        <li>
+                                            <label class="checkbox lg" data-target="agreeChk">
+                                                <input formControlName="0" (change)="onChangeAgreement(0, $event)" type="checkbox" class="checkbox-control-input">
+                                                <span class="checkbox-control-text"><em (click)="onAgreementClick($event,'normal')">일반 규정</em>을 읽었으며 동의함</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="checkbox lg" data-target="agreeChk">
+                                                <input formControlName="1" (change)="onChangeAgreement(1, $event)" type="checkbox" class="checkbox-control-input">
+                                                <span class="checkbox-control-text"><em (click)="onAgreementClick($event,'cancel')">취소/환불 규정</em>을 읽었으며 동의함</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label class="checkbox lg" data-target="agreeChk">
+                                                <input formControlName="2" (change)="onChangeAgreement(2, $event)" type="checkbox" class="checkbox-control-input">
+                                                <span class="checkbox-control-text"><em (click)="onAgreementClick($event,'personalInfo')">개인정보취급방침</em>을 읽었으며 동의함</span>
+                                            </label>
+                                        </li>
+                                    </ng-container>
+                                </ul>
+                            </div>
+                            <div class="btn-group mt20">
+                                <button class="btn lg default" role="button">최종 예약 완료</button>
+                                <ul class="text-list dot md mt20">
+                                    <li>예약완료까지는 30초에서 2분가량 소요될 수 있습니다.</li>
+                                    <li>예약 완료 버튼은 1번만 클릭하시기 바라며 클릭 후에는 최종 완료될 때까지 기다려 주시기 바랍니다.</li>
+                                    <li>완료 전에 창을 닫으면 이중 결제 또는 예약 에러가 발생할 수 있습니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <app-footer *ngIf="loadingBool"></app-footer>
+</div>

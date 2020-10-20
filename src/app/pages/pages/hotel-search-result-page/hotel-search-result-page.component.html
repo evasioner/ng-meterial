@@ -1,0 +1,88 @@
+<div id="wrap" class="p-hotel-search-result">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+        <div id="contents">
+
+            <!-- timer | is-hide-->
+            <countdown-timer class="is-hide"></countdown-timer>
+
+            <!-- 재검색 영역 -->
+            <app-hotel-research-form *ngIf="researchBool" [pageState]="'list'" (closeResearchEvt)="closeResearchEvt($event)"></app-hotel-research-form>
+
+            <!-- search-form-top -->
+            <app-hotel-search-form [pageState]="'list'" (openResearchEvt)="openResearchEvt($event)"></app-hotel-search-form>
+
+            <!-- 로딩 바 -->
+            <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+            <div *ngIf="!loadingBool" class="c-list-loading">
+                <div class="list-loading">
+                    <p class="loading-msg">
+                        더 많은 호텔을 검색중입니다.<br>잠시만 기다려주세요.
+                    </p>
+                </div>
+            </div>
+
+            <div *ngIf="loadingBool" class="contents-area">
+                <!-- 예약 단계 표시 -->
+                <app-hotel-breadcrumbs class="breadcrumbs"></app-hotel-breadcrumbs>
+
+                <ng-container *ngIf="!(hotelList.length === 0 && !isFiltered);else elseSearchResult">
+
+                    <!-- 필터 -->
+                    <app-hotel-aside-filter [pageState]="'list'" (searchEvt)="onSearchOutEvt($event)" (pageMove)="onPageMvoe($event)" class="aside filter"></app-hotel-aside-filter>
+
+                    <div class="contents">
+                        <div class="tab-wrap">
+
+                            <!-- tab-header -->
+                            <app-hotel-tab-header (searchEvt)="onSearchOutEvt($event)" class="tab-header type2 round border mb20" style="display: block;"></app-hotel-tab-header>
+
+                            <ng-container *ngIf="!errorFlag; else elseList">
+                                <!-- 리스트 -->
+                                <app-hotel-tab-body *ngIf="apiLoadingBool" (goPageEvt)="goPageEvt($event)" class="tab-body"></app-hotel-tab-body>
+                            </ng-container>
+
+                            <ng-template #elseList>
+                                <!-- 검색 결과 없음 -->
+                                <div class="list-nodata">
+                                    <div class="nodata-msg">
+                                        <i class="icon lg caution"></i>
+                                        <p>조건에 맞는 검색 결과가 없습니다.</p>
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                        </div>
+
+                        <!-- 현재 페이지를 보고 있는 사람 표시 -->
+                        <!-- <app-hotel-page-viewing-msg></app-hotel-page-viewing-msg> -->
+                        <!-- 비교하기 -->
+                        <app-hotel-compare class="compare-wrap"></app-hotel-compare>
+
+                    </div>
+                </ng-container>
+
+                <ng-template #elseSearchResult>
+                    <!-- 검색 결과 없음 -->
+                    <div class="list-nodata">
+                        <div class="nodata-msg">
+                            <i class="icon lg caution"></i>
+                            <p>조건에 맞는 검색 결과가 없습니다.</p>
+                            <div class="btn-group">
+                                <a (click)="goToMain()" class="btn lg default">다시 검색</a>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <app-footer *ngIf="loadingBool"></app-footer>
+</div>

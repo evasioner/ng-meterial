@@ -1,0 +1,212 @@
+<div class="search-box-outer">
+
+    <app-category-header></app-category-header>
+
+    <!-- 항공 검색기 영역 -->
+    <!-- 왕복, 편도, 다구간을 선택함에 따라 .flight-search-area에 클래스는 추가 선언해준다. 왕복 : .roundtrip / 편도 : .oneway / 다구간 : multiple -->
+    <!-- 항공 검색기 영역 > 레이어 팝업 메뉴 보여주기 위해 수정 : overflow: visible;  -->
+    <div class="flight-search-area" style="overflow: visible;" [ngClass]="[vm.tripTypeCode === 'RT'? 'roundtrip' : '',  vm.tripTypeCode === 'OW'? 'oneway' : '', vm.tripTypeCode === 'MD'? 'multiple' : '']">
+        <div class="tab-wrap" data-target="tg-wrap-date-time">
+            <div class="tab-header type3">
+                <div class="tab-header-outer">
+                    <ng-container *ngFor="let typeItem of tripType">
+                        <a (click)="onSelTripType(typeItem.code)" class="tab-header-item" [ngClass]="vm.tripTypeCode == typeItem.code ? 'active' : '' "><span>{{typeItem.name}}</span></a>
+                    </ng-container>
+                </div>
+                <label class="checkbox lg ml30">
+                    <input type="checkbox" class="checkbox-control-input" [checked]="vm.nonStop" (change)="onNonstop($event)">
+                    <span class="checkbox-control-text">항공 직항만</span>
+                </label>
+            </div>
+
+            <form [formGroup]="mainForm" (ngSubmit)="onSubmit()" #f="ngForm" class="tab-body">
+                <!-- 왕복 -->
+                <div class="tab-pane" [class.active]="vm.tripTypeCode === 'RT'">
+                    <div class="search-area-form">
+                        <div class="form-column" [class.valid-error]="!(vm.trip.destination[0].origin.val || vm.trip.destination[0].origin.name) && f.submitted">
+                            <p class="title">출발지</p>
+                            <p class="text">
+                                <input type="text" data-target="tgOrigin" data-click-ignore="true" value="{{vm.trip.destination[0].origin.name}}{{vm.trip.destination[0].origin.val? ' (' + vm.trip.destination[0].origin.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onOriginStateFocus($event, 'tgOrigin','origin',0)" (focusout)="onStatfocusout($event)" (keyup)="onOriginStateKeyup($event)">
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!(vm.trip.destination[0].dest.val || vm.trip.destination[0].dest.name) && f.submitted">
+                            <p class="title">도착지</p>
+                            <p class="text">
+                                <input type="text" data-target="tgDestination" data-click-ignore="true" value="{{vm.trip.destination[0].dest.name}}{{vm.trip.destination[0].dest.val? ' (' + vm.trip.destination[0].dest.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onDestinationStateFocus($event, 'tgDestination','destination',0)" (focusout)="onStatfocusout($event)" (keyup)="onDestinationStateKeyup($event)">
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]='!vm.trip.destination[0].dateRange && f.submitted' (click)="onCalendar()">
+                            <p class="title">여행일정</p>
+                            <p class="text calendar">
+                                <strong *ngIf="vm.trip.destination[0].dateRange === ''" class="placeholder">날짜 선택</strong>
+                                <strong *ngIf="vm.trip.destination[0].dateRange !== ''">{{vm.trip.destination[0].dateRange}}</strong>
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!vm.travelerStore.cabinClassTxt && f.submitted" (click)="onTraveler()">
+                            <p class="title">여행인원</p>
+                            <p class="text user">
+                                <strong>{{vm.travelerStore.cabinClassTxt}}</strong>
+                            </p>
+                        </div>
+                        <a (click)="onChangeDest(vm.trip.destination[0])" class="btn-change">변경</a>
+                        <button class="btn-form-search">검색</button>
+                    </div>
+                </div>
+
+                <!-- 편도 -->
+                <div class="tab-pane" [class.active]="vm.tripTypeCode === 'OW'">
+                    <div class="search-area-form">
+                        <div class="form-column" [class.valid-error]="!(vm.trip.destination[0].origin.val || vm.trip.destination[0].origin.name) && f.submitted">
+                            <p class="title">출발지</p>
+                            <p class="text">
+                                <input type="text" data-target="tgOrigin" data-click-ignore="true" value="{{vm.trip.destination[0].origin.name}}{{vm.trip.destination[0].origin.val? ' (' + vm.trip.destination[0].origin.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onOriginStateFocus($event, 'tgOrigin','origin',0)" (focusout)="onStatfocusout($event)" (keyup)="onOriginStateKeyup($event)">
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!(vm.trip.destination[0].dest.val || vm.trip.destination[0].dest.name) && f.submitted">
+                            <p class="title">도착지</p>
+                            <p class="text">
+                                <input type="text" data-target="tgDestination" data-click-ignore="true" value="{{vm.trip.destination[0].dest.name}}{{vm.trip.destination[0].dest.val? ' (' + vm.trip.destination[0].dest.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onDestinationStateFocus($event, 'tgDestination','destination',0)" (focusout)="onStatfocusout($event)" (keyup)="onDestinationStateKeyup($event)">
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!vm.trip.destination[0].date && f.submitted" (click)="onCalendar()">
+                            <p class="title">여행일정</p>
+                            <p class="text calendar">
+                                <strong *ngIf="vm.trip.destination[0].date === ''" class="placeholder">날짜 선택</strong>
+                                <strong *ngIf="vm.trip.destination[0].date !== ''">{{vm.trip.destination[0].date | amDateFormat:'MM.DD(dd)'}}</strong>
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!vm.travelerStore.cabinClassTxt && f.submitted" (click)="onTraveler()">
+                            <p class="title">여행인원</p>
+                            <p class="text user">
+                                <strong>{{vm.travelerStore.cabinClassTxt}}</strong>
+                            </p>
+                        </div>
+                        <a (click)="onChangeDest(vm.trip.destination[0])" class="btn-change">변경</a>
+                        <button class="btn-form-search">검색</button>
+                    </div>
+                </div>
+
+                <!-- 다구간 -->
+                <div class="tab-pane" [class.active]="vm.tripTypeCode === 'MD'">
+
+                    <!-- 구간 01 -->
+                    <div class="search-area-form">
+                        <div class="form-column">
+                            <strong>구간</strong><strong>01</strong>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!(vm.trip.destination[0].origin.val || vm.trip.destination[0].origin.name) && f.submitted">
+                            <p class="title">출발지</p>
+                            <p class="text">
+                                <input type="text" data-target="tgOrigin" data-click-ignore="true" value="{{vm.trip.destination[0].origin.name}}{{vm.trip.destination[0].origin.val? ' (' + vm.trip.destination[0].origin.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onOriginStateFocus($event, 'tgOrigin','origin', 0)" (focusout)="onStatfocusout($event)" (keyup)="onOriginStateKeyup($event)">
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!(vm.trip.destination[0].dest.val || vm.trip.destination[0].dest.name) && f.submitted">
+                            <p class="title">도착지</p>
+                            <p class="text">
+                                <input type="text" data-target="tgOrigin" data-click-ignore="true" value="{{vm.trip.destination[0].dest.name}}{{vm.trip.destination[0].dest.val? ' (' + vm.trip.destination[0].dest.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onDestinationStateFocus($event, 'tgDestination','destination', 0)" (focusout)="onStatfocusout($event)" (keyup)="onDestinationStateKeyup($event)">
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!vm.trip.destination[0].date && f.submitted" (click)="onCalendar(0)">
+                            <p class="title">여행일정</p>
+                            <p class="text calendar">
+                                <strong *ngIf="vm.trip.destination[0].date === ''" class="placeholder">날짜 선택</strong>
+                                <strong *ngIf="vm.trip.destination[0].date !== ''">{{vm.trip.destination[0].date | amDateFormat:'MM.DD(dd)'}}</strong>
+                            </p>
+                        </div>
+                        <a (click)="onChangeDest(vm.trip.destination[0])" class="btn-change">변경</a>
+                    </div>
+
+                    <!-- 구간 02 -->
+                    <div class="search-area-form">
+                        <div class="form-column">
+                            <strong>구간</strong><strong>02</strong>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!(vm.trip.destination[1].origin.val || vm.trip.destination[1].origin.name) && f.submitted">
+                            <p class="title">출발지</p>
+                            <p class="text">
+                                <input type="text" data-target="tgOrigin" data-click-ignore="true" value="{{vm.trip.destination[1].origin.name}}{{vm.trip.destination[1].origin.val? ' (' + vm.trip.destination[1].origin.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onOriginStateFocus($event, 'tgOrigin','origin', 1)" (focusout)="onStatfocusout($event)" (keyup)="onOriginStateKeyup($event)">
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!(vm.trip.destination[1].dest.val || vm.trip.destination[1].dest.name) && f.submitted">
+                            <p class="title">도착지</p>
+                            <p class="text">
+                                <input type="text" data-target="tgOrigin" data-click-ignore="true" value="{{vm.trip.destination[1].dest.name}}{{vm.trip.destination[1].dest.val? ' (' + vm.trip.destination[1].dest.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onDestinationStateFocus($event, 'tgDestination','destination', 1)" (focusout)="onStatfocusout($event)" (keyup)="onDestinationStateKeyup($event)">
+                            </p>
+                        </div>
+                        <div class="form-column" [class.valid-error]="!(vm.trip.destination[1].date || vm.trip.destination[1].date) && f.submitted" (click)="onCalendar(1)">
+                            <p class="title">여행일정</p>
+                            <p class="text calendar">
+                                <strong *ngIf="vm.trip.destination[1].date === ''" class="placeholder">날짜 선택</strong>
+                                <strong *ngIf="vm.trip.destination[1].date !== ''">{{vm.trip.destination[1].date | amDateFormat:'MM.DD(dd)'}}</strong>
+                            </p>
+                        </div>
+                        <a (click)="onChangeDest(vm.trip.destination[1])" class="btn-change">변경</a>
+                    </div>
+
+                    <!-- 여정 추가 누르면 나오는 영역 시작 -->
+                    <div class="search-area-form decreasing" *ngFor="let item of vm.trip.destination | slice:2; index as i ">
+                        <div class="form-column-group">
+                            <div class="form-column">
+                                <strong>구간</strong><strong>0{{i+3}}</strong>
+                            </div>
+                            <div class="form-column" [class.valid-error]="!(vm.trip.destination[i+2].origin.val || vm.trip.destination[i+2].origin.name) && f.submitted">
+                                <p class="title">출발지</p>
+                                <p class="text">
+                                    <input type="text" data-target="tgOrigin" data-click-ignore="true" value="{{vm.trip.destination[i+2].origin.name}}{{vm.trip.destination[i+2].origin.val? ' (' + vm.trip.destination[i+2].origin.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onOriginStateFocus($event, 'tgOrigin','origin', i+2)" (focusout)="onStatfocusout($event)" (keyup)="onOriginStateKeyup($event)">
+                                </p>
+                            </div>
+                            <div class="form-column" [class.valid-error]="!(vm.trip.destination[i+2].dest.val || vm.trip.destination[i+2].dest.name) && f.submitted">
+                                <p class="title">도착지</p>
+                                <p class="text">
+                                    <input type="text" data-target="tgOrigin" data-click-ignore="true" value="{{vm.trip.destination[i+2].dest.name}}{{vm.trip.destination[i+2].dest.val? ' (' + vm.trip.destination[i+2].dest.val + ')' : ''}}" placeholder="도시명 또는 공항명을 검색하세요" (focus)="onDestinationStateFocus($event, 'tgDestination','destination', i+2)" (focusout)="onStatfocusout($event)" (keyup)="onDestinationStateKeyup($event)">
+                                </p>
+                            </div>
+                            <div class="form-column" [class.valid-error]="!vm.trip.destination[i+2].date && f.submitted" (click)="onCalendar(i+2)">
+                                <p class="title">여행일정</p>
+                                <p class="text calendar">
+                                    <strong *ngIf="vm.trip.destination[i+2].date === ''" class="placeholder">날짜 선택</strong>
+                                    <strong *ngIf="vm.trip.destination[i+2].date !== ''">{{vm.trip.destination[i+2].date | amDateFormat:'MM.DD(dd)'}}</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <a (click)="onChangeDest(vm.trip.destination[i+2])" class="btn-change">변경</a>
+                        <a (click)="onDelete(i)" class="btn-decreasing" title="삭제">삭제</a>
+                    </div>
+
+                    <!-- 여정 추가 누르면 나오는 영역 끝 -->
+                    <div class="search-area-form adding">
+                        <a (click)="onAdd()" class="btn lg dashline" title="여정 추가">여정 추가</a>
+                        <div class="form-column" [class.valid-error]="!vm.travelerStore.cabinClassTxt && f.submitted" (click)="onTraveler(vm.trip.destination.length-1)">
+                            <p class="title">여행인원</p>
+                            <p class="text user">
+                                <strong>{{vm.travelerStore.cabinClassTxt}}</strong>
+                            </p>
+                        </div>
+                        <button class="btn-form-search">검색</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- 항공 목적지 검색 (가는편)-->
+            <div *ngIf="isOriginObj" class="c-destination" [ngStyle]="{'top.px':originObj.top, 'left.px':originObj.left}">
+                <app-modal-destination [storeCategoryType]="originObj.storeCategoryType" [isState]="originObj.state" [storeId]="originObj.storeId" [majorDestinationRq]="originObj.majorDestinationRq" [destinationRq]="originObj.destinationRq" [inputId]="originObj.inputId" (appClickOutside)="onDestinationClose($event)"></app-modal-destination>
+            </div>
+
+            <!-- 항공 목적지 검색 (오는편)-->
+            <div *ngIf="isDestinationObj" class="c-destination" [ngStyle]="{'top.px':destinationObj.top, 'left.px':destinationObj.left}">
+                <app-modal-destination [storeCategoryType]="destinationObj.storeCategoryType" [isState]="destinationObj.state" [storeId]="destinationObj.storeId" [majorDestinationRq]="destinationObj.majorDestinationRq" [destinationRq]="destinationObj.destinationRq" [inputId]="destinationObj.inputId" (appClickOutside)="onDestinationClose($event)"></app-modal-destination>
+            </div>
+
+            <!-- 캘린더-->
+            <div class="c-calendar" [ngStyle]="{'top.px':calendarObj.top, 'right.px':calendarObj.right}">
+                <app-common-modal-calendar *ngIf="calendarObj.state === 'isOpen'" [storeCategoryType]="calendarObj.storeCategoryType" [initialState]="calendarObj.initialState" (close)="calendarObj.closeEvt(this)" class="calendar-wrap"></app-common-modal-calendar>
+            </div>
+
+            <!-- 여행인원 옵션 -->
+            <div class="c-traveler-option" [ngStyle]="{'top.px':travelerObj.top, 'right.px':travelerObj.right}">
+                <app-flight-modal-traveler-option *ngIf="travelerObj.state === 'isOpen'" [selectedOption]="travelerObj.selectedOption" (close)="travelerObj.closeEvt(this)"></app-flight-modal-traveler-option>
+            </div>
+        </div>
+    </div>
+
+</div>

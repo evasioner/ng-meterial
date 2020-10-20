@@ -1,0 +1,43 @@
+<div class="folding line between">
+    <form [formGroup]="dateForm" (ngSubmit)="onSubmit(dateForm)" novalidate>
+
+        <div class="folding-detail">
+            <div class="date-search">
+                <div class="tab-header type2 boder-bottom">
+                    <div class="tab-header-outer">
+                        <!-- 선택 btn.md.default / 선택전 .btn.md.light.line -->
+                        <a (click)="clickPeriod(0)" class="btn md" [ngClass]="{'default': periodKey === 0, 'light line': periodKey !== 0}">1개월</a>
+                        <a (click)="clickPeriod(1)" class="btn md" [ngClass]="{'default': periodKey === 1, 'light line': periodKey !== 1}">3개월</a>
+                        <a (click)="clickPeriod(2)" class="btn md" [ngClass]="{'default': periodKey === 2, 'light line': periodKey !== 2}">6개월</a>
+                        <a (click)="clickPeriod(3)" class="btn md" [ngClass]="{'default': periodKey === 3, 'light line': periodKey !== 3}">1년</a>
+                        <div class="input md no-pd line" (click)="onFromDateClick()">
+                            <i class="icon sm calendar2"></i>
+                            <input type="text" readonly [value]="vm.formDateStr | amDateFormat:'YYYY-MM-DD'" [formControlName]="'formDateStr'">
+                        </div>
+
+                        <!-- <div class="dash">-</div> -->
+
+                        <div class="input md no-pd line" (click)="onFromDateClick()">
+                            <i class="icon sm calendar2"></i>
+                            <input type="text" readonly [value]="vm.toDateStr | amDateFormat:'YYYY-MM-DD'" [formControlName]="'toDateStr'">
+                        </div>
+
+                    </div>
+                    <!-- 직접입력 선택시 .calendar-group에 .active 추가 -->
+                    <!-- .calendar-group에 .active 추가하면 보여짐 -->
+
+
+
+
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn md default" role="button">검색</button>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </form>
+</div>

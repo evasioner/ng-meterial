@@ -1,0 +1,88 @@
+<div class="modal type2 auto">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">상품 비교</h1>
+            <a (click)="modalClose();" class="btn-common-modal-close">닫기</a>
+        </div>
+        <div class="modal-body">
+            <div class="modal-compare">
+                <!-- 호텔 비교 아이템 -->
+                <div *ngFor="let compareItem of compareList; index as i" class="compare-global-item">
+                    <div class="compare-information-top" [ngStyle]="{background: 'url(' + compareItem.result.defaultPhotoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}"></div>
+                    <ul class="compare-information">
+                        <li>
+                            <dl>
+                                <dt>호텔명</dt>
+                                <dd>
+                                    <ng-container *ngIf="compareItem.result.hotelNameLn;else elseif1">
+                                        {{compareItem.result.hotelNameLn}}
+                                    </ng-container>
+                                    <ng-template #elseif1>
+                                        <ng-container *ngIf="compareItem.result.hotelNameEn">
+                                            {{compareItem.result.hotelNameEn}}
+                                        </ng-container>
+                                    </ng-template>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>호텔 등급</dt>
+                                <dd>{{compareItem.result.starRating | number  : '1.0-1'}}성급</dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>호텔 주소</dt>
+                                <dd>
+                                    <ng-container *ngIf="compareItem.result.addressLn;else elseif3">
+                                        {{compareItem.result.addressLn}}
+                                    </ng-container>
+                                    <ng-template #elseif3>
+                                        <ng-container *ngIf="compareItem.result.addressEn">
+                                            {{compareItem.result.addressEn}}</ng-container>
+                                    </ng-template>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>호텔 위치</dt>
+                                <dd>
+                                    <ng-container *ngIf="compareItem.result.pois.length > 0;else elsePois">
+                                        {{compareItem.result.pois[0].poiName}}에서
+                                        {{compareItem.result.pois[0].distance | number:'.1-1'}}km
+                                    </ng-container>
+                                    <ng-template #elsePois>
+                                        -
+                                    </ng-template>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>평점</dt>
+                                <dd>-</dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>편의시설</dt>
+                                <dd>-</dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>가격</dt>
+                                <dd>{{ compareItem.result.roomType.amountSum | number }}원</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <div class="btn-group">
+                        <a (click)="onHotelDtl(compareItem.result.hotelCode)" class="btn lg default">선택하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

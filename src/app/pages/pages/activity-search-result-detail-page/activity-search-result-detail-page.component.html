@@ -1,0 +1,300 @@
+<div id="wrap" class="p-activity-search-result-detail">
+
+    <!-- 노랑풍선 공통 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+        <div id="contents">
+            <!-- search-form-top -->
+            <app-activity-search-form [pageState]="viewModel.pageState"></app-activity-search-form>
+
+            <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+            <div class="contents-area">
+
+                <!-- 예약 단계 표시 -->
+                <app-activity-breadcrumbs class="breadcrumbs"></app-activity-breadcrumbs>
+
+                <div class="page-thumbnail-list">
+                    <div class="main-thumbnail">
+                        <a (click)="onThumbnailClick($event, 0)" [ngStyle]="{background:'url(' + viewModel.mainImage + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}"></a>
+                    </div>
+                    <ul>
+                        <li *ngFor="let item of viewModel.images | slice : 1 : 5; index as index;">
+                            <a *ngIf="index < 3" (click)="onThumbnailClick($event, (index + 1))" [ngStyle]="{background:'url(' + item.photoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}"></a>
+                            <!-- 마지막 li의 a에 있는 photo-total-count에 +i 형식으로 전체 사진 갯수를 넣어준다. -->
+                            <a *ngIf="index === 3" (click)="onThumbnailClick($event, (index + 1))" [ngStyle]="{background:'url(' + item.photoUrl + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}" [attr.photo-total-count]="viewModel.imageCount"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="activity-detail-title">
+                    <h2>{{ viewModel.activityName }}</h2>
+                    <div class="sub-information">
+                        <strong class="rate">{{ viewModel.reviewAverage }}</strong>
+                        <strong class="rating-text">아주좋음</strong>
+                        <span class="review-total">(총 {{ viewModel.reviewCount | number}}건)</span>
+                        <span class="product-code">상품코드 {{ viewModel.activityCode }}</span>
+                    </div>
+                    <ul class="summary">
+                        <li *ngIf="false"><span class="type1">내일부터 예약가능</span></li>
+                        <li *ngIf="viewModel.instantConfirmYn"><span class="type2">바로 사용 가능</span></li>
+                        <li *ngIf="false"><span class="type3">24시간 전 취소 가능</span></li>
+                        <li *ngIf="false"><span class="type4">모바일 또는 출력된 바우처</span></li>
+                    </ul>
+                </div>
+
+                <div class="tab-header type1 round mb60">
+                    <div class="tab-header-outer">
+
+                        <ng-container *ngFor="let item of viewModel.tabMenuList">
+                            <a *ngIf="item.show" (click)="onTabClick($event, item)" [class.active]="item.active" class="tab-header-item "><span>{{ item.text }}</span></a>
+                        </ng-container>
+
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="contents left">
+                    <div class="activity-detail-contents">
+
+                        <ng-container *ngFor="let item of viewModel.tabMenuList; index as index;">
+                            <div *ngIf="item.show" [attr.id]="item.id" class="contents-item">
+                                <h3><strong>{{ item.text }}</strong></h3>
+                                <div *ngIf="item.id !== 'after' && item.id !== 'itinerary'" class="contents-item-box information">
+                                    <dl *ngIf="item.id === 'info'">
+                                        <dd [innerHTML]="viewModel.productDescDetail"></dd>
+                                    </dl>
+                                    <dl *ngIf="item.id === 'info' && item.more">
+                                        <dt>포함사항</dt>
+                                        <dd [innerHTML]="viewModel.includedDetail"></dd>
+                                    </dl>
+                                    <dl *ngIf="item.id === 'info' && item.more">
+                                        <dt>불포함사항</dt>
+                                        <dd [innerHTML]="viewModel.excludedDetail"></dd>
+                                    </dl>
+                                    <dl *ngIf="item.id === 'info' && item.more">
+                                        <dt>주의사항</dt>
+                                        <dd [innerHTML]="viewModel.cautionDetail"></dd>
+                                    </dl>
+                                    <dl *ngIf="item.id === 'info' && item.more">
+                                        <dd [innerHTML]="viewModel.includedDetail"></dd>
+                                    </dl>
+                                    <dl *ngIf="item.id === 'use'">
+                                        <dd [innerHTML]="viewModel.howToUse"></dd>
+                                    </dl>
+                                    <dl *ngIf="item.id === 'cancel'">
+                                        <dd [innerHTML]="viewModel.othersDescDetail"></dd>
+                                    </dl>
+
+                                    <!-- 더보기 클릭시 .hide를 삭제한다 -->
+                                    <a *ngIf="!item.more" (click)="moreInfo($event, item)" class="btn-contents-more">더보기</a>
+                                </div>
+
+                                <div *ngIf="item.id === 'itinerary'" class="contents-item-box detail">
+                                    <accordion class="m-ngx-bootstrap-accordion">
+                                        <accordion-group *ngFor="let item of viewModel.itineraries; index as index;" [isOpen]="index === 0" class="accordion type1" [heading]="item.itineraryTitle">
+                                            <div class="accordion-body">
+                                                {{ item.itineraryDetail }}
+                                            </div>
+                                        </accordion-group>
+                                    </accordion>
+                                </div>
+
+                                <div *ngIf="item.id === 'after'" class="contents-item-box review-contents">
+                                    <div class="review-contents-header type1">
+                                        <div class="rating-total">
+                                            <strong class="rating-average">4.5</strong>
+                                            <strong class="rating-text">아주좋음</strong>
+                                            <span class="review-total">(총 1,000건)</span>
+                                            <!-- 별점은 .s0, s0h, s1, .s1h ~ .s5까지 있음 -->
+                                            <span class="review-star-rating lg s5"></span>
+                                        </div>
+                                        <ul class="filter">
+                                            <li><a href="#" class="active">최신순</a></li>
+                                            <li><a href="#">평점순</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="review-item">
+                                        <div class="customer">
+                                            <div class="review-item-header">
+                                                <strong class="rate">5.0</strong>
+                                                <strong class="user">ten****</strong>
+                                                <!-- 별점은 .s0, s0h, s1, .s1h ~ .s5까지 있음 -->
+                                                <span class="review-star-rating md s5"></span>
+                                                <span class="ml-auto">2019.08.29</span>
+                                            </div>
+                                            <div class="review-text">
+                                                <div class="review-text-box reduce">
+                                                    위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                                                </div>
+                                                <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                                                <a href="#" class="btn-more active">더보기</a>
+                                            </div>
+                                            <ul class="review-photo-list md">
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')" photo-total-count="+3"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="seller">
+                                            <div class="review-item-header">
+                                                <strong>판매자</strong>
+                                                <span>2020.07.09</span>
+                                            </div>
+                                            <div class="review-text">
+                                                기분 좋게 사용하셨다고 하니 다행입니다.<br>앞으로도 많이 이용해주세요.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="review-item">
+                                        <div class="customer">
+                                            <div class="review-item-header">
+                                                <strong class="rate">5.0</strong>
+                                                <strong class="user">ten****</strong>
+                                                <!-- 별점은 .s0, s0h, s1, .s1h ~ .s5까지 있음 -->
+                                                <span class="review-star-rating md s5"></span>
+                                                <span class="ml-auto">2019.08.29</span>
+                                            </div>
+                                            <div class="review-text">
+                                                <div class="review-text-box reduce">
+                                                    위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                                                </div>
+                                                <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                                                <a href="#" class="btn-more active">더보기</a>
+                                            </div>
+                                            <ul class="review-photo-list md">
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="photo-item" style="background-image:url('/assets/images/temp/@temp-freestyle-item-image.jpg')" photo-total-count="+3"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="seller">
+                                            <div class="review-item-header">
+                                                <strong>판매자</strong>
+                                                <span>2020.07.09</span>
+                                            </div>
+                                            <div class="review-text">
+                                                기분 좋게 사용하셨다고 하니 다행입니다.<br>앞으로도 많이 이용해주세요.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 더보기 클릭시 .hide를 삭제한다 -->
+                                    <a href="#" class="btn-contents-more">더보기</a>
+                                </div>
+                            </div>
+
+                        </ng-container>
+
+                        <div *ngIf="false" class="contents-item">
+                            <h3><strong>추천 액티비티</strong></h3>
+                            <div class="contents-box flex-between">
+                                <!-- 추천 액티비티 아이템 -->
+                                <a href="#" class="activity-recommend-item">
+                                    <div class="activity-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;"></div>
+                                    <div class="activity-information">
+                                        <p class="title">마카오 하우스 오브 댄싱 워터쇼 (QR코드 바로사용 가능)</p>
+                                        <p class="location">미국, 로스앤젤레스</p>
+                                        <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                                    </div>
+                                </a>
+                                <!-- 추천 액티비티 아이템 -->
+                                <a href="#" class="activity-recommend-item">
+                                    <div class="activity-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;"></div>
+                                    <div class="activity-information">
+                                        <p class="title">마카오 하우스 오브 댄싱 워터쇼 (QR코드 바로사용 가능)</p>
+                                        <p class="location">미국, 로스앤젤레스</p>
+                                        <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="aside right">
+                    <form [formGroup]="mainForm" #form="ngForm">
+                        <div class="aside-activity-detail">
+                            <div class="seller">
+                                <div class="seller-name">
+                                    <span class="logo"><img [src]="viewModel.vendorCompImage" alt=""></span>
+                                    <span class="name">{{ viewModel.vendorCompName }}</span>
+                                </div>
+                                <a *ngIf="false" class="btn md light line inline">문의하기</a>
+                            </div>
+                            <dl class="option-list">
+                                <dt>옵션 선택</dt>
+                                <dd>
+                                    <!-- 클릭시 캘린더 띄우고 입력 완료되면 .placeholder 클랙스 지운후 데이터 입력 -->
+                                    <div (click)="onCalendar($event)" class="input lg line">
+                                        <i class="icon sm calendar2"></i>
+                                        <input formControlName="serviceDate" type="text" class="cursor-p" placeholder="이용일을 선택해 주세요." readonly>
+                                        <span class="valid-msg">선택 되지 않은 옵션을 확인해주세요.</span>
+                                    </div>
+                                    <app-common-modal-calendar *ngIf="calendarObj.state === 'isOpen'" [storeCategoryType]="calendarObj.storeCategoryType" [initialState]="calendarObj.initialState" (close)="onCanlendarClose()" class="calendar-wrap c-calendar"></app-common-modal-calendar>
+                                </dd>
+                                <dd *ngIf="viewModel.optionList.length > 0">
+                                    <div class="select-box lg line">
+                                        <select formControlName="optionCode" (change)="selectOption($event)">
+                                            <option value="" disabled selected>옵션을 선택해 주세요.</option>
+                                            <option *ngFor="let item of viewModel.optionList" [value]="item.optionCode">{{ item.optionNameLn }}</option>
+                                        </select>
+                                        <span class="valid-msg">선택 되지 않은 옵션을 확인해주세요.</span>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl *ngIf="mainForm.value.optionCode !== ''" class="option-result">
+                                <dt>선택 내역</dt>
+                                <dd>{{ viewModel.totalSelectText }}</dd>
+                                <dd *ngFor="let item of viewModel.age; index as index;" class="option-price">
+                                    <div class="counter-button">
+                                        {{ item.name }}
+                                        <button (click)="onOptionDown($event, index)" class="btn-counter down" role="button">감소</button>
+                                        <span class="counter-num">{{ item.count | number }}</span>
+                                        <button (click)="onOptionUp($event, index)" class="btn-counter up" role="button">증가</button>
+                                    </div>
+                                    <span class="price">{{ item.countAmountSum | number }}원</span>
+                                </dd>
+                            </dl>
+                            <div class="total-price">
+                                <span>총 결제 금액</span>
+                                <strong>{{ viewModel.amountSum | number }}원</strong>
+                            </div>
+                            <div class="btn-group flex-around mt30">
+                                <a class="btn lg icon-only cart">장바구니</a>
+                                <a class="btn lg icon-only share">공유하기</a>
+                                <a (click)="onSubmit($event)" class="btn lg default">바로 예약</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 노랑풍선 공통 푸터 -->
+    <app-footer *ngIf="!viewModel.loadingBool"></app-footer>
+</div>

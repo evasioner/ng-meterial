@@ -1,0 +1,10 @@
+<div class="activity-recent-item" *ngFor="let item of viewModel.recentList; index as index;">
+    <a (click)="onDeleteItem($event, index, item.index)" class="btn-common-close">삭제</a>
+    <a (click)="onSearchResult($event, item.index)" class="activity-recent-item-contents">
+        <ul>
+            <li><span class="location">{{item.cityNameLn}}</span></li>
+            <li><span class="option">{{item.activityNameEn}}</span></li>
+            <li><span class="price"><strong>{{item.amountSum}}</strong>원</span><span class="now">바로 사용</span></li>
+        </ul>
+    </a>
+</div>

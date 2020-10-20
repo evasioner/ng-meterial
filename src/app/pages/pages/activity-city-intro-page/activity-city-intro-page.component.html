@@ -1,0 +1,440 @@
+<div id="wrap">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+        <div id="contents">
+            <!-- 메인 비주얼 -->
+            <div id="city-visual" [ngStyle]="{'background-image': 'url(' + viewModel.cityImage + '), url(/assets/images/temp/@temp-activity-city-visual.png)'}">
+                <h2 class="city-name">{{ viewModel.cityName }}</h2>
+                <form [formGroup]="mainForm" (ngSubmit)="onSubmit()" novalidate #form="ngForm">
+                    <div class="search-area" data-target="tg-search-area-form">
+                        <input formControlName="name" data-target="tgDesInput" data-click-ignore="true" (focus)="onDestinationFocus($event)" (keyup)="onDestinationKeyup($event)" type="text" placeholder="{{ viewModel.cityName }}의 상품을 검색하세요">
+                        <button role="button">검색</button>
+                    </div>
+
+                    <!-- 목적지 검색-->
+                    <div *ngIf="destinationObj.state !== 'isDefault'" class="c-destination" [ngStyle]="{'top.px':destinationObj.top}">
+                        <app-modal-destination [storeCategoryType]="destinationObj.storeCategoryType" [isState]="destinationObj.state" [storeId]="destinationObj.storeId" [majorDestinationRq]="destinationObj.majorDestinationRq" [destinationRq]="destinationObj.destinationRq" [inputId]="destinationObj.inputId" (appClickOutside)="clickOutsideDest($event)"></app-modal-destination>
+                    </div>
+                </form>
+
+                <div *ngIf="false" class="tag-list">
+                    <a href="#" class="tag-item dark">#그리피스전망대</a>
+                    <a href="#" class="tag-item dark">#그리피스전망대</a>
+                    <a href="#" class="tag-item dark">#그리피스전망대</a>
+                </div>
+
+                <a *ngIf="viewModel.cityInfoFlag" class="city-tool" (click)="goCityDetail($event)">
+                    <div class="weather" *ngFor="let item of viewModel.weather | slice : 0 : 1;">
+                        <img [attr.src]="'/assets/images/icons/weather/' + (item.weatherCode | weatherIcon)">
+                        <strong>{{ item.maxTemperature | number : '1.0-0' }}</strong>
+                    </div>
+                    <div class="time">
+                        <span>시차, {{ viewModel.time.difference }}시간</span>
+                        <strong>{{ viewModel.time.fullLocalTime | timeAmPm : 'YYYY.MM.DD hh:mm' }}{{ viewModel.time.fullLocalTime | date : 'hh:mm' }}</strong>
+                    </div>
+                    <div class="currency">
+                        <span>1 {{ viewModel.currency.originCurrencyCode }}</span>
+                        <strong>{{ viewModel.currency.convertRate | number }}원</strong>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 액티비티 카테고리 -->
+            <div class="contents-item middle">
+                <div class="activity-city-category">
+                    <a *ngFor="let item of viewModel.categoryList index as index;" class="city-category-item" (click)="onGoCategorySearchClick($event, index)">
+                        <i [ngClass]="item.styleType"></i>
+                        <p><strong>{{ item.count | number }}</strong></p>
+                        <p>{{ item.translateName }}</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 추천 액티비티 -->
+            <div class="contents-item middle">
+                <h3 class="contents-title"><strong>로스앤젤레스</strong> 추천 액티비티
+                    <span class="horizontal-control-button">
+                        <a href="#" class="btn-control prev">이전</a>
+                        <a href="#" class="btn-control next">다음</a>
+                    </span>
+                </h3>
+                <div class="contents-box flex-wrap">
+                    <!-- 인기 액티비티 태그 아이템 -->
+                    <div class="activity-interest-item">
+                        <div class="activity-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="item-category">투어</span>
+                            </div>
+                        </div>
+                        <div class="activity-information">
+                            <p class="title">마카오 하우스 오브 댄싱 워터쇼 (QR코드 바로사용 가능)</p>
+                            <p class="location">미국, 로스앤젤레스</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 인기 액티비티 태그 아이템 -->
+                    <div class="activity-interest-item">
+                        <div class="activity-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="item-category">투어</span>
+                            </div>
+                        </div>
+                        <div class="activity-information">
+                            <p class="title">마카오 하우스 오브 댄싱 워터쇼 (QR코드 바로사용 가능)</p>
+                            <p class="location">미국, 로스앤젤레스</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 인기 액티비티 태그 아이템 -->
+                    <div class="activity-interest-item">
+                        <div class="activity-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="item-category">투어</span>
+                            </div>
+                        </div>
+                        <div class="activity-information">
+                            <p class="title">마카오 하우스 오브 댄싱 워터쇼 (QR코드 바로사용 가능)</p>
+                            <p class="location">미국, 로스앤젤레스</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 베스트 액티비티 -->
+            <div class="contents-item middle">
+                <h3 class="contents-title"><strong>로스앤젤레스</strong> 베스트 액티비티
+                    <span class="horizontal-control-button">
+                        <a href="#" class="btn-control prev">이전</a>
+                        <a href="#" class="btn-control next">다음</a>
+                    </span>
+                </h3>
+                <div class="contents-box flex-wrap">
+                    <!-- 인기 액티비티 태그 아이템 -->
+                    <div class="activity-interest-item">
+                        <div class="activity-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="item-category">투어</span>
+                            </div>
+                        </div>
+                        <div class="activity-information">
+                            <p class="title">마카오 하우스 오브 댄싱 워터쇼 (QR코드 바로사용 가능)</p>
+                            <p class="location">미국, 로스앤젤레스</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 인기 액티비티 태그 아이템 -->
+                    <div class="activity-interest-item">
+                        <div class="activity-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="item-category">투어</span>
+                            </div>
+                        </div>
+                        <div class="activity-information">
+                            <p class="title">마카오 하우스 오브 댄싱 워터쇼 (QR코드 바로사용 가능)</p>
+                            <p class="location">미국, 로스앤젤레스</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 인기 액티비티 태그 아이템 -->
+                    <div class="activity-interest-item">
+                        <div class="activity-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="item-category">투어</span>
+                            </div>
+                        </div>
+                        <div class="activity-information">
+                            <p class="title">마카오 하우스 오브 댄싱 워터쇼 (QR코드 바로사용 가능)</p>
+                            <p class="location">미국, 로스앤젤레스</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 추천 맞춤 여행 -->
+            <div class="contents-item middle">
+                <h3 class="contents-title"><strong>홍길동</strong> 님을 위한 맞춤 자유여행</h3>
+                <div class="category-filter">
+                    <a href="#" class="category-item active">#휴양</a>
+                    <a href="#" class="category-item">#가족</a>
+                    <a href="#" class="category-item">#연인</a>
+                    <a href="#" class="category-item">#축제</a>
+                    <a href="#" class="category-item">#혼자</a>
+                    <a href="#" class="text-link">전체보기</a>
+                </div>
+                <div class="contents-box flex-wrap">
+                    <!-- 자유여행 아이템 타입1 -->
+                    <div class="freestyle-item type1">
+                        <div class="item-radius">
+                            <div class="freestyle-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                                <a href="#" class="btn-common-cart">장바구니</a>
+                                <div class="article">
+                                    <span class="item-name">치앙마이 5박 7일</span>
+                                    <span class="label mean">4.5</span>
+                                </div>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                        <div class="freestyle-information">
+                            <p class="title">놀라운 모험의 세계로</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입2 -->
+                    <div class="freestyle-item type2">
+                        <div class="item-radius">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="freestyle-information">
+                                <p class="item-name">코사무이 5박 7일</p>
+                                <p class="title">놀라운 모험의 세계로</p>
+                                <div class="freestyle-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;"></div>
+                                <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입1 -->
+                    <div class="freestyle-item type1">
+                        <div class="item-radius">
+                            <div class="freestyle-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                                <a href="#" class="btn-common-cart">장바구니</a>
+                                <div class="article">
+                                    <span class="item-name">치앙마이 5박 7일</span>
+                                    <span class="label mean">4.5</span>
+                                </div>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                        <div class="freestyle-information">
+                            <p class="title">놀라운 모험의 세계로</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입1 -->
+                    <div class="freestyle-item type1">
+                        <div class="item-radius">
+                            <div class="freestyle-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                                <a href="#" class="btn-common-cart">장바구니</a>
+                                <div class="article">
+                                    <span class="item-name">치앙마이 5박 7일</span>
+                                    <span class="label mean">4.5</span>
+                                </div>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                        <div class="freestyle-information">
+                            <p class="title">놀라운 모험의 세계로</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입1 -->
+                    <div class="freestyle-item type1">
+                        <div class="item-radius">
+                            <div class="freestyle-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                                <a href="#" class="btn-common-cart">장바구니</a>
+                                <div class="article">
+                                    <span class="item-name">치앙마이 5박 7일</span>
+                                    <span class="label mean">4.5</span>
+                                </div>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                        <div class="freestyle-information">
+                            <p class="title">놀라운 모험의 세계로</p>
+                            <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 타입2 -->
+                    <div class="freestyle-item type2">
+                        <div class="item-radius">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="freestyle-information">
+                                <p class="item-name">코사무이 5박 7일</p>
+                                <p class="title">놀라운 모험의 세계로</p>
+                                <div class="freestyle-image" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;"></div>
+                                <p class="price"><strong>500,000</strong><span>원 부터</span></p>
+                            </div>
+                            <div class="category-list">
+                                <span class="flight">항공</span>
+                                <span class="hotel">호텔</span>
+                                <span class="activity">액티비티</span>
+                                <span class="convenience">여행편의</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item middle">
+                <h3 class="contents-title">노랑풍선 고객의 <strong>실시간</strong> 여행플랜</h3>
+                <div class="category-filter">
+                    <a href="#" class="category-item active">공유 많은 순</a>
+                    <a href="#" class="category-item">회원 추천 순</a>
+                    <a href="#" class="category-item">가격 낮은 순</a>
+                    <a href="#" class="category-item">여행 기간 짧은 순</a>
+                    <a href="#" class="category-item">예약 많은 순</a>
+                    <a href="#" class="text-link">전체보기</a>
+                </div>
+                <div class="contents-box flex-wrap">
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:url('/assets/images/temp/@temp-plan-item-image.png') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:url('/assets/images/temp/@temp-plan-item-image.png') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:url('/assets/images/temp/@temp-plan-item-image.png') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:url('/assets/images/temp/@temp-plan-item-image.png') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:url('/assets/images/temp/@temp-plan-item-image.png') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="plan-image" style="background:url('/assets/images/temp/@temp-plan-item-image.png') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                            <a href="#" class="btn-common-cart">장바구니</a>
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="plan-information">
+                            <p class="title">박종선님의 푸켓 5박 7일 여행플랜</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>라차섬</span><span>빠동</span></p>
+                            <p class="price"><strong>500,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 많이 찾는 인기 여행지 -->
+            <div class="contents-item middle">
+                <h3 class="contents-title"><strong>주변 여행지</strong>
+                    <span class="horizontal-control-button">
+                        <a href="#" class="btn-control prev">이전</a>
+                        <a href="#" class="btn-control next">다음</a>
+                    </span>
+                </h3>
+                <div class="contents-box flex-between">
+                    <!-- 인기 여행지 아이템 -->
+                    <div class="hotplace-item" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                        <strong>시드니</strong>
+                    </div>
+                    <!-- 인기 여행지 아이템 -->
+                    <div class="hotplace-item" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                        <strong>바로셀로나</strong>
+                    </div>
+                    <!-- 인기 여행지 아이템 -->
+                    <div class="hotplace-item" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                        <strong>오사카</strong>
+                    </div>
+                    <!-- 인기 여행지 아이템 -->
+                    <div class="hotplace-item" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                        <strong>타이페이</strong>
+                    </div>
+                    <!-- 인기 여행지 아이템 -->
+                    <div class="hotplace-item" style="background:url('/assets/images/temp/@temp-freestyle-item-image.jpg') 50% 50% no-repeat, url('/assets/images/icons/ico-nodata-image.png') 50% 50% #f5f5f5 no-repeat;">
+                        <strong>뉴질랜드</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 푸터 -->
+        <app-footer></app-footer>
+    </div>

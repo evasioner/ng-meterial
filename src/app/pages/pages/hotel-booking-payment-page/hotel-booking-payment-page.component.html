@@ -1,0 +1,297 @@
+<div id="wrap" class="p-hotel-booking-payment-page">
+    <!-- 헤더 -->
+    <app-header [headerConfig]="headerConfig"></app-header>
+
+    <!-- 컨덴츠 -->
+    <div id="container">
+        <div *ngIf="viewModel.loadingFlag" id="contents">
+            <form [formGroup]="pageForm" (ngSubmit)="onPay()" novalidate #f="ngForm">
+                <div class="contents-area">
+                    <div class="breadcrumbs">
+                        <div class="text-article">
+                            <p class="text"><strong>여행자 확인 및 결제</strong></p>
+                            <p class="sub-text">결제 정보 암호화로 안전한 거래를 진행하며, 개인 정보를 안전하게 보호하며 다른 용도로 사용하지 않습니다.</p>
+                        </div>
+                        <ul class="step">
+                            <li>
+                                <p class="num">1</p>
+                                <p class="text">호텔선택</p>
+                            </li>
+                            <li>
+                                <p class="num">2</p>
+                                <p class="text">룸타입선택</p>
+                            </li>
+                            <li class="active">
+                                <p class="num">3</p>
+                                <p class="text">결제하기</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contents">
+                        <div *ngIf="false" class="contents-item">
+                            <h2 class="heading-title1 line-bottom">할인 쿠폰/노랑 마일리지 적용</h2>
+                            <div class="row-list">
+                                <div class="row-item">
+                                    <div class="row-label">쿠폰 선택</div>
+                                    <div class="row-form">
+                                        <div class="select-box lg line">
+                                            <select name="" id="">
+                                                <option value="">미주노선 동방항공 묶음 쿠폰 (5%)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-item">
+                                    <div class="row-label">마일리지 사용</div>
+                                    <div class="row-form mileage">
+                                        <div class="input lg line">
+                                            <input type="text" placeholder="숫자만 입력" value="0" class="align-r" readonly>
+                                        </div>
+                                        <!-- 전액사용 버튼 누르면 .active 추가 -->
+                                        <a href="#" class="btn lg grey">전액사용</a>
+                                    </div>
+                                </div>
+                                <div class="row-item">
+                                    <div class="row-label">보유마일리지</div>
+                                    <div class="row-form align-r">
+                                        <strong>35,700<i class="icon sm mileage ml10"></i></strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="false" class="contents-item">
+                            <h2 class="heading-title1 line-bottom">카드 프로모션</h2>
+                            <div class="row-list">
+                                <div class="row-item">
+                                    <div class="row-label">프로모션 변경</div>
+                                    <div class="row-form">
+                                        <!-- 결제 수단이 계좌이체일 경우 disabled 시켜야함 -->
+                                        <div class="select-box lg line">
+                                            <select name="" id="">
+                                                <option value="">현대카드 프리미엄</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contents-item">
+                            <h2 class="heading-title1 line-bottom">결제 수단</h2>
+                            <div class="row-list mb20">
+                                <div class="row-item">
+                                    <div class="row-label">결제수단 선택</div>
+                                    <div class="row-form pay">
+                                        <a href="#" class="btn lg grey active">신용카드</a>
+                                        <a *ngIf="false" href="#" class="btn lg grey">계좌이체</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 계좌이체 시작 -->
+                            <div *ngIf="false" class="row-list">
+                                <div class="row-item">
+                                    <div class="row-label">이체 은행</div>
+                                    <div class="row-form">
+                                        <div class="select-box lg line">
+                                            <select required>
+                                                <option value="" disabled selected>은행을 선택해 주세요.</option>
+                                                <option value="">하나은행</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row-item">
+                                    <div class="row-label">예금주명</div>
+                                    <div class="row-form">
+                                        <div class="input lg line">
+                                            <input type="text" value="노랑풍선" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="text-list dot mt30">
+                                    <li>입금하실 계좌번호는 마이페이지에서 확인하실 수 있습니다.</li>
+                                    <li>일반 예약의 경우 예약 후 예약 확정 여부를 SMS로 통보해 드리니, 예약 확정을 받으신 후 입금하시기 바랍니다.<br>(입금 마감시간 : 예약
+                                        후
+                                        다음날 17:00까지)</li>
+                                    <li class="mt20"><strong class="color-main2">무통장 입금 시 주의사항</strong></li>
+                                    <li class="none">예약 후 다음날 17:00까지 입금하지 않으시면 예약이 자동으로 취소됩니다.</li>
+                                    <li class="none">주말/공휴일에 입금이 어려우신 경우, 신용카드를 이용해주세요.</li>
+                                    <li class="none">가상 계좌 납부 서비스 운영으로 지정하신 은행이 아닌 다른 은행으로 입금 안내가 이뤄질 수 있습니다.<br>(ex) 신한
+                                        100-XXX-0452</li>
+                                    <li class="none">환불은 반드시 예약자 본인 명의의 계좌로만 받으실 수 있습니다.</li>
+                                </ul>
+                            </div>
+                            <!-- 계좌이체 끝 -->
+                            <!-- 신용카드 한번에 결제 -->
+                            <div class="reservation-group mt40">
+                                <div formGroupName="payment" class="row-list">
+                                    <div class="row-item">
+                                        <div class="row-label">카드 소유</div>
+                                        <div class="row-form">
+                                            <div class="select-box lg line">
+                                                <select formControlName="cardHolderTypeCode" [class.valid-error]="payment.get('cardHolderTypeCode').errors && (f.submitted || payment.get('cardHolderTypeCode').dirty || payment.get('cardHolderTypeCode').touched)">
+                                                    <option *ngFor="let item of viewModel.useCardList" [value]="item.code">{{ item.text }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-item">
+                                        <div class="row-label">카드 종류</div>
+                                        <div class="row-form">
+                                            <div class="select-box lg line">
+                                                <select formControlName="cardMasterCode" [class.valid-error]="payment.get('cardMasterCode').errors && (f.submitted || payment.get('cardMasterCode').dirty || payment.get('cardMasterCode').touched)">
+                                                    <option *ngFor="let item of viewModel.cardList" [value]="item.code">{{ item.text }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-item">
+                                        <div class="row-label">카드 번호</div>
+                                        <div class="row-form">
+                                            <div class="input lg line">
+                                                <input type="text" placeholder="카드번호 입력" maxlength="16" formControlName="cardNo" [numOnly]="payment.get('cardNo')" [class.valid-error]="payment.get('cardNo').errors && (f.submitted || payment.get('cardNo').dirty || payment.get('cardNo').touched)">
+                                                <ng-container *ngIf="payment.get('cardNo').errors">
+                                                    <span *ngIf="payment.get('cardNo').errors.required" class="valid-msg">카드번호는 필수값입니다.</span>
+                                                    <span *ngIf="payment.get('cardNo').errors.maxlength" class="valid-msg">영문 성의 글자수는 16자 까지 입력 가능합니다.</span>
+                                                    <span *ngIf="payment.get('cardNo').errors.invalidMsg" class="valid-msg">{{payment.get('cardNo').errors.invalidMsg}}</span>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-item">
+                                        <div class="row-label">소유주명</div>
+                                        <div class="row-form">
+                                            <div class="input lg line">
+                                                <input type="text" style="text-transform: uppercase;" placeholder="영문 성" placeholder="소유주명 영어 입력" formControlName="cardHolderName" [enOnly]="payment.get('cardHolderName')" [class.valid-error]="payment.get('cardHolderName').errors && (f.submitted || payment.get('cardHolderName').dirty || payment.get('cardHolderName').touched)">
+                                                <ng-container *ngIf="payment.get('cardHolderName').errors">
+                                                    <span *ngIf="payment.get('cardHolderName').errors.required" class="valid-msg">소유주명은 필수값입니다.</span>
+                                                    <span *ngIf="payment.get('cardHolderName').errors.invalidMsg" class="valid-msg">{{payment.get('cardHolderName').errors.invalidMsg}}</span>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-item">
+                                        <div class="row-label">생년월일</div>
+                                        <div class="row-form">
+                                            <div class="input lg line">
+                                                <input type="text" placeholder="생년월일 입력(8자리)" maxlength="8" formControlName="cardHolderBirthday" [numOnly]="payment.get('cardHolderBirthday')" [class.valid-error]="payment.get('cardHolderBirthday').errors && (f.submitted || payment.get('cardHolderBirthday').dirty || payment.get('cardHolderBirthday').touched)">
+                                                <ng-container *ngIf="payment.get('cardHolderBirthday').errors">
+                                                    <span *ngIf="payment.get('cardHolderBirthday').errors.required" class="valid-msg">생년월일은 필수값입니다.</span>
+                                                    <span *ngIf="payment.get('cardHolderBirthday').errors.minlength" class="valid-msg">생년월일은 8자리(ex> 20001010) 입력해주세요.</span>
+                                                    <span *ngIf="payment.get('cardHolderBirthday').errors.invalidMsg" class="valid-msg">{{payment.get('cardHolderBirthday').errors.invalidMsg}}</span>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-item">
+                                        <div class="row-label">유효기간</div>
+                                        <div class="row-form date">
+                                            <div class="input lg line">
+                                                <input type="text" placeholder="유효기간 입력(월/년)" maxlength="4" formControlName="cardValidPeriod" [numOnly]="payment.get('cardValidPeriod')" [class.valid-error]="payment.get('cardValidPeriod').errors && (f.submitted || payment.get('cardValidPeriod').dirty || payment.get('cardValidPeriod').touched)">
+                                                <ng-container *ngIf="payment.get('cardValidPeriod').errors">
+                                                    <span *ngIf="payment.get('cardValidPeriod').errors.required" class="valid-msg">유효기간은 필수값입니다.</span>
+                                                    <span *ngIf="payment.get('cardValidPeriod').errors.minLength" class="valid-msg">유효기간은 4자로 입력 해주세요.</span>
+                                                    <span *ngIf="payment.get('cardValidPeriod').errors.invalidMsg" class="valid-msg">{{payment.get('cardValidPeriod').errors.invalidMsg}}</span>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="false" class="row-item">
+                                        <div class="row-label">CVC번호</div>
+                                        <div class="row-form date">
+                                            <div class="input lg line">
+                                                <input type="text" placeholder="CVC번호 입력 (3자리)" maxlength="3" formControlName="cardCvc" [numOnly]="payment.get('cardCvc')" [class.valid-error]="payment.get('cardCvc').errors && (f.submitted || payment.get('cardCvc').dirty || payment.get('cardCvc').touched)">
+                                                <ng-container *ngIf="payment.get('cardCvc').errors">
+                                                    <span *ngIf="payment.get('cardCvc').errors.required" class="valid-msg">CVC번호는 필수값입니다.</span>
+                                                    <span *ngIf="payment.get('cardCvc').errors.minLength" class="valid-msg">CVC번호는은 3자로 입력 해주세요.</span>
+                                                    <span *ngIf="payment.get('cardCvc').errors.invalidMsg" class="valid-msg">{{payment.get('cardCvc').errors.invalidMsg}}</span>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-item">
+                                        <div class="row-label">비밀번호</div>
+                                        <div class="row-form date">
+                                            <div class="input lg line">
+                                                <input type="password" placeholder="비밀번호 앞 두자리 입력(2자리)" maxlength="2" formControlName="cardPassword" [numOnly]="payment.get('cardPassword')" [class.valid-error]="payment.get('cardPassword').errors && (f.submitted || payment.get('cardPassword').dirty || payment.get('cardPassword').touched)">
+                                                <ng-container *ngIf="payment.get('cardPassword').errors">
+                                                    <span *ngIf="payment.get('cardPassword').errors.invalidMsg" class="valid-msg">{{payment.get('cardPassword').errors.invalidMsg}}</span>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row-item">
+                                        <div class="row-label">할부기간</div>
+                                        <div class="row-form">
+                                            <div class="select-box lg line">
+                                                <select formControlName="cardQuotaMonth" [class.valid-error]="payment.get('cardQuotaMonth').errors && (f.submitted || payment.get('cardQuotaMonth').dirty || payment.get('cardQuotaMonth').touched)">
+                                                    <option *ngFor="let item of viewModel.cardMonthList" [value]="item.code">{{ item.text }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- 신용카드 한번에 결제 끝 -->
+                        </div>
+                    </div>
+                    <div class="aside right">
+                        <h2 class="heading-title1 mb10">최종 결제 정보</h2>
+                        <div class="aside-payment">
+
+                            <!-- 호텔 정보 -->
+                            <div class="hotel-schedule">
+                                <div [ngStyle]="{background: 'url('+viewModel.hotelInfoSession.hotelInfoRs.hotel.defaultPhotoUrl+') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}" class="schedule-image">
+                                </div>
+                                <div class="schedule-information">
+                                    <p class="name">{{viewModel.hotelInfoSession.hotelInfoRs.hotel.hotelNameLn}}</p>
+                                    <p *ngIf="viewModel.hotelInfoSession.hotelInfoRs.hotel.hotelNameEn" class="name2">
+                                        {{viewModel.hotelInfoSession.hotelInfoRs.hotel.hotelNameEn}}
+                                    </p>
+                                    <p class="detail">
+                                        {{viewModel.useDate}}<br>
+                                        {{viewModel.guestNumInfo}}, 객실 {{viewModel.hotelInfoSession.roomConRq.rooms.length}}개
+                                    </p>
+                                </div>
+                            </div>
+                            <ul class="payment">
+                                <li>
+                                    <span>표준 금액</span>
+                                    <span>{{ viewModel.amount.lowestRoomAmount | number}} 원</span>
+                                </li>
+                                <li *ngIf="!viewModel.amount.noRoomUpgradeBool">
+                                    <span>호텔 룸 업그레이드</span>
+                                    <span>+ {{ viewModel.amount.sum - viewModel.amount.lowestRoomAmount | number}} 원</span>
+                                </li>
+                                <li *ngIf="false">
+                                    <span>마일리지</span>
+                                    <span>-3,500원</span>
+                                </li>
+                                <li *ngIf="false">
+                                    <span>쿠폰</span>
+                                    <span>-134,300원</span>
+                                </li>
+                                <li>
+                                    <span class="color-main2">총 결제 금액</span>
+                                    <strong class="color-point2">{{ viewModel.amount.sum | number}}</strong>
+                                </li>
+                            </ul>
+                            <div class="btn-group mt20">
+                                <button class="btn lg default" role="button">결제하기</button>
+                            </div>
+                            <ul class="text-list dot md mt20">
+                                <li>예약완료까지는 30초에서 2분가량 소요될 수 있습니다.</li>
+                                <li>결제하기 버튼은 1번만 클릭하시기 바랍니다. </li>
+                                <li>클릭 후에는 최종 완료될 때까지 기다려 주시기 바랍니다.</li>
+                                <li>완료 전에 창을 닫으면 이중 결제 또는 예약 에러가 발생할 수 있습니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <app-footer></app-footer>
+</div>

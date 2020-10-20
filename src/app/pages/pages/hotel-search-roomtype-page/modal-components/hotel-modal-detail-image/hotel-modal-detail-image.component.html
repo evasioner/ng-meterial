@@ -1,0 +1,46 @@
+<!-- 모달 -->
+<div class="modal type2 c-ngx-slick-carousel-hotel-photo-d">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">상세 이미지</h1>
+            <a (click)="onCloseClick($event)" class=" btn-common-modal-close">닫기</a>
+        </div>
+        <div *ngIf="loadingBool" class="modal-body">
+            <div class="hotel-photo-gallery">
+                <div class="image-big slick-hotel-photo-gallery">
+                    <div class="ngx-slick-carousel-area">
+                        <div class="ngx-slick-carousel-wrap">
+                            <ngx-slick-carousel class="c-ngx-slick-carousel carousel slider-for" #slickModal="slick-carousel" [config]="imagesSlider" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+                                <div ngxSlickItem *ngFor="let item of photoList" class="slide">
+                                    <img src="{{item.photoUrl}}" class="ngx-slick-carousel-img" alt="{{item.photoCaption}}">
+                                </div>
+                            </ngx-slick-carousel>
+                            <a (click)="prev()" class="btn-prev">이전</a>
+                            <a (click)="next()" class="btn-next">다음</a>
+                            <div class="item-count"><span>{{currentSlide + 1}}</span><span>{{photoList.length}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--
+            - 썸네일 리스트
+            - 선택한 썸네일에 .active 추가, 해당 이미지를 .image-big에 뿌림
+          -->
+                <div class="thumbnail-list slick-thumbnail-list">
+                    <div class="ngx-slick-carousel-area">
+                        <div class="ngx-slick-carousel-wrap">
+                            <ngx-slick-carousel class="c-ngx-slick-carousel carousel slider-nav" #slickModal="slick-carousel" [config]="thumbnailsSlider" (init)="slickInit($event)">
+                                <div ngxSlickItem *ngFor="let item of photoList;index as i" class="slide">
+                                    <!-- <a (click)="onThumbnailEvt($event, i)"> -->
+                                    <div class="image" [ngStyle]="{background: 'url(' + item.photoUrl + ')'}">
+                                    </div>
+                                    <!-- </a> -->
+                                </div>
+                            </ngx-slick-carousel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

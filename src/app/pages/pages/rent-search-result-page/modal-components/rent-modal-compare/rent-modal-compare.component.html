@@ -1,0 +1,55 @@
+<div class="modal type2 auto">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">상품 비교</h1>
+            <a class="btn-common-modal-close" (click)="onCloseClick()">닫기</a>
+        </div>
+        <div class="modal-body">
+            <div class="modal-compare">
+
+                <!-- 렌터카 비교 아이템 -->
+                <div *ngFor="let compareItem of compareList" class="compare-global-item">
+                    <div class="compare-information-top rentalcar">
+                        <img [src]="compareItem.photoUrls" (error)="imgLoadError($event, compareItem.vehicleTypeCode)">
+                    </div>
+
+                    <ul class="compare-information">
+
+                        <li>
+                            <dl>
+                                <dt>상품명</dt>
+                                <dd>
+                                    <img [src]="'/assets/images/car/' + compareItem.vehicleVendorCode + '.png'" alt="" class="rentalcar-logo">
+                                    {{ compareItem.vehicleName || compareItem.vehicleTypeName }}
+                                </dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl>
+                                <dt>지점 주소</dt>
+                                <dd>{{compareItem.pickupLocationInfo.address}}</dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <dl *ngIf="this.locationType===false">
+                                <dt>가격</dt>
+                                <dd><strong class="color-point2">{{ compareItem.vendorCurrencyCode }} {{ compareItem.vendorAmountSum | number }}</strong><span class="color-sub5">(약 {{compareItem.vendorAmountSumKrw | number}}원)</span></dd>
+                            </dl>
+                            <dl *ngIf="this.locationType===true">
+                                <dt>가격</dt>
+                                <dd><strong class="color-point2">약 {{compareItem.vendorAmountSumKrw | number}}원</strong></dd>
+                            </dl>
+                        </li>
+
+                    </ul>
+                    <div class="btn-group">
+                        <a (click)="onSelectItemClick(compareItem)" class="btn lg default">선택하기</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

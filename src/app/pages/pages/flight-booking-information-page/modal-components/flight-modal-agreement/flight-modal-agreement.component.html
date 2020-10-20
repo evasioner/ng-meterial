@@ -1,0 +1,82 @@
+<!-- 모달 -->
+<div class="modal type1">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">항공 약관 확인</h1>
+            <a (click)="onCloseClick($event)" class="btn-common-modal-close">닫기</a>
+        </div>
+        <div class="modal-body">
+            <!-- 모달 컨텐츠 영역 -->
+            <!-- 탭이 있을 경우 -->
+            <div class="modal-tab-wrap btn-fixed-bottom">
+                <tabset class="m-ngx-bootstrap-tabs">
+                    <tab [active]="storeId === 'normal'" (selectTab)="onTabClick($event, 'normal')">
+                        <ng-template tabHeading>
+                            <span class="badge badge-secondary">일반 규정</span>
+                        </ng-template>
+                        <div class="page-contents-type2">
+                            <ul class="text-list spacing">
+                                <li [innerHTML]="this.agreeList.common">
+                                </li>
+                            </ul>
+                        </div>
+                    </tab>
+
+                    <tab [active]="storeId === 'cancel'" (selectTab)="onTabClick($event, 'cancel')">
+                        <ng-template tabHeading>
+                            <span class="badge badge-secondary">요금/취소/환불 규정</span>
+                        </ng-template>
+
+                        <div *ngFor="let listItem of viewModel.fareRuleList; index as index" class="contents-item">
+                            <h2 class="font-lg-b mb20">{{ listItem.segmentTitle }}</h2>
+                            <div class="table bordered-top-bottom">
+                                <table>
+                                    <colgroup>
+                                        <col width="30%">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr *ngFor="let item of listItem.ruleList">
+                                            <th scope="row" class="bg">{{ item.title }}</th>
+                                            <td [innerHTML]="item.description"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="bg">무료수하물</th>
+                                            <td>{{ baggageList[index] }}</td>
+                                        </tr>
+                                        <tr *ngIf="false">
+                                            <th scope="row" class="bg">여행사<br>취급수수료</th>
+                                            <td>
+                                                <ul class="text-list xs dot">
+                                                    <li>변경으로 인한 재발행발생시나 환불시 항공사취소 수수료외에 여행사 취급수수료가 부과됩니다.</li>
+                                                    <li>환불 수수료(성인/소아/유아 동일) : 10,000원(1인)</li>
+                                                    <li>재발행 수수료(성인/소아/유아 동일) : 30,000원</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </tab>
+
+                    <tab [active]="storeId === 'personalInfo'" (selectTab)="onTabClick($event, 'personalInfo')">
+                        <ng-template tabHeading>
+                            <span class="badge badge-secondary">개인정보처리방침</span>
+                        </ng-template>
+                        <div class="page-contents-type2">
+                            <ul class="text-list spacing">
+                                <li [innerHTML]="this.agreeList.personal">
+                                </li>
+                            </ul>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+            <div class="btn-group pd-all bg-white">
+                <a (click)="onOkClick($event)" class="btn lg default">확인</a>
+            </div>
+        </div>
+    </div>
+</div>

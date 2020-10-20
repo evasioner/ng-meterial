@@ -1,0 +1,10 @@
+<div class="flight-recent-item" *ngFor="let item of viewModel.recentList; index as index;" (click)="onSearchResult($event, item.index)">
+    <a (click)="onDeleteItem($event, index, item.index)" class="btn-common-close">삭제</a>
+    <a href="#" class="flight-recent-item-contents">
+        <dl>
+            <dt><i class="icon sm flight"></i><strong>{{item.startVal}} {{item.startName}}</strong><i class="icon sm roundtrip"></i><strong>{{item.endVal}} {{item.endName}}</strong></dt>
+            <dd>{{item.dateRange}}</dd>
+            <dd>{{item.tripType}}, {{item.cabinClass}}</dd>
+        </dl>
+    </a>
+</div>

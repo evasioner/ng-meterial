@@ -1,0 +1,28 @@
+<div *ngIf="viewModel.uiState.state === viewModel.compareEnums.IS_COMPARE" class="compare-box">
+    <!-- .btn-compare-toggle 클릭할때마다 .active 토글 -->
+    <a class="btn-compare-toggle" [class.active]="viewModel.viewFlag" (click)="onToggle($event)">렌터카 비교하기</a>
+
+    <div class="compare-area">
+        <div class="compare-list">
+
+            <div *ngFor="let item of viewModel.compareList; index as index; trackBy: trackByVehicleIndex" class="compare-item" [ngClass]="{'rentalcar': item.checked, 'default' : !item.checked}">
+                <ng-container *ngIf="item.checked">
+                    <a class="btn-delete" (click)="onDelete($event, index)">삭제</a>
+                    <img [src]="item.photoUrls" (error)="imgLoadError($event, item.vehicleTypeCode)">
+                </ng-container>
+            </div>
+
+        </div>
+
+        <div class="compare-control">
+            <div class="title">비교대상 렌터카<strong>{{ viewModel.compareCount }}</strong>개</div>
+            <div class="count">
+                <span>{{ viewModel.compareCount }}</span>개의 렌터카를 선택하셨습니다.
+            </div>
+            <div class="btn-group flex-around">
+                <a class="btn md grey" (click)="onAllDelete($event)">모두삭제</a>
+                <a class="btn md default" (click)="onCompare($event)">비교하기</a>
+            </div>
+        </div>
+    </div>
+</div>

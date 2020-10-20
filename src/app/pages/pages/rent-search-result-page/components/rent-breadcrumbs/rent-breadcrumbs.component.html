@@ -1,0 +1,17 @@
+<div class="text-article">
+    <p class="text">
+        <strong>{{ viewModel.locationName }}</strong>에서 이용할 렌터카를 선택해 주세요.
+    </p>
+    <p class="sub-text">{{ viewModel.fromDate | amDateFormat:'YYYY.MM.DD(dd)'}} {{ viewModel.fromTime}} - {{ viewModel.toDate | amDateFormat:'YYYY.MM.DD(dd)' }} {{ viewModel.toTime }}</p>
+</div>
+
+<ul class="step">
+    <li class="active">
+        <p class="num">1</p>
+        <p class="text">상품선택</p>
+    </li>
+    <li>
+        <p class="num">2</p>
+        <p class="text">결제하기</p>
+    </li>
+</ul>
