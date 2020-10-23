@@ -17,12 +17,10 @@ export class MyModalQnaViewComponent extends BaseChildComponent implements OnIni
 
     constructor(
         @Inject(PLATFORM_ID) public platformId: object,
-        private el: ElementRef,
-        public bsModalRef: BsModalRef,
-        public translateService: TranslateService
+        public translateService: TranslateService,
+        public bsModalRef: BsModalRef
     ) {
         super(platformId);
-        this.element = this.el.nativeElement;
     }
 
     ngOnInit(): void {

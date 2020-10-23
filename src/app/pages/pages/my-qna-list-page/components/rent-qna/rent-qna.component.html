@@ -1,44 +1,47 @@
-    <!-- 예약 문의 내역 있을때 -->
-    <!-- 전체 갯수는 문의 내역이 없을때 보여주지 않는다. -->
+<!-- 예약 문의 내역 있을때 -->
+<!-- 전체 갯수는 문의 내역이 없을때 보여주지 않는다. -->
+<div *ngIf="loadingBool" class="page-contents-type3">
+
     <div class="common-list-top">
-    <span>전체 <span class="color-point2">6</span>건</span>
+        <span>전체 <span class="color-point2">{{totalListCount | number}}</span>건</span>
     </div>
 
     <!-- 렌터카 -->
     <div class="round-box reservation-question-item" (click)="detailView(1024)">
-        <div class="reservation-title">
-            <span class="icon sm rentalcar3"></span>
-            <span class="text">YB123456789</span>
-            <span class="label sm type1">문의접수</span>
-        </div>
-        <div class="question-summary">
-            <h2 class="product-title">[Herz] Mitsubishi Mirage</h2>
-            <ul>
-            <li>
-                <span>이용일</span>
-                <span>2019.12.20 13:00 - 2019.08.31 10:00</span>
-            </li>
-            <li>
-                <span>상담분류</span>
-                <span>증빙 확인</span>
-            </li>
-            <li>
-                <span>상담내용</span>
-                <span>현금 영수증 발급해주세요.</span>
-            </li>
-            <li>
-                <span>접수일시</span>
-                <span>2019.12.20 13:00</span>
-            </li>
-            </ul>
-        </div>
-    </div>
+        <div *ngFor="let res of cateResult; index as i;" class="round-box reservation-item">
 
-    <!-- 예약 문의 없을때
+            <div class="reservation-title">
+                <span class="icon sm rentalcar3"></span>
+                <span class="text">YB123456789</span>
+                <span class="label sm type1">문의접수</span>
+            </div>
+            <div class="question-summary">
+                <h2 class="product-title">[{{res.categories[0].name}}] [{{res.items[0].rent.vehicleVendorCode}}] {{res.items[0].rent.vehicleVendorName}} </h2>
+                <ul>
+                    <li>
+                        <span>이용일</span>
+                        <span>{{res.items[0].travelFromDate | date:'y.MM.dd'}} - {{res.items[0].travelToDate | date:'y.MM.dd'}}</span>
+                    </li>
+                    <li>
+                        <span>상담분류</span>
+                        <span>증빙 확인</span>
+                    </li>
+                    <li>
+                        <span>상담내용</span>
+                        <span>현금 영수증 발급해주세요.</span>
+                    </li>
+                    <li>
+                        <span>접수일시</span>
+                        <span>2019.12.20 13:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 예약 문의 없을때 -->
     <div class="nodata full">
-    <div class="nodata-msg">
-        <span class="icon alert2"></span>
-        <p class="text">등록된 예약 문의가 없습니다.</p>
+        <div class="nodata-msg">
+            <span class="icon alert2"></span>
+            <p class="text">등록된 예약 문의가 없습니다.</p>
+        </div>
     </div>
-    </div>
-    -->
