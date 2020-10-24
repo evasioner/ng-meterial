@@ -37,7 +37,7 @@ export class SampleComponent implements OnInit {
   }
 
   onClick() {
-    this.apilist(this.form.);
+
   }
 
   public onSearchResult(event: any, index: number): void {

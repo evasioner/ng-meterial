@@ -13,6 +13,7 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatSelectModule,
   MatSidenavModule,
   MatTableModule,
   MatToolbarModule
@@ -25,7 +26,7 @@ import {SignUpComponent} from './pages/sign/sign-up/sign-up.component';
 import {SignInComponent} from './pages/sign/sign-in/sign-in.component';
 import {MatCarouselModule} from '@ngmodule/material-carousel';
 import {CarouselModule} from 'ngx-owl-carousel-o';
-import { SampleComponent } from './pages/sample/sample.component';
+import {SampleComponent} from './pages/sample/sample.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { SampleComponent } from './pages/sample/sample.component';
     MatCardModule,
     MatButtonToggleModule,
     MatCarouselModule,
-    CarouselModule
+    CarouselModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
