@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {BaseService} from './base.service';
 import {Observable} from 'rxjs';
+import {Member} from '../interfaces/member';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class MemberService extends BaseService {
 
   public singUp(data): Observable<any> {
     return this.post(MemberService.MEMBER_URL, data);
+  }
+
+  async getTests(): Promise<Member[]> {
+    return await super.get(`${MemberService.TEST_URL}`);
   }
 }

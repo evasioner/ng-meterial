@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   server: 'http://localhost:8080',
-  test_server: 'http://localhost:9090',
+  test_server: 'http://localhost:3333',
 };
 
 /*

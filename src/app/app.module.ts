@@ -25,6 +25,7 @@ import {SignUpComponent} from './pages/sign/sign-up/sign-up.component';
 import {SignInComponent} from './pages/sign/sign-in/sign-in.component';
 import {MatCarouselModule} from '@ngmodule/material-carousel';
 import {CarouselModule} from 'ngx-owl-carousel-o';
+import { SampleComponent } from './pages/sample/sample.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
     MemberComponent,
     SignUpComponent,
     SignInComponent,
+    SampleComponent,
   ],
   imports: [
     AppRoutingModule,

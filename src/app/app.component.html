@@ -15,26 +15,40 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
+      <!--      {{ allRange?.offer_id }}-->
+      <!--      {{ allRange?.id }}-->
+      <!--      <form [formGroup]="searchForm">-->
+      <!--        <input type="text" formControlName="id">-->
+      <!--        <input type="text" formControlName="offerId">-->
+      <!--        <div>-->
+      <!--          <select formControlName="aaa">-->
+      <!--            <option value="">선택</option>-->
+      <!--            <option value="o">o</option>-->
+      <!--            <option value="d">d</option>-->
+      <!--          </select>-->
+      <!--        </div>-->
+      <!--        <div>-->
+      <!--          <select formControlName="bbb" [attr.disabled]="!searchForm?.controls?.aaa?.value">-->
+      <!--            <option value="">선택</option>-->
+      <!--            <option value="d">d</option>-->
+      <!--            <option value="c">c</option>-->
+      <!--          </select>-->
+      <!--        </div>-->
+      <!--        <div>-->
+      <!--          <select formControlName="ccc" [attr.disabled]="!searchForm?.controls.bbb.value">-->
+      <!--            <option value="">선택</option>-->
+      <!--            <option value="e">e</option>-->
+      <!--            <option value="f">f</option>-->
+      <!--          </select>-->
+      <!--        </div>-->
 
-      <div>Some tags before</div>
-      <button (click)="owlCar.prev()">prev</button>
-      <button (click)="owlCar.next()">next</button>
-      <owl-carousel-o [options]="customOptions" #owlCar>
+      <!--        {{ !searchForm.controls.aaa.value }}-->
+      <!--        <span-->
+      <!--          style="color: red"-->
+      <!--          *ngIf="searchForm.controls.offerId?.errors?.required">offer_id을 선택하세요.</span>-->
+      <!--      </form>-->
 
-        <ng-container *ngFor="let image of images;">
-          <ng-template carouselSlide>
-            <img [src]="image">
-          </ng-template>
-        </ng-container>
-
-      </owl-carousel-o>
-      <div>Some tags after</div>
-
-
-      <input type="file" (change)="fileRead($event)">
-
-      <img *ngFor="let test of imageUploads" [src]="test.data">
-
+      <!--      <span *ngFor="let state of states | keyvalue"> {{ state.value }}</span>-->
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
