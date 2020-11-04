@@ -1,0 +1,6 @@
+{
+	"serviceCode": "bookingCancel",
+	"serviceName": "booking/cancel",
+	"succeedYn": true,
+	"transactionSetID": 20191127153128
+}

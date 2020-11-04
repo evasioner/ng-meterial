@@ -1,0 +1,88 @@
+<div class="p-sample">
+    <div class="container-fluid" >
+        <h1>Guide</h1>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-5">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="text-center">URL</th>
+                        <th scope="col" class="text-center">비고</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a routerLink="/sample/guide">/sample/guide</a>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a routerLink="/sample/guide/ngx-device-detector">/sample/guide/ngx-device-detector</a>
+                        </td>
+                        <td>
+                            디바이스 체크
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/ngx-moment">/sample/guide/ngx-moment</a></td>
+                        <td>moment 파이프</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/ngx-pipes">/sample/guide/ngx-pipes</a></td>
+                        <td>유용한 파이프</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/agm">/sample/guide/agm</a></td>
+                        <td>Angular Google Maps</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/param-base64">
+                            /sample/guide/param-base64</a></td>
+                        <td>param base64</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/cookie-service">/sample/guide/cookie-service</a></td>
+                        <td>cookieService</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/login-test">/sample/guide/login-test</a></td>
+                        <td>노랑풍선 로그인</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/login-after">/sample/guide/login-after</a></td>
+                        <td>로그인 중계 페이지</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/logout-after">/sample/guide/logout-after</a></td>
+                        <td>로그아웃 중계 페이지</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/ngx-bootstrap-slider">/sample/guide/ngx-bootstrap-slider</a></td>
+                        <td>ngx-bootstrap-slider</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink="/sample/guide/query-string">/sample/guide/query-string</a></td>
+                        <td>query-strin</td>
+                    </tr>
+                    <tr>
+                        <td><a routerLink=""></a></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    <pre>{{env | json}}</pre>
+                </div>
+            </div>
+            <div class="col-7">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

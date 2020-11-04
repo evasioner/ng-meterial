@@ -1,0 +1,1845 @@
+{
+    "result": {
+        "filter": {
+            "airlines": [
+                {
+                    "code": "KE"
+                },
+                {
+                    "code": "CA"
+                }
+            ],
+            "cabinClasses": [
+                {
+                    "code": "Y"
+                }
+            ],
+            "time": {
+                "duration": {
+                    "minMinutes": 800,
+                    "maxMinutes": 1200
+                },
+                "ground": {
+                    "minMinutes": 0,
+                    "maxMinutes": 120
+                },
+                "departure": {
+                    "maxTime": "20:50",
+                    "minTime": "14:30"
+                }
+            },
+            "stops": [
+                {
+                    "viaCount": 0
+                },
+                {
+                    "viaCount": 1
+                }
+            ],
+            "others": {
+                "codeShare": [
+                    {
+                        "sharedOrNot": false
+                    }
+                ]
+            },
+            "itineraryIndexes": [
+                1,
+                2
+            ]
+        },
+        "forFilter": {
+            "amount": {
+                "highestAmount": 8591800,
+                "lowestAmount": 1238600
+            },
+            "cityAirports": [],
+            "fareTypes": [],
+            "alliances": [
+                {
+                    "allianceCode": "NOT",
+                    "allianceName": "NOT",
+                    "airlines": [
+                        {
+                            "code": "CA",
+                            "name": "NOT",
+                            "count": 55,
+                            "lowestAmount": 1238600
+                        },
+                        {
+                            "code": "MF",
+                            "name": "NOT",
+                            "count": 2,
+                            "lowestAmount": 1412600
+                        },
+                        {
+                            "code": "CI",
+                            "name": "NOT",
+                            "count": 1,
+                            "lowestAmount": 1431600
+                        },
+                        {
+                            "code": "NH",
+                            "name": "NOT",
+                            "count": 1,
+                            "lowestAmount": 1687400
+                        },
+                        {
+                            "code": "AM",
+                            "name": "NOT",
+                            "count": 6,
+                            "lowestAmount": 1695800
+                        },
+                        {
+                            "code": "CX",
+                            "name": "NOT",
+                            "count": 49,
+                            "lowestAmount": 1697400
+                        },
+                        {
+                            "code": "BR",
+                            "name": "NOT",
+                            "count": 4,
+                            "lowestAmount": 1778200
+                        },
+                        {
+                            "code": "PR",
+                            "name": "NOT",
+                            "count": 16,
+                            "lowestAmount": 1834200
+                        },
+                        {
+                            "code": "DL",
+                            "name": "NOT",
+                            "count": 38,
+                            "lowestAmount": 2051200
+                        },
+                        {
+                            "code": "AA",
+                            "name": "NOT",
+                            "count": 2,
+                            "lowestAmount": 2076800
+                        },
+                        {
+                            "code": "KE",
+                            "name": "NOT",
+                            "count": 12,
+                            "lowestAmount": 2087800
+                        },
+                        {
+                            "code": "HR",
+                            "name": "NOT",
+                            "count": 8,
+                            "lowestAmount": 2137200
+                        },
+                        {
+                            "code": "JL",
+                            "name": "NOT",
+                            "count": 1,
+                            "lowestAmount": 2141400
+                        },
+                        {
+                            "code": "UA",
+                            "name": "NOT",
+                            "count": 5,
+                            "lowestAmount": 2728600
+                        }
+                    ]
+                }
+            ],
+            "cabinClasses": [
+                {
+                    "code": "Y",
+                    "name": "Y",
+                    "lowestAmount": 1238600
+                }
+            ],
+            "time": {
+                "duration": {
+                    "minMinutes": 670,
+                    "maxMinutes": 2360
+                },
+                "arrival": {
+                    "maxTime": "22:10",
+                    "minTime": "06:18"
+                },
+                "ground": {
+                    "minMinutes": 0,
+                    "maxMinutes": 1275
+                },
+                "departure": {
+                    "maxTime": "20:40",
+                    "minTime": "06:50"
+                }
+            },
+            "stops": [
+                {
+                    "viaCount": 1,
+                    "count": 146,
+                    "lowestAmount": 1238600
+                },
+                {
+                    "viaCount": 0,
+                    "count": 54,
+                    "lowestAmount": 2051200
+                }
+            ],
+            "others": {
+                "codeShare": [
+                    {
+                        "sharedOrNot": false,
+                        "count": 160
+                    },
+                    {
+                        "sharedOrNot": true,
+                        "count": 40
+                    }
+                ]
+            },
+            "viaAirports": [
+                {
+                    "code": "ICN",
+                    "name": "NOT",
+                    "count": 116,
+                    "lowestAmount": 1238600
+                },
+                {
+                    "code": "PEK",
+                    "name": "NOT",
+                    "count": 55,
+                    "lowestAmount": 1238600
+                },
+                {
+                    "code": "GMP",
+                    "name": "NOT",
+                    "count": 30,
+                    "lowestAmount": 1318600
+                },
+                {
+                    "code": "XMN",
+                    "name": "NOT",
+                    "count": 2,
+                    "lowestAmount": 1412600
+                },
+                {
+                    "code": "TPE",
+                    "name": "NOT",
+                    "count": 5,
+                    "lowestAmount": 1431600
+                },
+                {
+                    "code": "HND",
+                    "name": "NOT",
+                    "count": 2,
+                    "lowestAmount": 1687400
+                },
+                {
+                    "code": "MEX",
+                    "name": "NOT",
+                    "count": 6,
+                    "lowestAmount": 1695800
+                },
+                {
+                    "code": "HKG",
+                    "name": "NOT",
+                    "count": 49,
+                    "lowestAmount": 1697400
+                },
+                {
+                    "code": "MNL",
+                    "name": "NOT",
+                    "count": 16,
+                    "lowestAmount": 1834200
+                },
+                {
+                    "code": "DFW",
+                    "name": "NOT",
+                    "count": 2,
+                    "lowestAmount": 2076800
+                },
+                {
+                    "code": "SEA",
+                    "name": "NOT",
+                    "count": 8,
+                    "lowestAmount": 2641200
+                },
+                {
+                    "code": "SFO",
+                    "name": "NOT",
+                    "count": 1,
+                    "lowestAmount": 2728600
+                }
+            ]
+        },
+        "flights": [
+            {
+                "allianceCode": "NOT",
+                "airlineNameEn": "NOT",
+                "flightIndex": 1,
+                "recommendYn": true,
+                "price": {
+                    "priceIndex": 1,
+                    "lowestAmount": 1238600,
+                    "fares": [
+                        {
+                            "refundableYn": false,
+                            "brandedCode": "UN",
+                            "fareIndex": 1,
+                            "brandedName": "UN",
+                            "fareAmountSum": 500000,
+                            "adultTasfAmount": 250000,
+                            "promotionName": "NOT",
+                            "adultTaxAmount": 369300,
+                            "inPolicyYn": true,
+                            "onewayCombineYn": true,
+                            "brandedCondition": "UN",
+                            "adultFareAmount": 250000,
+                            "taxAmountSum": 738600,
+                            "passengerFares": [
+                                {
+                                    "ageTypeCode": "ADT",
+                                    "paxCount": 2,
+                                    "itineraries": [
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 1,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 2,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "taxAmount": 369300,
+                                    "fareAmount": 250000,
+                                    "amountSum": 619300
+                                }
+                            ],
+                            "tasfAmountSum": -2,
+                            "designatedRouteYn": false,
+                            "amountSum": 1238600
+                        }
+                    ]
+                },
+                "airlineCode": "CA",
+                "allianceName": "NOT",
+                "airlineNameLn": "NOT",
+                "itinerary": {
+                    "totalDuration": 1075,
+                    "itineraryIndex": 1,
+                    "totalFlyingMinutes": 885,
+                    "itineraryNo": 2,
+                    "totalGroundMinutes": 190,
+                    "segments": [
+                        {
+                            "flyingMinutes": 760,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "984",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "773",
+                            "flyingMile": 6248,
+                            "origin": {
+                                "departureTime": "01:40",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "B",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "LAX",
+                                "departureWeekday": "SAT",
+                                "departureDate": "2020-04-25",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "05:20",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 1
+                        },
+                        {
+                            "flyingMinutes": 125,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "123",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "333",
+                            "flyingMile": 568,
+                            "origin": {
+                                "departureTime": "08:30",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "departureWeekday": "SUN",
+                                "departureDate": "2020-04-26",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "1",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "11:35",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "ICN",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 2
+                        }
+                    ]
+                },
+                "viaCityCount": 1
+            },
+            {
+                "allianceCode": "NOT",
+                "airlineNameEn": "NOT",
+                "flightIndex": 2,
+                "recommendYn": true,
+                "price": {
+                    "priceIndex": 2,
+                    "lowestAmount": 1238600,
+                    "fares": [
+                        {
+                            "refundableYn": false,
+                            "brandedCode": "UN",
+                            "fareIndex": 2,
+                            "brandedName": "UN",
+                            "fareAmountSum": 500000,
+                            "adultTasfAmount": 250000,
+                            "promotionName": "NOT",
+                            "adultTaxAmount": 369300,
+                            "inPolicyYn": true,
+                            "onewayCombineYn": true,
+                            "brandedCondition": "UN",
+                            "adultFareAmount": 250000,
+                            "taxAmountSum": 738600,
+                            "passengerFares": [
+                                {
+                                    "ageTypeCode": "ADT",
+                                    "paxCount": 2,
+                                    "itineraries": [
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 1,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 2,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "taxAmount": 369300,
+                                    "fareAmount": 250000,
+                                    "amountSum": 619300
+                                }
+                            ],
+                            "tasfAmountSum": -2,
+                            "designatedRouteYn": false,
+                            "amountSum": 1238600
+                        }
+                    ]
+                },
+                "airlineCode": "CA",
+                "allianceName": "NOT",
+                "airlineNameLn": "NOT",
+                "itinerary": {
+                    "totalDuration": 1100,
+                    "itineraryIndex": 2,
+                    "totalFlyingMinutes": 885,
+                    "itineraryNo": 2,
+                    "totalGroundMinutes": 215,
+                    "segments": [
+                        {
+                            "flyingMinutes": 760,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "888",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "789",
+                            "flyingMile": 6248,
+                            "origin": {
+                                "departureTime": "11:30",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "B",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "LAX",
+                                "departureWeekday": "SAT",
+                                "departureDate": "2020-04-25",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "15:10",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 1
+                        },
+                        {
+                            "flyingMinutes": 125,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "137",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "738",
+                            "flyingMile": 568,
+                            "origin": {
+                                "departureTime": "18:45",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "departureWeekday": "SUN",
+                                "departureDate": "2020-04-26",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "I",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "21:50",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "GMP",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 2
+                        }
+                    ]
+                },
+                "viaCityCount": 1
+            },
+            {
+                "allianceCode": "NOT",
+                "airlineNameEn": "NOT",
+                "flightIndex": 3,
+                "recommendYn": true,
+                "price": {
+                    "priceIndex": 3,
+                    "lowestAmount": 1238600,
+                    "fares": [
+                        {
+                            "refundableYn": false,
+                            "brandedCode": "UN",
+                            "fareIndex": 6,
+                            "brandedName": "UN",
+                            "fareAmountSum": 500000,
+                            "adultTasfAmount": 250000,
+                            "promotionName": "NOT",
+                            "adultTaxAmount": 369300,
+                            "inPolicyYn": true,
+                            "onewayCombineYn": true,
+                            "brandedCondition": "UN",
+                            "adultFareAmount": 250000,
+                            "taxAmountSum": 738600,
+                            "passengerFares": [
+                                {
+                                    "ageTypeCode": "ADT",
+                                    "paxCount": 2,
+                                    "itineraries": [
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 1,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 2,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "taxAmount": 369300,
+                                    "fareAmount": 250000,
+                                    "amountSum": 619300
+                                }
+                            ],
+                            "tasfAmountSum": -2,
+                            "designatedRouteYn": false,
+                            "amountSum": 1238600
+                        }
+                    ]
+                },
+                "airlineCode": "CA",
+                "allianceName": "NOT",
+                "airlineNameLn": "NOT",
+                "itinerary": {
+                    "totalDuration": 1375,
+                    "itineraryIndex": 3,
+                    "totalFlyingMinutes": 890,
+                    "itineraryNo": 2,
+                    "totalGroundMinutes": 485,
+                    "segments": [
+                        {
+                            "flyingMinutes": 760,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "984",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "773",
+                            "flyingMile": 6248,
+                            "origin": {
+                                "departureTime": "01:40",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "B",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "LAX",
+                                "departureWeekday": "SAT",
+                                "departureDate": "2020-04-25",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "05:20",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 1
+                        },
+                        {
+                            "flyingMinutes": 130,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "125",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "333",
+                            "flyingMile": 568,
+                            "origin": {
+                                "departureTime": "13:25",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "departureWeekday": "SUN",
+                                "departureDate": "2020-04-26",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "1",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "16:35",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "ICN",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 2
+                        }
+                    ]
+                },
+                "viaCityCount": 1
+            },
+            {
+                "allianceCode": "NOT",
+                "airlineNameEn": "NOT",
+                "flightIndex": 4,
+                "recommendYn": true,
+                "price": {
+                    "priceIndex": 4,
+                    "lowestAmount": 1238600,
+                    "fares": [
+                        {
+                            "refundableYn": false,
+                            "brandedCode": "UN",
+                            "fareIndex": 10,
+                            "brandedName": "UN",
+                            "fareAmountSum": 500000,
+                            "adultTasfAmount": 250000,
+                            "promotionName": "NOT",
+                            "adultTaxAmount": 369300,
+                            "inPolicyYn": true,
+                            "onewayCombineYn": true,
+                            "brandedCondition": "UN",
+                            "adultFareAmount": 250000,
+                            "taxAmountSum": 738600,
+                            "passengerFares": [
+                                {
+                                    "ageTypeCode": "ADT",
+                                    "paxCount": 2,
+                                    "itineraries": [
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 1,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 2,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "taxAmount": 369300,
+                                    "fareAmount": 250000,
+                                    "amountSum": 619300
+                                }
+                            ],
+                            "tasfAmountSum": -2,
+                            "designatedRouteYn": false,
+                            "amountSum": 1238600
+                        }
+                    ]
+                },
+                "airlineCode": "CA",
+                "allianceName": "NOT",
+                "airlineNameLn": "NOT",
+                "itinerary": {
+                    "totalDuration": 1690,
+                    "itineraryIndex": 4,
+                    "totalFlyingMinutes": 885,
+                    "itineraryNo": 2,
+                    "totalGroundMinutes": 805,
+                    "segments": [
+                        {
+                            "flyingMinutes": 760,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "984",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "773",
+                            "flyingMile": 6248,
+                            "origin": {
+                                "departureTime": "01:40",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "B",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "LAX",
+                                "departureWeekday": "SAT",
+                                "departureDate": "2020-04-25",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "05:20",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 1
+                        },
+                        {
+                            "flyingMinutes": 125,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "137",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "738",
+                            "flyingMile": 568,
+                            "origin": {
+                                "departureTime": "18:45",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "departureWeekday": "SUN",
+                                "departureDate": "2020-04-26",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "I",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "21:50",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "GMP",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 2
+                        }
+                    ]
+                },
+                "viaCityCount": 1
+            },
+            {
+                "allianceCode": "NOT",
+                "airlineNameEn": "NOT",
+                "flightIndex": 5,
+                "recommendYn": true,
+                "price": {
+                    "priceIndex": 5,
+                    "lowestAmount": 1318600,
+                    "fares": [
+                        {
+                            "refundableYn": false,
+                            "brandedCode": "UN",
+                            "fareIndex": 29,
+                            "brandedName": "UN",
+                            "fareAmountSum": 580000,
+                            "adultTasfAmount": 290000,
+                            "promotionName": "NOT",
+                            "adultTaxAmount": 369300,
+                            "inPolicyYn": true,
+                            "onewayCombineYn": true,
+                            "brandedCondition": "UN",
+                            "adultFareAmount": 290000,
+                            "taxAmountSum": 738600,
+                            "passengerFares": [
+                                {
+                                    "ageTypeCode": "ADT",
+                                    "paxCount": 2,
+                                    "itineraries": [
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 1,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 2,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "T",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "TLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "T",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "TLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "taxAmount": 369300,
+                                    "fareAmount": 290000,
+                                    "amountSum": 659300
+                                }
+                            ],
+                            "tasfAmountSum": -2,
+                            "designatedRouteYn": false,
+                            "amountSum": 1318600
+                        }
+                    ]
+                },
+                "airlineCode": "CA",
+                "allianceName": "NOT",
+                "airlineNameLn": "NOT",
+                "itinerary": {
+                    "totalDuration": 1755,
+                    "itineraryIndex": 5,
+                    "totalFlyingMinutes": 895,
+                    "itineraryNo": 2,
+                    "totalGroundMinutes": 860,
+                    "segments": [
+                        {
+                            "flyingMinutes": 770,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "988",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "773",
+                            "flyingMile": 6248,
+                            "origin": {
+                                "departureTime": "14:20",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "B",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "LAX",
+                                "departureWeekday": "SAT",
+                                "departureDate": "2020-04-25",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "18:10",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 1
+                        },
+                        {
+                            "flyingMinutes": 125,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "123",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "333",
+                            "flyingMile": 568,
+                            "origin": {
+                                "departureTime": "08:30",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "departureWeekday": "MON",
+                                "departureDate": "2020-04-27",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "MON",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "1",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-27",
+                                "arrivalTime": "11:35",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "ICN",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 2
+                        }
+                    ]
+                },
+                "viaCityCount": 1
+            },
+            {
+                "allianceCode": "NOT",
+                "airlineNameEn": "NOT",
+                "flightIndex": 6,
+                "recommendYn": true,
+                "price": {
+                    "priceIndex": 6,
+                    "lowestAmount": 1318600,
+                    "fares": [
+                        {
+                            "refundableYn": false,
+                            "brandedCode": "UN",
+                            "fareIndex": 30,
+                            "brandedName": "UN",
+                            "fareAmountSum": 580000,
+                            "adultTasfAmount": 290000,
+                            "promotionName": "NOT",
+                            "adultTaxAmount": 369300,
+                            "inPolicyYn": true,
+                            "onewayCombineYn": true,
+                            "brandedCondition": "UN",
+                            "adultFareAmount": 290000,
+                            "taxAmountSum": 738600,
+                            "passengerFares": [
+                                {
+                                    "ageTypeCode": "ADT",
+                                    "paxCount": 2,
+                                    "itineraries": [
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 1,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 2,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "T",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "TLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "T",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "TLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "taxAmount": 369300,
+                                    "fareAmount": 290000,
+                                    "amountSum": 659300
+                                }
+                            ],
+                            "tasfAmountSum": -2,
+                            "designatedRouteYn": false,
+                            "amountSum": 1318600
+                        }
+                    ]
+                },
+                "airlineCode": "CA",
+                "allianceName": "NOT",
+                "airlineNameLn": "NOT",
+                "itinerary": {
+                    "totalDuration": 1880,
+                    "itineraryIndex": 6,
+                    "totalFlyingMinutes": 905,
+                    "itineraryNo": 2,
+                    "totalGroundMinutes": 975,
+                    "segments": [
+                        {
+                            "flyingMinutes": 770,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "988",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "773",
+                            "flyingMile": 6248,
+                            "origin": {
+                                "departureTime": "14:20",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "B",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "LAX",
+                                "departureWeekday": "SAT",
+                                "departureDate": "2020-04-25",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "18:10",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 1
+                        },
+                        {
+                            "flyingMinutes": 135,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "135",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "738",
+                            "flyingMile": 568,
+                            "origin": {
+                                "departureTime": "10:25",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "departureWeekday": "MON",
+                                "departureDate": "2020-04-27",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "MON",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "1",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-27",
+                                "arrivalTime": "13:40",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "ICN",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 2
+                        }
+                    ]
+                },
+                "viaCityCount": 1
+            },
+            {
+                "allianceCode": "NOT",
+                "airlineNameEn": "NOT",
+                "flightIndex": 40,
+                "recommendYn": true,
+                "price": {
+                    "priceIndex": 7,
+                    "lowestAmount": 2341400,
+                    "fares": [
+                        {
+                            "refundableYn": false,
+                            "brandedCode": "UN",
+                            "fareIndex": 164,
+                            "brandedName": "UN",
+                            "fareAmountSum": 1624200,
+                            "adultTasfAmount": 812100,
+                            "promotionName": "NOT",
+                            "adultTaxAmount": 358600,
+                            "inPolicyYn": true,
+                            "onewayCombineYn": true,
+                            "brandedCondition": "UN",
+                            "adultFareAmount": 812100,
+                            "taxAmountSum": 717200,
+                            "passengerFares": [
+                                {
+                                    "ageTypeCode": "ADT",
+                                    "paxCount": 2,
+                                    "itineraries": [
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 1,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "S",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "SXRCHB0",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 2,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "S",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "SWRCHB0",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "V",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "VLRFKR9",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "taxAmount": 358600,
+                                    "fareAmount": 812100,
+                                    "amountSum": 1170700
+                                }
+                            ],
+                            "tasfAmountSum": -2,
+                            "designatedRouteYn": false,
+                            "amountSum": 2341400
+                        }
+                    ]
+                },
+                "airlineCode": "CA",
+                "allianceName": "NOT",
+                "airlineNameLn": "NOT",
+                "itinerary": {
+                    "totalDuration": 1000,
+                    "itineraryIndex": 40,
+                    "totalFlyingMinutes": 880,
+                    "itineraryNo": 2,
+                    "totalGroundMinutes": 120,
+                    "segments": [
+                        {
+                            "flyingMinutes": 760,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "888",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "789",
+                            "flyingMile": 6248,
+                            "origin": {
+                                "departureTime": "11:30",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "B",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "LAX",
+                                "departureWeekday": "SAT",
+                                "departureDate": "2020-04-25",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "15:10",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": null,
+                            "segmentNo": 1
+                        },
+                        {
+                            "flyingMinutes": 120,
+                            "availableQuantity": 0,
+                            "marketing": {
+                                "flightNo": "5005",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "CA",
+                                "airlineNameLn": "NOT"
+                            },
+                            "equipmentCode": "321",
+                            "flyingMile": 568,
+                            "origin": {
+                                "departureTime": "17:10",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "3",
+                                "cityNameLn": "NOT",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "PEK",
+                                "departureWeekday": "SUN",
+                                "departureDate": "2020-04-26",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "destination": {
+                                "arrivalWeekday": "SUN",
+                                "cityCodeIata": "NOT",
+                                "cityCode": "NOTSE",
+                                "cityNameEn": "NOT",
+                                "terminal": "1",
+                                "cityNameLn": "NOT",
+                                "arrivalDate": "2020-04-26",
+                                "arrivalTime": "20:10",
+                                "countryCode": "NO",
+                                "stateCode": "NO",
+                                "airportCode": "ICN",
+                                "airportNameEn": "NOT",
+                                "airportNameLn": "NOT"
+                            },
+                            "equipmentName": "NOT",
+                            "operating": {
+                                "flightNo": "5005",
+                                "airlineNameEn": "NOT",
+                                "airlineCode": "OZ",
+                                "airlineNameLn": "NOT"
+                            },
+                            "segmentNo": 2
+                        }
+                    ]
+                },
+                "viaCityCount": 1
+            }
+        ],
+        "selected": {
+            "flight": {
+                "allianceCode": "NOT",
+                "airlineNameEn": "NOT",
+                "flightIndex": 1,
+                "recommendYn": true,
+                "tripTypeCode": "RT",
+                "price": {
+                    "priceIndex": 1,
+                    "lowestAmount": 1238600,
+                    "fares": [
+                        {
+                            "refundableYn": false,
+                            "brandedCode": "UN",
+                            "fareIndex": 1,
+                            "brandedName": "UN",
+                            "fareAmountSum": 500000,
+                            "adultTasfAmount": 250000,
+                            "promotionName": "NOT",
+                            "adultTaxAmount": 369300,
+                            "inPolicyYn": true,
+                            "onewayCombineYn": true,
+                            "brandedCondition": "UN",
+                            "adultFareAmount": 250000,
+                            "taxAmountSum": 738600,
+                            "passengerFares": [
+                                {
+                                    "ageTypeCode": "ADT",
+                                    "paxCount": 2,
+                                    "itineraries": [
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 1,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "promotionSeq": -1,
+                                            "gdsOfficeId": "SELK138BN",
+                                            "corporateRateYn": false,
+                                            "itineraryNo": 2,
+                                            "gdsCompCode": 900001,
+                                            "segments": [
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 1
+                                                },
+                                                {
+                                                    "bookingClassCode": "L",
+                                                    "cabinClassCode": "Y",
+                                                    "fareTypeCode": "RP",
+                                                    "freeBaggage": "2 PC",
+                                                    "fareBasisCode": "LLRCKR6",
+                                                    "segmentNo": 2
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "taxAmount": 369300,
+                                    "fareAmount": 250000,
+                                    "amountSum": 619300
+                                }
+                            ],
+                            "tasfAmountSum": -2,
+                            "designatedRouteYn": false,
+                            "amountSum": 1238600
+                        }
+                    ]
+                },
+                "itineraries": [
+                    {
+                        "totalDuration": 970,
+                        "totalFlyingMinutes": 875,
+                        "itineraryNo": 1,
+                        "totalGroundMinutes": 95,
+                        "segments": [
+                            {
+                                "flyingMinutes": 155,
+                                "availableQuantity": 0,
+                                "marketing": {
+                                    "flightNo": "126",
+                                    "airlineNameEn": "NOT",
+                                    "airlineCode": "CA",
+                                    "airlineNameLn": "NOT"
+                                },
+                                "equipmentCode": "333",
+                                "flyingMile": 568,
+                                "origin": {
+                                    "departureTime": "17:50",
+                                    "cityCodeIata": "NOT",
+                                    "cityCode": "NOTSE",
+                                    "cityNameEn": "NOT",
+                                    "terminal": "1",
+                                    "cityNameLn": "NOT",
+                                    "countryCode": "NO",
+                                    "stateCode": "NO",
+                                    "airportCode": "ICN",
+                                    "departureWeekday": "THU",
+                                    "departureDate": "2020-04-23",
+                                    "airportNameEn": "NOT",
+                                    "airportNameLn": "NOT"
+                                },
+                                "destination": {
+                                    "arrivalWeekday": "THU",
+                                    "cityCodeIata": "NOT",
+                                    "cityCode": "NOTSE",
+                                    "cityNameEn": "NOT",
+                                    "terminal": "3",
+                                    "cityNameLn": "NOT",
+                                    "arrivalDate": "2020-04-23",
+                                    "arrivalTime": "19:25",
+                                    "countryCode": "NO",
+                                    "stateCode": "NO",
+                                    "airportCode": "PEK",
+                                    "airportNameEn": "NOT",
+                                    "airportNameLn": "NOT"
+                                },
+                                "equipmentName": "NOT",
+                                "operating": null,
+                                "segmentNo": 1
+                            },
+                            {
+                                "flyingMinutes": 720,
+                                "availableQuantity": 0,
+                                "marketing": {
+                                    "flightNo": "983",
+                                    "airlineNameEn": "NOT",
+                                    "airlineCode": "CA",
+                                    "airlineNameLn": "NOT"
+                                },
+                                "equipmentCode": "773",
+                                "flyingMile": 6248,
+                                "origin": {
+                                    "departureTime": "21:00",
+                                    "cityCodeIata": "NOT",
+                                    "cityCode": "NOTSE",
+                                    "cityNameEn": "NOT",
+                                    "terminal": "3",
+                                    "cityNameLn": "NOT",
+                                    "countryCode": "NO",
+                                    "stateCode": "NO",
+                                    "airportCode": "PEK",
+                                    "departureWeekday": "THU",
+                                    "departureDate": "2020-04-23",
+                                    "airportNameEn": "NOT",
+                                    "airportNameLn": "NOT"
+                                },
+                                "destination": {
+                                    "arrivalWeekday": "THU",
+                                    "cityCodeIata": "NOT",
+                                    "cityCode": "NOTSE",
+                                    "cityNameEn": "NOT",
+                                    "terminal": "B",
+                                    "cityNameLn": "NOT",
+                                    "arrivalDate": "2020-04-23",
+                                    "arrivalTime": "18:00",
+                                    "countryCode": "NO",
+                                    "stateCode": "NO",
+                                    "airportCode": "LAX",
+                                    "airportNameEn": "NOT",
+                                    "airportNameLn": "NOT"
+                                },
+                                "equipmentName": "NOT",
+                                "operating": null,
+                                "segmentNo": 2
+                            }
+                        ]
+                    }
+                ],
+                "airlineCode": "CA",
+                "allianceName": "NOT",
+                "airlineNameLn": "NOT",
+                "viaCityCount": 1
+            }
+        }
+    },
+    "searchId": "09879A7BE4",
+    "serviceCode": "/flight/list/itinerary",
+    "warnings": [],
+    "transactionSetId": "A110891627",
+    "succeedYn": true,
+    "warningYn": false,
+    "serviceName": "/flight/list/itinerary"
+}

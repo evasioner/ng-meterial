@@ -1,0 +1,12 @@
+<div *ngIf="isBrowser" class="contents-item mg">
+    <!-- 지금 뜨는 여행지 -->
+    <h2 class="contents-title">{{ vm.cityName}} 주변 여행지</h2>
+    <div class="scroll-box-list no-mg extend">
+        <div class="scroll-item-outer">
+            <!-- 백그라운드 이미지는 별도 관리가 필요함 -->
+            <div class="hotplace-item" *ngFor="let cityItem of vm.nearByCities; let j = index" [ngStyle]="{'background-image': 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('+ cityItem.defaultPhotoUrl +')'}" [style.backgroundPositionX]="'50%'" [style.backgroundPositionY]="'50%'" [style.backgroundSize]="'cover'">
+                <span (click)="onGoCityIntroClick(j)">{{ (cityItem.cityNameLn != null )? cityItem.cityNameLn : cityItem.cityNameEn }}</span>
+            </div>
+        </div>
+    </div>
+</div>

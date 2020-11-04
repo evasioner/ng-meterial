@@ -1,0 +1,195 @@
+<div *ngIf="loadingBool" class="modal">
+
+    <!-- modal header -->
+    <div class="modal-header">
+        <div class="left">
+            <a (click)="onReloadClick($event);" class="icon sm common-reload">{{vm.reload}}</a>
+        </div>
+        <h1>{{vm.dSearch}}</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">{{vm.close}}</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <form [formGroup]="modalForm" (ngSubmit)="onSubmit(modalForm)" novalidate>
+            <accordion [closeOthers]="'true'" class="m-ngx-bootstrap-accordion cm-detail-filter">
+                <div class="input line mb10 mt10">
+                    <span class="icon sm search"></span>
+                    <input type="text" [(ngModel)]="vm.hotelName" formControlName="hotelName" placeholder="{{vm.placeholder}}">
+                    <a *ngIf="vm.hotelName !== ''" class="icon sm input-delete2" (click)="resetText($event)">삭제</a>
+                </div>
+
+                <!-- 요금 범위 -->
+                <accordion-group *ngIf="vm.amount.display" class="accordion" heading="요금 범위">
+                    <!-- .accordion-title-link에 .active가 추가 되면 .accordion-body에도 .active를 추가 -->
+                    <div class="accordion-body active">
+                        <div class="range double">
+                            <!-- 라이브러리 슬라이더 -->
+                            <div class="m-bootstrap-slider">
+                                <div class="bootstrap-slider-result-area range-title">
+                                    <strong class="font-lg color-point2">{{vm.amount.val[0] | number}}</strong>
+                                    <span class="font-xs color-sub5">{{vm.won}}</span>
+                                    <span class="font-lg color-sub5 ml5 mr5">~</span>
+                                    <strong class="font-lg color-point2">{{vm.amount.val[1] | number}}</strong>
+                                    <span class="font-xs color-sub5">{{vm.won}}</span>
+                                </div>
+
+                                <div class="bootstrap-slider-area">
+                                    <app-input-slider [(value)]="vm.amount.val" [min]="vm.amount.min" [max]="vm.amount.max" [enabled]="vm.amount.enabled" [handle]="'custom'" htmlTarget="bootstrap-slider">
+
+                                        <input data-target="bootstrap-slider">
+
+                                    </app-input-slider>
+                                </div>
+                                <!-- 숫자 표시 -->
+                                <div class="bootstrap-slider-range-area range-text">
+                                    <span class="min">{{vm.amount.min}}{{vm.won}}</span>
+                                    <span class="max">{{vm.amount.max}}{{vm.won}}</span>
+                                </div>
+                            </div>
+                            <!-- end 라이브러리 슬라이더 -->
+                        </div>
+                    </div>
+                </accordion-group>
+
+                <!-- 호텔 성급 -->
+                <accordion-group *ngIf="vm.starRatings" class="accordion" heading="호텔 성급">
+                    <!-- .accordion-title-link에 .active가 추가 되면 .accordion-body에도 .active를 추가 -->
+                    <div class="accordion-body active">
+                        <ul class="row-list">
+                            <li>
+                                <label class="checkbox">
+                                    <input type="checkbox" class="checkbox-control-input" [checked]="vm.starRatingsAll" (change)="onCheckboxChange($event, 'starRatingList', 'starRatings')">
+                                    <span class="checkbox-control-text">{{vm.all}}</span>
+                                </label>
+                            </li>
+                            <li *ngFor="let star of vm.starRatings; let index = index;">
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" [value]="star.starRating" [checked]="star.checked" (change)="onCheckboxChange($event, 'starRatingList', 'starRatings')">
+                                    <span class="checkbox-control-text">{{ star.starRating | number : '.0' }}{{ vm.startGrade }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </accordion-group>
+
+
+                <!-- 숙소 유형 -->
+                <accordion-group *ngIf="vm.hotelTypes" class="accordion" heading="숙소 유형">
+                    <div class="accordion-body active">
+                        <ul class="row-list">
+                            <li>
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" [checked]="vm.hotelTypesAll" (change)="onCheckboxChange($event, 'hotelTypeList', 'hotelTypes')">
+                                    <span class="checkbox-control-text">{{vm.all}}</span>
+                                </label>
+                            </li>
+                            <li *ngFor="let hotelType of vm.hotelTypes;">
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" [value]="hotelType.code" [checked]="hotelType.checked" (change)="onCheckboxChange($event, 'hotelTypeList', 'hotelTypes')">
+                                    <span class="checkbox-control-text">{{ hotelType.name }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </accordion-group>
+
+                <!-- 조식 -->
+                <accordion-group class="accordion" heading="조식">
+                    <div class="accordion-body active">
+                        <ul class="row-list">
+                            <li>
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" [checked]="vm.freeBreakfastAll" (change)="onCheckboxChange($event, 'freeBreakfastList', 'freeBreakfast')">
+                                    <span class="checkbox-control-text">{{vm.all}}</span>
+                                </label>
+                            </li>
+                            <li *ngFor="let item of vm.freeBreakfast">
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" [value]="item.code" [checked]="item.checked" (change)="onCheckboxChange($event, 'freeBreakfastList', 'freeBreakfast')">
+                                    <span class="checkbox-control-text">{{ item.text }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </accordion-group>
+
+                <!-- 인근 지역 -->
+                <accordion-group *ngIf="vm?.attractions" class="accordion" heading="인근 지역">
+                    <div class="accordion-body active">
+                        <ul class="row-list">
+                            <li>
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" [checked]="vm.attractionsAll" (change)="onCheckboxChange($event, 'attractionList', 'attractions')">
+                                    <span class="checkbox-control-text">{{vm.all}}</span>
+                                </label>
+                            </li>
+                            <li *ngFor="let attr of vm.attractions">
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" [value]="attr.code" [checked]="attr.checked" (change)="onCheckboxChange($event, 'attractionList', 'attractions')">
+                                    <span class="checkbox-control-text">{{attr.name}}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </accordion-group>
+
+                <!-- 이용자 평점 -->
+                <accordion-group *ngIf="vm.reviewRatings.display" class="accordion" heading="이용자 평점">
+                    <div class="accordion-body active">
+                        <div class="range double">
+                            <!-- 라이브러리 슬라이더 -->
+                            <div class="m-bootstrap-slider">
+                                <div class="range-title">
+                                    <strong class="font-lg color-point2">{{vm.reviewRatings.val[0]}}</strong>
+                                    <span class="font-xs color-sub5">점 이상</span>
+                                    <span class="font-lg color-sub5 ml5 mr5">~</span>
+                                    <strong class="font-lg color-point2">{{vm.reviewRatings.val[1]}}</strong>
+                                    <span class="font-xs color-sub5">점 이하</span>
+                                </div>
+                                <div class="bootstrap-slider-area">
+                                    <app-input-slider [(value)]="vm.reviewRatings.val" [min]="vm.reviewRatings.min" [max]="vm.reviewRatings.max" [step]="vm.reviewRatings.step" [enabled]="vm.reviewRatings.enabled" [handle]="'custom'" (slideStop)="vm.reviewRatings.slideStopEvt($event)" htmlTarget="bootstrap-slider02">
+
+                                        <input data-target="bootstrap-slider02">
+
+                                    </app-input-slider>
+                                </div>
+                                <!-- 숫자 표시 -->
+                                <div class="bootstrap-slider-range-area range-text">
+                                    <span class="min">{{vm.reviewRatings.min}}점</span>
+                                    <span class="max">{{vm.reviewRatings.max}}점</span>
+                                </div>
+                            </div>
+                            <!-- end 라이브러리 슬라이더 -->
+                        </div>
+                    </div>
+                </accordion-group>
+
+                <!-- 호텔 체인 -->
+                <accordion-group *ngIf="vm.chains" class="accordion" heading="호텔 체인">
+                    <div class="accordion-body active">
+                        <ul class="row-list">
+                            <li>
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" [checked]="vm.chainsAll" (change)="onCheckboxChange($event, 'chainList', 'chains')">
+                                    <span class="checkbox-control-text">{{vm.all}}</span>
+                                </label>
+                            </li>
+                            <li class="flex" *ngFor="let chain of vm.chains">
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" [value]="chain.code" [checked]="chain.checked" (change)="onCheckboxChange($event, 'chainList', 'chains')">
+                                    <span class="checkbox-control-text">{{chain.name}}</span>
+                                </label>
+                                <span class="ml-auto">{{chain.lowestAmount | number}}{{vm.won}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </accordion-group>
+                <div class="btn-group bg pd fixed-bottom">
+                    <button class="btn lg default" role="button">{{vm.submit}}</button>
+                </div>
+            </accordion>
+        </form>
+    </div>
+</div>

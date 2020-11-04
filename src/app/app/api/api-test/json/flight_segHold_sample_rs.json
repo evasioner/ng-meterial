@@ -1,0 +1,39 @@
+{
+    "serviceCode": "flightBooking",
+	"serviceName": "flight/booking",
+	"succeedYn": true,
+    "transactionSetID": "20191127153128",
+    "warningYn": true,
+    "warningCode": "b",
+	"warningMessage": "CCCCCCC",
+	"warnings": [
+		{
+			"warningCode": "ee",
+			"warningMessage": "cc"
+		}
+	],
+    "result": {
+        "segHold": {
+            "amount": 1234.1324,
+            "changedAmount": 1234.1324,
+            "bookableYn": true,
+            "changedAmountYn": false,
+            "sessionKey": "005Z4OEITS;1;2XW7XCKN9XGA42QX8KEUI58RRN"
+        },
+        "booker": {
+            "userNo": 1,
+            "email": "jina.kim@ybtour.co.kr",
+            "mobileNo": "010-1245-2341",
+            "picUno": 123,
+            "picName": "haoee"
+        },
+        "cardMasters": [{
+            "cardMasterCode": "abc",
+            "cardMasterName": "abc"
+        }],
+        "bankMasters": [{
+            "bankMasterCode": "abc",
+            "bankMasterName": "abc"
+        }]
+    }
+}

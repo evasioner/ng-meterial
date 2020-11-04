@@ -1,0 +1,156 @@
+<!-- Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <div class="left">
+            <a href="#" class="icon sm common-mail">이메일발송</a>
+        </div>
+        <h1>호텔 인보이스</h1>
+        <div class="right">
+            <a (click)="onCloseClick()" class="icon sm common-close">닫기</a> </div>
+    </div>
+    <!-- modal contents -->
+    <div id="hotel-invoice" class="common-documents">
+        <div class="documents-header">
+            <div class="documents-title">
+                <p class="title">Invoice</p>
+            </div>
+            <span class="site-link"><img src="../../assets/images/common/ico-common-header-logo.png" alt="노랑풍선"></span>
+        </div>
+        <div class="documents-body">
+            <div class="documents-item">
+                <div class="table table-documents">
+                    <table>
+                        <colgroup>
+                            <col width="15%">
+                            <col width="40%">
+                            <col width="15%">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><strong>발행일자</strong></th>
+                                <td>{{resultList.summary.issueDatetime}}</td>
+                                <th scope="row"><strong>사업자번호</strong></th>
+                                <td>{{resultList.summary.taxPayerNo}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><strong>수신</strong></th>
+                                <td>{{resultList.summary.receiverName}}</td>
+                                <th scope="row"><strong>상호/대표자</strong></th>
+                                <td>
+                                    <p class="group">
+                                        <span>{{resultList.summary.compNameOfficial}}</span>
+                                        <span>{{resultList.summary.representativeName}}</span>
+                                    </p>
+                            </tr>
+                            <tr>
+                                <th scope="row"><strong>발신</strong></th>
+                                <td>
+                                    <p class="group">
+                                        <span>{{resultList.summary.positionName}}</span>
+                                        <span>{{resultList.summary.deptName}} {{resultList.summary.compPhoneNo}}</span>
+                                    </p>
+                                </td>
+                                <th scope="row"><strong>업태/종목</strong></th>
+                                <td>{{resultList.summary.businessItem}}{{resultList.summary.businessType}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><strong>주소</strong></th>
+                                <td colspan="3">{{resultList.summary.compAddress1}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="documents-item">
+                <div class="documents-item-title">예약내역</div>
+                <div class="table table-documents">
+                    <table>
+                        <colgroup>
+                            <col width="15%">
+                            <col width="40%">
+                            <col width="15%">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><strong>예약코드</strong></th>
+                                <td>{{resultList.summary.bookingItemCode}}</td>
+                                <th scope="row"><strong>1번 투숙객</strong></th>
+                                <td>{{resultList.summary.travelerName}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><strong>숙박기간</strong></th>
+                                <td>
+                                    <p class="group">
+                                        <span>{{resultList.summary.checkInDate}} {{resultList.summary.checkInWeekday}}</span>
+                                        <span>{{resultList.summary.checkOutDate}} {{resultList.summary.checkOutWeekday}} {{resultList.summary.nightsCount}}2020-11-03(금) (총 2박)</span>
+                                    </p>
+                                </td>
+                                <th scope="row"><strong>객실/인원</strong></th>
+                                <td>
+                                    <p class="group">
+                                        <span>{{resultList.summary.roomCount}}</span>
+                                        <span>{{resultList.summary.travelerMinusCount}}</span>
+
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><strong>도시</strong></th>
+                                <td>{{resultList.summary.cityNameLn}}, {{resultList.summary.countryNameLn}}</td>
+                                <th scope="row"><strong>취소마감일</strong></th>
+                                <td><strong class="color-point2">{{resultList.summary.cancelDeadline}}</strong></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><strong>호텔정보</strong></th>
+                                <td colspan="3">
+                                    <ul class="text-list dot md color-sub7">
+                                        <li>{{resultList.summary.hotelNameEn}}</li>
+                                        <li>{{resultList.summary.addressEn}}</li>
+                                        <li>Tel : {{resultList.summary.phoneNo}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><strong>객실타입</strong></th>
+                                <td colspan="3">
+                                    <ul class="text-list dot md color-sub7">
+                                        <li>{{resultList.summary.roomType}}</li>
+                                        <li>{{resultList.summary.breakfastYn}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><strong>총 결제금액</strong></th>
+                                <td colspan="3"><strong class="color-point2">{{resultList.summary.sumAmount}}</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="documents-item">
+                <div class="documents-item-title line">결제 전 주의사항</div>
+                <ul class="text-list dot md">
+                    <li>취소마감일까지 입금해 주시거나 카드결제 진행을 해주시기 바랍니다.
+                    <li>
+                    <li>취소마감일 이후 취소 시 예약 규정대로 취소수수료가 발생되며, 마이페이지-예약상세내역-취소규정에서 취소수수료 확인이 가능합니다. 마이페이지에서 확인이 불가능 할 경우 담당직원에게 문의하시기 바랍니다.</li>
+                </ul>
+            </div>
+            <div class="documents-item">
+                <div class="signature"><strong>(주)노랑풍선</strong><img src="../../assets/images/common/img-ybtour-stamp.png" alt=""></div>
+            </div>
+        </div>
+        <div class="documents-footer">
+            <ul class="text-list dashed md color-main2">
+                <li>노랑풍선 주소 : 서울특별시 중구 수표로 31, 노랑풍선</li>
+                <li>대표전화 : +82-2-1544-2288</li>
+                <li class="mt20">
+                    &copy;YBTOUR., All Rights Reserved.
+                </li>
+            </ul>
+            <span class="site-link"><img src="../../assets/images/common/ico-common-header-logo.png" alt="노랑풍선"></span>
+        </div>
+    </div>
+</div>

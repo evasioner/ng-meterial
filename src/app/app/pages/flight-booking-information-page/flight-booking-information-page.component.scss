@@ -1,0 +1,55 @@
+/**
+* 페이지 컴포넌트
+* p-{페이지명}
+ */
+.p-flight-booking-information-page {
+    .contents-item-area {
+
+        .contents-item {
+            margin-top: 45px;
+        }
+
+        &:first-child {
+            .contents-item {
+                margin-top: 0px;
+            }
+        }
+    }
+
+    .modal-dep-3 {
+        z-index: 1200;
+    }
+
+    .contents-title2 span {
+        margin-left: 10px;
+    }
+
+
+    // 동의하기
+    .agree-row {
+        .checkbox {
+            .checkbox-control-text:before {
+                top: 1px;
+            }
+
+            .checkbox-control-text {
+                display: initial;
+            }
+        }
+
+        .checkbox-text-area {
+            vertical-align: middle;
+            position: relative;
+            display: inline-block;
+            padding: 5px 0 5px 0px;
+            color: #999;
+            line-height: 140%;
+
+            em {
+                color: #666;
+                text-decoration: underline;
+            }
+        }
+    }
+
+}

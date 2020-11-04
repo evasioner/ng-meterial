@@ -1,0 +1,24 @@
+<!-- Modal 열릴때 body에 .overflow-none 추가 -->
+
+<body class="bg overflow-none">
+    <div id="wrap">
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal">
+        <!-- modal header -->
+        <div class="modal-header">
+            <h1>사진 <span class="color-sub4">(64)</span></h1>
+            <div class="right">
+                <a (click)="modalClose()" class="icon sm common-close">닫기</a>
+            </div>
+        </div>
+        <!-- modal contents -->
+        <div class="modal-contents">
+            <div class="cm-photo-list">
+                <div style="background: url('../../assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat;" class="photo-item" (click)="photoDetailClick()"></div>
+            </div>
+        </div>
+    </div>
+</body>

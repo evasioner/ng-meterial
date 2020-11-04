@@ -1,0 +1,174 @@
+<!-- Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>호텔 바우처</h1>
+        <div class="right">
+            <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents overflow-x">
+        <div id="hotel-voucher" class="common-documents">
+            <div class="documents-body">
+                <div class="documents-item">
+                    <dl class="text-list2">
+                        <dt class="mb5 font-lg-b">Keio Presso Inn Ikebukuro</dt>
+                        <dd>Address : 2-29-11 Minami-Ikebukuro Toshima Ward, Tokyo, Japn</dd>
+                        <dd>Tel : 81-3-53960202</dd>
+                    </dl>
+                </div>
+                <div class="documents-item">
+                    <div class="documents-item-title">Booking Information</div>
+                    <div class="table table-documents">
+                        <table>
+                            <colgroup>
+                                <col width="18%">
+                                <col>
+                                <col width="18%">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><strong>Reference No.</strong></th>
+                                    <td>
+                                        <p class="group">
+                                            <span>7551763143368</span>
+                                        </p>
+                                    </td>
+                                    <th scope="row"><strong>YB Booking Code</strong></th>
+                                    <td>2010121003-H01</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><strong>Check in</strong></th>
+                                    <td>2020/12/04</td>
+                                    <th scope="row"><strong>Check out</strong></th>
+                                    <td>
+                                        <p class="group">
+                                            <span>2020/12/05</span>
+                                            <span>1 night(s)</span>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><strong>No. of Room(s)</strong></th>
+                                    <td>1 Room(s)</td>
+                                    <th scope="row"><strong>Price</strong></th>
+                                    <td>TOTAL PRICE : KRW 58666<br>BASE RATE : KRW 53333<br>TAX &amp; Svc Fees: KRW 5333</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><strong>Room Type</strong></th>
+                                    <td colspan="3">Single Room, Non Smoking(1 Large Twin Bed)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><strong>Meal Type</strong></th>
+                                    <td colspan="3">Free breakfast</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><strong>Guest(s)</strong></th>
+                                    <td colspan="3">
+                                        <p>Room 1 - MS.SEO/HEE, CHD.SEO/LYN(2017-04-16)</p>
+                                        <p class="color-sub4">(트윈, 더블 객실의 경우, 투숙 당일날의 호텔 객실 상황에 따라 임의배정 될 수 있습니다.)</p>
+                                        <p class="color-sub4">(동반하는 아동의 침대/조식비용은 기본적으로 불포함이며, 호텔과 확인 후 현지직불로 이용하시면 됩니다.)</p>
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                    <th scope="row"><strong>Guest Request</strong></th>
+                    <td colspan="3">
+                      <p class="group"><span>Non Smoking</span><span>High Floor</span></p>
+                      <p class="color-sub4">(고객님의 요청사항은 호텔측의 권한으로 투숙 시 반영여부가 정해지며 확정은 불가합니다.)</p>
+                    </td>
+                  </tr> -->
+                                <tr>
+                                    <th scope="row"><strong>Guest Request</strong></th>
+                                    <td colspan="3">-</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><strong>Remarks</strong></th>
+                                    <td colspan="3">
+                                        <ul class="text-list md dot color-sub7 mb10">
+                                            <li>만 9 세 이하 어린이는 부모 또는 보호자와 같은 객실에서 침구를 추가하지 않고 이용할 경우 무료로 숙박할 수 있습니다. </li>
+                                            <li>일본후생노동성은 외국인이 여관, 호텔, 모텔 등을 포함하는 모든 종류의 숙박 시설에 접수할 때 여권번호와 국적을 제시하도록 의무화하고 있습니다. 또한, 숙박 시설의 소유주는 자신의 시설에 접수하는 모든 외국인의 여권을 복사하고 해당 복사본을 정리하여 보관해야 합니다. </li>
+                                            <li>이 숙박 시설은 현재 강화된 청소 및 고객 안전 조치를 시행 중입니다.</li>
+                                            <li>고객의 안전을 위해 다음의 조치를 시행 중입니다: 숙박 시설 직원의 개인 보호 장비 착용, 고객에게 손 소독제를 제공</li>
+                                            <li>개별 포장된 음식 옵션이 아침 식사에 제공됩니다.</li>
+                                        </ul>
+                                        <strong>checkInInstructions</strong><br>
+                                        추가 인원에 대한 요금이 부과될 수 있으며, 이는 숙박 시설 정책에 따라 다릅니다.<br>
+                                        체크인 시 부대 비용 발생에 대비해 정부에서 발급한 사진이 부착된 신분증과 신용카드, 직불카드 또는 현금으로 보증금이 필요할 수 있습니다.<br>
+                                        특별 요청 사항은 체크인 시 이용 상황에 따라 제공 여부가 달라질 수 있으며 추가 요금이 부과될 수 있습니다. 또한, 반드시 보장되지는 않습니다.<br>
+                                        시설 내 주차가 불가능합니다.<br>
+                                        <strong>SpecialCheckInInstructions</strong><br>
+                                        도착 시 프런트 데스크 직원의 안내를 받으시면 됩니다. 자세한 내용은 예약 확인에 나와 있는 연락처 정보로 숙박 시설에 문의해 주시기 바랍니다.
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                    <th scope="row"><strong>Contact Office</strong></th>
+                    <td colspan="3">
+                      If you have difficulties and questions, please contact ****** Services +82 (2) 3483-7091<br>(Monday to Sunday: 24 hours a day)
+                    </td>
+                  </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="documents-item">
+                    <div class="documents-item-title">주의사항<span>숙박 시 주의사항을 잘 읽어보시고 문제발생 시 상황에 따라 대처해 주십시오.</span></div>
+                    <div class="table table-documents">
+                        <table>
+                            <colgroup>
+                                <col width="18%">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">호텔체크인</th>
+                                    <td>발급 받으신 숙박권(Voucher)을 숙소 도착 후 체크인 시, 여권과 함께 프론트 데스크에 제시하여 주시기 바랍니다.<br>숙박권(Voucher) 없이 체크인 하실 경우, 투숙이 거부되거나 예약을 찾지 못하는 불이익을 당할 수 있사오니 반드시 지참 바랍니다.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">룸타입</th>
+                                    <td>
+                                        <dl class="text-list2 color-sub7">
+                                            <dt class="mb5">Twin/Double</dt>
+                                            <dd class="none-pd">대부분의 지역에서 더블과 트윈을 특별히 구분하고 있지 않으며, 객실 배정은 체크인 당인 현지사정에 따라 달라질 수 있습니다. 따라서 원하시는 베드타입으로 확정을 받으셨다 하더라도 요청사항일 뿐 체크인 시 제공받는 객실의 베드타입은 다를 수 있습니다.</dd>
+                                        </dl>
+                                        <dl class="text-list2 color-sub7 mt20">
+                                            <dt class="mb5">Triple</dt>
+                                            <dd class="none-pd">트리플은 기존객실에 3인까지 투숙을 허용하는 룸타입으로, 반드시 침대 3개 제공을 의미하는 것은 아닙니다.<br>(= 추가침대/매트리스 제공 없이 더블베드 하나 혹은 싱글베드 2개만 제공되는 경우도 있습니다.)</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">보증금(디파짓)</th>
+                                    <td>숙박업체들의 경우 체크인 과정에서 업무규정에 따라 부대시설 이용에 대한 보증으로 보증금(Deposit)을 요구합니다.<br>따라서 해외결제승인 가능한 신용카드/체크카드/현금 으로 지불해 주셔야 합니다. 특히 카드종류의 경우 대표투숙객 본인 명의의 카드가 아닐경우 지불 거부 혹은 지불되더라도 추후 체크아웃 시 환불이 불가할 수 있으니 이 경우 노랑풍선에서 환불승인취소를 요구할 수 없습니다.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">추가비용</th>
+                                    <td>일부 도시의 경우 지불된 숙박비용 이외, 시티택스/리조트피/투어리즘피/입욕세 등등의 명칭 하에 현지에서 추가비용이 발생할 수 있습니다. 또한 특정한 날짜 투숙의 경우 써차지/의무 갈라디너 등으로 추가비용이 발생할 수 있습니다. 예약되지 않은 인원(영유아포함) 투숙 시 입실거부 혹은 추가비용이 발생할 수 있습니다.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">긴급연락망</th>
+                                    <td>예약 또는 바우처 이용에 문제가 발생 할 경우 근무시간 중 노랑풍선(평일 9시~18시), 근무시간 이외에는 숙박권(Voucher) 상 안내 되어있는 Contact Office로 연락주시기 바랍니다.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">결항관련 취소시</th>
+                                    <td>태풍, 지진 화산폭발 등의 천재지변으로 항공(선박)이 결항된 경우, 최소료는 약관에 의거 하며 결항 증빙서류를 호텔에 제출 후 취소로 환불 가능여부를 최종 확인합니다. 이때 결항 증빙서류 제출은 필수입니다.<br>* 노랑풍선 근무시간 내 : 영문결항증빙서와 함께 취소요청 바랍니다.<br>* 노랑풍선 근무시간 외 : 투숙호텔로 직접 전화 후 취소요청 해주시기 바랍니다. (취소해준 호텔 담당자의 이름을 반드시 확인하시어 영문결항증빙서와 함께 알려주시기 바랍니다.)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="documents-footer">
+                <ul class="text-list dashed md color-main2">
+                    <li>노랑풍선 주소 : 서울특별시 중구 수표로 31, 노랑풍선</li>
+                    <li>대표전화 : +82-2-1544-2288</li>
+                    <li class="mt20">
+                        &copy;YBTOUR., All Rights Reserved.
+                    </li>
+                </ul>
+                <span class="site-link"><img src="../../assets/images/common/ico-common-header-logo.png" alt="노랑풍선"></span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<p>cookie-service works!</p>
+<p><a href="https://www.npmjs.com/package/ngx-cookie-service">https://www.npmjs.com/package/ngx-cookie-service</a></p>
+<br><br>
+<div>
+    <h2>cookieValue : {{cookieValue}}</h2>
+</div>
+<br><br>
+<div>
+    <h2>쿠키 저장</h2>
+    <p>key : {{testKey}}</p>
+    <input #cookieSaveInput type="text" class="form-control" placeholder=''/>
+    <button (click)="setCookieValue()" type="button" class="btn btn-success">setCookieValue</button>
+</div>
+
+<br><br>
+<div>
+    <h2>쿠키 불러오기</h2>
+    <button (click)="getCookieValue()" type="button" class="btn btn-info">쿠키 로드</button>
+</div>
+
+<br><br>
+<div>
+    <h2>쿠키 삭제</h2>
+    <p>key : {{testKey}}</p>
+    <button (click)="delCookieValue()" type="button" class="btn btn-info">쿠키 삭제</button>
+</div>
+

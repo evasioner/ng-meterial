@@ -1,0 +1,88 @@
+<div *ngIf="isBrowser" id="wrap" class="p-hotel-search-result search-results" infiniteScroll [infiniteScrollDistance]="infiniteScrollConfig.distance" [infiniteScrollThrottle]="infiniteScrollConfig.throttle" (scrolled)="onScroll()">
+
+    <!-- header -->
+    <app-hotel-header [headerType]="headerType" [headerConfig]="headerConfig"></app-hotel-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <!-- 리스트 로딩 -->
+        <div *ngIf="!loadingBool" class="list-loading">
+            <p class="loading-msg">
+                더 많은 호텔을 검색중입니다.<br>잠시만 기다려주세요.
+            </p>
+        </div>
+        <div *ngIf="loadingBool && hotelList?.length > 0" class="search-result-page">
+            <!-- 현재 페이지 인원 표시 -->
+            <!-- <div class="page-view-msg">
+                <span class="icon xs location2"></span>현재 5,000명이 같은 날짜로 도시 검색중
+            </div> -->
+            <ng-template [ngIf]="loadingBool && hotelList?.length > 0">
+                <!-- timer | is-hide-->
+                <countdown-timer class="is-hide"></countdown-timer>
+                <!-- 검색 결과 -->
+                <div class="search-result-list">
+                    <!-- 호텔 아이템 반복 -->
+                    <ng-container *ngFor="let hotItem of hotelList; index as i">
+                        <div class="hotel-result-item">
+                            <!-- 클릭시 .active 토글 -->
+                            <div class="hotel-image" (click)="onHotelDtl(hotItem)" [ngStyle]="{background: 'url(' + hotItem.defaultPhotoUrl + ') 50% 50% no-repeat, url(assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat', 'background-size': 'cover'}">
+                                <!-- 특가 라벨 -->
+                                <div class="label recommend" *ngIf="hotItem?.recommendYn">
+                                    <span>추천</span>
+                                </div>
+                            </div>
+                            <div class="hotel-information">
+                                <ul>
+                                    <li class="name">{{hotItem.hotelNameLn}}</li>
+                                    <li class="name2" *ngIf="hotItem.hotelNameEn">{{hotItem.hotelNameEn}}</li>
+                                    <li *ngIf="hotItem.starRating" class="rate">
+                                        <span class="hotel-rating">
+                                            <!-- 호텔 등급은 .s1~s5 중간에 s1h, s2h, s3h, s4h가 있음 -->
+                                            <span class="icon s{{getHotelStarRating(hotItem.starRating)}}"></span>
+                                            <span class="text">{{hotItem.starRating | number  : '1.0-1'}}성급</span>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <div class="item-group">
+                                    <div class="item-row col">
+                                        <ng-container *ngIf="hotItem.pois">
+                                            <div class="left" *ngIf="hotItem?.pois?.length > 0">
+                                                <span class="icon xs location3"></span>
+                                                <span>{{hotItem.pois[0].poiName}} </span>
+                                            </div>
+                                        </ng-container>
+                                        <div class="right">
+                                            <strong class="color-point2">{{ hotItem.roomType.amountSum | number }}</strong><span class="font-xscolor-sub5">원</span>
+                                            <span *ngIf="hotItem?.roomType?.leftRooms <= 3" class="bubble">마지막
+                                                {{hotItem.roomType.leftRooms}}방</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <!-- <div class="btn-group">
+                        <button class="btn md round line light-grey" role="button"><span class="icon sm direction bottom2">더보기</span></button>
+                    </div> -->
+                </div>
+
+                <div class="filter-button-group">
+                    <!-- 필터가 적용되어 있으면 .active를 추가함 -->
+                    <a [class.active]="detailUpdate" class="btn-filter" (click)="onDetailFilter()">
+                        <span class="icon xs filter"></span>
+                    </a>
+                    <a [class.active]="alignUpdate" class="btn-filter" (click)="onAlignFilter()">
+                        <span class="icon xs align"></span>
+                    </a>
+                    <a class="btn-filter" (click)="onMapFilter()">
+                        <span class="icon xs map"></span>
+                    </a>
+                </div>
+
+            </ng-template>
+        </div> <!-- end search-result-page -->
+        <app-error-result [hotelError]="loadingBool && hotelList.length === 0" (searchAgain)="errorSearchAgain($event)">
+        </app-error-result>
+    </div> <!-- end contents -->
+</div>

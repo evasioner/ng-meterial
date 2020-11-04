@@ -1,0 +1,225 @@
+<!-- Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>항공 일정</h1>
+        <div class="right">
+            <a (click)="modalClose()" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+
+    <!-- modal contents -->
+    <div class="modal-contents" *ngIf="loadingBool">
+        <!-- 항공 일정 modal -->
+
+        <div class="cm-schedule">
+            <ng-container *ngFor="let item of resultList.selected.flight">
+                <!-- 스케줄 반복 -->
+                <!-- .schedule-header 클릭시 .active 토글 -> .schedule-body 토글 -->
+                <div class="schedule-item" *ngIf="flightSelectedRQ.condition.tripTypeCode == 'RT' || flightSelectedRQ.condition.tripTypeCode == 'OW'">
+                    <div (click)="onGoDetailShow()" class="schedule-header" [class.active]="goDetailShow">
+                        <dl>
+                            <dt>
+                                <span class="label">가는편</span>
+                                <span class="title">{{item.itineraries[0].segments[0].origin.airportNameLn}}({{item.itineraries[0].segments[0].origin.airportCode}}) - {{item.itineraries[0].segments[0].destination.airportNameLn}}({{item.itineraries[0].segments[item.itineraries[0].segments.length-1].destination.airportCode}})</span>
+                            </dt>
+                            <dd>
+                                <span>{{item.itineraries[0].segments[0].origin.departureDate | amDateFormat:'MM.DD (ddd)'}}</span>
+                                <span>직항</span>
+                                <span>{{item.itineraries[0].totalDuration | flightMinuteToHourMinute}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="schedule-body">
+                        <!-- 항공 상세 스케줄 -->
+                        <div class="flight-schedule">
+                            <ng-container *ngFor="let segmentItem of item.itineraries[0].segments">
+                                <div class="schedule-block">
+                                    <div class="time">
+                                        <p>{{segmentItem.origin.departureTime}}</p>
+                                        <p>{{segmentItem.origin.departureDate | amDateFormat:'MM.DD (ddd)'}}</p>
+                                    </div>
+                                    <div class="total">{{segmentItem.flyingMinutes | flightMinuteToHourMinute}}</div>
+                                    <dl>
+                                        <dt>
+                                            <span class="label">{{segmentItem.origin.airportCode}}</span>
+                                            <span class="title">로스앤젤레스(로스앤젤레스 국제공항 B) 출발</span>
+                                        </dt>
+                                        <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034
+                                        </dd>
+                                        <!-- <dd>일반석/무료수하물/성인 1PC/소아 1PC</dd>
+                                    <dd><span class="food">식사</span><span class="wifi">WI-FI</span><span class="plug">콘센트</span><span class="vod">VOD</span></dd> -->
+                                    </dl>
+                                </div>
+                                <div class="schedule-block">
+                                    <div class="time">
+                                        <p>{{segmentItem.destination.arrivalTime}}</p>
+                                        <p>{{segmentItem.destination.arrivalDate | amDateFormat:'MM.DD (ddd)'}}</p>
+                                    </div>
+                                    <!-- <div class="total">12시간 25분</div> -->
+                                    <dl>
+                                        <dt>
+                                            <span class="label">{{segmentItem.destination.airportCode}}</span>
+                                            <span class="title">상하이(상하이 푸동 국제공항 T2) 도착</span>
+                                        </dt>
+                                        <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034
+                                        </dd>
+                                        <!-- <dd>
+                                            <span class="transfer">상하이 환승</span>
+                                        </dd>
+                                        <dd>
+                                            <span class="luggage">수하물 연결수속</span>
+                                        </dd> -->
+                                    </dl>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 스케줄 반복 -->
+                <!-- .schedule-header 클릭시 .active 토글 -> .schedule-body 토글 -->
+                <div class="schedule-item" *ngIf="pageId ==' flightSearchResultComePage'">
+                    <div (click)="onComeDetailShow()" class="schedule-header" [class.active]="comeDetailShow">
+                        <dl>
+                            <dt>
+                                <span class="label">오는편</span>
+                                <span class="title">{{item.itineraries[1].segments[0].origin.airportNameLn}}({{item.itineraries[1].segments[0].origin.airportCode}}) - {{item.itineraries[1].segments[0].destination.airportNameLn}}({{item.itineraries[1].segments[item.itineraries[1].segments.length-1].destination.airportCode}})</span>
+                            </dt>
+                            <dd>
+                                <span>{{item.itineraries[1].segments[0].origin.departureDate | amDateFormat:'MM.DD (ddd)'}}</span>
+                                <span>직항</span>
+                                <span>{{item.itineraries[1].totalDuration | flightMinuteToHourMinute}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="schedule-body">
+                        <!-- 항공 상세 스케줄 -->
+                        <div class="flight-schedule">
+                            <ng-container *ngFor="let segmentItem of item.itineraries[1].segments">
+                                <div class="schedule-block">
+                                    <div class="time">
+                                        <p>{{segmentItem.origin.departureTime}}</p>
+                                        <p>{{segmentItem.origin.departureDate | amDateFormat:'MM.DD (ddd)'}}</p>
+                                    </div>
+                                    <div class="total">{{segmentItem.flyingMinutes | flightMinuteToHourMinute}}</div>
+                                    <dl>
+                                        <dt>
+                                            <span class="label">{{segmentItem.origin.airportCode}}</span>
+                                            <span class="title">로스앤젤레스(로스앤젤레스 국제공항 B) 출발</span>
+                                        </dt>
+                                        <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                        <!-- <dd>일반석/무료수하물/성인 1PC/소아 1PC</dd>
+                                        <dd><span class="food">식사</span><span class="wifi">WI-FI</span><span class="plug">콘센트</span><span class="vod">VOD</span></dd> -->
+                                    </dl>
+                                </div>
+                                <div class="schedule-block">
+                                    <div class="time">
+                                        <p>{{segmentItem.destination.arrivalTime}}</p>
+                                        <p>{{segmentItem.destination.arrivalDate | amDateFormat:'MM.DD (ddd)'}}</p>
+                                    </div>
+                                    <!-- <div class="total">12시간 25분</div> -->
+                                    <dl>
+                                        <dt>
+                                            <span class="label">{{segmentItem.destination.airportCode}}</span>
+                                            <span class="title">상하이(상하이 푸동 국제공항 T2) 도착</span>
+                                        </dt>
+                                        <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                        <!-- <dd>
+                                            <span class="transfer">상하이 환승</span>
+                                        </dd>
+                                        <dd>
+                                            <span class="luggage">수하물 연결수속</span>
+                                        </dd> -->
+                                    </dl>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 전체 금액 -->
+                <!-- 요금 -->
+                <div class="schedule-price">
+                    <div class="item-group">
+
+                        <!-- 성인만 예약시 -->
+                        <ng-container *ngIf="flightSelectedRQ.condition.childCount == 0 && flightSelectedRQ.condition.infantCount == 0;else other_content">
+                            <div class="item-row col">
+                                <div class="left">왕복 요금 (성인 1인 기준)</div>
+                                <div class="right">{{item.price.fares[0].passengerFares[0].amountSum | number}}원*{{item.price.fares[0].passengerFares[0].paxCount}}</div>
+                            </div>
+                        </ng-container>
+
+                        <ng-template #other_content>
+                            <ng-container *ngFor="let passengerFareItem of item.price.fares[0].passengerFares">
+                                <!-- 성인 + 소아, 유아 예약시 -->
+                                <ng-container *ngIf="passengerFareItem.ageTypeCode == ' ADT'">
+                                    <div class="item-row col">
+                                        <!--
+                        .text-link 클릭시 <span class="icon xs ml10">에 .bottom2(닫힌상태), top2(열린상태) 토글
+                        .text-link 클릭시 아래 소아, 유아 영역 토글로 표시
+                    -->
+                                        <div class="left">
+                                            <a (click)="onPirceShow()" class="text-link color-sub5">
+                                                <span class="text">왕복 요금 (성인 1인 기준)</span>
+                                                <span class="icon xs ml10" [ngClass]="priceShow ? 'top2' : 'bottom2' "></span>
+                                            </a>
+                                        </div>
+                                        <div class="right"> {{passengerFareItem.amountSum | number}}원*{{passengerFareItem.paxCount}}</div>
+                                    </div>
+                                </ng-container>
+                                <!--
+                    - 소아, 유아 포함되어 있을때 보이는 영역 시작
+                    - 위에 .text-link를 누르면 보여짐
+                  -->
+                                <ng-container *ngIf="priceShow">
+                                    <ng-container *ngIf="passengerFareItem.ageTypeCode == 'CHD'">
+                                        <div class="item-row col">
+                                            <div class="left">소아 1인 기준</div>
+                                            <div class="right">{{passengerFareItem.amountSum | number}}원*{{passengerFareItem.paxCount}}</div>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="passengerFareItem.ageTypeCode == 'INF'">
+                                        <div class="item-row col">
+                                            <div class="left">유아 1인 기준</div>
+                                            <div class="right">{{passengerFareItem.amountSum | number}}원*{{passengerFareItem.paxCount}}</div>
+                                        </div>
+                                    </ng-container>
+                                </ng-container>
+                                <!-- 소아, 유아 포함되어 있을때 보이는 영역 끝 -->
+                            </ng-container>
+                        </ng-template>
+
+                        <div class="item-row col">
+                            <div class="left">출발편 추가수하물 30kg (편도)</div>
+                            <div class="right">20,000원*1</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">도착편 추가수하물 30kg (편도)</div>
+                            <div class="right">20,000원*1</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">결제 금액</div>
+                            <div class="right">1,046,000원</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 하단 가격 + 예약버튼 -->
+                <div class="price-footer-box">
+                    <div class="item-group">
+                        <div class="item-row col">
+                            <div class="left"><span class="font-lg-b color-main2">항공 총 금액</span></div>
+                            <div class="right">
+                                <span class="font-lg-b color-point2">{{item.price.fares[0].amountSum | number}} 원</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button (click)="onReserve()" class="btn lg default" role="button">예약 계속</button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

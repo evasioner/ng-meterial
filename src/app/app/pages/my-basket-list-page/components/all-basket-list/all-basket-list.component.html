@@ -1,0 +1,187 @@
+<!-- 리스트 업데이트 완료 시점에 dom에 로드 -->
+<div class="list-update-msg">
+    <span class="icon sm refresh"></span><span class="color-sub3">최근업데이트</span><span class="color-sub5">{{todayTime}}</span>
+</div>
+<!--
+                - 위시 리스트 아이템이 없을 경우 .fixed-price-extend 삭제
+              -->
+<div class="page-contents-type3 fixed-price-extend">
+    <div class="common-list-top mb20">
+        <span>전체 <span class="color-point2">{{totalListCount | number}}</span>건 (최대 9개)</span>
+        <ul class="ml-auto toggle-link">
+            <!-- 클릭시 .active 추가 -->
+            <li><a (click)="sortStr(0)" [ngClass]="{'active': sortKey === 0}">업데이트순</a></li>
+            <li><a (click)="sortStr(1)" [ngClass]="{'active': sortKey === 1}">일정순</a></li>
+        </ul>
+    </div>
+    <!-- 위시리스트 아이템이 없을 경우 숨김 -->
+    <div class="common-list-top">
+        <label class="checkbox">
+            <input id="allChk" type="checkbox" [(ngModel)]="selectedAll" (change)="allCheck()" class="checkbox-control-input">
+            <span class="checkbox-control-text font-md-b color-main2">전체 선택</span>
+        </label>
+        <!-- <span href="#" class="text-link ml-auto"><span class="text color-sub5">선택 삭제</span></a> -->
+    </div>
+
+    <!-- 위시리스트 아이템 반복 -->
+    <ng-container *ngFor="let list of basketList; index as i;">
+        <div *ngIf="list.categories[0].code === 'IC01'" class="round-box reservation-item">
+            <div class="reservation-title">
+                <label class="checkbox">
+                    <input type="checkbox" [(ngModel)]="list.selected" (change)="onCheck()" class="checkbox-control-input">
+                    <span class="checkbox-control-text color-main2">선택</span>
+                </label>
+            </div>
+            <!-- 앞에 붙는 [항공], [호텔] 등 카테고리 구분 탭이 전체일때만 표시하고 해당 탭에서는 숨김 -->
+            <div class="reservation-summary">
+                <h2 class="product-title">[{{list.categories[0].name}}] [{{list.items[0].flight.tripTypeName}}] {{list.bookingName}}</h2>
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>{{list.items[0].travelFromDate | date:'y.MM.dd'}} - {{list.items[0].travelToDate | date:'y.MM.dd'}}</span>
+                    </li>
+                    <li>
+                        <span>항공사</span>
+                        <span>{{list.items[0].flight.airlineNameList}}</span>
+                    </li>
+                    <li>
+                        <span>좌석 정보</span>
+                        <span>성인 2, 일반석</span>
+                    </li>
+                    <li>
+                        <span>결제금액</span>
+                        <span><strong class="color-point2">{{list.sumAmount | number}}원</strong></span>
+                    </li>
+                </ul>
+                <div class="btn-group basis mt20">
+                    <a href="javscript:void(0);" class="btn md grey">삭제하기</a>
+                    <a href="javscript:void(0);" class="btn md default">예약하기</a>
+                    <!-- <ng-container *ngIf="list.items[0].cancellableYn"><a (click)="goDeletePage(list.items[0].basketItemCode, 'IC01')" class="btn md grey">삭제하기</a></ng-container>
+                      <a (click)="goReservationPage(list.items[0].basketItemCode, 'IC01')" class="btn md default">예약하기</a> -->
+                </div>
+            </div>
+        </div>
+        <div *ngIf="list.categories[0].code === 'IC02'" class="round-box reservation-item">
+            <!-- 위시리스트 아이템 반복 -->
+            <div class="reservation-title">
+                <label class="checkbox">
+                    <input type="checkbox" (change)="onCheck()" class="checkbox-control-input">
+                    <span class="checkbox-control-text color-main2">선택</span>
+                </label>
+            </div>
+            <!-- 앞에 붙는 [항공], [호텔] 등 카테고리 구분 탭이 전체일때만 표시하고 해당 탭에서는 숨김 -->
+            <div class="reservation-summary">
+                <h2 class="product-title">[{{list.categories[0].name}}] {{list.items[0].bookingName}}</h2>
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>{{list.items[0].travelFromDate}} - {{list.items[0].travelToDate}}</span>
+                    </li>
+                    <li>
+                        <span>호텔등급</span>
+                        <span>5성급</span>
+                    </li>
+                    <li>
+                        <span>객실정보</span>
+                        <span class="full-text">객실1, 성인 2, Deluxe Room, 1King bed</span>
+                    </li>
+                    <li>
+                        <span>결제금액</span>
+                        <span><strong class="color-point2">{{list.items[0].sumAmount | number}}원</strong></span>
+                    </li>
+                </ul>
+                <div class="btn-group basis mt20">
+                    <a href="#" class="btn md grey">삭제하기</a>
+                    <a href="#" class="btn md default">예약하기</a>
+                    <!-- <ng-container *ngIf="list.items[0].cancellableYn"><a (click)="goDeletePage(list.items[0].basketItemCode, 'IC02')" class="btn md grey">삭제하기</a></ng-container>
+                      <a (click)="goReservationPage(list.items[0].basketItemCode, 'IC02')" class="btn md default">예약하기</a> -->
+
+                </div>
+            </div>
+        </div>
+        <!-- 위시리스트 아이템 반복 -->
+        <div *ngIf="list.categories[0].code === 'IC04'" class="round-box reservation-item">
+            <div class="round-box reservation-item">
+                <div class="reservation-title">
+                    <label class="checkbox">
+                        <input type="checkbox" (change)="onCheck()" class="checkbox-control-input">
+                        <span class="checkbox-control-text color-main2">선택</span>
+                    </label>
+                </div>
+                <!-- 앞에 붙는 [항공], [호텔] 등 카테고리 구분 탭이 전체일때만 표시하고 해당 탭에서는 숨김 -->
+                <div class="reservation-summary">
+                    <h2 class="product-title">[{{list.categories[0].name}}] [치앙마이] {{list.items[0].bookingName}}</h2>
+                    <ul>
+                        <li>
+                            <span>이용일</span>
+                            <span>{{list.items[0].travelFromDate}} - {{list.items[0].travelToDate}}</span>
+                        </li>
+                        <li>
+                            <span>옵션</span>
+                            <span class="full-text">인천 제2터미널 면세구역 탑승동, 4GB(데이터+통화)</span>
+                        </li>
+                        <li>
+                            <span>결제금액</span>
+                            <span><strong class="color-point2">{{list.items[0].sumAmount | number}}원</strong><span class="activity-now">즉시 확정</span></span>
+                        </li>
+                    </ul>
+                    <div class="btn-group basis mt20">
+                        <a href="#" class="btn md grey">삭제하기</a>
+                        <a href="#" class="btn md default">예약하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 위시리스트 아이템 반복 -->
+        <div *ngIf="list.categories[0].code === 'IC03'" class="round-box reservation-item">
+            <div class="round-box reservation-item">
+                <div class="reservation-title">
+                    <label class="checkbox">
+                        <input type="checkbox" (change)="onCheck()" class="checkbox-control-input">
+                        <span class="checkbox-control-text color-main2">선택</span>
+                    </label>
+                </div>
+                <!-- 앞에 붙는 [항공], [호텔] 등 카테고리 구분 탭이 전체일때만 표시하고 해당 탭에서는 숨김 -->
+                <div class="reservation-summary">
+                    <h2 class="product-title">[{{list.categories[0].name}}] {{list.items[0].bookingName}}</h2>
+                    <ul>
+                        <li>
+                            <span>이용일</span>
+                            <span>{{list.items[0].travelFromDate}} - {{list.items[0].travelToDate}}</span>
+                        </li>
+                        <li>
+                            <span>옵션정보</span>
+                            <span>인승, 4도어, 에어컨, 자동변속</span>
+                        </li>
+                        <li>
+                            <span>인수장소</span>
+                            <span class="full-text">{{list.items[0].travelFromDate}} {{list.items[0].rent.pickupTime}} / {{list.items[0].rent.pickupLocationName}}({{list.items[0].rent.vehicleVendorName}})</span>
+                        </li>
+                        <li>
+                            <span>반납장소</span>
+                            <span class="full-text">{{list.items[0].travelToDate}} {{list.items[0].rent.returnTime}} / {{list.items[0].rent.returnLocationName}}({{list.items[0].rent.vehicleVendorName}})</span>
+                        </li>
+                        <li>
+                            <span>결제금액</span>
+                            <span><strong class="color-point2">{{list.currencyCode}} {{list.items[0].sumAmount | number}}</strong><span class="font-xs ml5">(현재 기준 환율 약 224,000원)</span></span>
+                        </li>
+                    </ul>
+                    <div class="btn-group mt20">
+                        <a href="" class="btn md grey">예약불가</a>
+                    </div>
+                </div>
+            </div>
+            <ng-container <!-- - 하단 총 금액 출력 - 위시리스트 아이템이 1개도 없을 경우 .prica-footer-box 보여주지 않는다. - 위시리스트 아이템이 1개도 없을 경우 .page-content-type3의 .fixed-price-extend는 삭제 한다. - 두번째 .tab-item 참고 -->
+                <div class="price-footer-box">
+                    <div class="item-group">
+                        <div class="item-row col">
+                            <div class="left"><span class="font-lg-b color-main2">선택 총 금액</span></div>
+                            <div class="right">
+                                <span class="font-lg-b color-point2">985,000원</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn lg default" role="button">예약하기</button>
+                    </div>
+                </div>

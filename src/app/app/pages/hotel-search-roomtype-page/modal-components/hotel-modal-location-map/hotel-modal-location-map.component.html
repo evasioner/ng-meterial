@@ -1,0 +1,34 @@
+<div class="modal m-hotel-map">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>지도 보기</h1>
+        <div class="right">
+            <a (click)="modalClose();" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <!-- 호텔 위치 지도 -->
+        <div class="cm-hotel-map">
+            <div class="google-map">
+                <!-- 구글 맵 들어오는 영역 -->
+                <agm-map [latitude]="hotelInfo.latitude" [longitude]="hotelInfo.longitude" [zoom]="18"
+                    (mapReady)="onMapReady($event)">
+                    <agm-marker [markerDraggable]="false" [latitude]="hotelInfo.latitude"
+                        [longitude]="hotelInfo.longitude" [label]="{color: 'white', text: 'H'}">
+                        <agm-info-window [isOpen]="true">
+                            <ng-container *ngIf="hotelInfo.hotelNameLn;else elseif1">
+                                {{hotelInfo.hotelNameLn}}
+                            </ng-container>
+                            <ng-template #elseif1>
+                                <ng-container *ngIf="hotelInfo.hotelNameEn">
+                                    {{hotelInfo.hotelNameEn}}
+                                </ng-container>
+                            </ng-template>
+                        </agm-info-window>
+                    </agm-marker>
+                </agm-map>
+            </div>
+        </div>
+    </div>
+</div>

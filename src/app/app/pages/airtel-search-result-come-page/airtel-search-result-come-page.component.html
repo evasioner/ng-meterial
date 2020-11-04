@@ -1,0 +1,93 @@
+<div *ngIf="isBrowser" id="wrap" class="p-airtel-search-result-come-page search-results" infiniteScroll [infiniteScrollDistance]="infiniteScrollConfig.distance" [infiniteScrollThrottle]="infiniteScrollConfig.throttle" (scrolled)="onScroll()">
+
+    <!-- header -->
+    <app-flight-header [headerType]="headerType" [headerConfig]="headerConfig"></app-flight-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+
+        <div class="search-result-page">
+            <!-- 검색 결과 -->
+
+            <!-- 리스트 로딩 -->
+            <div class="list-loading" *ngIf="loadingBool; else loadingCompleteList">
+                <div class="progress-bar">
+                    <!-- <span class="progress" style="width:30%;"></span> -->
+                </div>
+                <p class="loading-msg">
+                    더 많은 항공편을 검색중입니다.<br>잠시만 기다려주세요.
+                </p>
+            </div>
+
+            <ng-template #loadingCompleteList>
+                <div class="search-result-list">
+                    <!-- 항공 검색 결과 아이템 반복 -->
+
+                    <ng-container *ngFor="let flightItem of resultList?.result.flights">
+                        <div class="flight-result-item" (click)="onSchedule(flightItem)">
+                            <div class="flight-result-item-inner">
+                                <div class="item-top">
+                                    <img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">
+                                    <strong>아시아나항공</strong>
+                                    <span class="code-share">대한항공 공동운항</span>
+                                    <span class="available-seat">잔여10석</span>
+                                </div>
+                                <div class="item-middle">
+                                    <div class="schedule">
+                                        <div class="schedule-wrap">
+                                            <div class="time">
+                                                <p><strong>{{flightItem.itinerary.segments[0].origin.departureTime}}</strong></p>
+                                                <p>{{flightItem.itinerary.segments[0].origin.airportCode}}</p>
+                                            </div>
+
+                                            <!-- 경유 1회는 .lay-over에 .over1 추가, 경유 2회는 .over2 추가 -->
+                                            <ng-container *ngFor="let segmentItem of flightItem.itinerary.segments; index as i">
+                                                <ng-container *ngIf="flightItem.itinerary.segments.length == i + 1">
+                                                    <div class="lay-over" [class.over1]="i==1" [class.over2]="i==2">
+                                                        <p *ngIf="i > 0; else templateName">
+                                                            {{i}}회 경유
+                                                        </p>
+                                                        <div class="line"></div>
+                                                        <p>{{flightItem.itinerary.totalDuration | flightMinuteToHourMinute}}</p>
+                                                    </div>
+                                                    <div class="time">
+                                                        <p><strong>{{segmentItem.destination.arrivalTime}}</strong></p>
+                                                        <p>{{segmentItem.destination.airportCode}}</p>
+                                                    </div>
+                                                </ng-container>
+                                            </ng-container>
+
+                                        </div>
+                                    </div>
+                                    <div class="price">
+                                        <p class="sale-price"><strong>{{flightItem.price.fares[0].amountSum | number}}</strong>원</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <!-- <div class="btn-group">
+            <button class="btn md round line light-grey" role="button"><span
+                class="icon sm direction bottom2">더보기</span></button>
+          </div> -->
+                </div>
+
+                <div class="filter-button-group">
+                    <!-- 필터가 적용되어 있으면 .active를 추가함 -->
+                    <a [class.active]="detailUpdate" class="btn-filter" (click)="onDetailFilter()">
+                        <span class="icon xs filter"></span>
+                    </a>
+                    <a [class.active]="alignUpdate" class="btn-filter" (click)="onAlignFilter()">
+                        <span class="icon xs align"></span>
+                    </a>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+
+<ng-template #templateName>
+    직항
+</ng-template>

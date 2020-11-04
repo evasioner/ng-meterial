@@ -1,0 +1,96 @@
+<div class="">
+    <h2>
+        <p>ngx-bootstrap-slider</p>
+        <a href="https://www.npmjs.com/package/ngx-bootstrap-slider" target="_blank">https://www.npmjs.com/package/ngx-bootstrap-slider</a><br>
+        <a href="https://seiyria.com/bootstrap-slider/" target="_blank">https://seiyria.com/bootstrap-slider/</a>
+    </h2>
+    <div class="m-flex-table" style="margin-top: 10px;">
+        <div class="container-fluid m-flex-table-container">
+
+            <div class="row">
+
+<!--                <div class="col-12">-->
+<!--                    <app-test-slider (slideStop)="slideStop()"-->
+<!--                                     [(value)]="value"-->
+<!--                                     [min]="min"-->
+<!--                                     [max]="max"-->
+<!--                                     [enabled]="enabled"-->
+<!--                                     [ticks]="[1, 2, 3]"-->
+<!--                                     [ticksLabels]='["short", "medium", "long"]'></app-test-slider>-->
+<!--                    <div style="margin-top: 100px;">-->
+<!--                        <h4>Value: {{ value }}</h4>-->
+<!--                        <button (click)="change()">Change</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <div class="col-12" style="padding: 20px 10px 30px 10px">
+                    <p>{{valList[0]}} ~ {{valList[1]}}</p>
+                    <app-test-slider (slideStop)="slideStop()"
+                                     [(value)]="valList"
+                                     [min]="min"
+                                     [max]="max"
+                                     [enabled]="enabled"
+                    ></app-test-slider>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="cm-detail-filter">
+
+                <!-- 슬라이더 2개 -->
+                <div class="accordion">
+                    <div class="accordion-title">
+                        <a href="#" class="select">전체선택</a>
+                        <!-- .accordion-title-link 클릭할 때마다 .active 토글 시키고 .accordion-body에도 .active를 토글 시킴 -->
+                        <a href="#" class="accordion-title-link " >가격대</a>
+                    </div>
+                    <!-- .accordion-title-link에 .active가 추가 되면 .accordion-body에도 .active를 추가 -->
+                    <div class="accordion-body active">
+                        <div class="range double">
+                            <div class="range-title">
+                                <strong class="font-lg color-point2">100,000</strong> <span class="font-xs color-sub5">원 -</span> <strong class="font-lg color-point2">300,000</strong> <span class="font-xs color-sub5">원</span>
+                            </div>
+                            <div class="range-body">
+                                <div class="range-main-bar">
+                                    <div class="range-move-bar" style="left:20%; right:40%;">
+                                        <!-- 좌우로 이동할 수록 range-move-bar의 left 값 변경 -->
+                                        <span class="range-mover"></span>
+                                        <!-- 좌우로 이동할 수록 range-move-bar의 right 값 변경 -->
+                                        <span class="range-mover"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 슬라이더 2개 -->
+
+                <!-- 슬라이더 1개 -->
+                <div class="accordion">
+                    <div class="accordion-title">
+                        <a href="#" class="accordion-title-link active">이용자 평점</a>
+                    </div>
+                    <div class="accordion-body active">
+                        <div class="range">
+                            <div class="range-title"><strong class="font-lg color-point2">2.5</strong> <span class="font-xs color-sub5">이상</span></div>
+                            <div class="range-body">
+                                <div class="range-main-bar">
+                                    <div class="range-move-bar" style="width:30%">
+                                        <span class="range-mover"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 슬라이더 1개 -->
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

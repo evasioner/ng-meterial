@@ -1,0 +1,47 @@
+<div id="modal">
+    <div class="modal cm-mypage active">
+        <div class="modal-header">
+            <h1>박종선 님</h1>
+        <div class="right">
+            <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+        </div>
+        </div>
+        <div class="modal-contents">
+            <ul class="mypage-summary">
+              <li>
+                <strong>4</strong>
+                <span>예약내역</span>
+              </li>
+              <li>
+                <strong>50,000</strong>
+                <span>마일리지</span>
+              </li>
+              <li>
+                <strong>12</strong>
+                <span>위시리스트</span>
+              </li>
+            </ul>
+            <ul class="mypage-menu">
+              <li><a href="#"><span class="icon sm user"></span><strong>회원 정보</strong></a></li>
+              <li><a href="#"><span class="icon sm user-information"></span><strong>여행자 정보 관리</strong></a></li>
+              <li><a href="#"><span class="icon sm coupon"></span><strong>쿠폰</strong></a></li>
+              <li><a href="#"><span class="icon sm list"></span><strong>문의 내역</strong></a></li>
+              <li><a href="#"><span class="icon sm compass2"></span><strong>부가 이용 서비스</strong></a></li>
+              <li><a href="#"><span class="icon sm alarm2"></span><strong>알림</strong></a></li>
+            </ul>
+            
+            <ngx-slick-carousel class="carousel"
+            #slickModal="slick-carousel" 
+            [config]="slideConfig" 
+            (init)="slickInit($event)"
+            (breakpoint)="breakpoint($event)"
+            (afterChange)="afterChange($event)"
+            (beforeChange)="beforeChange($event)">
+            <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                <img src="{{ slide.img }}" alt="" width="100%"  style="border-radius: 16px;">
+            </div>
+            </ngx-slick-carousel>
+
+        </div>
+    </div>
+</div>

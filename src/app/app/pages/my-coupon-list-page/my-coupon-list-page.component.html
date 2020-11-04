@@ -1,0 +1,28 @@
+<div id="wrap" class="p-cm-coupon-list">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="tab-wrap">
+            <div class="tab-header type4 top-blank fixed line">
+                <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>보유 쿠폰</span></a>
+                <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>쿠폰존</span></a>
+            </div>
+            <div class="tab-body">
+                <div class="tab-item active">
+                    <!-- Tab content 보유 쿠폰 -->
+                    <ng-container *ngIf="tabNo === 0">
+                        <app-possesion-coupon class="contents-item-area"></app-possesion-coupon>
+                    </ng-container>
+                    <!-- Tab content 쿠폰존 -->
+                    <ng-container *ngIf="tabNo === 1">
+                        <app-coupon-zone class="contents-item-area"></app-coupon-zone>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1054 @@
+{
+    "serviceCode": "commodo",
+    "serviceName": "dolor laboris",
+    "succeedYn": true,
+    "transactionSetId": "Z90830273067564",
+    "result": {
+        "forFilter": {
+            "amount": {
+                "lowest": 4459424.67275639,
+                "highest": 20666632.60277593
+            },
+            "time": {
+                "departure": {
+                    "minTime": "14:31",
+                    "maxTime": "21:19"
+                },
+                "return": {
+                    "minTime": "03:16",
+                    "maxTime": "16:28"
+                },
+                "ground": {
+                    "minMinutes": 123,
+                    "maxMinutes": 10908
+                },
+                "duration": {
+                    "minMinutes": 677,
+                    "maxMinutes": 4341
+                }
+            },
+            "stops": [
+                {
+                    "viaCount": -19649785,
+                    "lowestAmount": 18489710.891150504
+                },
+                {
+                    "viaCount": -92322758,
+                    "lowestAmount": 5270070.428976759
+                },
+                {
+                    "viaCount": -28642353,
+                    "lowestAmount": 54458572.167190105
+                },
+                {
+                    "viaCount": 43241996,
+                    "lowestAmount": 66432335.574391305
+                },
+                {
+                    "viaCount": 53868676,
+                    "lowestAmount": 50474427.12343514
+                }
+            ],
+            "alliances": [
+                {
+                    "allianceCode": "do esse",
+                    "allianceName": "Ut in non tempor proident",
+                    "airlines": [
+                        {
+                            "code": "pr",
+                            "name": "ipsum",
+                            "lowestAmount": -57795108.29783217
+                        },
+                        {
+                            "code": "ea",
+                            "name": "aliquip",
+                            "lowestAmount": -29751046.377401695
+                        },
+                        {
+                            "code": "si",
+                            "name": "sint",
+                            "lowestAmount": -5417454.970900118
+                        },
+                        {
+                            "code": "do",
+                            "name": "sint quis",
+                            "lowestAmount": 79837813.74056247
+                        }
+                    ]
+                },
+                {
+                    "allianceCode": "dolor",
+                    "allianceName": "ut re",
+                    "airlines": [
+                        {
+                            "code": "ul",
+                            "name": "labore",
+                            "lowestAmount": 65331227.57996556
+                        },
+                        {
+                            "code": "id",
+                            "name": "Duis labore ea laborum",
+                            "lowestAmount": -35319665.84987787
+                        },
+                        {
+                            "code": "ex",
+                            "name": "Excepteur occaecat cupidatat eiusmod",
+                            "lowestAmount": -44736304.07553814
+                        }
+                    ]
+                },
+                {
+                    "allianceCode": "c",
+                    "allianceName": "sed",
+                    "airlines": [
+                        {
+                            "code": "no",
+                            "name": "velit Excepteur",
+                            "lowestAmount": 78272294.43101725
+                        },
+                        {
+                            "code": "se",
+                            "name": "mollit",
+                            "lowestAmount": 16737557.714099973
+                        },
+                        {
+                            "code": "pr",
+                            "name": "reprehenderit in",
+                            "lowestAmount": 60527880.674432635
+                        },
+                        {
+                            "code": "ip",
+                            "name": "id reprehenderit ipsum",
+                            "lowestAmount": 19118908.444279283
+                        },
+                        {
+                            "code": "ea",
+                            "name": "culpa non sit ullamco ",
+                            "lowestAmount": -4485392.5831168
+                        }
+                    ]
+                },
+                {
+                    "allianceCode": "de",
+                    "allianceName": "sit velit",
+                    "airlines": [
+                        {
+                            "code": "se",
+                            "name": "aliqua ut",
+                            "lowestAmount": -22158247.172513112
+                        },
+                        {
+                            "code": "co",
+                            "name": "amet incididunt nostr",
+                            "lowestAmount": -79027834.29275298
+                        }
+                    ]
+                },
+                {
+                    "allianceCode": "proid",
+                    "allianceName": "dolor in laborum fugiat",
+                    "airlines": [
+                        {
+                            "code": "co",
+                            "name": "id nulla fugiat",
+                            "lowestAmount": -46723663.35758622
+                        },
+                        {
+                            "code": "in",
+                            "name": "Duis laboris",
+                            "lowestAmount": -82240023.36038229
+                        }
+                    ]
+                }
+            ],
+            "cabinClasses": [
+                {
+                    "code": "W",
+                    "name": "do",
+                    "lowestAmount": -72541892.42658824
+                }
+            ],
+            "fareTypes": [
+                {
+                    "code": "comm",
+                    "name": "minim exercitation Excepteur non et",
+                    "lowestAmount": -79544888.92701872
+                },
+                {
+                    "code": "q",
+                    "name": "pr",
+                    "lowestAmount": 72768997.72979656
+                },
+                {
+                    "code": "Ex",
+                    "name": "qui voluptate exercitat",
+                    "lowestAmount": 60431429.02663842
+                }
+            ],
+            "viaAirports": [
+                {
+                    "code": "fugi",
+                    "name": "elit magna",
+                    "count": 59123623,
+                    "lowestAmount": 9108003.508533403
+                },
+                {
+                    "code": "eu ",
+                    "name": "dolore",
+                    "count": 72264029,
+                    "lowestAmount": 79326486.33636847
+                },
+                {
+                    "code": "Lo",
+                    "name": "nostrud",
+                    "count": -2109728,
+                    "lowestAmount": -21271415.15306507
+                },
+                {
+                    "code": "nulla l",
+                    "name": "voluptate Excepteur nisi laborum",
+                    "count": 23662546,
+                    "lowestAmount": -20020310.07109411
+                }
+            ],
+            "cityAiports": [
+                {
+                    "minFlyingTime": "20:58",
+                    "maxFlyingTime": "02:17",
+                    "origin": {
+                        "cityCodeIata": "BLD",
+                        "cityNameEn": "Ut ut",
+                        "cityNameLn": "nostrud",
+                        "airports": [
+                            {
+                                "code": "tempor oc",
+                                "name": "nisi sed veniam occaecat sit",
+                                "count": 11632665,
+                                "lowestAmount": 81381916.25480825
+                            },
+                            {
+                                "code": "ull",
+                                "name": "ut in ex sint qui",
+                                "count": 58513669,
+                                "lowestAmount": -51268155.149881564
+                            },
+                            {
+                                "code": "est",
+                                "name": "con",
+                                "count": 61299873,
+                                "lowestAmount": 49822853.4377079
+                            }
+                        ]
+                    },
+                    "destination": {
+                        "cityCodeIata": "IKG",
+                        "cityNameEn": "minim ea enim et quis",
+                        "cityNameLn": "sunt sed",
+                        "airports": [
+                            {
+                                "code": "volup",
+                                "name": "mollit voluptate Excepteur anim laborum",
+                                "count": 66403101,
+                                "lowestAmount": 54632283.83886087
+                            },
+                            {
+                                "code": "mo",
+                                "name": "id ullamco in",
+                                "count": 21935570,
+                                "lowestAmount": 43601014.34495419
+                            },
+                            {
+                                "code": "labo",
+                                "name": "culpa ullamc",
+                                "count": 36756158,
+                                "lowestAmount": -18224637.835194454
+                            }
+                        ]
+                    }
+                },
+                {
+                    "minFlyingTime": "04:57",
+                    "maxFlyingTime": "02:25",
+                    "origin": {
+                        "cityCodeIata": "BZJ",
+                        "cityNameEn": "et dolor",
+                        "cityNameLn": "aute",
+                        "airports": [
+                            {
+                                "code": "dolor",
+                                "name": "dolor in eiusmod ut incididunt",
+                                "count": 40138195,
+                                "lowestAmount": 26907221.6049508
+                            },
+                            {
+                                "code": "ut ",
+                                "name": "nulla eiusmod id amet",
+                                "count": -81094342,
+                                "lowestAmount": 23729181.581533074
+                            }
+                        ]
+                    },
+                    "destination": {
+                        "cityCodeIata": "LIF",
+                        "cityNameEn": "laboris velit",
+                        "cityNameLn": "cupidatat eu consequat sunt cillum",
+                        "airports": [
+                            {
+                                "code": "ea do",
+                                "name": "nulla",
+                                "count": 69913810,
+                                "lowestAmount": 65746717.47942111
+                            }
+                        ]
+                    }
+                }
+            ],
+            "others": {
+                "codeShare": [
+                    {
+                        "sharedOrNot": true,
+                        "count": -70980319
+                    },
+                    {
+                        "sharedOrNot": true,
+                        "count": 28137979
+                    }
+                ],
+                "airportChange": [
+                    {
+                        "changedOrNot": false,
+                        "count": -82143979
+                    },
+                    {
+                        "changedOrNot": true,
+                        "count": 39687371
+                    },
+                    {
+                        "changedOrNot": true,
+                        "count": -36756116
+                    }
+                ]
+            }
+        },
+        "flights": [
+            {
+                "flightIndex": 88872003,
+                "airlineCode": "A12",
+                "airlineNameEn": "n",
+                "allianceCode": "dol",
+                "recommendYn": true,
+                "viaCityCount": 38753644,
+                "itinerary": {
+                    "itineraryNo": 62009944,
+                    "itineraryIndex": 76012707,
+                    "totalDuration": 423,
+                    "totalFlyingMinutes": 83,
+                    "totalGroundMinutes": 37,
+                    "segments": [
+                        {
+                            "segmentNo": 31721970,
+                            "flyingMinutes": 91,
+                            "cabinClassCode": "C",
+                            "cabinClassName": "quis Excepteur",
+                            "bookingClassCode": "S",
+                            "availableQuantity": 681,
+                            "origin": {
+                                "airportCode": "SHC",
+                                "airportNameEn": "eiusmod officia nisi exercitation",
+                                "cityCode": "V28426",
+                                "cityCodeIata": "NRA",
+                                "cityNameEn": "exercitation ut in reprehenderit",
+                                "countryCode": "FR",
+                                "departureDate": "2004-06-16",
+                                "departureTime": "18:02",
+                                "departureWeekday": "FRI",
+                                "airportNameLn": "deserunt ad sed",
+                                "cityNameLn": "dolore dolore deserunt in Lorem",
+                                "stateCode": "V556",
+                                "terminal": "velit proident non mollit"
+                            },
+                            "destination": {
+                                "airportCode": "OCY",
+                                "airportNameEn": "sed tempor",
+                                "cityCode": "E41298",
+                                "cityCodeIata": "RIS",
+                                "cityNameEn": "sed ips",
+                                "countryCode": "WD",
+                                "departureDate": "1993-10-17",
+                                "departureTime": "20:18",
+                                "departureWeekday": "SUN",
+                                "airportNameLn": "in adipisicing laboris culpa",
+                                "cityNameLn": "officia id",
+                                "stateCode": "I27110",
+                                "terminal": "cillum Duis"
+                            },
+                            "marketing": {
+                                "airlineCode": "W01",
+                                "airlineNameEn": "est ea cupidatat sunt",
+                                "flightNo": "16",
+                                "airlineNameLn": "commodo"
+                            },
+                            "flyingMile": 80357120,
+                            "freeBaggage": "fugiat in",
+                            "equipmentCode": "commodo ",
+                            "equipmentName": "cillum",
+                            "operating": {
+                                "airlineCode": "D07",
+                                "airlineNameEn": "fugiat nisi do",
+                                "airlineNameLn": "est in ullamco nulla ut",
+                                "airlineFlightNo": "5304"
+                            }
+                        }
+                    ]
+                },
+                "price": {
+                    "priceIndex": 9628363,
+                    "lowestAmount": 47701324.78986108,
+                    "fares": [
+                        {
+                            "fareIndex": 15528453,
+                            "vendorCompCode": 83745099,
+                            "vendorOfficeId": "ex",
+                            "scheduleKey": "esse ",
+                            "fareType": "laborum",
+                            "fareAmountSum": 31365876.231104776,
+                            "taxAmountSum": 88185538.09475935,
+                            "tasfAmountSum": 76878855.96214041,
+                            "amountSum": 49932446.10423573,
+                            "passengerFare": [
+                                {
+                                    "ptcCode": "m",
+                                    "fareAmount": 49005120.71039804,
+                                    "taxAmount": 69987180.36002693,
+                                    "amountSum": 56505848.75769055,
+                                    "itineraries": [
+                                        {
+                                            "itineraryNo": 1,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": 1,
+                                                    "fareTypeCode": "e",
+                                                    "cabinClassCode": "C",
+                                                    "bookingClassCode": "M",
+                                                    "fareBasisCode": "mollit labo",
+                                                    "breakPoint": "in ex occaecat ut non",
+                                                    "freeBaggage": "veniam"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "ptcCode": "Ut magn",
+                                    "fareAmount": -96593656.85237518,
+                                    "taxAmount": -17847451.481055513,
+                                    "amountSum": -32730566.292046025,
+                                    "itineraries": [
+                                        {
+                                            "itineraryNo": 55746490,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": -61732319,
+                                                    "fareTypeCode": "mollit",
+                                                    "cabinClassCode": "C",
+                                                    "bookingClassCode": "X",
+                                                    "fareBasisCode": "et labori",
+                                                    "breakPoint": "occ",
+                                                    "freeBaggage": "proident anim"
+                                                },
+                                                {
+                                                    "segmentNo": -15353312,
+                                                    "fareTypeCode": "d",
+                                                    "cabinClassCode": "C",
+                                                    "bookingClassCode": "J",
+                                                    "fareBasisCode": "ex pa",
+                                                    "breakPoint": "sint exercitation lab",
+                                                    "freeBaggage": "aute in velit eu"
+                                                },
+                                                {
+                                                    "segmentNo": -35901250,
+                                                    "fareTypeCode": "ea irure",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "E",
+                                                    "fareBasisCode": "cupidatat et officia",
+                                                    "breakPoint": "eu Lorem voluptate",
+                                                    "freeBaggage": "exercitation Duis c"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itineraryNo": -57369751,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": 62608488,
+                                                    "fareTypeCode": "eu",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "N",
+                                                    "fareBasisCode": "cupidatat nulla ",
+                                                    "breakPoint": "consectetur",
+                                                    "freeBaggage": "voluptate sunt"
+                                                },
+                                                {
+                                                    "segmentNo": -26630460,
+                                                    "fareTypeCode": "cillum fug",
+                                                    "cabinClassCode": "Y",
+                                                    "bookingClassCode": "C",
+                                                    "fareBasisCode": "ut",
+                                                    "breakPoint": "sit id",
+                                                    "freeBaggage": "dolor commodo do ut occaecat"
+                                                },
+                                                {
+                                                    "segmentNo": -13875950,
+                                                    "fareTypeCode": "nostr",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "Z",
+                                                    "fareBasisCode": "se",
+                                                    "breakPoint": "et nulla",
+                                                    "freeBaggage": "qui dolor"
+                                                },
+                                                {
+                                                    "segmentNo": -54600473,
+                                                    "fareTypeCode": "esse",
+                                                    "cabinClassCode": "C",
+                                                    "bookingClassCode": "W",
+                                                    "fareBasisCode": "ipsum",
+                                                    "breakPoint": "in ipsum in qui ullamco",
+                                                    "freeBaggage": "eiusmod ad amet veniam ex"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itineraryNo": 98074560,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": -19020432,
+                                                    "fareTypeCode": "n",
+                                                    "cabinClassCode": "C",
+                                                    "bookingClassCode": "H",
+                                                    "fareBasisCode": "do",
+                                                    "breakPoint": "amet quis ea cillum",
+                                                    "freeBaggage": "minim ea eiusmod"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itineraryNo": 56187764,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": -58714453,
+                                                    "fareTypeCode": "volup",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "N",
+                                                    "fareBasisCode": "in voluptate",
+                                                    "breakPoint": "non velit",
+                                                    "freeBaggage": "commodo consequat"
+                                                },
+                                                {
+                                                    "segmentNo": 60640928,
+                                                    "fareTypeCode": "cillum ",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "O",
+                                                    "fareBasisCode": "id ut anim ",
+                                                    "breakPoint": "in sit",
+                                                    "freeBaggage": "ea aliqua in"
+                                                },
+                                                {
+                                                    "segmentNo": 74934310,
+                                                    "fareTypeCode": "mi",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "H",
+                                                    "fareBasisCode": "sed",
+                                                    "breakPoint": "laborum culpa nisi do ut",
+                                                    "freeBaggage": "commodo sed Duis"
+                                                },
+                                                {
+                                                    "segmentNo": -58955568,
+                                                    "fareTypeCode": "enim id ",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "U",
+                                                    "fareBasisCode": "Lorem in qui",
+                                                    "breakPoint": "id",
+                                                    "freeBaggage": "sint f"
+                                                },
+                                                {
+                                                    "segmentNo": -4284799,
+                                                    "fareTypeCode": "occaecat ",
+                                                    "cabinClassCode": "Y",
+                                                    "bookingClassCode": "E",
+                                                    "fareBasisCode": "cillum Ut in Lorem deserunt",
+                                                    "breakPoint": "velit enim in",
+                                                    "freeBaggage": "id veniam"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "ptcCode": "minim eius",
+                                    "fareAmount": 61911971.64741719,
+                                    "taxAmount": 55982331.07894263,
+                                    "amountSum": 1934610.1618553698,
+                                    "itineraries": [
+                                        {
+                                            "itineraryNo": -16046553,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": 33719703,
+                                                    "fareTypeCode": "a",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "J",
+                                                    "fareBasisCode": "ullam",
+                                                    "breakPoint": "aliq",
+                                                    "freeBaggage": "aliquip in veli"
+                                                },
+                                                {
+                                                    "segmentNo": -8318405,
+                                                    "fareTypeCode": "ve",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "L",
+                                                    "fareBasisCode": "cupidatat si",
+                                                    "breakPoint": "culpa labore",
+                                                    "freeBaggage": "ad "
+                                                },
+                                                {
+                                                    "segmentNo": -92490922,
+                                                    "fareTypeCode": "deserunt u",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "F",
+                                                    "fareBasisCode": "reprehenderit in eli",
+                                                    "breakPoint": "exercitation ",
+                                                    "freeBaggage": "et anim"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itineraryNo": 5721634,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": -39083366,
+                                                    "fareTypeCode": "pari",
+                                                    "cabinClassCode": "C",
+                                                    "bookingClassCode": "Z",
+                                                    "fareBasisCode": "nulla",
+                                                    "breakPoint": "aute ipsum ",
+                                                    "freeBaggage": "cillum magna quis eni"
+                                                },
+                                                {
+                                                    "segmentNo": -36531880,
+                                                    "fareTypeCode": "aliq",
+                                                    "cabinClassCode": "C",
+                                                    "bookingClassCode": "L",
+                                                    "fareBasisCode": "ex id conse",
+                                                    "breakPoint": "dolore cillum velit",
+                                                    "freeBaggage": "laborum"
+                                                },
+                                                {
+                                                    "segmentNo": 95827894,
+                                                    "fareTypeCode": "aliquip",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "S",
+                                                    "fareBasisCode": "ipsum",
+                                                    "breakPoint": "incididunt laboris id qui officia",
+                                                    "freeBaggage": "deserunt a"
+                                                },
+                                                {
+                                                    "segmentNo": 65711155,
+                                                    "fareTypeCode": "quis",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "F",
+                                                    "fareBasisCode": "dolor amet sed",
+                                                    "breakPoint": "irure",
+                                                    "freeBaggage": "ut occaecat"
+                                                },
+                                                {
+                                                    "segmentNo": -72244036,
+                                                    "fareTypeCode": "Duis ",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "P",
+                                                    "fareBasisCode": "consequat voluptate lab",
+                                                    "breakPoint": "laborum nostrud",
+                                                    "freeBaggage": "occ"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itineraryNo": -30712514,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": -96885303,
+                                                    "fareTypeCode": "cillu",
+                                                    "cabinClassCode": "Y",
+                                                    "bookingClassCode": "C",
+                                                    "fareBasisCode": "dolore in",
+                                                    "breakPoint": "occaecat do dolor",
+                                                    "freeBaggage": "mollit eiusmod sint reprehenderit"
+                                                },
+                                                {
+                                                    "segmentNo": -70741862,
+                                                    "fareTypeCode": "eiu",
+                                                    "cabinClassCode": "C",
+                                                    "bookingClassCode": "T",
+                                                    "fareBasisCode": "cillum ",
+                                                    "breakPoint": "labore dolor Ut ea Duis",
+                                                    "freeBaggage": "ex eiusmod mollit magna"
+                                                },
+                                                {
+                                                    "segmentNo": -98448218,
+                                                    "fareTypeCode": "ea",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "C",
+                                                    "fareBasisCode": "consectet",
+                                                    "breakPoint": "minim nostrud",
+                                                    "freeBaggage": "officia deserunt anim exercitation"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "ptcCode": "in",
+                                    "fareAmount": -94949102.37959027,
+                                    "taxAmount": 35194688.1125845,
+                                    "amountSum": 31676386.488924548,
+                                    "itineraries": [
+                                        {
+                                            "itineraryNo": 72432090,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": 8480363,
+                                                    "fareTypeCode": "exercitat",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "I",
+                                                    "fareBasisCode": "nisi",
+                                                    "breakPoint": "commodo dolor Excep",
+                                                    "freeBaggage": "cupidatat fug"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itineraryNo": -99616228,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": -92594352,
+                                                    "fareTypeCode": "la",
+                                                    "cabinClassCode": "Y",
+                                                    "bookingClassCode": "F",
+                                                    "fareBasisCode": "do",
+                                                    "breakPoint": "ut sed ex",
+                                                    "freeBaggage": "irure Duis dolore cillum"
+                                                },
+                                                {
+                                                    "segmentNo": -58380895,
+                                                    "fareTypeCode": "do temp",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "B",
+                                                    "fareBasisCode": "do",
+                                                    "breakPoint": "culpa velit quis",
+                                                    "freeBaggage": "culpa non elit reprehenderit"
+                                                },
+                                                {
+                                                    "segmentNo": 64167201,
+                                                    "fareTypeCode": "id",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "S",
+                                                    "fareBasisCode": "tempor labore",
+                                                    "breakPoint": "in velit quis ea",
+                                                    "freeBaggage": "adipisicing ipsum Duis culpa"
+                                                },
+                                                {
+                                                    "segmentNo": -24008893,
+                                                    "fareTypeCode": "dolo",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "M",
+                                                    "fareBasisCode": "min",
+                                                    "breakPoint": "magna ipsum dolore conse",
+                                                    "freeBaggage": "eiusmod dolore"
+                                                },
+                                                {
+                                                    "segmentNo": 82126087,
+                                                    "fareTypeCode": "velit",
+                                                    "cabinClassCode": "Y",
+                                                    "bookingClassCode": "B",
+                                                    "fareBasisCode": "quis labore aute",
+                                                    "breakPoint": "aliqua",
+                                                    "freeBaggage": "dolor in sint"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itineraryNo": -97810586,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": 14632194,
+                                                    "fareTypeCode": "reprehende",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "W",
+                                                    "fareBasisCode": "occaecat et",
+                                                    "breakPoint": "ea",
+                                                    "freeBaggage": "sunt Excepteur et"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itineraryNo": -77930596,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": -5782924,
+                                                    "fareTypeCode": "veniam ",
+                                                    "cabinClassCode": "Y",
+                                                    "bookingClassCode": "K",
+                                                    "fareBasisCode": "Excep",
+                                                    "breakPoint": "esse sint",
+                                                    "freeBaggage": "elit consequat"
+                                                },
+                                                {
+                                                    "segmentNo": 92919254,
+                                                    "fareTypeCode": "in",
+                                                    "cabinClassCode": "Y",
+                                                    "bookingClassCode": "O",
+                                                    "fareBasisCode": "Lorem veniam",
+                                                    "breakPoint": "Ut ",
+                                                    "freeBaggage": "fugiat elit"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "itineraryNo": -89699427,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": -78074969,
+                                                    "fareTypeCode": "est veni",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "B",
+                                                    "fareBasisCode": "nostrud Ut offici",
+                                                    "breakPoint": "consequat fugiat",
+                                                    "freeBaggage": "dolor i"
+                                                },
+                                                {
+                                                    "segmentNo": -17669015,
+                                                    "fareTypeCode": "offici",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "X",
+                                                    "fareBasisCode": "consequat veniam sint",
+                                                    "breakPoint": "sit aute",
+                                                    "freeBaggage": "irure"
+                                                },
+                                                {
+                                                    "segmentNo": 88584137,
+                                                    "fareTypeCode": "Duis cupi",
+                                                    "cabinClassCode": "Y",
+                                                    "bookingClassCode": "E",
+                                                    "fareBasisCode": "sunt sit ea sed fugiat",
+                                                    "breakPoint": "eiusmod culpa m",
+                                                    "freeBaggage": "enim consequat nisi culpa"
+                                                },
+                                                {
+                                                    "segmentNo": 13176068,
+                                                    "fareTypeCode": "elit Lor",
+                                                    "cabinClassCode": "F",
+                                                    "bookingClassCode": "P",
+                                                    "fareBasisCode": "nulla Ut",
+                                                    "breakPoint": "in qui incididu",
+                                                    "freeBaggage": "commodo"
+                                                },
+                                                {
+                                                    "segmentNo": 82524199,
+                                                    "fareTypeCode": "velit ex o",
+                                                    "cabinClassCode": "W",
+                                                    "bookingClassCode": "E",
+                                                    "fareBasisCode": "id nostrud",
+                                                    "breakPoint": "cillum ipsum e",
+                                                    "freeBaggage": "pariatur"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "brandedFareYn": true,
+                            "brandedName": "fugiat do sint Lorem",
+                            "brandedCondition": "anim",
+                            "adultFareAmount": -12927674.48624295,
+                            "adultTaxAmount": 62356016.277463675,
+                            "adultTasfAmount": -92541039.34199858,
+                            "childFareAmount": 40748055.793278635,
+                            "childTaxAmount": 29372695.845098734,
+                            "childTasfAmount": 75276966.24317577,
+                            "infantFareAmount": -22247926.375036582,
+                            "infantTaxAmount": 45433096.58762756,
+                            "infantTasfAmount": -2249830.868621543,
+                            "corporateId": "dese",
+                            "corporateRateYn": true,
+                            "inPolicyYn": false,
+                            "refundableYn": true,
+                            "designatedRouteYn": true,
+                            "promotionSeq": 52208782,
+                            "promotionName": "non id aute do ut"
+                        }
+                    ]
+                },
+                "gdsCompCode": -52003673,
+                "airlineNameLn": "ad qui ea",
+                "allianceName": "eu nulla eiusmod aute"
+            }
+        ],
+        "forSort": [
+            {
+                "type": "Recommend",
+                "minMinutes": 489,
+                "lowestAmount": 30043201.570721895
+            },
+            {
+                "type": "MinDuration",
+                "minMinutes": 489,
+                "lowestAmount": 30043201.570721895
+            },
+            {
+                "type": "AmountLoweast",
+                "minMinutes": 489,
+                "lowestAmount": 30043201.570721895
+            }
+        ],
+        "selected": {
+            "flight": {
+                "flightIndex": 26324718,
+                "airlineCode": "D72",
+                "airlineNameEn": "laboris Excepteur cupidatat labore",
+                "allianceCode": "occ",
+                "recommendYn": true,
+                "viaCityCount": 80438917,
+                "itineraries": [
+                    {
+                        "itineraryNo": 51719855,
+                        "totalDuration": 34428588,
+                        "totalFlyingMinutes": 51921178,
+                        "totalGroundMinutes": 79496203,
+                        "segments": [
+                            {
+                                "segmentNo": 88701938,
+                                "flyingMinutes": 52604589,
+                                "cabinClassCode": "W",
+                                "cabinClassName": "voluptate dolor reprehe",
+                                "bookingClassCode": "N",
+                                "availableQuantity": 46766921,
+                                "origin": {
+                                    "airportCode": "ZMN",
+                                    "airportNameEn": "dolore sunt lab",
+                                    "cityCode": "Y33666",
+                                    "cityCodeIata": "JSH",
+                                    "cityNameEn": "irure ea consectetur est pariatur",
+                                    "countryCode": "AZ",
+                                    "departureDate": "1938-10-31",
+                                    "departureTime": "05:40",
+                                    "departureWeekday": "FRI",
+                                    "airportNameLn": "commodo dolore ad consectetur",
+                                    "cityNameLn": "et",
+                                    "stateCode": "LEO",
+                                    "terminal": "amet veniam"
+                                },
+                                "destination": {
+                                    "airportCode": "SBW",
+                                    "airportNameEn": "ad culpa sint elit",
+                                    "cityCode": "W40796",
+                                    "cityCodeIata": "IHJ",
+                                    "cityNameEn": "commodo nisi sit",
+                                    "countryCode": "TC",
+                                    "departureDate": "2060-01-31",
+                                    "departureTime": "21:20",
+                                    "departureWeekday": "FRI",
+                                    "airportNameLn": "magna sunt adipisicing Duis",
+                                    "cityNameLn": "fugiat esse anim",
+                                    "stateCode": "HBKJU",
+                                    "terminal": "eu exercitation est esse"
+                                },
+                                "marketing": {
+                                    "airlineCode": "U86",
+                                    "airlineNameEn": "des",
+                                    "flightNo": "4998",
+                                    "airlineNameLn": "consequat"
+                                },
+                                "flyingMile": -87795003,
+                                "freeBaggage": "et labore anim",
+                                "equipmentCode": "mollit ex ",
+                                "equipmentName": "an",
+                                "operating": {
+                                    "airlineCode": "E85",
+                                    "airlineNameEn": "ad",
+                                    "airlineNameLn": "consectetur ex velit id",
+                                    "airlineFlightNo": "698"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "price": {
+                    "priceIndex": 83675263,
+                    "lowestAmount": 30278405.250674024,
+                    "fares": [
+                        {
+                            "fareIndex": 7074,
+                            "vendorCompCode": 50726480,
+                            "vendorOfficeId": "laboru",
+                            "scheduleKey": "nulla",
+                            "fareType": "ullam",
+                            "fareAmountSum": 13274495.487787113,
+                            "taxAmountSum": 46825405.851847626,
+                            "tasfAmountSum": 89904852.2929779,
+                            "amountSum": -81033191.60539071,
+                            "passengerFare": [
+                                {
+                                    "ptcCode": "occaec",
+                                    "fareAmount": 30304063.572860777,
+                                    "taxAmount": 94232890.92342068,
+                                    "amountSum": 74833473.98549491,
+                                    "itineraries": [
+                                        {
+                                            "itineraryNo": 1,
+                                            "segments": [
+                                                {
+                                                    "segmentNo": 1,
+                                                    "fareTypeCode": "nisi Ut f",
+                                                    "cabinClassCode": "Y",
+                                                    "bookingClassCode": "C",
+                                                    "fareBasisCode": "voluptate ea U",
+                                                    "breakPoint": "aliqua laboris et",
+                                                    "freeBaggage": "incididunt esse sed sint exercit"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "adultFareAmount": 92858803.63129704,
+                            "adultTaxAmount": 79141895.16062465,
+                            "adultTasfAmount": 23598706.11880584,
+                            "childFareAmount": 75098447.95817071,
+                            "childTaxAmount": 47919926.36107709,
+                            "childTasfAmount": 91224599.13659254,
+                            "infantFareAmount": 84924764.68583119,
+                            "infantTaxAmount": 38588010.84682825,
+                            "infantTasfAmount": 48890765.67375961,
+                            "corporateId": "cupidatat ",
+                            "corporateRateYn": true,
+                            "inPolicyYn": false,
+                            "refundableYn": true,
+                            "designatedRouteYn": false,
+                            "promotionSeq": -89250471,
+                            "promotionName": "ad mollit est dolor aliquip"
+                        }
+                    ]
+                },
+                "gdsCompCode": 50818662,
+                "airlineNameLn": "officia eu",
+                "allianceName": "minim in Lorem"
+            }
+        }
+    },
+    "warningYn": true,
+    "warnings": [
+        {
+            "warningCode": "consectetur Excepteur",
+            "warningMessage": "qui ullamco commodo occaecat"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+<!-- Modal 열릴때 body에 .overflow-none 추가 -->
+
+<body class="bg overflow-none">
+    <div id="wrap">
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal bg2 cm-photo-detail">
+        <div class="modal-title">
+            <div class="count"><strong>1</strong><span>/</span><span>64</span></div>
+            <a (click)="modalClose()" class="icon sm common-close2">닫기</a>
+        </div>
+        <div class="photo-list">
+            <ul>
+                <li class="active"><img src="../../assets/images/temp/@temp-hotel-image.png" alt="" class="photo-item"></li>
+                <li><img src="../../assets/images/temp/@temp-hotel-image.png" alt="" class="photo-item"></li>
+                <li><img src="../../assets/images/temp/@temp-hotel-image.png" alt="" class="photo-item"></li>
+                <li><img src="../../assets/images/temp/@temp-hotel-image.png" alt="" class="photo-item"></li>
+            </ul>
+            <a (click)="prev()" class="btn-prev">이전</a>
+            <a (click)="next()" class="btn-next">다음</a>
+        </div>
+    </div>
+</body>

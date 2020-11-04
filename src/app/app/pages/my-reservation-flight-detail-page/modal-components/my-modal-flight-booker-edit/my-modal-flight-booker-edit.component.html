@@ -1,0 +1,41 @@
+<!-- Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>예약자 정보 변경</h1>
+        <div class="right">
+            <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <!-- 렌터카 옵션선택 modal -->
+        <div class="page-contents-type2 fixed-btn-footer">
+            <div class="row-group">
+                <div class="row mt0">
+                    <h2 class="row-title">예약자 명</h2>
+                    <div class="input line">
+                        <input type="text" disabled>
+                        <span>{{booker?.name}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2 class="row-title">휴대폰 번호</h2>
+                    <div class="input line">
+                        <input type="tel" placeholder="'-' 제외하고 입력">
+                    </div>
+                </div>
+                <div class="row">
+                    <h2 class="row-title">이메일</h2>
+                    <div class="input line">
+                        <input type="email" placeholder="example@mail.com">
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group both pd bg fixed-bottom">
+                <a (click)="onCloseClick()" class="btn lg grey">취소</a>
+                <a (click)="onCloseClick()" class="btn lg default">저장</a>
+            </div>
+        </div>
+    </div>
+</div>

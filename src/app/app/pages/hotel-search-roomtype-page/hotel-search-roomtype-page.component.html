@@ -1,0 +1,423 @@
+<div id="wrap" class="p-hotel-search-roomType" *ngIf="loadingBool">
+
+    <!-- header -->
+    <app-hotel-header [headerType]="headerType" [headerConfig]="headerConfig"></app-hotel-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="page-contents-type fixed-price-extend">
+            <!-- 현재 페이지 인원 표시 -->
+            <!-- <div class="page-view-msg type2">
+                <span class="icon xs location7"></span>현재 5,000명이 같은 호텔을 보는중
+            </div> -->
+            <!-- 상단 이미지 영역 -->
+            <div [ngStyle]="photoList?.length <= 0 ? getPhotoBackgroundStyle() : null" class="hotel-detail-image">
+                <div class="btn-group">
+                    <a class="btn-share" (click)="onShareClick($event)">공유</a>
+                    <!-- <a href="#" class="btn-cart">장바구니</a> -->
+                    <!-- 관심상품 클릭시 .active 토글 -->
+                    <!-- <a href="#" class="btn-wish">관심상품</a> -->
+                </div>
+
+                <app-img-view *ngIf="photoList?.length > 0" [category]="'hotel'" [urlList]="photoList" class="m-ngx-slick-carousel hotel-detail-rolling"></app-img-view>
+            </div>
+            <!-- 호텔 상세 컨텐츠 영역 -->
+            <div class="hotel-detail-contents">
+                <div class="contents-item mg">
+                    <ul class="hotel-basic-information">
+                        <li class="name">{{hotelInfo.hotelNameLn}}</li>
+                        <li *ngIf="hotelInfo.hotelNameEn" class="name2">
+                            {{hotelInfo.hotelNameEn}}
+                        </li>
+                        <li class="rate">
+                            <span class="hotel-rating">
+                                <span class="icon s{{getHotelStarRating(hotelInfo.starRating)}}"></span>
+                                <span class="text">{{hotelInfo.starRating}}성급</span>
+                            </span>
+                        </li>
+                    </ul>
+                    <div class="review-section">
+                        <span (click)="onHotelReview($event)" class="text-review">
+                            <span class="num">4.5</span>
+                            <span class="text">아주좋음</span>
+                            <span class="count">(100)</span>
+                        </span>
+                    </div>
+                    <div class="hotel-location-map">
+                        <div class="google-map-wrap">
+                            <!-- 구글 맵 들어가는 자리 -->
+                            <div id="google-map">
+                                <agm-map [latitude]="hotelInfo.latitude" [longitude]="hotelInfo.longitude" [clickableIcons]="false" [disableDoubleClickZoom]="true" [scrollwheel]="false" [streetViewControl]="false" [mapDraggable]="false" [zoom]="18" [zoomControl]="false">
+                                    <agm-marker [markerDraggable]="false" [latitude]="hotelInfo.latitude" [longitude]="hotelInfo.longitude" [label]="{color: 'white', text: 'H'}">
+                                    </agm-marker>
+                                </agm-map>
+                            </div>
+                            <a (click)="onMapView($event)" class="btn-map">지도보기</a>
+                        </div>
+                        <div class="address">
+                            <ng-container *ngIf="hotelInfo.addressLn;else elseif3">
+                                {{hotelInfo.addressLn}}
+                            </ng-container>
+                            <ng-template #elseif3>
+                                <ng-container *ngIf="hotelInfo.addressEn">{{hotelInfo.addressEn}}</ng-container>
+                            </ng-template>
+                        </div>
+                        <dl class="poi-list" *ngIf="attractions?.length > 0">
+                            <dt>인근명소</dt>
+                            <ng-container *ngFor="let attr of attractions ; index as i">
+                                <dd *ngIf="i < 3">
+                                    <ng-container *ngIf="attr.nameLn;else elseif4">{{attr.nameLn}}</ng-container>
+                                    <ng-template #elseif4>
+                                        <ng-container *ngIf="attr.nameEn">{{attr.nameEn}}</ng-container>
+                                    </ng-template>
+                                    <span class="distance">{{attr.distance | number:'.1-1'}}km</span>
+                                </dd>
+                            </ng-container>
+                        </dl>
+                    </div>
+                </div>
+                <div class="contents-item">
+                    <h2 class="contents-title mg">내 검색 정보</h2>
+                    <div class="row-group mg">
+                        <div class="row">
+                            <div (click)="onHotelTravelerOption()" class="input line no-pd">
+                                <span class="icon sm user"></span>
+                                <input type="text" placeholder="좌석등급, 객실 수, 인원 수를 선택해주세요" value="{{mySearchInfo.travelerInfo}}" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div (click)="onDateClick()" class="input line no-pd">
+                                <span class="icon sm calendar"></span>
+                                <input type="text" placeholder="여행날짜를 선택해 주세요" value="{{mySearchInfo.checkDateInOut}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-item mg" id="roomSelect">
+                    <h2 class="contents-title">객실선택<span class="sub-text">(세금,봉사료 포함)</span></h2>
+                    <div class="round-box">
+                        <ng-container *ngIf="roomLoadingBool">
+                            <!-- 룸타입 반복 -->
+                            <ng-container *ngFor="let roomType of roomTypes; index as roomIdx">
+                                <div class="hotel-room-type-item" *ngIf="roomIdx < moreRoomList">
+                                    <div class="room-name">
+                                        {{roomType.roomTypeName}}<span *ngIf="roomType?.leftRooms <= 3" class="label sm type3 align-m ml5 ">마지막3방</span>
+                                    </div>
+                                    <div class="option">
+                                        <ng-container *ngIf="roomType?.freeBreakfastYn === true|| roomType?.freeWifiYn === true;else roomOption">
+                                            <span *ngIf="roomType?.freeBreakfastYn === true" class="breakfast">조식포함</span>
+                                            <span *ngIf="roomType?.freeWifiYn === true" class="wifi">무료 WI-FI</span>
+                                        </ng-container>
+                                        <ng-template #roomOption>
+                                            <span>포함내역 없음</span>
+                                        </ng-template>
+                                        <a (click)="openRoomInfo(roomType)" class="btn-room" *ngIf="roomType?.additionalInfoYn === true">객실정보</a>
+                                    </div>
+                                    <div class="select">
+                                        <span class="resv-msg">38분전 예약됨</span>
+                                        <!-- <span *ngIf="roomType?.refundableYn;else elseRefundable" class="label sm type2">무료취소</span>
+                                        <ng-template #elseRefundable>
+                                            <span class="label sm type3">환불불가</span>
+                                        </ng-template> -->
+                                        <!--
+                                        - 취소 마감일 보류
+                                        -->
+                                        <!-- <span class="cal">취소마감일 :</span> -->
+                                        <span class="price"><strong>{{roomType.amountSum | number}}</strong> 원</span>
+                                        <!-- 910003 : 호텔패스 / 910004 : RTS 예약 테스트 시, 실제 예약 되므로 예약 테스트 막기 -->
+                                        <!-- <ng-container *ngIf="roomType.vendorCompCode === 910003 || roomType.vendorCompCode === 910004;else elseBookingBtn">
+                                            <a (click)="onRoomTestBtn(roomType.vendorCompCode)" class="btn-reservation">예약테스트X</a>
+                                        </ng-container>
+                                        <ng-template #elseBookingBtn>
+                                            <a (click)="onSelRoom(roomType)" class="btn-reservation">선택</a>
+                                        </ng-template> -->
+                                        <a (click)="onSelRoom(roomType)" class="btn-reservation">선택</a>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <a class="btn-more-view" *ngIf="roomTypes?.length > moreRoomList" (click)="showRoomList($event)">더보기 </a>
+                        </ng-container>
+                        <p *ngIf="!roomTypes || roomTypes?.length === 0"> 해당 호텔에 예약 가능한 객실이 없습니다.</p>
+                    </div>
+                </div>
+                <div class="contents-item mg">
+                    <h2 class="contents-title">{{'HOTEL_INFO.title' | translate}}</h2>
+                    <div class="round-box">
+                        <div *ngIf="hotelInfo.checkInTime || hotelInfo.checkOutTime" class="check-time">
+                            <span class="check-in">{{'HOTEL_INFO.checkIn' | translate}} :
+                                {{hotelInfo.checkInTime}}</span>
+                            <span class="check-out">{{'HOTEL_INFO.checkOut' | translate}} :
+                                {{hotelInfo.checkOutTime}}</span>
+                        </div>
+                        <dl class="article-list" *ngFor="let info of information; index as i" [class.hide]="!(moreInfo > i)">
+                            <dt [innerHTML]="'HOTEL_INFO.' + info.title | translate"></dt>
+                            <ng-container [ngSwitch]="info.title">
+                                <ng-container *ngSwitchCase="'contact'">
+                                    <dd *ngIf="hotelInfo.phoneNo"><strong>전화</strong>{{hotelInfo.phoneNo}}</dd>
+                                    <dd *ngIf="hotelInfo.faxNo"><strong>팩스</strong>{{hotelInfo.faxNo}}</dd>
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'homepageUrl'">
+                                    <dd><a href="info.txt" class="text-link"><span class="text">{{info.txt}}</span></a>
+                                    </dd>
+                                </ng-container>
+                                <ng-container *ngSwitchDefault>
+                                    <dd>{{info.txt}}</dd>
+                                </ng-container>
+                            </ng-container>
+                        </dl>
+                        <a (click)="showHotelInfoList($event)" class="btn-more-view" *ngIf="information?.length > moreInfo">더보기</a>
+                    </div>
+                </div>
+                <div class="contents-item mg" *ngIf="generalInfo?.length > 0">
+                    <h2 class="contents-title">{{'HOTEL_GENERAL_INFO.title' | translate}}</h2>
+                    <div class="round-box">
+                        <dl class="article-list" *ngFor="let general of generalInfo; index as i" [class.hide]="!(moreGeneral > i)">
+                            <dt [innerHTML]="'HOTEL_GENERAL_INFO.' + general.title | translate"></dt>
+                            <dd [innerHTML]="general.txt"></dd>
+                        </dl>
+                        <a (click)="showGeneralInfoList($event)" class="btn-more-view" *ngIf="generalInfo?.length > moreGeneral">더보기</a>
+                    </div>
+                </div>
+                <div *ngIf="hotelInfo?.facilities?.length > 0" class="contents-item mg">
+                    <h2 class="contents-title">편의시설</h2>
+                    <div class="round-box">
+                        <ul class="convenience">
+                            <!-- li 7번째부터 .hide 추가 + 더보기 추가 -->
+                            <li *ngFor="let fItem of hotelInfo.facilities; index as i" [class.hide]="!(moreFacility > i)">
+                                <ng-container [ngSwitch]="fItem.facilityCode">
+                                    <ng-container *ngSwitchCase="'HF001'">
+                                        <span class="icon md wifi"></span>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'HF002'">
+                                        <span class="icon md parking"></span>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'HF003'">
+                                        <span class="icon md airport-pickup"></span>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'HF004'">
+                                        <span class="icon md restaurant"></span>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'HF005'">
+                                        <span class="icon md lounge"></span>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'HF006'">
+                                        <span class="icon md pool"></span>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'HF007'">
+                                        <span class="icon md fitness"></span>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'HF008'">
+                                        <span class="icon md airconditioner"></span>
+                                    </ng-container>
+                                    <ng-container *ngSwitchCase="'HF009'">
+                                        <span class="icon md refrigerator"></span>
+                                    </ng-container>
+                                </ng-container>
+                                {{'HOTEL_AMENITIES.'+ fItem.facilityCode | translate}}
+                            </li>
+                        </ul>
+                        <!-- 더보기 누르면 .hide 삭제 -->
+                        <a (click)="showFacilityList($event)" class="btn-more-view" *ngIf="hotelInfo.facilities.length > moreFacility">더보기</a>
+                    </div>
+                </div>
+                <div *ngIf="hotelInfo?.safetyInfos?.length > 0" class="contents-item mg">
+                    <h2 class="contents-title">위생 및 안전조치</h2>
+                    <div class="round-box">
+                        <ul class="text-list color-sub6">
+                            <li *ngFor="let safety of hotelInfo.safetyInfos; index as safetyIndex">{{safety}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div *ngIf="recommendHotels?.length > 0" class="contents-item mg">
+                    <h2 class="contents-title">주변 추천 호텔</h2>
+                    <div class="scroll-box-list extend no-mg ">
+                        <div class="scroll-item-outer">
+                            <!-- 주변 호텔 리스트 아이템 반복 -->
+                            <ng-container *ngFor="let recommend of recommendHotels;index as recommendIdx">
+                                <div class="hotel-result-item" *ngIf="recommendIdx < moreRecommend">
+                                    <div (click)="onHotelDtl(recommend)" class="hotel-image" [ngStyle]="{background: 'url(' + recommend.defaultPhotoUrl + ') 50% 50% no-repeat, url(assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat', 'background-size': 'cover'}">
+                                    </div>
+                                    <div class="hotel-information">
+                                        <ul>
+                                            <li class="name"> {{recommend.hotelNameLn}}</li>
+                                            <li *ngIf="recommend.addressEn" class="name2">{{recommend.addressEn}}</li>
+                                            <li class="rate">
+                                                <span class="hotel-rating">
+                                                    <span class="icon s{{getHotelStarRating(recommend.starRating)}}"></span>
+                                                    <span class="text">{{recommend.starRating}}성급</span>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <div class="item-group">
+                                            <div class="item-row col">
+                                                <div class="right">
+                                                    <strong class="color-point2">{{ recommend.billingAmount | number }}</strong><span class="font-xs color-sub5">원</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <!-- 더보기 -->
+                            <div class="view-more-item" *ngIf="recommendHotels?.length > moreRecommend" (click)="showHotelList($event)">
+                                <span class="icon sm plus"></span>
+                                <p>더보기</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="false" class="contents-item mg">
+                    <h2 class="contents-title">여행 후기</h2>
+                    <div class="round-box no-pd">
+                        <div class="review-contents">
+                            <!-- 리뷰 아이템 header -->
+                            <div class="review-innder-contents">
+                                <div class="review-top">
+                                    <div class="total-rate">
+                                        <strong>4.5</strong><strong class="font-md-b">아주좋음</strong> <span class="color-sub4">(총 1,000건)</span>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <a href="#" class="filter active">최신순</a>
+                                        <a href="#" class="filter">평점순</a>
+                                    </div>
+                                </div>
+                                <div class="total-rate-star s5"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="customer">
+                                    <div class="review-item-header">
+                                        <strong class="rate">5.0</strong><strong class="user">ten****</strong>
+                                        <span class="ml-auto">2019.08.29</span>
+                                    </div>
+                                    <div class="review-text">
+                                        <div class="review-text-box reduce">
+                                            위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지
+                                            알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜
+                                            LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인
+                                            직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                                        </div>
+                                        <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                                        <!-- <a href="#" class="btn-more active">더보기</a> -->
+                                        <br>
+                                        <strong><a style="color: red;" class="text" (click)="onHotelReview($event)">더보기
+                                            </a></strong>
+                                    </div>
+                                    <div class="scroll-box-list no-mg">
+                                        <div class="scroll-item-outer">
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="seller">
+                                    <div class="review-item-header">
+                                        <strong>판매자</strong>
+                                        <span>2020.07.09</span>
+                                    </div>
+                                    <div class="review-text">
+                                        기분 좋게 사용하셨다고 하니 다행입니다.<br>앞으로도 많이 이용해주세요.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-item">
+                                <div class="customer">
+                                    <div class="review-item-header">
+                                        <strong class="rate">5.0</strong><strong class="user">ten****</strong>
+                                        <span class="ml-auto">2019.08.29</span>
+                                    </div>
+                                    <div class="review-text">
+                                        <div class="review-text-box reduce">
+                                            위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지
+                                            알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜
+                                            LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인
+                                            직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                                        </div>
+                                        <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                                        <br>
+                                        <strong><a style="color: red;" class="text" (click)="onHotelReview($event)">더보기
+                                            </a></strong>
+                                    </div>
+                                    <div class="scroll-box-list no-mg">
+                                        <div class="scroll-item-outer">
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="seller">
+                                    <div class="review-item-header">
+                                        <strong>판매자</strong>
+                                        <span>2020.07.09</span>
+                                    </div>
+                                    <div class="review-text">
+                                        기분 좋게 사용하셨다고 하니 다행입니다.<br>앞으로도 많이 이용해주세요.
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn-more-view" (click)="onHotelReview($event)">더보기 </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 객실 선택 전  -->
+            <div class="price-footer-box">
+                <div class="item-group">
+                    <div class="item-row col">
+                        <div class="left">
+                            <strong class="font-lg color-main2">총 금액</strong>
+                        </div>
+                        <div class="right">
+                            <strong class="font-lg color-point2">{{selRoomAmount|number}}원</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button (click)="onSelRoomDetail()" class="btn lg default">객실 선택</button>
+                </div>
+            </div>
+            <!-- 객실 선택 후 -->
+            <ng-container *ngIf="showRoomDetail">
+                <div class="price-footer-box extend">
+                    <div class="price-option" *ngIf="plusRoomAmount > 0">
+                        <div class="item-group">
+                            <div class="item-row col">
+                                <!-- <div class="left">
+                                    <span class="color-sub6">호텔 룸 업그레이드</span>
+                                </div>
+                                <div class="right">
+                                    <span class="color-point2">+ {{ plusRoomAmount |number}}원</span>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-group">
+                        <div class="item-row col">
+                            <div class="left">
+                                <strong class="font-lg color-main2">호텔 총 금액</strong>
+                            </div>
+                            <div class="right">
+                                <strong class="font-lg color-point2">{{selRoomAmount|number}}원</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group col3">
+                        <button (click)="addCart($event)" class="btn lg dark icon-only" role="button"><span class="icon sm cart">장바구니</span></button>
+                        <button (click)="onDetail()" class="btn lg grey">취소</button>
+                        <button (click)="goBookingInformation()" class="btn lg default" role="button">바로 예약</button>
+                    </div>
+                </div>
+                <div (click)="onDetail()" class="bg-dim active"></div>
+            </ng-container>
+        </div>
+    </div>
+</div>

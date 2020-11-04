@@ -1,0 +1,61 @@
+<div id="wrap" class="p-cm-reservation-list">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="tab-wrap">
+
+            <div class="tab-header type2 top-blank">
+                <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>전체</span></a>
+                <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>항공</span></a>
+                <a (click)="selectTab(2)" class="tab-header-item" [ngClass]="{'active': tabNo === 2}"><span>호텔</span></a>
+                <a (click)="selectTab(3)" class="tab-header-item" [ngClass]="{'active': tabNo === 3}"><span>액티비티</span></a>
+                <a (click)="selectTab(4)" class="tab-header-item" [ngClass]="{'active': tabNo === 4}"><span>렌터카</span></a>
+                <a (click)="selectTab(5)" class="tab-header-item" [ngClass]="{'active': tabNo === 5}"><span>묶음할인</span></a>
+            </div>
+
+            <div class="tab-body">
+                <!-- 탭 아이템 -->
+                <div class="tab-item active">
+
+                    <!-- 기간설정 -->
+                    <app-date-search class="contents-item-area"></app-date-search>
+
+                    <!-- Tab content 전체 예약/결제 내역 -->
+                    <ng-container *ngIf="tabNo === 0">
+                        <app-all-reservation-list [resolveData]="resolveData" class="contents-item-area"></app-all-reservation-list>
+                    </ng-container>
+                    <!-- Tab content 항공 예약/결제 내역 -->
+                    <ng-container *ngIf="tabNo === 1">
+                        <app-flight-reservation-list [resolveData]="resolveData" class="contents-item-area"></app-flight-reservation-list>
+                    </ng-container>
+                    <!-- Tab content 호텔 예약/결제 내역 -->
+                    <ng-container *ngIf="tabNo === 2">
+                        <app-hotel-reservation-list [resolveData]="resolveData" class="contents-item-area"></app-hotel-reservation-list>
+                    </ng-container>
+                    <!-- Tab content 액티비티 예약/결제 내역 -->
+                    <ng-container *ngIf="tabNo === 3">
+                        <app-activity-reservation-list [resolveData]="resolveData" class="contents-item-area"></app-activity-reservation-list>
+                    </ng-container>
+                    <!-- Tab content 렌터카 예약/결제 내역 -->
+                    <ng-container *ngIf="tabNo === 4">
+                        <app-rent-reservation-list [resolveData]="resolveData" class="contents-item-area"></app-rent-reservation-list>
+                    </ng-container>
+                    <!-- Tab content 묶음할인 예약/결제 내역 -->
+                    <ng-container *ngIf="tabNo === 5">
+                        <app-airtel-reservation-list [resolveData]="resolveData" class="contents-item-area"></app-airtel-reservation-list>
+                    </ng-container>
+
+                </div>
+                <div class="tab-item"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <app-footer></app-footer> -->
+
+<!-- <router-outlet></router-outlet> -->

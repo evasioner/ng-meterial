@@ -1,0 +1,91 @@
+<div *ngIf="initBool" id="wrap">
+    <!-- header -->
+    <app-airtel-header [headerType]="headerType" [headerConfig]="headerConfig"></app-airtel-header>
+
+    <!-- contents -->
+    <div id="contents">
+        <div class="search-result-page">
+            <!-- 검색 결과 -->
+            <div class="search-result-list">
+                <!-- 호텔 아이템 반복 -->
+                <div *ngFor="let hotItem of hotelList$ | async; index as i" class="hotel-result-item">
+                    <!-- 클릭시 .active 토글 -->
+                    <a [class.active]="hotItem.wishedHotelYn" href="#" class="btn-wish">관심상품</a>
+                    <ng-container [ngSwitch]="hotItem.hotelPhotos.length">
+                        <ng-container *ngSwitchCase="0">
+                            <div (click)="onHotelDtl(hotItem)" class="hotel-image" style="background: url('/assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat; background-size: cover;">
+                                <!-- 특가 라벨 -->
+                                <div class="label sale"><span>오늘<br />특가</span></div>
+                                <div class="label best" *ngIf="hotItem?.isRecommended === true"><span>BEST</span></div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngSwitchDefault>
+                            <div (click)="onHotelDtl(hotItem)" class="hotel-image" style="background: url('/assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat; background-size: cover;">
+                                <!-- 특가 라벨 -->
+                                <div class="label sale"><span>오늘<br />특가</span></div>
+                                <div class="label best" *ngIf="hotItem?.isRecommended === true"><span>BEST</span></div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                    <div class="hotel-information">
+                        <ul>
+                            <li class="name">{{hotItem.hotelNameLn}}</li>
+                            <li class="name2">{{hotItem.addressLn}}</li>
+                            <li class="rate">
+                                <span class="hotel-rating">
+                                    <span class="icon s{{getHotelRating(hotItem.starRating)}}"></span>
+                                    <span class="text">{{hotItem.starRating}}성급</span>
+                                </span>
+                                <span>38분전 예약됨</span>
+                            </li>
+                            <li class="review">
+                                <div class="tripadvisor-review">
+                                    <img src="{{hotItem.tripAdvisor.ratingUrl}}" alt="평점{{hotItem.tripAdvisor.rating}}" class="tripadvisor">
+                                    <span>({{hotItem.tripAdvisor.reviewCount}})</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="item-group">
+                            <div class="item-row col">
+                                <div class="left">
+                                    <span class="icon xs location3"></span>
+                                    <span>{{hotItem.pois[0].poiCode}}</span>
+                                </div>
+                                <div class="right">
+                                    <strong class="color-point2">+{{ hotItem.roomType.billingAmountSum | number }}</strong>원
+                                    <span *ngIf="hotItem?.leftRooms <= 5" class="bubble">마지막
+                                        {{hotItem.leftRooms}}방</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn md round line light-grey" role="button"><span class="icon sm direction bottom2">더보기</span></button>
+                </div>
+            </div>
+            <div class="price-footer-box">
+                <div class="item-group">
+                    <div class="item-row col">
+                        <div class="left"><span class="font-lg-b color-main2">항공+호텔 총 금액</span></div>
+                        <div class="right">
+                            <span class="font-lg-b color-point2">0원</span>
+                            <a href="#" class="btn-detail disabled">상세</a>
+                            <!-- 선택된 값 있으면
+                    <a href="#" class="btn-detail">상세</a>
+                    -->
+                            <!-- 선택된 값이 있는 상태에서 클릭하면
+                    <a href="#" class="btn-detail active">상세</a>
+                    -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-button-group">
+                <a href="#" class="btn-filter"><span class="icon xs filter"></span></a>
+                <a href="#" class="btn-filter"><span class="icon xs align"></span></a>
+                <a href="/airtel-search-map" class="btn-filter"><span class="icon xs map"></span></a>
+            </div>
+        </div>
+    </div>
+</div>

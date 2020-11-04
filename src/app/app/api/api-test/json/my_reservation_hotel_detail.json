@@ -1,0 +1,60 @@
+{
+    "result": {
+        "summary": {
+            "freeBreakfastName": null,
+            "travelerName": null,
+            "roomCount": 0,
+            "excludedDetail": null,
+            "bookingItemCode": "2004031003301",
+            "travelerMinusCount": -1,
+            "cancelDescription": null,
+            "roomTypeName": null,
+            "cacenDeadline": null,
+            "hotelCode": null,
+            "checkInDate": "2020-10-14",
+            "nightsCount": 1,
+            "paymentStatusCode": "BPS01",
+            "checkOutDate": "2020-10-15",
+            "hotelNameEn": null,
+            "defaultPhotoUrl": null,
+            "paymentStatusName": "전체 미납",
+            "bookingCode": "2003091016",
+            "leftDays": -605,
+            "starRating": null,
+            "bookingStatusName": "확정",
+            "bookingStatusCode": "BKS02",
+            "includedDetail": null,
+            "hotelNameLn": null
+        },
+        "rooms": [],
+        "cancelPolicy": [
+            null
+        ],
+        "booker": {
+            "userNo": 102032,
+            "name": "-23614690",
+            "bookingCode": "2003091016",
+            "mobileNo": "01012345678",
+            "email": "test@ybtour.com"
+        }
+    },
+    "serviceCode": "/booking/hotel/detail",
+    "warnings": [
+        {
+            "warningCode": "response 0",
+            "warningMessage": "#/result/summary/travelerName: expected type: String, found: Null"
+        },
+        {
+            "warningCode": "response 1",
+            "warningMessage": "#/result/cancelPolicy/0: expected type: JSONObject, found: Null"
+        },
+        {
+            "warningCode": "response 2",
+            "warningMessage": "#/result/cancelPolicy: expected: null, found: JSONArray"
+        }
+    ],
+    "transactionSetId": "3F8A3DFACF",
+    "succeedYn": true,
+    "warningYn": true,
+    "serviceName": "/booking/hotel/detail"
+}

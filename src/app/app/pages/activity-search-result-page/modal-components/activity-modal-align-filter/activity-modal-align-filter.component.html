@@ -1,0 +1,34 @@
+<!-- Modal -->
+<div class="modal-bottom">
+    <div class="modal-bottom-inner">
+        <!-- modal header -->
+        <div class="modal-bottom-header line center">
+            <h1 [innerHTML]="'MODAL_ALIGN.TITLE' | translate"></h1><!-- 정렬 -->
+            <div class="right">
+                <a (click)="onCloseClick($event)" class="icon sm common-close" [innerHTML]="'MODAL_ALIGN.CLOSE' | translate"></a><!-- 닫기 -->
+            </div>
+        </div>
+
+        <!-- modal contents -->
+        <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate>
+
+            <div class="modal-bottom-contents fixed-btn-footer">
+                <div class="item-group pd-top">
+                    <div class="item-row col" *ngFor="let sortOrderItem of vm.sortOrderList; index as i;">
+                        <div class="left">
+                            <label class="radio">
+                                <input type="radio" class="radio-control-input" [value]="sortOrderItem.val" [formControlName]="'sortOrder'" name="sortOrder">
+                                <span class="radio-control-text">{{sortOrderItem.name}}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group pd bg fixed-bottom">
+                <button class="btn lg default" role="button" [innerHTML]="'MODAL_ALIGN.APPLY' | translate"></button><!-- 적용하기 -->
+            </div>
+
+        </form>
+    </div>
+</div>

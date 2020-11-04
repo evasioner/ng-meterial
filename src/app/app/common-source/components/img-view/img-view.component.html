@@ -1,0 +1,26 @@
+<ng-container *ngIf="slideCount > 0">
+    <ng-container *ngIf="!modalPhotoDetail;else elseModalPhotoDetail">
+        <div class="rolling-count">
+            <strong>{{ (currentSlide + 1) }}</strong> <span>/ {{ slideCount }}</span>
+        </div>
+        <ngx-slick-carousel #slickModal="slick-carousel" [config]="rollingConfig" (afterChange)="afterChange($event)" class="c-ngx-slick-carousel c-ngx-slick-carousel-common-rolling carousel">
+            <div ngxSlickItem *ngFor="let item of urlList" class="ngx-slick-carousel-wrap slide" (click)="onImgClick($event)">
+                <img src="{{ item.photoUrl }}" (error)="onImgError($event)" class="ngx-slick-carousel-img photo-item">
+            </div>
+        </ngx-slick-carousel>
+    </ng-container>
+    <ng-template #elseModalPhotoDetail>
+        <!-- 모달 photo-detail -->
+        <div class="photo-list">
+            <div class="ngx-slick-carousel-area">
+                <div class="ngx-slick-carousel-wrap">
+                    <ngx-slick-carousel #slickModal="slick-carousel" [config]="detailConfig" (init)="slickInit($event)" (afterChange)="afterChange($event)" class="c-ngx-slick-carousel c-ngx-slick-carousel-common-photo-d carousel">
+                        <div ngxSlickItem *ngFor="let item of urlList" class="ngx-slick-carousel-wrap slide">
+                            <img src="{{item.photoUrl}}" (error)="onImgError($event)" alt="{{item.photoCaption}}" class="ngx-slick-carousel-img">
+                        </div>
+                    </ngx-slick-carousel>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</ng-container>

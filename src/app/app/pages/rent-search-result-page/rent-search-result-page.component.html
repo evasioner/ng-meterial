@@ -1,0 +1,162 @@
+<div *ngIf="isBrowser" id="wrap" class="p-rent-search-result search-results" infiniteScroll [infiniteScrollDistance]="infiniteScrollConfig.distance" [infiniteScrollThrottle]="infiniteScrollConfig.throttle" (scrolled)="onScroll()">
+
+    <!-- header -->
+    <app-rent-header [headerType]="headerType" [headerConfig]="headerConfig"></app-rent-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <!-- 리스트 로딩 -->
+        <div *ngIf="!loadingBool" class="list-loading">
+            <p class="loading-msg">
+                더 많은 렌터카를 검색중입니다.<br />잠시만 기다려주세요.
+            </p>
+        </div>
+
+        <div *ngIf="loadingBool && this.resData?.result?.vehicles.length > 0" class="search-result-page">
+            <!-- timer | is-hide-->
+            <countdown-timer class="is-hide"></countdown-timer>
+
+            <!-- 검색결과 count, 리스트/이미지 버튼 -->
+            <div class="search-result-top">
+                <span><span class="color-point2">{{ this.resData.result.totalVehicleCount | number }}</span>개의 검색결과</span>
+                <a class="ml-auto btn sm inline line light icon-only">
+                    <!-- 리스트 보기 -->
+                    <span *ngIf="!isListType" (click)="this.isListType = !this.isListType" class="icon sm list-type2"></span>
+                    <!-- 이미지 보기 -->
+                    <span *ngIf="isListType" (click)="this.isListType = !this.isListType" class="icon sm list-type1"></span>
+                </a>
+            </div>
+
+            <!-- 검색 결과 -->
+            <div class="search-result-list">
+                <!-- 렌터카 이미지 타입 검색결과 아이템 -->
+                <ng-container *ngIf="loadingBool && isListType">
+                    <div *ngFor="let vehicleItem of vehiclesList; index as i; trackBy: trackByFun" class="rentalcar-result-item type2">
+
+                        <div class="rentalcar-image" [class]="vehicleItem.className">
+                            <img *ngIf="!vehicleItem.className" [src]="vehicleItem.photoUrls" (error)="imgLoadError($event, i)" alt="">
+                        </div>
+
+                        <div class="rentalcar-result-item-information">
+                            <div class="flex-wrap" (click)="onItemClick(vehicleItem)">
+                                <dl>
+                                    <dt>
+                                        <img [src]="'/assets/images/car/' + vehicleItem.vehicleVendorCode + '.png'" alt="" class=" rentalcar-logo" />
+                                    </dt>
+                                    <dd>{{ vehicleItem.vehicleName }}</dd>
+                                </dl>
+                                <div class="option">
+                                    <span class="person">{{ vehicleItem.option.passengerCount }} 인승</span>
+                                    <span class="door">{{ vehicleItem.option.doorCount }} 도어</span>
+                                    <span *ngIf="vehicleItem.option.airConditionYn" class="air">에어컨</span>
+                                    <span *ngIf="vehicleItem.option.transmissionType === 'Automatic'" class="gear">자동변속</span>
+                                </div>
+                            </div>
+                            <div class="flex-list between">
+                                <div class="limit">
+                                    <p>
+                                        <a (click)="onLocationClick($event, i)" class="text-link">
+                                            <span class="icon xs location2"></span>
+                                            <span class="text">{{this.locationType.address}}</span>
+                                        </a>
+                                    </p>
+                                    <ng-container *ngIf="!vehicleItem.limit.unlimitedMileageYn">
+                                        <p>
+                                            <a #pop="bs-popover" [popover]="popTemplate" class="text-link">
+                                                <span class="text">주행거리 제한</span>
+                                                <span class="icon xs information3"></span>
+                                            </a>
+                                        </p>
+                                        <ng-template #popTemplate>
+                                            <div class="limit-bubble">
+                                                기본거리 {{ vehicleItem.limit.freeDistance }} Miles /
+                                                추가요금 1Miles :
+                                                <strong>{{ vehicleItem.vendorCurrencyCode }} {{ vehicleItem.limit.surchargeAmount }}</strong>
+                                                <a (click)="pop.hide()" class="btn-bubble-close">닫기</a>
+                                            </div>
+                                        </ng-template>
+                                    </ng-container>
+                                </div>
+
+                                <!-- <div class="limit">무제한</div> -->
+                                <div class="price">
+                                    <p class="secondary">약{{ vehicleItem.vendorAmountSumKrw | number }}원</p>
+                                    <p class="primary">{{ vehicleItem.vendorCurrencyCode }}{{ vehicleItem.vendorAmountSum | number }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- end 렌터카 이미지 타입 검색결과 아이템 -->
+
+                <!-- 렌터카 리스트 타입 검색결과 아이템 -->
+                <ng-container *ngIf="loadingBool && !isListType">
+                    <div *ngFor="let vehicleItem of vehiclesList; index as i; trackBy: trackByFun" class="rentalcar-result-item type1">
+                        <div class="flex-wrap" (click)="onItemClick(vehicleItem)">
+                            <div class="rentalcar-image" [class]="vehicleItem.className">
+                                <img *ngIf="!vehicleItem.className" [src]="vehicleItem.photoUrls" (error)="imgLoadError($event, i)" alt="">
+                            </div>
+                            <div class="rentalcar-result-item-information">
+                                <dl>
+                                    <dt>
+                                        <img [src]="'/assets/images/car/' + vehicleItem.vehicleVendorCode + '.png'" alt="" class=" rentalcar-logo" />
+                                    </dt>
+                                    <dd>{{ vehicleItem.vehicleName }}</dd>
+                                </dl>
+                                <div class="option">
+                                    <span class="person">{{ vehicleItem.option.passengerCount }} 인승</span>
+                                    <span class="door">{{ vehicleItem.option.doorCount }} 도어</span>
+                                    <span *ngIf="vehicleItem.option.airConditionYn" class="air">에어컨</span>
+                                    <span *ngIf="vehicleItem.option.transmissionType === 'Automatic'" class="gear">자동변속</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="flex-list between">
+                            <div class="limit">
+                                <p><a (click)="onLocationClick($event, i)" class="text-link"><span class="icon xs location3"></span><span class="text">{{this.locationType.address}}</span></a></p>
+                                <ng-container *ngIf="!vehicleItem.limit.unlimitedMileageYn">
+                                    <p>
+                                        <a #pop="bs-popover" [popover]="popTemplate" class="text-link">
+                                            <span class="text">주행거리 제한</span>
+                                            <span class="icon xs information3"></span>
+                                        </a>
+                                    </p>
+                                    <ng-template #popTemplate>
+                                        <div class="limit-bubble">
+                                            기본거리 {{ vehicleItem.limit.freeDistance }} Miles /
+                                            추가요금 1Miles :
+                                            <strong>{{ vehicleItem.vendorCurrencyCode }} {{ vehicleItem.limit.surchargeAmount }}</strong>
+                                            <a (click)="pop.hide()" class="btn-bubble-close">닫기</a>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </div>
+                            <!-- <div class="limit">무제한</div> -->
+                            <div class="price">
+                                <p class="secondary"> 약{{ vehicleItem.vendorAmountSumKrw | number }}원</p>
+                                <p class="primary">{{ vehicleItem.vendorCurrencyCode }}{{ vehicleItem.vendorAmountSum | number }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- end 렌터카 리스트 타입 검색결과 아이템 -->
+            </div>
+
+            <!-- 필터 -->
+            <div class="filter-button-group bottom">
+                <!-- 필터가 적용되어 있으면 .active를 추가함 -->
+                <a [class.active]="detailUpdate" class="btn-filter" (click)="onFilterClick()">
+                    <span class="icon xs filter"></span></a>
+                <a [class.active]="alignUpdate" class="btn-filter" (click)="onAlignClick()">
+                    <span class="icon xs align"></span>
+                </a>
+            </div>
+        </div>
+        <!-- end search-result-page -->
+
+        <app-error-result [rentError]="loadingBool && this.resData?.result?.vehicles.length === 0" (searchAgain)="errorSearchAgain($event)"></app-error-result>
+    </div>
+    <!-- end contents -->
+</div>

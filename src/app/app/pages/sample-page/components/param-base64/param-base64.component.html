@@ -1,0 +1,32 @@
+<p>param-base64 works!</p>
+<br><br>
+<div>
+    <h2>paramData</h2>
+    <div style="word-break:break-all;">{{paramData | json}}</div>
+</div>
+<br><br>
+<div >
+    <h2>tempObj</h2>
+    <div style="word-break:break-all;">
+        {{tempObj | json}}
+    </div>
+
+</div>
+<br><br>
+<button (click)="output0 = base64EncodingFun(tempObj)" type="button" class="btn btn-success">base64 인코딩</button>
+<br><br>
+<div>
+    <h2>output0</h2>
+    <div style="word-break:break-all;">
+        {{output0 | json}}
+    </div>
+</div>
+<br><br>
+<button (click)="output1 = base64DecodingFun(output0)" type="button" class="btn btn-info">base64 디코딩</button>
+<br><br>
+<div>
+    <h2>output1</h2>
+    <div style="word-break:break-all;">
+        {{output1 | json}}
+    </div>
+</div>

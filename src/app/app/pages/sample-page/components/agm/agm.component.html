@@ -1,0 +1,36 @@
+<div class="">
+    <h2>agm works!
+        <a href="https://angular-maps.com/" target="_blank">https://angular-maps.com/</a>
+    </h2>
+    <p><a href="https://angular-maps.com/api-docs/agm-core/index.html" target="_blank" >https://angular-maps.com/api-docs/agm-core/index.html</a></p>
+    <div class="m-flex-table" style="margin-top: 10px;">
+        <div class="container-fluid m-flex-table-container">
+            <div class="row">
+                <div class="col text-center" >key</div>
+                <div class="col text-center">값</div>
+            </div>
+
+<!--            <div class="row">-->
+<!--                <div class="col">ReversePipe</div>-->
+<!--                <div class="col">-->
+<!--   -->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="row">
+                <div class="col col-12">
+
+                    <div class="m-agm">
+                        <agm-map class="agm-map-area" [latitude]="lat" [longitude]="lng" [zoom]="18">
+                            <agm-marker
+                                    [latitude]="lat" [longitude]="lng">
+                            </agm-marker>
+                        </agm-map>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

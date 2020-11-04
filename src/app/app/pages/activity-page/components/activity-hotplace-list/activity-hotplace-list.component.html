@@ -1,0 +1,13 @@
+<!-- 지금 뜨는 여행지 -->
+<h2 [innerHTML]="'HOTPLACE-LIST.TITLE' | translate" class="contents-title"></h2><!-- 지금 뜨는 여행지-->
+<div class="scroll-box-list no-mg extend">
+    <div class="scroll-item-outer">
+
+        <!-- 백그라운드 이미지는 별도 관리가 필요함 -->
+        <div *ngFor="let lists of placeList; let i = index" class="hotplace-item" [ngStyle]="{'background-image': 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('+ lists.photoUrl +')'}" [style.backgroundPositionX]="'50%'" [style.backgroundPositionY]="'50%'" (click)="onGoCityIntroClick(i)">
+            <!-- [style.backgroundSize]="'cover'" -->
+            <span>{{ lists.cityName }}</span>
+        </div>
+
+    </div>
+</div>

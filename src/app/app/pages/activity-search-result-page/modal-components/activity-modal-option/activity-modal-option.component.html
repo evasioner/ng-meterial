@@ -1,0 +1,124 @@
+<!-- Modal -->
+<div class="modal-bottom">
+    <div class="modal-bottom-inner no-header">
+        <div class="modal-bottom-contents">
+            <!-- modal contents here -->
+
+            <div class="activity-result-option">
+                <div class="input">
+                    <span class="icon sm search"></span>
+                    <!-- <input type="text" 
+                            class="bg" 
+                            autocomplete="off" 
+                            #filterCity
+                            *ngIf="optionType == 'CITY'"
+                            (keyup.enter)="treeCity.treeModel.filterNodes(filterCity.value)"
+                            [placeholder]="'MODAL_OPTION.SEARCH_CITY_PLACEHOLDER' | translate"> -->
+
+                    <input type="text" 
+                            class="bg" 
+                            autocomplete="off" 
+                            #filterCategory
+                            *ngIf="optionType == 'CATEGORY'"
+                            (keyup.enter)="treeCategory.treeModel.filterNodes(filterCategory.value)"
+                            [placeholder]="'MODAL_OPTION.SEARCH_CATEGORY_PLACEHOLDER' | translate">
+
+                </div>
+                <div class="tab-wrap">
+                    <!-- 
+                    도시 필터 제외. 박종선(2020.06.03)
+                    <tabset class="m-ngx-bootstrap-tabs-modal">
+                        <tab [active]="(optionType == 'CITY') ? true : false" (selectTab)="onSelectTab('CITY')">
+                            <ng-template tabHeading>
+                                <span class="span-wrap">
+                                    <span class="txt">도시</span>
+                                </span>
+                            </ng-template>
+                            <ul class="row-list">
+
+                                <li class="li">
+                                    <tree-root #treeCity
+                                               [(state)]="state"
+                                               [nodes]="continentsNodes"
+                                               [options]="continentsOptions"
+                                               class="m-tree-component">
+
+                                        <ng-template #treeNodeTemplate
+                                                     let-node="node"
+                                                     let-index="index" class="tpl-area" >
+
+                                            <div class="row-area" [ngStyle]="getPaddingLeft(node.level)" >
+                                                <label class="checkbox">
+                                                    <input  class="checkbox-control-input"
+                                                            (change)="check(node, !node.data.checked)"
+                                                            type="checkbox"
+                                                            [indeterminate]="node.data.indeterminate"
+                                                            [checked]="node.data.checked">
+                                                    <span class="checkbox-control-text" 
+                                                        [ngClass]="getClassChk(node.data.checked, node.data.indeterminate)" >
+                                                        {{ node.data.name }}&nbsp;<span class="color-sub3 ml5 align-m">{{ node.data.count }}</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+
+
+                                        </ng-template>
+
+                                    </tree-root>
+                                </li>
+
+                            </ul>
+                        </tab>
+                        <tab [active]="(optionType == 'CATEGORY') ? true : false" (selectTab)="onSelectTab('CATEGORY')">
+                            <ng-template tabHeading>
+                                <span class="span-wrap">
+                                    <span class="txt">카테고리</span>
+                                </span>
+                            </ng-template>
+                            
+                        </tab>
+                    </tabset> -->
+                    <ul class="row-list">
+
+                        <li class="li">
+                            <tree-root #treeCategory
+                                       [(state)]="state"
+                                       [nodes]="categoriesNodes"
+                                       [options]="continentsOptions"
+                                       class="m-tree-component">
+
+                                <ng-template #treeNodeTemplate
+                                             let-node="node"
+                                             let-index="index" class="tpl-area" >
+
+                                    <div class="row-area" [ngStyle]="getPaddingLeft(node.level)" >
+                                        <label class="checkbox">
+                                            <input  class="checkbox-control-input"
+                                                    (change)="check(node, !node.data.checked)"
+                                                    type="checkbox"
+                                                    [indeterminate]="node.data.indeterminate"
+                                                    [checked]="node.data.checked">
+                                            <span class="checkbox-control-text" 
+                                                [ngClass]="getClassChk(node.data.checked, node.data.indeterminate)" >
+                                                {{ node.data.name }}&nbsp;<span class="color-sub3 ml5 align-m">{{ node.data.count }}</span>
+                                            </span>
+                                        </label>
+                                    </div>
+
+
+                                </ng-template>
+
+                            </tree-root>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-group basis pd bg fixed-bottom">
+                <button (click)="onCloseClick($event)" class="btn lg grey">취소</button>
+                <button (click)="onSubmit()" type="submit" class="btn lg default" role="button">적용하기</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,153 @@
+{
+    "serviceCode": "commonDestination",
+    "serviceName": "common/Destination",
+    "succeedYn": true,
+    "transactionSetId": "20191127153128",
+    "result": {
+        "cities": [
+            {
+                "cityCode": "USLAX",
+                "cityNameEn": "Los Angeles",
+                "cityNameLn": "로스앤젤레스",
+                "cityCodeIata": "LAX",
+                "regionCode": "2011",
+                "regionNameEn": "Los Angeles",
+                "regionNameLn": "로스앤젤레스",
+                "stateCode": "CA",
+                "stateNameEn": "California",
+                "stateNameLn": "캘리포니아",
+                "countryCode": "US",
+                "countryNameEn": "USA",
+                "countryNameLn": "미국",
+                "airports": [
+                    {
+                        "airportCode": "LAX",
+                        "airportNameEn": "Los Angeles Intl Airport",
+                        "airportNameLn": "로스앤젤레스 국제공항"
+                    }
+                ]
+            }
+        ],
+        "regions": [
+            {
+                "regionCode": "2011",
+                "regionNameEn": "Los Angeles",
+                "regionNameLn": "로스앤젤레스",
+                "cityCode": "USLAX",
+                "cityCodeIata": "LAX",
+                "stateCode": "CA",
+                "stateNameEn": "California",
+                "stateNameLn": "캘리포니아",
+                "countryCode": "US",
+                "countryNameEn": "USA",
+                "countryNameLn": "미국"
+            }
+        ],
+        "airports": [
+            {
+                "airportCode": "LAX",
+                "airportNameEn": "Los Angeles Intl Airport",
+                "airportNameLn": "로스앤젤레스 국제공항",
+                "cityCode": "USLAX",
+                "cityNameEn": "Los Angeles",
+                "cityNameLn": "로스앤젤레스",
+                "cityCodeIata": "LAX",
+                "regionCode": "2011",
+                "regionNameEn": "Los Angeles",
+                "regionNameLn": "로스앤젤레스",
+                "stateCode": "CA",
+                "stateNameEn": "California",
+                "stateNameLn": "캘리포니아",
+                "countryCode": "US",
+                "countryNameEn": "USA",
+                "countryNameLn": "미국"
+            }
+        ],
+        "pois": [
+            {
+                "poiCode": 1107887,
+                "poiNameEn": "The Museum of Contemporary Art MOCA",
+                "poiNameLn": "로스앤젤레스 현대미술관",
+                "cityCode": "USLAX",
+                "cityNameEn": "Los Angeles",
+                "cityNameLn": "로스앤젤레스",
+                "cityCodeIata": "LAX",
+                "regionCode": "2011",
+                "regionNameEn": "Los Angeles",
+                "regionNameLn": "로스앤젤레스",
+                "stateCode": "CA",
+                "stateNameEn": "California",
+                "stateNameLn": "캘리포니아",
+                "countryCode": "US",
+                "countryNameEn": "USA",
+                "countryNameLn": "미국"
+            }
+        ],
+        "hotels": [
+            {
+                "hotelCode": "25715",
+                "hotelNameEn": "Millennium Biltmore Los Angeles",
+                "hotelNameLn": "밀레니엄 빌트모어 로스앤젤레스",
+                "starRating": "4.0",
+                "cityCode": "USLAX",
+                "cityNameEn": "Los Angeles",
+                "cityNameLn": "로스앤젤레스",
+                "cityCodeIata": "LAX",
+                "regionCode": "2011",
+                "regionNameEn": "Los Angeles",
+                "regionNameLn": "로스앤젤레스",
+                "stateCode": "CA",
+                "stateNameEn": "California",
+                "stateNameLn": "캘리포니아",
+                "countryCode": "US",
+                "countryNameEn": "USA",
+                "countryNameLn": "미국"
+            }
+        ],
+        "branches": [
+            {
+                "branchCode": 1158479,
+                "branchNameEn": "Los Angeles Tech Center",
+                "branchNameLn": "LAX 기술 연구소",
+                "cityCode": "USLAX",
+                "cityNameEn": "Los Angeles",
+                "cityNameLn": "로스앤젤레스",
+                "cityCodeIata": "LAX",
+                "regionCode": "2011",
+                "regionNameEn": "Los Angeles",
+                "regionNameLn": "로스앤젤레스",
+                "stateCode": "CA",
+                "stateNameEn": "California",
+                "stateNameLn": "캘리포니아",
+                "countryCode": "US",
+                "countryNameEn": "USA",
+                "countryNameLn": "미국"
+            }
+        ],
+        "vehicles": [
+            {
+                "vehicleVendorCode": "123",
+                "vehicleVendorName": "123",
+                "cityCode": "USLAX",
+                "cityNameEn": "Los Angeles",
+                "cityNameLn": "로스앤젤레스",
+                "cityCodeIata": "LAX",
+                "regionCode": "2011",
+                "regionNameEn": "Los Angeles",
+                "regionNameLn": "로스앤젤레스",
+                "stateCode": "CA",
+                "stateNameEn": "California",
+                "stateNameLn": "캘리포니아",
+                "countryCode": "US",
+                "countryNameEn": "USA",
+                "countryNameLn": "미국",
+                "serviceTypes": [
+                    {
+                        "serviceCode": "123",
+                        "serviceDetail": "123"
+                    }
+                ]
+            }
+        ]
+    }
+}

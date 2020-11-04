@@ -1,0 +1,35 @@
+<div id="wrap" class="p-mypage-notice">
+
+    <!-- header -->
+    <app-header></app-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="tab-wrap">
+            <div class="tab-header type2 top-blank fixed">
+                <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>전체</span></a>
+                <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>항공</span></a>
+                <a (click)="selectTab(2)" class="tab-header-item" [ngClass]="{'active': tabNo === 2}"><span>호텔</span></a>
+                <a (click)="selectTab(3)" class="tab-header-item" [ngClass]="{'active': tabNo === 3}"><span>액티비티</span></a>
+                <a (click)="selectTab(4)" class="tab-header-item" [ngClass]="{'active': tabNo === 4}"><span>렌터카</span></a>
+            </div>
+            <div class="tab-body" [ngSwitch]="tabNo">
+                <ng-container *ngSwitchCase="1">
+                    <app-notice-list-flight class="contents-item-area"></app-notice-list-flight>
+                </ng-container>
+                <ng-container *ngSwitchCase="2">
+                    <app-notice-list-hotel class="contents-item-area"></app-notice-list-hotel>
+                </ng-container>
+                <ng-container *ngSwitchCase="3">
+                    <app-notice-list-activity class="contents-item-area"></app-notice-list-activity>
+                </ng-container>
+                <ng-container *ngSwitchCase="4">
+                    <app-notice-list-rent class="contents-item-area"></app-notice-list-rent>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                    <app-notice-list class="contents-item-area"></app-notice-list>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

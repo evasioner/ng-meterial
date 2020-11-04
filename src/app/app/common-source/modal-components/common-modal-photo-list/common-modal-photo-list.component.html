@@ -1,0 +1,21 @@
+<div id="wrap">
+
+</div>
+
+<!-- Modal -->
+<div class="modal m-hotel-photo-list">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>사진 <span class="color-sub4">({{photoList.length}})</span></h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="cm-photo-list" *ngIf="loadingBool">
+            <div class="photo-item" *ngFor="let item of photoList;index as i" [ngStyle]="{background: 'url('+item.photoUrl+') 50% 50% no-repeat, url(assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat'}" (click)="onPhotoDetail(i)">
+            </div>
+        </div>
+    </div>
+</div>

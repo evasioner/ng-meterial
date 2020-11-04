@@ -1,0 +1,349 @@
+<div *ngIf="loadingBool" class="modal">
+
+    <!-- modal header -->
+    <div class="modal-header">
+        <div class="left">
+            <a class="icon sm common-reload" (click)="onReloadClick($event)">{{ vm.reload }}</a>
+        </div>
+        <h1>{{vm.dSearch}}</h1>
+        <div class="right">
+            <a class="icon sm common-close" (click)="onCloseClick($event)">{{ vm.close }}</a>
+        </div>
+    </div>
+
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <form [formGroup]="detailFilterForm" (ngSubmit)="onSubmit(detailFilterForm)" novalidate>
+            <accordion [closeOthers]="'true'" class="m-ngx-bootstrap-accordion cm-detail-filter">
+
+                <!-- 직항/경유 -->
+                <accordion-group class="accordion" heading="직항/경유">
+                    <ul class="row-list">
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [checked]="vm.stopsAll" (change)="onCheckboxChange($event, 'stopsList', 'stops')">
+                                <span class="checkbox-control-text font-md-b color-main2">전체</span>
+                            </label>
+                        </li>
+                        <li class="flex" *ngFor="let stopItem of vm.stops; index as i;">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [value]="stopItem.viaCount" [checked]="stopItem.checked" (change)="onCheckboxChange($event, 'stopsList', 'stops')">
+                                <span class="checkbox-control-text">{{stopItem.viaCount === 0 ? '직항' : '경유' + stopItem.viaCount +'회' }}</span>
+                            </label>
+                            <span class="ml-auto">{{stopItem.lowestAmount | number}}원</span>
+                        </li>
+                    </ul>
+                </accordion-group>
+
+                <!-- 항공사 -->
+                <accordion-group class="accordion" heading="항공사">
+                    <ul class="row-list">
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [checked]="vm.airlinesAll" (change)="onCheckboxChange($event, 'airlinesList', 'airlines')">
+                                <span class="checkbox-control-text font-md-b color-main2">전체</span>
+                            </label>
+                        </li>
+                        <li class="flex" *ngFor="let airlineItem of vm.airlines | slice : 0 : vm.airlinesCount; index as i;">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [value]="airlineItem.code" [checked]="airlineItem.checked" (change)="onCheckboxChange($event, 'airlinesList', 'airlines')">
+                                <span class="checkbox-control-text">
+                                    <img src="/assets/images/airlines/{{airlineItem.code}}_Small.png" alt="" class="airline-logo" style="margin-right: 5px;">
+                                    {{airlineItem.name}}
+                                </span>
+                            </label>
+                            <span class="ml-auto">{{airlineItem.lowestAmount | number}} 원</span>
+                        </li>
+                    </ul>
+
+                    <!-- 더보기 버튼 -->
+                    <div class="btn-group mb20" *ngIf="vm.airlines.length > 5">
+                        <a class="btn md round line" (click)="onAirLinesMoreClick($event)">
+                            <span class="icon sm direction" [ngClass]="vm.airLineDetail ? 'top2' : 'bottom2'">더보기</span>
+                        </a>
+                    </div>
+                </accordion-group>
+
+                <!-- 가격대 -->
+                <accordion-group class="accordion" heading="가격대">
+                    <div class="accordion-body active">
+                        <div class="range double">
+                            <div class="m-bootstrap-slider">
+                                <div class="bootstrap-slider-result-area range-title">
+                                    <strong class="font-lg color-point2">{{vm.amount.setMin | number}}</strong>
+                                    <span class="font-lg color-sub5">-</span>
+                                    <strong class="font-lg color-point2">{{vm.amount.setMax | number}}</strong>
+                                </div>
+
+                                <div class="bootstrap-slider-area">
+                                    <app-input-slider [value]="vm.amount.value" [range]="true" [min]="vm.amount.min" [max]="vm.amount.max" [step]="50000" [handle]="'custom'" (slide)="vm.amount.slideEvt($event,'amount')" (slideStop)="vm.amount.slideEvt($event,'amount','amountList')" htmlTarget="bootstrap-slider">
+                                        <input data-target="bootstrap-slider">
+                                    </app-input-slider>
+                                </div>
+
+                                <div class="bootstrap-slider-range-area range-text">
+                                    <span class="min">{{vm.amount.rangeMin | number}}원</span>
+                                    <span class="max">{{vm.amount.rangeMax | number}}원</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </accordion-group>
+
+                <!-- 좌석등급 -->
+                <accordion-group class="accordion" heading="좌석 등급">
+                    <ul class="row-list">
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [checked]="vm.cabinClassesAll" (change)="onCheckboxChange($event, 'cabinClassesList', 'cabinClasses')">
+                                <span class="checkbox-control-text font-md-b color-main2">전체</span>
+                            </label>
+                        </li>
+                        <li class="flex" *ngFor="let cabinClassItem of vm.cabinClasses; index as i;">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [value]="cabinClassItem.code" [checked]="cabinClassItem.checked" (change)="onCheckboxChange($event, 'cabinClassesList', 'cabinClasses')">
+                                <span class="checkbox-control-text">{{cabinClassItem.name}}</span>
+                            </label>
+                            <span class="ml-auto">{{cabinClassItem.lowestAmount | number }} 원</span>
+                        </li>
+                    </ul>
+                </accordion-group>
+
+                <!-- 할인카드 -->
+                <!-- <accordion-group class="accordion" heading="할인카드">
+                    <ul class="row-list">
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" checked>
+                                <span class="checkbox-control-text">전체</span>
+                            </label>
+                        </li>
+                        <li class="flex">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text">국민 티타늄 Miz&amp;Mr</span>
+                            </label>
+                            <span class="ml-auto color-main2">1,300,000원</span>
+                        </li>
+                        <li class="flex">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text">삼성아멕스그린카드</span>
+                            </label>
+                            <span class="ml-auto color-main2">1,300,000원</span>
+                        </li>
+                    </ul>
+                </accordion-group> -->
+
+                <!-- 항공시간 -->
+                <accordion-group class="accordion" heading="항공 시간">
+                    <div class="accordion-body active">
+                        <h2 class="title">출발시간</h2>
+                        <div class="range double">
+                            <div class="m-bootstrap-slider">
+                                <div class="bootstrap-slider-result-area range-title">
+                                    <strong class="font-lg color-point2">{{vm.departure.setMin}}</strong>
+                                    <span class="font-lg color-sub5">-</span>
+                                    <strong class="font-lg color-point2">{{vm.departure.setMax}}</strong>
+                                </div>
+                                <div class="bootstrap-slider-area">
+                                    <app-input-slider [value]="vm.departure.value" [range]="true" [min]="0" [max]="1440" [step]="30" [handle]="'custom'" (slide)="vm.departure.slideEvt($event,'departure')" (slideStop)="vm.departure.slideEvt($event,'departure','departureList')" htmlTarget="bootstrap-slider">
+                                        <input data-target="bootstrap-slider">
+                                    </app-input-slider>
+                                </div>
+
+                                <div class="bootstrap-slider-range-area range-text">
+                                    <span class="min">00:00</span>
+                                    <span class="max">23:59</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2 class="title">도착시간</h2>
+                        <div class="range double">
+                            <div class="m-bootstrap-slider">
+                                <div class="bootstrap-slider-result-area range-title">
+                                    <strong class="font-lg color-point2">{{vm.arrival.setMin}}</strong>
+                                    <span class="font-lg color-sub5">-</span>
+                                    <strong class="font-lg color-point2">{{vm.arrival.setMax}}</strong>
+                                </div>
+                                <div class="bootstrap-slider-area">
+                                    <app-input-slider [value]="vm.arrival.value" [range]="true" [min]="0" [max]="1440" [step]="30" [handle]="'custom'" (slide)="vm.arrival.slideEvt($event,'arrival')" (slideStop)="vm.arrival.slideEvt($event,'arrival','arrivalList')" htmlTarget="bootstrap-slider">
+                                        <input data-target="bootstrap-slider">
+                                    </app-input-slider>
+                                </div>
+                                <div class="bootstrap-slider-range-area range-text">
+                                    <span class="min">00:00</span>
+                                    <span class="max">23:59</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2 class="title">경유지 체류시간</h2>
+                        <div class="range double">
+                            <div class="m-bootstrap-slider">
+                                <div class="bootstrap-slider-result-area range-title">
+                                    <strong class="font-lg color-point2">{{vm.ground.setMin[0]}}</strong>
+                                    <span class="font-xs color-sub5">시간</span>
+                                    <strong class="font-lg color-point2">{{vm.ground.setMin[1]}}</strong>
+                                    <span class="font-xs color-sub5">분</span>
+
+                                    <span class="font-lg color-sub5 ml5 mr5">~</span>
+
+                                    <strong class="font-lg color-point2">{{vm.ground.setMax[0]}}</strong>
+                                    <span class="font-xs color-sub5">시간</span>
+                                    <strong class="font-lg color-point2">{{vm.ground.setMax[1]}}</strong>
+                                    <span class="font-xs color-sub5">분</span>
+                                </div>
+                                <div class="bootstrap-slider-area">
+                                    <app-input-slider [value]="vm.ground.value" [range]="true" [min]="vm.ground.min" [max]="vm.ground.max" [step]="30" [handle]="'custom'" (slide)="vm.ground.slideEvt($event,'ground')" (slideStop)="vm.ground.slideEvt($event,'ground','groundList')" htmlTarget="bootstrap-slider">
+                                        <input data-target="bootstrap-slider">
+                                    </app-input-slider>
+                                </div>
+                                <div class="bootstrap-slider-range-area range-text">
+                                    <span class="min">{{vm.ground.rangeMin[0]}}시간{{vm.ground.rangeMin[1]}}분</span>
+                                    <span class="max">{{vm.ground.rangeMax[0]}}시간{{vm.ground.rangeMax[1]}}분</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2 class="title">총 소요시간</h2>
+                        <div class="range double">
+                            <div class="m-bootstrap-slider">
+                                <div class="bootstrap-slider-result-area range-title">
+                                    <strong class="font-lg color-point2">{{vm.duration.setMin[0]}}</strong>
+                                    <span class="font-xs color-sub5">시간</span>
+                                    <strong class="font-lg color-point2">{{vm.duration.setMin[1]}}</strong>
+                                    <span class="font-xs color-sub5">분</span>
+
+                                    <span class="font-lg color-sub5 ml5 mr5">~</span>
+
+                                    <strong class="font-lg color-point2">{{vm.duration.setMax[0]}}</strong>
+                                    <span class="font-xs color-sub5">시간</span>
+                                    <strong class="font-lg color-point2">{{vm.duration.setMax[1]}}</strong>
+                                    <span class="font-xs color-sub5">분</span>
+                                </div>
+                                <div class="bootstrap-slider-area">
+                                    <app-input-slider [value]="vm.duration.value" [range]="true" [min]="vm.duration.min" [max]="vm.duration.max" [step]="5" [handle]="'custom'" (slide)="vm.duration.slideEvt($event,'duration')" (slideStop)="vm.duration.slideEvt($event,'duration','durationList')" htmlTarget="bootstrap-slider">
+                                        <input data-target="bootstrap-slider">
+                                    </app-input-slider>
+                                </div>
+                                <div class="bootstrap-slider-range-area range-text">
+                                    <span class="min">{{vm.duration.rangeMin[0]}}시간{{vm.duration.rangeMin[1]}}분</span>
+                                    <span class="max">{{vm.duration.rangeMax[0]}}시간{{vm.duration.rangeMax[1]}}분</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </accordion-group>
+
+                <!-- 출발 공항 -->
+                <accordion-group class="accordion" heading="출발 공항">
+                    <ul class="row-list">
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [checked]="vm.originAirportsAll" (change)="onCheckboxChange($event, 'originAirportsList', 'originAirports')">
+                                <span class="checkbox-control-text font-md-b color-main2">전체</span>
+                            </label>
+                        </li>
+                        <li class="flex" *ngFor="let originAirportItem of vm.originAirports; index as i;">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [value]="originAirportItem.code" [checked]="originAirportItem.checked" (change)="onCheckboxChange($event, 'originAirportsList', 'originAirports')">
+                                <span class="checkbox-control-text">
+                                    <!-- <img
+                                        src="/assets/images/temp/@temp-airline.png" alt=""
+                                        class="airline-logo"> -->
+                                    {{originAirportItem.name}}({{originAirportItem.code}})</span>
+                            </label>
+                            <span class="ml-auto">{{originAirportItem.lowestAmount | number}} 원</span>
+                        </li>
+                    </ul>
+                </accordion-group>
+
+                <!-- 도착 공항 -->
+                <accordion-group class="accordion" heading="도착 공항">
+                    <ul class="row-list">
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [checked]="vm.destinationAirportsAll" (change)="onCheckboxChange($event, 'destinationAirportsList', 'destinationAirports')">
+                                <span class="checkbox-control-text font-md-b color-main2">전체</span>
+                            </label>
+                        </li>
+                        <li class="flex" *ngFor="let destinationAirportItem of vm.destinationAirports; index as i;">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [value]="destinationAirportItem.code" [checked]="destinationAirportItem.checked" (change)="onCheckboxChange($event, 'destinationAirportsList', 'destinationAirports')">
+                                <span class="checkbox-control-text">
+                                    <!-- <img
+                                        src="/assets/images/temp/@temp-airline.png" alt=""
+                                        class="airline-logo"> -->
+                                    {{destinationAirportItem.name}}({{destinationAirportItem.code}})</span>
+                            </label>
+                            <span class="ml-auto">{{destinationAirportItem.lowestAmount | number}} 원</span>
+                        </li>
+                    </ul>
+                </accordion-group>
+
+                <!-- 경유지 -->
+                <accordion-group class="accordion" heading="경유지">
+                    <ul class="row-list">
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [checked]="vm.viaAirportsAll" (change)="onCheckboxChange($event, 'viaAirportsList', 'viaAirports')">
+                                <span class="checkbox-control-text font-md-b color-main2">전체</span>
+                            </label>
+                        </li>
+                        <li class="flex" *ngFor="let viaAirportItem of vm.viaAirports; index as i;">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [value]="viaAirportItem.code" [checked]="viaAirportItem.checked" (change)="onCheckboxChange($event, 'viaAirportsList', 'viaAirports')">
+                                <span class="checkbox-control-text">
+                                    <!-- <img
+                                            src="/assets/images/temp/@temp-airline.png" alt=""
+                                            class="airline-logo"> -->
+                                    {{viaAirportItem.name}}</span>
+                            </label>
+                            <span class="ml-auto">{{viaAirportItem.lowestAmount | number}} 원</span>
+                        </li>
+                    </ul>
+                </accordion-group>
+
+                <!-- 기타 -->
+                <accordion-group class="accordion" heading="기타">
+                    <ul class="row-list">
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [checked]="vm.othersAll" (change)="onCheckboxChange($event, 'othersList', 'others')">
+                                <span class="checkbox-control-text font-md-b color-main2">전체</span>
+                            </label>
+                        </li>
+                        <li class="flex" *ngFor="let otherItem of vm.others; index as i;">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" [value]="otherItem.key" [checked]="otherItem.checked" (change)="onCheckboxChange($event, 'othersList', 'others')">
+                                <span class="checkbox-control-text">
+                                    <!-- <img
+                                        src="/assets/images/temp/@temp-airline.png" alt=""
+                                        class="airline-logo"> -->
+                                    {{otherItem.name}}</span>
+                            </label>
+                        </li>
+                        <!-- <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text">공동운항편 제외</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text">환승 시 공항 변경 없음</span>
+                            </label>
+                        </li> -->
+                    </ul>
+                </accordion-group>
+
+                <div class="btn-group bg pd fixed-bottom">
+                    <button class="btn lg default" role="button">적용하기</button>
+                </div>
+            </accordion>
+        </form>
+    </div>
+</div>

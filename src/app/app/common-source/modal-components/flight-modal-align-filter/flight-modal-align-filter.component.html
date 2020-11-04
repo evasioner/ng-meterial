@@ -1,0 +1,35 @@
+<!-- Modal -->
+<div class="modal-bottom">
+    <div class="modal-bottom-inner">
+        <!-- modal header -->
+        <div class="modal-bottom-header line center">
+            <h1>정렬</h1>
+            <div class="right">
+                <a (click)="modalClose()" class="icon sm common-close">닫기</a>
+            </div>
+        </div>
+
+        <!-- modal contents -->
+        <ng-container *ngIf="(flightSearchListRQ$ | async) as listRQ">
+            <form [formGroup]="alignFilterForm" (ngSubmit)="onSubmit(listRQ)">
+                <div class="modal-bottom-contents fixed-btn-footer">
+                    <div class="item-group pd-top">
+                        <ng-container *ngFor="let sortOrder of vm.sortOrders">
+                            <div class="item-row col">
+                                <div class="left">
+                                    <label class="radio">
+                                        <input type="radio" class="radio-control-input" name="alignSortOrders" formControlName="alignSortOrders" [value]="sortOrder.sortCd">
+                                        <span class="radio-control-text">{{sortOrder.sortNm}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="btn-group pd bg fixed-bottom">
+                    <button class="btn lg default" role="button">적용하기</button>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="contents-item">
+    <div class="travel-convenience-visual">
+        <h2 [innerHTML]="'MAIN.IMG_TXT_HTML' | translate"></h2>
+    </div>
+
+    <div class="scroll-box-list no-mg">
+        <div class="scroll-item-outer">
+            <div class="travel-convenience-category-item shadow" (click)="onGoCategorySearchClick('1',i)" *ngFor="let result of vm.categoryList1; let i = index">
+                <div class="visual" [ngClass]="result.styleType"></div>
+                <div class="title" [innerHTML]="'MAIN.' + result.categoryName | translate"></div>
+            </div>
+        </div>
+        <div class="scroll-item-outer">
+            <div class="travel-convenience-category-item shadow" (click)="onGoCategorySearchClick('2', i)" *ngFor="let result of vm.categoryList2; let i = index">
+                <div class="visual" [ngClass]="result.styleType"></div>
+                <div class="title" [innerHTML]="'MAIN.' + result.categoryName | translate"></div>
+            </div>
+        </div>
+    </div>
+</div>

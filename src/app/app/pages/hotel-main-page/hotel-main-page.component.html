@@ -1,0 +1,29 @@
+<div id="wrap" class="p-hotel">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-hotel-header [headerType]="headerType" [headerConfig]="headerConfig"></app-hotel-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <!-- 메인 검색 -->
+        <app-hotel-main-search class="contents-item"></app-hotel-main-search>
+
+        <!-- 최근 검색한 호텔 -->
+        <app-hotel-new-search-list class="contents-item mg"></app-hotel-new-search-list>
+
+        <!-- 가장 인기 있는 로스앤젤레스 항공+호텔 -->
+        <app-hotel-hot-list class="contents-item mg"></app-hotel-hot-list>
+
+        <!-- 고객 님 만을 위한 이벤트 -->
+        <app-hotel-customer-event class="contents-item mg"></app-hotel-customer-event>
+
+        <!-- 쿠폰 다운로드 -->
+        <app-hotel-coupon-down class="contents-item mg"></app-hotel-coupon-down>
+    </div>
+
+    <!-- footer -->
+    <app-footer></app-footer>
+</div>
+
+<router-outlet></router-outlet>

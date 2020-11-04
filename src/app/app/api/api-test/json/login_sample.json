@@ -1,0 +1,33 @@
+{
+  "succeedYn": true,
+  "result": {
+      "user": {
+          "userNo": 100050,
+          "userId": "ysj0826",
+          "name": "운슈정",
+          "compCode": 110000,
+          "compName": "노랑풍선",
+          "userToken": "22n2n2"
+      },
+      "company": {
+          "compCode": 110000,
+          "compName": "(주)노랑풍선",
+          "defaultLanguageCode": "KO",
+          "timeZoneName": "Asia/Seoul",
+          "currencyCode": "KRW"
+      },
+      "salseCountry": {
+          "salesCountryCode": "KR-110000",
+          "countryCode": "KR",
+          "controlCompCode": 110000,
+          "salesCurrencyLimitYn": true,
+          "salesCurrencyDisplayYn": false,
+          "bookableDate": 1,
+          "timeZoneName": "Asia/Seoul",
+          "multiLanguageDisplayYn": false,
+          "lengthUnitCode": "meter",
+          "temperatureUnitCode": "°C",
+          "vatRate": 0.1
+      }
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "serviceCode": "aliquip consectetur",
+    "serviceName": "cupidatat quis sed",
+    "succeedYn": true,
+    "transactionSetId": "DFB0ROGFP5QGT3UY8Y",
+    "result": {
+      "bookingCode": "nulla con",
+      "bookingItems": [
+        {
+          "itemCategoryCode": "mollit in ",
+          "bookingItemCode": "se",
+          "receiveSuccessYn": true,
+          "itemStatusCode": "ipsum mol",
+          "itemStatusName": "mollit irure in ad"
+        }
+      ]
+    }
+  }

@@ -1,0 +1,133 @@
+<div class="">
+    <h2>ngx-moment works!</h2>
+    <div class="m-flex-table" style="margin-top: 10px;">
+        <div class="container-fluid m-flex-table-container">
+            <div class="row">
+                <div class="col text-center" >key</div>
+                <div class="col text-center">값</div>
+            </div>
+            <div class="row">
+                <div class="col">amTimeAgo pipe</div>
+                <div class="col">
+                    <p>Last updated: {{myDate | amTimeAgo}}</p>
+                    <p>Last updated: {{myDate | amTimeAgo:true}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amCalendar pipe</div>
+                <div class="col">
+                    <p>Last updated: {{myDate | amCalendar}}</p>
+                    <p>Last updated: <time>{{myDate | amCalendar:{sameDay:'[Same Day at] h:mm A'} }}</time></p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amDateFormat pipe</div>
+                <div class="col">
+                    <p>Last updated: {{myDate | amDateFormat:'LL'}}</p>
+                    <p>Last updated: {{myDate | amLocale:'ko' | amDateFormat:'LLL'}}</p>
+                    <p>momentDate: {{momentDate | amLocale:'ko' | amDateFormat:'YYYY-MM-DD a hh:mm' }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amParse pipe</div>
+                <div class="col">
+                    <p>Last updated: {{'24/01/2014' | amParse:'DD/MM/YYYY' | amDateFormat:'LL'}}</p>
+                    <p>Last updated: {{'24/01/2014 22:00' | amParse: formats | amDateFormat:'LL'}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amLocal pipe</div>
+                <div class="col">
+                    <p>Last updated: {{myDate | amLocal | amDateFormat: 'YYYY-MM-DD HH:mm'}}</p>
+                    <p>Last updated: {{myDate | amDateFormat: 'YYYY-MM-DD HH:mm'}}</p>
+                    <p>Last updated: {{myDate | amLocale:'ko' | amDateFormat:'YYYY-MM-DD HH:mm'}}</p>
+                    <p>Last updated: {{myDate | amLocale:'en' | amDateFormat:'YYYY-MM-DD HH:mm'}}</p>
+                    <p>Last updated: {{myDate | amLocale:'ko' | amDateFormat:'MMMM Do YYYY, h:mm:ss a'}}</p>
+                    <p>Last updated: {{myDate | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm:ss a'}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amFromUnix pipe</div>
+                <div class="col">
+                    <p>Last updated: {{ (1456263980 | amFromUnix) | amDateFormat:'YYYY-MM-DD HH:mm'}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amDuration pipe</div>
+                <div class="col">
+                    <p>Uptime: {{ 365 | amDuration:'seconds' }}</p>
+                    <p>Uptime: {{ 365 | amDuration:'minutes' }}</p>
+                    <p>Uptime: {{ 365 | amDuration:'hours' }}</p>
+                    <p>Uptime: {{ 1000 | amDuration:'days' }}</p>
+                    <p>Uptime: {{ 24 | amDuration:'months' }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amDifference pipe</div>
+                <div class="col">
+                    <p>myDate : {{myDate | amDateFormat:'YYYY-MM-DD HH:mm'}}</p>
+                    <p>nextDay : {{nextDay | amDateFormat:'YYYY-MM-DD HH:mm'}}</p>
+                    <p>Expiration: {{nextDay | amDifference: myDate :'days' : true}} days</p>
+                    <p>Expiration: {{myDate | amDifference: nextDay :'days' : true}} days</p>
+                    <p>Expiration: {{nextDay | amDifference: myDate :'hours' : true}} hours</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <p>amAdd and amSubtract pipes</p>
+                    <p><a href="https://momentjs.com/docs/#/manipulating/add/" target="_blank" >https://momentjs.com/docs/#/manipulating/add/</a></p>
+                </div>
+                <div class="col">
+                    <p>myDate: {{myDate | amDateFormat: 'YYYY-MM-DD HH:mm'}}</p>
+                    <p>Expiration: {{myDate | amAdd: 2 : 'hours' | amDateFormat: 'YYYY-MM-DD HH:mm'}}</p>
+                    <p>Last updated: {{myDate | amSubtract: 5 : 'years' | amDateFormat: 'YYYY-MM-DD HH:mm'}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <p>amFromUtc pipe</p>
+                    <p>UTC, GMT(세계 표준시 ) : 한국시간에 9시간을 빼어 계산한다.</p>
+                    <p>http://hansworld.co.kr/Instant_Backup/314</p>
+                </div>
+                <div class="col">
+                    <p>myDate: {{ myDate | amDateFormat: 'YYYY-MM-DD HH:mm' }}</p>
+                    <p>Last updated: {{ myDate | amFromUtc | amDateFormat: 'YYYY-MM-DD HH:mm' }}</p>
+                    <p>Last updated: {{ '31/12/2016 23:00-01:00' | amFromUtc: 'DD/MM/YYYY HH:mmZZ' | amDateFormat: 'YYYY-MM-DD' }}</p>
+                    <p>Last updated: {{ '31/12/2016 23:00-01:00' | amFromUtc: formats2 | amDateFormat: 'YYYY-MM-DD' }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amUtc pipe</div>
+                <div class="col">
+                    <p>Last updated: {{ myDate | amUtc | amDateFormat: 'YYYY-MM-DD HH:mm' }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amParseZone pipe</div>
+                <div class="col">
+                    <p>Last updated: {{ '2016-12-31T23:00:00.000-03:00' | amParseZone | amDateFormat: 'LLLL (Z)' }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">amIsBefore and amIsAfter pipe</div>
+                <div class="col">
+                    <p>Tomorrow is after today: {{ nextDay | amIsAfter:myDate:'day' }}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

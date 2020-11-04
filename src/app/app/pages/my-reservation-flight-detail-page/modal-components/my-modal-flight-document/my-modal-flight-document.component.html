@@ -1,0 +1,127 @@
+  <!-- Modal -->
+  <div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+      <h1>증빙서류 등록/수정</h1>
+      <div class="right">
+        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+      </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="page-contents-type3 fixed-btn-footer">
+          <div class="round-box">
+            <div class="check-time auto">
+              <span class="cal">결제시한 : 2019.11.20(수)</span>
+              <span class="ml-auto">09:00까지</span>
+            </div>
+            <ul class="text-list dash spacing color-sub6">
+              <li>증빙 서류가 필요한 예약입니다.</li>
+              <li>증빙서류는 결제 시한 전까지 보내주셔야 하며 증빙서류가 확인된 후 결제가 가능합니다.</li>
+              <li>모든 증빙서류는 주민등록번호 뒷번호 삭제 후 첨부해 주시기 바랍니다.</li>
+              <li>파일 업로드 시 파일명은 영문이나 숫자만 가능(한글 포함은 불가), 확장자는 jpg, jpeg, gif, doc만 가능, 용량은 최고 2MB 입니다.</li>
+              <li>파일 업로드 시 최근에 등록한 파일만 저장되며, 동일한 요청내용이 중복으로 등록될 경우 진행이 지연 될 수 있습니다.</li>
+              <li>이미지는 흔들리지 않은 선명한 이미지이어야 하며 모든 내용이 보여야 합니다. </li>
+              <li>우편 업무는 분실 우려가 있으므로 하지 않습니다.</li>
+            </ul>
+          </div>
+  
+          <!-- 반복 -->
+          <div class="mt40">
+            <h2 class="contents-title2 line2">성인 1. HONG/GILDONG(남)</h2>
+            <div class="row-group">
+              <div class="row">
+                <div class="input-file line">
+                  <div class="file-name">
+                    <!-- 파일 선택 전 -->
+                    <span class="text place-holder">파일을 선택하세요</span>
+                    <!-- 파일 선택 후
+                    <span class="text">홍길동여권.png</span>
+                    <a href="#" class="icon sm input-delete2">삭제</a>
+                    -->
+                  </div>
+                  <!-- 파일 선택 버튼을 눌러 파일을 선택하면 파일 이름이 .text 에 들어가고 삭제 버튼을 누르면 파일이 날라간다. -->
+                  <label class="input-file-label">
+                    파일 선택
+                    <input type="file" class="file-hidden">
+                  </label>
+                </div>
+              </div>
+              <div class="row mt10">
+                <div class="input-file line">
+                  <div class="file-name">
+                    <!-- 파일 선택 전
+                    <span class="text place-holder">파일을 선택하세요</span>
+                    -->
+                    <!-- 파일 선택 후 -->
+                    <span class="text">홍길동여권.png</span>
+                    <a href="#" class="icon sm input-delete2">삭제</a>
+                  </div>
+                  <!-- 파일 선택 버튼을 눌러 파일을 선택하면 파일 이름이 .text 에 들어가고 삭제 버튼을 누르면 파일이 날라간다. -->
+                  <label class="input-file-label">
+                    파일 선택
+                    <input type="file" class="file-hidden">
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="btn-group both">
+                  <button class="btn lg dash-line" role="button"><span class="icon sm plus3">추가</span></button>
+                  <button class="btn lg dash-line" role="button"><span class="icon sm minus3">삭제</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 반복 -->
+          <div class="mt40">
+            <h2 class="contents-title2 line2">성인 2. KIM/GILDONG(여)</h2>
+            <div class="row-group">
+              <div class="row">
+                <div class="input-file line">
+                  <div class="file-name">
+                    <!-- 파일 선택 전 -->
+                    <span class="text place-holder">파일을 선택하세요</span>
+                    <!-- 파일 선택 후
+                    <span class="text">홍길동여권.png</span>
+                    <a href="#" class="icon sm input-delete2">삭제</a>
+                    -->
+                  </div>
+                  <!-- 파일 선택 버튼을 눌러 파일을 선택하면 파일 이름이 .text 에 들어가고 삭제 버튼을 누르면 파일이 날라간다. -->
+                  <label class="input-file-label">
+                    파일 선택
+                    <input type="file" class="file-hidden">
+                  </label>
+                </div>
+              </div>
+              <div class="row mt10">
+                <div class="input-file line">
+                  <div class="file-name">
+                    <!-- 파일 선택 전
+                    <span class="text place-holder">파일을 선택하세요</span>
+                    -->
+                    <!-- 파일 선택 후 -->
+                    <span class="text">홍길동여권.png</span>
+                    <a href="#" class="icon sm input-delete2">삭제</a>
+                  </div>
+                  <!-- 파일 선택 버튼을 눌러 파일을 선택하면 파일 이름이 .text 에 들어가고 삭제 버튼을 누르면 파일이 날라간다. -->
+                  <label class="input-file-label">
+                    파일 선택
+                    <input type="file" class="file-hidden">
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="btn-group both">
+                  <button class="btn lg dash-line" role="button"><span class="icon sm plus3">추가</span></button>
+                  <button class="btn lg dash-line" role="button"><span class="icon sm minus3">삭제</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="btn-group bg2 pd fixed-bottom">
+            <button class="btn lg default" role="button">저장하기</button>
+          </div>
+        </div>
+      </div>
+  </div>

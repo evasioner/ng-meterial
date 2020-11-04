@@ -1,0 +1,32 @@
+<h2 class="contents-title">인기 #태그 액티비티</h2>
+<div class="scroll-box-filter extend">
+    <a (click)="onChangeTag(1)" class="btn inline md round shadow" [ngClass]="{'default': tagIndex === 1, 'line light': tagIndex !== 1 }">#싱글여행</a>
+    <a (click)="onChangeTag(2)" class="btn inline md round shadow" [ngClass]="{'default': tagIndex === 2, 'line light': tagIndex !== 2 }">#연인과함께</a>
+    <a (click)="onChangeTag(3)" class="btn inline md round shadow" [ngClass]="{'default': tagIndex === 3, 'line light': tagIndex !== 3 }">#가족과함께</a>
+    <a (click)="onChangeTag(4)" class="btn inline md round shadow" [ngClass]="{'default': tagIndex === 4, 'line light': tagIndex !== 4 }">#친구와함께</a>
+    <a (click)="onChangeTag(5)" class="btn inline md round shadow" [ngClass]="{'default': tagIndex === 5, 'line light': tagIndex !== 5 }">#엄마와함께</a>
+</div>
+<div class="scroll-box-list no-mg extend">
+    <div class="scroll-item-outer">
+
+        <!-- 인기 액티비티 아이템 -->
+        <div class="activity-popularity-item" *ngFor="let lists of hotactivityList; let i = index" (click)="onGoDetailPage(i)">
+            <div class="activity-image" [ngStyle]="{'background-image': 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('+ lists.photoUrl +')'}" [style.backgroundPositionX]="'50%'" [style.backgroundPositionY]="'50%'">
+                <!-- [style.backgroundSize]="'cover'" -->
+                <span class="category">{{ lists.activityCategory }}</span>
+            </div>
+            <div class="activity-popularity-item-information">
+                <p class="title">{{ lists.activityTitle }}</p>
+                <p class="location"><span class="icon xs location3"></span><span>{{ lists.activityLocation }}</span></p>
+                <p class="price"><strong>{{ lists.activityPrice | number }}</strong><span>원 부터</span></p>
+            </div>
+        </div>
+
+        <!-- 더보기 -->
+        <div class="view-more-item">
+            <span class="icon sm plus"></span>
+            <p>더보기</p>
+        </div>
+
+    </div>
+</div>

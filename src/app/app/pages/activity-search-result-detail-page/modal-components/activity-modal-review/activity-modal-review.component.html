@@ -1,0 +1,134 @@
+<!-- Calendar Modal -->
+<div class="modal bg">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>이용 후기</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="review-contents">
+            <!-- 리뷰 아이템 header -->
+            <div class="round-box review-item-information">
+                <div class="rate-wrap">
+                    <div class="total-rate">
+                        <strong>4.5</strong><strong>아주좋음</strong>
+                    </div>
+                    <!--
+              - class 를 추가해서 넓이를 정한다.
+              - .s0h, .s1, .s1h, .s2, .s2h, .s3, .s3h, .s4, .s4h, .s5
+            -->
+                    <div class="total-rate-star s5"></div>
+                </div>
+                <div class="item-information">
+                    <div class="item-image" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></div>
+                    <div class="item-text">
+                        <p class="title">로스앤젤레스 자연사 박물관 입장권</p>
+                        <p class="sub">인천 제2터미널 면세구역 탑승동,4GB(데이터+통화)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="review-top">
+                <span class="total">총 <span class="color-point2">1,000</span>건 이용후기</span>
+                <div class="ml-auto">
+                    <a href="#" class="filter active">최신순</a>
+                    <a href="#" class="filter">평점순</a>
+                </div>
+            </div>
+            <!-- 리뷰 아이템 반복 -->
+            <div class="round-box review-item">
+                <div class="customer">
+                    <div class="review-item-header">
+                        <strong class="rate">5.0</strong><strong class="user">ten****</strong>
+                        <span class="ml-auto">2019.08.29</span>
+                    </div>
+                    <div class="review-text">
+                        <div class="review-text-box reduce">
+                            위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                        </div>
+                        <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                        <a href="#" class="btn-more active">더보기</a>
+                    </div>
+                    <div class="scroll-box-list no-mg">
+                        <div class="scroll-item-outer">
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="seller">
+                    <div class="review-item-header">
+                        <strong>판매자</strong>
+                        <span>2020.07.09</span>
+                    </div>
+                    <div class="review-text">
+                        기분 좋게 사용하셨다고 하니 다행입니다.<br>앞으로도 많이 이용해주세요.
+                    </div>
+                </div>
+            </div>
+            <!-- 리뷰 아이템 반복 -->
+            <div class="round-box review-item">
+                <div class="customer">
+                    <div class="review-item-header">
+                        <strong class="rate">5.0</strong><strong class="user">ten****</strong>
+                        <span class="ml-auto">2019.08.29</span>
+                    </div>
+                    <div class="review-text">
+                        <div class="review-text-box reduce">
+                            위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                        </div>
+                        <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                        <a href="#" class="btn-more active">더보기</a>
+                    </div>
+                    <div class="scroll-box-list no-mg">
+                        <div class="scroll-item-outer">
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 리뷰 아이템 반복 -->
+            <div class="round-box review-item">
+                <div class="customer">
+                    <div class="review-item-header">
+                        <strong class="rate">5.0</strong><strong class="user">ten****</strong>
+                        <span class="ml-auto">2019.08.29</span>
+                    </div>
+                    <div class="review-text">
+                        <div class="review-text-box reduce">
+                            위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                        </div>
+                        <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                        <a href="#" class="btn-more active">더보기</a>
+                    </div>
+                    <div class="scroll-box-list no-mg">
+                        <div class="scroll-item-outer">
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                            <a href="#" class="review-photo" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 더보기를 누를때 review-item을 더 불러옴 -->
+            <div class="btn-group mt10">
+                <a class="btn md round line light" href="#"><span class="icon sm direction bottom2">더보기</span></a>
+            </div>
+        </div>
+    </div>
+</div>

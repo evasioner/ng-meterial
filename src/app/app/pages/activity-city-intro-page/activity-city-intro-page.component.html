@@ -1,0 +1,30 @@
+<div *ngIf="isBrowser" id="wrap" class="p-activity-city-intro">
+    <app-activity-header [headerType]="headerType" [headerConfig]="headerConfig"></app-activity-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+
+        <!-- 메인 검색 -->
+        <app-activity-city-search class="contents-item-area"></app-activity-city-search>
+
+        <app-activity-city-list [target]="'recommends'" class="contents-item-area"></app-activity-city-list>
+
+        <!-- 베스트 액티비티 -->
+        <app-activity-city-list [target]="'bests'" class="contents-item-area"></app-activity-city-list>
+
+        <!-- 2차 범위로 변경
+        <! -- 맞춤 자유여행 -- >
+        <app-activity-city-freestyle class="contents-item-area"></app-activity-city-freestyle>
+
+        <! -- 실시간 고객 여행플랜 -- >
+        <app-activity-city-travel-plan class="contents-item-area"></app-activity-city-travel-plan>
+        -->
+
+        <!-- 주변 여행지 -->
+        <app-activity-city-hotplace class="contents-item-area"></app-activity-city-hotplace>
+    </div>
+
+    <app-footer></app-footer>
+</div>
+
+<router-outlet></router-outlet>

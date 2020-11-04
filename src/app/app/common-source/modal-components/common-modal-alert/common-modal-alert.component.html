@@ -1,0 +1,21 @@
+<!--  기본 -->
+<div *ngIf="loadingBool" class="alert-msg">
+    <div class="alert-contents">
+
+        <a *ngIf="isCloseObj" (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+
+        <span class="icon alert"></span>
+
+        <h1 *ngIf="isTitleTxt" [innerHTML]="titleTxt"></h1>
+
+        <p *ngIf="isAlertHtml" class="alert-text" [innerHTML]="alertHtml"></p>
+
+        <div *ngIf="isCancelObj" class="btn-group mt20" [ngClass]="{'both' : isOkObj&&isCancelObj}">
+            <button *ngIf="isCancelObj" (click)="onCancelClick()" class="btn lg grey" role="button">{{this.cancelObj['name']}}</button>
+            <button (click)="onOkClick()" class="btn lg default" role="button">{{this.okObj['name']}}</button>
+        </div>
+        <div *ngIf="!isCancelObj" class="btn-group mt20" [ngClass]="{'both' : isOkObj&&isCancelObj}">
+            <button (click)="onOkClick()" class="btn lg default" role="button">{{this.okObj['name']}}</button>
+        </div>
+    </div>
+</div>

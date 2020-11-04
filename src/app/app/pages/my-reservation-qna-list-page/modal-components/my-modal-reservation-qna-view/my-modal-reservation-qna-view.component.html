@@ -1,0 +1,62 @@
+  <!-- Modal -->
+  <div class="modal bg">
+    <!-- modal header -->
+    <div class="modal-header">
+      <h1>고객 문의 상세</h1>
+      <div class="right">
+        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+      </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+      <div class="page-contents-type2 fixed-btn-footer">
+        <div class="round-box">
+          <div class="reservation-question-item">
+            <!--
+              - .reservation-title의 구조는 예약리스트 아이템과 같음
+              - 항공 / 호텔 / 액티비티 / 렌터카 / 묶음할인 아이콘 동일 하게 사용
+            -->
+            <div class="reservation-title">
+              <span class="icon sm flight2"></span>
+              <span class="text">YB123456789</span>
+              <span class="label sm type2">답변완료</span>
+            </div>
+            <div class="question-summary">
+              <h2 class="product-title">인천 - 로스앤젤레스 - 샌프란시스코 - 인천</h2>
+              <ul>
+                <li>
+                  <span>출발일</span>
+                  <span>2019.12.20 13:00</span>
+                </li>
+                <li>
+                  <span>상담분류</span>
+                  <span>결제 시한 연장</span>
+                </li>
+                <li>
+                  <span>접수일시</span>
+                  <span>2019.12.20 13:00</span>
+                </li>
+              </ul>
+            </div>
+            <!-- 문의 내용 상세 -->
+            <div class="question-detail">
+              결제 시한 연장 부탁드립니다. <br>
+              연장 안해주면 진짜 취소해버릴꺼예욧!!!
+            </div>
+            <!-- 답변 내용 상세 -->
+            <!-- 답변이 달리기 전에는 보여주지 않는다 -->
+            <div class="answer-detail">
+              안녕하세요.<br>
+              휴먼!<br>
+              너의 여행은 끝났다. <br>
+
+              <p class="reply-time">2019.12.20 13:00</p>
+            </div>
+          </div>
+        </div>
+        <div class="btn-group fixed-bottom pd bg2">
+          <a (click)="onCloseClick()" class="btn lg grey">목록</a>
+        </div>
+      </div>
+    </div>
+  </div>

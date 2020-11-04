@@ -1,0 +1,101 @@
+<!-- Modal -->
+<div class="modal" *ngIf="loadingBool">
+    <!-- modal header -->
+    <div class="modal-header">
+        <div class="left">
+            <a (click)="onReloadClick($event)" class="icon sm common-reload"> {{ vm.header.reload }}</a>
+        </div>
+        <h1>{{ vm.header.txt }}</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">{{ vm.header.close }}</a>
+        </div>
+    </div>
+
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <!-- 인원선택 modal -->
+        <div class="cm-traveler-option">
+            <!-- 객실 1 : 객실 1은 무조건 고정 / 삭제할 수 없음 -->
+            <div class="contents-item" *ngFor="let room of vm.roomList; index as i; last as isLast">
+                <h2 class="contents-title2">
+                    {{ vm.room.title }}{{ i + 1 }}
+                    <a *ngIf="i === 0" (click)="move()" class="text-link2">
+                        <span class="text">{{ vm.room.childrenInfo }}</span>
+                        <span class="icon xs information"></span>
+                    </a>
+                    <a *ngIf="i !== 0" (click)="removeRoom(i)" class="text-link">
+                        <span class="icon sm delete2"></span>
+                        <span class="text">{{ vm.room.delTxt }}</span>
+                    </a>
+                </h2>
+                <div class="item-group">
+                    <div class="item-row col">
+                        <div class="left">
+                            <p class="font-md color-main2">{{ vm.room.adultTxt }}</p>
+                            <p class="font-md color-sub4 mt5">{{ vm.room.adultDesc }}</p>
+                        </div>
+                        <div class="right">
+                            <!-- 성인은 기본 1 -->
+                            <div class="counter">
+                                <button (click)="onChangeCount('adult', 'down', i)" class="counter-control down" role="button">
+                                    {{ vm.room.downTxt }}
+                                </button>
+                                <span class="counter-num">{{ room.adultCount }}</span>
+                                <button (click)="onChangeCount('adult', 'up', i)" class="counter-control up" role="button">
+                                    {{ vm.room.upTxt }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-row col">
+                        <div class="left">
+                            <p class="font-md color-main2">{{ vm.room.childrenTxt }}</p>
+                            <p class="font-md color-sub4 mt5">{{ vm.room.childrenDesc }}</p>
+                        </div>
+                        <div class="right">
+                            <!-- 아동은 기본 0 -->
+                            <div class="counter">
+                                <button (click)="onChangeCount('children', 'down', i)" class="counter-control down" role="button">
+                                    {{ vm.room.downTxt }}
+                                </button>
+                                <span class="counter-num">{{ room.childAges.length }}</span>
+                                <button (click)="onChangeCount('children', 'up', i)" class="counter-control up" role="button">
+                                    {{ vm.room.upTxt }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 아동 카운트 1이상일때 .item-row 보여지고 .col-wrap-item 갯수 추가
+                    아동 카운트가 0이 되면 .item-row를 숨김  -->
+
+                    <div *ngIf="room?.childAges?.length > 0" class="item-row col-wrap">
+                        <div class="col-wrap-item" *ngFor="let child of room.childAges; index as j">
+                            <div class="select-box line">
+                                <select name="selAge" id="selAge" required value="{{ child }}" (change)="onChageAge($event, i, j)">
+                                    <option value="" selected disabled>{{ vm.room.childrenTxt }}{{ j + 1 }}
+                                        {{ vm.room.ageSelTxt }}
+                                    </option>
+                                    <option [value]="age" *ngFor="let age of vm.room.ageList" [selected]="age === child ? true : false">
+                                        <ng-container *ngIf="age !== 0; else elseAge">만 {{ age }}세</ng-container>
+                                        <ng-template #elseAge>만 1세 미만</ng-template>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 객실 추가 -->
+            <a (click)="addRoom()" class="btn-add-room">
+                <span class="icon sm add2"></span>
+                <span class="text">{{ vm.room.roomAddTxt }}</span>
+            </a>
+            <div class="btn-group pd bg fixed-bottom">
+                <button (click)="onSubmit()" class="btn lg default" role="button">
+                    {{ vm.room.appTxt }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+  <!-- Modal -->
+  <div class="modal bg">
+    <!-- modal header -->
+    <div class="modal-header">
+      <h1>마일리지 적립</h1>
+      <div class="right">
+        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+      </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+      <div class="page-contents-type2">
+        <div *ngFor="let t of travelers" class="round-box">
+          <div class="accordion2">
+            <!-- .accordion-title 클릭하면 .active 토글 -->
+            <a (click)="onAccordion()" class="accordion-title">
+              <strong class="font-lg-b">성인1. {{t.name}} ({{t.sex == 'M' ? '남' : '여'}})</strong>
+            </a>
+            <!-- .accordion-title에 .active 추가 되면 자동으로 보여짐 (CSS) -->
+            <div class="accordion-body">
+              <div class="traveler-item">
+                <div class="row-group">
+                  <div class="row mt0">
+                    <h5 class="row-title">탑승 항공사</h5>
+                    <div class="row">
+                      <div class="input line">
+                        <input type="text" placeholder="대한항공" disabled>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <h5 class="row-title">적립 항공사</h5>
+                    <div class="select-box line">
+                      <select name="" id="">
+                        <option value="">대한항공</option>
+                        <option value="">중국남방항공</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <h5 class="row-title">카드번호</h5>
+                    <div class="input line">
+                      <input type="text" placeholder="마일리지 카드번호 입력">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <!-- 폼 입력이 미완료되면 .btn.lg.grey  -->
+                    <!-- 폼 입력이 완료되면 .btn.bg.default -->
+                    <button class="btn lg grey" role="button">저장</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>

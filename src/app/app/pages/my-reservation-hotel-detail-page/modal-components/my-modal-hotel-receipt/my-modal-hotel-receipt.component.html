@@ -1,0 +1,247 @@
+<!-- Modal -->
+<ng-container *ngIf="mode === 0">
+  <div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+      <div class="left">
+        <a href="#" class="icon sm common-mail">메일발송</a>
+      </div>
+      <h1 (click)="changeMode(1)">신용카드 영수증</h1>
+      <div class="right">
+        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+      </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+      <div class="page-contents-type2">
+        <div class="receipt-form">
+          <h2 class="receipt-title">
+            <strong>신용카드 매출전표</strong>
+            <img src="/assets/images/common/ico-header-logo-text.png" alt="" class="logo">
+          </h2>
+          <div class="receipt-group">
+            <ul>
+              <li>
+                <span>카드종류</span>
+                <strong>삼성카드</strong>
+              </li>
+              <li>
+                <span>카드번호</span>
+                <strong>****-****-****-1234</strong>
+              </li>
+              <li>
+                <span>유효기간</span>
+                <strong>**/**</strong>
+              </li>
+              <li>
+                <span>구매자명</span>
+                <strong>HONG/GILDONG MR</strong>
+              </li>
+              <li>
+                <span>거래일시(취소일시)</span>
+                <strong>2019.10.01 13:21:08</strong>
+              </li>
+              <li>
+                <span>상품명</span>
+                <strong>호텔 12348580</strong>
+              </li>
+              <li>
+                <span>거래유형</span>
+                <strong>카드</strong>
+              </li>
+              <li>
+                <span>할부</span>
+                <strong>일시불</strong>
+              </li>
+              <li>
+                <span>승인번호</span>
+                <strong>00318587</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="receipt-group line">
+            <h3 class="group-title">가맹점 정보</h3>
+            <ul>
+              <li>
+                <span>상점</span>
+                <strong>(주)케이지이니시스</strong>
+              </li>
+              <li>
+                <span>가맹점번호</span>
+                <strong>1034**********</strong>
+              </li>
+              <li>
+                <span>사업자등록번</span>
+                <strong>220-**-*****</strong>
+              </li>
+              <li>
+                <span>연락처</span>
+                <strong>1588-4954</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="receipt-group line">
+            <h3 class="group-title">공급자 정보</h3>
+            <ul>
+              <li>
+                <span>업체명</span>
+                <strong>(주)노랑풍선</strong>
+              </li>
+              <li>
+                <span>대표자명</span>
+                <strong>김인중</strong>
+              </li>
+              <li>
+                <span>사업자등록번호</span>
+                <strong>140-81-64440</strong>
+              </li>
+              <li>
+                <span>연락처</span>
+                <strong>1644-3399</strong>
+              </li>
+              <li>
+                <span>주소</span>
+                <strong>서울특별시 중구 수표로31 노랑풍선</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="receipt-group line">
+            <h3 class="group-title">결제금액</h3>
+            <ul>
+              <li>
+                <span>금액</span>
+                <strong>46,000원</strong>
+              </li>
+              <li>
+                <span>부가세</span>
+                <strong>0원</strong>
+              </li>
+              <li class="line">
+                <span class="color-main2 font-md-b">합계</span>
+                <strong class="color-point2">46,000원</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="mode === 1">
+  <!-- Modal -->
+  <div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+      <div class="left">
+        <a href="#" class="icon sm common-mail">메일발송</a>
+      </div>
+      <h1 (click)="changeMode(0)">현금 영수증</h1>
+      <div class="right">
+        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+      </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+      <div class="page-contents-type2">
+        <div class="receipt-form">
+          <h2 class="receipt-title">
+            <strong>현금영수증</strong>
+            <img src="/assets/images/common/ico-header-logo-text.png" alt="" class="logo">
+          </h2>
+          <div class="receipt-group">
+            <ul>
+              <li>
+                <span>발행번호</span>
+                <strong>01012341234</strong>
+              </li>
+              <li>
+                <span>구매자명</span>
+                <strong>HONG/GILDONG MR</strong>
+              </li>
+              <li>
+                <span>거래일시(취소일시)</span>
+                <strong>2019.10.01 13:21:08</strong>
+              </li>
+              <li>
+                <span>상품명</span>
+                <strong>호텔 12348580</strong>
+              </li>
+              <li>
+                <span>거래유형</span>
+                <strong>소득공제</strong>
+              </li>
+              <li>
+                <span>승인번호</span>
+                <strong>G00318587</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="receipt-group line">
+            <h3 class="group-title">가맹점 정보</h3>
+            <ul>
+              <li>
+                <span>상점</span>
+                <strong>(주)케이지이니시스</strong>
+              </li>
+              <li>
+                <span>가맹점번호</span>
+                <strong>1034**********</strong>
+              </li>
+              <li>
+                <span>사업자등록번</span>
+                <strong>220-**-*****</strong>
+              </li>
+              <li>
+                <span>연락처</span>
+                <strong>1588-4954</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="receipt-group line">
+            <h3 class="group-title">공급자 정보</h3>
+            <ul>
+              <li>
+                <span>업체명</span>
+                <strong>(주)노랑풍선</strong>
+              </li>
+              <li>
+                <span>대표자명</span>
+                <strong>김인중</strong>
+              </li>
+              <li>
+                <span>사업자등록번호</span>
+                <strong>140-81-64440</strong>
+              </li>
+              <li>
+                <span>연락처</span>
+                <strong>1644-3399</strong>
+              </li>
+              <li>
+                <span>주소</span>
+                <strong>서울특별시 중구 수표로31 노랑풍선</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="receipt-group line">
+            <h3 class="group-title">결제금액</h3>
+            <ul>
+              <li>
+                <span>금액</span>
+                <strong>105,000원</strong>
+              </li>
+              <li>
+                <span>부가세</span>
+                <strong>0원</strong>
+              </li>
+              <li class="line">
+                <span class="color-main2 font-md-b">합계</span>
+                <strong class="color-point2">105,000원</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

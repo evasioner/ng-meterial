@@ -1,0 +1,32 @@
+<div id="wrap" class="p-flight">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-flight-header [headerType]="headerType" [headerConfig]="headerConfig"></app-flight-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+
+        <!-- 메인 검색 -->
+        <app-flight-main-search class="contents-item"></app-flight-main-search>
+
+        <!-- 최근 검색한 여행지 -->
+        <app-flight-new-search-list class="contents-item mg"></app-flight-new-search-list>
+
+        <!-- 가장 인기 있는 로스앤젤레스 항공+호텔 -->
+        <app-flight-hot-list class="contents-item mg"></app-flight-hot-list>
+
+        <!-- 박종선 님 만을 위한 이벤트 -->
+        <app-flight-customer-event class="contents-item mg"></app-flight-customer-event>
+
+        <!-- 쿠폰 다운로드 -->
+        <app-flight-coupon-down class="contents-item mg"></app-flight-coupon-down>
+
+    </div>
+
+    <!-- footer -->
+    <app-footer></app-footer>
+
+</div>
+
+<router-outlet></router-outlet>

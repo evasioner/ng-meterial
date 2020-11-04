@@ -1,0 +1,175 @@
+<div *ngIf="this.isBrowser" id="wrap" class="p-activity-search-result-detail">
+
+    <!-- header -->
+    <app-activity-header [headerType]="headerType" [headerConfig]="headerConfig"></app-activity-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+
+        <!-- timer | is-hide-->
+        <countdown-timer class="is-hide"></countdown-timer>
+        <div class="page-contents-type">
+            <!-- 상단 이미지 영역 -->
+            <div class="activity-detail-image">
+                <div class="btn-group">
+                    <a class="btn-share" (click)="onShareClick($event)">공유</a>
+                    <!-- 관심상품 클릭시 .active 토글 -->
+                    <a class="btn-wish" (click)="onAttentionClick($event)">관심상품</a>
+                </div>
+                <!-- 이미지 상세 슬라이드 -->
+                <app-img-view [category]="'activity'" [urlList]="viewModel.images" class="m-ngx-slick-carousel activity-detail-rolling"></app-img-view>
+            </div>
+
+            <div class="activity-detail-contents">
+                <div class="contents-item">
+                    <div class="activity-basic-information">
+                        <h2>{{ viewModel.activityName }}</h2>
+                        <h3>상품코드 {{ viewModel.activityCode }}</h3>
+
+                        <div *ngIf="false" class="information">
+                            <div>
+                                <strong class="rate">{{ viewModel.reviewAverage }}</strong>
+                                <strong class="color-point2 ml5">{{ viewModel.reviewAverageName}}</strong>
+                                <span class="color-sub3 ml5">({{ viewModel.reviewCount | number}})</span>
+                            </div>
+                        </div>
+
+                        <div class="round-box">
+                            <div class="supply">
+                                <span class="logo" [ngStyle]="{'background-image': 'url(' + viewModel.vendorCompImage + ')', 'background-position': '50% 50%', 'background-repeat': 'no-repeat', 'background-size':'cover'}"></span>
+                                <span class="name">{{ viewModel.vendorCompName }}</span>
+                                <a *ngIf="false" class="btn md line light" (click)="onGoQna()">문의하기</a>
+                            </div>
+                            <div class="supply-option">
+                                <ul>
+                                    <li *ngIf="false">
+                                        <span class="icon sm calendar3"></span>
+                                        <span class="text">내일부터 예약 가능</span>
+                                    </li>
+                                    <li *ngIf="viewModel.instantUseYn">
+                                        <span class="icon sm activity-now"></span>
+                                        <span class="text">즉시 확정</span>
+                                    </li>
+                                    <li *ngIf="false">
+                                        <span class="icon sm h24"></span>
+                                        <span class="text">24시간 전 취소 가능</span>
+                                    </li>
+                                    <li *ngIf="false">
+                                        <span class="icon sm ticket2"></span>
+                                        <span class="text">모바일 또는 출력된 바우처</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ng-container *ngFor="let item of viewModel.tabMenuList; index as index;">
+                    <div *ngIf="item.show" [attr.id]="item.id" class="contents-item">
+                        <h2 class="contents-title">{{ item.text }}</h2>
+                        <div *ngIf="item.id !== 'after'" class="round-box">
+                            <div class="summary">
+                                <dl *ngIf="item.id === 'info'">
+                                    <dd [innerHTML]="viewModel.productDescDetail"></dd>
+                                </dl>
+                                <dl *ngIf="item.id === 'info' && item.more">
+                                    <dt>포함사항</dt>
+                                    <dd [innerHTML]="viewModel.includedDetail"></dd>
+                                </dl>
+                                <dl *ngIf="item.id === 'info' && item.more">
+                                    <dt>불포함사항</dt>
+                                    <dd [innerHTML]="viewModel.excludedDetail"></dd>
+                                </dl>
+                                <dl *ngIf="item.id === 'info' && item.more">
+                                    <dt>주의사항</dt>
+                                    <dd [innerHTML]="viewModel.cautionDetail"></dd>
+                                </dl>
+                                <dl *ngIf="item.id === 'use'">
+                                    <dd [innerHTML]="viewModel.howToUse"></dd>
+                                </dl>
+                                <dl *ngIf="item.id === 'cancel'">
+                                    <dd [innerHTML]="viewModel.othersDescDetail"></dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <div *ngIf="false" class="contents-item">
+                    <h2 class="contents-title">여행 후기</h2>
+                    <div class="round-box no-pd">
+                        <div class="review-contents">
+                            <!-- 리뷰 아이템 header -->
+                            <div class="review-inner-contents">
+                                <div class="review-top">
+                                    <div class="total-rate">
+                                        <strong>4.5</strong><strong class="font-md-b">아주좋음</strong> <span class="color-sub4">(총 1,000건)</span>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <a href="#" class="filter active">최신순</a>
+                                        <a href="#" class="filter">평점순</a>
+                                    </div>
+                                </div>
+                                <div class="total-rate-star s5"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="customer">
+                                    <div class="review-item-header">
+                                        <strong class="rate">5.0</strong><strong class="user">ten****</strong>
+                                        <span class="ml-auto">2019.08.29</span>
+                                    </div>
+                                    <div class="review-text">
+                                        <div class="review-text-box reduce">
+                                            위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜 LA방문 필수 코스인지
+                                            알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인 직원이 친절했고 왜
+                                            LA방문 필수 코스인지 알 수 있었어요. 위치, 시설, 친절, 가격 뭐하나 모자람없이 즐거운 시간을 만들어준 공간이예요. 특히 한국인
+                                            직원이 친절했고 왜 LA방문 필수 코스인지 알 수 있었어요.
+                                        </div>
+                                        <!-- 더보기를 누르면 .review-text-box.reduce 에 .reduce를 삭제하고 .btn-more에 .active를 삭제한다. -->
+                                        <a href="#" class="btn-more active">더보기</a>
+                                    </div>
+                                    <div class="scroll-box-list no-mg">
+                                        <div class="scroll-item-outer">
+                                            <a href="#" class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                            <a href="#" class="review-photo-item" style="background-image: url('/assets/images/temp/@temp-activity-image.png');"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="seller">
+                                    <div class="review-item-header">
+                                        <strong>판매자</strong>
+                                        <span>2020.07.09</span>
+                                    </div>
+                                    <div class="review-text">
+                                        기분 좋게 사용하셨다고 하니 다행입니다.<br>앞으로도 많이 이용해주세요.
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn-more-view">더보기</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 하단 가격 + 예약버튼 -->
+                <div class="price-footer-box">
+                    <div class="item-group">
+                        <div class="item-row col">
+                            <div class="left"><span class="font-lg-b color-main2">최저가</span></div>
+                            <div class="right">
+                                <span class="font-lg-b color-point2">{{ viewModel.amountSum | number }}원</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group col3 left">
+                        <a class="btn lg dark icon-only" role="button"><span class="icon sm share2" (click)="onShareClick($event)">공유하기</span></a>
+                        <a class="btn lg default" role="button" (click)="onGoCalendarClick($event)">옵션 선택</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+<div id="wrap" class="p-cm-reservation">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+    <!-- contents -->
+    <div *ngIf="loadingBool" id="contents" class="content-area">
+        <div class="folding fixed line between">
+            <!--
+          - .folding-menu 누를때마다 .active 토글
+          - .folding-menu에 .active를 추가하면 .folding-detail이 자동으로 보여짐 (css)
+        -->
+            <a (click)="selectFolding()" [ngClass]="{'active': foldingYn}" class="folding-menu">
+                <strong class="text">카테고리 모아보기</strong>
+                <span class="arrow"></span>
+            </a>
+            <div class="folding-detail">
+                <ul class="folding-list2">
+                    <!-- <li style="display: none;">
+              <a (click)="openTravelInsu()" class="folding-list-item">여행자보험</a>
+            </li> -->
+                    <li>
+                        <a (click)="onBookingCancel($event)" class="folding-list-item">예약 취소</a>
+                    </li>
+                    <li>
+                        <a (click)="openRentConfirm($event)" class="folding-list-item">확정서</a>
+                    </li>
+                    <!-- <li style="display: none;">
+              <a (click)="openRentWifi()" class="folding-list-item">WiFi &amp; USIM</a>
+            </li>
+            <li style="display: none;">
+              <a (click)="openAddReserv()" class="folding-list-item">추가예약</a>
+            </li>
+            <li style="display: none;">
+              <a (click)="openRentInvoice()" class="folding-list-item">인보이스/영수증</a>
+            </li>
+            <li style="display: none;">
+              <a (click)="openMileageAccum()" class="folding-list-item">마일리지 적립</a>
+            </li>
+            <li style="display: none;">
+              <a (click)="openOneonon()" class="folding-list-item">1:1문의</a>
+            </li> -->
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-contents-type3">
+            <div class="contents-item mt10">
+                <h2 class="contents-title">예약정보</h2>
+                <div class="round-box rentalcar-reserved-contents">
+                    <div class="rentalcar-image">
+                        <img src="/assets/images/temp/@temp-rentalcar-image.png" alt="">
+                    </div>
+                    <div class="rentalcar-reserved-item-information">
+                        <dl>
+                            <dt><img src="/assets/images/temp/@temp-rentalcar-logo.png" alt="" class="rentalcar-logo"></dt>
+                            <dd>{{summary?.vehicleName}} </dd>
+                        </dl>
+                        <div class="option">
+                            <span class="person">{{summary?.passengerCount}}인승</span>
+                            <span class="door">{{summary?.doorCount}}도어</span>
+                            <span *ngIf="summary?.airConditionYn" class="air">에어컨</span>
+                            <span *ngIf=" summary?.transmissionType===' Automatic'" class=" gear">자동변속</span>
+                        </div>
+                    </div>
+                    <div class="item-group line-top">
+                        <div class="item-row col">
+                            <div class="left">예약번호</div>
+                            <div class="right">{{summary?.bookingItemCode}}</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">예약 상태</div>
+                            <div class="right">{{summary?.bookingStatusName}}</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">결제 상태</div>
+                            <div class="right">{{summary?.paymentStatusName}} <span class="color-point2">[무료취소]</span></div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">이용기간</div>
+                            <div class="right">{{summary?.pickupDate | date:'y.MM.dd'}} {{summary?.pickup.dateTime}} - {{summary?.returnDate | date:'y.MM.dd'}} {{summary?.reTurn.dateTiem}} <span class="color-point2">{{getDday()}}</span></div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">연령</div>
+                            <div class="right">{{summary?.driver.birthday}}</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">운전자</div>
+                            <div class="right">{{summary?.driver.name}}</div>
+                        </div>
+                        <div onclick="onLocationClick($event, 0)">
+                            <div class="item-row block">
+                                <div class="left">인수장소</div>
+                                <div class="right lh140">{{summary?.pickup.cityNameLn}}, {{summary?.pickup}} {{summary?.pickup.cityCode}} {{summary?.pickup.stateCode}} {{summary?.pickup.locationCode}} {{summary?.pickup.countryCode}} {{summary?.pickup.cityNameEn}}</div>
+                            </div>
+                        </div>
+                        <div onclick="onLocationClick($event, 1)">
+                            <div class="item-row block">
+                                <div class="left">반납장소</div>
+                                <div class="right lh140">{{summary?.reTurn.cityNameLn}}, {{summary?.reTurn}} {{summary?.reTurn.cityCode}} {{summary?.reTurn.stateCode}} {{summary?.reTurn.locationCode}} {{summary?.reTurn.countryCode}} {{summary?.reTurn.cityNameEn}}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item" style="display: none;">
+                <h2 class="contents-title">결제 정보</h2>
+                <div class="round-box reservation-payment">
+                    <div class="item-group">
+                        <h3 class="row-title">결제 상태</h3>
+                        <div class="item-row col">
+                            <div class="left"><span class="color-main2">대여비</span></div>
+                            <div class="right"><span class="color-sub5 mr5">(KRW 22,000원)</span><span>USD 24.93</span></div>
+                        </div>
+                        <div class="item-row mt20">
+                            <div class="rentalcar-price">
+                                <dl>
+                                    <dt>
+                                        <span>포함사항</span>
+                                    </dt>
+                                    <!-- <dd *ngFor="let rateDetailItem of summary.rateDetails">
+                                        {{rateDetailItem.chargeTypeDescription}}
+                                    </dd> -->
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="item-row col last">
+                            <div class="left"><strong>총 결제 금액</strong></div>
+                            <!-- <div class="right"><span class="font-md color-sub5 mr5">(약{{summary.vehicles[0].vendorAmountSumKrw | number}}원)</span>{{summary.vehicles[0].vendorCurrencyCode}}
+                                {{summary.vehicles[0].vendorAmountSum | number}}
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="round-box">
+                    <div class="check-time auto">
+                        <span class="cal">취소마감일 : 11.20(수)</span>
+                        <span class="ml-auto">09:00까지</span>
+                        <!-- <span class="cal">취소마감일 :
+                            {{rentRuleRs.vendorCancelDeadline | amDateFormat: 'MM.DD(ddd)'}}</span>
+                        <span class="ml-auto">{{rentRuleRs.vendorCancelDeadline | amDateFormat: 'HH:mm'}}까지</span> -->
+                    </div>
+                    <ul class="text-list">
+                        <li class="none-pd color-sub3">
+                            <p>※ 무료 취소 가능 기간 이후 취소 시, 수수료가 발생합니다.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title">예약자 정보</h2>
+                <div class="round-box">
+                    <ul class="table-list">
+                        <li>
+                            <span>예약자 명</span>
+                            <span>{{booker.name}}</span>
+                        </li>
+                        <li>
+                            <span>휴대폰 번호</span>
+                            <span>{{booker.mobileNo}}</span>
+                        </li>
+                        <li>
+                            <span>이메일</span>
+                            <span>{{booker.email}}</span>
+                        </li>
+                    </ul>
+                    <a (click)="openBookerEdit()" class="btn sm line light icon-only absolute"><span class="icon xs edit">수정</span></a>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title">운전자 정보</h2>
+                <div class="round-box">
+                    <ul class="table-list">
+                        <li>
+                            <span>한글이름</span>
+                            <span>{{summary?.driver.name}}</span>
+                        </li>
+                        <li>
+                            <span>영문성/이름</span>
+                            <span>{{summary?.driver.firstName}} / {{summary?.driver.lastName}}</span>
+                        </li>
+                        <li>
+                            <span>연령</span>
+                            <span>{{summary?.driver.birthday}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contents-item" style="display: none;">
+                <h2 class="contents-title">도착 항공편</h2>
+                <div class="round-box">
+                    <ul class="table-list">
+                        <li>
+                            <span>항공편명</span>
+                            <span>{{summary.arrivalFlightNumber}}</span>
+                        </li>
+                        <li>
+                            <span>도착시간</span>
+                            <span>{{summary.arrivalTime}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

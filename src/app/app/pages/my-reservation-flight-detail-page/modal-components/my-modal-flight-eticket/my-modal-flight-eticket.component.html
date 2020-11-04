@@ -1,0 +1,261 @@
+<!-- Modal -->
+<!-- <div class="modal"> -->
+<!-- modal header -->
+<!-- <div class="modal-header"> -->
+<!-- <h1>E-Ticket</h1> -->
+<!-- <div class="right"> -->
+<!-- <a (click)="onCloseClick()" class="icon sm common-close">닫기</a> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- modal contents -->
+<!-- <div class="modal-contents overflow-x"> -->
+<!-- 추후 PC E-Ticket 작업 후 여기에 불러오기 -->
+<!-- </div> -->
+<!-- </div> -->
+
+<!-- 모달 -->
+<div class="modal type1 lg" *ngIf="loadingBool">
+    <div class="modal-contents">
+        <div class="modal-header">
+            <h1 class="modal-title">E-Ticket</h1>
+            <a (click)="modalClose()" class="btn-common-modal-close">닫기</a>
+        </div>
+        <div class="modal-body pd-all">
+            <!-- 항공 이티켓 -->
+            <div id="flight-eticket" class="common-documents">
+                <div class="documents-header">
+                    <div class="documents-title">
+                        <p class="title">전자항공권 발행확인서</p>
+                        <p class="sub-title">E-Ticket Passenger itinerary &amp; Receipt <span>(Powered by YB)</span></p>
+                    </div>
+                    <a href="#" class="site-link"><img src="/assets/images/common/ico-common-header-logo.png" alt="노랑풍선"></a>
+                </div>
+                <div class="documents-body">
+                    <div class="documents-item">
+                        <div class="table table-documents">
+                            <table>
+                                <colgroup>
+                                    <col>
+                                    <col>
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th><strong>승객이름</strong><span>Passenger Name</span></th>
+                                        <th><strong>항공권번호</strong><span>Ticket Number</span></th>
+                                        <th><strong>예약번호</strong><span>Booking Reference</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{resultList.summary.passengerName}}</td>
+                                        <td>{{resultList.summary.ticketNo}}</td>
+                                        <td>{{resultList.summary.bookingReference}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="documents-item">
+                        <div class="documents-item-title">여정(Itinerary)</div>
+                        <div class="table table-documents">
+                            <table>
+                                <colgroup>
+                                    <col width="22%">
+                                    <col>
+                                    <col width="22%">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" colspan="4"><strong>{{resultList.segments[0].marketing.airlineCode}}{{resultList.segments[0].marketing.flightNo}}(예약번호:Y23DK)</strong><span>Operated by {{resultList.segments[0].marketing.airlineCode}}({{resultList.segments[0].marketing.airlineNameLn}})</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><strong>출발</strong><span>Departure</span></th>
+                                        <td colspan="3">{{resultList.segments[0].origin.airportCode}} - {{resultList.segments[0].origin.airportNameEn}} Terminal No : - {{resultList.segments[0].origin.terminal}}({{resultList.segments[0].origin.departureWeekday}}) {{resultList.segments[0].origin.departureTime}}(Local Time)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>도착</strong><span>Arrival</span></th>
+                                        <td colspan="3">{{resultList.segments[resultList.segments.length-1].destination.airportCode}} - {{resultList.segments[resultList.segments.length-1].destination.airportNameEn}} Terminal No : - {{resultList.segments[resultList.segments.length-1].destination.terminal}}({{resultList.segments[resultList.segments.length-1].destination.arrivalWeekday}}) {{resultList.segments[resultList.segments.length-1].destination.arrivalTime}}(Local Time)</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>비행시간</strong><span>Flight Time</span></th>
+                                        <td>02H 30M</td>
+                                        <th scope="row"><strong>예약상태</strong><span>Status</span></th>
+                                        <td>OK</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>예약등급</strong><span>Class</span></th>
+                                        <td>M</td>
+                                        <th scope="row"><strong>항공권유효기간</strong><span>Not Vaild Before</span></th>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>좌석번호</strong><span>Seat Number</span></th>
+                                        <td>-</td>
+                                        <th scope="row"><strong>항공권유효기간</strong><span>Not Vaild After</span></th>
+                                        <td>17DEC19</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>운임종류</strong><span>Fare Basis</span></th>
+                                        <td>QEE3KR</td>
+                                        <th scope="row"><strong>수하물</strong><span>Baggage</span></th>
+                                        <td>1PCS</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>비행기종</strong><span>Aircraft Type</span></th>
+                                        <td colspan="3">BOEING-737</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="mt10 color-sub5">* 모든 정보는 항공사나 공항 사정에 의해서 변경될 수 있습니다.</p>
+                    </div>
+                    <div class="documents-item">
+                        <div class="documents-item-title">항공권 운임정보(Ticket/Fare Information)</div>
+                        <div class="table table-documents">
+                            <table>
+                                <colgroup>
+                                    <col width="22%">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><strong>제한사항</strong><span>Restriction</span></th>
+                                        <td>{{resultList.fareInformation.restriction}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>연결항공권</strong><span>Conj. Ticket No</span></th>
+                                        <td>{{resultList.fareInformation.conjTicketNo}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>운임산출내역</strong><span>Fare Caculation</span></th>
+                                        <td>
+                                            <p>SEL 7C OSA12.48 7C</p>
+                                            <p>SEL 24.96NUC37.44END ROE1201.730079</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>산출운임</strong><span>Fare Amount</span></th>
+                                        <td>{{resultList.fareInformation.equivCurrencyCode}} {{resultList.fareInformation.fareAmount | number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>지불화폐</strong><span>Equiv. Fare Paid</span></th>
+                                        <td>{{resultList.fareInformation.equivCurrencyCode}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>세금</strong><span>Tax</span></th>
+                                        <td>
+                                            KRW
+                                            <p class="group">
+                                                <span>{{resultList.fareInformation.taxInformation}}</span>
+                                                <!-- <span>28,000BP</span>
+                                              <span>18,600TW</span> -->
+                                            </p>
+                                            <p class="color-sub4">한국 출발 세금(BP)에는 국제여객공항이용료(인천/김포공항 17,000원, 기타 12,000원),
+                                                출국납부금 10,000원, 국제질병퇴치기금 1,000원이 포함되어 있습니다.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>부가수수료</strong><span>Service Fees</span></th>
+                                        <td>{{resultList.fareInformation.equivCurrencyCode}} {{resultList.fareInformation.taxAmount | number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>총 산출금액</strong><span>Total Amount</span></th>
+                                        <td>{{resultList.fareInformation.equivCurrencyCode}} {{resultList.fareInformation.totalAmount | number}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>지불수단</strong><span>Form of Payment</span></th>
+                                        <td>
+                                            <p class="group">
+                                                <span>{{resultList.fareInformation.formOfPayment}}</span>
+                                                <!-- <span>0918/21</span> -->
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>발행일/발행처</strong><span>E-Ticket Issue Date/Place</span>
+                                        </th>
+                                        <td>
+                                            <p class="group">
+                                                <span>{{resultList.fareInformation.eTicketIssueInformation}}</span>
+                                                <!-- <span>17315174</span>
+                                              <span>SELK121NA</span> -->
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="mt10 color-sub5">*상기 운임정보는 공시운임으로 실제 지불 금액과 다를 수 있습니다.</p>
+                    </div>
+                    <div class="documents-item">
+                        <div class="documents-item-title">수하물 규정 안내(Baggage Information)</div>
+                        <div class="table table-documents" *ngFor="let freeBaggageItem of resultList.freeBaggageList">
+                            <table>
+                                <colgroup>
+                                    <col width="22%">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">
+                                            <strong>{{freeBaggageItem.originAirportCode}} - {{freeBaggageItem.destinationAirportCode}}</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"><strong>첫번째 위탁수하물</strong></th>
+                                        <td>{{freeBaggageItem.first}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>두번째 위탁수하물</strong></th>
+                                        <td>{{freeBaggageItem.second}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>기타 휴대 수하물 정보</strong></th>
+                                        <td>{{freeBaggageItem.etc}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><strong>Link</strong></th>
+                                        <td>{{freeBaggageItem.link}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="documents-item">
+                        <div class="documents-item-title line">드리는 말씀 Remarks</div>
+                        <ul class="text-list dot md">
+                            <li>본 e-티켓 확인증과 함께 제공된 법적 고지문을 반드시 참고하여 주시기 바랍니다.</li>
+                            <li>e-티켓 확인증은 탑승수속시, 입출국/세관 통과시 제시하도록 요구될 수 있으므로 반드시 전 여행 기간 동안 소지하시기 바랍니다. e-티켓 확인증의 이름과
+                                여권상의 이름은 반드시 일치해야 합니다.</li>
+                            <li>대부분의 공항에서 탑승 수속 마감 시간은 해당 항공편 출발 1시간 전(미주, 유럽 출발/도착편은 그 이상)으로 되어 있으나, 해당 항공편 출발 예약시산 최소
+                                2시간 전에는 공항에 도착하시기 바랍니다.</li>
+                            <li>일부 공동 운항편의 경우 탑승 수속은 운항 항공사의 카운터에서 이루어지며, 운항 항공사의 규정에 따라 탑승 수속 마감시간이 다를 수 있습니다.</li>
+                            <li>사전에 좌석을 배정받으신 고객께서는 항공기 출발 1시간 30분 전까지(일등석, 프레스티지석 이용 고객께서는 1시간 전까지)탑승권을 발급 받으시기 바랍니다.
+                                해당 시각까지 탑승권으로 교환하지 못하신 고객은 사전 배정 된 좌석 번호가 본인에게 배정되지 않을 수 있습니다.</li>
+                            <li>항공사가 제공하는 운송 및 기타 서비스는 운송 약관에 준하며, 필요시 참조하실 수 있습니다. 이 약관은 발행 항공사를 통해 확인하실 수 있습니다.</li>
+                            <li>일부 항공사(공동운항편 포함)에서는 탑승수속 시 해당 항공사 정책에 따라 무료 수하물 허용량과는 별도로, 위탁 수하물에 대한 Handing Fee(수하물
+                                취급수수료)를 징수하는 경우가 있으니, 자세한 사항은 항공사로 확인하시기 바랍니다.</li>
+                            <li>본 ITR을 임의로 수정 시 법적 제재를 받을 수 있습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="documents-footer">
+                    <ul class="text-list dashed md color-main2">
+                        <li>노랑풍선 주소 : 서울특별시 중구 수표로 31, 노랑풍선</li>
+                        <li>대표전화 : +82-2-1544-2288</li>
+                        <li class="mt20">
+                            &copy;YBTOUR., All Rights Reserved.
+                        </li>
+                    </ul>
+                    <a href="#" class="site-link"><img src="/assets/images/common/ico-common-header-logo.png" alt="노랑풍선"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

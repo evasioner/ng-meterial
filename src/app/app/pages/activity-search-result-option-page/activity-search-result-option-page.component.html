@@ -1,0 +1,74 @@
+<div id="wrap" class="activity-search-result-option">
+
+    <!-- header -->
+    <app-activity-header [headerType]="headerType" [headerConfig]="headerConfig"></app-activity-header>
+
+    <!-- contents -->
+    <div id="contents">
+
+        <!-- Calendar -->
+        <div class="activity-calendar">
+
+            <app-activity-calendar class="contents-item"></app-activity-calendar>
+
+            <div *ngIf="viewModel.options.length > 0" class="contents-item">
+                <h2 class="contents-title">옵션 선택</h2>
+                <div class="round-box">
+
+                    <div class="row-group">
+                        <div class="select-box line">
+                            <select [(ngModel)]="viewModel.selectOption" (change)="onOptionChange($event)">
+                                <option *ngFor="let item of viewModel.options; index as index;" [value]="item.optionCode">{{ item.optionNameLn }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div *ngIf="viewModel.age.length > 0" class="contents-item">
+                <h2 class="contents-title">수량</h2>
+                <div *ngFor="let item of viewModel.age; index as index;" class="round-box price-list">
+                    <div>
+                        <p>
+                            <span>{{ item.name }}</span>
+                            <!-- 임시 숨김 노랑풍선 확인 후 변경 예정 -->
+                            <span *ngIf="false" class="color-sub4">({{ item.amountSum | number }}원)</span>
+                        </p>
+                        <p>
+                            <strong class="font-lg-b color-point2">{{ item.countAmountSum | number }}</strong>
+                            <span class="font-xs color-sub5">원</span>
+                        </p>
+                    </div>
+                    <div class="ml-auto">
+                        <div class="counter">
+                            <button (click)="onOptionDown($event, index)" class="counter-control down" role="button">DOWN</button>
+                            <span class="counter-num">{{ item.count | number }}</span>
+                            <button (click)="onOptionUp($event, index)" class="counter-control up" role="button">UP</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-footer-box">
+                <div class="item-group">
+                    <div class="item-row col">
+                        <div class="left">
+                            <strong class="font-lg color-main2">결제 금액</strong>
+                        </div>
+                        <div class="right">
+                            <strong class="font-lg-b color-point2">{{ viewModel.amountSum | number }}원</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group col2 left">
+                    <button class="btn lg dark icon-only" role="button">
+                        <span class="icon sm cart">장바구니</span>
+                    </button>
+                    <button class="btn lg default" role="button" (click)="onSubmit($event)">바로 예약</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

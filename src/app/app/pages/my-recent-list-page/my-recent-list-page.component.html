@@ -1,0 +1,55 @@
+<div id="wrap" class="p-cm-recent-list">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="tab-wrap">
+            <div class="tab-header type2 top-blank fixed">
+                <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>전체</span></a>
+                <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>항공</span></a>
+                <a (click)="selectTab(2)" class="tab-header-item" [ngClass]="{'active': tabNo === 2}"><span>호텔</span></a>
+                <a (click)="selectTab(3)" class="tab-header-item" [ngClass]="{'active': tabNo === 3}"><span>액티비티</span></a>
+                <a (click)="selectTab(4)" class="tab-header-item" [ngClass]="{'active': tabNo === 4}"><span>렌터카</span></a>
+            </div>
+            <div class="tab-body">
+                <!-- 탭 아이템 -->
+                <div class="tab-item active">
+
+                    <!-- Tab content 전체 최근 본 상품 내역 -->
+                    <ng-container *ngIf="tabNo === 0">
+                        <app-all-recent-list class="page-contents-type3"></app-all-recent-list>
+                    </ng-container>
+
+                    <!-- Tab content 항공 최근 본 상품 내역 -->
+                    <ng-container *ngIf="tabNo === 1">
+                        <app-flight-recent-list class="page-contents-type3"></app-flight-recent-list>
+                    </ng-container>
+
+                    <!-- Tab content 호텔 최근 본 상품 내역 -->
+                    <ng-container *ngIf="tabNo === 2">
+                        <app-hotel-recent-list class="page-contents-type3"></app-hotel-recent-list>
+                    </ng-container>
+
+                    <!-- Tab content 액티비티 최근 본 상품 내역 -->
+                    <ng-container *ngIf="tabNo === 3">
+                        <app-activity-recent-list class="page-contents-type3"></app-activity-recent-list>
+                    </ng-container>
+
+                    <!-- Tab content 렌터카 최근 본 상품 내역 -->
+                    <ng-container *ngIf="tabNo === 4">
+                        <app-rent-recent-list class="page-contents-type3"></app-rent-recent-list>
+                    </ng-container>
+
+                </div>
+                <div class="tab-item"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <app-footer></app-footer>
+
+<router-outlet></router-outlet> -->

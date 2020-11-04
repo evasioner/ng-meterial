@@ -1,0 +1,96 @@
+<div class="modal" *ngIf="loadingBool">
+    <!-- modal header -->
+    <div class="modal-header">
+        <div class="left">
+            <a (click)="onReloadClick($event);" class="icon sm common-reload">초기화</a>
+        </div>
+        <h1>상세 검색</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <form [formGroup]="detailForm" (ngSubmit)="onSubmit()" novalidate>
+            <accordion [closeOthers]="'true'" class="m-ngx-bootstrap-accordion cm-detail-filter">
+                <!-- 요금 범위 -->
+                <accordion-group class="accordion" heading="요금 범위">
+                    <div class="accordion-body active">
+                        <div class="range double">
+                            <!-- 라이브러리 슬라이더 -->
+                            <div class="m-bootstrap-slider">
+                                <div class="bootstrap-slider-result-area range-title">
+                                    <strong class="font-lg color-point2">{{vm.priceRanges.val[0] | number}}</strong>
+                                    <span class="font-xs color-sub5">원 ~ </span>
+                                    <strong class="font-lg color-point2">{{vm.priceRanges.val[1] | number}}</strong>
+                                    <span class="font-xs color-sub5">원</span>
+                                </div>
+                                <div class="bootstrap-slider-area">
+                                    <app-input-slider [(value)]="vm.priceRanges.val" [min]="vm.priceRanges.min" [max]="vm.priceRanges.max" [enabled]="vm.priceRanges.enabled" [handle]="'custom'" htmlTarget="bootstrap-slider">
+                                        <input data-target="bootstrap-slider">
+                                    </app-input-slider>
+                                </div>
+                                <!-- 숫자 표시 -->
+                                <div class="bootstrap-slider-range-area range-text">
+                                    <span class="min">{{vm.priceRanges.min}}원</span>
+                                    <span class="max">{{vm.priceRanges.max}}원</span>
+                                </div>
+                            </div>
+                            <!-- end 라이브러리 슬라이더 -->
+                        </div>
+                    </div>
+                </accordion-group>
+                <accordion-group class="accordion" heading="이용자 평점">
+                    <div class="accordion-body active">
+                        <div class="range double">
+                            <!-- 라이브러리 슬라이더 -->
+                            <div class="m-bootstrap-slider">
+                                <div class="bootstrap-slider-result-area range-title">
+                                    <strong class="font-lg color-point2">{{vm.reviewRatings.val[0] | number}}</strong>
+                                    <span class="font-xs color-sub5">점 이상</span>
+                                    <span class="font-xs color-sub5 ml5 mr5">~</span>
+                                    <strong class="font-lg color-point2">{{vm.reviewRatings.val[1] | number}}</strong>
+                                    <span class="font-xs color-sub5">점 이하</span>
+                                </div>
+                                <div class="bootstrap-slider-area">
+                                    <app-input-slider [(value)]="vm.reviewRatings.val" [min]="vm.reviewRatings.min" [max]="vm.reviewRatings.max" [step]="vm.reviewRatings.step" [handle]="'custom'" htmlTarget="bootstrap-slider02">
+                                        <input data-target="bootstrap-slider02">
+                                    </app-input-slider>
+                                </div>
+                                <!-- 숫자 표시 -->
+                                <div class="bootstrap-slider-range-area range-text">
+                                    <span class="min">{{vm.reviewRatings.min}}점</span>
+                                    <span class="max">{{vm.reviewRatings.max}}점</span>
+                                </div>
+                            </div>
+                            <!-- end 라이브러리 슬라이더 -->
+                        </div>
+                    </div>
+                </accordion-group>
+                <accordion-group class="accordion" heading="호텔 성급">
+                    <div class="accordion-body active">
+                        <ul class="row-list">
+                            <li data-target="starAllChk">
+                                <label class="checkbox block">
+                                    <input type="checkbox" class="checkbox-control-input" (change)="onCheckboxTotChange($event, 'starRatingsChk')" [checked]="starAllchecked">
+                                    <span class="checkbox-control-text">전체</span>
+                                </label>
+                            </li>
+                            <ng-container [formArrayName]="'starRatingList'">
+                                <li *ngFor="let star of starRatingList.controls; let i=index" data-target="starRatingsChk">
+                                    <label class="checkbox block">
+                                        <input [formControlName]="i" type="checkbox" class="checkbox-control-input" (change)="onCheckboxChange($event, i)">
+                                        <span class="checkbox-control-text">{{5-i|number:'.0'}}성급</span>
+                                    </label>
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </div>
+                </accordion-group>
+                <div class="btn-group bg pd fixed-bottom">
+                    <button class="btn lg default" role="button">적용하기</button>
+                </div>
+            </accordion>
+        </form>
+    </div>
+</div>

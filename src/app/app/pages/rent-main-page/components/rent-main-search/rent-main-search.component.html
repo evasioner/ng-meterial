@@ -1,0 +1,111 @@
+<!-- 이미지 텍스트 | visual html -->
+<div class="rentalcar-visual">
+    <!--        <h2><span>검색, 비교 후 예약</span><span>최대 추가 <span class="color-point2">20%할인</span></span></h2>-->
+    <h2 [innerHTML]="'MAIN_SEARCH.IMG_TXT_HTML' | translate"></h2>
+</div>
+
+
+<div class="contents-item mg mb30" style="margin-top: -26px;">
+
+    <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate #f="ngForm">
+
+        <div class="row-group">
+            <!-- 렌터카 인수 장소 버튼 | location accept text -->
+            <div class="row">
+                <div class="input no-pd" (click)="onLocationAcceptClick()">
+                    <span class="icon sm location"></span>
+                    <input [formControlName]="'locationAccept'" [class.valid-error]="isValidError('locationAccept', f.submitted)" [placeholder]="'MAIN_SEARCH.LOCATION_ACCEPT_PLACEHOLDER' | translate" type="text" readonly>
+                </div>
+            </div>
+
+            <!-- 렌터카 반남 장소 버튼 | location return text -->
+            <div class="row" *ngIf="!vm.locationReturnBool">
+                <div class="input no-pd" (click)="onLocationReturnClick()">
+                    <span class="icon sm location"></span>
+                    <input [formControlName]="'locationReturn'" [class.valid-error]="isValidError('locationReturn', f.submitted)" [placeholder]="'MAIN_SEARCH.LOCATION_RETURN_PLACEHOLDER' | translate" type="text" readonly>
+                </div>
+            </div>
+
+            <!-- 동일한 장소 반납 체크박스 | location return bool  -->
+            <div class="row mt15">
+                <label class="checkbox" (click)="onReturnChkClick()">
+                    <input type="checkbox" class="checkbox-control-input" [formControlName]="'locationReturnBool'">
+                    <span class="checkbox-control-text">{{'MAIN_SEARCH.LOCATION_RETURN_CHK_PLACEHOLDER' | translate}}</span>
+                </label>
+            </div>
+
+
+            <div class="row mt15 col2">
+                <!-- 인수 날짜 | from date -->
+                <div class="col-wrap-item">
+                    <div class="input no-pd shadow" (click)="onFromDateClick()">
+                        <span class="icon sm calendar"></span>
+                        <input [formControlName]="'formDateStr'" [class.valid-error]="isValidError('formDateStr', f.submitted) " [placeholder]="'MAIN_SEARCH.FORM_DATE_PLACEHOLDER' | translate" [value]="vm.formDateStr | amDateFormat:'YYYY-MM-DD'" type="text" readonly>
+                    </div>
+                </div>
+
+                <!-- 인수 시간 | from time -->
+                <div class="col-wrap-item">
+                    <div class="select-box shadow no-arrow">
+                        <span class="icon sm clock"></span>
+                        <select [formControlName]="'formTimeVal'" (change)="onFromTimeChange($event)" [class.valid-error]="isValidError('formTimeVal', f.submitted)">
+                            <option *ngFor="let formTime of vm.formTimeList;" [ngValue]="formTime.val">
+                                {{formTime.val | rentTimeToDateTime | amDateFormat:'a hh:mm' }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row col2">
+                <!-- 반납 날짜 | to date -->
+                <div class="col-wrap-item">
+                    <div class="input no-pd shadow" (click)="onToDateClick()">
+                        <span class="icon sm calendar"></span>
+                        <input [formControlName]="'toDateStr'" [class.valid-error]="isValidError('toDateStr', f.submitted)" [placeholder]="'MAIN_SEARCH.TO_DATE_PLACEHOLDER' | translate" [value]="vm.toDateStr | amDateFormat:'YYYY-MM-DD'" type="text" readonly>
+                    </div>
+                </div>
+
+                <!-- 반납 시간 | to time -->
+                <div class="col-wrap-item">
+                    <div class="select-box shadow no-arrow">
+                        <span class="icon sm clock"></span>
+                        <select [formControlName]="'toTimeVal'" [class.valid-error]="isValidError('toTimeVal', f.submitted)" (change)="onToTimeChange($event)">
+                            <option *ngFor="let toTime of vm.toTimeList;" [ngValue]="toTime.val">
+                                {{toTime.val | rentTimeToDateTime | amDateFormat:'a hh:mm'}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 생년월일을 입력하세요 (8자리) -->
+            <div class="row">
+                <div class="input no-pd shadow">
+                    <span class="icon sm user"></span>
+                    <input [formControlName]="'driverBirthday'" [class.valid-error]="isValidError('driverBirthday', f.submitted)" [numOnly]="mainForm.controls.driverBirthday" [placeholder]="'MAIN_SEARCH.OLD_INPUT_PLACEHOLDER' | translate" [value]="vm.driverBirthday  | amDateFormat:'YYYY-MM-DD'" type="text" maxlength="8">
+                </div>
+            </div>
+            <div *ngIf="this.locationType===true" class="row">
+                <div class="select-box shadow no-arrow">
+                    <span class="icon sm document"></span>
+                    <select name="" id="" required="">
+                        <option value="" selected="" disabled="">차량 보험을 선택하세요.</option>
+                        <option value="">일반 자차보험</option>
+                        <option value="">고급 자차보험</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt15">
+                <!-- 검색 버튼 | [disabled]="!mainForm.valid" -->
+                <button class="btn lg default" role="button">{{'MAIN_SEARCH.SEARCH_BTN_TXT' | translate}}</button>
+            </div>
+        </div>
+
+    </form>
+
+
+
+</div>

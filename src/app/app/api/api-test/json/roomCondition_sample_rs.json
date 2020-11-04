@@ -1,0 +1,59 @@
+{
+  "serviceCode": "H19283",
+  "serviceName": "hotel/roomCondition",
+  "succeedYn": true,
+  "transactionSetId": "L342607132378123684",
+  "result": {
+    "cancelDeadline": {
+      "clientCancelDeadline": "2020-10-31 17:00",
+      "refundableYn": true,
+      "vendorCancelDeadline": "2020-11-01 11:00"
+    },
+    "chargeConditions": [
+      {
+        "conditionIndex": 1,
+        "clientFromTime": "2020-10-01 00:00",
+        "clientToTime": "2020-10-31 17:00",
+        "billingCurrencyCode": "KRW",
+        "billingChargeAmount": 0.00,
+        "vendorFromTime": "2020-10-01 00:00",
+        "vendorToTime": "2020-11-01 11:00",
+        "vendorCurrencyCode": "THB",
+        "vendorChargeAmount": 0.0
+      },
+      {
+        "conditionIndex": 2,
+        "clientFromTime": "2020-10-31 17:01",
+        "clientToTime": "2020-11-01 11:01",
+        "billingCurrencyCode": "KRW",
+        "billingChargeAmount": 757000.00,
+        "vendorFromTime": "2020-10-31 17:01",
+        "vendorToTime": "2020-11-02 00:00",
+        "vendorCurrencyCode": "THB",
+        "vendorChargeAmount": 757000.00
+      }
+    ],
+    "requestOptions": {
+      "smokingOptions": [
+        {
+          "code": "T01",
+          "name": "Non Smoking"
+        }
+      ],
+      "bedTypeOptions": [
+        {
+          "code": "T02",
+          "name": "Smoking"
+        }
+      ],
+      "precodedRemarks": [
+        {
+          "code": "D73",
+          "name": "QuiteRoom"
+        }
+      ],
+      "memoRequestYn": true
+    },
+    "roomConditionCodedData": "d6aaeab5cd8bcf7d61f573f2b73efc36692f356800dece2baeaf7e0ff9b89ef39410312cd9a43178ed6c0ab451aedc39420"
+  }
+}

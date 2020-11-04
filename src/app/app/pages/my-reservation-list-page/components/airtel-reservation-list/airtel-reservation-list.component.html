@@ -1,0 +1,190 @@
+<!-- 묶음할인 -->
+<div *ngIf="loadingBool" class="page-contents-type3">
+    <div class="common-list-top">
+        <span>전체 <span class="color-point2">{{totalListCount | number}}</span>건</span>
+        <label class="checkbox small rtl ml-auto">
+            <input (change)="onCheck()" type="checkbox" [(ngModel)]="!checkBoxValue" class="checkbox-control-input">
+            <span class="checkbox-control-text color-sub5">취소 예약 제외</span>
+        </label>
+    </div>
+
+    <!-- 아이템 반복 -->
+    <div *ngIf="isBrowser" class="search-results" infiniteScroll [infiniteScrollDistance]="infiniteScrollConfig.distance" [infiniteScrollThrottle]="infiniteScrollConfig.throttle" (scrolled)="onScroll()">
+        <!-- 묶음할인 -->
+        <div *ngFor="let res of cateResult; index as i;" class="round-box reservation-item">
+            <div class="reservation-title">
+                <span class="icon sm flight2"></span>
+                <span class="figure">+</span>
+                <span class="icon sm hotel4"></span>
+                <span class="text">로스앤젤레스, 김노랑 외 3명</span>
+                <a href="#" class="btn-link">일정표</a>
+            </div>
+            <div class="reservation-summary">
+                <h2 class="product-title">[묶음할인] {{res.bookingName}}</h2>
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>{{res.travelFromDate}} - {{res.travelToDate}}</span>
+                    </li>
+                    <li>
+                        <span>결제금액</span>
+                        <span><strong class="color-point2">{{res.sumAmount | number}}원</strong><span class="font-xs ml5">(현재 기준 환율 약 224,000원)</span></span>
+                    </li>
+                </ul>
+            </div>
+            <!-- .btn-detail-view 클릭시 .active 토글 -->
+            <!-- .active 추가되면 .reservation-detail 보여짐 (CSS) -->
+            <a (click)="selectDetail($event)" class="btn-detail-view active">상세보기</a>
+            <div class="reservation-detail">
+                <ng-container *ngFor="let itm of res.items; index as idx;">
+                    <!-- 묶음할인 항공일때 -->
+                    <div *ngIf="itm.cateCode === 'IC01'" class="reservation-item">
+                        <div class="reservation-title">
+                            <span class="icon sm flight2"></span>
+                            <span class="text">{{itm.bookingStatusName}}</span>
+                            <span class="label sm type2">{{itm.cancelDescription}}</span>
+                            <a (click)="goReservationQnaPage()" class="btn-link">문의하기</a>
+                        </div>
+                        <div class="reservation-summary">
+                            <h2 class="product-title">[{{itm.cateName}}] [{{itm.flight.tripTypeName}}] {{itm.bookingName}}</h2>
+                            <ul>
+                                <li>
+                                    <span>여행일</span>
+                                    <span>{{itm.travelFromDate}} - {{itm.travelToDate}}</span>
+                                </li>
+                                <li>
+                                    <span>항공사</span>
+                                    <span>{{itm.flight.airlineNameList}}</span>
+                                </li>
+                                <li>
+                                    <span>여행자</span>
+                                    <span>{{itm.travelerName}} <ng-container *ngIf="itm.travelerMinusCount > 0">외 {{itm.travelerMinusCount}}명</ng-container>
+                                        <ng-container *ngIf="itm.flight.ticketingStatusName"><span class="label sm type1 ml5">{{itm.flight.ticketingStatusName}}</span></ng-container>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>결제금액</span>
+                                    <span><strong class="color-point2">{{itm.sumAmount | number}}원</strong></span>
+                                </li>
+                            </ul>
+                            <div class="btn-group basis mt20">
+                                <!-- <ng-container *ngIf="itm.cancellableYn"> -->
+                                <a (click)="goCancelPage(itm.bookingItemCode, 'IC01')" class="btn md grey">예약취소</a>
+                                <!-- </ng-container> -->
+                                <a (click)="goDetailPage(itm.bookingItemCode, 'IC01')" class="btn md default">예약상세</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 묶음할인 호텔일때 -->
+                    <div *ngIf="itm.cateCode === 'IC02'" class="reservation-item">
+                        <div class="reservation-title">
+                            <span class="icon sm hotel4"></span>
+                            <span class="text">{{itm.bookingStatusName}}</span>
+                            <span class="label sm type2">{{itm.cancelDescription}}</span>
+                            <a (click)="goReservationQnaPage()" class="btn-link">문의하기</a>
+                        </div>
+                        <div class="reservation-summary">
+                            <h2 class="product-title">[{{itm.cateName}}] {{itm.bookingName}}</h2>
+                            <ul>
+                                <li>
+                                    <span>이용일</span>
+                                    <span>{{itm.travelFromDate}} - {{itm.travelToDate}}</span>
+                                </li>
+                                <li>
+                                    <span>객실수</span>
+                                    <span>{{itm.hotel.roomCount}}</span>
+                                </li>
+                                <li>
+                                    <span>여행자</span>
+                                    <span>{{itm.travelerName}} <ng-container *ngIf="itm.travelerMinusCount > 0">외 {{itm.travelerMinusCount}}명</ng-container></span>
+                                </li>
+                                <li>
+                                    <span>결제금액</span>
+                                    <span><strong class="color-point2">{{itm.sumAmount | number}}원</strong></span>
+                                </li>
+                            </ul>
+                            <div class="btn-group basis mt20">
+                                <!-- <ng-container *ngIf="itm.cancellableYn"> -->
+                                <a (click)="goCancelPage(itm.bookingItemCode, 'IC02')" class="btn md grey">예약취소</a>
+                                <!-- </ng-container> -->
+                                <a (click)="goDetailPage(itm.bookingItemCode, 'IC02')" class="btn md default">예약상세</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 묶음할인 액티비티일때 -->
+                    <div *ngIf="itm.cateCode === 'IC04'" class="round-box reservation-item">
+                        <div class="reservation-title">
+                            <span class="icon sm rentalcar3"></span>
+                            <span class="text">{{itm.bookingStatusName}}</span>
+                            <a (click)="goReservationQnaPage()" class="btn-link">문의하기</a>
+                        </div>
+                        <div class="reservation-summary">
+                            <h2 class="product-title">[{{itm.cateName}}] {{itm.bookingName}}</h2>
+                            <ul>
+                                <li>
+                                    <span>이용일</span>
+                                    <span>{{itm.travelFromDate}} - {{itm.travelToDate}}</span>
+                                </li>
+                                <li>
+                                    <span>차량인수</span>
+                                    <span>{{itm.travelFromDate}} {{itm.rent.pickupTime}} / {{itm.rent.pickupLocationName}}({{itm.rent.vehicleVendorName}})</span>
+                                </li>
+                                <li>
+                                    <span>차량반납</span>
+                                    <span>{{itm.travelToDate}} {{itm.rent.returnTime}} / {{itm.rent.returnLocationName}}({{itm.rent.vehicleVendorName}})</span>
+                                </li>
+                                <li>
+                                    <span>결제금액</span>
+                                    <span><strong class="color-point2">{{res.currencyCode}} {{itm.sumAmount | number}}</strong><span class="font-xs ml5">(현재 기준 환율 약 224,000원)</span></span>
+                                </li>
+                            </ul>
+                            <div class="btn-group basis mt20">
+                                <!-- <ng-container *ngIf="itm.cancellableYn"> -->
+                                <a (click)="goCancelPage(itm.bookingItemCode, 'IC04')" class="btn md grey">예약취소</a>
+                                <!-- </ng-container> -->
+                                <a (click)="goDetailPage(itm.bookingItemCode, 'IC04')" class="btn md default">예약상세</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 묶음할인 렌터카일때 -->
+                    <div *ngIf="itm.cateCode === 'IC03'" class="round-box reservation-item">
+                        <div class="reservation-title">
+                            <span class="icon sm rentalcar3"></span>
+                            <span class="text">{{itm.bookingStatusName}}</span>
+                            <a (click)="goReservationQnaPage()" class="btn-link">문의하기</a>
+                        </div>
+                        <div class="reservation-summary">
+                            <h2 class="product-title">[{{itm.cateName}}] {{itm.bookingName}}</h2>
+                            <ul>
+                                <li>
+                                    <span>이용일</span>
+                                    <span>{{itm.travelFromDate}} - {{itm.travelToDate}}</span>
+                                </li>
+                                <li>
+                                    <span>차량인수</span>
+                                    <span>{{itm.travelFromDate}} {{itm.rent.pickupTime}} / {{itm.rent.pickupLocationName}}({{itm.rent.vehicleVendorName}})</span>
+                                </li>
+                                <li>
+                                    <span>차량반납</span>
+                                    <span>{{itm.travelToDate}} {{itm.rent.returnTime}} / {{itm.rent.returnLocationName}}({{itm.rent.vehicleVendorName}})</span>
+                                </li>
+                                <li>
+                                    <span>결제금액</span>
+                                    <span><strong class="color-point2">{{res.currencyCode}} {{itm.sumAmount | number}}</strong><span class="font-xs ml5">(현재 기준 환율 약 224,000원)</span></span>
+                                </li>
+                            </ul>
+                            <div class="btn-group basis mt20">
+                                <!-- <ng-container *ngIf="itm.cancellableYn"> -->
+                                <a (click)="goCancelPage(itm.bookingItemCode, 'IC03')" class="btn md grey">예약취소</a>
+                                <!-- </ng-container> -->
+                                <a (click)="goDetailPage(itm.bookingItemCode, 'IC03')" class="btn md default">예약상세</a>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- 묶음할인 상품 End -->
+            </div>
+        </div>
+        <h2>{{lastMessage}}</h2>
+    </div>
+</div>

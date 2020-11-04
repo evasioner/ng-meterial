@@ -1,0 +1,91 @@
+<div class="page-contents-type3">
+    <ng-container *ngIf="this.dataModel.flight.length > 0">
+        <div *ngFor="let item of viewModel.recentList.flight; index as index;" class="round-box recent-product-item">
+            <div class="product-summary">
+                <h2 class="product-title">[항공] [{{item.tripType}}] {{item.bookingname}}</h2>
+                <ul (click)="flightOnSearchResult($event, index)">
+                    <li>
+                        <span>이용일</span>
+                        <span>{{item.dateRange}}</span>
+                    </li>
+                    <li>
+                        <span>좌석정보</span>
+                        <span>{{item.cabinClass}}</span>
+                    </li>
+                    <li>
+                        <span>여행자</span>
+                        <span>{{item.travelers}}</span>
+                    </li>
+                </ul>
+            </div>
+            <a class="icon xs close2" (click)="flightOnDeleteItem($event, index)">삭제</a>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="this.dataModel.hotel.length > 0">
+        <div *ngFor="let item of viewModel.recentList.hotel; index as index;" class="round-box recent-product-item">
+            <div class="product-summary">
+                <h2 class="product-title">[호텔] {{item.hotelName}}</h2>
+                <ul (click)="hotelOnSearchResult($event, index)">
+                    <li>
+                        <span>이용일</span>
+                        <span>{{item.dateRange}}</span>
+                    </li>
+                    <li>
+                        <span>성인 & 객실</span>
+                        <span>{{item.roomList}}</span>
+                    </li>
+                </ul>
+            </div>
+            <a class="icon xs close2" (click)="hotelOnDeleteItem($event, index)">삭제</a>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="this.dataModel.activity.length > 0">
+        <div *ngFor="let item of viewModel.recentList.activity; index as index;" class="round-box recent-product-item">
+            <div class="product-summary">
+                <h2 class="product-title">[투어] [치앙마이] 도이인타논/야근 도이수텝+왓우몽 원데이 투어<span class="activity-now">즉시 확정</span></h2>
+                <ul (click)="activityOnSearchResult($event, index)">
+                    <li>
+                        <span>공급사</span>
+                        <span>{{item.vendorCompName}}</span>
+                    </li>
+                </ul>
+            </div>
+            <a class="icon xs close2" (click)="activityOnDeleteItem($event, index)">삭제</a>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="this.dataModel.rent.length> 0">
+        <div *ngFor="let item of viewModel.recentList.rent; index as index;" class="round-box recent-product-item">
+            <div class="product-summary">
+                <h2 class="product-title">[렌터카] {{item.pickLocation}} </h2>
+                <ul (click)="rentOnSearchResult($event, index)">
+                    <li>
+                        <span>이용일</span>
+                        <span>{{item.dateRange}}</span>
+                    </li>
+                    <li>
+                        <span>인수장소</span>
+                        <span>{{item.locationAccept}}</span>
+                    </li>
+                    <li>
+                        <span>반납장소</span>
+                        <span>{{item.pickLocation}}</span>
+                    </li>
+                </ul>
+            </div>
+            <a class="icon xs close2" (click)="rentOnDeleteItem($event, index)">삭제</a>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="viewModel.recentList.flight.length === 0 && viewModel.recentList.hotel.length === 0 && viewModel.recentList.activity.length === 0 && viewModel.recentList.rent.length === 0">
+        <!-- 검색 결과 없을때 -->
+        <div class="nodata full type4">
+            <div class="nodata-msg">
+                <span class="icon alert2"></span>
+                <p class="text">최근 본 상품이 없습니다.</p>
+            </div>
+        </div>
+    </ng-container>
+</div>

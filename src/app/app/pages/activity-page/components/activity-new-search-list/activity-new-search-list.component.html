@@ -1,0 +1,20 @@
+<ng-container *ngIf="viewModel.recentList.length > 0">
+    <h2 class="contents-title">최근 검색</h2>
+    <div class="scroll-box-list extend no-mg">
+        <div class="scroll-item-outer">
+            <!-- .saved-item 반복 -->
+            <div *ngFor="let item of viewModel.recentList; index as index;" class="saved-item activity">
+                <a class="icon sm close" (click)="onDeleteItem($event, index)">삭제</a>
+                <ul (click)="onSearchResult($event, index)">
+                    <li class="city">{{item.continentNameLn}}, {{item.cityNameLn}}</li>
+                    <li class="type">{{item.activityNameEn}}</li>
+                    <li class="price">
+                        <strong class="color-point2">{{item.amountSum}}</strong>
+                        <span class="color-sub5 font-xs">원</span>
+                        <span class="now">바로 사용</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ng-container>

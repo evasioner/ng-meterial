@@ -1,0 +1,34 @@
+<div id="wrap" class="p-rent-main">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-rent-header [headerType]="headerType" [headerConfig]="headerConfig"></app-rent-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+
+        <!-- 메인 검색 -->
+        <app-rent-main-search class="contents-item"></app-rent-main-search>
+
+        <!-- 가이드 버튼 영역-->
+        <app-rent-guide-btn class="contents-item mg"></app-rent-guide-btn>
+
+        <!-- 최근 검색한 아이템 -->
+        <app-rent-new-search-list class="contents-item mg"></app-rent-new-search-list>
+
+        <!-- 가장 인기 있는 아이템 -->
+        <app-rent-hot-list *ngIf="false" class="contents-item mg"></app-rent-hot-list>
+
+        <!-- (고객이름) 님 만을 위한 이벤트  -->
+        <app-rent-customer-event class="contents-item mg"></app-rent-customer-event>
+
+        <!-- 쿠폰 다운로드 -->
+        <app-rent-coupon-down class="contents-item mg"></app-rent-coupon-down>
+
+    </div>
+
+    <!-- footer -->
+    <app-footer></app-footer>
+</div>
+
+<router-outlet></router-outlet>

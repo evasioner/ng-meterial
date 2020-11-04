@@ -1,0 +1,295 @@
+<div id="wrap" class="p-main">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-main-header [headerType]="headerType" [headerConfig]="headerConfig"></app-main-header>
+
+    <!-- contents -->
+    <div id="contents">
+        <div class="contents-item mg">
+            <div class="main-user-area">
+
+                <!-- 로그인 전 상태 -->
+                <div *ngIf="!isLogin" class="user-state guest">
+                    <h1><span>지금 로그인하고</span><br><strong>맞춤 여행을 시작하세요</strong></h1>
+                    <p class="mt20">
+                        <a (click)="onGoToLogin()" class="text-link">
+                            <strong class="text color-main2 font-xl">로그인</strong>
+                            <span class="icon sm direction right"></span>
+                        </a>
+                    </p>
+                </div>
+
+                <!-- 로그인 한 상태 -->
+                <ng-template [ngIf]="isLogin&&loadingBool">
+                    <div class="user-state member">
+                        <h1>{{userInfo && userInfo.user.name}} 님,<br>어서오세요</h1>
+                        <div>
+                            <dl class="align-r">
+                                <dt class="font-xs">회원구분</dt>
+                                <dd class="font-lg-b">플래티넘</dd>
+                            </dl>
+                            <dl class="align-r mt5 mb5">
+                                <dt class="font-xs">보유 마일리지</dt>
+                                <dd class="font-lg-b">50,000</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="coming-travel mt20">
+                        <span class="icon sm clock2 mr5"></span>
+                        <span class="color-sub6">로스엔젤레스 여행까지 남은 시간</span>
+                        <strong class="ml-auto font-lg color-point1">D-230</strong>
+                    </div>
+                </ng-template>
+
+            </div>
+        </div>
+        <div class="contents-item mg">
+            <div class="main-category-list">
+                <a *ngFor="let item of mainMenuParams | slice : 0 : 4" [routerLink]="item.link" class="category-link">
+                    <span [ngClass]="['main-icon', item.spanClass]"></span>
+                    <p>{{ item.name }}</p>
+                </a>
+            </div>
+            <div class="main-category-list">
+                <a *ngFor="let item of mainMenuParams | slice : 4" [routerLink]="item.link" class="category-link">
+                    <span [ngClass]="['main-icon2', item.spanClass]">
+                        <span *ngIf="item.subName" class="bubble coming">{{ item.subName }}</span>
+                    </span>
+                    <p>{{ item.name }}</p>
+                </a>
+            </div>
+        </div>
+        <div class="contents-item mg">
+            <h2 *ngIf="isLogin&&loadingBool" class="contents-title">{{userInfo && userInfo.user.name}} 님의 맞춤 자유여행</h2>
+            <div class="scroll-box-filter extend">
+                <a *ngFor="let item of recommendMenuParams" [routerLink]="item.link" [ngClass]="[item.className]" class="btn inline md round shadow">{{ item.name }}</a>
+            </div>
+            <div class="scroll-box-list extend">
+                <div class="scroll-item-outer">
+                    <!-- 자유여행 아이템 -->
+                    <div class="freestyle-item">
+                        <div class="freestyle-image" style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/images/temp/@temp-hotplace.png) 50% 50% no-repeat; background-size: cover;">
+                            <span class="itinerary">푸켓 5박 6일</span>
+                            <span class="rate">4.5</span>
+                        </div>
+                        <div class="freestyle-type">
+                            <span class="flight">항공</span>
+                            <span class="hotel">호텔</span>
+                            <span class="activity">액티비티</span>
+                        </div>
+                        <div class="freestyle-item-information">
+                            <p class="title">동남아 힐링 스팟으로 초대</p>
+                            <p class="price"><strong>413,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 -->
+                    <div class="freestyle-item">
+                        <div class="freestyle-image" style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/images/temp/@temp-hotplace.png) 50% 50% no-repeat; background-size: cover;">
+                            <span class="itinerary">푸켓 5박 6일</span>
+                            <span class="rate">4.5</span>
+                        </div>
+                        <div class="freestyle-type">
+                            <span class="flight">항공</span>
+                            <span class="hotel">호텔</span>
+                            <span class="activity">액티비티</span>
+                        </div>
+                        <div class="freestyle-item-information">
+                            <p class="title">동남아 힐링 스팟으로 초대</p>
+                            <p class="price"><strong>413,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                    <!-- 자유여행 아이템 -->
+                    <div class="freestyle-item">
+                        <div class="freestyle-image" style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/images/temp/@temp-hotplace.png) 50% 50% no-repeat;">
+                            <span class="itinerary">푸켓 5박 6일</span>
+                            <span class="rate">4.5</span>
+                        </div>
+                        <div class="freestyle-type">
+                            <span class="flight">항공</span>
+                            <span class="hotel">호텔</span>
+                            <span class="activity">액티비티</span>
+                        </div>
+                        <div class="freestyle-item-information">
+                            <p class="title">동남아 힐링 스팟으로 초대</p>
+                            <p class="price"><strong>413,000</strong><span>원 부터</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contents-item mg">
+            <h2 class="contents-title">실시간 고객 여행플랜</h2>
+            <div class="scroll-box-filter extend">
+                <!-- 선택된 버튼 -->
+                <a href="#" class="btn inline md round default shadow">#30대</a>
+                <!-- 선택안된 기본 상태 버튼 -->
+                <a href="#" class="btn inline md round line light shadow">#여성</a>
+                <a href="#" class="btn inline md round line light shadow">#다낭</a>
+                <a href="#" class="btn inline md round line light shadow">#맛집</a>
+                <a href="#" class="btn inline md round line light shadow">#쇼핑</a>
+            </div>
+            <div class="scroll-box-list extend">
+                <div class="scroll-item-outer">
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="travel-plan-image" style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/images/temp/@temp-hotplace.png) 50% 50% no-repeat;">
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="travel-plan-item-information">
+                            <p class="title">동남아 힐링 스팟으로 초대</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>#라차섬</span><span>#빠동</span></p>
+                            <p class="price"><strong>413,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="travel-plan-image" style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/images/temp/@temp-hotplace.png) 50% 50% no-repeat;">
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="travel-plan-item-information">
+                            <p class="title">동남아 힐링 스팟으로 초대</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>#라차섬</span><span>#빠동</span></p>
+                            <p class="price"><strong>413,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                    <!-- 여행플랜 아이템 -->
+                    <div class="travel-plan-item">
+                        <div class="travel-plan-image" style="background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/images/temp/@temp-hotplace.png) 50% 50% no-repeat;">
+                            <div class="article">
+                                <span class="like">250</span>
+                                <span class="share">830</span>
+                            </div>
+                        </div>
+                        <div class="travel-plan-item-information">
+                            <p class="title">동남아 힐링 스팟으로 초대</p>
+                            <p class="tag"><span>#절친과 떠나는 여행</span><span>#라차섬</span><span>#빠동</span></p>
+                            <p class="price"><strong>413,000</strong><span>원</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contents-item mg">
+            <h2 class="contents-title">이벤트</h2>
+            <!-- 이벤트 롤링 -->
+            <div class="event-banner-rolling">
+                <div class="banner-image-wrap">
+                    <div class="banner-item-image active">
+                        <img src="/assets/images/temp/@temp-event-banner.png" alt="" class="img">
+                    </div>
+                    <div class="banner-item-image">
+                        <img src="/assets/images/temp/@temp-event-banner.png" alt="" class="img">
+                    </div>
+                    <div class="banner-item-image">
+                        <img src="/assets/images/temp/@temp-event-banner.png" alt="" class="img">
+                    </div>
+                </div>
+                <div class="banner-count">
+                    <ul>
+                        <li><a href="#" class="active">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                    </ul>
+                </div>
+                <div class="banner-text-wrap">
+                    <div class="banner-item-text active">
+                        <p class="title">노랑풍선 롯데카드 최대 3만원 할인</p>
+                        <p class="sub">해외패키지, 자유여행, 허니문, 크루즈/골프 고객 대상</p>
+                        <p class="date">2019.02.12 ~ 2019.08.31</p>
+                    </div>
+                    <div class="banner-item-text">
+                        <p class="title">노랑풍선 롯데카드 최대 3만원 할인</p>
+                        <p class="sub">해외패키지, 자유여행, 허니문, 크루즈/골프 고객 대상</p>
+                        <p class="date">2019.02.12 ~ 2019.08.31</p>
+                    </div>
+                    <div class="banner-item-text">
+                        <p class="title">노랑풍선 롯데카드 최대 3만원 할인</p>
+                        <p class="sub">해외패키지, 자유여행, 허니문, 크루즈/골프 고객 대상</p>
+                        <p class="date">2019.02.12 ~ 2019.08.31</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contents-item mg">
+            <h2 class="contents-title line">쿠폰 다운로드<a href="#" class="text-link"><span class="icon xs download"></span><span class="text">일괄다운</span></a></h2>
+            <div class="coupon-download">
+                <div class="scroll-box-filter extend">
+                    <!-- 선택된 버튼 -->
+                    <a href="#" class="btn inline md round default shadow">#회원전용</a>
+                    <!-- 선택안된 기본 상태 버튼 -->
+                    <a href="#" class="btn inline md round line light shadow">#비회원전용</a>
+                    <a href="#" class="btn inline md round line light shadow">#아무나가능</a>
+                    <a href="#" class="btn inline md round line light shadow">#즉시사용</a>
+                    <a href="#" class="btn inline md round line light shadow">#중복사용</a>
+                </div>
+                <div class="scroll-box-list extend coupon-list">
+                    <div class="scroll-item-outer">
+                        <!-- .coupon-item 반복 -->
+                        <div class="coupon-item">
+                            <div class="coupon-item-top">
+                                <p class="discount">
+                                    <em>5,000</em>원
+                                </p>
+                                <p class="text">호텔+액티비티 동시 예약 할인 쿠폰</p>
+                            </div>
+                            <div class="coupon-item-middle"></div>
+                            <div class="coupon-item-bottom">
+                                <a href="#" class="text-link"><span class="icon xs download2"></span><span class="text color-point2">DOWN</span></a>
+                            </div>
+                        </div>
+                        <!-- .coupon-item 반복 -->
+                        <div class="coupon-item">
+                            <div class="coupon-item-top">
+                                <p class="discount">
+                                    <em>5,000</em>원
+                                </p>
+                                <p class="text">호텔+액티비티 동시 예약 할인 쿠폰</p>
+                            </div>
+                            <div class="coupon-item-middle"></div>
+                            <div class="coupon-item-bottom">
+                                <a href="#" class="text-link"><span class="icon xs download2"></span><span class="text color-point2">DOWN</span></a>
+                            </div>
+                        </div>
+                        <!-- .coupon-item 반복 -->
+                        <div class="coupon-item">
+                            <div class="coupon-item-top">
+                                <p class="discount">
+                                    <em>5,000</em>원
+                                </p>
+                                <p class="text">호텔+액티비티 동시 예약 할인 쿠폰</p>
+                            </div>
+                            <div class="coupon-item-middle"></div>
+                            <div class="coupon-item-bottom">
+                                <a href="#" class="text-link"><span class="icon xs download2"></span><span class="text color-point2">DOWN</span></a>
+                            </div>
+                        </div>
+                        <!-- .coupon-item 반복 -->
+                        <div class="coupon-item">
+                            <div class="coupon-item-top">
+                                <p class="discount">
+                                    <em>5,000</em>원
+                                </p>
+                                <p class="text">호텔+액티비티 동시 예약 할인 쿠폰</p>
+                            </div>
+                            <div class="coupon-item-middle"></div>
+                            <div class="coupon-item-bottom">
+                                <a href="#" class="text-link"><span class="icon xs download2"></span><span class="text color-point2">DOWN</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <app-footer></app-footer>
+</div>

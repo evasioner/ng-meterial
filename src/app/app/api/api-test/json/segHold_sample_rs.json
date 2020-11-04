@@ -1,0 +1,20 @@
+{
+    "serviceCode": "aliqua dolor voluptate Lorem do",
+    "serviceName": "ci",
+    "succeedYn": true,
+    "transactionSetId": "PV41198MG6N",
+    "result": {
+        "sessionKey": "nulla",
+        "bookableYn": true,
+        "amountChangedYn": true,
+        "originAmountSum": 38025313.22171268,
+        "changeAmountSum": 19693657.125117257
+    },
+    "warningYn": false,
+    "warnings": [
+        {
+            "warningCode": "enim",
+            "warningMessage": "cillum ipsum"
+        }
+    ]
+}

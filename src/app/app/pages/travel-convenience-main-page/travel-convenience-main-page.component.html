@@ -1,0 +1,34 @@
+<div id="wrap" *ngIf="isBrowser" class="p-travel-convenience-main">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-travel-convenience-header [headerType]="headerType" [headerConfig]="headerConfig"></app-travel-convenience-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <!-- 인기 유심 메인 -->
+        <app-travel-convenience-main class="contents-item-area"></app-travel-convenience-main>
+
+        <!-- 인기 유심 상품 -->
+        <app-travel-convenience-usim-list class="contents-item-area"></app-travel-convenience-usim-list>
+
+        <!-- 인기 와이파이 상품 -->
+        <app-travel-convenience-wifi-list class="contents-item-area"></app-travel-convenience-wifi-list>
+
+        <!-- 2차 범위로 변경
+    <! -- 회원 자유여행 -- >
+    <app-travel-convenience-customer-freestyle class="contents-item-area"></app-travel-convenience-customer-freestyle>
+    -->
+
+        <!-- 회원 이벤트 -->
+        <app-travel-convenience-customer-event class="contents-item-area"></app-travel-convenience-customer-event>
+
+        <!-- 쿠폰 다운로드 -->
+        <app-travel-convenience-coupon-list class="contents-item-area"></app-travel-convenience-coupon-list>
+    </div>
+
+    <!-- footer -->
+    <app-footer></app-footer>
+</div>
+
+<router-outlet></router-outlet>

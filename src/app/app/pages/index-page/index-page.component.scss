@@ -1,0 +1,30 @@
+* {margin:0; padding:0; box-sizing:border-box;}
+*:before,*:after {box-sizing:border-box;}
+table {border-collapse:collapse; width:100%; table-layout:fixed;}
+table th, td {border:1px solid #ccc; padding:8px;}
+table thead th {color:#000; text-align:center; background:#f2f2f2;}
+table tbody th {color:#333; text-align:center; background:#f2f2f2;}
+table tbody td {color:#333; text-align:left;}
+table tbody td a {color:#ff682c; text-decoration:underline; font-weight:bold;}
+table tbody td.ac {text-align:center;}
+table tr.bg th,
+table tr.bg td {background:#fff1ec;}
+table tr.bg2 th,
+table tr.bg2 td {background:#f9ffec;}
+html, body {font-family:"맑은 고딕", MalunGothic; color:#000; font-size:12px;}
+ol,ul,dl {list-style:none;}
+.color1 {color:#ff682c;}
+.wrap {padding:16px;}
+h1 {font-size:14px; font-weight:bold;}
+.noti {border:1px solid #ccc; margin:5px 0 10px; padding:10px;}
+.noti li {position: relative; padding-left:10px;}
+.noti li + li {margin-top:2px;}
+.noti li:before {content:""; position: absolute; left:0; top:50%; transform:translateY(-50%); width:2px; height:2px; background: #333; border-radius:50%;}
+
+.color-txt-red {
+  color: #D73C2C !important;
+}
+
+.color-txt-blue {
+  color: #1297E0 !important;
+}

@@ -1,0 +1,124 @@
+<p>airtel-modal-payment works!</p>
+<!-- Modal -->
+<div class="modal-bottom">
+    <div class="modal-bottom-inner">
+        <!-- modal header -->
+        <div class="modal-bottom-header line center">
+            <h1>결제 수단 선택</h1>
+            <div class="right">
+                <a (click)="modalClose()" class="icon sm common-close">닫기</a>
+            </div>
+        </div>
+        <!-- modal contents -->
+        <div class="modal-bottom-contents fixed-btn-footer">
+            <div class="payment">
+                <div class="contents-item">
+                    <div class="item-group">
+                        <div class="item-row col">
+                            <div class="left">
+                                <label class="radio">
+                                    <input type="radio" class="radio-control-input">
+                                    <span class="radio-control-text">국민 티타늄 Miz&Mr</span>
+                                </label>
+                            </div>
+                            <div class="right">
+                                +0원
+                            </div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">
+                                <label class="radio">
+                                    <input type="radio" class="radio-control-input">
+                                    <span class="radio-control-text">삼성 유니온페이</span>
+                                </label>
+                            </div>
+                            <div class="right">
+                                +10,000원
+                            </div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">
+                                <label class="radio">
+                                    <input type="radio" class="radio-control-input" checked>
+                                    <span class="radio-control-text">현대 플레티넘 M2</span>
+                                </label>
+                            </div>
+                            <div class="right">
+                                +20,000원
+                            </div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">
+                                <label class="radio">
+                                    <input type="radio" class="radio-control-input">
+                                    <span class="radio-control-text">성인</span>
+                                </label>
+                            </div>
+                            <div class="right">
+                                +21,000원
+                            </div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">
+                                <label class="radio">
+                                    <input type="radio" class="radio-control-input">
+                                    <span class="radio-control-text">국민, 씨티, NH체움카드</span>
+                                </label>
+                            </div>
+                            <div class="right">
+                                +23,000원
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-item">
+                    <div class="item-group">
+                        <ng-container *ngIf="flightListRs$ | async as list">
+                            <ng-container *ngFor="let item of list.option.result.selected.flights">
+                                <ng-container *ngFor="let item1 of item.price.fares[0].passengerFares; index as i">
+                                    <div class="item-row col" *ngIf="item.ageTypeCode ==='ADT'">
+                                        <div class="left">성인 * {{item1.paxCount}}인</div>
+                                        <div class="right">{{item1.amountSum | number}}원</div>
+                                    </div>
+                                    <div class="item-row col" *ngIf="item1.ageTypeCode ==='CHD'">
+                                        <div class="left">아동 * {{item1.paxCount}}인</div>
+                                        <div class="right">{{item1.amountSum | number}}원</div>
+                                    </div>
+                                    <div class="item-row col" *ngIf="item1.ageTypeCode ==='INF'">
+                                        <div class="left">유아 * {{item1.paxCount}}인</div>
+                                        <div class="right">{{item1.amountSum | number}}원</div>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="contents-item">
+                    <div class="item-group">
+                        <div class="item-row col">
+                            <div class="left">
+                                <p class="mb5">
+                                    <a (click)="onPayDetail()" class="text-link">
+                                        <span class="text">총 결제 금액</span>
+                                        <span class="icon sm information3"></span>
+                                    </a>
+                                </p>
+                                <p class="font-xs color-sub3">()</p>
+                            </div>
+                            <div class="right">
+                                <ng-container *ngFor="let item of (flightListRs$ | async)?.option.result.selected.flights">
+                                <span class="font-lg-b color-point2">{{item.price.fares[0].amountSum | number}}원</span>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group pd col3 left bg fixed-bottom">
+            <button class="btn lg dark icon-only" role="button"><span class="icon sm cart"></span></button>
+            <button class="btn lg dark icon-only" role="button"><span class="icon sm share2"></span></button>
+            <button (click)="onReserve()" class="btn lg default" role="button">예약하기</button>
+        </div>
+    </div>
+</div>

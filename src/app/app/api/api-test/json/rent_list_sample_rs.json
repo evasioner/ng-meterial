@@ -1,0 +1,1996 @@
+{
+    "result": {
+        "driver": {
+            "ageTypeCode": "ADT",
+            "age": 31
+        },
+        "vehicles": [
+            {
+                "vehicleVendorName": "BUDGET",
+                "vehicleName": "TOYOTA YARIS AC  AUTOMATIC",
+                "validType": "DLD",
+                "billingAmountSum": 36.17,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZD&cnt=US&vehcat=EDAR&item=0&stamp=VEHICLE_0_0_1381752917863&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 36,
+                "baseRateAmount": 31.99,
+                "vehicleIndex": 65,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 36,
+                "rateIdentifier": null,
+                "vendorProductAmount": 36.17,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZD",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 36.17,
+                "sippCode": "EDAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "STD DAILY AQ",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "AQ",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "E",
+                "billingProductAmount": 36.17,
+                "referenceCode": "0GJHP80GD97GFHLDC3C8",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "vehicleName": "TOYOTA YARIS AC  AUTOMATIC",
+                "validType": "DLD",
+                "billingAmountSum": 36.17,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZD&cnt=US&vehcat=EDAR&item=0&stamp=VEHICLE_0_0_1381752917863&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 36,
+                "baseRateAmount": 31.99,
+                "vehicleIndex": 66,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 36,
+                "rateIdentifier": null,
+                "vendorProductAmount": 36.17,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZD",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 36.17,
+                "sippCode": "EDAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "STD DAILY AQ",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC02"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "AQ",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "E",
+                "billingProductAmount": 36.17,
+                "referenceCode": "RQYXJWJ9MTXUXB9GYUM4",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC02"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "vehicleName": "Ford Fiesta",
+                "validType": "DLD",
+                "billingAmountSum": 36.17,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZD&cnt=US&vehcat=ECAR&item=0&stamp=VEHICLE_y2019_m12_d10__y2099_m12_d10__1578040239485&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 36,
+                "baseRateAmount": 31.99,
+                "vehicleIndex": 67,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 36,
+                "rateIdentifier": null,
+                "vendorProductAmount": 36.17,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZD",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 36.17,
+                "sippCode": "ECAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "STD DAILY AQ",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "AQ",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "E",
+                "billingProductAmount": 36.17,
+                "referenceCode": "3694WTHXV0FTYA57FLMY",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "vehicleName": "Ford Fiesta",
+                "validType": "DLD",
+                "billingAmountSum": 36.17,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZD&cnt=US&vehcat=ECAR&item=0&stamp=VEHICLE_y2019_m12_d10__y2099_m12_d10__1578040239485&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 36,
+                "baseRateAmount": 31.99,
+                "vehicleIndex": 68,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 36,
+                "rateIdentifier": null,
+                "vendorProductAmount": 36.17,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZD",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 36.17,
+                "sippCode": "ECAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "STD DAILY AQ",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC02"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "AQ",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "E",
+                "billingProductAmount": 36.17,
+                "referenceCode": "84DEHNL552P8A7SR3RK5",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC02"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            },
+            {
+                "vehicleVendorName": "AVIS",
+                "vehicleName": "TOYOTA YARIS AC  AUTOMATIC",
+                "validType": "DLD",
+                "billingAmountSum": 37.26,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZI&cnt=US&vehcat=EDAR&item=0&stamp=VEHICLE_0_0_1381753817976&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 37,
+                "baseRateAmount": 32.99,
+                "vehicleIndex": 110,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 37,
+                "rateIdentifier": null,
+                "vendorProductAmount": 37.26,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZI",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 37.26,
+                "sippCode": "EDAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "WEEKEND PROMO 8A",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "8A",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "E",
+                "billingProductAmount": 37.26,
+                "referenceCode": "TEWM27RPL7HQV6S27YTG",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "vehicleName": "Ford Focus",
+                "validType": "DLD",
+                "billingAmountSum": 37.31,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZD&cnt=US&vehcat=CCAR&item=0&stamp=VEHICLE_y2019_m12_d10__y2099_m12_d10__1578040239485&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 37,
+                "baseRateAmount": 32.99,
+                "vehicleIndex": 69,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 37,
+                "rateIdentifier": null,
+                "vendorProductAmount": 37.31,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZD",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 37.31,
+                "sippCode": "CCAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "STD DAILY AQ",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "AQ",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "C",
+                "billingProductAmount": 37.31,
+                "referenceCode": "3S2338BIUXIVE2D5AEMO",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "vehicleName": "Ford Focus",
+                "validType": "DLD",
+                "billingAmountSum": 37.31,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZD&cnt=US&vehcat=CCAR&item=0&stamp=VEHICLE_y2019_m12_d10__y2099_m12_d10__1578040239485&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 37,
+                "baseRateAmount": 32.99,
+                "vehicleIndex": 70,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 37,
+                "rateIdentifier": null,
+                "vendorProductAmount": 37.31,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZD",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 37.31,
+                "sippCode": "CCAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "STD DAILY AQ",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC02"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "AQ",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "C",
+                "billingProductAmount": 37.31,
+                "referenceCode": "XCD9J61NYLSQDRPWP96C",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC02"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "vehicleName": "Hyundai Elantra",
+                "validType": "DLD",
+                "billingAmountSum": 38.4,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZD&cnt=US&vehcat=ICAR&item=0&stamp=VEHICLE_y2019_m12_d10__y2099_m12_d10__1578040239485&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 38,
+                "baseRateAmount": 33.99,
+                "vehicleIndex": 71,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 38,
+                "rateIdentifier": null,
+                "vendorProductAmount": 38.4,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZD",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 38.4,
+                "sippCode": "ICAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "STD DAILY AQ",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "AQ",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "I",
+                "billingProductAmount": 38.4,
+                "referenceCode": "NT64BRINVUW0N03R9EA5",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "vehicleName": "Hyundai Elantra",
+                "validType": "DLD",
+                "billingAmountSum": 38.4,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZD&cnt=US&vehcat=ICAR&item=0&stamp=VEHICLE_y2019_m12_d10__y2099_m12_d10__1578040239485&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 38,
+                "baseRateAmount": 33.99,
+                "vehicleIndex": 72,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 38,
+                "rateIdentifier": null,
+                "vendorProductAmount": 38.4,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZD",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 38.4,
+                "sippCode": "ICAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "STD DAILY AQ",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC02"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "AQ",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "I",
+                "billingProductAmount": 38.4,
+                "referenceCode": "4573GHJFC7KBJXK44MR3",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC02"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            },
+            {
+                "vehicleVendorName": "AVIS",
+                "vehicleName": "Ford Focus",
+                "validType": "DLD",
+                "billingAmountSum": 38.4,
+                "photoUrls": [
+                    "https://post-development.multimedia.testing.amadeus.com/mdc/retrieveCarItem?ctg=VEHICLE&prov=ZI&cnt=US&vehcat=CCAR&item=0&stamp=VEHICLE_y2019_m12_d10__y2099_m12_d10__1578330040030&file=5.JPEG"
+                ],
+                "billingTaxAmount": 0,
+                "billingProductKrwAmount": 38,
+                "baseRateAmount": 33.99,
+                "vehicleIndex": 111,
+                "billingCurrencyCode": "USD",
+                "vendorCurrencyCode": "USD",
+                "billingKrwAmountSum": 38,
+                "rateIdentifier": null,
+                "vendorProductAmount": 38.4,
+                "inPolicyYn": true,
+                "limit": {
+                    "unlimitedMileageYn": true
+                },
+                "vehicleVendorCode": "ZI",
+                "hoursOfUse": 24,
+                "vendorAmountSum": 38.4,
+                "sippCode": "CCAR",
+                "baseRateTypeCode": "Daily",
+                "vehicleTypeOwner": "ACR",
+                "vehicleTypeName": "NOTSET",
+                "accessLevel": "CP",
+                "marketingInfo": "WEEKEND PROMO 8A",
+                "pickup": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-14 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "vendorCompCode": 900001,
+                "fareTypeCode": "8A",
+                "billingKrwTaxAmount": 0,
+                "fuelType": "N/A",
+                "taxIncludedYn": false,
+                "vehicleTypeCode": "C",
+                "billingProductAmount": 38.4,
+                "referenceCode": "D210TUUSCJG6XDT1KMR7",
+                "validMinutes": 5,
+                "specialRateCode": "NOTSET",
+                "return": {
+                    "locationTypeName": "NOTSET",
+                    "datetime": "2020-07-15 10:00",
+                    "locationName": "NOTSET",
+                    "cityCodeIata": "LAX",
+                    "locationTypeCode": "C",
+                    "locationCode": "LAXC04"
+                },
+                "rateCategoryCode": "024",
+                "vendorTaxAmount": 0,
+                "option": {
+                    "passengerCount": 5,
+                    "airConditionYn": true,
+                    "transmissionType": "Automatic",
+                    "doorCount": 4
+                }
+            }
+        ],
+        "locations": [
+            {
+                "vehicleVendorName": "EUROPCAR",
+                "address": "PLEASE GO TO FOX COUNTERLOS ANGELES 900US",
+                "locationName": "NOTSET",
+                "latitude": 33.93333,
+                "vehicleVendorCode": "EP",
+                "locationTypeCode": "O",
+                "locationCode": "LAXO02",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "23:59"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "23:59"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "23:59"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "23:59"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "23:59"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "23:59"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "23:59"
+                    }
+                ],
+                "longitude": -118.4
+            },
+            {
+                "vehicleVendorName": "ENTERPRISE",
+                "address": "1608 HILLHURST AVE. LOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.10034,
+                "vehicleVendorCode": "ET",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC19",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:30",
+                        "toTime": "12:00"
+                    }
+                ],
+                "longitude": -118.28731
+            },
+            {
+                "vehicleVendorName": "ENTERPRISE",
+                "address": "8367 WEST SUNSET BLVD LOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.09562,
+                "vehicleVendorCode": "ET",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC13",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "09:00",
+                        "toTime": "12:00"
+                    }
+                ],
+                "longitude": -118.37204
+            },
+            {
+                "vehicleVendorName": "ENTERPRISE",
+                "address": "7100 BEVERLY BLVD. LOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.07608,
+                "vehicleVendorCode": "ET",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC22",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "09:00",
+                        "toTime": "12:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "09:00",
+                        "toTime": "12:00"
+                    }
+                ],
+                "longitude": -118.3441
+            },
+            {
+                "vehicleVendorName": "FOX",
+                "address": "5500 WEST CENTURY BOULEVARDLOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 33.93333,
+                "vehicleVendorCode": "FX",
+                "locationTypeCode": "O",
+                "locationCode": "LAXO01",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    }
+                ],
+                "longitude": -118.4
+            },
+            {
+                "vehicleVendorName": "MIDWAY",
+                "address": "1218 SOUTH FIGUEROA STLOS ANGELES 90015US",
+                "locationName": "NOTSET",
+                "latitude": 34.03298,
+                "vehicleVendorCode": "MW",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC02",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "16:00"
+                    }
+                ],
+                "longitude": -118.27314
+            },
+            {
+                "vehicleVendorName": "SIXT",
+                "address": "7415 SANTA MONICA BLVDWEST HOLLYWOOD, LOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.09107,
+                "vehicleVendorCode": "SX",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC03",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    }
+                ],
+                "longitude": -118.35219
+            },
+            {
+                "vehicleVendorName": "SIXT",
+                "address": "264 S LA CIENEGA BLVDBEVERLY HILLSUS",
+                "locationName": "NOTSET",
+                "latitude": 34.06335,
+                "vehicleVendorCode": "SX",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC04",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "09:00",
+                        "toTime": "19:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "09:00",
+                        "toTime": "19:00"
+                    }
+                ],
+                "longitude": -118.37587
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "address": "800 NORTH ALAMEDA STREETDLOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.05614,
+                "vehicleVendorCode": "ZD",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC01",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "14:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "14:00"
+                    }
+                ],
+                "longitude": -118.23648
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "address": "888 SOUTH FIGUEROA STREETLOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.04683,
+                "vehicleVendorCode": "ZD",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC02",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "15:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "09:00",
+                        "toTime": "14:00"
+                    }
+                ],
+                "longitude": -118.26188
+            },
+            {
+                "vehicleVendorName": "BUDGET",
+                "address": "1910 EAST WASHINGTON BLVDLOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.01908,
+                "vehicleVendorCode": "ZD",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC04",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "06:00",
+                        "toTime": "17:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "06:00",
+                        "toTime": "17:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "06:00",
+                        "toTime": "17:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "06:00",
+                        "toTime": "17:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "06:00",
+                        "toTime": "17:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "16:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "14:00"
+                    }
+                ],
+                "longitude": -118.23872
+            },
+            {
+                "vehicleVendorName": "HERTZ",
+                "address": "10170 MASON AVE.CHATSWORTH 91311US",
+                "locationName": "NOTSET",
+                "latitude": 34.25522,
+                "vehicleVendorCode": "ZE",
+                "locationTypeCode": "N",
+                "locationCode": "LAXN04",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "09:00",
+                        "toTime": "12:00"
+                    }
+                ],
+                "longitude": -118.57876
+            },
+            {
+                "vehicleVendorName": "HERTZ",
+                "address": "6728 RESEDA BLVDRESEDA 91335US",
+                "locationName": "NOTSET",
+                "latitude": 34.19265,
+                "vehicleVendorCode": "ZE",
+                "locationTypeCode": "N",
+                "locationCode": "LAXN03",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "09:00",
+                        "toTime": "12:00"
+                    }
+                ],
+                "longitude": -118.53602
+            },
+            {
+                "vehicleVendorName": "HERTZ",
+                "address": "800 N ALAMEDA STLOS ANGELES 900122902US",
+                "locationName": "NOTSET",
+                "latitude": 34.05598,
+                "vehicleVendorCode": "ZE",
+                "locationTypeCode": "X",
+                "locationCode": "LAXX02",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "12:30",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "12:30",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "12:30",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "12:30",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "12:30",
+                        "toTime": "17:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "14:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "12:30",
+                        "toTime": "14:00"
+                    }
+                ],
+                "longitude": -118.23653
+            },
+            {
+                "vehicleVendorName": "AVIS",
+                "address": "888 SOUTH FIGUEROA STREETLOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.04683,
+                "vehicleVendorCode": "ZI",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC01",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:30",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "15:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "09:00",
+                        "toTime": "14:00"
+                    }
+                ],
+                "longitude": -118.26188
+            },
+            {
+                "vehicleVendorName": "AVIS",
+                "address": "1910 EAST WASHINGTON BLVDLOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.01908,
+                "vehicleVendorCode": "ZI",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC04",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "16:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "16:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "16:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "16:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "07:00",
+                        "toTime": "16:30"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "13:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "14:00"
+                    }
+                ],
+                "longitude": -118.23872
+            },
+            {
+                "vehicleVendorName": "AVIS",
+                "address": "3600 WILSHIRE BOULEVARDLOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 34.06125,
+                "vehicleVendorCode": "ZI",
+                "locationTypeCode": "C",
+                "locationCode": "LAXC02",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "18:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "15:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "08:00",
+                        "toTime": "14:00"
+                    }
+                ],
+                "longitude": -118.3036
+            },
+            {
+                "vehicleVendorName": "NATIONAL",
+                "address": "9020 AVIATION BLVD INGLEWOODUS",
+                "locationName": "NOTSET",
+                "latitude": 33.93333,
+                "vehicleVendorCode": "ZL",
+                "locationTypeCode": "T",
+                "locationCode": "LAXT01",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "00:01",
+                        "toTime": "00:00"
+                    }
+                ],
+                "longitude": -118.4
+            },
+            {
+                "vehicleVendorName": "THRIFTY",
+                "address": "5440 W. CENTURY BLVDLOS ANGELESUS",
+                "locationName": "NOTSET",
+                "latitude": 33.93333,
+                "vehicleVendorCode": "ZT",
+                "locationTypeCode": "T",
+                "locationCode": "LAXT01",
+                "openningHours": [
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "04:00",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "04:00",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "04:00",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "04:00",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "04:00",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "04:00",
+                        "toTime": "00:00"
+                    },
+                    {
+                        "dayType": "Days of week",
+                        "dayValue": "DOW",
+                        "fromTime": "04:00",
+                        "toTime": "00:00"
+                    }
+                ],
+                "longitude": -118.4
+            }
+        ],
+        "forFilter": {
+            "vehicleVendors": [
+                {
+                    "code": "EP",
+                    "name": "EUROPCAR",
+                    "count": 10,
+                    "lowestAmount": 73.99
+                },
+                {
+                    "code": "FX",
+                    "name": "FOX",
+                    "count": 11,
+                    "lowestAmount": 61.53
+                },
+                {
+                    "code": "MW",
+                    "name": "MIDWAY",
+                    "count": 19,
+                    "lowestAmount": 61.22
+                },
+                {
+                    "code": "SX",
+                    "name": "SIXT",
+                    "count": 24,
+                    "lowestAmount": 104.62
+                },
+                {
+                    "code": "ZD",
+                    "name": "BUDGET",
+                    "count": 21,
+                    "lowestAmount": 36.17
+                },
+                {
+                    "code": "ZE",
+                    "name": "HERTZ",
+                    "count": 24,
+                    "lowestAmount": 59.6
+                },
+                {
+                    "code": "ZI",
+                    "name": "AVIS",
+                    "count": 20,
+                    "lowestAmount": 37.26
+                },
+                {
+                    "code": "ZL",
+                    "name": "NATIONAL",
+                    "count": 1,
+                    "lowestAmount": 205.25
+                }
+            ],
+            "totalVehicleCount": 130,
+            "amount": {
+                "highestAmount": 389.24,
+                "lowestAmount": 36.17
+            },
+            "shuttleTypes": [
+                {
+                    "code": "CRS",
+                    "name": "CRS",
+                    "count": 22
+                },
+                {
+                    "code": "NOT",
+                    "name": "NOT",
+                    "count": 108
+                }
+            ],
+            "vehicleTypes": [
+                {
+                    "code": "I",
+                    "name": "NOTSET",
+                    "count": 30,
+                    "lowestAmount": 38.4
+                },
+                {
+                    "code": "S",
+                    "name": "NOTSET",
+                    "count": 22,
+                    "lowestAmount": 44.01
+                },
+                {
+                    "code": "F",
+                    "name": "NOTSET",
+                    "count": 15,
+                    "lowestAmount": 47.48
+                },
+                {
+                    "code": "P",
+                    "name": "NOTSET",
+                    "count": 15,
+                    "lowestAmount": 67.5
+                },
+                {
+                    "code": "L",
+                    "name": "NOTSET",
+                    "count": 9,
+                    "lowestAmount": 83
+                },
+                {
+                    "code": "M",
+                    "name": "NOTSET",
+                    "count": 4,
+                    "lowestAmount": 84.17
+                },
+                {
+                    "code": "C",
+                    "name": "NOTSET",
+                    "count": 15,
+                    "lowestAmount": 37.31
+                },
+                {
+                    "code": "X",
+                    "name": "NOTSET",
+                    "count": 2,
+                    "lowestAmount": 62.6
+                },
+                {
+                    "code": "E",
+                    "name": "NOTSET",
+                    "count": 17,
+                    "lowestAmount": 36.17
+                },
+                {
+                    "code": "R",
+                    "name": "NOTSET",
+                    "count": 1,
+                    "lowestAmount": 84.63
+                }
+            ],
+            "passengerCounts": [
+                {
+                    "passengerCount": 5,
+                    "count": 110
+                },
+                {
+                    "passengerCount": 8,
+                    "count": 1
+                },
+                {
+                    "passengerCount": 7,
+                    "count": 6
+                },
+                {
+                    "passengerCount": 4,
+                    "count": 12
+                },
+                {
+                    "passengerCount": 15,
+                    "count": 1
+                }
+            ],
+            "returnLocations": [
+                {
+                    "code": "LAXO02",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 10,
+                    "lowestAmount": 73.99,
+                    "typeCode": "O"
+                },
+                {
+                    "code": "LAXO01",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 11,
+                    "lowestAmount": 61.53,
+                    "typeCode": "O"
+                },
+                {
+                    "code": "LAXC02",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 34,
+                    "lowestAmount": 36.17,
+                    "typeCode": "C"
+                },
+                {
+                    "code": "LAXC03",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 12,
+                    "lowestAmount": 104.62,
+                    "typeCode": "C"
+                },
+                {
+                    "code": "LAXC04",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 31,
+                    "lowestAmount": 36.17,
+                    "typeCode": "C"
+                },
+                {
+                    "code": "LAXC01",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 7,
+                    "lowestAmount": 42.74,
+                    "typeCode": "C"
+                },
+                {
+                    "code": "LAXN03",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 9,
+                    "lowestAmount": 59.6,
+                    "typeCode": "N"
+                },
+                {
+                    "code": "LAXN04",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 7,
+                    "lowestAmount": 59.6,
+                    "typeCode": "N"
+                },
+                {
+                    "code": "LAXX02",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 8,
+                    "lowestAmount": 61.2,
+                    "typeCode": "X"
+                },
+                {
+                    "code": "LAXT01",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 1,
+                    "lowestAmount": 205.25,
+                    "typeCode": "T"
+                }
+            ],
+            "pickupLocations": [
+                {
+                    "code": "LAXO02",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 10,
+                    "lowestAmount": 73.99,
+                    "typeCode": "O"
+                },
+                {
+                    "code": "LAXO01",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 11,
+                    "lowestAmount": 61.53,
+                    "typeCode": "O"
+                },
+                {
+                    "code": "LAXC02",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 34,
+                    "lowestAmount": 36.17,
+                    "typeCode": "C"
+                },
+                {
+                    "code": "LAXC03",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 12,
+                    "lowestAmount": 104.62,
+                    "typeCode": "C"
+                },
+                {
+                    "code": "LAXC04",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 31,
+                    "lowestAmount": 36.17,
+                    "typeCode": "C"
+                },
+                {
+                    "code": "LAXC01",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 7,
+                    "lowestAmount": 42.74,
+                    "typeCode": "C"
+                },
+                {
+                    "code": "LAXN03",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 9,
+                    "lowestAmount": 59.6,
+                    "typeCode": "N"
+                },
+                {
+                    "code": "LAXN04",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 7,
+                    "lowestAmount": 59.6,
+                    "typeCode": "N"
+                },
+                {
+                    "code": "LAXX02",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 8,
+                    "lowestAmount": 61.2,
+                    "typeCode": "X"
+                },
+                {
+                    "code": "LAXT01",
+                    "name": "NOTSET",
+                    "typeName": "NOTSET",
+                    "count": 1,
+                    "lowestAmount": 205.25,
+                    "typeCode": "T"
+                }
+            ],
+            "mileages": [
+                {
+                    "code": "unlimited",
+                    "name": "unlimited",
+                    "count": 130
+                }
+            ],
+            "transmissions": [
+                {
+                    "code": "Automatic",
+                    "name": "Automatic",
+                    "count": 130
+                }
+            ]
+        },
+        "sortOrder": "Recommend"
+    },
+    "serviceCode": "/rent/list",
+    "warnings": [],
+    "transactionSetId": "8467A15148",
+    "succeedYn": true,
+    "warningYn": false,
+    "serviceName": "/rent/list"
+}

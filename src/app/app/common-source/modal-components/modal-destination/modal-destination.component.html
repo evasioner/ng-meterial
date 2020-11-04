@@ -1,0 +1,126 @@
+<!-- Calendar Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>{{ headerTitle }}</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <!-- 목적지 검색 -->
+        <div class="cm-location-search">
+
+            <!-- 검색 영역 -->
+            <div class="cm-location-search-form">
+                <div class="input-bottom-line">
+                    <input #destinationSearchInput type="text" [placeholder]="placeholderText" autocomplete="off">
+                    <a *ngIf="searchBool" (click)="onSearchDelClick($event)" class="icon sm input-delete2">삭제</a>
+                </div>
+            </div>
+            <!-- end 검색 영역 -->
+
+            <!-- 로딩 -->
+            <div *ngIf="realTimeLoadingBool" class="loading-spinner"><span class="spinner-icon"></span></div>
+
+            <ng-container *ngIf="!searchBool">
+                <!-- 최근 검색 -->
+                <div *ngIf="recentList.length > 0" class="cm-auto-complete-result">
+                    <h3>최근 검색</h3>
+                    <ul>
+
+                        <ng-container *ngFor="let item of recentList">
+                            <li *ngIf="item.cityCode && item.countryNameLn; else other" class="recent">
+                                <a (click)="onResultClick($event, 'recent', item)">
+                                    <span class="ko">{{ item.cityNameLn }} ({{ item.cityCode}}),
+                                        {{ item.countryNameLn }}</span>
+                                    <span class="en">{{ item.cityNameEn }} ({{ item.cityCode}}),
+                                        {{ item.countryNameEn }}</span>
+                                </a>
+                            </li>
+
+                            <ng-template #other>
+                                <li class="recent">
+                                    <a (click)="onResultClick($event, 'recent', item)">
+                                        <span class="ko">{{ item.name }}</span>
+                                        <span class="en" *ngIf="item.cityNameEn">{{ item.cityNameEn }}</span>
+                                    </a>
+                                </li>
+                            </ng-template>
+                        </ng-container>
+
+                    </ul>
+                </div>
+                <!-- end 최근 검색 -->
+
+                <!-- 주요도시 목록 -->
+                <div *ngFor="let majorDestination of majorDestinationInfo.list" class="cm-major-city-list">
+
+                    <div class="city-group">
+                        <h4>{{majorDestination.groupName}}</h4>
+                        <div class="city-list">
+                            <div *ngFor="let item of majorDestination.items">
+                                <a (click)="onResultClick($event, 'quick', item)"><span>{{item.destinationNameLn}}</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end 주요도시 목록 -->
+            </ng-container>
+
+            <!-- 검색 결과 -->
+            <div *ngIf="searchBool" class="cm-auto-complete-result">
+                <h3 *ngIf="realTimeSearchCount > 0">검색 결과</h3>
+                <app-error-nodata *ngIf="destinationInfoValLeng === 0;else destinationInfoElse">
+                </app-error-nodata>
+                <ng-template #destinationInfoElse>
+                    <ng-container *ngFor="let destinationItem of destinationInfo">
+
+                        <!-- cities -->
+                        <ng-template [ngIf]="destinationItem.type === destinationType.CITIES" [ngIfElse]="other">
+
+                            <dl *ngFor="let destinationItemVal of destinationItem.val">
+                                <!-- 도시 -->
+                                <dt>
+                                    <a (click)="onResultClick($event, destinationItem.type, destinationItemVal)">
+                                        <span [innerHTML]="getSearchWordHtml(destinationItemVal, destinationItem.searchWord)" class="ko"></span>
+                                        &nbsp;
+                                        <span class="en">{{destinationItemVal.nameEn}}</span>
+                                    </a>
+                                </dt>
+                                <!-- 도시 > 공항-->
+                                <dd *ngFor="let airportItem of destinationItemVal.airports">
+                                    <a (click)="onResultClick($event, 'cityAirport', destinationItemVal, airportItem)">
+                                        <span class="ko">{{ airportItem.airportNameEn }}</span>&nbsp;
+                                        <span class="en">({{ airportItem.airportCode }})</span>
+                                    </a>
+                                </dd>
+                            </dl>
+                        </ng-template>
+
+                        <ng-template #other>
+                            <ul>
+
+                                <li [class]="setClass(destinationItem.type)" *ngFor="let destinationItemVal of destinationItem.val">
+                                    <a (click)="onResultClick($event, destinationItem.type, destinationItemVal)">
+                                        <span [innerHTML]="getSearchWordHtml(destinationItemVal, destinationItem.searchWord)" class="ko"></span>
+                                        &nbsp;
+                                        <span class="en" *ngIf="destinationItemVal.nameEn">{{ destinationItemVal.nameEn }}</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </ng-template>
+
+                        <!-- end cities -->
+                    </ng-container>
+                </ng-template>
+
+            </div>
+            <!-- end 검색 결과 -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div id="wrap" class="p-mypage-flight-extra-svc">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="page-contents-type2">
+            <!-- 반복 -->
+            <div class="round-box service-result">
+                <div class="service-result-title font-lg-b pb15">
+                    <span class="icon lg bag-drop"></span>
+                    <div class="ml10">
+                        <h2 class="font-lg-b mb3">위탁수하물</h2>
+                        <p class="font-xs color-sub5">구간별 위탁수하물을 선택할 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="service-result-item">
+                    <div>ICN - LAX</div>
+                    <div class="selected"><span class="color-sub3">선택안함</span></div>
+                    <div class="button">
+                        <a (click)="onFlightBagDropClick()" class="btn sm light line">선택하기</a>
+                    </div>
+                </div>
+                <div class="service-result-item">
+                    <div>LAX - ICN</div>
+                    <div class="selected">20kg, 30kg</div>
+                    <div class="button">
+                        <a (click)="onFlightBagDropClick()" class="btn sm light line">선택변경</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 반복 -->
+            <div class="round-box service-result">
+                <div class="service-result-title font-lg-b pb15">
+                    <span class="icon lg meal"></span>
+                    <div class="ml10">
+                        <h2 class="font-lg-b mb3">기내식</h2>
+                        <p class="font-xs color-sub5">구간별 기내식을 선택할 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="service-result-item">
+                    <div>ICN - LAX</div>
+                    <div class="selected"><span class="color-sub3">선택안함</span></div>
+                    <div class="button">
+                        <a (click)="onFlightMealClick()" class="btn sm light line">선택하기</a>
+                    </div>
+                </div>
+                <div class="service-result-item">
+                    <div>LAX - ICN</div>
+                    <div class="selected">2개</div>
+                    <div class="button">
+                        <a (click)="onFlightMealClick()" class="btn sm light line">선택변경</a>
+                    </div>
+                </div>
+            </div>
+            <div class="round-box service-result">
+                <div class="service-result-title font-lg-b pb15">
+                    <span class="icon lg seat"></span>
+                    <div class="ml10">
+                        <h2 class="font-lg-b mb3">좌석선택</h2>
+                        <p class="font-xs color-sub5">구간별 좌석을 선택할 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="service-result-item">
+                    <div>ICN - LAX</div>
+                    <div class="selected"><span class="color-sub3">선택안함</span></div>
+                    <div class="button">
+                        <a (click)="onSeatmapClick()" class="btn sm light line">선택하기</a>
+                    </div>
+                </div>
+                <div class="service-result-item">
+                    <div>ICN - LAX</div>
+                    <div class="selected">33D, 33E</div>
+                    <div class="button">
+                        <a (click)="onSeatmapClick()" class="btn sm light line">선택변경</a>
+                    </div>
+                </div>
+                <div class="service-result-item">
+                    <div>LAX - ICN</div>
+                    <div class="selected">33D, 33E</div>
+                    <div class="button">
+                        <a href="#" class="btn sm light color-sub5">변경불가</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

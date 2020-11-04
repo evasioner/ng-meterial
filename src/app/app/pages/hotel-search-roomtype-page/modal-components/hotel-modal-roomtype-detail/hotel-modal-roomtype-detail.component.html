@@ -1,0 +1,52 @@
+<!-- Modal -->
+<div class="modal bg">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>객실정보</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div *ngIf="loadingBool" class="modal-contents">
+        <div class="page-contents-type">
+            <!-- 상단 이미지 영역 -->
+            <div *ngIf="photoList?.length > 0" class="hotel-detail-image">
+                <app-img-view [category]="'hotel'" [urlList]="photoList"
+                    class="m-ngx-slick-carousel hotel-detail-rolling">
+                </app-img-view>
+            </div>
+            <!-- 객실 정보 -->
+            <div class="room-detail-contents">
+                <div class="contents-item">
+                    <div class="room-basic-information">
+                        <ul>
+                            <li class="bed-type">{{roomInfo.roomTypeName}}</li>
+                            <!-- <li class="bed-name">Millennium Biltmore Los Angeles Delux Room</li> -->
+                            <br>
+                        </ul>
+                        <div class="round-box">
+                            <ul class="room-text">
+                                <li><span class="color-sub6 mr10">최대
+                                        인원</span><span>{{roomInfo.occupancy.totalCount}}인</span></li>
+                                <li><span class="color-sub6 mr10">침대 정보</span><span>{{roomInfo.bedTypeName}}</span></li>
+                                <li><span class="color-sub6 mr10">객실 크기</span><span>{{roomInfo.roomSize}}㎡</span></li>
+                                <li *ngIf="wifiBool"><span class="color-sub6 mr10">인터넷</span><span
+                                        class="color-point2">무료 Wi-Fi</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-item" *ngIf="amenities?.length > 0">
+                    <h2 class="contents-title">객실 서비스</h2>
+                    <div class="round-box">
+                        <ul class="room-text">
+                            <li *ngFor="let item of amenities; index as i">{{item.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

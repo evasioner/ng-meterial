@@ -1,0 +1,59 @@
+<div id="wrap">
+
+</div>
+
+<!-- Step Page -->
+<div class="step-loading">
+    <!-- 항공 -->
+    <ng-container [ngSwitch]="step">
+        <div class="title" *ngSwitchCase="'flight-go'">
+            <p>STEP 1</p>
+            <p><strong>가는편</strong><br />항공권을<br />선택해주세요.</p>
+        </div>
+        <!-- 항공 -->
+        <div class="title" *ngSwitchCase="'flight-come'">
+            <p>STEP 1</p>
+            <p><strong>오는편</strong><br />항공권을<br />선택해주세요.</p>
+        </div>
+        <!-- 호텔 -->
+        <div class="title" *ngSwitchCase="'hotel'">
+            <p>STEP 2</p>
+            <p>숙박하실<br /><strong>호텔</strong>을<br />선택해주세요.</p>
+        </div>
+        <!-- 결제 -->
+        <div class="title" *ngSwitchCase="'booking'">
+            <p>STEP 3</p>
+            <p>마지막으로<br /><strong>결제</strong>를 위한 정보를<br />입력해주세요.</p>
+        </div>
+    </ng-container>
+    <div class="step-state">
+        <!-- 각각의 상태일때 .active 추가하고 다른 곳에선 .active 삭제 -->
+        <!-- 항공선택 넘어갈때 .active 추가 -->
+        <div class="step-item active">
+            <div class="balloon">
+                <div class="balloon-icon">
+                    <span class="icon sm flight3"></span>
+                </div>
+            </div>
+            <div class="cate"><span>항공선택</span></div>
+        </div>
+        <!-- 호텔선택 넘어갈때 .active 추가 -->
+        <div class="step-item">
+            <div class="balloon">
+                <div class="balloon-icon">
+                    <span class="icon sm hotel5"></span>
+                </div>
+            </div>
+            <div class="cate"><span>호텔선택</span></div>
+        </div>
+        <!-- 결제로 넘어갈때 .active 추가 -->
+        <div class="step-item">
+            <div class="balloon">
+                <div class="balloon-icon">
+                    <span class="icon sm card3"></span>
+                </div>
+            </div>
+            <div class="cate"><span>결제하기</span></div>
+        </div>
+    </div>
+</div>

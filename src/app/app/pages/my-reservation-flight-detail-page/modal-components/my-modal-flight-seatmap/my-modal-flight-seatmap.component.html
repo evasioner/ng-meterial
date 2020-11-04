@@ -1,0 +1,324 @@
+  <!-- Calendar Modal -->
+  <div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+      <h1>좌석선택</h1>
+      <div class="right">
+        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+      </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="additional-service-top">
+          <p class="mb10"><strong>인천(ICN)</strong><span class="icon xs flight-departure2 ml10 mr10"></span><strong>로스앤젤레스(LAX)</strong></p>
+          <div class="additional-user-group">
+            <div class="scroll-box-list extend">
+              <div class="scroll-item-outer">
+                <!-- 유저 선택 / 기내식 선택 완료 -->
+                <div class="fake-input selected">
+                  <span>1. 홍길동</span>
+                  <strong>31F</strong>
+                </div>
+                <!-- 유저 선택 / 기내식 선택전 -->
+                <div class="fake-input active">
+                  <span>2. 홍길동</span>
+                  <span>선택안함</span>
+                </div>
+                <!-- 유저 미선택 -->
+                <div class="fake-input">
+                  <span>2. 김길동</span>
+                  <span>선택안함</span>
+                </div>
+              </div>
+            </div>
+            <div class="indicator">
+              <span class="active"></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="flight-seatmap">
+          <!-- 1,2층 구분이 있을때만 보여짐 -->
+          <div class="airline-floor">
+            <label class="radio">
+              <input type="radio" class="radio-control-input" checked>
+              <span class="radio-control-text">1층</span>
+            </label>
+            <label class="radio">
+              <input type="radio" class="radio-control-input">
+              <span class="radio-control-text">2층</span>
+            </label>
+          </div>
+  
+          <div class="seat-list">
+            <div class="seat-list-row service">
+              <!--
+                .seat-place : 자리 공간
+                .corridor : 복도
+                .seat-num.top : 열번호
+                .seat-num.right : 행번호
+  
+                .seat.disabled : 선택불가
+                .seat.available : 선택가능
+                .seat.selected : 선택완료
+              -->
+              <div class="col seat-place"></div>
+              <div class="col seat-place"><span class="seat toilet"></span></div>
+              <div class="col seat-place"></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><span class="seat meal"></span></div>
+              <div class="col seat-place"><span class="seat meal"></span></div>
+              <div class="col seat-place"><span class="seat meal"></span></div>
+              <div class="col seat-place"></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"><span class="seat toilet"></span></div>
+              <div class="col seat-num right"></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"><span class="seat toilet"></span></div>
+              <div class="col seat-num right"></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-num top">A</div>
+              <div class="col seat-num top">B</div>
+              <div class="col seat-num top">C</div>
+              <div class="col corridor"></div>
+              <div class="col seat-num top">D</div>
+              <div class="col seat-num top">E</div>
+              <div class="col seat-num top">F</div>
+              <div class="col seat-num top">G</div>
+              <div class="col corridor"></div>
+              <div class="col seat-num top">H</div>
+              <div class="col seat-num top">I</div>
+              <div class="col seat-num top">J</div>
+              <div class="col seat-num right"></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat selected">31F</a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>31</span></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>32</span></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>33</span></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>34</span></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>35</span></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>36</span></div>
+            </div>
+            <div class="seat-list-row service">
+              <div class="col seat-place"></div>
+              <div class="col seat-place"><span class="seat toilet"></span></div>
+              <div class="col seat-place"></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><span class="seat meal"></span></div>
+              <div class="col seat-place"><span class="seat meal"></span></div>
+              <div class="col seat-place"><span class="seat meal"></span></div>
+              <div class="col seat-place"></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"><span class="seat toilet"></span></div>
+              <div class="col seat-num right"></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"></div>
+              <div class="col seat-place"><span class="seat toilet"></span></div>
+              <div class="col seat-num right"></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-num top">A</div>
+              <div class="col seat-num top">B</div>
+              <div class="col seat-num top">C</div>
+              <div class="col corridor"></div>
+              <div class="col seat-num top">D</div>
+              <div class="col seat-num top">E</div>
+              <div class="col seat-num top">F</div>
+              <div class="col seat-num top">G</div>
+              <div class="col corridor"></div>
+              <div class="col seat-num top">H</div>
+              <div class="col seat-num top">I</div>
+              <div class="col seat-num top">J</div>
+              <div class="col seat-num right"></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>37</span></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>38</span></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>39</span></div>
+            </div>
+            <div class="seat-list-row">
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col corridor"></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><a href="#" class="seat available"></a></div>
+              <div class="col seat-place"><span class="seat disabled"></span></div>
+              <div class="col seat-num right"><span>40</span></div>
+            </div>
+          </div>
+  
+          <!-- 하단 버튼 -->
+          <div class="seat-footer-box">
+            <ul class="seat-label">
+              <li><span class="seat available"></span><span>선택가능</span></li>
+              <li><span class="seat selected"></span><span>선택</span></li>
+              <li><span class="seat disabled"></span><span>선택불가</span></li>
+            </ul>
+            <div class="btn-group">
+              <!-- 선택전 -->
+              <a href="#" class="btn lg grey">홍길동님 좌석을 선택해 주세요</a>
+              <!-- 선택후
+              <a href="#" class="btn lg default">선택완료</a>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

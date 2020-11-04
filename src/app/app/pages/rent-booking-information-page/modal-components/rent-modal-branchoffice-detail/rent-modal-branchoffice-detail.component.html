@@ -1,0 +1,19 @@
+<div class="modal">
+    <div class="modal-header">
+        <h1>상세 지도</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <div class="modal-contents full-height">
+        <div id="google-map">
+            <agm-map class="agm-map-area" style="width: 100%; height: calc(100vh - 51px);"
+                     [latitude]="latitude" [longitude]="longitude" [zoom]="18">
+                <agm-marker
+                        [latitude]="latitude" [longitude]="longitude">
+                </agm-marker>
+            </agm-map>
+            <!-- 구글맵 뿌리는 곳 -->
+        </div>
+    </div>
+</div>

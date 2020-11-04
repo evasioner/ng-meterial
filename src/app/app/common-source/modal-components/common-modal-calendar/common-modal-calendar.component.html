@@ -1,0 +1,91 @@
+<!-- Calendar Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <div class="left">
+            <a (click)="onTabClick(0)" class="icon sm common-reload">새로고침</a>
+        </div>
+        <h1>날짜 선택</h1>
+        <div class="right">
+            <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+
+    <!-- modal contents -->
+    <div class="modal-contents" data-target="modalCalendar">
+        <!-- Calendar -->
+        <div *ngIf="loadingBool" class="cm-calendar">
+
+            <!-- 선택 탭 -->
+            <div class="calendar-multi-section">
+
+                <div *ngFor="let tabItem of vm.tabList; index as i;" [ngClass]="{'active' : tabItem.chk}" (click)="onTabClick(i)" class="itinerary">
+                    <ng-template [ngIf]="tabItem.dateVal === null">
+                        <p class="place-holder">{{ tabItem.txtVal }}</p>
+                    </ng-template>
+
+                    <ng-template [ngIf]="tabItem.dateVal !== null">
+                        <p class="text">{{ tabItem.txtVal }}</p>
+                        <p class="date">{{ tabItem.dateVal }}</p>
+                    </ng-template>
+
+                </div>
+
+            </div>
+            <!-- end 선택 탭 -->
+
+            <!-- 요일 표시 -->
+            <div class="week-days">
+                <span *ngFor="let weekItem of vm.weekList; index as i;">{{ weekItem }}</span>
+            </div>
+            <!-- end 요일 표시 -->
+
+            <!-- 달력 반복 영역 -->
+
+            <!-- 월 : monthItem -->
+            <div *ngFor="let monthItem of vm.calendarList; index as i;" class="month" [attr.id]="monthItem.monthId">
+
+                <div class="month-title">
+                    {{ monthItem.year }}. {{ monthItem.month | numberPad:2 }}
+                </div>
+
+                <div class="month-body">
+
+                    <!-- 1주 : weekItem -->
+                    <div *ngFor="let weekItem of monthItem.days" class="weeks">
+
+                        <!-- 일 : dayItem -->
+                        <div *ngFor="let dayItem of weekItem" [ngClass]="dayItem.daysClass" class="days">
+                            <ng-template [ngIf]="dayItem.day">
+                                <a (click)="onDayClick($event, dayItem)" [attr.chk]="false" [ngClass]="dayItem.dayClass" class="day">
+                                    <span>{{ dayItem.day }}</span>
+                                </a>
+                            </ng-template>
+
+                            <ng-template [ngIf]="dayItem.flightAmount">
+                                <span class="text">{{ dayItem.flightAmount }}만</span>
+                            </ng-template>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end 달력 반복 영역 -->
+
+
+            <!-- 날짜 선택 버튼 -->
+            <div class="btn-group pd bg fixed-bottom">
+
+                <ng-template [ngIf]="step !== totStep">
+                    <button class="btn lg grey" role="button">날짜 선택 완료</button>
+                </ng-template>
+
+                <ng-template [ngIf]="step === totStep">
+                    <button (click)="onSubmitClick()" class="btn lg default" role="button">날짜 선택 완료</button>
+                </ng-template>
+
+            </div>
+        </div>
+    </div>
+</div>

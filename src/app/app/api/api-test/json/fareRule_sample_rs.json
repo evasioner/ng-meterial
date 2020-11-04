@@ -1,0 +1,63 @@
+{
+    "serviceCode": "flightBooking",
+    "serviceName": "flight/booking",
+    "succeedYn": true,
+    "transactionSetId": "20191127153128",
+    "warningYn": true,
+    "warnings": [
+        {
+            "warningCode": "ee",
+            "warningMessage": "cc"
+        }
+    ],
+    "result": {
+        "list": [
+            {
+                "cabinClassCode": "W",
+                "cabinClassName": "culpa ea ipsum ",
+                "bookingClassCode": "U",
+                "fareTypeCode": "magna ",
+                "origin": {
+                    "airportCode": "CBG",
+                    "airportNameEn": "deserunt ea ex proident do",
+                    "cityCode": "AEEIM",
+                    "cityCodeIata": "GMB",
+                    "cityNameEn": "laboris",
+                    "countryCode": "BY",
+                    "airportNameLn": "Ut aut",
+                    "cityNameLn": "non eu aliqua",
+                    "stateCode": "QZMB"
+                },
+                "destination": {
+                    "airportCode": "TTE",
+                    "airportNameEn": "officia fugiat laboris",
+                    "cityCode": "XB2C1",
+                    "cityCodeIata": "DVP",
+                    "cityNameEn": "adipisicing",
+                    "countryCode": "TK",
+                    "airportNameLn": "en",
+                    "cityNameLn": "laboris sed",
+                    "stateCode": "IUKOA"
+                },
+                "fareRules": [
+                    {
+                        "ruleTitle": "cupidatat deserunt",
+                        "description": "ullamco id nulla aliqua reprehenderit",
+                        "displayOrder": -5828479
+                    },
+                    {
+                        "ruleTitle": "aliquip ea ex voluptate sed",
+                        "description": "Lorem eu sit",
+                        "displayOrder": -13034452
+                    },
+                    {
+                        "ruleTitle": "laboris",
+                        "description": "consequat incididunt culpa ipsum",
+                        "displayOrder": 85879190
+                    }
+                ],
+                "fareBasisCode": "ex a"
+            }
+        ]
+    }
+}

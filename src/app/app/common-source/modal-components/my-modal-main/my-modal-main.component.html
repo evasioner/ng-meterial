@@ -1,0 +1,130 @@
+<!-- Modal -->
+<!-- 마이페이지 -->
+<!--
+  - 기본 상태는 .cm-mypage
+  - 햄버거 메뉴를 눌렀을때는 .active 추가
+  - 마이 페이지 상단 X 버튼 눌렀을때는 .active 삭제
+-->
+<div class="modal cm-mypage bg active">
+
+    <!-- 로그인 isLogin true -->
+    <div *ngIf="isLogin === true">
+        <div class="modal-header">
+            <div class="modal-header">
+                <a href="#" class="icon header-logo">노랑풍선</a>
+                <div class="right">
+                    <a href="#" class="icon sm alarm2"> </a>
+                    <a href="#" class="icon sm common-close">닫기</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-contents">
+
+
+            <div class="user-state">
+                <div>
+                    <p class="font-lg-b mb5">안녕하세요</p>
+                    <p><strong class="font-xl">박종선 님</strong><span class="icon sm direction right ml5"></span></p>
+                </div>
+                <div class="align-r">
+                    <p class="font-xs">보유 마일리지</p>
+                    <p class="font-lg-b">500,000</p>
+                </div>
+            </div>
+
+
+            <ul class="mypage-summary">
+                <li>
+                    <strong>4</strong>
+                    <span>예약내역</span>
+                </li>
+                <li>
+                    <strong>3</strong>
+                    <span>최근 본 상품</span>
+                </li>
+                <li>
+                    <strong>5</strong>
+                    <span>장바구니</span>
+                </li>
+            </ul>
+
+            <ul class="mypage-menu">
+                <!-- 로그인 하면 예약조회 메뉴 숨김 -->
+                <li><a href="#"><span class="icon sm reservation"></span><strong>예약조회(비회원/제휴사)</strong></a></li>
+                <li><a href="#"><span class="icon sm coupon"></span><strong>쿠폰&amp;할인코드</strong>
+
+                    </a></li>
+                <li><a href="#"><span class="icon sm qna"></span><strong>문의 내역</strong>
+
+                    </a>
+                </li>
+                <li *ngIf="false"><a href="#"><span class="icon sm review"></span><strong>후기 작성</strong></a></li>
+                <li><a href="#"><span class="icon sm customer"></span><strong>고객센터</strong></a></li>
+            </ul>
+
+            <ul class="mypage-menu">
+                <li><a href="#"><span class="icon sm event"></span><strong>이벤트&amp;기획전</strong></a></li>
+                <li><a href="#"><span class="icon sm share"></span><strong>친구초대</strong>
+
+                    </a></li>
+                <li><a href="#"><span class="icon sm seller"></span><strong>판매 및 입점</strong></a></li>
+                <li><a href="#"><span class="icon sm document"></span><strong>이용약관</strong></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end 로그인 isLogin true -->
+
+
+    <!-- 로그인 isLogin false -->
+    <div *ngIf="isLogin === false">
+        <div class="modal-header">
+            <div class="modal-header">
+                <a href="#" class="icon header-logo">노랑풍선</a>
+                <div class="right">
+                    <a href="#" class="icon sm alarm2"></a>
+                    <a href="#" class="icon sm common-close">닫기</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-contents">
+
+            <!-- 로그인 전 -->
+            <div class="user-state">
+                <a href="#">
+                    <p class="font-md-b mb5">할인 쿠폰을 세트로 드릴게요</p>
+                    <p>
+                        <strong class="font-xl">로그인 / 회원가입</strong>
+                        <span class="icon sm direction right ml5"></span>
+                    </p>
+                </a>
+            </div>
+
+            <ul class="mypage-summary">
+                <li>
+                    <strong>3</strong>
+                    <span>최근 본 상품</span>
+                </li>
+                <li>
+                    <strong>5</strong>
+                    <span>장바구니</span>
+                </li>
+            </ul>
+
+            <ul class="mypage-menu">
+                <li><a href="#"><span class="icon sm coupon"></span><strong>쿠폰&amp;할인코드</strong></a></li>
+                <li><a href="#"><span class="icon sm qna"></span><strong>문의 내역</strong></a></li>
+                <li *ngIf="false"><a href="#"><span class="icon sm review"></span><strong>후기 작성</strong></a></li>
+                <li><a href="#"><span class="icon sm customer"></span><strong>고객센터</strong></a></li>
+            </ul>
+
+            <ul class="mypage-menu">
+                <li><a href="#"><span class="icon sm event"></span><strong>이벤트&amp;기획전</strong></a></li>
+                <li><a href="#"><span class="icon sm share"></span><strong>친구초대</strong></a></li>
+                <li><a href="#"><span class="icon sm seller"></span><strong>판매 및 입점</strong></a></li>
+                <li><a href="#"><span class="icon sm document"></span><strong>이용약관</strong></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end 로그인 isLogin false -->
+
+</div>

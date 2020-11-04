@@ -1,0 +1,79 @@
+{
+  "result": {
+    "vendorCurrencyCode": "USD",
+    "equipments": [],
+    "fareTypeDescription": "",
+    "fareTypeCode": "WRLD",
+    "vendorCancelDeadline": "2020-08-13 10:00",
+    "rateDetails": [
+      {
+        "chargeTypeDescription": "Unlimited",
+        "chargeTypeName": "NOTSET",
+        "includedYn": false,
+        "chargeAmount": 0,
+        "chargeTypeCode": "033"
+      },
+      {
+        "chargeTypeDescription": "SLT - SALES TAX ",
+        "chargeTypeName": "NOTSET",
+        "includedYn": false,
+        "chargeAmount": 66.41,
+        "chargeTypeCode": "108"
+      },
+      {
+        "chargeTypeDescription": "VIR - VLF ESTIMATE ",
+        "chargeTypeName": "NOTSET",
+        "includedYn": false,
+        "chargeAmount": 9.99,
+        "chargeTypeCode": "108"
+      },
+      {
+        "chargeTypeName": "NOTSET",
+        "includedYn": false,
+        "chargeAmount": 1,
+        "chargeTypeCode": "NBD"
+      },
+      {
+        "chargeTypeName": "NOTSET",
+        "includedYn": false,
+        "chargeAmount": 699,
+        "chargeTypeCode": "218"
+      }
+    ],
+    "vendorAmountSum": 775.4,
+    "otherRules": [
+      {
+        "ruleTypeName": "NOTSET",
+        "qualifierCode": "MIN",
+        "quantityValue": "Day Unit",
+        "quantityUnit": "3",
+        "operationDays": "1,2,3,4,5,6,7",
+        "ruleTypeCode": "PCK"
+      }
+    ],
+    "baseRateAmount": 699,
+    "taxCoverages": [
+      {
+        "periodTypeCode": "004",
+        "chargeTypeDescription": "IES",
+        "chargeTypeName": "NOTSET",
+        "chargeAmount": 66.41,
+        "chargeTypeCode": "108",
+        "chargeDescription": "SLT - SALES TAX"
+      },
+      {
+        "periodTypeCode": "004",
+        "chargeTypeDescription": "IES",
+        "chargeTypeName": "NOTSET",
+        "chargeAmount": 9.99,
+        "chargeTypeCode": "108",
+        "chargeDescription": "VIR - VLF ESTIMATE"
+      }
+    ],
+    "baseRateTypeCode": "Daily"
+  },
+  "serviceCode": "/rent/rentRule",
+  "transactionSetId": "B79FD8A6DF",
+  "succeedYn": true,
+  "serviceName": "/rent/rentRule"
+}

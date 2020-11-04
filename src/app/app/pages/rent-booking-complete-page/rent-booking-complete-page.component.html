@@ -1,0 +1,131 @@
+<div id="wrap" class="p-rent-booking-complete">
+
+    <!-- header -->
+    <app-rent-header [headerType]="headerType" [headerConfig]="headerConfig"></app-rent-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="page-contents-type2">
+            <div class="contents-box-title mb30">
+                <div class="contents-icon">
+                    <span class="icon-complete"></span>
+                </div>
+                <h2 class="title">예약 요청이 처리되었습니다.</h2>
+            </div>
+            <div class="round-box mb45">
+                <div class="item-group">
+                    <div class="item-row col">
+                        <div class="left"><strong>예약번호</strong></div>
+                        <div class="right"><strong class="font-lg-b">{{resolveData.result.bookingItems[0].bookingItemCode}}</strong></div>
+                    </div>
+                    <!--                    <div class="item-row col mt15">-->
+                    <!--                        <div class="left"><strong>결제마감</strong></div>-->
+                    <!--                        <div class="right"><strong class="font-lg-b color-point2">2019.09.17 17:00까지</strong></div>-->
+                    <!--                    </div>-->
+                </div>
+                <div class="btn-group mt25">
+                    <a (click)="detailLink()" class="btn lg default" role="button">예약 상세내역</a>
+                </div>
+                <div class="btn-group both mt10">
+                    <a class="btn lg line light" role="button" (click)="onShareClick($event)"><i class="icon sm share"></i><span>공유하기</span></a>
+                    <a (click)="listLink()" class="btn lg line light" role="button"><i class="icon sm user"></i><span>마이페이지</span></a>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h3 class="contents-title">간편 여행자 보험 가입</h3>
+                <div class="flex-list">
+                    <div class="insurance-item">
+                        <div class="icon-insurance-type2"></div>
+                        <p class="name">Travel Plus</p>
+                        <p class="price"><strong>140,449</strong> 원</p>
+                    </div>
+                    <div class="insurance-item">
+                        <div class="icon-insurance-type1"></div>
+                        <p class="name">Travel Basic</p>
+                        <p class="price"><strong>69,559</strong> 원</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item">
+                <div class="banner-box">
+                    <img src="/assets/images/temp/@temp-event-banner2.png" alt="" class="w-100">
+                </div>
+            </div>
+            <div class="contents-item">
+                <h3 class="contents-title">비슷한 시기에 로스엔젤레스를<br />여행하는 회원들이 많이 예약한 상품입니다.</h3>
+                <h4 class="contents-sub-text line">최대 27% 할인된 요금으로 액티비티를 즐기세요.</h4>
+                <div class="scroll-box-filter extend">
+                    <!-- 선택된 버튼 -->
+                    <a href="#" class="btn inline md round default shadow">호텔</a>
+                    <!-- 선택안된 기본 상태 버튼 -->
+                    <a href="#" class="btn inline md round line light shadow">액티비티</a>
+                    <a href="#" class="btn inline md round line light shadow">렌터카</a>
+                </div>
+                <div class="scroll-box-list extend">
+                    <!-- 호텔은 .hotel-result-item 반복 -->
+                    <div class="hotel-result-item">
+                        <div class="hotel-image" style="background: url('/assets/images/temp/@temp-hotel-image.png' ) 50% 50% no-repeat; background-size: cover;">
+                        </div>
+                        <div class="hotel-information">
+                            <ul>
+                                <li class="name">헐리우드 히스토릭 호텔</li>
+                                <li class="name2">506 S Grand Ave, Los Angeles, CA 90071 미국</li>
+                                <li class="rate">
+                                    <span class="hotel-rating">
+                                        <span class="icon s4"></span>
+                                        <span class="text">4성급</span>
+                                    </span>
+                                </li>
+                                <li class="review">
+                                    <div class="tripadvisor-review">
+                                        <img src="/assets/images/temp/@temp-tripadvisor.png" alt="" class="tripadvisor">
+                                        <span>(1,958)</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="item-group">
+                                <div class="item-row col">
+                                    <div class="right">
+                                        <strong class="color-point2">375,000</strong><span class="font-xs color-sub5">원</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 액티비티는 .activity-promotion-item.image-type 반복 -->
+                    <div class="activity-promotion-item image-type">
+                        <div class="activity-image" style="background: url('/assets/images/temp/@temp-activity-image3.png' ) 50% 50% no-repeat; background-size: cover;">
+                        </div>
+                        <div class="activity-promotion-item-information">
+                            <div class="item-summary">
+                                <p class="name">LA Photoshoot Session with Professional Photographer</p>
+                                <ul>
+                                    <li class="user">1인</li>
+                                    <li class="time">1시간</li>
+                                </ul>
+                            </div>
+                            <p class="price"><strong>39,900</strong> 원<span class="cancel-label">무료취소</span></p>
+                        </div>
+                    </div>
+                    <!-- 렌터카는 .rsaved-item.popularity-rentalcar 반복 -->
+                    <div class="saved-item popularity-rentalcar">
+                        <div class="rentalcar-image" style="background: url('/assets/images/temp/@temp-rentalcar-image.png') 50% 50% no-repeat; background-size: cover;">
+                        </div>
+                        <div class="rentalcar-item-information">
+                            <div class="name"><img src="/assets/images/temp/@temp-rentalcar-logo.png" alt="" class="rentalcar-logo">Mitsubishi Mirage</div>
+                            <div class="flex-list">
+                                <div><span class="person">4인승</span></div>
+                                <div><span class="door">4도어</span></div>
+                            </div>
+                            <div class="flex-list">
+                                <div><span class="air">에어컨</span></div>
+                                <div><span class="gear">자동 변속</span></div>
+                            </div>
+                            <div class="price">USD 224.93</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

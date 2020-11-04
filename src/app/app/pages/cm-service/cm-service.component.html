@@ -1,0 +1,128 @@
+<body class="bg overflow-none">
+    <!-- Modal -->
+    <div class="modal bg">
+        <!-- modal header -->
+        <div class="modal-header">
+            <h1>주요 서비스</h1>
+            <div class="right">
+                <a href="/main" class="icon sm common-close">닫기</a>
+            </div>
+        </div>
+        <!-- modal contents -->
+        <div class="modal-contents">
+            <div class="page-contents-type3">
+                <div class="main-service">
+                    <div class="category-group">
+                        <h2 class="category-title">항공</h2>
+                        <div class="button-box">
+                            <a href="/flight-main">해외/국내</a>
+                        </div>
+                    </div>
+                    <div class="category-group">
+                        <h2 class="category-title">호텔</h2>
+                        <div class="button-box">
+                            <a href="/hotel-main">해외/국내</a>
+                        </div>
+                    </div>
+                    <div class="category-group">
+                        <h2 class="category-title">액티비티</h2>
+                        <div class="category-toggle-box">
+                            <div class="sub-group">
+                                <!-- .active 토글, .sub-group-title에 .active 추가되면 자동으로 하위 카테고리 보여짐 -->
+                                <a class="sub-group-title" [class.active]="goDetailShow" (click)="onGoDetailShow()">WIFI&amp;SIM 카드</a>
+                                <ul class="sub-category-list">
+                                    <li><a href="#">기차</a></li>
+                                    <li><a href="#">버스</a></li>
+                                    <li><a href="#">지하철/트램</a></li>
+                                    <li><a href="#">배/페리</a></li>
+                                    <li><a href="#">패스&amp;데이티켓</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub-group">
+                                <a class="sub-group-title" [class.active]="goDetailShow2" (click)="onGoDetailShow2()">여행서비스</a>
+                                <ul class="sub-category-list">
+                                    <li><a href="#">라운지</a></li>
+                                    <li><a href="#">통역&amp;비즈니스</a></li>
+                                    <li><a href="#">짐배송&amp;보관</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub-group">
+                                <a class="sub-group-title" [class.active]="goDetailShow3" (click)="onGoDetailShow3()">픽업/샌딩</a>
+                                <ul class="sub-category-list">
+                                    <li><a href="#">호텔픽업/샌딩</a></li>
+                                    <li><a href="#">공항픽업/샌딩</a></li>
+                                    <li><a href="#">전용차량</a></li>
+                                    <li><a href="#">공항이동수단</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub-group">
+                                <a class="sub-group-title" [class.active]="goDetailShow4" (click)="onGoDetailShow4()">티켓/패스</a>
+                                <ul class="sub-category-list">
+                                    <li><a href="#">교통&amp;패스</a></li>
+                                    <li><a href="#">공연</a></li>
+                                    <li><a href="#">입장권</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub-group">
+                                <a class="sub-group-title" [class.active]="goDetailShow5" (click)="onGoDetailShow5()">투어</a>
+                                <ul class="sub-category-list">
+                                    <li><a href="#">가이드 투어</a></li>
+                                    <li><a href="#">교통수단 투어</a></li>
+                                    <li><a href="#">단독 투어</a></li>
+                                    <li><a href="#">호핑 투어</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub-group">
+                                <a class="sub-group-title" [class.active]="goDetailShow6" (click)="onGoDetailShow6()">체험</a>
+                                <ul class="sub-category-list">
+                                    <li><a href="#">실외 액티비티</a></li>
+                                    <li><a href="#">수상 액티비티</a></li>
+                                    <li><a href="#">실내 액티비티</a></li>
+                                    <li><a href="#">스파&amp;마사지</a></li>
+                                </ul>
+                            </div>
+                            <div class="sub-group">
+                                <a class="sub-group-title" [class.active]="goDetailShow7" (click)="onGoDetailShow7()">맛집</a>
+                                <ul class="sub-category-list">
+                                    <li><a href="#">쿠폰</a></li>
+                                    <li><a href="#">맛집투어</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-group">
+                        <h2 class="category-title">렌터카</h2>
+                        <div class="button-box">
+                            <a href="/rent-main">해외/국내</a>
+                        </div>
+                    </div>
+                    <div class="category-group">
+                        <h2 class="category-title">여행편의</h2>
+                        <ul class="button-box2">
+                            <li><a href="#">비자</a></li>
+                            <li><a href="#">여행자 보험</a></li>
+                            <li><a href="#">와이파이</a></li>
+                            <li><a href="#">전용차량</a></li>
+                            <li><a href="#">열차예약</a></li>
+                            <li><a href="#">레스토랑</a></li>
+                            <li><a href="#">외투보관</a></li>
+                            <li><a href="#">여행용품</a></li>
+                            <li><a href="#">짐보관</a></li>
+                            <li><a href="#">유럽열차</a></li>
+                            <li><a href="#">유심</a></li>
+                            <li><a href="#">공항픽업</a></li>
+                            <li><a href="#">라운지</a></li>
+                            <li><a href="#">할인쿠폰</a></li>
+                            <li><a href="#">공항 열차</a></li>
+                            <li><a href="#">애견 호텔</a></li>
+                            <li><a href="#">캐리어 배송</a></li>
+                            <li><a href="#">스냅사진</a></li>
+                            <li><a href="#">환전서비스</a></li>
+                            <li><a href="#">공항주차서비스</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

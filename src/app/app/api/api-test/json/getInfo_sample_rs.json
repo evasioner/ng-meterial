@@ -1,0 +1,70 @@
+{
+    "succeedYn": true,
+    "result": {
+        "user": {
+            "userNo": 100050,
+            "nameLn": "운슈정",
+            "compCode": 110000,
+            "compNameEn": "YBTOUR",
+            "compNameLn": "노랑풍선",
+            "userId": "ysj0826"
+        },
+        "company": {
+            "compCode": 110000,
+            "compNameOfficial": "(주)노랑풍선",
+            "compNameOperation": "노랑풍선",
+            "compNameEn": "YBTOUR",
+            "defaultLanguageCode": "KO",
+            "timeZoneName": "Asia/Seoul",
+            "currencyCode": "KRW"
+        },
+        "salseCountry": {
+            "salesCountryCode": "KR-110000",
+            "countryCode": "KR",
+            "controlCompCode": "110000",
+            "salesCurrencyLimitYn": true,
+            "salesCurrencyDisplayYn": false,
+            "bookableDate": 1,
+            "timeZoneName": "Asia/Seoul",
+            "multiLanguageDisplayYn": true,
+            "lengthUnitCode": "meter",
+            "temperatureUnitCode": "°C",
+            "vatRate": 10
+        },
+        "menuGroups": [{
+            "firstMenuGroupCode": "M02",
+            "firstMenuGroupNameEn": "Products",
+            "firstMenuGroupNameLn": "상품관리",
+            "subMenuGroups": [{
+                "secondMenuGroupCode": "M02-02",
+                "secondMenuGroupNameEn": "Hotel Info",
+                "secondMenuGroupNameLn": "호텔정보관리",
+                "menus": [{
+                    "menuSeq": 123,
+                    "menuNameEn": "hotel chain",
+                    "menuNameLn": "호텔체인관리",
+                    "stationTypeCode": "STB01",
+                    "displayYn": true,
+                    "displayOrder": 1,
+                    "programs": [{
+                        "programSeq": 123,
+                        "programNameEn": "Hotel Chain",
+                        "programNameLn": "호텔 체인",
+                        "programUrl": "/admin/hotel/chain",
+                        "programTypeCode": "V",
+                        "programTypeNameEn": "Page",
+                        "programTypeNameLn": "페이지",
+                        "gridYn": true,
+                        "controlRemark": "abc",
+                        "functions": [{
+                            "functionSeq": 1,
+                            "functionNameEn": "chain code create",
+                            "functionNameLn": "체인 코드 생성",
+                            "controlRemark": "abc"
+                        }]
+                    }]
+                }]
+            }]
+        }]
+    }
+}

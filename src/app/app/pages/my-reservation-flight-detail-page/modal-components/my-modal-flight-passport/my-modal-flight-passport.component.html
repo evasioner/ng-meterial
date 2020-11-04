@@ -1,0 +1,203 @@
+  <!-- Modal -->
+  <div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+      <h1>여권 정보 등록/수정</h1>
+      <div class="right">
+        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+      </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="page-contents-type2">
+          <!-- .round-box 반복 -->
+          <div class="round-box">
+            <div class="accordion2">
+              <!-- .accordion-title 클릭하면 .active 토글 -->
+              <a (click)="toggleClass()" class="accordion-title">
+                <strong class="font-lg-b">성인1. HONG GILDONG  (남)</strong>
+              </a>
+              <!-- .accordion-title에 .active 추가 되면 자동으로 보여짐 (CSS) -->
+              <div class="accordion-body">
+                <div class="traveler-item">
+                  <div class="row-group">
+                    <div class="row mt0">
+                      <h5 class="row-title">여행자 선택</h5>
+                      <div class="select-box line">
+                        <select name="" id="" disabled>
+                          <option value="">홍길동 : HONG / GILDONG</option>
+                          <option value="">옵션2</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">영문 성/이름</h5>
+                      <div class="row col2">
+                        <div class="input line">
+                          <input type="text" placeholder="영문 성" disabled>
+                        </div>
+                        <div class="input line">
+                          <input type="text" placeholder="영문 이름" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">여권번호</h5>
+                      <div class="row">
+                        <div class="input line">
+                          <input type="text" placeholder="여권번호 입력">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">여권만료일</h5>
+                      <div class="row">
+                        <div class="input line">
+                          <input type="number" placeholder="여권만료일 입력(8자리)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">생년월일</h5>
+                      <div class="row">
+                        <div class="input line">
+                          <input type="number" placeholder="생년월일 입력(6자리)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row auto">
+                      <div class="row-title">성별선택</div>
+                      <div>
+                        <label class="radio">
+                          <input type="radio" class="radio-control-input" checked="">
+                          <span class="radio-control-text">남성</span>
+                        </label>
+                        <label class="radio">
+                          <input type="radio" class="radio-control-input">
+                          <span class="radio-control-text">여성</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">국적</h5>
+                      <div class="select-box line">
+                        <select name="" id="">
+                          <option value="">대한민국</option>
+                          <option value="">미국</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">여권 발행국</h5>
+                      <div class="select-box line">
+                        <select name="" id="">
+                          <option value="">대한민국</option>
+                          <option value="">미국</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <button class="btn lg grey" role="button">여권정보 수정</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- .round-box 반복 -->
+          <div class="round-box">
+            <div class="accordion2">
+              <!-- .accordion-title 클릭하면 .active 토글 -->
+              <a href="#" class="accordion-title">
+                <strong class="font-lg-b">성인2. HONG GILDONG  (남)</strong>
+              </a>
+              <!-- .accordion-title에 .active 추가 되면 자동으로 보여짐 (CSS) -->
+              <div class="accordion-body">
+                <div class="traveler-item">
+                  <div class="row-group">
+                    <div class="row mt0">
+                      <h5 class="row-title">여행자 선택</h5>
+                      <div class="select-box line">
+                        <select name="" id="" disabled>
+                          <option value="">홍길동 : HONG / GILDONG</option>
+                          <option value="">옵션2</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">영문 성/이름</h5>
+                      <div class="row col2">
+                        <div class="input line">
+                          <input type="text" placeholder="영문 성" disabled>
+                        </div>
+                        <div class="input line">
+                          <input type="text" placeholder="영문 이름" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">여권번호</h5>
+                      <div class="row">
+                        <div class="input line">
+                          <input type="text" placeholder="여권번호 입력">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">여권만료일</h5>
+                      <div class="row">
+                        <div class="input line">
+                          <input type="number" placeholder="여권만료일 입력(8자리)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">생년월일</h5>
+                      <div class="row">
+                        <div class="input line">
+                          <input type="number" placeholder="생년월일 입력(6자리)">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row auto">
+                      <div class="row-title">성별선택</div>
+                      <div>
+                        <label class="radio">
+                          <input type="radio" class="radio-control-input" checked="">
+                          <span class="radio-control-text">남성</span>
+                        </label>
+                        <label class="radio">
+                          <input type="radio" class="radio-control-input">
+                          <span class="radio-control-text">여성</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">국적</h5>
+                      <div class="select-box line">
+                        <select name="" id="">
+                          <option value="">대한민국</option>
+                          <option value="">미국</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <h5 class="row-title">여권 발행국</h5>
+                      <div class="select-box line">
+                        <select name="" id="">
+                          <option value="">대한민국</option>
+                          <option value="">미국</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <button class="btn lg default" role="button">여권정보 등록</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

@@ -1,0 +1,9 @@
+<!-- Modal -->
+<div class="modal bg2 cm-photo-detail">
+    <div class="modal-title">
+        <div class="count"><strong>{{currentSlide+1}}</strong><span>/</span><span>{{photos.length}}</span></div>
+        <a (click)="onCloseClick($event)" class="icon sm common-close2">닫기</a>
+    </div>
+    <app-img-view [category]="category" [urlList]="photos" [modalPhotoDetail]="true" [(currentValue)]="currentSlide">
+    </app-img-view>
+</div>

@@ -1,0 +1,30 @@
+<div id="wrap" class="p-mypage-faq-list">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="tab-wrap">
+            <div class="tab-header type2 top-blank fixed scroll">
+                <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>전체</span></a>
+                <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>카테고리1</span></a>
+                <a (click)="selectTab(2)" class="tab-header-item" [ngClass]="{'active': tabNo === 2}"><span>카테고리2</span></a>
+                <a (click)="selectTab(3)" class="tab-header-item" [ngClass]="{'active': tabNo === 3}"><span>카테고리3</span></a>
+                <a (click)="selectTab(4)" class="tab-header-item" [ngClass]="{'active': tabNo === 4}"><span>카테고리4</span></a>
+                <a (click)="selectTab(5)" class="tab-header-item" [ngClass]="{'active': tabNo === 5}"><span>카테고리5</span></a>
+            </div>
+            <div class="tab-body">
+
+                <app-faq-list class="contents-item-area"></app-faq-list>
+
+                <div class="tab-item"></div>
+                <div class="tab-item"></div>
+                <div class="tab-item"></div>
+                <div class="tab-item"></div>
+                <div class="tab-item"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>총 결제요금 상세</h1>
+        <div class="right">
+            <a (click)="modalClose()" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="page-contents-type3">
+
+            <div *ngFor="let item of viewModel.flightPirceUserList;" class="item-group line">
+                <div class="item-row col">
+                    <div class="left">
+                        <strong class="color-main2">{{ item.text }}</strong>
+                    </div>
+                    <div class="right">
+                        <strong class="color-point2">{{ item.amount | number}}원*{{ item.count }}</strong>
+                    </div>
+                </div>
+                <div class="item-row col">
+                    <div class="left">항공요금</div>
+                    <div class="right">{{ item.fareAmount| number }}원</div>
+                </div>
+                <div class="item-row col">
+                    <div class="left">세금 및 기타 수수료</div>
+                    <div class="right">{{ item.taxAmount | number }}원</div>
+                </div>
+
+                <div *ngIf="false" class="item-row col">
+                    <div class="left">유류할증료</div>
+                    <div class="right">26,200원</div>
+                </div>
+                <div *ngIf="false" class="item-row col">
+                    <div class="left">제세공과금</div>
+                    <div class="right">69,000원</div>
+                </div>
+                <div *ngIf="false" class="item-row col">
+                    <div class="left">발권수수료</div>
+                    <div class="right">10,000원</div>
+                </div>
+            </div>
+
+            <div class="item-group line">
+                <div class="item-row col">
+                    <div class="left">
+                        <strong class="color-main2">총 결제금액</strong>
+                    </div>
+                    <div class="right">
+                        <strong class="font-lg color-point2">{{ viewModel.totalAmountSum | number }}원</strong>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="text-list mt20 pt20 border-solid-top grey">
+                <li>발권수수료는 발권대행 수수료 입니다. 항공료에 포함되며, 항공권 결제 후 한 번 더 결제가 이루어 집니다. 발권 수수료는 환불되지 않습니다.</li>
+                <li>유류할증료와 재세공과금은 환율변동 및 항공사 사정에 의해 매일 변경되며, 발권 시, 환율에 따라 적용 됩니다.</li>
+            </ul>
+            <div class="btn-group mt20">
+                <a (click)="modalClose()" class="btn lg default" role="button">확인</a>
+            </div>
+        </div>
+    </div>
+</div>

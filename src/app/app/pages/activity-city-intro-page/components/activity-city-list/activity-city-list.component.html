@@ -1,0 +1,29 @@
+<div *ngIf="isBrowser && viewModel.activityList" class="contents-item mg">
+    <h2 class="contents-title">{{ viewModel.cityName}} {{ viewModel.activityType }} 액티비티</h2>
+    <div class="scroll-box-list no-mg extend">
+        <div class="scroll-item-outer">
+
+            <div *ngFor="let item of viewModel.activityList; let index = index" class="activity-popularity-item" (click)="onGoDetailPage($event, index)">
+                <div class="activity-image" [ngStyle]="{'background-image': 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('+ item.photoUrls +')'}">
+                    <span class="category">{{ item.activityTypeName }}</span>
+                </div>
+                <div class="activity-popularity-item-information">
+                    <p class="title">{{ item.activityName }}</p>
+                    <p class="location">
+                        <span class="icon xs location3"></span>
+                        <span>{{ item.activityLocationName }}</span>
+                    </p>
+                    <p class="price">
+                        <strong>{{ item.billingAmount | number }}</strong><span>원 부터</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="view-more-item">
+                <span class="icon sm plus"></span>
+                <p>더보기</p>
+            </div>
+
+        </div>
+    </div>
+</div>

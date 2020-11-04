@@ -1,0 +1,11 @@
+<!-- header -->
+<ng-container [ngSwitch]="headerType">
+    <!-- 일반 페이지 -->
+    <div *ngSwitchCase="'page'" id="header" class="main" appHeaderFixed>
+        <a class="icon header-logo" [innerHTML]="'HEADER.LOGO_TITLE' | translate" (click)="onGoMainClick()"></a><!-- 노랑풍선 -->
+        <h1>{{vm.title}}</h1>
+        <div class="right">
+            <a (click)="onMenuClick($event)" [innerHTML]="'HEADER.MENU_TITLE' | translate" class="icon sm common-menu"></a><!-- 메뉴 -->
+        </div>
+    </div>
+</ng-container>

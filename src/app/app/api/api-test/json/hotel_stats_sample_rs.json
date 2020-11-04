@@ -1,0 +1,14 @@
+{
+	"serviceCode": "hotelStats",
+	"serviceName": "hotel/stats",
+	"succeedYn": true,
+	"transactionSetId": 20191127153128,
+	"result": {
+		"regionOrHotel": "R",
+		"nowViewCount": 15,
+		"viewCount": 1587,
+		"viewPeriod": "1W",
+		"bookingCount": 25,
+		"bookingPeriod": "6M"
+	}
+}

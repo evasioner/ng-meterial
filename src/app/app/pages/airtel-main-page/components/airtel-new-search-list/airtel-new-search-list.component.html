@@ -1,0 +1,36 @@
+<div *ngIf="viewModel.recentList.length > 0" class="contents-item mg">
+    <h2 class="contents-title">최근 검색한 여행지</h2>
+    <div class="scroll-box-list extend no-mg">
+        <div class="scroll-item-outer">
+            <!-- .saved-item 반복 -->
+            <div *ngFor="let item of viewModel.recentList; index as index;" class="saved-item recent-city">
+                <a class="icon sm close" (click)="onDeleteItem($event, index)">삭제</a>
+                <ul (click)="onSearchResult($event, index)">
+                    <li class="flight">
+                        <dl>
+                            <dt>
+                                <span *ngFor="let subItem of item.trip" [class]="subItem.className">
+                                    <ng-container *ngIf="!subItem.className">{{ subItem }}</ng-container>
+                                </span>
+                            </dt>
+                            <dd>{{ item.dateRange }}</dd>
+                            <dd>{{ item.tripType }}, {{ item.travelers }}</dd>
+                        </dl>
+                    </li>
+                    <li class="hotel">
+                        <dl>
+                            <dt>{{ item.hotelName }}</dt>
+                            <dd>{{ item.dateRange }}</dd>
+                            <dd>{{ item.roomList }}</dd>
+                        </dl>
+                    </li>
+                    <li class="clearfix">
+                        <span class="origin-price">1,300,000원</span>
+                        <span class="price">1,250,000원</span>
+                        <span class="gap low">50,000</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

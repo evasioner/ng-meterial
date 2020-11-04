@@ -1,0 +1,26 @@
+<!-- header -->
+<ng-container [ngSwitch]="headerType">
+    <!-- 일반 페이지 -->
+    <div *ngSwitchCase="'page'" id="header" class="main" appHeaderFixed>
+        <a class="icon header-logo">노랑풍선</a>
+        <h1>{{vm.title}}</h1>
+        <div class="right">
+            <a (click)="onMenuClick($event)" class="icon sm common-menu">메뉴</a>
+        </div>
+    </div>
+
+    <!-- 서브 페이지 -->
+    <div *ngSwitchCase="'subPage'" id="header" class="main" appHeaderFixed>
+        <div class="left">
+            <a class="icon sm common-back" [innerHTML]="'HEADER.BACK_TITLE' | translate" (click)="onBackClick()"></a><!-- 뒤로가기 -->
+        </div>
+        <h1>{{  headerConfig.title }}</h1>
+        <!--  <a (click)="headerConfig.step.changeBtnFun()" class="btn-change">변경</a>-->
+        <div class="right">
+            <a (click)="onMenuClick($event)" [innerHTML]="'HEADER.MENU_TITLE' | translate" class="icon sm common-menu"></a><!-- 메뉴 -->
+        </div>
+    </div>
+
+    <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+</ng-container>

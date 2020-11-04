@@ -1,0 +1,96 @@
+<!-- Modal 열릴때 body에 .overflow-none 추가 -->
+<!-- Modal style="z-index: 1200;" -->
+<div class="modal modal-dep-3">
+    <!-- modal header -->
+    <div class="modal-header">
+        <div class="left">
+            <a href="#" class="icon sm common-reload">새로고침</a>
+        </div>
+        <h1>좌석등급 / 인원선택</h1>
+        <div class="right">
+            <a (click)="modalClose()" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <!-- 좌석등급 / 인원선택 modal -->
+        <div class="cm-traveler-option">
+            <!-- 좌석등급 -->
+            <div class="contents-item">
+                <h2 class="contents-title2">좌석등급</h2>
+                <div class="item-group">
+                    <div class="item-row col-wrap">
+                        <!-- 선택전 .line2, 선택후 default -->
+                        <div *ngFor="let class of vm.classList" class="col-wrap-item"><a (click)="onSeatChange(class.classCode, class.classNm)" class="btn lg font-md-b" [ngClass]="vm.cabinClassCode == class.classCode? 'default' : 'line2'">{{class.classNm}}</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title2">탑승인원 <a (click)="onSeatDesc()" class="text-link2"><span class="text">아동 및 유아 예약
+                            안내</span><span class="icon xs information"></span></a></h2>
+                <div class="item-group">
+                    <div class="item-row col">
+                        <div class="left">
+                            <p class="font-md color-main2">성인</p>
+                            <p class="font-md color-sub4 mt5">만12세 이상</p>
+                        </div>
+                        <div class="right">
+                            <!-- 성인은 기본 1 -->
+                            <div class="counter">
+                                <button (click)="onChangeCount('adult','down')" class="counter-control down" role="button">DOWN</button>
+                                <span class="counter-num">{{vm.adultCount}}</span>
+                                <button (click)="onChangeCount('adult','up')" class="counter-control up" role="button">UP</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-row col">
+                        <div class="left">
+                            <p class="font-md color-main2">아동</p>
+                            <p class="font-md color-sub4 mt5">만2세 ~ 12세 미만</p>
+                        </div>
+                        <div class="right">
+                            <!-- 아동은 기본 0 -->
+                            <div class="counter">
+                                <button (click)="onChangeCount('kid','down')" class="counter-control down" role="button">DOWN</button>
+                                <span class="counter-num">{{vm.childCount}}</span>
+                                <button (click)="onChangeCount('kid','up')" class="counter-control up" role="button">UP</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                아동 카운트 1이상일때 .item-row 보여지고 .col-wrap-item 갯수 추가
+                아동 카운트가 0이 되면 .item-row를 숨김
+              -->
+                    <!-- <div class="item-row col-wrap" *ngIf="vm.childCount > 0">
+              <div class="col-wrap-item" *ngFor="let kid of vm.childAges; index as i">
+                <div class="select-box line">
+                  <select required [(ngModel)]="vm.childAges[i].age">
+                    <option value="" selected disabled>아동{{i+1}} 나이 선택</option>
+                    <option [ngValue]="item" *ngFor="let item of vm.childAgeRange">{{item}}</option>
+                  </select>
+  
+                </div>
+              </div>
+            </div> -->
+                    <div class="item-row col">
+                        <div class="left">
+                            <p class="font-md color-main2">유아</p>
+                            <p class="font-md color-sub4 mt5">만2세 미만</p>
+                        </div>
+                        <div class="right">
+                            <!-- 유아은 기본 0 -->
+                            <div class="counter">
+                                <button (click)="onChangeCount('child','down')" class="counter-control down" role="button">DOWN</button>
+                                <span class="counter-num">{{vm.infantCount}}</span>
+                                <button (click)="onChangeCount('child','up')" class="counter-control up" role="button">UP</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group pd bg fixed-bottom">
+                <button (click)="onSubmit()" class="btn lg default" role="button">적용하기</button>
+            </div>
+        </div>
+    </div>
+</div>

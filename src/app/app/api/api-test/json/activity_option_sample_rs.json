@@ -1,0 +1,75 @@
+{
+    "succeedYn": true,
+    "serviceCode": "/activity/option",
+    "serviceName": "/activity/option",
+    "transactionSetId": "1234567890",
+    "result": {
+        "photoUrls": [
+            "https://res.klook.com/images/fl_progressive.lossy,q_65,c_fill,w_375,h_210/w_80,x_15,y_15,g_south_east,l_klook_water/activities/xmdd6z3mggbcexlyicra/DisneylandHongKongticket,disneylandhongkongtickets.jpg"
+        ],
+        "bookableTime": 1,
+        "activityTypeName": "Attractions & Shows",
+        "activityName": "Hong Kong Disneyland Ticket",
+        "refundableYn": true,
+        "serviceCities": [
+            {
+                "cityName": "Macau",
+                "countryCode": "MO",
+                "cityCode": "MOMFM",
+                "countryName": "Macao"
+            }
+        ],
+        "activityCode": "2434",
+        "deliveryTypeName": "­ You can present either a printed or amobile voucher for this activity",
+        "reviewCount": 100,
+        "activityDetail": "",
+        "confirmationDetails": "# Confirmation:\n\n­ You will        receive a confirmation email and voucher instantly after booking\n­ In the event        that you do not receive an email from us, please check your Spam folder or notify us        via email\n\n# Additional Information:\n\n­ Child        Ticket: Age 3­11\n­ Adult Ticket: Age 12­64\n­ Senior Ticket: Age        65+\n\n# Insider Tips:\n \n­ You can get a fastpass at certain        attractions and skip the lines!\n­ For the best discount at Hong Kong Disneyland        restaurants, this great value [meal    voucher](http://www.klook.com/activity/524­disneyland­gourmet­meal­voucher­hong­kong/?neighborhood=4) (not included) gets you one meal and beverage!\n­ For the utmostcomfort and convenience, book your [Hong Kong Disneylandtransfers](https://www.klook.com/activity/802­disneyland­transfers­hong­kong/)\nCheck out this [handy guide](http://www.klook.com/blog/guide­hong­kong­disneyland/)for more Disneyland tips and information",
+        "activityTypeCode": "1",
+        "options": [
+            {
+                "skus": [
+                    {
+                        "min": 0,
+                        "max": 20,
+                        "schedules": [
+                            {
+                                "date": "2020-12-10",
+                                "price": 110.0
+                            },
+                            {
+                                "date": "2020-12-11",
+                                "price": 110.0
+                            }
+                        ],
+                        "title": "Adult (12­64)",
+                        "skuId": 8024340701
+                    },
+                    {
+                        "min": 0,
+                        "max": 99,
+                        "schedules": [
+                            {
+                                "date": "2020-12-10",
+                                "price": 110.0
+                            },
+                            {
+                                "date": "2020-12-11",
+                                "price": 110.0
+                            }
+                        ],
+                        "title": "Child (3­11)",
+                        "skuId": 8024340702
+                    }
+                ],
+                "optionCode": "80243407",
+                "confirmationDetails": "# Confirmation:\n\n­ You will receive aconfirmation email and voucher instantly after booking\n­ In the event that you donot receive an email from us, please check your Spam folder or notify us via email",
+                "refundableYn": true,
+                "optionName": "1­Day Disney E­Ticket (Chinese Version)",
+                "voucherUsage": "Show Mobile or Printed Voucher"
+            }
+        ],
+        "deliveryTypeCode": "-1",
+        "voucherUsage": "­ You can present either a printed or amobile voucher for this activity",
+        "reviewAverage": 4.5
+    }
+}

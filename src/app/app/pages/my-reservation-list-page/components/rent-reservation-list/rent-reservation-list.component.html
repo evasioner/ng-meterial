@@ -1,0 +1,47 @@
+<!-- 렌터카 -->
+<div *ngIf="loadingBool" class="page-contents-type3">
+    <div class="common-list-top">
+        <span>전체 <span class="color-point2">{{totalListCount | number}}</span>건</span>
+        <label class="checkbox small rtl ml-auto">
+            <input (change)="onCheck()" [(ngModel)]="!checkBoxValue" type="checkbox" class="checkbox-control-input">
+            <span class="checkbox-control-text color-sub5">취소 예약 제외</span>
+        </label>
+    </div>
+    <div *ngIf="isBrowser" class="search-results" infiniteScroll [infiniteScrollDistance]="infiniteScrollConfig.distance" [infiniteScrollThrottle]="infiniteScrollConfig.throttle" [fromRoot]="true" (scrolled)="onScroll()">
+        <div *ngFor="let res of cateResult; index as i;" class="round-box reservation-item">
+            <div class="reservation-title">
+                <span class="icon sm rentalcar3"></span>
+                <span class="text">{{res.items[0].bookingStatusName}}</span>
+                <a (click)="goReservationQnaPage()" class="btn-link">문의하기</a>
+            </div>
+            <div class="reservation-summary">
+                <h2 class="product-title">[{{res.categories[0].name}}] [{{res.items[0].rent.vehicleVendorCode}}] {{res.items[0].rent.vehicleVendorName}} </h2>
+                <ul>
+                    <li>
+                        <span>이용일</span>
+                        <span>{{res.items[0].travelFromDate | date:'y.MM.dd'}} - {{res.items[0].travelToDate | date:'y.MM.dd'}}</span>
+                    </li>
+                    <li>
+                        <span>차량인수</span>
+                        <span>{{res.items[0].travelFromDate | date:'y.MM.dd'}} {{res.items[0].rent.pickupTime}} / {{res.items[0].rent.pickupLocationName}}({{res.items[0].rent.vehicleVendorName}})</span>
+                    </li>
+                    <li>
+                        <span>차량반납</span>
+                        <span>{{res.items[0].travelToDate | date:'y.MM.dd'}} {{res.items[0].rent.returnTime}} / {{res.items[0].rent.returnLocationName}}({{res.items[0].rent.vehicleVendorName}})</span>
+                    </li>
+                    <li>
+                        <span>결제금액</span>
+                        <span><strong class="color-point2">{{res.currencyCode}} {{res.items[0].sumAmount | number}}</strong><span class="font-xs ml5">(현재 기준 환율 약 224,000원)</span></span>
+                    </li>
+                </ul>
+                <div class="btn-group basis mt20">
+                    <!-- <ng-container *ngIf="res.items[0].cancellableYn"> -->
+                    <a (click)="goCancelPage(res)" class="btn md grey">예약취소</a>
+                    <!-- </ng-container> -->
+                    <a (click)="goDetailPage(res.items[0].bookingItemCode, 'IC03')" class="btn md default">예약상세</a>
+                </div>
+            </div>
+        </div>
+        <h2>{{lastMessage}}</h2>
+    </div>
+</div>

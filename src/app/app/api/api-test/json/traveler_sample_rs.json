@@ -1,0 +1,27 @@
+{
+	"serviceCode": "hotelWish",
+	"serviceName": "hotel/wish",
+	"succeedYn": true,
+	"transactionSetId": 20191127153128,
+	"result": {
+		"travelers": [
+			{
+				"bookingTravelerCode": "11912281078C1",
+				"travelerUno": 147812,
+				"travelerName": "홍길동",
+				"travelerLastName": "HONG",
+				"travelerFirstName": "GILDONG",
+				"travelerGender": "M",
+				"travelerBirthday": "1980-10-01"
+			},
+			{
+				"bookingTravelerCode": "11912281078C2",
+				"travelerName": "미카엘존손",
+				"travelerLastName": "MICHAEL",
+				"travelerMiddleName": "JUNIOR",
+				"travelerFirstName": "JOHNSON",
+				"travelerGender": "M"
+			}
+		]
+	}
+}

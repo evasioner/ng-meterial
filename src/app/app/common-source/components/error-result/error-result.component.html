@@ -1,0 +1,51 @@
+<div *ngIf="rentError" class="nodata full type2">
+    <div class="nodata-msg">
+        <span class="icon alert2"></span>
+        <p class="text">조건에 맞는 검색 결과가 없습니다.</p>
+        <p class="button-area">
+            <a (click)="onResearch()" class="btn lg default inline">다시 검색</a>
+        </p>
+    </div>
+    <div class="filter-button-group bottom">
+        <!-- 필터가 적용되어 있으면 .active를 추가함 -->
+        <a class="btn-filter" (click)="onFilterClickRent()">
+            <span class="icon xs filter"></span></a>
+        <a class="btn-filter" (click)="onAlignClickRent()">
+            <span class="icon xs align"></span>
+        </a>
+    </div>
+</div>
+<div *ngIf="flightError" class="nodata full type2">
+    <div class="nodata-msg">
+        <span class="icon alert2"></span>
+        <p class="text">조건에 맞는 검색 결과가 없습니다.</p>
+        <p class="button-area">
+            <a (click)="onResearch()" class="btn lg default inline">다시 검색</a>
+        </p>
+    </div>
+    <div class="filter-button-group bottom">
+        <!-- 필터가 적용되어 있으면 .active를 추가함 -->
+        <a class="btn-filter" (click)="onFilterClickFlight()">
+            <span class="icon xs filter"></span></a>
+        <a class="btn-filter" (click)="onAlignClickFlight()">
+            <span class="icon xs align"></span>
+        </a>
+    </div>
+</div>
+<div *ngIf="hotelError" class="nodata full type2">
+    <div class="nodata-msg">
+        <span class="icon alert2"></span>
+        <p class="text">조건에 맞는 검색 결과가 없습니다.</p>
+        <p class="button-area">
+            <a (click)="onResearch()" class="btn lg default inline">다시 검색</a>
+        </p>
+    </div>
+    <div class="filter-button-group bottom">
+        <!-- 필터가 적용되어 있으면 .active를 추가함 -->
+        <a class="btn-filter" (click)="onFilterClickHotel()">
+            <span class="icon xs filter"></span></a>
+        <a class="btn-filter" (click)="onAlignClickHotel()">
+            <span class="icon xs align"></span>
+        </a>
+    </div>
+</div>

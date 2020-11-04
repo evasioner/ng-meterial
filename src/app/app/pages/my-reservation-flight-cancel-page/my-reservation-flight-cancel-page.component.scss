@@ -1,0 +1,27 @@
+/**
+* 페이지 컴포넌트
+* p-{페이지명}
+ */
+.p-cm-reservation-cancel {
+
+    .contents-item-area {
+
+        .contents-item {
+            margin-top: 45px;
+        }
+
+        &:first-child {
+            .contents-item {
+                margin-top: 0px;
+            }
+        }
+    }
+
+    .m-ngx-bootstrap-tabs.tab-container .nav.nav-tabs .nav-link.active::after {
+        left: 0;
+        right: 0;
+        background: #ffc72c;
+        transition: left .2s ease-in, right .2s ease-in, background .2s linear;
+    }
+
+}

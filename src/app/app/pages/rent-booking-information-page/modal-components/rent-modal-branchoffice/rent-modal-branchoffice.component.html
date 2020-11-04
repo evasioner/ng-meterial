@@ -1,0 +1,60 @@
+<div class="modal bg">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>지점 정보</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="page-contents-type">
+            <div class="rentalcar-branchoffice">
+                <div class="google-map-wrap">
+                    <!-- 구글 맵 들어가는 자리 -->
+                    <div id="google-map">
+                        <agm-map class="agm-map-area" style="width: 100%; height: 60vw;" [latitude]="latitude" [longitude]="longitude" [zoom]="18">
+                            <agm-marker [latitude]="latitude" [longitude]="longitude">
+                            </agm-marker>
+                        </agm-map>
+                        <!-- 구글맵 뿌리는 곳 -->
+                    </div>
+                    <a (click)="onLocationClick($event)" class="btn-map">지도보기</a>
+                </div>
+                <div class="branchoffice-detail" style="margin-top: 12px;">
+                    <h2 class="name"><span class="rentalcar-logo">
+                            <img [src]="'/assets/images/car/' + vehicleVendorCode + '.png'" alt="" class=" rentalcar-logo">
+                        </span>
+                        <strong>{{vehicleName}}</strong>
+                    </h2>
+                    <div class="round-box">
+                        <ul>
+                            <li>
+                                <h3 class="font-lg-b mb10">주소</h3>
+                                <p class="color-sub6 lh140">{{address}}</p>
+                            </li>
+                            <li *ngIf="false">
+                                <h3 class="font-lg-b mb10">연락처</h3>
+                                <p class="mb5"><strong class="mr10">전화</strong><a href="tel:877-822-3872" class="color-sub6">877-822-3872</a></p>
+                                <p><strong class="mr10">팩스</strong><span class="color-sub6">+13106597597</span></p>
+                            </li>
+                            <li>
+                                <h3 class="font-lg-b mb10">영업시간</h3>
+                                <ul>
+
+                                    <li *ngFor="let openningItem of openningHours">
+                                        <span>{{openningItem.dayValue | weekEnToKr}}</span>
+                                        <span class="color-sub6">{{openningItem.fromTime | time24to12}} -
+                                            {{openningItem.toTime | time24to12}}</span>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

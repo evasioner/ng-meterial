@@ -1,0 +1,86 @@
+<!-- footer -->
+<div id="footer" class="footer">
+    <h3 class="blind_ir">유틸리티 메뉴</h3>
+    <div class="util_area">
+        <ng-container *ngFor="let item of viewModel.utilMenuList">
+            <a *ngIf="item.view" (click)="goSelectMenu($event, item)">{{ item.text }}</a>
+            <a *ngIf="item.link" [attr.href]="item.link">{{ item.text }}</a>
+        </ng-container>
+    </div>
+    <h3 class="blind_ir">SNS 연결</h3>
+    <div class="sns_area">
+        <a *ngFor="let item of viewModel.ybSNSList" [attr.href]="item.link" [class]="item.className" [attr.target]="item.target">{{ item.text }}</a>
+    </div>
+    <h3>노랑풍선 앱 다운로드</h3>
+    <div class="app_area">
+        <button type="button" class="app_travel">여행</button>
+        <button type="button" class="app_air">항공권</button>
+        <button type="button" class="app_hotel">호텔</button>
+    </div>
+    <h3>대표번호</h3>
+    <div class="tel_area">
+        <ul class="article_list inline">
+            <li>
+                <span class="tit">여행/호텔 상담</span>
+                <span class="txt"><a href="tel:1544-2288">1544-2288</a></span>
+            </li>
+            <li>
+                <span class="tit">부산지사</span>
+                <span class="txt"><a href="tel:051-710-7744">051-710-7744</a></span>
+            </li>
+            <li>
+                <span class="tit">항공권 상담</span>
+                <span class="txt"><a href="tel:1644-3399">1644-3399</a></span>
+            </li>
+        </ul>
+        <a [attr.href]="viewModel.ybUrl + '/cs/arsGuide.yb'" class="btn_wit">지역별 직통 상담 번호 안내</a>
+    </div>
+    <h3>상담시간 안내</h3>
+    <ul class="time_guide">
+        <li>
+            <strong class="tit">여행</strong>
+            <span class="stit">평일</span><span class="txt">오전 9시 ~ 오후 6시 (토,일요일 및 공휴일 휴무)</span>
+            <br>
+        </li>
+        <li>
+            <strong class="tit">호텔/항공권</strong>
+            <span class="stit">평일</span>
+            <span class="txt">오전 9시 ~ 오후 6시 (토,일요일 및 공휴일 휴무)<br>* 해외항공권 취소/변경/환불 업무는 평일 오후 5시까지</span>
+        </li>
+    </ul>
+    <div class="section company_info">
+        <h3 class="blind_ir">노랑풍선 정보안내 및 약관</h3>
+        <div class="clause_area">
+            <a *ngFor="let item of viewModel.ybNavList" [attr.href]="item.link" [attr.target]="item.target">{{ item.text }}</a>
+        </div>
+        <em class="logo_kosdaq"><img src="/assets/images/common/global/logo_kodaq.png" alt="KOSDAQ 코스닥 상장법인"></em>
+        <!-- 노랑풍선 사업자 정보 누를때 마다 .tit_company에 .active 토글 -->
+        <h3 class="tit_company" [class.active]="viewModel.detailShow"><a (click)="viewModel.detailShow = !viewModel.detailShow">(주)노랑풍선 사업자 정보</a></h3>
+        <div class="company_area">
+            <ul>
+                <li>
+                    <span>대표이사 고재경, 최명일</span>
+                    <span>서울특별시 중구 수표로 31, 노랑풍선빌딩</span>
+                </li>
+                <li>사업자등록번호 104-81-64440</li>
+                <li>관광사업자등록증번호 제2006-000003호 </li>
+                <li>통신판매업신고번호 제2008-서울중구-0278
+                    <span class="txt_link">
+                        <a href="http://www.ftc.go.kr/www/bizCommList.do?key=232" target="_blank">사업자정보확인</a>
+                    </span>
+                </li>
+                <li>
+                    <span>대표전화 <a href="tel:1544-2288">1544-2288</a></span>
+                    <span class="txt_link">이메일 <a href="mailto:master@ybtour.com">master@ybtour.com</a></span>
+                </li>
+            </ul>
+            <p>영업배상책임보험가입 총 20억원, 한국관광협회중앙회 여행공제회 공제영업보증가입 10억원, 공제기획여행보증가입 5억원</p>
+            <h3 class="blind_ir">노랑풍선 지사 정보</h3>
+            <ul>
+                <li>[부산지사] 사업자등록번호 605-85-38384</li>
+                <li>부산광역시 진구 중앙대로 708 부산 파이낸스센터 13층</li>
+            </ul>
+        </div>
+        <p class="copyright">©YBTOUR., All Rights Reserved.</p>
+    </div>
+</div>

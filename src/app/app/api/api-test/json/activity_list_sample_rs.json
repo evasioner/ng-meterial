@@ -1,0 +1,105 @@
+{
+    "succeedYn": true,
+    "serviceCode": "/activity/list",
+    "serviceName": "/activity/list",
+    "transactionSetId": "1234567890",
+    "result": {
+        "forFilter": {
+            "totalActivityCount": 2,
+            "amount": {
+                "lowestAmount": 110.0,
+                "highestAmount": 110.0
+            },
+            "types": [
+                {
+                    "code": "1",
+                    "name": "Attractions & Shows",
+                    "count": 2
+                }
+            ],
+            "continent": [
+                {
+                    "code": "CN",
+                    "name": "China",
+                    "count": 2,
+                    "countries": [
+                        {
+                            "code": "MO",
+                            "name": "Macao",
+                            "count": 2,
+                            "cities": [
+                                {
+                                    "code": "MOMFM",
+                                    "name": "Macau",
+                                    "count": 2
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "filterRecommend": {
+            }
+        },
+        "activities": [
+            {
+                "activityIndex": 1,
+                "activityCode": "2434",
+                "activityName": "Hong Kong Disneyland Ticket",
+                "activityTypeCode": "1",
+                "activityTypeName": "Attractions & Shows",
+                "billingAmount": 110.0,
+                "billingSumAmount": 110.0,
+                "billingTaxAmount": 0.0,
+                "bookableTime": 1,
+                "currencyCode": "KRW",
+                "deliveryTypeCode": "-1",
+                "deliveryTypeName": "\u00AD You can present either a printed or a mobilevoucher for this activity in exchange for physical tickets at one of the collection points\n\u00AD Kindly allow sufficient time to facilitate ticket collection on the dateof visit",
+                "grade": "",
+                "photoUrls": [
+                    "https://res.klook.com/images/fl_progressive.lossy,q_65,c_fill,w_375,h_210/w_80,x_15,y_15,g_south_east,l_klook_water/activities/xmdd6z3mggbcexlyicra/DisneylandHongKongticket,disneylandhongkongtickets.jpg"
+                ],
+                "reviewAverage": 4.5,
+                "reviewCount": 100,
+                "serviceCity": [
+                    {
+                        "cityCode": "MOMFM",
+                        "cityName": "Macau",
+                        "countryCode": "MO",
+                        "countryName": "Macao"
+                    }
+                ],
+                "wishedYn": false
+            },
+            {
+                "activityIndex": 2,
+                "activityCode": "2434",
+                "activityName": "Hong Kong Disneyland Ticket",
+                "activityTypeCode": "1",
+                "activityTypeName": "Attractions & Shows",
+                "billingAmount": 110.0,
+                "billingSumAmount": 110.0,
+                "billingTaxAmount": 0.0,
+                "bookableTime": 1,
+                "currencyCode": "KRW",
+                "deliveryTypeCode": "-1",
+                "deliveryTypeName": "\u00AD You can present either a printed or a mobilevoucher for this activity in exchange for physical tickets at one of the collection points\n\u00AD Kindly allow sufficient time to facilitate ticket collection on the dateof visit",
+                "grade": "",
+                "photoUrls": [
+                    "https://res.klook.com/images/fl_progressive.lossy,q_65,c_fill,w_375,h_210/w_80,x_15,y_15,g_south_east,l_klook_water/activities/xmdd6z3mggbcexlyicra/DisneylandHongKongticket,disneylandhongkongtickets.jpg"
+                ],
+                "reviewAverage": 4.5,
+                "reviewCount": 100,
+                "serviceCity": [
+                    {
+                        "cityCode": "MOMFM",
+                        "cityName": "Macau",
+                        "countryCode": "MO",
+                        "countryName": "Macao"
+                    }
+                ],
+                "wishedYn": true
+            }
+        ]
+    }
+}

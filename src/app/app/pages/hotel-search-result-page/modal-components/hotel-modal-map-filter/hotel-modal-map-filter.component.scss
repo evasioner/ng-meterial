@@ -1,0 +1,15 @@
+.m-hotel-map {
+
+    agm-map {
+        display:block;
+        position: relative;
+        height:100%;
+        width:100%;
+    }
+
+    .point {
+        display: flex;
+        position: relative;
+    }
+
+}

@@ -1,0 +1,32 @@
+<!-- Modal 열릴때 body에 .overflow-none 추가 -->
+
+<body class="bg overflow-none">
+    <div id="wrap">
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal bg">
+        <!-- modal header -->
+        <div class="modal-header">
+            <h1>작성완료</h1>
+            <div class="right">
+                <a href="#" class="icon sm common-close">닫기</a>
+            </div>
+        </div>
+        <!-- modal contents -->
+        <div class="modal-contents full-height fixed-btn-footer">
+            <div class="cm-review-complete">
+                <div class="complete-msg">
+                    <span class="icon-point"></span>
+                    <h2><span>2,000P</span><strong>적립 완료!</strong></h2>
+                    <p>김노랑님의 즐거운 다음 여행을 위해<br>포인트를 적립해 드립니다.</p>
+                </div>
+                <div class="btn-group both pd fixed-bottom">
+                    <a (click)="reviewDetail()" class="btn lg dark">내 상품평 보기</a>
+                    <a (click)="myReviewList()" class="btn lg default">마이페이지</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

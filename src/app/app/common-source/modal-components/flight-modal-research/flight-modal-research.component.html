@@ -1,0 +1,269 @@
+<!-- Modal -->
+<div class="modal-top">
+    <div class="modal-top-inner">
+        <!-- modal header -->
+        <div class="modal-top-header">
+            <h1>검색조건 변경</h1>
+            <div class="right">
+                <a (click)="modalClose()" class="icon sm common-close">닫기</a>
+            </div>
+        </div>
+
+        <!-- modal contents -->
+        <div class="modal-top-contents">
+            <div class="tab-wrap">
+                <div class="tab-header type1 mini mb15">
+                    <ng-container *ngFor="let ticket of tripType">
+                        <a (click)="onTicketType(ticket.code)" class="tab-header-item" [ngClass]="vm.tripTypeCode == ticket.code ? 'active' : '' "><span>{{ticket.name}}</span></a>
+                    </ng-container>
+                </div>
+
+                <form [formGroup]="mainForm" (ngSubmit)="onSubmit()" #f="ngForm">
+                    <div class="tab-body">
+                        <!-- 왕복 -->
+                        <div class="tab-item" [class.active]="vm.tripTypeCode == 'RT'">
+                            <div class="flight-search">
+                                <div class="row-group">
+                                    <div class="row">
+                                        <div class="city-select roundtrip">
+                                            <div class="city-select-item shadow">
+                                                <a (click)="onOrigin($event)" class="box" [class.valid-error]="!(vm.trip.destination[0].origin.val || vm.trip.destination[0].origin.name) && f.submitted">
+                                                    <p>
+                                                        <span class="city-code">{{vm.trip.destination[0].origin.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[0].origin.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[0].origin.val == ''" class="place-holder">출발지</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onDestination($event)" class="box" [class.valid-error]="!(vm.trip.destination[0].dest.val || vm.trip.destination[0].dest.name) && f.submitted">
+                                                    <p>
+                                                        <!-- 도시 선택 후 텍스트 -->
+                                                        <span class="city-code">{{vm.trip.destination[0].dest.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[0].dest.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[0].dest.val == ''" class="place-holder">도착지</span>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <a (click)="onChangeDest(vm.trip.destination[0])" class="btn-change"><span class="icon sm roundtrip2">변경</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div (click)="onCalendar()" class="input shadow no-pd">
+                                            <span class="icon sm calendar"></span>
+                                            <input type="text" [class.valid-error]="!vm.trip.destination[0].dateRange && f.submitted" [value]="vm.trip.destination[0].dateRange" placeholder="여행날짜를 선택해 주세요" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div (click)="onSeat()" class="input shadow no-pd">
+                                            <span class="icon sm user"></span>
+                                            <input type="text" [class.valid-error]="!vm.travelerStore.cabinClassTxt && f.submitted" [value]="vm.travelerStore.cabinClassTxt" placeholder="좌석등급, 인원 수를 선택해주세요" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row mt15">
+                                        <label class="checkbox">
+                                            <input type="checkbox" class="checkbox-control-input" [checked]="vm.nonStop" (change)="onNonstop($event)">
+                                            <span class="checkbox-control-text">항공 직항만</span>
+                                        </label>
+                                    </div>
+                                    <div class="row mt20">
+                                        <button class="btn lg default" role="button">검색</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 편도 -->
+                        <div class="tab-item" [class.active]="vm.tripTypeCode == 'OW'">
+                            <div class="flight-search">
+                                <div class="row-group">
+                                    <div class="row">
+                                        <div class="city-select oneway">
+                                            <div class="city-select-item shadow">
+                                                <a (click)="onOrigin($event)" class="box" [class.valid-error]="!(vm.trip.destination[0].origin.val || vm.trip.destination[0].origin.name) && f.submitted">
+                                                    <p>
+                                                        <!-- 도시 선택 후 텍스트 -->
+                                                        <span class="city-code">{{vm.trip.destination[0].origin.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[0].origin.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[0].origin.val == ''" class="place-holder">출발지</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onDestination($event)" class="box" [class.valid-error]="!(vm.trip.destination[0].dest.val || vm.trip.destination[0].dest.name) && f.submitted">
+                                                    <p>
+                                                        <!-- 도시 선택 후 텍스트 -->
+                                                        <span class="city-code">{{vm.trip.destination[0].dest.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[0].dest.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[0].dest.val == ''" class="place-holder">도착지</span>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <a (click)="onChangeDest(vm.trip.destination[0])" class="btn-change"><span class="icon sm departure2">변경</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div (click)="onCalendar()" class="input shadow no-pd">
+                                            <span class="icon sm calendar"></span>
+                                            <input type="text" [class.valid-error]="!vm.trip.destination[0].date && f.submitted" [value]="(vm.trip.destination[0].date | amDateFormat:'MM.DD (ddd)')" placeholder="여행날짜를 선택해 주세요" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div (click)="onSeat()" class="input shadow no-pd">
+                                            <span class="icon sm user"></span>
+                                            <input type="text" [class.valid-error]="!vm.travelerStore.cabinClassTxt && f.submitted" [value]="vm.travelerStore.cabinClassTxt" placeholder="좌석등급, 인원 수를 선택해주세요" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row mt15">
+                                        <label class="checkbox">
+                                            <input type="checkbox" class="checkbox-control-input" [checked]="vm.nonStop" (change)="onNonstop($event)">
+                                            <span class="checkbox-control-text">항공 직항만</span>
+                                        </label>
+                                    </div>
+                                    <div class="row mt20">
+                                        <button class="btn lg default" role="button">검색</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 다구간 -->
+                        <div class="tab-item active" *ngIf="vm.tripTypeCode == 'MD'">
+                            <div class="flight-search">
+                                <div class="row-group">
+                                    <div class="row">
+                                        <div class="city-select multi shadow">
+                                            <div class="city-select-item">
+                                                <a (click)="onOrigin(0)" class="box" [class.valid-error]="!(vm.trip.destination[0].origin.val || vm.trip.destination[0].origin.name) && f.submitted">
+                                                    <p>
+                                                        <span class="city-code">{{vm.trip.destination[0].origin.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[0].origin.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span class="place-holder">{{vm.trip.destination[0].origin.destPlaceholder}}</span>
+                                                        <span *ngIf="vm.trip.destination[0].origin.val == ''" class="place-holder">출발지</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onDestination(0)" class="box" [class.valid-error]="!(vm.trip.destination[0].dest.val || vm.trip.destination[0].dest.name) && f.submitted">
+                                                    <p>
+                                                        <!-- 도시 선택 후 텍스트 -->
+                                                        <span class="city-code">{{vm.trip.destination[0].dest.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[0].dest.name}}</span>
+
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span class="place-holder">{{vm.trip.destination[0].dest.destPlaceholder}}</span>
+                                                        <span *ngIf="vm.trip.destination[0].dest.val == ''" class="place-holder">도착지</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onCalendar(0)" class="box" [class.valid-error]="!vm.trip.destination[0].date && f.submitted">
+                                                    <p>
+                                                        <!-- 달력 선택 후 텍스트 -->
+                                                        <span class="date">{{vm.trip.destination[0].date | amDateFormat:'MM.DD'}}
+                                                            <ng-container *ngIf="vm.trip.destination[0].date != ''">
+                                                                <br>
+                                                                {{vm.trip.destination[0].date | amDateFormat:'(ddd)'}}
+                                                            </ng-container>
+                                                        </span>
+                                                        <!-- 달력 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[0].date == ''" class="place-holder">탑승일</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onChangeDest(vm.trip.destination[0])" class="btn-change"><span class="icon sm departure2">변경</span></a>
+                                            </div>
+                                            <div class="city-select-item">
+                                                <a (click)="onOrigin(1)" class="box" [class.valid-error]="!(vm.trip.destination[1].origin.val || vm.trip.destination[1].origin.name) && f.submitted">
+                                                    <p>
+                                                        <span class="city-code">{{vm.trip.destination[1].origin.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[1].origin.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[1].origin.val == ''" class="place-holder">출발지</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onDestination(1)" class="box" [class.valid-error]="!(vm.trip.destination[1].dest.val || vm.trip.destination[1].dest.name) && f.submitted">
+                                                    <p>
+                                                        <!-- 도시 선택 후 텍스트 -->
+                                                        <span class="city-code">{{vm.trip.destination[1].dest.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[1].dest.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[1].dest.val == ''" class="place-holder">도착지</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onCalendar(1)" class="box" [class.valid-error]="!vm.trip.destination[1].date && f.submitted">
+                                                    <p>
+                                                        <!-- 달력 선택 후 텍스트 -->
+                                                        <span class="date">{{vm.trip.destination[1].date | amDateFormat:'MM.DD'}}
+                                                            <ng-container *ngIf="vm.trip.destination[1].date != ''">
+                                                                <br>
+                                                                {{vm.trip.destination[1].date | amDateFormat:'(ddd)'}}
+                                                            </ng-container>
+                                                        </span>
+                                                        <!-- 달력 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[1].date == ''" class="place-holder">탑승일</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onChangeDest(vm.trip.destination[1])" class="btn-change"><span class="icon sm departure2">변경</span></a>
+                                            </div>
+                                            <div class="city-select-item" *ngFor="let item of vm.trip.destination | slice:2; index as i ">
+                                                <a (click)="onOrigin(i+2)" class="box" [class.valid-error]="!(vm.trip.destination[i+2].origin.val || vm.trip.destination[i+2].origin.name) && f.submitted">
+                                                    <p>
+                                                        <span class="city-code">{{vm.trip.destination[i+2].origin.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[i+2].origin.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[i+2].origin.val == ''" class="place-holder">출발지</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onDestination(i+2)" class="box" [class.valid-error]="!(vm.trip.destination[i+2].dest.val || vm.trip.destination[i+2].dest.name) && f.submitted">
+                                                    <p>
+                                                        <!-- 도시 선택 후 텍스트 -->
+                                                        <span class="city-code">{{vm.trip.destination[i+2].dest.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[i+2].dest.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[i+2].dest.val == ''" class="place-holder">도착지</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onCalendar(i+2)" class="box" [class.valid-error]="!vm.trip.destination[i+2].date && f.submitted">
+                                                    <p>
+                                                        <!-- 달력 선택 후 텍스트 -->
+                                                        <span class="date">{{vm.trip.destination[i+2].date | amDateFormat:'MM.DD'}}
+                                                            <ng-container *ngIf="vm.trip.destination[i+2].date != ''">
+                                                                <br>
+                                                                {{vm.trip.destination[i+2].date | amDateFormat:'(ddd)'}}
+                                                            </ng-container>
+                                                        </span>
+                                                        <!-- 달력 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[i+2].date == ''" class="place-holder">탑승일</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onChangeDest(vm.trip.destination[i+2])" class="btn-change"><span class="icon sm departure2">변경</span></a>
+                                                <a (click)="onDelete(i)" class="btn-delete"><span class="icon xs close2">삭제</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt20" *ngIf="this.vm.trip.destination.length !==4">
+                                        <button type="button" (click)="onAdd()" class="btn lg dash-line" role="button"><span class="icon sm plus3"></span><span>여정추가</span></button>
+                                    </div>
+                                    <div class="row">
+                                        <div (click)="onSeat()" class="input shadow no-pd">
+                                            <span class="icon sm user"></span>
+                                            <input type="text" readonly [value]="this.vm.travelerStore.cabinClassTxt" placeholder="좌석등급, 인원 수를 선택해주세요">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="checkbox">
+                                            <input type="checkbox" class="checkbox-control-input" [checked]="vm.nonStop" (change)="onNonstop($event)">
+                                            <span class="checkbox-control-text">항공 직항만</span>
+                                        </label>
+                                    </div>
+                                    <div class="row mt20">
+                                        <button class="btn lg default" role="button">검색</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="is-modal-dep-2">
+  <router-outlet></router-outlet>
+</div> -->

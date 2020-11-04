@@ -1,0 +1,28 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.p-sample {
+    @import "./style/reset";
+
+    font-size: 14px;
+    margin: 20px 0px 10px 0px;
+
+
+    .m-flex-table {
+        background-color: #fff;
+
+        .m-flex-table-container .row {
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .m-flex-table-container .row .col {
+            padding: 10px;
+        }
+    }
+
+    .m-agm {
+        .agm-map-area {
+            width: 100%;
+            height: 500px;
+        }
+    }
+}

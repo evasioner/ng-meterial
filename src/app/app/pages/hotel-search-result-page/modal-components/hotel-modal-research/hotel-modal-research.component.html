@@ -1,0 +1,51 @@
+<!-- Modal -->
+<div class="modal-top">
+    <div class="modal-top-inner">
+        <!-- modal header -->
+        <div class="modal-top-header">
+            <h1>검색조건 변경</h1>
+            <div class="right">
+                <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+            </div>
+        </div>
+        <!-- modal contents -->
+        <div class="modal-top-contents">
+            <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate>
+                <div class="row-group">
+                    <div class="row">
+                        <div (click)="onHotelCity()" class="input shadow no-pd">
+                            <span class="icon sm location"></span>
+                            <input type="text" readonly placeholder="도시, 호텔, 랜드마크 등을 검색하세요" [value]="vm.hotelCity.name"
+                                [formControlName]="'hotelCityName'">
+                        </div>
+                    </div>
+                    <div (click)="onDateClick()" class="row">
+                        <div class="input shadow no-pd">
+                            <span class="icon sm calendar"></span>
+                            <input type="text" placeholder="여행날짜를 선택해 주세요" readonly [value]="vm.checkDate.inOut"
+                                [formControlName]="'checkInOutDate'">
+                        </div>
+                    </div>
+                    <div (click)="onHotelTravelerOption()" class="row">
+                        <div class="input shadow no-pd">
+                            <span class="icon sm user"></span>
+                            <input type="text" placeholder="객실 수, 인원 수를 선택해주세요" readonly [value]="vm.travelerInfo"
+                                [formControlName]="'travelerInfo'">
+                        </div>
+                    </div>
+                    <div (click)="onHotelDetailOption()" class="row">
+                        <div class="input shadow no-pd">
+                            <span class="icon sm option"></span>
+                            <input type="text" placeholder="호텔 등급, 요금, 평점을 선택해주세요" readonly [value]="vm.detailInfo"
+                                [formControlName]="'detailInfo'">
+                        </div>
+                    </div>
+                    <!-- 숙박할 도시, 일정 다름 체크시 보이는 영역 끝 -->
+                    <div class="row mt20">
+                        <button class="btn lg default" role="button">검색</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

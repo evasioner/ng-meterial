@@ -1,0 +1,143 @@
+{
+    "serviceCode": "aliqua reprehenderit nostrud sunt",
+    "serviceName": "deserunt in id c",
+    "succeedYn": false,
+    "transactionSetId": "SM8BMC7IB1THESY",
+    "searchId": "YYeLuDUDyZYpxIYS",
+    "warningYn": false,
+    "warnings": [
+        {
+            "warningCode": "est tempor",
+            "warningMessage": "mollit ut"
+        },
+        {
+            "warningCode": "commodo nulla laborum nisi tempor",
+            "warningMessage": "sed culpa dolore eiusmod do"
+        }
+    ],
+    "result": {
+        "itineraries": [
+            {
+                "itineraryIndex": 75383238,
+                "itineraryNo": 1,
+                "totalDuration": 12912381,
+                "totalFlyingMinutes": -53909971,
+                "totalGroundMinutes": 64932946,
+                "onewayYn": false,
+                "segments": [
+                    {
+                        "segmentNo": 1,
+                        "flyingMinutes": 44,
+                        "availableQuantity": 2,
+                        "flyingMile": 65861364,
+                        "equipmentCode": "a",
+                        "equipmentName": "irure esse ex sit",
+                        "origin": {
+                            "airportCode": "QYD",
+                            "airportNameEn": "cupidatat voluptate veniam quis non",
+                            "cityCode": "DDQOH",
+                            "cityCodeIata": "YNJ",
+                            "cityNameEn": "esse",
+                            "countryCode": "CR",
+                            "departureDate": "1940-12-31",
+                            "departureTime": "22:48",
+                            "departureWeekday": "WED",
+                            "airportNameLn": "in occaecat ipsum u",
+                            "cityNameLn": "d",
+                            "stateCode": "MJ",
+                            "terminal": "pa"
+                        },
+                        "destination": {
+                            "airportCode": "DQV",
+                            "airportNameEn": "veniam Excepteur fugiat sunt id",
+                            "cityCode": "CJD2P",
+                            "cityCodeIata": "IAO",
+                            "cityNameEn": "adipisicing nostrud cillum aute reprehenderit",
+                            "countryCode": "TD",
+                            "departureDate": "1974-08-25",
+                            "departureTime": "20:14",
+                            "departureWeekday": "SUN",
+                            "airportNameLn": "mollit et",
+                            "cityNameLn": "e",
+                            "stateCode": "LJ",
+                            "terminal": "mollit enim Duis id in"
+                        },
+                        "marketing": {
+                            "airlineCode": "XX",
+                            "airlineNameEn": "incididunt sed",
+                            "flightNo": "3975",
+                            "airlineNameLn": "incididunt culpa dolor consectetur"
+                        },
+                        "operating": {
+                            "airlineCode": "NP",
+                            "airlineNameEn": "ullamco deserunt non nisi ex",
+                            "airlineNameLn": "et e",
+                            "airlineFlightNo": "3790"
+                        }
+                    }
+                ]
+            }
+        ],
+        "fares": [
+            {
+                "fareIndex": 94912824,
+                "fareZippedData": "abc",
+                "itineraryIndexes": [
+                    94912824
+                ],
+                "stock": {
+                    "airlineCode": "7E",
+                    "airlineNameEn": "in officia ea",
+                    "allianceCode": "cu",
+                    "airlineNameLn": "dolore sunt fug",
+                    "allianceName": "sit Lorem"
+                },
+                "recommendYn": true,
+                "viaCityCount": 3,
+                "fareAmountSum": 13053431.557135075,
+                "taxAmountSum": 46259882.91292554,
+                "tasfAmountSum": 35530287.99448237,
+                "amountSum": 94924713.21827707,
+                "onewayCombineYn": true,
+                "brandedCode": "mollit",
+                "brandedName": "minim",
+                "brandedCondition": "minim sun",
+                "inPolicyYn": false,
+                "refundableYn": false,
+                "designatedRouteYn": true,
+                "promotionName": "eiusmod",
+                "passengerFares": [
+                    {
+                        "ageTypeCode": "CHD",
+                        "paxCount": 70164013,
+                        "fareAmount": 85098692.75180918,
+                        "taxAmount": -51755886.67022199,
+                        "tasfAmount": -51755886.67022199,
+                        "amountSum": -247878.8972683102,
+                        "itineraries": [
+                            {
+                                "itineraryNo": -63717919,
+                                "gdsCompCode": 57990833,
+                                "gdsOfficeId": "aute U",
+                                "corporateId": "pa",
+                                "corporateRateYn": false,
+                                "promotionSeq": 96621003,
+                                "segments": [
+                                    {
+                                        "segmentNo": 72558316,
+                                        "availableQuantity": 73868619,
+                                        "fareTypeCode": "esse",
+                                        "cabinClassCode": "C",
+                                        "bookingClassCode": "Y",
+                                        "fareBasisCode": "enim",
+                                        "freeBaggage": "sint"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

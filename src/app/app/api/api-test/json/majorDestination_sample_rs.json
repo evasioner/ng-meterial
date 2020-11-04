@@ -1,0 +1,191 @@
+{
+	"serviceCode": "commonDestination",
+	"serviceName": "common/Destination",
+	"succeedYn": true,
+	"transactionSetId": "20191127153128",
+	"result": {
+		"compCode": "110000",
+		"compName": "노랑풍선",
+		"itemCategoryCode": "IC01",
+		"itemCategoryName": "항공권",
+		"list": [
+			{
+				"groupSeq": 1,
+				"groupName": "동남아",
+				"items": [
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "BKK",
+						"destinationNameEn": "Bangkok",
+						"destinationNameLn": "방콕",
+						"countryCode": "TH",
+						"countryNameEn": "Thailand",
+						"countryNameLn": "태국",
+						"cabinClassCode": "Y"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "TPE",
+						"destinationNameEn": "Taipei",
+						"destinationNameLn": "타이페이",
+						"countryCode": "TW",
+						"countryNameEn": "Taiwan",
+						"countryNameLn": "대만"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "MNL",
+						"destinationNameEn": "Manila",
+						"destinationNameLn": "마닐라",
+						"countryCode": "PH",
+						"countryNameEn": "Philippines",
+						"countryNameLn": "필리핀"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "SIN",
+						"destinationNameEn": "Singapore",
+						"destinationNameLn": "싱가포르",
+						"countryCode": "SG",
+						"countryNameEn": "Singapore",
+						"countryNameLn": "싱가포르"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "CEB",
+						"destinationNameEn": "Cebu",
+						"destinationNameLn": "세부",
+						"countryCode": "PH",
+						"countryNameEn": "Philippines",
+						"countryNameLn": "필리핀"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "SGN",
+						"destinationNameEn": "Ho Chi Minh City",
+						"destinationNameLn": "호치민",
+						"countryCode": "VN",
+						"countryNameEn": "Vietnam",
+						"countryNameLn": "베트남"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "DAN",
+						"destinationNameEn": "Danang",
+						"destinationNameLn": "다낭",
+						"countryCode": "VN",
+						"countryNameEn": "Vietnam",
+						"countryNameLn": "베트남"
+					}
+				]
+			},
+			{
+				"groupSeq": 2,
+				"groupName": "일본",
+				"items": [
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "OSA",
+						"destinationNameEn": "Osaka",
+						"destinationNameLn": "오사카",
+						"countryCode": "JP",
+						"countryNameEn": "Japan",
+						"countryNameLn": "일본"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "TYO",
+						"destinationNameEn": "Tokyo",
+						"destinationNameLn": "동경",
+						"countryCode": "JP",
+						"countryNameEn": "Japan",
+						"countryNameLn": "일본"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "FUK",
+						"destinationNameEn": "Fukuoka",
+						"destinationNameLn": "후쿠오카",
+						"countryCode": "JP",
+						"countryNameEn": "Japan",
+						"countryNameLn": "일본"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "OKA",
+						"destinationNameEn": "Okinawa",
+						"destinationNameLn": "오키나와",
+						"countryCode": "JP",
+						"countryNameEn": "Japan",
+						"countryNameLn": "일본"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "NGO",
+						"destinationNameEn": "Nagoya",
+						"destinationNameLn": "나고야",
+						"countryCode": "JP",
+						"countryNameEn": "Japan",
+						"countryNameLn": "일본"
+					}
+				]
+			},
+			{
+				"groupSeq": 3,
+				"groupName": "미주",
+				"items": [
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "HNL",
+						"destinationNameEn": "Honolulu",
+						"destinationNameLn": "호놀루루",
+						"stateCode": "HI",
+						"countryCode": "UA",
+						"countryNameEn": "USA",
+						"countryNameLn": "미국"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "LAX",
+						"destinationNameEn": "Los Angeles",
+						"destinationNameLn": "로스앤젤레스",
+						"stateCode": "CA",
+						"countryCode": "UA",
+						"countryNameEn": "USA",
+						"countryNameLn": "미국"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "NYC",
+						"destinationNameEn": "New York",
+						"destinationNameLn": "뉴욕",
+						"stateCode": "NY",
+						"countryCode": "UA",
+						"countryNameEn": "USA",
+						"countryNameLn": "미국"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "SFO",
+						"destinationNameEn": "San Francisco",
+						"destinationNameLn": "샌프란시스코",
+						"stateCode": "CA",
+						"countryCode": "UA",
+						"countryNameEn": "USA",
+						"countryNameLn": "미국"
+					},
+					{
+						"destinationTypeCode": "C",
+						"destinationCode": "LAX",
+						"destinationNameEn": "Las Vegas",
+						"destinationNameLn": "라스베이거스",
+						"stateCode": "NV",
+						"countryCode": "UA",
+						"countryNameEn": "USA",
+						"countryNameLn": "미국"
+					}
+				]
+			}
+		]
+	}
+}

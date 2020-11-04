@@ -1,0 +1,20 @@
+<ng-container *ngIf="viewModel.recentList?.length > 0">
+    <h2 class="contents-title">최근 검색한 호텔</h2>
+    <div class="scroll-box-list extend no-mg">
+        <div class="scroll-item-outer">
+            <!-- .saved-item 반복 -->
+            <div *ngFor="let item of viewModel.recentList; index as index;" class="saved-item recent-city">
+                <a class="icon sm close" (click)="onDeleteItem($event, index, item.index)">삭제</a>
+                <ul (click)="onSearchResult($event, item.index)">
+                    <li class="hotel">
+                        <dl>
+                            <dt>{{ item.hotelName }}</dt>
+                            <dd>{{ item.dateRange }}</dd>
+                            <dd>{{ item.roomList }}</dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ng-container>

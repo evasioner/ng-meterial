@@ -1,0 +1,9 @@
+{
+	"serviceCode": "hotelWish",
+	"serviceName": "hotel/wish",
+	"succeedYn": true,
+	"transactionSetId": 20191127153128,
+	"result": {
+		"wishHotelSeq": 10548795
+	}
+}

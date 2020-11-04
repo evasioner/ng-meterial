@@ -1,0 +1,39 @@
+  <!-- Modal -->
+  <div class="modal bg">
+    <!-- modal header -->
+    <div class="modal-header">
+      <h1>탑승자 정보</h1>
+      <div class="right">
+        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+      </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+      <div class="page-contents-type2 fixed-btn-footer">
+        <div *ngFor="let trav of travelers; index as i" class="round-box">
+          <h2 class="contents-title2 line">{{i+1}}번째 탑승자</h2>
+          <div class="item-group">
+            <div class="item-row col">
+              <div class="left">한글이름</div>
+              <div class="right">{{trav.name}}</div>
+            </div>
+            <div class="item-row col">
+              <div class="left">영문이름</div>
+              <div class="right">{{trav.lastName}}/{{trav.firstName}}</div>
+            </div>
+            <div class="item-row col">
+              <div class="left">생년월일</div>
+              <div class="right">{{trav.birthday | date:'y.MM.dd'}}</div>
+            </div>
+            <div class="item-row col">
+              <div class="left">성별</div>
+              <div class="right">{{trav.gender == 'F' ? '여자': '남자'}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-group bg2 pd fixed-bottom">
+          <a (click)="onCloseClick()" class="btn lg default">닫기</a>
+        </div>
+      </div>
+    </div>
+  </div>

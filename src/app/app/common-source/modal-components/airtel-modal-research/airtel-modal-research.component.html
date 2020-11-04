@@ -1,0 +1,105 @@
+<!-- Modal -->
+<div class="modal-top">
+    <div class="modal-top-inner">
+        <!-- modal header -->
+        <div class="modal-top-header">
+            <h1>검색조건 변경</h1>
+            <div class="right">
+                <a (click)="modalClose()" class="icon sm common-close">닫기</a>
+            </div>
+        </div>
+        <!-- modal contents -->
+        <div class="modal-top-contents">
+            <div class="tab-wrap">
+                <div class="tab-header type1 inline mb15">
+                    <a href="#" class="tab-header-item active"><span>항공+호텔</span></a>
+                    <a href="#" class="tab-header-item"><span>추천일정</span></a>
+                </div>
+
+                <form [formGroup]="mainForm" (ngSubmit)="onSubmit()">
+                    <div class="tab-body">
+                        <!-- 항공+호텔 -->
+                        <div class="tab-item active">
+                            <div class="airtel-search">
+                                <div class="row-group">
+                                    <div class="row">
+                                        <div class="city-select roundtrip">
+                                            <div class="city-select-item shadow">
+                                                <a (click)="onOrigin()" class="box">
+                                                    <p>
+                                                        <span class="city-code">{{vm.trip.destination[0].origin.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[0].origin.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[0].origin.val == ''" class="place-holder">출발지</span>
+                                                    </p>
+                                                </a>
+                                                <a (click)="onDestination()" class="box">
+                                                    <p>
+                                                        <!-- 도시 선택 후 텍스트 -->
+                                                        <span class="city-code">{{vm.trip.destination[0].dest.val}}</span>
+                                                        <span class="city-name">{{vm.trip.destination[0].dest.name}}</span>
+                                                        <!-- 도시 선택 전 텍스트 -->
+                                                        <span *ngIf="vm.trip.destination[0].dest.val == ''" class="place-holder">도착지</span>
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <a (click)="onChangeDest(vm.trip.destination[0])" class="btn-change"><span class="icon sm roundtrip2">변경</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div (click)="onCalendar()" class="input shadow no-pd">
+                                            <span class="icon sm calendar"></span>
+                                            <input type="text" [value]="vm.trip.destination[0].dateRange" placeholder="여행날짜를 선택해 주세요" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div (click)="onSeat()" class="input shadow no-pd">
+                                            <span class="icon sm user"></span>
+                                            <input type="text" [value]="this.vm.travelerStore.cabinClassTxt" placeholder="좌석등급, 인원 수를 선택해주세요" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row mt15">
+                                        <label class="checkbox">
+                                            <input type="checkbox" class="checkbox-control-input" [checked]="vm.nonStop" (change)="onNonstop($event)">
+                                            <span class="checkbox-control-text">항공 직항만</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" class="checkbox-control-input" [checked]="vm.addHotel" (change)="onAddHotel($event)">
+                                            <span class="checkbox-control-text">숙박할 도시, 일정 다름</span>
+                                        </label>
+                                    </div>
+
+                                    <!-- 숙박할 도시, 일정 다름 체크시 보이는 영역 시작 -->
+                                    <ng-container *ngIf="vm.addHotel">
+                                        <div class="row mt20">
+                                            <div class="input shadow no-pd">
+                                                <span class="icon sm location"></span>
+                                                <input type="text" (click)="onHotelCity()" placeholder="도시, 호텔, 랜드마크 등을 검색하세요" [value]="" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input shadow no-pd">
+                                                <span class="icon sm calendar"></span>
+                                                <input type="text" placeholder="숙박 날짜를 선택해 주세요" (click)="onHotelCalendar()" [value]="vm.checkInOutDate" readonly>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <!-- 숙박할 도시, 일정 다름 체크시 보이는 영역 끝 -->
+
+                                    <div class="row mt20">
+                                        <button class="btn lg default" role="button">항공+호텔 검색</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 추천일정 -->
+                        <div class="tab-item">
+                            <!-- 컨텐츠 미정 -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

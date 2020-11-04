@@ -1,0 +1,24 @@
+<div class="">
+    <h2>ngx-pipes works!
+        <a href="https://github.com/danrevah/ngx-pipes" target="_blank">https://github.com/danrevah/ngx-pipes</a>
+    </h2>
+    <div class="m-flex-table" style="margin-top: 10px;">
+        <div class="container-fluid m-flex-table-container">
+            <div class="row">
+                <div class="col text-center" >key</div>
+                <div class="col text-center">값</div>
+            </div>
+
+            <div class="row">
+                <div class="col">ReversePipe</div>
+                <div class="col">
+                    <p>foo : {{reversePipeVal}}</p>
+                    <p>foo : {{ 'foo' | reverse }}</p>
+                    <p>foo : {{ '     foo' | ltrim | reverse }}</p> <!-- Output: "oof" -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

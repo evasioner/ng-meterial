@@ -1,0 +1,19 @@
+/**
+* 페이지 컴포넌트
+* p-{페이지명}
+*/
+.p-mypage-main {
+
+    .contents-item-area {
+        .contents-item:not(.mb15) {
+            margin-top: 45px;
+        }
+
+        &:first-child {
+            .contents-item:not(.mb15) {
+                margin-top: 0px;
+            }
+        }
+    }
+
+}

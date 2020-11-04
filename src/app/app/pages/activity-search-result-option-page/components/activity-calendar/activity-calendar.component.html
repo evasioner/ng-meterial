@@ -1,0 +1,50 @@
+<div *ngIf="isBrowser" class="contents-item">
+    <h2 class="contents-title">날짜 선택</h2>
+
+    <div class="calendar-box">
+        <div class="calendar-multi-section">
+            <div *ngFor="let item of viewModel.header; let index = index;" [class.active]="item.active" class="itinerary" (click)="resetDate($event, index)">
+                <ng-container *ngIf="!item.fullDate">
+                    <p class="place-holder">{{ item.title }}</p>
+                </ng-container>
+
+                <ng-container *ngIf="item.fullDate">
+                    <p class="text">{{ item.title }}</p>
+                    <p class="date">{{ item.fullDate | date : 'yyyy.MM.dd' }}</p>
+                </ng-container>
+            </div>
+        </div>
+
+        <!-- 요일 표시 -->
+        <div class="week-days">
+            <span *ngFor="let item of viewModel.weekList">{{ item }}</span>
+        </div>
+        <!-- end 요일 표시 -->
+
+        <!-- .month 반복 -->
+        <div class="month">
+            <div class="month-title">
+                <a class="icon xs left3" (click)="prevMonth($event)">이전</a>
+                {{ viewModel.month }}
+                <a class="icon xs right3" (click)="nextMonth($event)">다음</a>
+            </div>
+
+            <div class="month-body">
+                <ng-container *ngFor="let calendarItem of viewModel.calendars">
+                    <ng-container *ngIf="calendarItem.checked">
+                        <!-- 주 : weekItem -->
+                        <div *ngFor="let weekendItem of calendarItem.days" class="weeks">
+                            <!-- 일 : dayItem -->
+                            <div *ngFor="let item of weekendItem; let index = index" [class]="item.className">
+                                <a *ngIf="item.day" [class]="item.subClassName" (click)="onDayClick($event, item)">
+                                    <span>{{ item.day }}</span>
+                                </a>
+                                <span *ngIf="item.text" class="text">{{ item.text }}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

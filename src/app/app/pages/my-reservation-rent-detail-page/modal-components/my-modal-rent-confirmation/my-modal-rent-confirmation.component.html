@@ -1,0 +1,113 @@
+<!-- Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>렌터카 확정서</h1>
+        <div class="right">
+            <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents overflow-x">
+        <div id="rentalcar-confirmation" class="common-documents">
+            <div class="documents-body">
+                <div class="documents-item">
+                    <div class="documents-item-title">Reservation Details</div>
+                    <div class="table table-documents">
+                        <table>
+                            <colgroup>
+                                <col width="22%">
+                                <col>
+                                <col width="20%">
+                                <col>
+                            </colgroup>
+                            <ul>
+                                <li>
+                                    <span scope="row"><strong>Reservation No.</strong></span>
+                                    <span>8945-6795</span>
+                                    <span scope="row"><strong>YB Booking Code</strong></span>
+                                    <span>112914521032555</span>
+                                </li>
+                                <li>
+                                    <span scope="row"><strong>Vehicle</strong></span>
+                                    <span>Misubishi Mirage</span>
+                                    <span scope="row"><strong>Driver</strong></span>
+                                    <span>MR. HONG/GILDONG</span>
+                                </li>
+                                <li>
+                                    <span scope="row"><strong>Arrival Flight</strong></span>
+                                    <span>OZ503</span>
+                                    <span scope="row"><strong>Arrival Time</strong></span>
+                                    <span>09:30</span>
+                                </li>
+                                <li>
+                                    <span scope="row"><strong>Pick Up Time</strong></span>
+                                    <span>2020-10-01(Mon) 10:00</span>
+                                    <span scope="row"><strong>Return Time</strong></span>
+                                    <span>2020-10-05(Fri) 10:00</span>
+                                </li>
+                                <li>
+                                    <span scope="row"><strong>Pick Up Office</strong></span>
+                                    <span colspan="3">
+                                        <p><span class="color-point2 mr5">[Hertz]</span>Honolulu Intl Airport</p>
+                                        <p>TEL : 808-833-4343</p>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span scope="row"><strong>Return Office</strong></span>
+                                    <span colspan="3">
+                                        <p><span class="color-point2 mr5">[Hertz]</span>Honolulu Intl Airport</p>
+                                        <p>TEL : 808-833-4343</p>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span scope="row"><strong>Included</strong></span>
+                                    <span colspan="3">
+                                        <ul class="text-list dot md color-sub7">
+                                            <li>CAR RENTAL FEE</li>
+                                            <li>LDW-LOSS DAMAGE WAIVER</li>
+                                            <li>TAX &amp; SURCHARGE</li>
+                                        </ul>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span scope="row"><strong>Total Amount</strong></span>
+                                    <span colspan="3">USD 184.50</span>
+                                </li>
+                                <li>
+                                    <span scope="row"><strong>Cancellation Deadline</strong></span>
+                                    <span colspan="3" class="color-point2">대한민국(서울) 시간 : 2020-10-01(수) 16:00</span>
+                                </li>
+                                <li>
+                                    <span scope="row"><strong>Contact Office</strong></span>
+                                    <span colspan="3">노랑풍선(02-2022-7292), 업무시간 외 비상연락처(070-7012-7219)</span>
+                                </li>
+                            </ul>
+                        </table>
+                    </div>
+                </div>
+                <div class="documents-item">
+                    <div class="documents-item-title line">주의사항</div>
+                    <ul class="text-list dot md">
+                        <li>이 확정서와 여권, 유효기간(발급후 1년간)내의 국제면허증을 함께 렌터카에 제출해주세요. 국내/국제 운전면허증 모두 소지하셔야 차량 대여가 가능합니다.</li>
+                        <li>네비게이션 도난/분실 시 보험 적용이 불가하므로 분실되지 않도록 유의하시길 바랍니다.</li>
+                        <li>교통법규(예: 주차/속도/통행료 등) 위반 시 범칙금 및 Administration Fee가 사전고지 없이 임차인의 신용카드로 차후에 별도 청구됩니다.<br>특히, 속도 및 신호 위반은 범칙금이 높으니 유의하시길 바랍니다. (차량 반납 후 15일 이후 청구)</li>
+                        <li>차량을 픽업하신 이후 현지에서 일정이 연장되는 경우 직접 영업소로 연락하셔서 연장요청을 해주시기 바랍니다. (임차인 외 변경불가)<br>미요청 하실 경우, 차량 도난으로 신고되며 별도의 패널티도 부과됩니다.</li>
+                        <li>본인 외 동행인 운전이 필요한 경우 현지 영업소에서 추가운전자 등록을 하시기 바라며, 추가 운전자도 국내/국제 운전면허증을 모두 소지하셔야 합니다. (등록 시 별도요금 발생)</li>
+                        <li>렌터카 업체의 연료구매옵션(FPO-Fuel Purchase Option) 가입 시 정산이 불가하니 반드시 본인이 직접 임차 시와 동일한 수준의 연료를 주유하신 후 차량반납하시기 바랍니다.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="documents-footer">
+                <ul class="text-list dashed md color-main2">
+                    <li>노랑풍선 주소 : 서울특별시 중구 수표로 31, 노랑풍선</li>
+                    <li>대표전화 : +82-2-1544-2288</li>
+                    <li class="mt20">
+                        &copy;YBTOUR., All Rights Reserved.
+                    </li>
+                </ul>
+                <span class="site-link"><img src="../../assets/images/common/ico-common-header-logo.png" alt="노랑풍선"></span>
+            </div>
+        </div>
+    </div>
+</div>

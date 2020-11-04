@@ -1,0 +1,40 @@
+<!-- Modal -->
+<div class="modal-bottom">
+    <div class="modal-bottom-inner">
+        <!-- modal header -->
+        <div class="modal-bottom-header line center">
+            <h1 [innerHTML]="'MODAL_SELLER.TITLE' | translate"></h1><!-- 여행편의 업체 선택 -->
+            <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close" [innerHTML]="'MODAL_SELLER.CLOSE' | translate"></a><!-- 닫기 -->
+            </div>
+        </div>
+
+        <!-- modal contents -->
+        <div class="modal-bottom-contents">
+            <!-- modal contents here -->
+            <div class="travel-convenience-seller">
+                <div class="seller-item" (click)="onGoSellerPage('YBTOUR')">
+                    <img src="/assets/images/img/img-ybtour-logo.png" alt="노랑풍선" class="seller-logo">
+                    <div class="seller-information">
+                        <p class="name">노랑풍선 와이파이</p>
+                        <p class="summary">전 세계 전역 유심 상품 전문</p>
+                    </div>
+                </div>
+                <div class="seller-item" (click)="onGoSellerPage('DOSIRAK')">
+                    <img src="/assets/images/img/img-wifidosirak-logo.png" alt="와이파이도시락" class="seller-logo">
+                    <div class="seller-information">
+                        <p class="name">와이파이도시락</p>
+                        <p class="summary">북미, 남미, 전역 유심 상품 전문</p>
+                    </div>
+                </div>
+                <div class="seller-item" (click)="onGoSellerPage('PLAYER')">
+                    <img src="/assets/images/img/img-playerwifi-logo.png" alt="플레이어와이파이" class="seller-logo">
+                    <div class="seller-information">
+                        <p class="name">플레이어와이파이</p>
+                        <p class="summary">일본, 필리핀, 마닐라 등 아시아 전역 유심 상품 전문</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

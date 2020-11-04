@@ -1,0 +1,17 @@
+<div class="activity-visual">
+    <h2 [innerHTML]="'MAIN_SEARCH.IMG_TXT_HTML' | translate"></h2>
+</div>
+<div class="contents-item mg mb30">
+    <div class="input shadow no-pd">
+        <span class="icon sm location"></span>
+        <input type="text" [placeholder]="'MAIN_SEARCH.SEARCH_PLACEHOLDER' | translate" (click)="onGoSearchClick()" readonly>
+    </div>
+</div>
+<div class="scroll-box-list no-mg">
+    <div class="scroll-item-outer">
+        <div class="activity-category-item shadow" (click)="onGoCategorySearchClick(i)" *ngFor="let result of vm.categoryList; let i = index">
+            <div class="visual" [ngClass]="result.styleType"></div>
+            <div class="title" [innerHTML]="'MAIN_SEARCH.' + result.categoryName | translate"></div>
+        </div>
+    </div>
+</div>

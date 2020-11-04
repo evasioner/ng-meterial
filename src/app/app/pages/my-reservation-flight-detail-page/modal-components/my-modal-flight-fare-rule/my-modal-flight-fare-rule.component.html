@@ -1,0 +1,106 @@
+  <!-- Calendar Modal -->
+  <div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+      <h1>요금 규정</h1>
+      <div class="right">
+        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+      </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+      <!-- .tab-header-item과 .tab-item의 갯수는 여정의 갯수와 같다. -->
+      <div class="tab-wrap">
+        <div class="tab-header type4 top-blank fixed">
+          <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>규정1</span></a>
+          <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>규정2</span></a>
+        </div>
+        <div class="tab-body">
+          <!-- 규정1 -->
+          <ng-container *ngIf="tabNo === 0">
+            <div class="tab-item active">
+                <div class="page-contents-type2">
+                <div class="contents-item">
+                    <h2 class="contents-title">인천 ICN - 로스앤젤레스 LAX</h2>
+                    <table class="table-type1">
+                    <colgroup>
+                        <col width="35%">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                        <th>운임종류</th>
+                        <td>RU.RULE APPLICATION<br>MAIN CABIN FARES<br>APPLICATION<br>CLASS OF SERVICE<br>THESE FARES APPLY FOR ECONOMY CLASS SERVICE.<br>CAPACITY LIMITATIONS<br>THE CARRIER SHALL LIMIT THE NUMBER OF PASSENGERS CARRIED<br>ON ANY ONE FLIGHT AT FARES GOVERNED BY THIS RULE AND SUCH<br>FARES WILL NOT NECESSARILY BE AVAILABLE ON ALL FLIGHTS.<br>THE NUMBER OF SEATS WHICH THE CARRIER SHALL MAKE<br>AVAILABLE ON A GIVEN FLIGHT WILL BE DETERMINED BY THE<br>CARRIERS BEST JUDGMENT</td>
+                        </tr>
+                        <tr>
+                        <th>환불/변경</th>
+                        <td class="color-point2">
+                            PE.PENALTIES<br>BETWEEN KOREA, REPUBLIC OF AND AREA 1<br>FOR TICKETING ON/BEFORE 05DEC 18<br>CANCELLATIONS<br>ANY TIME<br>CHARGE KRW 150000.<br>CHILD/INFANT DISCOUNTS APPLY.<br>WAIVED FOR DEATH OF PASSENGER OR<br>
+                        </td>
+                        </tr>
+                        <tr>
+                        <th>무료수하물</th>
+                        <td>무료수하물: 2개</td>
+                        </tr>
+                        <tr>
+                        <th>여행사 취급수수료</th>
+                        <td>
+                            <ul class="text-list">
+                            <li>변경으로 인한 재발행발생시나 환불시 항공사취소수수료 외에 여행사 취급수수료가 부과됩니다.</li>
+                            <li>환불 수수료(성인/소아/유아 동일) : 10,000원(1인)</li>
+                            <li>재발행 수수료(성인/소아/유아 동일) : 30,000원(1인)</li>
+                            </ul>
+                        </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </ng-container>
+          <!-- 규정2 -->
+        <ng-container *ngIf="tabNo === 1">
+            <div class="tab-item active">
+                <div class="page-contents-type2">
+                    <div class="contents-item">
+                        <h2 class="contents-title">로스앤젤레스 LAX - 인천 ICN</h2>
+                        <table class="table-type1">
+                        <colgroup>
+                            <col width="35%">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                            <th>운임종류</th>
+                            <td>RU.RULE APPLICATION<br>MAIN CABIN FARES<br>APPLICATION<br>CLASS OF SERVICE<br>THESE FARES APPLY FOR ECONOMY CLASS SERVICE.<br>CAPACITY LIMITATIONS<br>THE CARRIER SHALL LIMIT THE NUMBER OF PASSENGERS CARRIED<br>ON ANY ONE FLIGHT AT FARES GOVERNED BY THIS RULE AND SUCH<br>FARES WILL NOT NECESSARILY BE AVAILABLE ON ALL FLIGHTS.<br>THE NUMBER OF SEATS WHICH THE CARRIER SHALL MAKE<br>AVAILABLE ON A GIVEN FLIGHT WILL BE DETERMINED BY THE<br>CARRIERS BEST JUDGMENT</td>
+                            </tr>
+                            <tr>
+                            <th>환불/변경</th>
+                            <td class="color-point2">
+                                PE.PENALTIES<br>BETWEEN KOREA, REPUBLIC OF AND AREA 1<br>FOR TICKETING ON/BEFORE 05DEC 18<br>CANCELLATIONS<br>ANY TIME<br>CHARGE KRW 150000.<br>CHILD/INFANT DISCOUNTS APPLY.<br>WAIVED FOR DEATH OF PASSENGER OR<br>
+                            </td>
+                            </tr>
+                            <tr>
+                            <th>무료수하물</th>
+                            <td>무료수하물: 2개</td>
+                            </tr>
+                            <tr>
+                            <th>여행사 취급수수료</th>
+                            <td>
+                                <ul class="text-list">
+                                <li>변경으로 인한 재발행발생시나 환불시 항공사취소수수료 외에 여행사 취급수수료가 부과됩니다.</li>
+                                <li>환불 수수료(성인/소아/유아 동일) : 10,000원(1인)</li>
+                                <li>재발행 수수료(성인/소아/유아 동일) : 30,000원(1인)</li>
+                                </ul>
+                            </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>

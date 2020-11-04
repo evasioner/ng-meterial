@@ -1,0 +1,17 @@
+<p>login-after works!</p>
+<br>
+<div>
+    <br>
+    <h2>ybCookie</h2>
+    <p style="word-break: break-all;" >{{ybCookie}}</p>
+    <br>
+</div>
+<br>
+<div>
+    <h2>스토어에서 userInfo 가져오기</h2>
+    <button (click)="onStoreUserInfoClick()" type="button" class="btn btn-info">스토어에서 userInfo 가져오</button>
+    <br>
+    <div>
+        {{ storeUserInfo | json }}
+    </div>
+</div>

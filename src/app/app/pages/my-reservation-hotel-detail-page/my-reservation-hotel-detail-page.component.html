@@ -1,0 +1,299 @@
+<div id="wrap" class="p-cm-reservation">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+
+    <!-- contents -->
+    <div *ngIf="loadingBool" id="contents" class="content-area">
+        <div class="folding fixed line between">
+            <!--
+          - .folding-menu 누를때마다 .active 토글
+          - .folding-menu에 .active를 추가하면 .folding-detail이 자동으로 보여짐 (css)
+        -->
+            <a (click)="selectFolding()" [ngClass]="{'active': foldingYn}" class="folding-menu">
+                <strong class="text">카테고리 모아보기</strong>
+                <span class="arrow"></span>
+            </a>
+            <div class="folding-detail">
+                <ul class="folding-list2">
+                    <!-- <li style="display: none;">
+              <a (click)="openTravelInsu();" class="folding-list-item">여행자보험</a>
+            </li> -->
+                    <li>
+                        <a (click)="onBookingCancel($event);" class="folding-list-item">예약 취소</a>
+                    </li>
+                    <li>
+                        <a (click)="openHotelVoucher($event)" class="folding-list-item">바우처</a>
+                    </li>
+                    <li>
+                        <a (click)="openHotelInvoice($event)" class="folding-list-item">인보이스</a>
+                    </li>
+                    <li style="display: none;">
+                        <a (click)="openHotelReceipt()" class="folding-list-item">영수증</a>
+                    </li>
+                    <!-- <li style="display: none;">
+              <a (click)="openOneonon()" class="folding-list-item">1:1문의</a>
+            </li> -->
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-contents-type3">
+            <div class="contents-item mt10">
+                <h2 class="contents-title">예약정보</h2>
+                <div class="round-box hotel-reserved-contents">
+                    <div class="hotel-image" [ngStyle]="{background: 'url(' + summary.defaultPhotoUrl + ') 50% 50% no-repeat', 'background-size': 'cover'}">
+                    </div>
+                    <div class="reserved-information">
+                        <p class="name-ko">{{summary?.hotelNameLn}}</p>
+                        <p class="name-en">{{summary?.hotelNameEn}}</p>
+                        <p class="rate">
+                            <span class="hotel-rating">
+                                <span class="icon s{{getHotelStarRating(summary?.starRating)}}"></span>
+                                <span class="text">{{summary?.starRating}}</span>
+                            </span>
+                        </p>
+                        <div class="item-group line-top">
+                            <div class="item-row col">
+                                <div class="left">예약번호</div>
+                                <div class="right">{{summary?.bookingItemCode}}</div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left">예약 상태</div>
+                                <div class="right">{{summary?.bookingStatusName}}</div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left">결제 상태</div>
+                                <div class="right">결제 완료 <span class="color-point2">[무료취소]</span></div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left">여행 기간</div>
+                                <div class="right">
+                                    {{summary?.checkInDate | date:'y.MM.dd'}}({{inLabel}})-{{summary?.checkOutDate | date:'y.MM.dd'}}({{outLabel}}), {{summary?.nightsCount}}박 <span class="color-point2">{{getDday()}}</span>
+                                </div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left">여행자</div>
+                                <div class="right">{{summary?.travelerName}} <ng-container *ngIf="summary?.travelerMinusCount > 0">외 {{summary?.travelerMinusCount}}명
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left">객실수,인원수</div>
+                                <div class="right">성인 {{summary?.travelerMinusCount + 1}}명, 객실 {{summary?.roomCount}},
+                                    <ng-container *ngIf="summary?.freeBreakfastYn === true|| summary?.freeWifiYn === true;else roomOption">
+                                        <span *ngIf="summary?.freeBreakfastYn === true" class="breakfast">조식포함</span>
+                                        <span *ngIf="summary?.freeWifiYn === true" class="wifi">무료 WI-FI</span>
+                                    </ng-container>
+                                    <ng-template #roomOption>
+                                        <span>포함내역 없음</span>
+                                    </ng-template>
+                                </div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left">객실명</div>
+                                <div class="right">{{summary?.roomTypeName}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title">결제 정보</h2>
+                <div class="round-box reservation-payment">
+                    <div class="item-group">
+                        <div class="row-title">결제상태 <span class="font-md ml-auto">결제완료</span></div>
+                        <div class="item-row col">
+                            <div class="left">상품가</div>
+                            <div class="right">1,000,000원</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">즉시할인</div>
+                            <div class="right">-20,000원</div>
+                        </div>
+                        <div class="item-row col line">
+                            <div class="left">쿠폰할인</div>
+                            <div class="right">-20,000원</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">마일리지</div>
+                            <div class="right">-10,000원</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">결제 완료 금액</div>
+                            <div class="right">800,000원</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">미납 금액</div>
+                            <div class="right">123,000원</div>
+                        </div>
+                        <div class="item-row mt15">
+                            <a href="javascript:void(0)" class="btn md default">결제 하기</a>
+                        </div>
+                        <div class="item-row col last">
+                            <div class="left"><strong>총 결제 금액</strong></div>
+                            <div class="right">800,000원</div>
+                        </div>
+                        <div class="item-row mt15">
+                            <p class="color-sub5">KB국민카드 (1022) / 할부 12개월 (2019.10.12)</p>
+                        </div>
+                    </div>
+                    <div class="btn-group mt15">
+                        <a (click)="openHotelReceipt()" class="btn md line2">영수증</a>
+                    </div>
+                </div>
+                <div class="round-box">
+                    <div class="row-group no-mg">
+                        <div class="row">
+                            <div class="row-title">포함사항</div>
+                            <div class="color-sub5 lh140">세금과 봉사료를 포함 전체 숙박 요금</div>
+                        </div>
+                        <div class="row pt20 mt20 border-solid-top light-grey">
+                            <div class="row-title">불포함 사항</div>
+                            <div class="color-sub5 lh140">특정 지역&호텔에 따라서 City Tax, 리조트피, 숙박세(일본-도쿄&오사카 포함),Tourism
+                                Tax(말레이시아 포함), 입욕제(일본전 지역 온천 호텔, 료칸 숙박시) 크리스마스, 신년전후 의무 수수료 및 저녁 만찬행사 요금이 현지 호텔에서 부과됩니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="round-box">
+                    <div class="check-time auto">
+                        <span class="cal">취소마감일 : 11.20(수)</span>
+                        <span class="ml-auto">09:00까지</span>
+                    </div>
+                    <ul class="text-list dash spacing color-sub6">
+                        <li>2019.09.02 10:39:01 - 2019.10.19 09:00:00<br>취소 시 : 취소 수수료 없이 취소 가능</li>
+                        <li>2019.10.19 09:00:01 - 2019.10.20 09:00:00<br>취소 시 : <span class="cancel-price">37,000원
+                                청구</span></li>
+                        <li>위 날짜 이후 취소 시, 전체 상품요금이 청구됩니다.</li>
+                        <li class="none-pd color-sub3">
+                            <p>※ 취소 마감일 이전까지 결제를 완료해주세요.</p>
+                            <p>※ 무료 취소 가능 기간 이후 취소 시, 수수료가 발생합니다.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title">예약자 정보</h2>
+                <div class="round-box">
+                    <ul class="table-list">
+                        <li>
+                            <span>예약자 명</span>
+                            <span>{{booker.name}}</span>
+                        </li>
+                        <li>
+                            <span>휴대폰 번호</span>
+                            <span>{{booker.mobileNo}}</span>
+                        </li>
+                        <li>
+                            <span>이메일</span>
+                            <span>{{booker.email}}</span>
+                        </li>
+                    </ul>
+                    <a (click)="openBookerEdit()" class="btn sm line light icon-only absolute"><span class="icon xs edit">수정</span></a>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title">투숙객 정보</h2>
+                <div *ngFor="let rm of rooms; index as i" class="round-box reservation-user pd-all">
+                    <div class="item-group">
+                        <div class="row-title">객실{{i+1}} <span class="font-md ml-auto">성인{{rm.groupByAge.ADT}}
+                                <ng-container *ngIf="rm.groupByAge.CHD">, 아동{{rm.groupByAge.CHD}}</ng-container></span>
+                        </div>
+                        <ul class="user-list">
+                            <li *ngFor="let tr of rm.travelers; index as j">
+                                <ul class="table-list">
+                                    <li>
+                                        <span>{{tr.ageTypeName}}{{j+1}}</span>
+                                        <span>{{tr.name}} ({{tr.gender == 'F' ? '여': '남'}})</span>
+                                    </li>
+                                    <li>
+                                        <span>영문 성/이름</span>
+                                        <span>{{tr.lastName}} / {{tr.firstName}}</span>
+                                    </li>
+                                    <li *ngIf="tr.birthday">
+                                        <span>생년월일</span>
+                                        <span>{{tr.birthday | date:'yyyy/MM/dd'}}</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title">요청사항</h2>
+                <div class="round-box">
+                    <div class="row-group no-mg">
+                        <div class="row">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" checked disabled>
+                                <span class="checkbox-control-text">금연객실</span>
+                            </label>
+                        </div>
+                        <div class="row mt10">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" disabled>
+                                <span class="checkbox-control-text">고층객실</span>
+                            </label>
+                        </div>
+                        <div class="row mt10">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input" disabled>
+                                <span class="checkbox-control-text">Late Check in</span>
+                            </label>
+                        </div>
+                        <div class="row">
+                            <div class="select-box line">
+                                <span class="icon sm clock2"></span>
+                                <select name="" id="" required disabled>
+                                    <option value="" selected disabled>숙소 도착 예정 시간</option>
+                                    <option value="">00:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h5 class="row-title">요청 내용</h5>
+                            <div class="textarea line">
+                                <textarea name="" id="" cols="30" rows="4" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h5 class="row-title">답변</h5>
+                            <div class="textarea line">
+                                <textarea name="" id="" cols="30" rows="4" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <ul class="text-list">
+                                <li class="none-pd color-sub3">※ 요청사항은 확정 내역이 아니며 호텔의 상황에 따라 반영되지 않을 수 있습니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title">필수 정보</h2>
+                <div class="round-box">
+                    <ul class="text-list">
+                        <li class="none-pd">Remarks</li>
+                        <li>2019.08.31 00:00:00 - 2019.09.04 00:00:00</li>
+                        <li>2 Children between 3 to 12 are sharing beds with parents in ALL room type.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title">이용규정</h2>
+                <div class="round-box">
+                    <ul class="text-list">
+                        <li>숙박 시설 정책에 따라 추가 인원에 대한 요금이 부과 될 수 있습니다.</li>
+                        <li>체크인 시 부대 비용 발생에 대비해 정부에서 발급한 사진이 부착된 신분증과 신용카드 또는 현금으로 보증금이 필요합니다.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+{
+  "id": "page",
+  "titleHtml": "<span>항공+호텔</span><span>최대 <span class=\"color-point2\">20%할인</span></span>",
+  "tabList": [
+    {
+      "active": true,
+      "titleTxt": "항공+호텔"
+    },
+    {
+      "active": false,
+      "titleTxt": "추천일정"
+    }
+  ],
+  "tgFromTo": {
+    "tgFrom": {
+      "code": "SEL",
+      "name": "서울/인천"
+    },
+    "tgTo": {
+      "code": "LAX",
+      "name": "로스앤젤레스"
+    },
+    "btnTxt": "변경"
+  },
+  "dateFromTo": {
+    "placeholder": "여행날짜를 선택해 주세요",
+    "dateFrom": null,
+    "dateTo": null
+  },
+  "optSelect": {
+    "placeholder": "좌석등급, 객실 수, 인원 수를 선택해주세요",
+    "ticketType": null,
+    "flightClass": null,
+    "peopleNum": null
+  },
+  "optChkList": [
+    {
+      "name": "항공 직항만",
+      "active": true
+    },
+    {
+      "name": "숙박할 도시, 일정 다름",
+      "active": false
+    }
+  ],
+  "searchList": [
+    {
+      "name": "일정",
+      "tgSelect": {
+        "txt": "",
+        "placeholder": "도시, 호텔, 랜드마크 등을 검색하세요"
+      },
+      "dateSelect": {
+        "txt": "",
+        "placeholder": "숙박 날짜를 선택해 주세요"
+      }
+    },
+    {
+      "name": "일정",
+      "tgSelect": {
+        "txt": "",
+        "placeholder": "도시, 호텔, 랜드마크 등을 검색하세요"
+      },
+      "dateSelect": {
+        "txt": "",
+        "placeholder": "숙박 날짜를 선택해 주세요"
+      }
+    }
+  ],
+  "addBtn": {
+    "txt": "일정추가"
+  },
+  "searchResBtn": {
+    "txt": "항공+호텔 검색"
+  }
+}

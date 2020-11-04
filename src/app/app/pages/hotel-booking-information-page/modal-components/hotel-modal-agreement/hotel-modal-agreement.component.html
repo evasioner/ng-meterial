@@ -1,0 +1,49 @@
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>호텔 약관 확인</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents fixed-btn-footer">
+        <div class="tab-wrap">
+            <tabset class="m-ngx-bootstrap-tabs">
+                <tab [active]="storeId === 'normal'" (selectTab)="onTabClick($event, 'normal')">
+                    <ng-template tabHeading>
+                        <span>일반 규정</span>
+                    </ng-template>
+                    <div class="page-contents-type2 pb0">
+                        <div class="agreement-data-format">
+                            <div [innerHTML]="this.viewModel.common" class="agreement-data-format"></div>
+                        </div>
+                    </div>
+                </tab>
+                <tab [active]="storeId === 'cancel'" (selectTab)="onTabClick($event, 'cancel')">
+                    <ng-template tabHeading>
+                        <span>취소/환불 규정</span>
+                    </ng-template>
+                    <div class="page-contents-type2 pb0">
+                        <div class="agreement-data-format">
+                            <div [innerHTML]="this.viewModel.cancel" class="agreement-data-format"></div>
+                        </div>
+                    </div>
+                </tab>
+                <tab [active]="storeId === 'personalInfo'" (selectTab)="onTabClick($event, 'personalInfo')">
+                    <ng-template tabHeading>
+                        <span>개인정보처리방침</span>
+                    </ng-template>
+                    <div class="page-contents-type2 pb0">
+                        <div class="agreement-data-format">
+                            <div [innerHTML]="this.viewModel.personal" class="agreement-data-format"></div>
+                        </div>
+                    </div>
+                </tab>
+            </tabset>
+            <div class="btn-group pd bg fixed-bottom">
+                <button (click)="onOkClick($event)" class="btn lg default" role="button">확인</button>
+            </div>
+        </div>
+    </div>
+</div>

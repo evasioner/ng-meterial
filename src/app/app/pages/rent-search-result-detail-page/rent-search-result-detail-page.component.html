@@ -1,0 +1,208 @@
+<div id="wrap" class="p-rent-search-result-detail">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-rent-header [headerType]="headerType" [headerConfig]="headerConfig"></app-rent-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="page-contents-type">
+            <!-- 상단 이미지 영역 -->
+            <div class="rentalcar-detail-image">
+                <div class="btn-group">
+                    <a href="#" class="btn-share">공유</a>
+                    <!-- 관심상품 클릭시 .active 토글 -->
+                    <a href="#" class="btn-wish">관심상품</a>
+                </div>
+                <div class="rentalcar-detail-rolling">
+                    <ul>
+                        <li class="active" style="background: url('/assets/images/temp/@temp-rentalcar-image.png') 50% 50% no-repeat; background-size: cover;"></li>
+                        <li style="background: url('/assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat; background-size: cover;"></li>
+                        <li style="background: url('/assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat; background-size: cover;"></li>
+                    </ul>
+                    <div class="rolling-count"><strong>1</strong> <span>/ 20</span></div>
+                </div>
+            </div>
+            <!-- 렌터카 상세 컨텐츠 영역 -->
+            <div class="rentalcar-detail-contents">
+                <div class="contents-item">
+                    <ul class="rentalcar-basic-information">
+                        <li><img src="/assets/images/temp/@temp-rentalcar-logo.png" alt="" class="rentalcar-logo"></li>
+                        <li class="name-en">Mitsubishi Mirage</li>
+                        <li class="comment">제조사 및 모델 보장 & 운전자 1명 무료 추가 및 유아용/부스터 카시트 무료 대여</li>
+                    </ul>
+                    <ul class="round-box convenience">
+                        <li>
+                            <span class="icon md rentalcar-person"></span>
+                            <p>4인승</p>
+                        </li>
+                        <li>
+                            <span class="icon md rentalcar-door"></span>
+                            <p>4도어</p>
+                        </li>
+                        <li>
+                            <span class="icon md rentalcar-air"></span>
+                            <p>에어컨</p>
+                        </li>
+                        <li>
+                            <span class="icon md rentalcar-gear"></span>
+                            <p>자동 변속</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contents-item">
+                    <h2 class="contents-title">선택 내역</h2>
+                    <div class="round-box rentalcar-reserved-contents">
+                        <div class="check-time auto">
+                            <span class="cal">인수 날짜 : 11.20(수)</span>
+                            <span class="ml-auto">인수 시간 : 09:00</span>
+                        </div>
+                        <div class="check-time auto">
+                            <span class="cal">반납 날짜 : 11.20(수)</span>
+                            <span class="ml-auto">반납 시간 : 09:00</span>
+                        </div>
+                        <div class="summary">
+                            <dl>
+                                <dt>인수 장소</dt>
+                                <dd>뉴욕, Newark Liberty Intl Airport Building 318 JFK AP NY 114309508 United States</dd>
+                                <dd class="color-sub3 font-xs"><span class="icon xs attention mr5"></span>공항 셔틀로 이동하여 접수 및 차량 픽업</dd>
+                            </dl>
+                            <dl>
+                                <dt>반납 장소</dt>
+                                <dd>뉴욕, Newark Liberty Intl Airport Building 318 JFK AP NY 114309508 United States</dd>
+                            </dl>
+                            <dl>
+                                <dt>연령</dt>
+                                <dd>30세 - 65세</dd>
+                            </dl>
+                            <dl>
+                                <dt>포함</dt>
+                                <dd>차량대여료</dd>
+                                <dd><a href="#" class="text-link"><span class="text color-sub6">LDW - LOSS DAMAGE WAIVER</span><span class="icon sm information2"></span></a></dd>
+                                <dd>TAX & SURCHARGE</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-item">
+                    <h2 class="contents-title">서비스 안내</h2>
+                    <div class="round-box">
+                        <ul class="article-list">
+                            <li>국내/국제 운전면허증 모두 소지하셔야 차량 대여가 가능합니다. 내비게이션 도난/분실 시 보험 적용이 불가능하므로 분실되지 않도록 유의하시기 바랍니다.</li>
+                        </ul>
+                        <ul class="article-list">
+                            <li>야외 수영장 및 24시간 피트니스 시설 같은 레크리에이션 시설을 놓치지 말고 즐기세요. 이 호텔에는 무료 무선 인터넷, 콘시어지 서비스, 선물 가게/신문 가판대 등도 마련되어 있습니다.</li>
+                        </ul>
+                        <!-- 3번째부터 .hide 추가 / 아래 더보기 버튼 누르면 .hide 전부 삭제 -->
+                        <ul class="article-list hide">
+                            <li>야외 수영장 및 24시간 피트니스 시설 같은 레크리에이션 시설을 놓치지 말고 즐기세요. 이 호텔에는 무료 무선 인터넷, 콘시어지 서비스, 선물 가게/신문 가판대 등도 마련되어 있습니다.</li>
+                        </ul>
+                        <a href="#" class="btn-more-view">더보기</a>
+                    </div>
+                </div>
+
+                <div class="contents-item">
+                    <h2 class="contents-title">추천 렌터카</h2>
+                    <div class="scroll-box-list extend no-mg">
+                        <!-- 추천 렌터카 리스트 아이템 반복 -->
+                        <div class="saved-item popularity-rentalcar">
+                            <div class="rentalcar-image" style="background: url('/assets/images/temp/@temp-rentalcar-image.png' ) 50% 50% no-repeat; background-size: cover;">
+                            </div>
+                            <div class="rentalcar-item-information">
+                                <div class="name"><img src="/assets/images/temp/@temp-rentalcar-logo.png" alt="" class="rentalcar-logo">Mitsubishi Mirage</div>
+                                <div class="flex-list">
+                                    <div><span class="person">4인승</span></div>
+                                    <div><span class="door">4도어</span></div>
+                                </div>
+                                <div class="flex-list">
+                                    <div><span class="air">에어컨</span></div>
+                                    <div><span class="gear">자동 변속</span></div>
+                                </div>
+                                <div class="price">USD 224.93</div>
+                            </div>
+                        </div>
+                        <!-- 추천 렌터카 리스트 아이템 반복 -->
+                        <div class="saved-item popularity-rentalcar">
+                            <div class="rentalcar-image" style="background: url('/assets/images/temp/@temp-rentalcar-image.png' ) 50% 50% no-repeat; background-size: cover;"></div>
+                            <div class="rentalcar-item-information">
+                                <div class="name"><img src="/assets/images/temp/@temp-rentalcar-logo.png" alt="" class="rentalcar-logo">Mitsubishi Mirage</div>
+                                <div class="flex-list">
+                                    <div><span class="person">4인승</span></div>
+                                    <div><span class="door">4도어</span></div>
+                                </div>
+                                <div class="flex-list">
+                                    <div><span class="air">에어컨</span></div>
+                                    <div><span class="gear">자동 변속</span></div>
+                                </div>
+                                <div class="price">USD 224.93</div>
+                            </div>
+                        </div>
+                        <!-- 추천 렌터카 리스트 아이템 반복 -->
+                        <div class="saved-item popularity-rentalcar">
+                            <div class="rentalcar-image" style="background: url('/assets/images/temp/@temp-rentalcar-image.png' ) 50% 50% no-repeat; background-size: cover;"></div>
+                            <div class="rentalcar-item-information">
+                                <div class="name"><img src="/assets/images/temp/@temp-rentalcar-logo.png" alt="" class="rentalcar-logo">Mitsubishi Mirage</div>
+                                <div class="flex-list">
+                                    <div><span class="person">4인승</span></div>
+                                    <div><span class="door">4도어</span></div>
+                                </div>
+                                <div class="flex-list">
+                                    <div><span class="air">에어컨</span></div>
+                                    <div><span class="gear">자동 변속</span></div>
+                                </div>
+                                <div class="price">USD 224.93</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="reservation-summary">
+                    <h2 class="product-title">[{{list.categories[0].name}}] {{list.items[0].bookingName}}</h2>
+                    <ul>
+                      <li>
+                        <span>이용일</span>
+                        <span>{{list.items[0].travelFromDate}} - {{list.items[0].travelToDate}}</span>
+                      </li>
+                      <li>
+                        <span>옵션정보</span>
+                        <span>4인승, 4도어, 에어컨, 자동변속</span>
+                      </li>
+                      <li>
+                        <span>인수장소</span>
+                        <span class="full-text">{{list.items[0].travelFromDate}} {{list.items[0].rent.pickupTime}} / {{list.items[0].rent.pickupLocationName}}({{list.items[0].rent.vehicleVendorName}})</span>
+                      </li>
+                      <li>
+                        <span>반납장소</span>
+                        <span class="full-text">{{list.items[0].travelToDate}} {{list.items[0].rent.returnTime}} / {{list.items[0].rent.returnLocationName}}({{list.items[0].rent.vehicleVendorName}})</span>
+                      </li>
+                      <li>
+                        <span>결제금액</span>
+                        <span><strong class="color-point2">{{list.currencyCode}} {{list.items[0].sumAmount | number}}</strong><span class="font-xs ml5">(현재 기준 환율 약 224,000원)</span></span>
+                      </li>
+                    </ul>
+                    <div class="btn-group mt20">
+                      <a href="#" class="btn md grey">예약불가</a>
+                    </div>
+                  </div> -->
+
+                <!-- 하단 가격 + 예약버튼 -->
+                <div class="price-footer-box">
+                    <div class="item-group">
+                        <div class="item-row col">
+                            <div class="left"><span class="font-lg-b color-main2">총 금액</span></div>
+                            <div class="right">
+                                <span class="color-sub6 mr5">무제한</span><span class="font-lg-b color-point2">USD 224.93</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn lg default" role="button">바로 예약</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

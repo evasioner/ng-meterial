@@ -1,0 +1,79 @@
+<div *ngIf="isBrowser" infiniteScroll [infiniteScrollDistance]="infiniteScrollConfig.distance" [infiniteScrollThrottle]="infiniteScrollConfig.throttle" id="wrap" class="p-activity-search-result search-results" (scrolled)="onScroll()">
+
+    <!-- header -->
+    <div id="header" class="search fixed">
+        <app-activity-header [headerType]="headerType" [headerConfig]="headerConfig"></app-activity-header>
+
+        <div class="search-option-list">
+            <!-- *ngIf="resultList != null && resultList.length !== 0" -->
+            <!-- span class="active" a line or default
+      필터의 active 표시는 제외 하고 진행 - 박종선 (03.25)
+      <span class="active"><a class="btn md default round inline">도시</a></span>
+      <span><a class="btn md line round inline">카테고리</a></span>
+      <span><a (click)="onOptionSearchClick('CITY')" class="btn md line round inline" [innerHTML]="'MAIN_SEARCH.SEARCH_OPTION1' | translate"></a></span><! -- 도시 -- >
+      도시 필터 제외. 박종선(2020.06.03)
+    -->
+            <span><a (click)="onOptionSearchClick('CATEGORY')" class="btn md line round inline" [innerHTML]="'MAIN_SEARCH.SEARCH_OPTION2' | translate"></a></span><!-- 카테고리 -->
+        </div>
+    </div>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <!-- 리스트 로딩 -->
+        <div *ngIf="!loadingBool" class="list-loading">
+            <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+            <p class="loading-msg">
+                더 많은 액티비티를 검색중입니다.<br>잠시만 기다려주세요.
+            </p>
+        </div>
+
+        <div *ngIf="loadingBool && resultList.length !== 0" class="search-result-page">
+
+            <!-- timer | is-hide-->
+            <countdown-timer class="is-hide"></countdown-timer>
+
+            <div class="search-result-top">
+                <span><span class="color-point2">{{ resultCount | number }}</span>개의 검색결과</span>
+                <a class="ml-auto btn sm inline line light icon-only" (click)="onChangeListType()">
+                    <span class="icon sm" [ngClass]="{'list-type1': listType === 'I', 'list-type2': listType === 'L' }"></span>
+                </a>
+            </div>
+
+            <div class="search-result-list">
+
+                <div *ngFor="let result of resultList; let i = index" (click)="onGoDetailPage(result.activityIndex)" [ngClass]="{'list-type': listType === 'L', 'image-type': listType === 'I' }" class="activity-result-item">
+                    <div class="activity-image" [style.background]="'url('+ getBackgroundImg(result.defaultPhotoUrl) +')'" [style.backgroundPositionX]="'50%'" [style.backgroundPositionY]="'50%'" [style.backgroundSize]="'cover'">
+                    </div>
+                    <div class="activity-result-item-information">
+                        <p class="main-name">{{ result.activityNameLn }}</p>
+                        <p class="sub-name">{{ result.vendorCompName }}</p>
+                        <!-- 상품 공급사 -->
+                        <div class="flex-list auto">
+                            <div class="rate">{{ result.reviewAverage }}({{ result.reviewCount }})</div>
+                            <div class="now" *ngIf="result.instantConfirmYn">즉시 확정</div>
+                            <div class="price"><strong>{{ result.amountSum | number  : '1.0-0'}}</strong><span class="font-xs color-sub5">원</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 필터 버튼 -->
+                <div class="filter-button-group bottom" *ngIf="resultList != undefined && resultList != null && resultList.length > 0">
+                    <a [class.active]="detailUpdate" class="btn-filter" (click)="onDetailFilterSearchClick()">
+                        <span class="icon xs filter"></span>
+                    </a>
+                    <a [class.active]="alignUpdate" class="btn-filter" (click)="onAlignFilterSearchClick()">
+                        <span class="icon xs align"></span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <app-error-result [activityError]="loadingBool && this.resultList.length === 0"></app-error-result>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

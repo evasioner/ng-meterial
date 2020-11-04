@@ -1,0 +1,35 @@
+<div id="wrap" class="p-activity">
+    <!-- header -->
+    <app-header></app-header>
+    <app-activity-header [headerType]="headerType" [headerConfig]="headerConfig"></app-activity-header>
+
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <!-- 메인 검색 -->
+        <app-activity-main-search class="contents-item"></app-activity-main-search>
+
+        <!-- 최근 검색한 여행지 -->
+        <app-activity-new-search-list class="contents-item mg"></app-activity-new-search-list>
+
+        <!-- 지금 뜨는 여행지 -->
+        <app-activity-hotplace-list class="contents-item mg"></app-activity-hotplace-list>
+
+        <!-- 인기 #태그 액티비티  -->
+        <app-activity-hotactivity-list *ngIf="false" class="contents-item mg"></app-activity-hotactivity-list>
+
+        <!-- 회원 자유여행  -->
+        <app-activity-customer-freestyle *ngIf="false" class="contents-item mg"></app-activity-customer-freestyle>
+
+        <!-- 회원 이벤트 -->
+        <app-activity-customer-event class="contents-item mg"></app-activity-customer-event>
+
+        <!-- 쿠폰 다운로드 -->
+        <app-activity-coupon-list class="contents-item mg"></app-activity-coupon-list>
+
+    </div>
+
+    <!-- footer -->
+    <app-footer></app-footer>
+</div>
+
+<router-outlet></router-outlet>

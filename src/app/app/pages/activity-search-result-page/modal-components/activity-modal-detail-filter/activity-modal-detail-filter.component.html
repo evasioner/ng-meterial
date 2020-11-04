@@ -1,0 +1,225 @@
+<div class="modal">
+
+    <!-- modal header -->
+    <div class="modal-header">
+        <div class="left">
+            <a [innerHTML]="'MODAL_DETAIL.RELOAD' | translate" class="icon sm common-reload" (click)="onReloadClick($event)"></a>
+        </div>
+        <h1 [innerHTML]="'MODAL_DETAIL.TITLE' | translate"></h1>
+        <div class="right">
+            <a [innerHTML]="'MODAL_DETAIL.CLOSE' | translate" class="icon sm common-close" (click)="onCloseClick($event)"></a>
+        </div>
+    </div>
+
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="cm-detail-filter">
+
+            <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate>
+                <div class="input line mb10 mt10">
+                    <span class="icon sm search"></span>
+                    <input [(ngModel)]="vm.keyword" formControlName="keyword" [placeholder]="'MODAL_DETAIL.SEARCH_PLACEHOLDER' | translate" type="text" name="keyword" autocomplete="off">
+                    <a *ngIf="vm.keyword !== ''" class="icon sm input-delete2" (click)="resetText($event)">삭제</a>
+                </div>
+
+                <accordion [closeOthers]="'true'" class="m-ngx-bootstrap-accordion">
+
+                    <accordion-group *ngIf="vm.amount" class="accordion" heading="가격대">
+                        <div class="accordion-body active">
+                            <div class="range double">
+                                <div class="m-bootstrap-slider">
+                                    <div class="bootstrap-slider-result-area range-title">
+                                        <strong class="font-lg color-point2">{{vm.amount.value[0] | number}}</strong>
+                                        <span class="font-xs color-sub5">원</span>
+                                        <span class="font-lg color-sub5 ml5 mr5">~</span>
+                                        <strong class="font-lg color-point2">{{vm.amount.value[1] | number}}</strong>
+                                        <span class="font-xs color-sub5">원</span>
+                                    </div>
+
+                                    <div class="bootstrap-slider-area">
+                                        <app-input-slider [(value)]="vm.amount.value" [min]="vm.amount.min" [max]="vm.amount.max" [handle]="'custom'" htmlTarget="bootstrap-slider">
+                                            <input data-target="bootstrap-slider">
+                                        </app-input-slider>
+                                    </div>
+
+                                    <div class="bootstrap-slider-range-area range-text">
+                                        <span class="min">{{vm.amount.min | number}}원</span>
+                                        <span class="max">{{vm.amount.max | number}}원</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </accordion-group>
+
+                    <accordion-group *ngIf="vm.tags.length > 0" class="accordion" heading="상품 태그">
+                        <ul class="row-list">
+                            <li>
+                                <label class="checkbox block">
+                                    <input [checked]="vm.tagsAll" type="checkbox" class="checkbox-control-input" (change)="onCheckboxChange($event, 'tagItemList', 'tags')">
+                                    <span class="checkbox-control-text font-md-b">전체</span>
+                                </label>
+                            </li>
+                            <li *ngFor="let tagItem of vm.tags | slice : 0 : vm.tagsCount; index as i;">
+                                <label class="checkbox block">
+                                    <input [value]="tagItem.code" [checked]="tagItem.checked" type="checkbox" class="checkbox-control-input" (change)="onCheckboxChange($event, 'tagItemList', 'tags')">
+                                    <span class="checkbox-control-text">{{ tagItem.name }}</span>
+                                </label>
+                            </li>
+                        </ul>
+
+                        <div *ngIf="vm.tags.length > 5" class="btn-group mb20">
+                            <a class="btn md round line" (click)="onTagMoreClick($event)">
+                                <span [ngClass]="vm.tagsDetail ? 'top2' : 'bottom2'" class="icon sm direction">더보기</span>
+                            </a>
+                        </div>
+                    </accordion-group>
+
+                    <accordion-group *ngIf="vm.reviewAverage" class="accordion" heading="평점">
+                        <div class="accordion-body active">
+                            <div class="range double">
+                                <div class="m-bootstrap-slider">
+                                    <div class="bootstrap-slider-result-area range-title">
+                                        <strong class="font-lg color-point2">{{vm.reviewAverage.value[0] | number}}</strong>
+                                        <span class="font-xs color-sub5">점</span>
+                                        <span class="font-lg color-sub5 ml5 mr5">~</span>
+                                        <strong class="font-lg color-point2">{{vm.reviewAverage.value[1] | number}}</strong>
+                                        <span class="font-xs color-sub5">점</span>
+                                    </div>
+
+                                    <div class="bootstrap-slider-area">
+                                        <app-input-slider [(value)]="vm.reviewAverage.value" [min]="vm.reviewAverage.min" [max]="vm.reviewAverage.max" [handle]="'custom'" htmlTarget="bootstrap-slider">
+                                            <input data-target="bootstrap-slider">
+                                        </app-input-slider>
+                                    </div>
+
+                                    <div class="bootstrap-slider-range-area range-text">
+                                        <span class="min">{{vm.reviewAverage.min | number}}점</span>
+                                        <span class="max">{{vm.reviewAverage.max | number}}점</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </accordion-group>
+
+                    <!-- <accordion-group class="accordion" heading="인원">
+                        <ul class="row-list">
+                            <li class="flex">
+                                <div>
+                                    <p class="color-main2 mb5">성인</p>
+                                    <p class="color-sub4">만12세 이상</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <div class="counter">
+                                        <button type="button" class="counter-control down" (click)="onCalPaxCount('A','M');">DOWN</button>
+                                        <span class="counter-num">{{ vm.paxCount.adult }}</span>
+                                        <button type="button" class="counter-control up" (click)="onCalPaxCount('A','P')">UP</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div>
+                                    <p class="color-main2 mb5">아동</p>
+                                    <p class="color-sub4">만2세 ~ 만12세 미만</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <div class="counter">
+                                        <button type="button" class="counter-control down" (click)="onCalPaxCount('C','M')">DOWN</button>
+                                        <span class="counter-num">{{ vm.paxCount.child }}</span>
+                                        <button type="button" class="counter-control up" (click)="onCalPaxCount('C','P')">UP</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </accordion-group> -->
+
+                    <accordion-group *ngIf="vm.duration" class="accordion" heading="소요시간">
+                        <div class="accordion-body active">
+                            <div class="range">
+                                <div class="m-bootstrap-slider">
+                                    <div class="bootstrap-slider-result-area range-title">
+                                        <strong class="font-lg color-point2">{{vm.duration.value[0] | number}}</strong>
+                                        <span class="font-xs color-sub5">시간</span>
+                                        <span class="font-lg color-sub5 ml5 mr5">~</span>
+                                        <strong class="font-lg color-point2">{{vm.duration.value[1] | number}}</strong>
+                                        <span class="font-xs color-sub5">시간</span>
+                                    </div>
+
+                                    <div class="bootstrap-slider-area">
+                                        <app-input-slider [(value)]="vm.duration.value" [min]="vm.duration.min" [max]="vm.duration.max" [handle]="'custom'" htmlTarget="bootstrap-slider2">
+                                            <input data-target="bootstrap-slider2">
+                                        </app-input-slider>
+                                    </div>
+
+                                    <div class="bootstrap-slider-range-area range-text">
+                                        <span class="min">{{vm.duration.min | number}}시간</span>
+                                        <span class="max">{{vm.duration.max | number}}시간</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </accordion-group>
+
+                    <accordion-group *ngIf="vm.deliveryTypes.length > 0" class="accordion" heading="수령방법">
+                        <ul class="row-list">
+                            <li>
+                                <label class="checkbox block">
+                                    <input [checked]="vm.deliveryTypesAll" type="checkbox" class="checkbox-control-input" (change)="onCheckboxChange($event, 'deliveryList', 'deliveryTypes')">
+                                    <span class="checkbox-control-text font-md-b">전체</span>
+                                </label>
+                            </li>
+                            <li *ngFor="let deliveryItem of vm.deliveryTypes; index as i;">
+                                <label class="checkbox block">
+                                    <input [value]="deliveryItem.code" [checked]="deliveryItem.checked" type="checkbox" class="checkbox-control-input" (change)="onCheckboxChange($event, 'deliveryList', 'deliveryTypes')">
+                                    <span class="checkbox-control-text">{{ deliveryItem.name }}</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </accordion-group>
+
+                    <accordion-group class="accordion" heading="가이드">
+                        <ng-container *ngIf="vm.guideExists.length > 0"></ng-container>
+                        <h2 class="row-title">가이드 포함</h2>
+                        <ul class="row-list">
+                            <li>
+                                <label class="checkbox block">
+                                    <input [checked]="vm.guideExistsAll" type="checkbox" class="checkbox-control-input" (change)="onCheckboxChange($event, 'guideExistsList', 'guideExists')">
+                                    <span class="checkbox-control-text font-md-b">전체</span>
+                                </label>
+                            </li>
+                            <li *ngFor="let existItem of vm.guideExists; index as i;">
+                                <label class="checkbox block">
+                                    <input [value]="existItem.code" [checked]="existItem.checked" type="checkbox" class="checkbox-control-input" (change)="onCheckboxChange($event, 'guideExistsList', 'guideExists')">
+                                    <span class="checkbox-control-text">{{ existItem.text }}</span>
+                                </label>
+                            </li>
+                        </ul>
+
+                        <ng-container *ngIf="vm.guideLanguages.length > 0">
+                            <h2 class="row-title">가이드 사용언어</h2>
+                            <ul class="row-list">
+                                <li>
+                                    <label class="checkbox block">
+                                        <input [checked]="vm.guideLanguagesAll" type="checkbox" class="checkbox-control-input" (change)="onCheckboxChange($event, 'guideLanguagesList', 'guideLanguages')">
+                                        <span class="checkbox-control-text font-md-b">전체</span>
+                                    </label>
+                                </li>
+                                <li *ngFor="let existItem of vm.guideLanguages; index as i;">
+                                    <label class="checkbox block">
+                                        <input [value]="existItem.code" [checked]="existItem.checked" type="checkbox" class="checkbox-control-input" (change)="onCheckboxChange($event, 'guideLanguagesList', 'guideLanguages')">
+                                        <span class="checkbox-control-text">{{existItem.name}}</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </ng-container>
+                    </accordion-group>
+
+                </accordion>
+
+                <div class="btn-group bg pd fixed-bottom">
+                    <button type="submit" class="btn lg default" role="button">적용하기</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

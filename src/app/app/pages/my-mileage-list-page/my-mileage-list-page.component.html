@@ -1,0 +1,58 @@
+<div id="wrap" class="p-mypage-mileage">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="mileage-list">
+            <div class="mileage-visual">
+                <h2>박종선 님,<strong>노랑풍선 마일리지</strong></h2>
+                <span>회원구분<strong>플래티넘</strong></span>
+            </div>
+            <div class="mileage-summary">
+                <div class="summary-item">
+                    <div>
+                        <h3>총 마일리지</h3>
+                        <strong class="color-point2"><span>50,000</span><span class="icon sm mileage2 ml5"></span></strong>
+                    </div>
+                    <div>
+                        <h3>소멸예정 마일리지</h3>
+                        <strong class="color-sub3"><span>10,000</span><span class="icon sm mileage3 ml5"></span></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-wrap">
+                <div class="tab-header type2 top-blank">
+                    <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}">전체내역</a>
+                    <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}">적립내역</a>
+                    <a (click)="selectTab(2)" class="tab-header-item" [ngClass]="{'active': tabNo === 2}">사용내역</a>
+                    <a (click)="selectTab(3)" class="tab-header-item" [ngClass]="{'active': tabNo === 3}">소멸예정</a>
+                </div>
+                <div class="tab-body">
+                    <div class="tab-item active">
+                        <div class="page-contents-type3">
+                            <div class="item-filter type1 mb20">
+                                <!-- 클릭하면 .active 추가 -->
+                                <a (click)="selectTurm(0)" [ngClass]="{'active': turmNo === 0}">당일</a>
+                                <a (click)="selectTurm(1)" [ngClass]="{'active': turmNo === 1}">1주일</a>
+                                <a (click)="selectTurm(2)" [ngClass]="{'active': turmNo === 2}">1개월</a>
+                                <a (click)="selectTurm(3)" [ngClass]="{'active': turmNo === 3}">3개월</a>
+                                <a (click)="selectTurm(4)" [ngClass]="{'active': turmNo === 4}">6개월</a>
+                                <a (click)="selectTurm(5)" [ngClass]="{'active': turmNo === 5}">전체</a>
+                            </div>
+                            <p class="mb10"><a (click)="openModalNotice()" class="text-link"><span class="text">마일리지 이용안내</span><span class="icon sm information2"></span></a></p>
+                            <!-- 마일리지 리스트 영역 -->
+                            <app-mileage-list class="contents-item-area"></app-mileage-list>
+
+                        </div>
+
+                    </div>
+                    <div class="tab-item"></div>
+                    <div class="tab-item"></div>
+                    <div class="tab-item"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

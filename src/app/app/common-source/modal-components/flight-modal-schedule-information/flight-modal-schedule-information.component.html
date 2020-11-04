@@ -1,0 +1,115 @@
+<!-- Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>항공 일정</h1>
+        <div class="right">
+            <a (click)="modalClose($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <!-- 항공 일정 modal -->
+
+        <div class="cm-schedule">
+            <ng-container *ngFor="let item of viewModel.selectedList">
+                <!-- 스케줄 반복 -->
+                <!-- .schedule-header 클릭시 .active 토글 -> .schedule-body 토글 -->
+                <div class="schedule-item">
+                    <div [class.active]="item.detailFlag" (click)="onDetailShow($event, item)" class="schedule-header">
+                        <dl>
+                            <dt>
+                                <span class="label">{{ item.wayText }}</span>
+                                <span class="title">
+                                    {{ item.originAirportNameLn }}({{ item.originAirportCode }})-{{ item.destinationAirportNameLn }}({{ item.destinationAirportCode }})
+                                </span>
+                            </dt>
+                            <dd>
+                                <span>{{ item.originDate | amDateFormat:'MM.DD (dd)' }}</span>
+                                <span>{{ item.stops }}</span>
+                                <span>{{ item.totalDuration | flightMinuteToHourMinute }}</span>
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <div class="schedule-body">
+                        <!-- 항공 상세 스케줄 -->
+                        <div class="flight-schedule">
+                            <ng-container *ngFor="let segItem of item.segmentList">
+                                <div class="schedule-block">
+
+                                    <!-- 좌측 날짜 -->
+                                    <div class="time">
+                                        <p>{{ segItem.originTime }}</p>
+                                        <p>{{ segItem.originDate | amDateFormat:'MM.DD (dd)' }}</p>
+                                    </div>
+
+                                    <!-- 좌측 시간 -->
+                                    <div class="total">{{ segItem.flyingMinutes | flightMinuteToHourMinute }}</div>
+
+                                    <!-- 우측 내용 -->
+                                    <dl>
+                                        <dt>
+                                            <span class="label">{{ segItem.originAirportCode }}</span>
+                                            <span class="title">{{ segItem.originCityNameLn }} ({{ segItem.originAirportNameLn }} {{ segItem.originTerminal }}) 출발</span>
+                                        </dt>
+                                        <dd>
+                                            <img src="/assets/images/airlines/{{ segItem.airlineCode }}_Small.png" alt="" class="airline-logo">
+                                            {{ segItem.airlineNameLn }} {{ segItem.airlineCode }}{{ segItem.flightNo }}
+                                        </dd>
+                                        <dd *ngIf="segItem.hasOwnProperty('operatingAirlineCode')">
+                                            <img src="/assets/images/airlines/{{ segItem.operatingAirlineCode }}_Small.png" alt="" class="airline-logo">
+                                            {{ segItem.operatingAirlineNameLn }} {{ segItem.operatingAirlineCode }}{{ segItem.operatingFlightNo }}
+                                        </dd>
+                                        <dd>{{ segItem.equipmentName }}</dd>
+                                        <dd>{{ segItem.options }}</dd>
+                                        <dd>
+                                            <span *ngIf="segItem.inFlightService.mealYn" class="food">식사</span>
+                                            <span *ngIf="segItem.inFlightService.wifiYn" class="wifi">WI-FI</span>
+                                            <span *ngIf="segItem.inFlightService.powerYn" class="plug">콘센트</span>
+                                            <span *ngIf="segItem.inFlightService.vodYn" class="vod">VOD</span>
+                                        </dd>
+                                    </dl>
+
+                                </div>
+
+                                <div class="schedule-block">
+
+                                    <!-- 좌측 날짜 -->
+                                    <div class="time">
+                                        <p>{{ segItem.destinationTime }}</p>
+                                        <p>{{ segItem.destinationDate | amDateFormat:'MM.DD(dd)' }}</p>
+                                    </div>
+
+                                    <!-- 좌측 시간 -->
+                                    <div class="total" *ngIf="segItem.groundMinutes">{{ segItem.groundMinutes | flightMinuteToHourMinute }}</div>
+
+                                    <!-- 우측 내용 -->
+                                    <dl>
+                                        <dt>
+                                            <span class="label">{{ segItem.destinationAirportCode }}</span>
+                                            <span class="title">{{ segItem.destinationCityNameLn }} ({{ segItem.destinationAirportNameLn }} {{ segItem.destinationterminal }}) 도착</span>
+                                        </dt>
+
+                                        <!-- 경유지 체류시간 -->
+                                        <ng-container *ngIf="segItem.groundMinutes">
+                                            <!-- 환승 옵션 -->
+                                            <dd>
+                                                <span class="transfer">{{ segItem.destinationCityNameLn }} 환승</span>
+                                            </dd>
+                                            <dd *ngIf="segItem.differentAirport">
+                                                <span>다른 공항 환승</span>
+                                            </dd>
+                                        </ng-container>
+                                    </dl>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+        </div>
+    </div>
+</div>

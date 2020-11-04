@@ -1,0 +1,606 @@
+<div id="wrap" class="p-cm-reservation">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+
+    <!-- contents -->
+    <div *ngIf="loadingBool" id="contents" class="content-area">
+        <div class="folding fixed line between">
+            <!--
+          - .folding-menu 누를때마다 .active 토글
+          - .folding-menu에 .active를 추가하면 .folding-detail이 자동으로 보여짐 (css)
+        -->
+            <a (click)="selectFolding()" [ngClass]="{'active': foldingYn}" class="folding-menu">
+                <strong class="text">카테고리 모아보기</strong>
+                <span class="arrow"></span>
+            </a>
+            <div class="folding-detail">
+                <ul class="folding-list2">
+                    <li style="display: none;">
+                        <a (click)="openScheduleChange()" class="folding-list-item">일정변경</a>
+                    </li>
+                    <li>
+                        <a (click)="resvCancel()" class="folding-list-item">예약 취소</a>
+                    </li>
+                    <li>
+                        <a (click)="openFlightEticket()" class="folding-list-item">E-Ticket</a>
+                    </li>
+                    <!-- <li style="display: none;">
+                        <a (click)="openFlightSeatmap()" class="folding-list-item">사전 좌석 배정</a>
+                    </li>
+                    <li style="display: none;">
+                        <a (click)="openFlightBagDrop()" class="folding-list-item">추가 수하물</a>
+                    </li>
+                    <li style="display: none;">
+                        <a (click)="openFlightMileageAccum()" class="folding-list-item">마일리지 적립</a>
+                    </li>
+                    <li style="display: none;">
+                        <a (click)="openFlightFareRule()" class="folding-list-item">요금 규정</a>
+                    </li>
+                    <li style="display: none;">
+                        <a (click)="openFlightWifi()" class="folding-list-item">WiFi &amp; USIM</a>
+                    </li>
+                    <li style="display: none;">
+                        <a (click)="openFlightTravelInsu()" class="folding-list-item">여행자 보험</a>
+                    </li>
+                    <li style="display: none;">
+                        <a (click)="openFlightMeal()" class="folding-list-item">기내식 신청</a>
+                    </li>
+                    <li style="display: none;">
+                        <a (click)="openOneonon()" class="folding-list-item">1:1문의</a>
+                    </li> -->
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-contents-type3">
+            <!-- 예약정보 -->
+            <div class="contents-item">
+                <h2 class="contents-title">예약정보</h2>
+                <div class="round-box">
+                    <p class="lh140"><strong>[{{summary?.airlineNameList}}] [{{summary?.tripTypeName}}] {{summary?.bookingName}}</strong></p>
+                    <div class="item-group mt10 pt10 border-solid-top grey">
+                        <div class="item-row col">
+                            <div class="left">예약 번호</div>
+                            <div class="right">{{summary?.bookingItemCode}}</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">예약 상태</div>
+                            <div class="right">{{summary?.bookingStatusName}}</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">결제 상태</div>
+                            <div class="right">{{payments?.paymentStatusCode}} <span class="color-point2">[무료취소]</span></div>
+                            <!-- 미결제
+                <div class="right">미결제 <span class="color-point2">[결제시한:2020.05.01(수) 11:00]</span></div>
+                -->
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">여행 기간</div>
+                            <div class="right">{{summary?.travelFromDate | date:'y.MM.dd'}}({{fromLabel}}) - {{summary?.travelToDate | date:'y.MM.dd'}}({{toLabel}}) <span class="color-point2">[D-{{summary?.leftDays}}]</span></div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">여행자</div>
+                            <div class="right">{{summary?.travelerName}} <ng-container *ngIf="summary?.travelerMinusCount > 0">외 {{summary?.travelerMinusCount}}명</ng-container><span class="label sm type1 ml5">{{summary?.bookingStatusName}}</span></div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">좌석</div>
+                            <div class="right">{{summary?.cabinClassCode}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 상세 스케줄 -->
+            <div class="contents-item">
+                <h2 class="contents-title">상세 스케줄</h2>
+                <div class="round-box">
+                    <!-- 스케줄 아이템 반복 -->
+                    <div *ngFor="let res of itineraries; index as i;" class="schedule-item">
+                        <!-- .schedule-header 에 .active 토글 / .active 추가되면 .schedule-body보여짐 (CSS) -->
+                        <div (click)="toggleClass()" class="schedule-header">
+                            <dl>
+                                <dt>
+                                    <!-- <span class="label">{{flag[i]}}</span> -->
+                                    <span class="title">{{res.segments[0].origin?.airportNameLn}}({{res.segments[0].origin?.airportCode}}) - {{res.segments[res.segments.length - 1].destination?.airportNameLn}}({{res.segments[res.segments.length - 1].destination?.airportCode}})</span>
+                                </dt>
+                                <dd>
+                                    <span>{{res.segments[0].origin.departureDate | amDateFormat:'MM.DD (ddd)'}}</span>
+                                    <span *ngIf="res.segments.length > 1; else templateDirect">
+                                        {{res.segments.length - 1}}회 경유
+                                    </span>
+                                    <ng-template #templateDirect>
+                                        <span>직항</span>
+                                    </ng-template>
+                                    <span>{{res.totalDuration | flightMinuteToHourMinute}}</span>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="schedule-body">
+                            <!-- 항공 상세 스케줄 -->
+                            <div *ngFor="let seg of res.segments; index as j" class="flight-schedule">
+                                <div class="schedule-block">
+                                    <div class="time">
+                                        <p>{{seg.origin.departureTime}}</p>
+                                        <p>{{seg.origin.departureDate | amDateFormat:'MM.DD (ddd)'}}</p>
+                                    </div>
+                                    <div class="total">{{res.groundTime | flightMinuteToHourMinute}}</div>
+                                    <dl>
+                                        <dt>
+                                            <span class="label">{{seg.origin.airportCode}}</span>
+                                            <span class="title">{{seg.origin.cityNameLn}}({{seg.origin.airportNameLn}} {{seg.origin.terminal}}) 출발</span>
+                                        </dt>
+                                        <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">{{seg.marketing.airlineNameLn}} {{seg.equipmentName}}</dd>
+                                        <dd>{{seg.cabinClassName}}/{{seg.freeBaggage}}/성인 1PC/소아 1PC</dd>
+                                        <dd><span class="food">식사</span><span class="wifi">WI-FI</span><span class="plug">콘센트</span><span class="vod">VOD</span></dd>
+                                        <dd *ngIf="j > 0">
+                                            <span class="transfer">{{seg.origin.cityNameLn}} 환승</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="schedule-block">
+                                    <div class="time">
+                                        <p>{{seg.destination.arrivalDate}}</p>
+                                        <p>{{seg.destination.arrivalTime | amDateFormat:'MM.DD (ddd)'}}</p>
+                                    </div>
+                                    <div class="total">{{res.totalDuration | flightMinuteToHourMinute}}</div>
+                                    <dl>
+                                        <dt>
+                                            <span class="label">{{seg.destination.airportCode}}</span>
+                                            <span class="title">{{seg.destination.cityNameLn}}({{seg.destination.airportNameLn}} {{seg.destination.terminal}}) 도착</span>
+                                        </dt>
+                                        <ng-template *ngIf="res.segments[i]?.length == j">
+                                            <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">{{seg.marketing.airlineNameLn}} {{seg.equipmentName}}</dd>
+                                            <dd *ngIf="res.segments[i]?.length != 1 && res.segments[i]?.length > j">
+                                                <span class="transfer">{{seg.destination.cityNameLn}} 환승</span>
+                                            </dd>
+                                        </ng-template>
+                                    </dl>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 예약자 정보 -->
+            <div class="contents-item">
+                <h2 class="contents-title">예약자 정보</h2>
+                <div class="round-box">
+                    <ul class="table-list">
+                        <li>
+                            <span>예약자 명</span>
+                            <span>{{booker?.name}}</span>
+                        </li>
+                        <li>
+                            <span>휴대폰 번호</span>
+                            <span>{{booker?.mobileNo}}</span>
+                        </li>
+                        <li>
+                            <span>이메일</span>
+                            <span>{{booker?.email}}</span>
+                        </li>
+                    </ul>
+                    <a (click)="openBookerEdit()" class="btn sm line light icon-only pos-a"><span class="icon xs edit">수정</span></a>
+                </div>
+            </div>
+            <!-- 탑승자 정보 -->
+            <div class="contents-item">
+                <h2 class="contents-title">탑승자 정보<a (click)="openPassinger(travelers)" class="text-link"><span class="text underline">탑승자 정보 보기</span></a></h2>
+                <div class="round-box">
+                    <div *ngFor="let trav of travelers; index as i;" class="round-box reservation-user">
+                        <h3 class="traveler">{{trav.travelerNo}}번째 탑승자. {{trav.name}}</h3>
+
+                        <ul class="user">
+                            <li class="dash">
+                                <p><span class="label sm type4 align-m mr10">등록완료</span>여권정보 등록/수정</p>
+                                <a (click)="openPassportEdit(trav)" class="btn sm line light icon-only"><span class="icon xs edit">수정</span></a>
+                            </li>
+                            <li class="dash">
+                                <p><span class="label sm type1 align-m mr10">선택사항</span>마일리지 적립</p>
+                                <a (click)="openFlightMileageAccum()" class="btn sm line light icon-only"><span class="icon xs edit">수정</span></a>
+                            </li>
+                            <li class="dash">
+                                <p><span class="label sm type1 align-m mr10">등록대기</span>증빙서류 등록/수정</p>
+                                <a (click)="openDocumentEdit()" class="btn sm line light icon-only"><span class="icon xs edit">수정</span></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 결제/발권 정보 -->
+            <div class="contents-item">
+                <h2 class="contents-title">결제/발권 정보</h2>
+                <div class="round-box reservation-payment">
+                    <div class="item-group">
+                        <h3 class="row-title">결제 상태<span class="font-md ml-auto">결제완료</span></h3>
+                        <div class="item-row col">
+                            <div class="left">성인항공요금 * 2인</div>
+                            <div class="right">1,000,000원</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">예상 TAX&amp;유류할증료 * 2인</div>
+                            <div class="right">200,000원</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">발권수수료 * 2인</div>
+                            <div class="right">20,000원</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">환불&amp;변경 수수료</div>
+                            <div class="right">0원</div>
+                        </div>
+                        <div class="item-row col">
+                            <div class="left">부가서비스</div>
+                            <div class="right">100,000원</div>
+                        </div>
+                        <div class="item-row col last">
+                            <div class="left"><strong>총 결제 금액</strong></div>
+                            <div class="right">1,220,000원</div>
+                        </div>
+                    </div>
+                    <div class="btn-group mt20">
+                        <a href="#" class="btn md grey">요금 규정</a>
+                    </div>
+                </div>
+                <ng-container *ngIf="instantTicketing">
+                    <!-- 즉시발권 불가시 안보이는 부분 -->
+                    <!-- 탑승자별 반복 -->
+                    <div class="mt30">
+                        <h2 class="contents-title2 mb20">성인1. HONG/GILDONG(남)</h2>
+                        <div class="round-box">
+                            <div class="d-flex">
+                                <span>티켓번호</span>
+                                <span class="ml-auto">123-1234567890</span>
+                            </div>
+                            <div class="btn-group mt15">
+                                <a href="#" class="btn md default">E-Ticket</a>
+                            </div>
+                        </div>
+                        <div class="round-box">
+                            <div class="accordion2">
+                                <!-- .accordion-title 클릭하면 .active 토글 -->
+                                <a href="#" class="accordion-title active">
+                                    <strong>결제 상세 내역</strong>
+                                </a>
+                                <!-- .accordion-title에 .active 추가 되면 자동으로 보여짐 (CSS) -->
+                                <div class="accordion-body">
+                                    <ul class="reservation-payment-list">
+                                        <li>
+                                            <dl>
+                                                <dt>
+                                                    <strong>항공 운임</strong>
+                                                    <strong>ICN-LAX-ICN</strong>
+                                                </dt>
+                                                <dd>
+                                                    <span>운임</span>
+                                                    <span>1,220,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>TAX&amp;유류할증료</span>
+                                                    <span>119,000원</span>
+                                                </dd>
+                                            </dl>
+                                            <div class="total">
+                                                <strong>총 결제 금액</strong>
+                                                <strong>1,220,000원</strong>
+                                            </div>
+                                            <p class="text">KB국민카드 (1022) / 할부 12개월 (2019.10.12)</p>
+                                            <div class="btn-group mt15">
+                                                <a href="#" class="btn md line2 light">영수증</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="total">
+                                                <strong>발권수수료</strong>
+                                                <strong>40,000원</strong>
+                                            </div>
+                                            <p class="text">KB국민카드 (1022) / 할부 12개월 (2019.10.12)</p>
+                                            <div class="btn-group mt15">
+                                                <a href="#" class="btn md line2 light">영수증</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="total">
+                                                <strong>변경수수료</strong>
+                                                <strong>1,000원</strong>
+                                            </div>
+                                            <p class="text">KB국민카드 (1022) / 할부 12개월 (2019.10.12)</p>
+                                            <div class="btn-group mt15">
+                                                <a href="#" class="btn md line2 light">영수증</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 탑승자별 반복 -->
+                    <div class="mt30">
+                        <h2 class="contents-title2 mb20">성인2. HONG/GILDONG(남)</h2>
+                        <div class="round-box">
+                            <div class="d-flex">
+                                <span>티켓번호</span>
+                                <span class="ml-auto">123-1234567890</span>
+                            </div>
+                            <div class="btn-group mt15">
+                                <a href="#" class="btn md default">E-Ticket</a>
+                            </div>
+                        </div>
+                        <div class="round-box">
+                            <div class="accordion2">
+                                <!-- .accordion-title 클릭하면 .active 토글 -->
+                                <a href="#" class="accordion-title active">
+                                    <strong>결제 상세 내역</strong>
+                                </a>
+                                <!-- .accordion-title에 .active 추가 되면 자동으로 보여짐 (CSS) -->
+                                <div class="accordion-body">
+                                    <ul class="reservation-payment-list">
+                                        <li>
+                                            <dl>
+                                                <dt>
+                                                    <strong>항공 운임</strong>
+                                                    <strong>ICN-LAX-ICN</strong>
+                                                </dt>
+                                                <dd>
+                                                    <span>운임</span>
+                                                    <span>1,220,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>TAX&amp;유류할증료</span>
+                                                    <span>119,000원</span>
+                                                </dd>
+                                            </dl>
+                                            <div class="total">
+                                                <strong>총 결제 금액</strong>
+                                                <strong>1,220,000원</strong>
+                                            </div>
+                                            <p class="text">KB국민카드 (1022) / 할부 12개월 (2019.10.12)</p>
+                                            <div class="btn-group mt15">
+                                                <a href="#" class="btn md line2 light">영수증</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="total">
+                                                <strong>발권수수료</strong>
+                                                <strong>40,000원</strong>
+                                            </div>
+                                            <p class="text">KB국민카드 (1022) / 할부 12개월 (2019.10.12)</p>
+                                            <div class="btn-group mt15">
+                                                <a href="#" class="btn md line2 light">영수증</a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="total">
+                                                <strong>변경수수료</strong>
+                                                <strong>1,000원</strong>
+                                            </div>
+                                            <p class="text">KB국민카드 (1022) / 할부 12개월 (2019.10.12)</p>
+                                            <div class="btn-group mt15">
+                                                <a href="#" class="btn md line2 light">영수증</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <!-- 부가서비스 결제 정보 -->
+            <ng-container *ngIf="instantTicketing">
+                <!-- 즉시발권 불가시 안보이는 부분 -->
+                <div class="contents-item" style="display: none;">
+                    <h2 class="contents-title">부가 서비스 상세 내역<a href="#" class="text-link"><span class="text underline">취소하기</span></a></h2>
+                    <!-- 부가서비스 아이템 -->
+                    <div class="round-box">
+                        <div class="accordion2">
+                            <!-- .accordion-title 클릭하면 .active 토글 -->
+                            <a href="#" class="accordion-title active">
+                                <strong>위탁 수하물</strong>
+                                <strong class="color-point2 ml-auto">90,000원</strong>
+                            </a>
+                            <!-- .accordion-title에 .active 추가 되면 자동으로 보여짐 (CSS) -->
+                            <div class="accordion-body">
+                                <ul class="reservation-additional">
+                                    <li>
+                                        <h3 class="traveler">성인1. HONG/GILDONG(남)</h3>
+                                        <div class="detail">
+                                            <dl>
+                                                <dt>ICN - LAX</dt>
+                                                <dd>
+                                                    <span>25Kg</span>
+                                                    <span>30,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>30Kg</span>
+                                                    <span>40,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>40Kg * 2</span>
+                                                    <span>80,000원</span>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt>LAX - ICN</dt>
+                                                <dd>
+                                                    <span>25Kg</span>
+                                                    <span>30,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>30Kg</span>
+                                                    <span>40,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>40Kg * 2</span>
+                                                    <span>80,000원</span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h3 class="traveler">성인2. HONG/GILDONG(남)</h3>
+                                        <div class="detail">
+                                            <dl>
+                                                <dt>ICN - LAX</dt>
+                                                <dd>
+                                                    <span>25Kg</span>
+                                                    <span>30,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>30Kg</span>
+                                                    <span>40,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>40Kg * 2</span>
+                                                    <span>80,000원</span>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt>LAX - ICN</dt>
+                                                <dd>
+                                                    <span>25Kg</span>
+                                                    <span>30,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>30Kg</span>
+                                                    <span>40,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>40Kg * 2</span>
+                                                    <span>80,000원</span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 부가서비스 아이템 -->
+                    <div class="round-box">
+                        <div class="accordion2">
+                            <!-- .accordion-title 클릭하면 .active 토글 -->
+                            <a href="#" class="accordion-title active">
+                                <strong>기내식</strong>
+                                <strong class="color-point2 ml-auto">90,000원</strong>
+                            </a>
+                            <!-- .accordion-title에 .active 추가 되면 자동으로 보여짐 (CSS) -->
+                            <div class="accordion-body">
+                                <ul class="reservation-additional">
+                                    <li>
+                                        <h3 class="traveler">성인1. HONG/GILDONG(남)</h3>
+                                        <div class="detail">
+                                            <dl>
+                                                <dt>ICN - LAX</dt>
+                                                <dd>
+                                                    <span>치킨 소시지를 곁들인 치즈 오믈렛, 생수(350ml) * 2</span>
+                                                    <span>30,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>치킨 데리야끼 덮밥, 커피</span>
+                                                    <span>18,000원</span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h3 class="traveler">성인2. HONG/GILDONG(남)</h3>
+                                        <div class="detail">
+                                            <dl>
+                                                <dt>ICN - LAX</dt>
+                                                <dd>
+                                                    <span>치킨 소시지를 곁들인 치즈 오믈렛, 생수(350ml) * 2</span>
+                                                    <span>30,000원</span>
+                                                </dd>
+                                                <dd>
+                                                    <span>치킨 데리야끼 덮밥, 커피</span>
+                                                    <span>18,000원</span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 부가서비스 아이템 -->
+                    <div class="round-box">
+                        <div class="accordion2">
+                            <!-- .accordion-title 클릭하면 .active 토글 -->
+                            <a href="#" class="accordion-title active">
+                                <strong>좌석 선택</strong>
+                                <strong class="color-point2 ml-auto">90,000원</strong>
+                            </a>
+                            <!-- .accordion-title에 .active 추가 되면 자동으로 보여짐 (CSS) -->
+                            <div class="accordion-body">
+                                <ul class="reservation-additional">
+                                    <li>
+                                        <h3 class="traveler">성인1. HONG/GILDONG(남)</h3>
+                                        <div class="detail">
+                                            <dl>
+                                                <dt>ICN - LAX</dt>
+                                                <dd>
+                                                    <span>7J, 7K</span>
+                                                    <span>50,000원</span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h3 class="traveler">성인2. HONG/GILDONG(남)</h3>
+                                        <div class="detail">
+                                            <dl>
+                                                <dt>LAX - ICN</dt>
+                                                <dd>
+                                                    <span>7J, 7K</span>
+                                                    <span>50,000원</span>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 부가서비스 결제내역 -->
+                    <div class="round-box">
+                        <div class="accordion2">
+                            <!-- .accordion-title 클릭하면 .active 토글 -->
+                            <a href="#" class="accordion-title active">
+                                <strong>부가 서비스 결제 내역</strong>
+                            </a>
+                            <!-- .accordion-title에 .active 추가 되면 자동으로 보여짐 (CSS) -->
+                            <div class="accordion-body">
+                                <ul class="reservation-payment-list">
+                                    <li>
+                                        <div class="total">
+                                            <strong>부가 서비스 결제</strong>
+                                            <strong>150,000원</strong>
+                                        </div>
+                                        <p class="text">KB국민카드 (1022) / 할부 12개월 (2019.10.12)</p>
+                                        <div class="btn-group mt15">
+                                            <a href="#" class="btn md line2 light">영수증</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="total">
+                                            <strong>부가 서비스 결제</strong>
+                                            <strong>150,000원</strong>
+                                        </div>
+                                        <p class="text">KB국민카드 (1022) / 할부 12개월 (2019.10.12)</p>
+                                        <div class="btn-group mt15">
+                                            <a href="#" class="btn md line2 light">영수증</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

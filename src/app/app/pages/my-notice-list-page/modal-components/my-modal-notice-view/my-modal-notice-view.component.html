@@ -1,0 +1,33 @@
+<!-- Modal -->
+<div class="modal bg">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>공지사항</h1>
+        <div class="right">
+            <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="page-contents-type2 fixed-btn-footer">
+            <!-- 공지사항 상세 아이템 -->
+            <div class="round-box notice-view-item">
+                <div class="notice-view-title">
+                    <p class="title">{{postTitle}}</p>
+                    <p class="date">{{lastUpdateDatetime}}</p>
+                </div>
+                <div style="overflow: auto;">
+                    <div class="notice-view-detail" [innerHTML]="postDetail"></div>
+                </div>
+            </div>
+            <ul class="round-box notice-navigator">
+                <li><span class="color-sub7">이전글</span><span class="icon xs top2"></span><a href="#" class="subject"></a></li>
+                <br>
+                <li><span class="color-sub7">다음글</span><span class="icon xs bottom2"></span><a href="#" class="subject"></a></li>
+            </ul>
+            <div class="btn-group fixed-bottom pd bg2">
+                <a (click)="onCloseClick()" class="btn lg grey">목록</a>
+            </div>
+        </div>
+    </div>
+</div>

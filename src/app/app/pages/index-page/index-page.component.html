@@ -1,0 +1,941 @@
+<div class="wrap">
+    <div style="margin: 10px 0px 10px 0px">
+        <span>○ 진행중</span>, <span>● 완료</span>
+        &nbsp;|&nbsp;<br>
+        <span><a href="#rent">렌트</a></span>, <span><a href="#activity">액티</a></span>, <span><a href="#flight">항공</a></span>, <span><a href="#hotel">호텔</a></span>,
+        <span><a href="#airtel">묶음</a></span>, <span><a href="#mypage">마이</a></span>, <span><a href="#lib">라이브러리</a></span>
+        <p style="margin-top: 5px;">- Modal은 Url 경로 삭제</p>
+    </div>
+
+    <table>
+        <colgroup>
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="30%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>대분류</th>
+                <th>중분류</th>
+                <th>소분류</th>
+                <th>경로/파일명</th>
+                <th>퍼블적용</th>
+                <th>Mock 데이터</th>
+                <th>비고</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 공통소스-->
+            <tr>
+                <th>공통소스</th>
+                <th class="color-txt-red">ALERT</th>
+                <th>ALERT</th>
+                <td>
+                    <a href="/pub/pub-alert" target="">/pub/pub-alert</a>
+                </td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+
+            <!-- 통합 메인 -->
+            <tr>
+                <th>통합메인</th>
+                <th class="color-txt-red">PAGE</th>
+                <th>렌터카 메인</th>
+                <td>
+                    <a href="/main" target="">/main</a>
+                </td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <!-- 렌터카 -->
+            <tr>
+                <th rowspan="11" id="rent">렌터카</th>
+                <th class="color-txt-red">PAGE</th>
+                <th>렌터카 메인</th>
+                <td>
+                    <a href="/rent-main" target="">/rent-main</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>캘린더</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>목적지 검색</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>유의사항</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td>하드코딩</td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>검색결과</th>
+                <td>
+                    <a href="/rent-search-result/eyJsb2NhdGlvbkFjY2VwdCI6eyJpZCI6InBpY2t1cCIsIm5hbWUiOiLrj4Tsv4QiLCJ2YWwiOiJUWU8iLCJhaXJwb3J0cyI6W119LCJsb2NhdGlvblJldHVybiI6eyJpZCI6InBpY2t1cCIsIm5hbWUiOiLrj4Tsv4QiLCJ2YWwiOiJUWU8iLCJhaXJwb3J0cyI6W119LCJsb2NhdGlvblJldHVybkJvb2wiOnRydWUsImZvcm1EYXRlU3RyIjoiMjAyMC0wNi0yNCIsImZvcm1UaW1lVmFsIjoiMTc6MzAiLCJ0b0RhdGVTdHIiOiIyMDIwLTA2LTI2IiwidG9UaW1lVmFsIjoiMjA6MDAiLCJkcml2ZXJCaXJ0aGRheSI6IjE5ODItMDUtMDYiLCJycSI6eyJzdGF0aW9uVHlwZUNvZGUiOiJTVE4wMSIsImN1cnJlbmN5IjoiS1JXIiwibGFuZ3VhZ2UiOiJLTyIsImNvbmRpdGlvbiI6eyJwaWNrdXBDaXR5Q29kZUlhdGEiOiJUWU8iLCJwaWNrdXBEYXRldGltZSI6IjIwMjAtMDYtMjQgMTc6MzAiLCJyZXR1cm5DaXR5Q29kZUlhdGEiOiJUWU8iLCJyZXR1cm5EYXRldGltZSI6IjIwMjAtMDYtMjYgMjA6MDAiLCJkcml2ZXJCaXJ0aGRheSI6IjE5ODItMDUtMDYiLCJsaW1pdHMiOlswLDEwXSwic29ydE9yZGVyIjoiUmVjb21tZW5kIiwiZmlsdGVyIjp7fX19fQ" target="">/rent-search-result</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>
+                    <del>상세정보</del>
+                </th>
+                <td>삭제</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>예약 정보 입력</th>
+                <td>
+                    <a href="/rent-booking-information/eyJsaXN0RmlsdGVyUnEiOnsic3RhdGlvblR5cGVDb2RlIjoiU1ROMDEiLCJjdXJyZW5jeSI6IktSVyIsImxhbmd1YWdlIjoiS08iLCJjb25kaXRpb24iOnsicGlja3VwQ2l0eUNvZGVJYXRhIjoiVFlPIiwicGlja3VwRGF0ZXRpbWUiOiIyMDIwLTA2LTI0IDE3OjMwIiwicmV0dXJuQ2l0eUNvZGVJYXRhIjoiVFlPIiwicmV0dXJuRGF0ZXRpbWUiOiIyMDIwLTA2LTI2IDIwOjAwIiwiZHJpdmVyQmlydGhkYXkiOiIxOTgyLTA1LTA2IiwibGltaXRzIjpbMCwxMF0sInNvcnRPcmRlciI6IlJlY29tbWVuZCIsImZpbHRlciI6eyJ2ZWhpY2xlSW5kZXgiOjF9fSwidHJhbnNhY3Rpb25TZXRJZCI6IkI2RjAxMDMwQUMifSwicnEiOnsic3RhdGlvblR5cGVDb2RlIjoiU1ROMDEiLCJjdXJyZW5jeSI6IktSVyIsImxhbmd1YWdlIjoiS08iLCJjb25kaXRpb24iOnsicGlja3VwIjp7ImNpdHlDb2RlSWF0YSI6IlRZTyIsImxvY2F0aW9uQ29kZSI6IlRZT04wMiIsImRhdGV0aW1lIjoiMjAyMC0wNi0yNCAxNzozMCJ9LCJyZXR1cm4iOnsiY2l0eUNvZGVJYXRhIjoiVFlPIiwibG9jYXRpb25Db2RlIjoiVFlPTjAyIiwiZGF0ZXRpbWUiOiIyMDIwLTA2LTI2IDIwOjAwIn0sInZlaGljbGVJbmRleCI6MSwiYWNjZXNzTGV2ZWwiOiJDUCIsInZlaGljbGVWZW5kb3JDb2RlIjoiRVAiLCJzaXBwQ29kZSI6IkVDQVIiLCJ2ZW5kb3JDdXJyZW5jeUNvZGUiOiJKUFkiLCJiYXNlUmF0ZVR5cGVDb2RlIjoiRGFpbHkiLCJ2ZW5kb3JBbW91bnRTdW0iOjIwNTIxLCJyYXRlSWRlbnRpZmllciI6IjIwMDUxMjA1MDEiLCJyYXRlQ2F0ZWdvcnlDb2RlIjoiMDI0IiwiZmFyZVR5cGVDb2RlIjoiU1BEUiIsInZlaGljbGVUeXBlT3duZXIiOiJBQ1IifX19" target="">/rent-booking-information</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>일반약관</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td>API 연동</td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>항공약관</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td>API 연동</td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>호텔약관</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td>API 연동</td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>결제완료</th>
+                <td>
+                    <a href="/rent-booking-complete/eyJib29raW5nSXRlbXMiOlt7InJlY2VpdmVTdWNjZXNzWW4iOnRydWUsIml0ZW1TdGF0dXNOYW1lIjoiTk9UU0VUIiwiYm9va2luZ0l0ZW1Db2RlIjoiMjAwNTEyMTAwMjMwMSIsIml0ZW1DYXRlZ29yeUNvZGUiOiJJQzAzIiwiaXRlbVN0YXR1c0NvZGUiOiJCS1MwMSJ9XSwiYm9va2luZ0NvZGUiOiIyMDA1MTIxMDAyIn0" target="">/rent-booking-complete</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <!-- end 렌터카 -->
+
+            <!-- 액티비티 -->
+            <tr>
+                <th rowspan="15" id="activity">액티비티</th>
+                <th class="color-txt-red">PAGE</th>
+                <th>메인</th>
+                <td>
+                    <a href="/activity-main" target="">/activity-main</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td>목업데이터 없음.</td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>검색</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>검색 결과</th>
+                <td>
+                    <a href="/activity-search-result/eyJycSI6eyJzdGF0aW9uVHlwZUNvZGUiOiJTVE4wMSIsImN1cnJlbmN5IjoiS1JXIiwibGFuZ3VhZ2UiOiJLTyIsImNvbmRpdGlvbiI6eyJrZXl3b3JkIjoi6re4656c65OcIiwiZmlsdGVyIjp7fSwibGltaXRzIjpbMCwxMF19fSwic2VhcmNoVHlwZSI6IklOUFVUIiwic2VhcmNoTW9kYWwiOnsidmFsIjoiIiwibmFtZSI6Iuq3uOuenOuTnCJ9LCJzZWFyY2hDaXR5Ijp7InZhbCI6IiIsIm5hbWUiOiIifSwic2VhcmNoQ2F0ZWdvcnkiOnsidmFsIjoiIiwibmFtZSI6IiJ9fQ" target="">/activity-search-result</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>검색결과 필터(도시, 카테고리)</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>검색결과 필터(상세)</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>검색결과 필터(정렬)</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>도시 인트로</th>
+                <td>
+                    <a href="/activity-city-intro/eyJycSI6eyJzdGF0aW9uVHlwZUNvZGUiOiJTVE4wMSIsImN1cnJlbmN5IjoiS1JXIiwibGFuZ3VhZ2UiOiJLTyIsImNvbmRpdGlvbiI6eyJjaXR5Q29kZSI6IktSU0VMIiwibGltaXRzIjpbMCwxMF19fSwic2VhcmNoVHlwZSI6IkNJVFkiLCJzZWFyY2hNb2RhbCI6eyJ2YWwiOiIiLCJuYW1lIjoiIn0sInNlYXJjaENpdHkiOnsidmFsIjoiS1JTRUwiLCJuYW1lIjoi7ISc7Jq4In0sInNlYXJjaENhdGVnb3J5Ijp7InZhbCI6IiIsIm5hbWUiOiIifX0" target="">/activity-city-intro</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td>API 필드 추가, 변경 요청함.</td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>상품 상세 정보</th>
+                <td>
+                    <a href="/activity-search-result-detail" target="">/activity-search-result-detail</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td>API 필드 변경, 추가 요청함</td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>상품 문의</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>이용 후기</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>예약하기</th>
+                <td><a href="/activity-search-result-option" target="">/activity-search-result-option</a></td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>예약 정보 입력</th>
+                <td>
+                    <a href="/activity-booking-information" target="">/activity-booking-information</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>액티비티 약관 확인</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td>약관 내용 or API 정보 없음</td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>결제하기</th>
+                <td>
+                    <a href="/activity-booking" target="">/activity-booking</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>결제완료</th>
+                <td><a href="/activity-booking-complete" target="">/activity-booking-complete</a></td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <!-- end 액티비티 -->
+
+            <!-- 항공 -->
+            <tr>
+                <th rowspan="23" id="flight">항공</th>
+                <th class="color-txt-red">PAGE</th>
+                <th>항공 메인</th>
+                <td>
+                    <a href="/flight-main" target="">/flight-main</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>목적지</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>캘린더</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>좌석등급/인원수</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>아동/유아 항공권 예약안내</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>항공 검색 결과(가는편)</th>
+                <td>
+                    <a href="/flight-search-result-go/eyJzdGF0aW9uVHlwZUNvZGUiOiJTVE4wNSIsImN1cnJlbmN5IjoiS1JXIiwibGFuZ3VhZ2UiOiJFTiIsImNvbmRpdGlvbiI6eyJ0cmlwVHlwZUNvZGUiOiJPVyIsImFkdWx0Q291bnQiOjEsImNoaWxkQ291bnQiOjAsImluZmFudENvdW50IjowLCJpdGluZXJhcmllcyI6W3sib3JpZ2luQ2l0eUNvZGUiOiJLUlNFTCIsImRlc3RpbmF0aW9uQ2l0eUNvZGUiOiJVU0xBWCIsImRlcGFydHVyZURhdGUiOiIyMDIwLTEyLTEzIiwib3JpZ2luQWlycG9ydENvZGUiOiJJQ04iLCJkZXN0aW5hdGlvbkFpcnBvcnRDb2RlIjoiTEFYIn1dLCJsaW1pdHMiOlswLDEwXSwiY2FiaW5DbGFzc0NvZGUiOiJDIn19" target="">/flight-search-result-go</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>항공일정</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>재검색(변경)</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>필터(정렬)</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>필터(상세)</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>항공 검색 결과(오는편)</th>
+                <td>
+                    <a href="/flight-search-result-come/eyJzdGF0aW9uVHlwZUNvZGUiOiJTVE4wNSIsImN1cnJlbmN5IjoiS1JXIiwibGFuZ3VhZ2UiOiJFTiIsImNvbmRpdGlvbiI6eyJ0cmlwVHlwZUNvZGUiOiJPVyIsImFkdWx0Q291bnQiOjEsImNoaWxkQ291bnQiOjAsImluZmFudENvdW50IjowLCJpdGluZXJhcmllcyI6W3sib3JpZ2luQ2l0eUNvZGUiOiJLUlNFTCIsImRlc3RpbmF0aW9uQ2l0eUNvZGUiOiJVU0xBWCIsImRlcGFydHVyZURhdGUiOiIyMDIwLTEyLTEzIiwib3JpZ2luQWlycG9ydENvZGUiOiJJQ04iLCJkZXN0aW5hdGlvbkFpcnBvcnRDb2RlIjoiTEFYIn1dLCJsaW1pdHMiOlswLDEwXSwiY2FiaW5DbGFzc0NvZGUiOiJDIn19" target="">/flight-search-result-come</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>항공일정</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>재검색(변경)</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>필터(정렬)</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>필터(상세)</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>항공 검색 결과(다구간)</th>
+                <td>
+                    <a href="/flight-search-result-multi/eyJzdGF0aW9uVHlwZUNvZGUiOiJTVE4wNSIsImN1cnJlbmN5IjoiS1JXIiwibGFuZ3VhZ2UiOiJFTiIsImNvbmRpdGlvbiI6eyJ0cmlwVHlwZUNvZGUiOiJPVyIsImFkdWx0Q291bnQiOjEsImNoaWxkQ291bnQiOjAsImluZmFudENvdW50IjowLCJpdGluZXJhcmllcyI6W3sib3JpZ2luQ2l0eUNvZGUiOiJLUlNFTCIsImRlc3RpbmF0aW9uQ2l0eUNvZGUiOiJVU0xBWCIsImRlcGFydHVyZURhdGUiOiIyMDIwLTEyLTEzIiwib3JpZ2luQWlycG9ydENvZGUiOiJJQ04iLCJkZXN0aW5hdGlvbkFpcnBvcnRDb2RlIjoiTEFYIn1dLCJsaW1pdHMiOlswLDEwXSwiY2FiaW5DbGFzc0NvZGUiOiJDIn19" target="">/flight-search-result-multi</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>항공일정</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>재검색(변경)</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>필터(정렬)</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>필터(상세)</th>
+                <td>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>예약 정보 입력</th>
+                <td>
+                    <a href="/flight-booking-information" target="">/flight-booking-information</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>결제하기</th>
+                <td>
+                    <a href="/flight-booking" target="">/flight-booking</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>결제완료</th>
+                <td>
+                    <a href="/flight-booking-complete" target="">/flight-booking-complete</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <!-- end 항공 -->
+
+            <!-- 호텔 -->
+            <tr>
+                <th rowspan="11" id="hotel">호텔</th>
+                <th class="color-txt-red">PAGE</th>
+                <th>호텔 메인</th>
+                <td>
+                    <a href="/hotel-main" target="">/hotel-main</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>도시/목적지 검색</th>
+                <td>
+                    <a href="/hotel-main/hotel-modal-destination/eyJzdG9yZUlkIjoiaG90ZWxDaXR5IiwibWFqb3JEZXN0aW5hdGlvblJxIjp7InJxIjp7ImN1cnJlbmN5IjoiS1JXIiwibGFuZ3VhZ2UiOiJLTyIsInN0YXRpb25Db2RlIjoiU1ROMDEiLCJjb25kaXRpb24iOnsiaXRlbUNhdGVnb3J5Q29kZSI6IklDMDIiLCJjb21wQ29kZSI6IjExMDAwMCJ9fX0sImRlc3RpbmF0aW9uUnEiOnsicnEiOnsiY3VycmVuY3kiOiJLUlciLCJsYW5ndWFnZSI6IktPIiwic3RhdGlvbkNvZGUiOiJTVE4wMSIsImNvbmRpdGlvbiI6eyJpdGVtQ2F0ZWdvcnlDb2RlIjoiSUMwMiIsImtleXdvcmQiOm51bGx9fX19" target="">도시/목적지 검색</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>캘린더</th>
+                <td>
+                    <a href="/hotel-main/hotel-modal-calendar/eyJzdG9yZUlkIjoiaG90ZWxDYWxlbmRhciIsImNhbFBhcmFtcyI6eyJpdGVtQ2F0ZWdvcnlDb2RlIjoiSUMwMiIsInRyaXBUeXBlIjoiIiwic3RhcnREYXRlIjoiIiwiZW5kRGF0ZSI6IiIsImRhdGFzIjpbIiIsIiIsIiIsIiJdLCJpZHgiOjB9LCJjYWxScSI6eyJjdXJyZW5jeSI6IktSVyIsImxhbmd1YWdlIjoiS08iLCJzdGF0aW9uQ29kZSI6IlNUTjAxIiwiY29uZGl0aW9uIjp7Iml0ZW1DYXRlZ29yeUNvZGUiOiJJQzAyIn19fQ" target="">캘린더</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>인원선택</th>
+                <td>
+                    <a href="/hotel-main/traveler-option/eyJpc01haW5QYWdlIjp0cnVlfQ" target="">인원선택</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>상세검색</th>
+                <td>
+                    <a href="/hotel-main/detail-option/eyJpc01haW5QYWdlIjp0cnVlfQ" target="">상세검색</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>검색결과</th>
+                <td>
+                    <a href="/hotel-search-result/eyJob3RlbENpdHkiOnsiaWQiOiJob3RlbENpdHkiLCJuYW1lIjoiQmFuZ2tvayIsInZhbCI6IkJLSyIsImFpcnBvcnRzIjpbXX0sImNoZWNrRGF0ZSI6eyJpZCI6IiIsIm5hbWUiOiIiLCJpbiI6IjIwMjEwMTI2Iiwib3V0IjoiMjAyMTAxMjgiLCJpbk91dCI6IjAxLzI2ICjtmZQpLTAxLzI4ICjrqqkpIDLrsJUifSwiaG90ZWxUcmF2ZWxlck9wdGlvbiI6eyJpZCI6ImhvdGVsVHJhdmVsZXJPcHRpb24iLCJyb29tTGlzdCI6W3siYWR1bHQiOjIsImNoaWxkcmVuIjpbXX1dLCJ0cmF2ZWxlckluZm8iOiLqsJ3si6QgMSDslrTrpbggMiDslYTrj5kgMCJ9LCJkZXRhaWxPcHRpb24iOnsiaWQiOiJob3RlbERldGFpbE9wdCIsInByaWNlUmFuZ2VzIjp7Im1pbiI6MTU5MTg3LCJtYXgiOjEwMDAwMDB9LCJyZXZpZXdSYXRpbmdzIjp7Im1pbiI6MSwibWF4Ijo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJkZXRhaWxJbmZvIjoiMTU5MTg37JuQIH4gMTAwMDAwMOybkCwg7Y-J7KCQIDHsoJAgfiA17KCQLCAy7ISx6riJIn0sImJpelRyaXBSZXMiOnRydWUsInJxIjp7InN0YXRpb25UeXBlQ29kZSI6IlNUTjAzIiwiY3VycmVuY3kiOiJLUlciLCJsYW5ndWFnZSI6IktPIiwiY29uZGl0aW9uIjp7InJlZ2lvbkNvZGUiOiJCS0siLCJjaGVja0luRGF0ZSI6IjIwMjEtMDEtMjYiLCJjaGVja091dERhdGUiOiIyMDIxLTAxLTI4Iiwicm9vbXMiOlt7ImFkdWx0IjoyLCJjaGlsZHJlbiI6W119XSwiZHluYW1pY1JhdGVZbiI6ZmFsc2UsImxpbWl0cyI6WzAsMTBdLCJmaWx0ZXIiOnsiYW1vdW50cyI6eyJsb3dlc3RBbW91bnQiOjE1OTE4NywiaGlnaGVzdEFtb3VudCI6MTAwMDAwMH0sInJldmlld1JhdGluZ3MiOnsibG93ZXN0UmF0aW5nIjoxLCJoaWdoZXN0UmF0aW5nIjo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJob3RlbFR5cGVzIjpudWxsLCJjaGFpbnMiOm51bGwsInBvaSI6eyJhdHRyYWN0aW9ucyI6bnVsbH0sIm90aGVycyI6eyJmcmVlQnJlYWtmYXN0IjpudWxsLCJob3RlbE5hbWUiOm51bGx9fX19fQ" target="">/hotel-search-result</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>검색조건 변경</th>
+                <td>
+                    <a href="/hotel-search-result/eyJob3RlbENpdHkiOnsiaWQiOiJob3RlbENpdHkiLCJuYW1lIjoiQmFuZ2tvayIsInZhbCI6IkJLSyIsImFpcnBvcnRzIjpbXX0sImNoZWNrRGF0ZSI6eyJpZCI6IiIsIm5hbWUiOiIiLCJpbiI6IjIwMjEwMTI2Iiwib3V0IjoiMjAyMTAxMjgiLCJpbk91dCI6IjAxLzI2ICjtmZQpLTAxLzI4ICjrqqkpIDLrsJUifSwiaG90ZWxUcmF2ZWxlck9wdGlvbiI6eyJpZCI6ImhvdGVsVHJhdmVsZXJPcHRpb24iLCJyb29tTGlzdCI6W3siYWR1bHQiOjIsImNoaWxkcmVuIjpbXX1dLCJ0cmF2ZWxlckluZm8iOiLqsJ3si6QgMSDslrTrpbggMiDslYTrj5kgMCJ9LCJkZXRhaWxPcHRpb24iOnsiaWQiOiJob3RlbERldGFpbE9wdCIsInByaWNlUmFuZ2VzIjp7Im1pbiI6MTU5MTg3LCJtYXgiOjEwMDAwMDB9LCJyZXZpZXdSYXRpbmdzIjp7Im1pbiI6MSwibWF4Ijo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJkZXRhaWxJbmZvIjoiMTU5MTg37JuQIH4gMTAwMDAwMOybkCwg7Y-J7KCQIDHsoJAgfiA17KCQLCAy7ISx6riJIn0sImJpelRyaXBSZXMiOnRydWUsInJxIjp7InN0YXRpb25UeXBlQ29kZSI6IlNUTjAzIiwiY3VycmVuY3kiOiJLUlciLCJsYW5ndWFnZSI6IktPIiwiY29uZGl0aW9uIjp7InJlZ2lvbkNvZGUiOiJCS0siLCJjaGVja0luRGF0ZSI6IjIwMjEtMDEtMjYiLCJjaGVja091dERhdGUiOiIyMDIxLTAxLTI4Iiwicm9vbXMiOlt7ImFkdWx0IjoyLCJjaGlsZHJlbiI6W119XSwiZHluYW1pY1JhdGVZbiI6ZmFsc2UsImxpbWl0cyI6WzAsMTBdLCJmaWx0ZXIiOnsiYW1vdW50cyI6eyJsb3dlc3RBbW91bnQiOjE1OTE4NywiaGlnaGVzdEFtb3VudCI6MTAwMDAwMH0sInJldmlld1JhdGluZ3MiOnsibG93ZXN0UmF0aW5nIjoxLCJoaWdoZXN0UmF0aW5nIjo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJob3RlbFR5cGVzIjpudWxsLCJjaGFpbnMiOm51bGwsInBvaSI6eyJhdHRyYWN0aW9ucyI6bnVsbH0sIm90aGVycyI6eyJmcmVlQnJlYWtmYXN0IjpudWxsLCJob3RlbE5hbWUiOm51bGx9fX19fQ/hotel-modal-research" target="">검색조건 변경</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>상세 검색</th>
+                <td>
+                    <a href="/hotel-search-result/eyJob3RlbENpdHkiOnsiaWQiOiJob3RlbENpdHkiLCJuYW1lIjoiQmFuZ2tvayIsInZhbCI6IkJLSyIsImFpcnBvcnRzIjpbXX0sImNoZWNrRGF0ZSI6eyJpZCI6IiIsIm5hbWUiOiIiLCJpbiI6IjIwMjEwMTI2Iiwib3V0IjoiMjAyMTAxMjgiLCJpbk91dCI6IjAxLzI2ICjtmZQpLTAxLzI4ICjrqqkpIDLrsJUifSwiaG90ZWxUcmF2ZWxlck9wdGlvbiI6eyJpZCI6ImhvdGVsVHJhdmVsZXJPcHRpb24iLCJyb29tTGlzdCI6W3siYWR1bHQiOjIsImNoaWxkcmVuIjpbXX1dLCJ0cmF2ZWxlckluZm8iOiLqsJ3si6QgMSDslrTrpbggMiDslYTrj5kgMCJ9LCJkZXRhaWxPcHRpb24iOnsiaWQiOiJob3RlbERldGFpbE9wdCIsInByaWNlUmFuZ2VzIjp7Im1pbiI6MTU5MTg3LCJtYXgiOjEwMDAwMDB9LCJyZXZpZXdSYXRpbmdzIjp7Im1pbiI6MSwibWF4Ijo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJkZXRhaWxJbmZvIjoiMTU5MTg37JuQIH4gMTAwMDAwMOybkCwg7Y-J7KCQIDHsoJAgfiA17KCQLCAy7ISx6riJIn0sImJpelRyaXBSZXMiOnRydWUsInJxIjp7InN0YXRpb25UeXBlQ29kZSI6IlNUTjAzIiwiY3VycmVuY3kiOiJLUlciLCJsYW5ndWFnZSI6IktPIiwiY29uZGl0aW9uIjp7InJlZ2lvbkNvZGUiOiJCS0siLCJjaGVja0luRGF0ZSI6IjIwMjEtMDEtMjYiLCJjaGVja091dERhdGUiOiIyMDIxLTAxLTI4Iiwicm9vbXMiOlt7ImFkdWx0IjoyLCJjaGlsZHJlbiI6W119XSwiZHluYW1pY1JhdGVZbiI6ZmFsc2UsImxpbWl0cyI6WzAsMTBdLCJmaWx0ZXIiOnsiYW1vdW50cyI6eyJsb3dlc3RBbW91bnQiOjE1OTE4NywiaGlnaGVzdEFtb3VudCI6MTAwMDAwMH0sInJldmlld1JhdGluZ3MiOnsibG93ZXN0UmF0aW5nIjoxLCJoaWdoZXN0UmF0aW5nIjo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJob3RlbFR5cGVzIjpudWxsLCJjaGFpbnMiOm51bGwsInBvaSI6eyJhdHRyYWN0aW9ucyI6bnVsbH0sIm90aGVycyI6eyJmcmVlQnJlYWtmYXN0IjpudWxsLCJob3RlbE5hbWUiOm51bGx9fX19fQ/detail-filter" target="">상세 검색</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>정렬</th>
+                <td>
+                    <a href="/hotel-search-result/eyJob3RlbENpdHkiOnsiaWQiOiJob3RlbENpdHkiLCJuYW1lIjoiQmFuZ2tvayIsInZhbCI6IkJLSyIsImFpcnBvcnRzIjpbXX0sImNoZWNrRGF0ZSI6eyJpZCI6IiIsIm5hbWUiOiIiLCJpbiI6IjIwMjEwMTI2Iiwib3V0IjoiMjAyMTAxMjgiLCJpbk91dCI6IjAxLzI2ICjtmZQpLTAxLzI4ICjrqqkpIDLrsJUifSwiaG90ZWxUcmF2ZWxlck9wdGlvbiI6eyJpZCI6ImhvdGVsVHJhdmVsZXJPcHRpb24iLCJyb29tTGlzdCI6W3siYWR1bHQiOjIsImNoaWxkcmVuIjpbXX1dLCJ0cmF2ZWxlckluZm8iOiLqsJ3si6QgMSDslrTrpbggMiDslYTrj5kgMCJ9LCJkZXRhaWxPcHRpb24iOnsiaWQiOiJob3RlbERldGFpbE9wdCIsInByaWNlUmFuZ2VzIjp7Im1pbiI6MTU5MTg3LCJtYXgiOjEwMDAwMDB9LCJyZXZpZXdSYXRpbmdzIjp7Im1pbiI6MSwibWF4Ijo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJkZXRhaWxJbmZvIjoiMTU5MTg37JuQIH4gMTAwMDAwMOybkCwg7Y-J7KCQIDHsoJAgfiA17KCQLCAy7ISx6riJIn0sImJpelRyaXBSZXMiOnRydWUsInJxIjp7InN0YXRpb25UeXBlQ29kZSI6IlNUTjAzIiwiY3VycmVuY3kiOiJLUlciLCJsYW5ndWFnZSI6IktPIiwiY29uZGl0aW9uIjp7InJlZ2lvbkNvZGUiOiJCS0siLCJjaGVja0luRGF0ZSI6IjIwMjEtMDEtMjYiLCJjaGVja091dERhdGUiOiIyMDIxLTAxLTI4Iiwicm9vbXMiOlt7ImFkdWx0IjoyLCJjaGlsZHJlbiI6W119XSwiZHluYW1pY1JhdGVZbiI6ZmFsc2UsImxpbWl0cyI6WzAsMTBdLCJmaWx0ZXIiOnsiYW1vdW50cyI6eyJsb3dlc3RBbW91bnQiOjE1OTE4NywiaGlnaGVzdEFtb3VudCI6MTAwMDAwMH0sInJldmlld1JhdGluZ3MiOnsibG93ZXN0UmF0aW5nIjoxLCJoaWdoZXN0UmF0aW5nIjo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJob3RlbFR5cGVzIjpudWxsLCJjaGFpbnMiOm51bGwsInBvaSI6eyJhdHRyYWN0aW9ucyI6bnVsbH0sIm90aGVycyI6eyJmcmVlQnJlYWtmYXN0IjpudWxsLCJob3RlbE5hbWUiOm51bGx9fX19fQ/align-filter" target="">정렬</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>위치 보기</th>
+                <td>
+                    <a href="/hotel-search-result/eyJob3RlbENpdHkiOnsiaWQiOiJob3RlbENpdHkiLCJuYW1lIjoiQmFuZ2tvayIsInZhbCI6IkJLSyIsImFpcnBvcnRzIjpbXX0sImNoZWNrRGF0ZSI6eyJpZCI6IiIsIm5hbWUiOiIiLCJpbiI6IjIwMjEwMTI2Iiwib3V0IjoiMjAyMTAxMjgiLCJpbk91dCI6IjAxLzI2ICjtmZQpLTAxLzI4ICjrqqkpIDLrsJUifSwiaG90ZWxUcmF2ZWxlck9wdGlvbiI6eyJpZCI6ImhvdGVsVHJhdmVsZXJPcHRpb24iLCJyb29tTGlzdCI6W3siYWR1bHQiOjIsImNoaWxkcmVuIjpbXX1dLCJ0cmF2ZWxlckluZm8iOiLqsJ3si6QgMSDslrTrpbggMiDslYTrj5kgMCJ9LCJkZXRhaWxPcHRpb24iOnsiaWQiOiJob3RlbERldGFpbE9wdCIsInByaWNlUmFuZ2VzIjp7Im1pbiI6MTU5MTg3LCJtYXgiOjEwMDAwMDB9LCJyZXZpZXdSYXRpbmdzIjp7Im1pbiI6MSwibWF4Ijo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJkZXRhaWxJbmZvIjoiMTU5MTg37JuQIH4gMTAwMDAwMOybkCwg7Y-J7KCQIDHsoJAgfiA17KCQLCAy7ISx6riJIn0sImJpelRyaXBSZXMiOnRydWUsInJxIjp7InN0YXRpb25UeXBlQ29kZSI6IlNUTjAzIiwiY3VycmVuY3kiOiJLUlciLCJsYW5ndWFnZSI6IktPIiwiY29uZGl0aW9uIjp7InJlZ2lvbkNvZGUiOiJCS0siLCJjaGVja0luRGF0ZSI6IjIwMjEtMDEtMjYiLCJjaGVja091dERhdGUiOiIyMDIxLTAxLTI4Iiwicm9vbXMiOlt7ImFkdWx0IjoyLCJjaGlsZHJlbiI6W119XSwiZHluYW1pY1JhdGVZbiI6ZmFsc2UsImxpbWl0cyI6WzAsMTBdLCJmaWx0ZXIiOnsiYW1vdW50cyI6eyJsb3dlc3RBbW91bnQiOjE1OTE4NywiaGlnaGVzdEFtb3VudCI6MTAwMDAwMH0sInJldmlld1JhdGluZ3MiOnsibG93ZXN0UmF0aW5nIjoxLCJoaWdoZXN0UmF0aW5nIjo1fSwic3RhclJhdGluZ3MiOlt7InN0YXJSYXRpbmciOiIyIn1dLCJob3RlbFR5cGVzIjpudWxsLCJjaGFpbnMiOm51bGwsInBvaSI6eyJhdHRyYWN0aW9ucyI6bnVsbH0sIm90aGVycyI6eyJmcmVlQnJlYWtmYXN0IjpudWxsLCJob3RlbE5hbWUiOm51bGx9fX19fQ/map-filter" target="">위치 보기</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>룸타입 선택</th>
+                <td>
+                    <a href="/hotel-search-roomtype/eyJob3RlbENpdHkiOnsiaWQiOiJob3RlbENpdHkiLCJuYW1lIjoiQmFuZ2tvayIsInZhbCI6IkJLSyIsImFpcnBvcnRzIjpbXX0sImNoZWNrRGF0ZSI6eyJpZCI6IiIsIm5hbWUiOiIiLCJpbiI6IjIwMjEwMTI2Iiwib3V0IjoiMjAyMTAxMjgiLCJpbk91dCI6IjAxLzI2ICjtmZQpLTAxLzI4ICjrqqkpIDLrsJUifSwiaG90ZWxUcmF2ZWxlck9wdGlvbiI6eyJpZCI6ImhvdGVsVHJhdmVsZXJPcHRpb24iLCJyb29tTGlzdCI6W3siYWR1bHQiOjIsImNoaWxkcmVuIjpbXX1dLCJ0cmF2ZWxlckluZm8iOiLqsJ3si6QgMSDslrTrpbggMiDslYTrj5kgMCJ9LCJycSI6eyJzdGF0aW9uVHlwZUNvZGUiOiJTVE4wMyIsImN1cnJlbmN5IjoiS1JXIiwibGFuZ3VhZ2UiOiJLTyIsInRyYW5zYWN0aW9uU2V0SWQiOiJMMzQyNjA3MTMyMzc4MTIzNjg0IiwiY29uZGl0aW9uIjp7ImhvdGVsQ29kZSI6eyJob3RlbENvZGUiOiIyMzM0MTEiLCJob3RlbE5hbWVMbiI6IkpX66mU66as7Ja07Yq4IO2YuO2FlCDrsKnsvZUiLCJob3RlbFR5cGVDb2RlIjoiSFQtMDE5IiwiaG90ZWxUeXBlTmFtZSI6IkhvdGVsIiwicGFnZVZpZXdDb3VudCI6NCwiYm9va2luZ0NvdW50IjozLCJyb29tVHlwZSI6eyJpbmRleCI6MSwicm9vbVR5cGVDb2RlIjoiMTIzNDUxIiwicm9vbVR5cGVOYW1lIjoiU3RhbmRhcmQiLCJwYXlUeXBlQ29kZSI6IkgxMjMxIiwicGF5VHlwZU5hbWUiOiJQcmVQYXkiLCJiaWxsaW5nUHJvZHVjdEFtb3VudCI6NzUwMDAwLCJiaWxsaW5nVGF4QW1vdW50Ijo4MDAwLCJiaWxsaW5nQW1vdW50U3VtIjo3NTcwMDAsInRheEluY2x1ZGVkWW4iOnRydWUsImd1YXJhbnRlZVR5cGVDb2RlIjoiSzQzOTgxOTIiLCJndWFyYW50ZWVUeXBlTmFtZSI6IkRvdWJsZVJhdGUiLCJiaWxsaW5nT3JpZ2luQW1vdW50Ijo3NTgwMDAsImJpbGxpbmdEaXNjb3VudEFtb3VudCI6MTAwMCwiZnJlZVdpZmlZbiI6dHJ1ZSwiZnJlZUJyZWFrZmFzdFluIjp0cnVlLCJmcmVlQnJlYWtmYXN0TmFtZSI6IkluY2x1ZGVCcmVha2Zhc3QiLCJkeW5hbWljUmF0ZVluIjpmYWxzZSwibGVmdFJvb21zIjoxMDAsImluUG9saWN5WW4iOnRydWUsInNwZWNpYWxSYXRlQ29kZSI6IkIxOTI4MyIsInBvbGljeUN1cnJlbmN5Q29kZSI6IlVTRCIsInBvbGljeUFtb3VudCI6NzUwMDAwLCJyYWNrQW1vdW50IjozMDAwMCwidmVuZG9yQ3VycmVuY3lDb2RlIjoiVEhCIiwidmVuZG9yTmV0QW1vdW50Ijo4MDAsInZlbmRvclRheEFtb3VudCI6ODAsIm1hcmt1cEl0ZW1TZXEiOjEyOTM4MSwibWFya3VwRm9tdWxhIjoiMS4wNSJ9LCJob3RlbE5hbWVFbiI6IkpXIE1hcnJpb3R0IEhvdGVsIEJhbmdrb2siLCJzdGFyUmF0aW5nIjoiNSIsImhvdGVsQ2hhaW5Db2RlIjoiMjU5OSIsImhvdGVsQnJhbmRDb2RlIjoiMjU5OTIzIiwiaG90ZWxCcmFuZE5hbWUiOiJKVyBNYXJyaW90dCIsInppcENvZGUiOiIxMDExMCIsImFkZHJlc3NFbiI6IjQgU3VraHVtdml0IFJvYWQgU29pIDIiLCJhZGRyZXNzTG4iOiI0IFN1a2h1bXZpdCBSb2FkIFNvaSAyIiwiZGVmYXVsdFBob3RvVXJsIjoiaHR0cHM6Ly93d3cubWFycmlvdHQuY29tL2hvdGVscy9ob3RlbC1waG90b3MvYmtrZHQtanctbWFycmlvdHQtaG90ZWwtYmFuZ2tvay8iLCJsYXRpdHVkZSI6MTMuNzQxOTMzLCJsb25naXR1ZGUiOjEwMC41NTIxNTMsImNoZWNrSW5UaW1lIjoiMTU6MDAiLCJjaGVja091dFRpbWUiOiIxMjowMCIsImhvdGVsSW50cm8iOiJwcm9pZGVudCBpbmNpZGlkdW50IGxhYm9yZSBhbWV0IHJlcHJlaGVuZGVyaXQiLCJyZWNvbW1lbmRZbiI6dHJ1ZSwiZGVzaWduYXRlZFluIjpmYWxzZSwid2lzaGVkSG90ZWxZbiI6ZmFsc2UsInRyaXBBZHZpc29yIjp7InJhdGluZyI6NCwicmV2aWV3Q291bnQiOjI2MjIsInJhdGluZ1VybCI6Imh0dHA6Ly93d3cudHJpcGFkdmlzb3IuY29tL2ltZy9jZHNpL2ltZzIvcmF0aW5ncy90cmF2ZWxlci80LjUtMzk5NTgtNC5wbmcifSwiaG90ZWxQaG90b3MiOlsiaHR0cHM6Ly93d3cubWFycmlvdHQuY29tL2hvdGVscy9ob3RlbC1waG90b3MvYmtrZHQtanctbWFycmlvdHQtaG90ZWwtYmFuZ2tvay8iLCJodHRwczovL3d3dy5tYXJyaW90dC5jb20vaG90ZWxzL2hvdGVsLXBob3Rvcy9ia2tkdC1qdy1tYXJyaW90dC1ob3RlbC1iYW5na29rLyIsImh0dHBzOi8vd3d3Lm1hcnJpb3R0LmNvbS9ob3RlbHMvaG90ZWwtcGhvdG9zL2Jra2R0LWp3LW1hcnJpb3R0LWhvdGVsLWJhbmdrb2svIl0sInBvaXMiOlt7InBvaVR5cGVDb2RlIjoiVDE5MjgzIiwicG9pQ29kZSI6IlN1a2h1bXZpdCBSb2FkIiwiZGlzdGFuY2UiOjMxMzc1NDQ4LjQ0NjAxMzQwNn1dfX19fQ" target="">/hotel-search-roomtype</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <!-- end 호텔 -->
+
+            <!-- 묶음할인 -->
+            <tr>
+                <th rowspan="6" id="airtel">묶음할인</th>
+                <th class="color-txt-red">PAGE</th>
+                <th>묶음할인 메인</th>
+                <td>
+                    <a href="/airtel" target="">/airtel</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>오는편</th>
+                <td>
+                    <a href="/airtel-come" target="">/airtel-come</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>가는편</th>
+                <td>
+                    <a href="/airtel-go" target="">/airtel-go</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>묶음할인 검색결과</th>
+                <td>
+                    <a href="/airtel-search-result" target="">/airtel-search-result</a>
+                </td>
+                <td class="ac">-</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>호텔룸타입선택</th>
+                <td>
+                    <a href="/airtel-search-roomtype" target="">/airtel-search-roomtype</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">PAGE</th>
+                <th>여행자등록</th>
+                <td>
+                    <a href="/airtel-traveler-information" target="">/airtel-traveler-information</a>
+                </td>
+                <td class="ac">-</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <!-- end 묶음할인 -->
+
+            <!-- 마이 -->
+            <tr>
+                <th rowspan="16" id="mypage">마이페이지</th>
+                <th class="color-txt-red">PAGE</th>
+                <th>마이 메인</th>
+                <td>
+                    <a href="/my-main" target="_blank">/my-main</a>
+                </td>
+                <td class="ac">-</td>
+                <td class="ac"></td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>마이 모달</th>
+                <td>
+                    <a href="/my-main/mypage-main-modal" target="_blank">/my-main/mypage-main-modal</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td>하드코딩</td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>예약리스트</th>
+                <td>
+                    <a href="/my-reservation-list" target="_blank">/my-reservation-list</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>항공예약상세</th>
+                <td>
+                    <a href="/my-reservation-flight-detail" target="_blank">/my-reservation-flight-detail</a>
+                </td>
+                <td class="ac">○</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>호텔예약상세</th>
+                <td>
+                    <a href="/my-reservation-hotel-detail" target="_blank">/my-reservation-hotel-detail</a>
+                </td>
+                <td class="ac">○</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>렌터카예약상세</th>
+                <td>
+                    <a href="/my-reservation-rent-detail" target="_blank">/my-reservation-rent-detail</a>
+                </td>
+                <td class="ac">○</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>액티비티예약상세</th>
+                <td>
+                    <a href="/my-reservation-activity-detail" target="_blank">/my-reservation-activity-detail</a>
+                </td>
+                <td class="ac">○</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>위시리스트</th>
+                <td>
+                    <a href="/my-basket-list" target="_blank">/my-basket-list</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>최근 본 상품</th>
+                <td>
+                    <a href="/my-recent-list" target="_blank">/my-recent-list</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>고객 문의</th>
+                <td>
+                    <a href="/my-qna-list" target="_blank">/my-qna-list</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>마일리지</th>
+                <td>
+                    <a href="/my-mileage-list" target="_blank">/my-mileage-list</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>할인&코드</th>
+                <td>
+                    <a href="/my-coupon-list" target="_blank">/my-coupon-list</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>FAQ</th>
+                <td>
+                    <a href="/my-faq-list" target="_blank">/my-faq-list</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>공지사항</th>
+                <td>
+                    <a href="/my-notice-list" target="_blank">/my-notice-list</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>항공부가서비스</th>
+                <td>
+                    <a href="/my-flight-svc" target="_blank">/my-flight-svc</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>예약문의</th>
+                <td>
+                    <a href="/my-reservation-qna-list" target="_blank">/my-reservation-qna-list</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <tr>
+                <th class="color-txt-red">Page</th>
+                <th>항공예약취소</th>
+                <td>
+                    <a href="/my-reservation-flight-cancel" target="_blank">/my-reservation-flight-cancel</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">○</td>
+                <td class="ac"></td>
+            </tr>
+            <!-- end 마이 -->
+
+            <!-- pub + 라이브러리 -->
+            <tr>
+                <th rowspan="5" id="lib">라이브러리</th>
+                <th>-</th>
+                <th>호텔 상세검색</th>
+                <td>
+                    <a href="/pub/hotel-detail-filter" target="">/pub/hotel-detail-filter</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">●</td>
+                <td>슬라이더</td>
+            </tr>
+            <tr>
+                <th>-</th>
+                <th>호텔 상세</th>
+                <td>
+                    <a href="/pub/pub-hotel-search-roomtype" target="">/pub/pub-hotel-search-roomtype</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">●</td>
+                <td>이미지 뷰어</td>
+            </tr>
+            <tr>
+                <th>-</th>
+                <th>호텔 이미지 뷰어</th>
+                <td>
+                    <a href="/pub/pub-hotel-photo-detail" target="">/pub/pub-hotel-photo-detail</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">●</td>
+                <td>이미지 뷰어</td>
+            </tr>
+            <tr>
+                <th>-</th>
+                <th>slick slider</th>
+                <td>
+                    <a href="/pub/slick-carousel-slider" target="">/pub/slick-carousel-slider</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">●</td>
+                <td>이미지 뷰어2</td>
+            </tr>
+            <tr>
+                <th>-</th>
+                <th>angular-tree-component</th>
+                <td>
+                    <a href="/pub/pub-tree" target="">/pub/pub-tree</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac">●</td>
+                <td>tree</td>
+            </tr>
+
+            <!-- 여행편의 -->
+            <tr>
+                <th rowspan="2" id="activity">여행편의</th>
+                <th class="color-txt-red">PAGE</th>
+                <th>메인</th>
+                <td>
+                    <a href="/travel-convenience-main" target="">travel-convenience-main</a>
+                </td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="color-txt-blue">Modal</th>
+                <th>업체선택</th>
+                <td></td>
+                <td class="ac">●</td>
+                <td class="ac"></td>
+                <td></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

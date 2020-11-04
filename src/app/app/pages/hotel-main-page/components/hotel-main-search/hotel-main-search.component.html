@@ -1,0 +1,40 @@
+<div class="hotel-visual">
+    <h2 [innerHTML]="vm.title"></h2>
+</div>
+<div class="contents-item mg">
+    <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate #f="ngForm">
+        <div class="hotel-search">
+            <div class="row-group">
+                <div class="row">
+                    <div (click)="onHotelCity()" class="input shadow no-pd">
+                        <span class="icon sm location"></span>
+                        <input [formControlName]="'hotelCityName'" [value]="vm.hotelCity.name" [class.valid-error]="mainForm.controls.hotelCityName.errors && f.submitted" type="text" placeholder="도시, 호텔, 랜드마크 등을 검색하세요" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div (click)="onDateClick()" class="input shadow no-pd">
+                        <span class="icon sm calendar"></span>
+                        <!-- <input type="text" placeholder="여행날짜를 선택해 주세요" readonly [value]="vm.checkDate.str"> -->
+                        <input [formControlName]="'checkInOutDate'" [value]="vm.checkInOutDate" [class.valid-error]="mainForm.controls.checkInOutDate.errors && f.submitted" type="text" placeholder="여행날짜를 선택해 주세요" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div (click)="onHotelTravelerOption()" class="input shadow no-pd">
+                        <span class="icon sm user"></span>
+                        <input [formControlName]="'travelerInfo'" [value]="vm.travelerInfo" [class.valid-error]="mainForm.controls.travelerInfo.errors && f.submitted" type="text" placeholder="객실 수, 인원 수를 선택해주세요" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div (click)="onHotelDetailOption()" class="input shadow no-pd">
+                        <span class="icon sm option"></span>
+                        <input [formControlName]="'detailInfo'" [value]="vm.detailInfo" type="text" placeholder="호텔 등급, 요금, 평점을 선택해주세요" readonly>
+                    </div>
+                </div>
+                <!-- 숙박할 도시, 일정 다름 체크시 보이는 영역 끝 -->
+                <div class="row mt20">
+                    <button class="btn lg default" role="button">검색</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

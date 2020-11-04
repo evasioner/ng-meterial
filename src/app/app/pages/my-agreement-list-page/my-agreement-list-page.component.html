@@ -1,0 +1,52 @@
+<!-- Calendar Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>회원 약관 확인</h1>
+        <div class="right">
+            <a class="icon sm common-close" (click)="onBackClick($event)">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <div class="tab-wrap">
+            <div class="tab-header type4 top-blank fixed">
+                <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>이용약관</span></a>
+                <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>전자금융거래</span></a>
+                <a (click)="selectTab(2)" class="tab-header-item" [ngClass]="{'active': tabNo === 2}"><span>개인정보처리방침</span></a>
+            </div>
+            <div class="tab-body" [ngSwitch]="tabNo">
+                <!-- 이용약관 -->
+                <div class="tab-item active" *ngSwitchDefault>
+                    <!-- 내용 나중에 변경 -->
+                    <div class="page-contents-type2 pb0">
+                        <ul class="text-list spacing">
+                            <li [innerHTML]="this.viewModel.common">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 전자금융거래 -->
+                <div class="tab-item active" *ngSwitchCase="1">
+                    <!-- 내용 나중에 변경 -->
+                    <div class="page-contents-type2 pb0">
+                        <ul class="text-list spacing">
+                            <li [innerHTML]="this.viewModel.cancel">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 개인정보처리방침 -->
+                <div class="tab-item active" *ngSwitchCase="2">
+                    <!-- 내용 나중에 변경 -->
+                    <div class="page-contents-type2 pb0">
+                        <ul class="text-list spacing">
+                            <li [innerHTML]="this.viewModel.personal">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

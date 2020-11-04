@@ -1,0 +1,78 @@
+<div class="modal m-hotel-map">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>위치 보기</h1>
+        <div class="right">
+            <a (click)="modalClose();" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <!-- 호텔 위치 지도 -->
+        <div class="cm-hotel-map">
+            <div class="google-map">
+                <!-- 구글 맵 들어오는 영역 -->
+                <agm-map [latitude]="mapInfo.centerLat" [longitude]="mapInfo.centerLng" [zoom]="mapInfo.zoomLevel"
+                    (mapReady)="onMapReady($event)">
+                    <ng-container *ngIf="loadingBool">
+                        <ng-container *ngFor="let hotItem of hotelList; let i=index">
+                            <agm-overlay [latitude]="hotItem.latitude" [longitude]="hotItem.longitude"
+                                [zIndex]="hotItem.hotelCode === selectedHotelCode ? hotelListLen+1 : i">
+                                <div class="point" (click)="onOverlayClick(i);"
+                                    [class.active]="hotItem.hotelCode === selectedHotelCode"
+                                    [style.zIndex]="hotItem.hotelCode === selectedHotelCode ? hotelListLen+1 : i">
+                                    <strong>{{hotItem.productAmount | number}}</strong>원
+                                </div>
+                            </agm-overlay>
+                        </ng-container>
+                    </ng-container>
+                </agm-map>
+                <!-- 선택된 호텔 정보-->
+                <ng-container *ngIf="selectedHotel">
+                    <div class="hotel-map-item">
+                        <a (click)="onInfoClose();" class="icon sm common-close">닫기</a>
+                        <div (click)="onHotelDtl(selectedHotel.hotelCode);" class="hotel-image"
+                            [ngStyle]="{background: 'url(' + selectedHotel.defaultPhotoUrl + ') 50% 50% no-repeat', 'background-size': 'cover'}">
+                        </div>
+                        <div class="hotel-information">
+                            <ul>
+                                <li class="name">
+                                    <ng-container *ngIf="selectedHotel.hotelNameLn;else elseif1">
+                                        {{selectedHotel.hotelNameLn}}
+                                    </ng-container>
+                                    <ng-template #elseif1>
+                                        <ng-container *ngIf="selectedHotel.hotelNameEn">{{selectedHotel.hotelNameEn}}
+                                        </ng-container>
+                                    </ng-template>
+                                </li>
+                                <li *ngIf="selectedHotel.addressLn || selectedHotel.addressEn" class="address">
+                                    <ng-container *ngIf="selectedHotel.addressLn;else elseif2">
+                                        {{selectedHotel.addressLn}}
+                                    </ng-container>
+                                    <ng-template #elseif2>
+                                        <ng-container *ngIf="selectedHotel.addressEn">
+                                            {{selectedHotel.addressEn}}
+                                        </ng-container>
+                                    </ng-template>
+                                </li>
+                                <li *ngIf="selectedHotel.starRating" class="rate">
+                                    <span class="hotel-rating">
+                                        <span class="icon s{{getHotelStarRating(selectedHotel.starRating)}}"></span>
+                                        <span class="text">{{selectedHotel.starRating | number  : '1.0-1'}}성급</span>
+                                    </span>
+                                </li>
+                                <!-- <li class="review">
+                                    <div class="tripadvisor-review">
+                                        <img src="{{selectedHotel.tripAdvisor.ratingUrl}}"
+                                            alt="평점 {{selectedHotel.tripAdvisor.rating}}" class="tripadvisor">
+                                        <span>({{selectedHotel.tripAdvisor.reviewCount}})</span>
+                                    </div>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

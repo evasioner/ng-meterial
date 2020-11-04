@@ -1,0 +1,240 @@
+<div id="wrap">
+
+    <!-- header -->
+    <!-- header -->
+    <app-header></app-header>
+    <app-hotel-header [headerType]="headerType" [headerConfig]="headerConfig"></app-hotel-header>
+
+    <!-- contents -->
+    <div id="contents">
+        <div class="page-contents-type2">
+            <div class="contents-item">
+                <h2 class="contents-title">예약 여정 확인</h2>
+                <div class="round-box">
+                    <div class="traveler-reserved-information">
+                        <div class="summary">
+                            <div class="user">박종선외 1명</div>
+                            <div class="schedule">
+                                <div class="left">2019.09.31 (금) - 09.04 (화), 5일</div>
+                                <div class="right"><span class="icon xs location4"></span><span class="text">로스앤젤레스</span></div>
+                            </div>
+                        </div>
+                        <div class="item-group">
+                            <div class="item-row col">
+                                <div class="left"><span class="icon sm flight2 mr10"></span>왕복 항공권</div>
+                                <div class="right">ICN - LAX</div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left"><span class="icon sm hotel4 mr10"></span>호텔 1건</div>
+                                <div class="right">로스앤젤레스(CA), 미국</div>
+                            </div>
+                            <div class="item-row mt20">
+                                <button class="btn lg default" role="button">전체일정</button>
+                            </div>
+                        </div>
+                        <div class="item-group">
+                            <div class="item-row col">
+                                <div class="left">항공+호텔 2인</div>
+                                <div class="right">1,458,270원</div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left">항공 선택 추가 금액</div>
+                                <div class="right">10,000원</div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left">호텔 선택 추가 금액</div>
+                                <div class="right">10,000원</div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left">항공+호텔 묶음 할인</div>
+                                <div class="right">- 195,530원</div>
+                            </div>
+                            <div class="item-row col last">
+                                <div class="left">결제 금액</div>
+                                <div class="right">1,263,200원</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title line">탑승자 정보를 입력해 주세요.</h2>
+                <h3 class="contents-sub-text">여권상의 영문 성, 영문 이름과 같지 않으면 탑승이 거부되거나 서비스를 이용할 수 없습니다.<br />예약과 관련된 중요 사항을 연락처로
+                    발송해드립니다.</h3>
+                <div class="round-box">
+                    <!-- 1번 탑승자는 고정, 2번 탑승자부터 인원수에 따라 증가 -->
+                    <div class="traveler-item">
+                        <h4 class="contents-title2 line2">1번째 탑승자
+                            <label class="checkbox small rtl">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text">탑승자와 실제 예약자가 다름</span>
+                            </label>
+                        </h4>
+                        <div class="row-group">
+                            <div class="row">
+                                <h5 class="row-title">여행자 선택</h5>
+                                <div class="select-box line">
+                                    <select name="" id="">
+                                        <option value="">홍길동 : HONG / GILDONG</option>
+                                        <option value="">옵션2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5 class="row-title">한글 이름</h5>
+                                <div class="input line">
+                                    <input type="tel" placeholder="한글 이름 입력">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5 class="row-title">영문 성/이름</h5>
+                                <div class="row col2">
+                                    <div class="input line">
+                                        <input type="text" placeholder="영문 성">
+                                    </div>
+                                    <div class="input line">
+                                        <input type="text" placeholder="영문 이름">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5 class="row-title">생년월일</h5>
+                                <div class="input line">
+                                    <input type="number" placeholder="생년월일 입력 (6자리)">
+                                </div>
+                            </div>
+                            <div class="row auto">
+                                <div class="row-title">성별선택</div>
+                                <div>
+                                    <label class="radio">
+                                        <input type="radio" class="radio-control-input" checked>
+                                        <span class="radio-control-text">남성</span>
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" class="radio-control-input">
+                                        <span class="radio-control-text">여성</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5 class="row-title">휴대폰 번호</h5>
+                                <div class="input line">
+                                    <input type="tel" placeholder="'-' 제외하고 입력">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5 class="row-title">이메일 주소</h5>
+                                <div class="input line">
+                                    <input type="email" placeholder="example@mail.com">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn lg grey" role="button">여권정보 수정</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="traveler-item">
+                        <h4 class="contents-title2 line2">2번째 탑승자</h4>
+                        <div class="row-group">
+                            <div class="row">
+                                <h5 class="row-title">여행자 선택</h5>
+                                <div class="select-box line">
+                                    <select name="" id="" required>
+                                        <option value="">홍길동 : HONG / GILDONG</option>
+                                        <option value="">옵션2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5 class="row-title">영문 성/이름</h5>
+                                <div class="row col2">
+                                    <div class="input line">
+                                        <input type="text" placeholder="영문 성">
+                                    </div>
+                                    <div class="input line">
+                                        <input type="text" placeholder="영문 이름">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5 class="row-title">생년월일</h5>
+                                <div class="input line">
+                                    <input type="number" placeholder="생년월일 입력 (6자리)">
+                                </div>
+                            </div>
+                            <div class="row auto">
+                                <div class="row-title">성별선택</div>
+                                <div>
+                                    <label class="radio">
+                                        <input type="radio" class="radio-control-input" checked>
+                                        <span class="radio-control-text">남성</span>
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" class="radio-control-input">
+                                        <span class="radio-control-text">여성</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn lg default" role="button">여권정보 등록</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents-item">
+                <h2 class="contents-title line">요금, 취소수수료 규정을 확인하세요.</h2>
+                <h3 class="contents-sub-text">아래 규정 및 약관을 읽어보고, 동의하는 경우에 체크하고 최종 예약을 완료해 주세요.</h3>
+                <div class="round-box">
+                    <!-- 체크박스 checked 될때마다 해당 모달을 띄움 -->
+                    <ul class="row-group">
+                        <li class="row">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text"><em>일반 규정</em>을 읽었으며 동의함</span>
+                            </label>
+                        </li>
+                        <li class="row">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text"><em>항공 요금/취소/환불규정</em>을 읽었으며 동의함</span>
+                            </label>
+                        </li>
+                        <li class="row">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text"><em>호텔 취소 규정</em>을 읽었으며 동의함</span>
+                            </label>
+                        </li>
+                        <li class="row">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text"><em>교통 서비스 규정</em>을 읽었으며 동의함</span>
+                            </label>
+                        </li>
+                        <li class="row">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text"><em>액티비티 취소 규정</em>을 읽었으며 동의함</span>
+                            </label>
+                        </li>
+                        <li class="row">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox-control-input">
+                                <span class="checkbox-control-text"><em>개인정보취급방침</em>을 읽었으며 동의함</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group mt30">
+                    <button class="btn lg default" role="button">최종 예약 완료</button>
+                </div>
+                <ul class="text-list mt20">
+                    <li>예약 완료까지는 30초에서 2분가량 소요될 수 있습니다.</li>
+                    <li>예약 완료 버튼은 1번만 클릭하시기 바라며 클릭 후에는 최종 완료될 때까지 기다려 주시기 바랍니다.</li>
+                    <li>완료 전에 창을 닫으면 이중 결제 또는 예약 에러가 발생할 수 있습니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

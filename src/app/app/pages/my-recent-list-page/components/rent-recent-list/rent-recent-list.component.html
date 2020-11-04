@@ -1,0 +1,32 @@
+<ng-container *ngIf="viewModel.recentList > 0">
+    <div *ngFor="let item of viewModel.recentList; index as index;" class="round-box recent-product-item">
+        <div class="product-summary">
+            <h2 class="product-title">{{item.pickLocation}} </h2>
+            <ul (click)="onSearchResult($event, item.index)">
+                <li>
+                    <span>이용일</span>
+                    <span>{{item.dateRange}}</span>
+                </li>
+                <li>
+                    <span>인수장소</span>
+                    <span>{{item.locationAccept}}</span>
+                </li>
+                <li>
+                    <span>반납장소</span>
+                    <span>{{item.pickLocation}}</span>
+                </li>
+            </ul>
+        </div>
+        <a class="icon xs close2" (click)="onDeleteItem($event, index, item.index)">삭제</a>
+    </div>
+</ng-container>
+
+<div *ngIf="this.viewModel.recentList.length === 0" class="page-contents-type3">
+    <!-- 검색 결과 없을때 -->
+    <div class="nodata full type4">
+        <div class="nodata-msg">
+            <span class="icon alert2"></span>
+            <p class="text">최근 본 상품이 없습니다.</p>
+        </div>
+    </div>
+</div>

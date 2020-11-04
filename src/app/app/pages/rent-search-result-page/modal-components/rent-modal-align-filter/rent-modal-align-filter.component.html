@@ -1,0 +1,40 @@
+<div class="modal-bottom">
+    <div class="modal-bottom-inner">
+        <!-- modal header -->
+        <div class="modal-bottom-header">
+            <h1>정렬</h1>
+            <div class="right">
+                <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+            </div>
+        </div>
+
+
+        <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate>
+
+            <!-- modal contents -->
+            <div class="modal-bottom-contents fixed-btn-footer">
+                <div class="item-group pd-top">
+
+                    <div *ngFor="let sortOrderItem of vm.sortOrderList; index as i;" class="item-row col">
+                        <div class="left">
+                            <label class="radio" >
+                                <input type="radio" class="radio-control-input"
+                                       [value]="sortOrderItem.val"
+                                       [formControlName]="'sortOrder'"
+                                       name="sortOrder"  >
+                                <span class="radio-control-text">{{sortOrderItem.name}}</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="btn-group pd bg fixed-bottom">
+                <button class="btn lg default" role="button">적용하기</button>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div *ngIf="isBrowser" class="contents-item">
+    <div class="activity-city-visual" [ngStyle]="{'background-image': 'url('+ viewModel.cityImage +')'}">
+        <h2>{{ viewModel.cityName }}</h2>
+    </div>
+    <div class="contents-item mg mb15">
+        <div class="input shadow no-pd">
+            <span class="icon sm location"></span>
+            <input type="text" placeholder="{{ viewModel.cityName }}{{ 'MAIN_SEARCH.SEARCH_PLACEHOLDER' | translate }}" (click)="onGoSearchClick($event)" readonly>
+        </div>
+
+        <div class="activity-city-tool mt15" *ngIf="viewModel.cityInfoFlag" (click)="onGoCityInfo($event)">
+            <div class="weather" *ngFor="let item of viewModel.weather | slice : 0 : 1;">
+                <img [attr.src]="'/assets/images/icons/weather/' + (item.weatherCode | weatherIcon)" class="weather">
+                <strong class="temp">{{ item.maxTemperature | number : '1.0-0' }}</strong>
+            </div>
+            <div class="time">
+                <p>시차, {{ viewModel.time.difference }}시간</p>
+                <p>{{ viewModel.time.local | timeAmPm : 'hh:mm' }}{{ viewModel.time.fullLocalTime | date : 'hh:mm' }}</p>
+            </div>
+            <div class="currency">
+                <p>1 {{ viewModel.currency.originCurrencyCode }}</p>
+                <p>{{ viewModel.currency.convertRate | number }}원</p>
+            </div>
+            <div class="volt">
+                <p>전압</p>
+                <p>{{ viewModel.plug.voltage }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-box-list no-mg">
+        <div class="scroll-item-outer">
+            <div class="activity-city-item shadow" *ngFor="let item of viewModel.categoryList; index as index;" (click)="onGoCategorySearchClick($event, index)">
+                <div class="visual" [ngClass]="item.styleType"></div>
+                <div class="title">
+                    <strong>{{ item.count | number }}</strong>
+                    <span>{{ item.translateName }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

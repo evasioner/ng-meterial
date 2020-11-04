@@ -1,0 +1,312 @@
+<!-- Modal -->
+<div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>내 항공 예약 정보 찾기</h1>
+        <div class="right">
+            <a (click)="onCloseClick($event)" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents fixed-btn-footer">
+
+        <div class="cm-schedule no-bottom">
+
+            <accordion [closeOthers]="'true'" class="m-ngx-bootstrap-accordion is-rent-modal-flight-info">
+
+                <!-- item -->
+                <accordion-group [isOpen]="'true'" class="accordion">
+
+                    <div class="schedule-header active" accordion-heading>
+                        <label class="radio only">
+                            <input type="radio" name="rent-flight-info" class="radio-control-input">
+                            <span class="radio-control-text"></span>
+                        </label>
+                        <dl>
+                            <dt>
+                                <span class="title">인천(ICN) - 로스앤젤레스(LAX)</span>
+                            </dt>
+                            <dd>
+                                <span>08.19 (화)</span>
+                                <span>직항</span>
+                                <span>17시간 10분</span>
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <div class="schedule-body">
+                        <!-- 항공 상세 스케줄 -->
+                        <div class="flight-schedule">
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <div class="total">12시간 25분</div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">LAX</span>
+                                        <span class="title">로스앤젤레스(로스앤젤레스 국제공항 B) 출발</span>
+                                    </dt>
+                                    <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                    <dd>일반석/무료수하물/성인 1PC/소아 1PC</dd>
+                                    <dd><span class="food">식사</span><span class="wifi">WI-FI</span><span class="plug">콘센트</span><span class="vod">VOD</span></dd>
+                                </dl>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <div class="total">12시간 25분</div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">PVC</span>
+                                        <span class="title">상하이(상하이 푸동 국제공항 T2) 도착</span>
+                                    </dt>
+                                    <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                    <dd>
+                                        <span class="transfer">상하이 환승</span>
+                                    </dd>
+                                    <dd>
+                                        <span class="luggage">수하물 연결수속</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <div class="total">12시간 25분</div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">PVC</span>
+                                        <span class="title">상하이(상하이 푸동 국제공항 T2) 출발</span>
+                                    </dt>
+                                    <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                    <dd>
+                                        <span class="transfer">상하이 환승</span>
+                                    </dd>
+                                    <dd>
+                                        <span class="luggage">수하물 연결수속</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">ICN</span>
+                                        <span class="title">인천(인천 국제공항 T2) 도착</span>
+                                    </dt>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                </accordion-group>
+                <!-- end item -->
+
+                <!-- item -->
+                <accordion-group class="accordion">
+                    <div class="schedule-header active" accordion-heading>
+                        <label class="radio only">
+                            <input type="radio" name="rent-flight-info" class="radio-control-input">
+                            <span class="radio-control-text"></span>
+                        </label>
+                        <dl>
+                            <dt>
+                                <span class="title">인천(ICN) - 로스앤젤레스(LAX)</span>
+                            </dt>
+                            <dd>
+                                <span>08.19 (화)</span>
+                                <span>직항</span>
+                                <span>17시간 10분</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="schedule-body">
+                        <!-- 항공 상세 스케줄 -->
+                        <div class="flight-schedule">
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <div class="total">12시간 25분</div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">LAX</span>
+                                        <span class="title">로스앤젤레스(로스앤젤레스 국제공항 B) 출발</span>
+                                    </dt>
+                                    <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                    <dd>일반석/무료수하물/성인 1PC/소아 1PC</dd>
+                                    <dd><span class="food">식사</span><span class="wifi">WI-FI</span><span class="plug">콘센트</span><span class="vod">VOD</span></dd>
+                                </dl>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <div class="total">12시간 25분</div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">PVC</span>
+                                        <span class="title">상하이(상하이 푸동 국제공항 T2) 도착</span>
+                                    </dt>
+                                    <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                    <dd>
+                                        <span class="transfer">상하이 환승</span>
+                                    </dd>
+                                    <dd>
+                                        <span class="luggage">수하물 연결수속</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <div class="total">12시간 25분</div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">PVC</span>
+                                        <span class="title">상하이(상하이 푸동 국제공항 T2) 출발</span>
+                                    </dt>
+                                    <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                    <dd>
+                                        <span class="transfer">상하이 환승</span>
+                                    </dd>
+                                    <dd>
+                                        <span class="luggage">수하물 연결수속</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">ICN</span>
+                                        <span class="title">인천(인천 국제공항 T2) 도착</span>
+                                    </dt>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </accordion-group>
+                <!-- end item -->
+
+                <!-- item -->
+                <accordion-group class="accordion">
+                    <div class="schedule-header active" accordion-heading>
+                        <label class="radio only">
+                            <input type="radio" name="rent-flight-info" class="radio-control-input">
+                            <span class="radio-control-text"></span>
+                        </label>
+                        <dl>
+                            <dt>
+                                <span class="title">인천(ICN) - 로스앤젤레스(LAX)</span>
+                            </dt>
+                            <dd>
+                                <span>08.19 (화)</span>
+                                <span>직항</span>
+                                <span>17시간 10분</span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="schedule-body">
+                        <!-- 항공 상세 스케줄 -->
+                        <div class="flight-schedule">
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <div class="total">12시간 25분</div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">LAX</span>
+                                        <span class="title">로스앤젤레스(로스앤젤레스 국제공항 B) 출발</span>
+                                    </dt>
+                                    <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                    <dd>일반석/무료수하물/성인 1PC/소아 1PC</dd>
+                                    <dd><span class="food">식사</span><span class="wifi">WI-FI</span><span class="plug">콘센트</span><span class="vod">VOD</span></dd>
+                                </dl>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <div class="total">12시간 25분</div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">PVC</span>
+                                        <span class="title">상하이(상하이 푸동 국제공항 T2) 도착</span>
+                                    </dt>
+                                    <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                    <dd>
+                                        <span class="transfer">상하이 환승</span>
+                                    </dd>
+                                    <dd>
+                                        <span class="luggage">수하물 연결수속</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <div class="total">12시간 25분</div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">PVC</span>
+                                        <span class="title">상하이(상하이 푸동 국제공항 T2) 출발</span>
+                                    </dt>
+                                    <dd><img src="/assets/images/temp/@temp-airline.png" alt="" class="airline-logo">아시아나항공 MU5034</dd>
+                                    <dd>
+                                        <span class="transfer">상하이 환승</span>
+                                    </dd>
+                                    <dd>
+                                        <span class="luggage">수하물 연결수속</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="schedule-block">
+                                <div class="time">
+                                    <p>15:20</p>
+                                    <p>09.04 (수)</p>
+                                </div>
+                                <dl>
+                                    <dt>
+                                        <span class="label">ICN</span>
+                                        <span class="title">인천(인천 국제공항 T2) 도착</span>
+                                    </dt>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </accordion-group>
+                <!-- end item -->
+
+
+            </accordion>
+
+        </div>
+
+
+        <div class="btn-group pd bg fixed-bottom">
+            <a (click)="onCloseClick($event)" class="btn lg default">항공편 예약 정보 불러오기</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+/**
+* 페이지 컴포넌트
+* p-{페이지명}
+ */
+.p-cm-recent-list {
+
+    .contents-item-area {
+
+        .contents-item {
+            margin-top: 45px;
+        }
+
+        &:first-child {
+            .contents-item {
+                margin-top: 0px;
+            }
+        }
+    }
+
+}

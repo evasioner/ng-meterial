@@ -1,0 +1,307 @@
+<div *ngIf="initBool" id="wrap">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-airtel-header [headerType]="headerType" [headerConfig]="headerConfig"></app-airtel-header>
+
+    <!-- contents -->
+    <div id="contents">
+        <div class="page-contents-type">
+            <!-- 상단 이미지 영역 -->
+            <div class="hotel-detail-image">
+                <div class="btn-group">
+                    <a href="#" class="btn-share">공유</a>
+                    <!-- 관심상품 클릭시 .active 토글 -->
+                    <a href="#" class="btn-wish" [class.active]="(hotelInfo$ | async).wishedHotelYn">관심상품</a>
+                </div>
+                <div class="hotel-detail-rolling">
+                    <ul>
+                        <li class="active" style="background: url('/assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat; background-size: cover;">
+                        </li>
+                        <li style="background: url('/assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat; background-size: cover;">
+                        </li>
+                        <li style="background: url('/assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat; background-size: cover;">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 호텔 상세 컨텐츠 영역 -->
+            <div class="hotel-detail-contents">
+                <div class="contents-item mg">
+                    <ul class="hotel-basic-information">
+                        <li class="name">{{(hotelInfo$ | async).hotelNameLn}}</li>
+                        <li class="name2">{{(hotelInfo$ | async).hotelNameEn}}</li>
+                        <li class="rate">
+                            <span class="hotel-rating">
+                                <span class="icon s{{getHotelRating((hotelInfo$ | async).starRating)}}"></span>
+                                <span class="text">{{(hotelInfo$ | async).starRating}}성급</span>
+                            </span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn-review">
+                        <span class="text-review">
+                            <span class="num">{{(tripAdvisor$ | async).rating}}</span>
+                            <span class="text">아주좋음</span>
+                        </span>
+                        <span class="tripadvisor-review">
+                            <img src="{{(tripAdvisor$ | async).ratingUrl}}" alt="평점{{(tripAdvisor$ | async).rating}}" class="tripadvisor">
+                            <span>({{(tripAdvisor$ | async).reviewCount}})</span>
+                        </span>
+                    </a>
+                    <div class="hotel-location-map">
+                        <div class="google-map-wrap">
+                            <!-- 구글 맵 들어가는 자리 -->
+                            <agm-map [latitude]="37.564124" [longitude]="126.989822" [zoom]="18">
+                                <agm-marker [markerDraggable]="false" [latitude]="37.564124" [longitude]="126.989822" [label]="{color: 'white', text: 'H'}">
+                                </agm-marker>
+                            </agm-map>
+                            <a href="#" class="btn-map">지도보기</a>
+                        </div>
+                        <div class="name2">506 S Grand Ave, Los Angeles, CA 90071 미국</div>
+                        <dl class="poi-list">
+                            <dt>인근명소</dt>
+                            <dd *ngFor="let item of (poi$ | async).attractions">
+                                {{item.nameLn}}<span class="distance">{{item.distance}}km</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="contents-item">
+                    <h2 class="contents-title mg">내 검색 정보</h2>
+                    <div class="row-group mg">
+                        <div class="row">
+                            <div class="input line no-pd">
+                                <span class="icon sm user"></span>
+                                <input type="text" placeholder="좌석등급, 객실 수, 인원 수를 선택해주세요" value="성인2명, 4박" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input line no-pd">
+                                <span class="icon sm calendar"></span>
+                                <input type="text" placeholder="여행날짜를 선택해 주세요" value="09.31 (금) - 09.04 (수)" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contents-item mg">
+                    <h2 class="contents-title">객실선택<span class="sub-text">(세금,봉사료 포함)</span></h2>
+                    <div class="round-box">
+                        <!-- 룸타입 반복 -->
+                        <div class="hotel-room-type-item">
+                            <div class="room-name">
+                                Deluxe Room, 1 King Bed
+                            </div>
+                            <div class="option">
+                                <span>포함내역 없음</span>
+                                <a href="#" class="btn-room">객실정보</a>
+                            </div>
+                            <div class="select">
+                                <span class="price"><strong>+0</strong> 원</span>
+                                <a class="btn-reservation">예약</a>
+                            </div>
+                        </div>
+                        <!-- 룸타입 반복 -->
+                        <div class="hotel-room-type-item">
+                            <div class="room-name">
+                                Deluxe Room, 1 King Bed (1 King Bed Request only)
+                            </div>
+                            <div class="option">
+                                <span class="breakfast">조식포함</span>
+                                <span class="wifi">무료 WI-FI</span>
+                                <a href="#" class="btn-room">객실정보</a>
+                            </div>
+                            <div class="select">
+                                <span class="price"><strong>+23,000</strong> 원</span>
+                                <a href="#" class="btn-reservation">예약</a>
+                            </div>
+                        </div>
+                        <!-- 룸타입 반복 -->
+                        <div class="hotel-room-type-item">
+                            <div class="room-name">
+                                Deluxe Room, Double Bed 2
+                            </div>
+                            <div class="option">
+                                <span class="breakfast">조식포함</span>
+                                <span class="wifi">무료 WI-FI</span>
+                                <a href="#" class="btn-room">객실정보</a>
+                            </div>
+                            <div class="select">
+                                <span class="price"><strong>+23,000</strong> 원</span>
+                                <a href="#" class="btn-reservation">예약</a>
+                            </div>
+                        </div>
+                        <!-- 룸타입 반복 -->
+                        <!-- 6번째부터 .hide 추가 / 아래 더보기 버튼 누르면 .hide 전부 삭제 -->
+                        <div class="hotel-room-type-item hide">
+                            <div class="room-name">
+                                Deluxe Room, 1 King Bed
+                            </div>
+                            <div class="option">
+                                <span class="breakfast">조식포함</span>
+                                <span class="wifi">무료 WI-FI</span>
+                                <a href="#" class="btn-room">객실정보</a>
+                            </div>
+                            <div class="select">
+                                <span class="price"><strong>+0</strong> 원</span>
+                                <a href="#" class="btn-reservation">예약</a>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-more-view">더보기</a>
+                    </div>
+                </div>
+                <div class="contents-item mg">
+                    <h2 class="contents-title">호텔정보</h2>
+                    <div class="round-box">
+                        <div class="check-time">
+                            <span class="check-in">체크인 : {{(hotelInfo$ | async).checkInTime}} 이후</span>
+                            <span class="check-out">체크아웃 : {{(hotelInfo$ | async).checkOutTime}} 이전</span>
+                        </div>
+                        <dl class="article-list">
+                            <dt>주소</dt>
+                            <dd>{{(hotelInfo$ | async).addressLn}}</dd>
+                        </dl>
+                        <dl class="article-list">
+                            <dt>지역</dt>
+                            <dd>{{(hotelInfo$ | async).cityNameLn}}</dd>
+                        </dl>
+                        <dl class="article-list">
+                            <dt>연락처</dt>
+                            <dd><strong>전화</strong>{{(hotelInfo$ | async).phoneNo}}</dd>
+                            <dd><strong>팩스</strong>{{(hotelInfo$ | async).faxNo}}</dd>
+                        </dl>
+                        <dl class="article-list hide">
+                            <dt>홈페이지</dt>
+                            <dd><a href="{{(hotelInfo$ | async).homepageUrl}}" class="text-link"><span class="text">{{(hotelInfo$ | async).homepageUrl}}</span></a></dd>
+                        </dl>
+                        <a href="#" class="btn-more-view">더보기</a>
+                    </div>
+                </div>
+                <div class="contents-item mg">
+                    <h2 class="contents-title">일반사항</h2>
+                    <div class="round-box">
+                        <dl class="article-list">
+                            <dt>객실</dt>
+                            <dd>{{(hotelInfo$ | async).roomFacility}}</dd>
+                        </dl>
+                        <dl class="article-list">
+                            <dt>편의시설</dt>
+                            <dd>{{(hotelInfo$ | async).hotelFacility}}</dd>
+                        </dl>
+                        <!-- 3번째부터 .hide 추가 / 아래 더보기 버튼 누르면 .hide 전부 삭제 -->
+                        <dl class="article-list hide">
+                            <dt>식당</dt>
+                            <dd>식당</dd>
+                        </dl>
+                        <a href="#" class="btn-more-view">더보기</a>
+                    </div>
+                </div>
+                <div class="contents-item mg">
+                    <h2 class="contents-title">편의시설</h2>
+                    <ul class="round-box convenience">
+                        <li><span class="icon md spa"></span>스파</li>
+                        <li><span class="icon md lounge"></span>바/라운지</li>
+                        <li><span class="icon md fitness"></span>피트니스 시설</li>
+                        <li><span class="icon md pool"></span>야외 수영장</li>
+                        <li><span class="icon md cafe"></span>카페</li>
+                        <li><span class="icon md restaurant"></span>레스토랑</li>
+                    </ul>
+                </div>
+                <div class="contents-item">
+                    <h2 class="contents-title mg">주변 추천 호텔</h2>
+                    <div class="scroll-box-list">
+                        <!-- 주변 호텔 리스트 아이템 반복 -->
+                        <div class="hotel-result-item">
+                            <div class="hotel-image" style="background: url('/assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat; background-size: cover;">
+                            </div>
+                            <div class="hotel-information">
+                                <ul>
+                                    <li class="name">헐리우드 히스토릭 호텔</li>
+                                    <li class="name2">506 S Grand Ave, Los Angeles, CA 90071 미국</li>
+                                    <li class="rate">
+                                        <span class="hotel-rating">
+                                            <span class="icon s4"></span>
+                                            <span class="text">4성급</span>
+                                        </span>
+                                    </li>
+                                    <li class="review">
+                                        <div class="tripadvisor-review">
+                                            <img src="/assets/images/temp/@temp-tripadvisor.png" alt="" class="tripadvisor">
+                                            <span>(1,958)</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="item-group">
+                                    <div class="item-row col">
+                                        <div class="right">
+                                            <strong class="color-point2">+25,000</strong>원
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 주변 호텔 리스트 아이템 반복 -->
+                        <div class="hotel-result-item">
+                            <div class="hotel-image" style="background: url('/assets/images/temp/@temp-hotel-image.png' ) 50% 50% no-repeat; background-size: cover;">
+                            </div>
+                            <div class="hotel-information">
+                                <ul>
+                                    <li class="name">헐리우드 히스토릭 호텔</li>
+                                    <li class="name2">506 S Grand Ave, Los Angeles, CA 90071 미국</li>
+                                    <li class="rate">
+                                        <span class="hotel-rating">
+                                            <span class="icon s4"></span>
+                                            <span class="text">4성급</span>
+                                        </span>
+                                    </li>
+                                    <li class="review">
+                                        <div class="tripadvisor-review">
+                                            <img src="/assets/images/temp/@temp-tripadvisor.png" alt="" class="tripadvisor">
+                                            <span>(1,958)</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="item-group">
+                                    <div class="item-row col">
+                                        <div class="right">
+                                            <strong class="color-point2">+25,000</strong>원
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 주변 호텔 리스트 아이템 반복 -->
+                        <div class="hotel-result-item">
+                            <div class="hotel-image" style="background: url('/assets/images/temp/@temp-hotel-image.png' ) 50% 50% no-repeat; background-size: cover;">
+                            </div>
+                            <div class="hotel-information">
+                                <ul>
+                                    <li class="name">헐리우드 히스토릭 호텔</li>
+                                    <li class="name2">506 S Grand Ave, Los Angeles, CA 90071 미국</li>
+                                    <li class="rate">
+                                        <span class="hotel-rating">
+                                            <span class="icon s4"></span>
+                                            <span class="text">4성급</span>
+                                        </span>
+                                    </li>
+                                    <li class="review">
+                                        <div class="tripadvisor-review">
+                                            <img src="/assets/images/temp/@temp-tripadvisor.png" alt="" class="tripadvisor">
+                                            <span>(1,958)</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="item-group">
+                                    <div class="item-row col">
+                                        <div class="right">
+                                            <strong class="color-point2">+25,000</strong>원
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div *ngIf="loadingBool" class="page-contents-type3">
+    <div class="common-list-top">
+        <span>전체 <span class="color-point2">{{totalListCount | number}}</span>건</span>
+        <label class="checkbox small rtl ml-auto">
+            <input (change)="onCheck()" [(ngModel)]="!checkBoxValue" type="checkbox" class="checkbox-control-input">
+            <span class="checkbox-control-text color-sub5">취소 예약 제외</span>
+        </label>
+    </div>
+    <!-- 아이템 반복 -->
+    <div *ngIf="isBrowser" class="search-results" infiniteScroll [infiniteScrollDistance]="infiniteScrollConfig.distance" [infiniteScrollThrottle]="infiniteScrollConfig.throttle" (scrolled)="onScroll()">
+        <!-- 항공 / 무료취소 / 발권완료 -->
+        <div *ngFor="let res of cateResult; index as i;" class="round-box reservation-item">
+            <div class="reservation-title">
+                <span class="icon sm flight2"></span>
+                <span class="text">{{res.items[0].bookingStatusName}}</span>
+                <span class="label sm type2">{{res.items[0].cancelDescription}}</span>
+                <a (click)="goReservationQnaPage()" class="btn-link">문의하기</a>
+            </div>
+            <div class="reservation-summary">
+                <h2 class="product-title">[{{res.categories[0].name}}] [{{res.items[0].flight.tripTypeName}}] {{res.bookingName}}</h2>
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>{{res.items[0].travelFromDate | date:'y.MM.dd'}} - {{res.items[0].travelToDate | date:'y.MM.dd'}}
+                            <!-- <ng-container *ngIf="res.items[0].travelToDate === 0"></ng-container> -->
+                        </span>
+                    </li>
+                    <li>
+                        <span>항공사</span>
+                        <span>{{res.items[0].flight.airlineNameList}}
+                            <!-- <ng-container *ngIf="res.items[0].flight.airlineNameList === res.items[0].flight.airlineNameList">{{res.items.flight.airlineNameList}}</ng-container> -->
+                        </span>
+                    </li>
+                    <li>
+                        <span>여행자</span>
+                        <span>{{res.items[0].travelerName}} <ng-container *ngIf="res.items[0].traveletrMinusCoun > 0">외 {{res.items[0].travelerMinusCount}}명</ng-container>
+                            <ng-container *ngIf="res.items[0].flight.ticketingStatusName"><span class="label sm type1 ml5">{{res.items[0].flight.ticketingStatusName}}</span></ng-container>
+                        </span>
+                    </li>
+                    <li>
+                        <span>결제금액</span>
+                        <span><strong class="color-point2">{{res.items[0].sumAmount | number}}원</strong></span>
+                    </li>
+                </ul>
+                <div class="btn-group basis mt20">
+                    <a (click)="goCancelPage(res)" class="btn md grey">예약취소</a>
+                    <a (click)="goDetailPage(res.items[0].bookingItemCode, 'IC01')" class="btn md default">예약상세</a>
+                </div>
+            </div>
+        </div>
+        <h2>{{lastMessage}}</h2>
+    </div>
+</div>

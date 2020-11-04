@@ -1,0 +1,320 @@
+<app-common-modal-loading *ngIf="bookingLoading"></app-common-modal-loading>
+
+<div id="wrap" class="p-activity-booking-information">
+    <!-- header -->
+    <app-activity-header [headerType]="headerType" [headerConfig]="headerConfig"></app-activity-header>
+
+    <!-- contents -->
+    <div id="contents">
+        <div class="page-contents-type2">
+            <div class="contents-item">
+                <h2 class="contents-title">예약 정보 확인</h2>
+                <div class="round-box activity-reserved-contents">
+                    <div class="activity-image" [ngStyle]="{background: 'url(' + viewModel.defaultPhoto + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat', 'background-size': 'cover'}"></div>
+                    <div class="reserved-information">
+                        <p class="name">{{ viewModel.activityNameLn }}</p>
+                        <p class="name2">{{ viewModel.activityNameEn }}</p>
+                        <div class="item-group line">
+                            <div class="item-row col">
+                                <div class="left days">이용일</div>
+                                <div class="right">{{ viewModel.date }}</div>
+                            </div>
+                            <div *ngIf="viewModel.getCity" class="item-row col">
+                                <div class="left city">수령 도시</div>
+                                <div class="right">{{ viewModel.date }}</div>
+                            </div>
+                            <div *ngIf="viewModel.getAirport" class="item-row col">
+                                <div class="left airport">수령 공항</div>
+                                <div class="right">{{ viewModel.getAirport}}</div>
+                            </div>
+                            <div class="item-row col">
+                                <div class="left piece">수량</div>
+                                <div class="right">
+                                    <ng-container *ngFor="let item of viewModel.travelerSum; index as index;">
+                                        <ng-container *ngIf="index === 0">
+                                            {{ item.traveler }}
+                                        </ng-container>
+                                        <ng-container *ngIf="index > 0">
+                                            /{{ item.traveler }}
+                                        </ng-container>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-group mt20">
+                            <div *ngFor="let item of viewModel.travelerSum" class="item-row col">
+                                <div class="left">{{ item.traveler }}인</div>
+                                <div class="right">{{ item.amountSum | number }}원</div>
+                            </div>
+                            <div class="item-row col last">
+                                <div class="left">결제금액</div>
+                                <div class="right">{{ viewModel.amountSum | number }}원</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="round-box">
+                    <ng-container *ngIf="viewModel.refundableYn;else elseRefundableYn">
+                        <ng-container *ngIf="viewModel?.freeCancel;else elseNoFreeBool">
+                            <div class="check-time auto">
+                                <span class="cal">취소 마감일 : {{viewModel.freeCancel.deadline}}</span>
+                                <span class="ml-auto">{{viewModel.freeCancel.time}}</span>
+                            </div>
+                        </ng-container>
+                        <ng-template #elseNoFreeBool>
+                            <div class="check-time auto">
+                                <span class="cal">취소 마감일 : {{ viewModel.cancelMainDeadLineDate }}</span>
+                                <span class="ml-auto">{{ viewModel.cancelMainDeadLineTime }}까지</span>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                    <ng-template #elseRefundableYn>
+                        <div class="check-time auto">
+                            <span class="cal">취소 마감일 : 환불불가</span>
+                        </div>
+                    </ng-template>
+                    <ul class="text-list dash spacing color-sub6">
+                        <ng-container *ngFor="let item of viewModel.cancelDeadLineList">
+                            <li>
+                                {{ item.startDate }} - {{ item.endDate }}
+                                <br>취소 시 :
+                                <ng-container *ngIf="!item.charged;else billingElseif">취소 수수료 없이 취소 가능</ng-container>
+                                <ng-template #billingElseif>
+                                    <span class="cancel-price">{{ item.chargeAmount | number }}원 청구</span>
+                                </ng-template>
+                            </li>
+                        </ng-container>
+                        <li>위 날짜 이후 취소 시, 전체 상품요금이 청구됩니다.</li>
+                        <li class="none-pd color-sub3">
+                            <p>※ 취소 마감일 이전까지 결제를 완료해주세요.</p>
+                            <p>※ 무료 취소 가능 기간 이후 취소 시, 수수료가 발생합니다.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <form [formGroup]="mainForm" (ngSubmit)="onSubmit($event)" #form="ngForm" novalidate>
+                <div class="contents-item">
+                    <h2 class="contents-title line">예약자 정보를 입력해 주세요.</h2>
+                    <h3 class="contents-sub-text">배송 상품의 경우, 입력된 배송지 정보로 배송됩니다.</h3>
+                    <div class="round-box">
+                        <div class="traveler-item">
+                            <h4 class="contents-title2 line2">예약자 정보</h4>
+                            <div class="row-group">
+                                <div class="row">
+                                    <h5 class="row-title">예약자 명</h5>
+                                    <div class="input line">
+                                        <input formControlName="name" [class.valid-error]="mainForm.controls.name.errors && (form.submitted || mainForm.controls.name.dirty || mainForm.controls.name.touched)" type="text" placeholder="예약자명 입력" readonly>
+
+                                        <ng-container *ngIf="mainForm.controls.name.errors">
+                                            <span *ngIf="mainForm.controls.name.errors.required" class="valid-msg">예약자명은 필수값입니다.</span>
+                                            <span *ngIf="mainForm.controls.name.errors.invalidMsg" class="valid-msg">{{mainForm.controls.userName.errors.invalidMsg}}</span>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h5 class="row-title">휴대폰 번호</h5>
+                                    <div class="input line">
+                                        <input formControlName="mobileNo" [class.valid-error]="mainForm.controls.mobileNo.errors && (form.submitted ||  mainForm.controls.mobileNo.dirty || mainForm.controls.mobileNo.touched)" type="text" placeholder="'-' 제외하고 입력">
+                                        <a *ngIf="mainForm.controls.mobileNo.value" (click)="userInfoReset($event, 2)" class="icon sm input-delete2">삭제</a>
+
+                                        <ng-container *ngIf="mainForm.controls.mobileNo.errors">
+                                            <span *ngIf="mainForm.controls.mobileNo.errors.required" class="valid-msg">휴대폰 번호는 10자리 이상으로 입력해야 합니다.</span>
+                                            <span *ngIf="mainForm.controls.mobileNo.errors.invalidMsg" class="valid-msg">{{mainForm.controls.userPhone.errors.invalidMsg}}</span>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h5 class="row-title">이메일 주소</h5>
+                                    <div class="input line">
+                                        <input formControlName="email" [class.valid-error]="mainForm.controls.email.errors && (form.submitted ||  mainForm.controls.email.dirty || mainForm.controls.email.touched)" type="email" placeholder="example@mail.com">
+
+                                        <a *ngIf="mainForm.controls.email.value" (click)="userInfoReset($event, 3)" class="icon sm input-delete2">삭제</a>
+                                        <ng-container *ngIf="mainForm.controls.email.errors">
+                                            <span *ngIf="mainForm.controls.email.errors.required" class="valid-msg">이메일주소는 필수값입니다.</span>
+                                            <span *ngIf="mainForm.controls.email.errors.email" class="valid-msg">이메일 정보를 정확히 확인해주세요.</span>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h5 class="row-title">배송방법</h5>
+                                    <div class="select-box line">
+                                        <select required>
+                                            <!-- 추후 선택 가능할 때 주석 제거 예정 -->
+                                            <!-- <option value="" selected disabled>배송지 선택</option> -->
+                                            <option *ngFor="let item of viewModel.deleverOptionList" [value]="item.code" [selected]="item.checked">
+                                                {{ item.nameKr }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-item">
+                    <h2 class="contents-title line">여행자 정보를 입력해 주세요.</h2>
+                    <h3 class="contents-sub-text">여권상의 영문성, 영문이름과 같지 않으면 일부 서비스 이용에 제작을 받을 수 있습니다.</h3>
+                    <div formArrayName="travelers" class="round-box">
+                        <!-- 반복 -->
+                        <div *ngFor="let item of travelers.controls; index as index;" [formGroupName]="index" class="traveler-item">
+                            <h4 class="contents-title2 line2">{{ item.value.type }}{{ item.value.travelerIndex }}</h4>
+                            <div class="row-group">
+                                <div class="row">
+                                    <h5 class="row-title">여행자 선택</h5>
+                                    <div class="select-box line">
+                                        <select (change)="onChangeTraveler($event, index)" required>
+                                            <option value="" selected>신규 여행자를 추가합니다 - 새로운 여행자를 입력합니다</option>
+                                            <option *ngFor="let travelerItem of viewModel.travelerInfoList; index as travelerIndex;" [value]="travelerIndex" [hidden]="travelerItem.active">
+                                                {{ travelerItem.name }} : {{ travelerItem.lastName }} / {{ travelerItem.firstName }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h5 class="row-title">한글 이름</h5>
+                                    <div class="input line">
+                                        <input (keyup)="onKeyupKrName($event)" formControlName="name" type="text" [class.valid-error]="item.get('name').errors && (form.submitted ||  item.get('name').dirty || item.get('name').touched)" placeholder="이름 입력">
+                                        <ng-container *ngIf="item.get('name').errors">
+                                            <span *ngIf="item.get('name').errors.required" class="valid-msg">한글 이름은 필수값입니다.</span>
+                                            <span *ngIf="item.get('name').errors.maxlength" class="valid-msg">한글 이름의 글자수는 33자 까지 입력 가능합니다.</span>
+                                            <span *ngIf="item.get('name').errors.invalidMsg" class="valid-msg">{{item.get('name').errors.invalidMsg}}</span>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h5 class="row-title">영문 성/이름</h5>
+                                    <div class="row col2">
+                                        <div class="input line">
+                                            <input formControlName="lastName" [class.valid-error]="item.get('lastName').errors && (form.submitted ||  item.get('lastName').dirty || item.get('lastName').touched)" type="text" placeholder="영문 성">
+                                            <ng-container *ngIf="item.get('lastName').errors">
+                                                <span *ngIf="item.get('lastName').errors.required" class="valid-msg">영문 성(은) 필수값입니다.</span>
+                                                <span *ngIf="item.get('lastName').errors.maxlength" class="valid-msg">영문 성의 글자수는 50자 까지 입력 가능합니다.</span>
+                                                <span *ngIf="item.get('lastName').errors.invalidMsg" class="valid-msg">{{item.get('lastName').errors.invalidMsg}}</span>
+                                            </ng-container>
+                                        </div>
+                                        <div class="input line">
+                                            <input formControlName="firstName" [class.valid-error]="item.get('firstName').errors && (form.submitted ||  item.get('firstName').dirty || item.get('firstName').touched)" type="text" placeholder="영문 이름">
+                                            <ng-container *ngIf="item.get('firstName').errors">
+                                                <span *ngIf="item.get('firstName').errors.required" class="valid-msg">영문 이름(은) 필수값입니다.</span>
+                                                <span *ngIf="item.get('firstName').errors.maxlength" class="valid-msg">영문 이름의 글자수는 50자 까지 입력 가능합니다.</span>
+                                                <span *ngIf="item.get('firstName').errors.invalidMsg" class="valid-msg">{{item.get('firstName').errors.invalidMsg}}</span>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h5 class="row-title">생년월일</h5>
+                                    <div class="input line">
+                                        <input formControlName="birthday" [class.valid-error]="item.get('birthday').errors && (form.submitted ||  item.get('birthday').dirty || item.get('birthday').touched)" type="tel" placeholder="생년월일 입력(8자리)" maxlength="8" numberonly>
+                                        <ng-container *ngIf="item.get('birthday').errors">
+                                            <span *ngIf="item.get('birthday').errors.required" class="valid-msg">생년월일은 필수값입니다.</span>
+                                            <span *ngIf="item.get('birthday').errors.invalidMsg" class="valid-msg">{{item.get('birthday').errors.invalidMsg}}</span>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <div class="row auto">
+                                    <div class="row-title">성별선택</div>
+                                    <div>
+                                        <label *ngFor="let item of viewModel.genderList" class="radio">
+                                            <input formControlName="gender" [value]="item.code" type="radio" class="radio-control-input">
+                                            <span class="radio-control-text">{{ item.text }}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="false" class="contents-item">
+                    <h2 class="contents-title">이용자 정보 선택</h2>
+                    <div class="round-box">
+                        <div class="row-group">
+                            <div class="row mt0">
+                                <h5 class="row-title">메인 컨텍트</h5>
+                                <div class="select-box line">
+                                    <select name="" id="">
+                                        <option value="">안경열 : AHN/KYUNGYOUL</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ng-container *ngIf="viewModel.neededInfoList.length > 0" formArrayName="activityItems">
+                    <div *ngFor="let activityItem of getActivityItems(mainForm); index as activityIndex" class="contents-item">
+                        <h2 class="contents-title line">필수 질문 사항</h2>
+                        <h3 class="contents-sub-text">이 상품은 현지 공급 업체의 요청으로 예약을 위한 필수 질문 사항이 있습니다.</h3>
+                        <div [formGroupName]="activityIndex" class="round-box">
+                            <div formArrayName="neededInfos" class="row-group">
+                                <div *ngFor="let item of getNeedeInfos(activityItem); index as index;" [formGroupName]="index" class="row mt0">
+                                    <h5 class="row-title">
+                                        Q{{ (index + 1 )}}. {{ item.value.infoName }} <ng-container *ngIf="item.value.addValue !== ''"> / {{ item.value.addValue }}</ng-container>
+                                    </h5>
+                                    <div class="input line">
+                                        <input formControlName="userInputValue" [class.valid-error]="item.get('userInputValue').errors && (form.submitted ||  item.get('userInputValue').dirty || item.get('userInputValue').touched)" type="text" placeholder="답변 입력">
+                                        <ng-container *ngIf="item.get('userInputValue').errors">
+                                            <span *ngIf="item.get('userInputValue').errors.required" class="valid-msg">답변은 필수값입니다.</span>
+                                            <span *ngIf="item.get('userInputValue').errors.maxlength" class="valid-msg">답변의 글자수는 50자 까지 입력 가능합니다.</span>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <div class="contents-item">
+                    <h2 class="contents-title line">요금, 취소수수료 규정을 확인하세요.</h2>
+                    <h3 class="contents-sub-text">아래 규정 및 약관을 읽어보고, 동의하는 경우에 체크하고 최종 예약을 완료해 주세요.</h3>
+                    <div class="round-box">
+                        <!-- 체크박스 checked 될때마다 해당 모달을 띄움 -->
+                        <ul class="row-group">
+                            <li class="row line-bottom" data-target="agreeAllChk">
+                                <label class="checkbox">
+                                    <input type="checkbox" class="checkbox-control-input" (change)="onChangeAllAgreement($event)">
+                                    <span class="checkbox-control-text">모든 약관에 동의합니다.</span>
+                                </label>
+                            </li>
+                            <ng-container formArrayName="agreeList">
+                                <li class="row agree-row">
+                                    <label data-target="agreeChk" class="checkbox">
+                                        <input formControlName="0" (change)="onChangeAgreement(0, $event)" type="checkbox" class="checkbox-control-input">
+                                        <span class="checkbox-control-text"><em (click)="onAgreementClick($event,'normal')">일반 규정</em>을 읽었으며 동의함</span>
+                                    </label>
+                                </li>
+                                <li class="row agree-row">
+                                    <label data-target="agreeChk" class="checkbox">
+                                        <input formControlName="1" (change)="onChangeAgreement(1, $event)" type="checkbox" class="checkbox-control-input">
+                                        <span class="checkbox-control-text"><em (click)="onAgreementClick($event,'cancel')">취소/환불 규정</em>을 읽었으며 동의함</span>
+                                    </label>
+                                </li>
+                                <li class="row agree-row">
+                                    <label data-target="agreeChk" class="checkbox">
+                                        <input formControlName="2" (change)="onChangeAgreement(2, $event)" type="checkbox" class="checkbox-control-input">
+                                        <span class="checkbox-control-text"><em (click)="onAgreementClick($event,'personalInfo')">개인정보취급방침</em>을 읽었으며 동의함</span>
+                                    </label>
+                                </li>
+                            </ng-container>
+
+                        </ul>
+                    </div>
+                    <div class="round-box mt10">
+                        <h4 class="font-lg-b mb10">기타 안내사항</h4>
+                        <ul class="text-list color-sub6">
+                            <li>본 상품은 실시간 예약 상품입니다. 간혹 상품 상황에 따라 예약이 불가능한 경우가 발생할 수 있으니 참고하시기 바랍니다.</li>
+                            <li>예약이 확정된 이후 취소 요청 시 취소 수수료가 발생 될 수 있습니다.</li>
+                        </ul>
+                    </div>
+                    <div class="btn-group mt30">
+                        <button class="btn lg default" role="button">최종 예약 완료</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

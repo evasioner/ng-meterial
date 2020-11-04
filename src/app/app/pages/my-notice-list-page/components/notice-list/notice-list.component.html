@@ -1,0 +1,51 @@
+<div class="tab-item active">
+    <div class="page-contents-type3">
+        <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate>
+            <!-- 공지사항 검색 -->
+            <div class="input line mb20">
+                <span class="icon sm search"></span>
+                <input type="text" name="searchStr" [value]="'searchStr'" [formControlName]="'searchStr'" placeholder="찾고 있는 내용을 입력하세요" autocomplete="off">
+                <button class="icon sm input-delete2" type="reset"></button>
+                <br>
+                <button type="submit" class="btn lg default" role="button">검색</button>
+            </div>
+            <!-- 아이템 반복 -->
+            <div *ngIf="isBrowser" class="search-results" infiniteScroll [infiniteScrollDistance]="infiniteScrollConfig.distance" [infiniteScrollThrottle]="infiniteScrollConfig.throttle" (scrolled)="onScroll()">
+                <ng-container *ngIf="totalListCount !== 0; else elseTemplate">
+                    <div *ngFor="let nt of noticeList; index as i" class="round-box notice-list-item" (click)="detailView([nt.postSeq])">
+                        <p class="title">{{nt.postTitle}}</p>
+                        <p class="date">{{nt.lastUpdateDatetime}}</p>
+                    </div>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <div class="nodata page">
+                        <div class="nodata-msg">
+                            <span class="icon alert2"></span>
+                            <p class="text">검색 결과가 없습니다.<br>다른 검색어를 입력하세요.</p>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- <div class="tab-item">
+    <div class="page-contents-type3">
+      공지사항 검색
+      <div class="input line mb20">
+        <span class="icon sm search"></span>
+        <input type="text" placeholder="찾고 있는 내용을 입력하세요">
+      </div>
+      검색 결과 없을때
+      <div class="nodata page">
+        <div class="nodata-msg">
+          <span class="icon alert2"></span>
+          <p class="text">검색 결과가 없습니다.<br>다른 검색어를 입력하세요.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-item"></div>
+  <div class="tab-item"></div>
+  <div class="tab-item"></div> -->

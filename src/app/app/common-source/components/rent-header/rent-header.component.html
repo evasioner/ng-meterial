@@ -1,0 +1,32 @@
+<!-- header -->
+<ng-container [ngSwitch]="headerType">
+
+    <!-- 일반 페이지 -->
+    <div *ngSwitchCase="'page'" id="header" class="main" appHeaderFixed>
+        <a class="icon header-logo" (click)="onMainClick($event)">노랑풍선</a>
+        <h1>{{vm.title}}</h1>
+        <div class="right">
+            <a class="icon sm common-menu" (click)="onMenuClick($event)">메뉴</a>
+        </div>
+    </div>
+
+    <!-- 서브 페이지 -->
+    <div *ngSwitchCase="'subPage'" id="header" class="sub">
+        <div class="left">
+            <a class="icon sm common-back" (click)="onBackClick($event)">뒤로가기</a>
+        </div>
+        <h1>
+            <span class="icon sm" [ngClass]="headerConfig.icon"></span>
+            <span class="text step">{{headerConfig.step.title}}
+                <a *ngIf="headerConfig.step.changeBtnFun" (click)="headerConfig.step.changeBtnFun(headerConfig.ctx)" class="btn-change">변경</a>
+            </span>
+            <span class="text detail">{{headerConfig.detail}}</span>
+        </h1>
+        <div class="right">
+            <a class="icon sm common-menu" (click)="onMenuClick($event)">메뉴</a>
+        </div>
+    </div>
+
+    <ngx-loading-bar class="m-ngx-loading-bar" [includeSpinner]="false"></ngx-loading-bar>
+
+</ng-container>

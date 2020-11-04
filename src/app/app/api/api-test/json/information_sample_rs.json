@@ -1,0 +1,129 @@
+{
+  "serviceCode": "H19281",
+  "serviceName": "hotel/information",
+  "succeedYn": true,
+  "transactionSetId": "K0615584588144896",
+  "result": {
+    "hotel": {
+      "hotelCode": "54653",
+      "hotelNameLn": "JW 메리어트 호텔 방콕",
+      "hotelTypeName": "hotel",
+      "pageViewCount": 5,
+      "bookingCount": 6,
+      "hotelNameEn": "JW Marriott Hotel Bangkok",
+      "starRating": "5",
+      "hotelChainCode": "2599",
+      "hotelChainName": "JW Marriott",
+      "hotelBrandCode": "259923",
+      "hotelBrandName": "JW Marriott",
+      "hotelFloorCount": "24",
+      "hotelRoomCount": "441",
+      "phoneNo": "66-2-6567700",
+      "faxNo": "66-2-6567711",
+      "emailAddress": "mhrs.bkkdt.ecommerce.mgr@marriotthotels.com",
+      "zipCode": "10110",
+      "addressEn": "4 Sukhumvit Road Soi 2, BangKok, Thailand",
+      "addressLn": "4 Sukhumvit Road Soi 2, 방콕, 태국",
+      "homepageUrl": "https://www.marriott.com/hotels/travel/bkkdt-jw-marriott-hotel-bangkok",
+      "checkInTime": "15:00",
+      "checkOutTime": "12:00",
+      "establishedDate": "2010-01-01",
+      "renovatedDate": "2019-01-01",
+      "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/150000/142600/142502/d42fe4d9_z.jpg",
+      "latitude": 13.7414841,
+      "longitude": 100.5520936,
+      "hotelIntro": "방콕 중심에 자리한 JW 메리어트 호텔 방콕의 경우 걸어서 3분 거리에는 나나 광장, 8분 거리에는 센트럴 엠버시 등이 있습니다.  이 5성급 호텔에서 에라완 사당까지는 1.4km 떨어져 있으며, 1.5km 거리에는 센트럴월드 쇼핑 콤플렉스도 있습니다.<br />대표적인 편의 시설과 서비스로는 무료 유선 인터넷, 비즈니스 센터, 리무진/타운카 서비스 등이 있습니다. 방콕에서의 행사를 계획하시나요? 이 호텔에는 14311 제곱미터 크기의 행사 시설이 마련되어 있습니다. 고객께서는 별도 요금으로 공항에서 호텔로 이동하는 셔틀(24시간 운행) 서비스를 이용하실 수 있고, 시설 내에서 무료 주차 대행도 가능합니다.",
+      "hotelGetThere": "방콕에서 수쿰윗 지역에 있는 JW 메리어트 호텔 방콕의 경우 도심 및 쇼핑센터와 연결에 위치해 있습니다. 문화적 즐길거리를 원하신다면 짐 톰슨 하우스, 태국 문화센터에 가보세요. 이 지역의 유명한 랜드마크인 에라완 사당, 승전 기념비도 방문해 볼 만합니다. 센트럴 엠버시에 가보지 않고서는 여기서 나이트라이프를 경험했다고 할 수 없죠. 시 라이프 방콕 오션 월드도 놓치지 마세요.",
+      "hotelFacility": "마사지, 전신 트리트먼트 서비스, 얼굴 트리트먼트 서비스 등이 제공되는 풀서비스 스파에서 느긋한 시간을 즐기실 수 있습니다. 야외 수영장, 스파 욕조, 사우나 등의 레크리에이션 시설에 확실히 만족하실 것입니다. 이 호텔에는 무료 무선 인터넷, 콘시어지 서비스, 선물 가게/신문 가판대 등도 마련되어 있습니다.<br />이 호텔에는 7 개 레스토랑이 있으며 이중 하나인 Marriott Cafe에서 세계 각국의 요리를 즐기실 수 있습니다. 또는 편하게 객실에서 24시간 룸서비스를 이용하실 수 있어요. 커피숍/카페에서는 스낵이 제공됩니다. 풀사이드 바 또는 2 개 바/라운지에서는 시원한 음료를 마시며 느긋한 시간을 보내실 수 있어요. 아침 식사(뷔페)를 매일 06:00 ~ 10:30에 유료로 이용하실 수 있습니다.",
+      "roomFacility": "에어컨이 설치된 441개의 객실에는 미니바 및 LCD TV도 갖추어져 있어 편하게 머무실 수 있습니다. 무료 유선 및 무선 인터넷이 지원되며 위성 프로그램도 시청하실 수 있습니다. 별도의 욕조와 샤워 시설을 갖춘 전용 욕실에는 무료 세면용품 및 헤어드라이어도 마련되어 있습니다. 편의 시설/서비스로는 전화 외에 노트북 보관이 가능한 금고 및 책상도 있습니다.",
+      "hotelAttraction": "거리는 0.1km 단위로 최대한 가깝게 표시됩니다. <br /><p>나나 광장 - 0.2km <br />센트럴 엠버시 - 0.7km <br />센트럴 칫롬 백화점 - 1km <br />아마린 플라자 - 1.2km <br />미국 대사관 - 1.3km <br />에라완 사당 - 1.4km <br />소이 카우보이 - 1.4km <br />터미널 21 쇼핑몰 - 1.4km <br />센트럴월드 쇼핑 콤플렉스 - 1.5km <br />룸피니 공원 - 1.6km <br />시암 파라곤 몰 - 2km <br />시 라이프 방콕 오션 월드 - 2km <br />프라투남 시장 - 2km <br />플래티넘 패션몰 - 2.1km <br />씨암 센터 - 2.1km <br /></p><p>가장 가까운 공항:<br />방콕 (DMK-돈므앙 국제공항) - 28.9km<br />방콕 (BKK-수완나품 국제공항) - 37.3km<br /></p><p>JW 메리어트 호텔 방콕에서 가장 이용하기 좋은 공항은 방콕 (BKK-수완나품 국제공항)입니다. </p>",
+      "hotelCaution": "<b>Optional extras</b><br /><p>서비스 이용 시 또는 체크인/체크아웃 시 숙박 시설 측에서 청구하는 요금 및 보증금은 다음과 같습니다. </p> <ul> <li>뷔페 아침 식사 요금: 1인당 약 THB 977</li>     <li>공항 셔틀 요금: 객실 1개당 THB 2900</li>          <li>늦은 체크아웃 요금: THB 1800(이용 가능 여부에 따라 다름)</li>   <li>간이 침대 이용 요금: 1박 기준, THB 1766</li>            </ul> <p>위 목록에 명시되지 않은 다른 항목이 있을 수 있습니다. 요금 및 보증금은 세전 금액일 수 있으며 변경될 수 있습니다. </p><br /><b>You need to know</b><br /><ul>  <li>이 숙박 시설의 정책에 따라 총각/처녀 파티를 비롯한 일부 단체 행사 또는 파티의 경우 예약이 거부된다는 점을 유념해 주시기 바랍니다. </li><li>마사지 서비스 및 스파 트리트먼트의 경우 사전 예약이 필요합니다. 예약 확인에 나와 있는 연락처 정보로 도착 전에 호텔에 연락하여 예약하실 수 있습니다. </li> <li>이 숙박 시설은 장애인 안내 동물을 비롯한 모든 반려동물의 출입을 금지하고 있습니다. </li><li>주차 시 높이 제한이 적용됩니다. </li> </ul>",
+      "specialDesc": "24시간 공항 셔틀 서비스를 이용하실 수 있습니다. 별도의 요금이 부과될 수 있습니다. 자세한 내용을 확인하려면 미리 숙박 시설에 문의해 주세요.",
+      "recommendYn": true,
+      "wishedHotelYn": true,
+      "designatedYn": true,
+      "tripAdvisor": {
+        "rating": 4,
+        "reviewCount": 2622,
+        "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+      },
+      "additionalInfo": {
+        "addItemTitle": "proident",
+        "addItemDetail": "anim minim ex nulla"
+      },
+      "poi": {
+        "transports": [
+          {
+            "code": "1104889",
+            "nameEn": "Siam Square",
+            "distance": 1.23141,
+            "nameLn": "시암스퀘어",
+            "latitude": 13.74502739413929,
+            "longitude": 100.53416138629154
+          }
+        ],
+        "regionCenters": [
+          {
+            "code": "T198238",
+            "nameEn": "Sukhumvit Road",
+            "distance": 0.238934,
+            "nameLn": "Sukhumvit Road",
+            "latitude": 100.534161386293124,
+            "longitude": 100.53416138623425
+          }
+        ],
+        "airports": [
+          {
+            "code": "THBKK",
+            "nameEn": "Suvarnabhumi Intl Airport",
+            "distance": 5.0328901,
+            "nameLn": "Suvarnabhumi Intl Airport",
+            "latitude": 13.68735300000000,
+            "longitude": 100.74995000000000
+          }
+        ],
+        "attractions": [
+          {
+            "code": "1066522",
+            "nameEn": "Mont Nomsod",
+            "distance": 3.2981923,
+            "nameLn": "몬 토스트 - Mont Nomsod",
+            "latitude": 13.75417850000000,
+            "longitude": 100.50114540000004
+          }
+        ],
+        "branches": [
+          {
+            "code": "1105965",
+            "nameEn": "Khaosan Road market",
+            "distance": 2.39819243,
+            "nameLn": "카오산 거리 시장",
+            "latitude": 13.75843526298494,
+            "longitude": 100.49830469444282
+          }
+        ]
+      },
+      "facilities": [
+        {
+          "facilityCode": "HF001",
+          "facilityName": "무선인터"
+        },
+        {
+          "facilityCode": "HF002",
+          "facilityName": "주차"
+        },
+        {
+          "facilityCode": "HF006",
+          "facilityName": "수영"
+        }
+      ],
+      "photos": [
+        {
+          "photoUrl": "https://i.travelapi.com/hotels/1000000/150000/142600/142502/d42fe4d9_z.jpg",
+          "displayOrder": 1,
+          "photoCaption": "Main"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<!-- Modal -->
+<div class="modal-bottom">
+    <div class="modal-bottom-inner">
+        <!-- modal header -->
+        <div class="modal-bottom-header line center">
+            <h1>결제 수단 선택</h1>
+            <div class="right">
+                <a class="icon sm common-close" (click)="onCloseModal($event)">닫기</a>
+            </div>
+        </div>
+        <!-- modal contents -->
+        <div class="modal-bottom-contents fixed-btn-footer">
+            <div class="payment">
+                <div class="contents-item">
+                    <div class="item-group">
+
+                        <ng-container *ngFor="let cardItem of cardList">
+                            <div *ngIf="cardItem.promotionCardName" class="item-row col">
+                                <div class="left">
+                                    <label class="radio">
+                                        <input [value]="cardItem.code" [checked]="cardItem.checked" type="radio" name="card" class="radio-control-input" (change)="onCardChange($event, cardItem)">
+                                        <span class="radio-control-text">{{ cardItem.promotionCardName }}</span>
+                                    </label>
+                                </div>
+                                <div class="right" [class.font-md-b]="cardItem.checked">+{{ (cardItem.amountSum - cardItem.lowestAmount) | number}}원</div>
+                            </div>
+                        </ng-container>
+
+                    </div>
+                </div>
+
+                <div class="contents-item" *ngIf="false">
+                    <div class="item-group">
+                        <ng-container *ngIf="rs">
+                            <ng-container *ngFor="let item of rs.selected.flights">
+                                <ng-container *ngFor="let item of item.price.fares[0].passengerFares; index as i">
+                                    <div class="item-row col" *ngIf="item.ageTypeCode ==='ADT'">
+                                        <div class="left">성인 * {{item.paxCount}}인</div>
+                                        <div class="right">{{item.amountSum | number}}원</div>
+                                    </div>
+                                    <div class="item-row col" *ngIf="item.ageTypeCode ==='CHD'">
+                                        <div class="left">아동 * {{item.paxCount}}인</div>
+                                        <div class="right">{{item.amountSum | number}}원</div>
+                                    </div>
+                                    <div class="item-row col" *ngIf="item.ageTypeCode ==='INF'">
+                                        <div class="left">유아 * {{item.paxCount}}인</div>
+                                        <div class="right">{{item.amountSum | number}}원</div>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <div class="contents-item">
+                    <div class="item-group">
+                        <div class="item-row col">
+                            <div class="left">
+                                <p class="mb5">
+                                    <a class="text-link" (click)="onPayDetail()">
+                                        <span class="text">총 결제 금액</span>
+                                        <span class="icon sm information3"></span>
+                                    </a>
+                                </p>
+                                <p class="font-xs color-sub3">({{ cabinClassTxt }})</p>
+                            </div>
+                            <div class="right">
+                                <ng-container *ngFor="let item of rs.selected.flights">
+                                    <span class="font-lg-b color-point2">{{item.price.fares[0].amountSum | number}}원</span>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group pd col3 left bg fixed-bottom">
+            <button class="btn lg dark icon-only" role="button"><span class="icon sm cart" (click)="onCartClick()"></span></button>
+            <button class="btn lg dark icon-only" role="button"><span class="icon sm share2" (click)="onShareClick($event)"></span></button>
+            <button class="btn lg default" role="button" (click)="onReserve($event)">예약하기</button>
+        </div>
+    </div>
+</div>

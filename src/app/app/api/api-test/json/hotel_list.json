@@ -1,0 +1,2228 @@
+{
+    "serviceCode": "H19283",
+    "serviceName": "hotel/list",
+    "succeedYn": true,
+    "transactionSetId": "L342607132378123684",
+    "result": {
+        "count": {
+            "allVendors": 10,
+            "nowVendors": 8
+        },
+        "filter": {
+            "amount": {
+                "lowestAmount": 750000,
+                "highestAmount": 759000
+            },
+            "starRatings": [
+                {
+                    "starRating": "5.0"
+                }
+            ],
+            "reviewRatings": {
+                "lowestRating": 2.5,
+                "highestRating": 4.0
+            },
+            "hotelTypes": [
+                {
+                    "code": "HT-019"
+                },
+                {
+                    "code": "HT-025"
+                }
+            ],
+            "chains": [
+                {
+                    "code": "2599",
+                    "brands": [
+                        {
+                            "code": "259951"
+                        }
+                    ]
+                }
+            ],
+            "poi": {
+                "transports": [
+                    {
+                        "code": 1104889
+                    }
+                ],
+                "regionCenters": [
+                    {
+                        "code": 1065950
+                    }
+                ],
+                "airports": [
+                    {
+                        "code": "THBKK"
+                    }
+                ],
+                "attractions": [
+                    {
+                        "code": "1066522"
+                    }
+                ],
+                "hotelTypes": [
+                    {
+                        "code": "HT-019"
+                    }
+                ],
+                "branches": [
+                    {
+                        "code": "1105965"
+                    }
+                ]
+            },
+            "others": {
+                "freeBreakfast": [
+                    {
+                        "includedOrNot": true
+                    }
+                ],
+                "freeWifi": [
+                    {
+                        "includedOrNot": true
+                    }
+                ]
+            }
+        },
+        "forFilter": {
+            "amount": {
+                "lowestAmount": 750000,
+                "highestAmount": 760000
+            },
+            "starRatings": [
+                {
+                    "starRating": "5.0",
+                    "count": 12,
+                    "lowestAmount": 70000.00
+                }
+            ],
+            "reviewRatings": {
+                "lowestRating": 0.5,
+                "highestRating": 4.5
+            },
+            "hotelTypes": [
+                {
+                    "code": "HT-019",
+                    "name": "Hotel",
+                    "count": 3,
+                    "lowestAmount": 10000.00
+                },
+                {
+                    "code": "HT-025",
+                    "name": "Pension",
+                    "count": 5,
+                    "lowestAmount": 300000.00
+                }
+            ],
+            "chains": [
+                {
+                    "code": "2599",
+                    "name": "JW Marriott",
+                    "count": 2,
+                    "lowestAmount": 750000.00,
+                    "brands": [
+                        {
+                            "code": "259951",
+                            "name": "JW Marriott",
+                            "count": 3,
+                            "lowestAmount": 750000.00
+                        }
+                    ]
+                }
+            ],
+            "poi": {
+                "transports": [
+                    {
+                        "code": 1104889,
+                        "nameEn": "Siam Square",
+                        "count": 23,
+                        "nameLn": "시암스퀘어",
+                        "latitude": 13.74502739413929,
+                        "longitude": 100.53416138629154
+                    }
+                ],
+                "regionCenters": [
+                    {
+                        "code": 1065950,
+                        "nameEn": "Somboon Seafood",
+                        "count": 123,
+                        "nameLn": "쏨분 씨푸드 씨암스퀘어점",
+                        "latitude": 13.74513350000000,
+                        "longitude": 100.53393970000002
+                    }
+                ],
+                "airports": [
+                    {
+                        "code": "THBKK",
+                        "nameEn": "Suvarnabhumi Intl Airport",
+                        "count": 43,
+                        "nameLn": "Suvarnabhumi Intl Airport",
+                        "latitude": 13.68735300000000,
+                        "longitude": 100.74995000000000
+                    }
+                ],
+                "attractions": [
+                    {
+                        "code": "1066522",
+                        "nameEn": "Mont Nomsod",
+                        "count": 802,
+                        "nameLn": "몬 토스트 - Mont Nomsod",
+                        "latitude": 13.75417850000000,
+                        "longitude": 100.50114540000004
+                    }
+                ],
+                "hotelTypes": [
+                    {
+                        "code": "HT-019",
+                        "name": "Hotel",
+                        "count": 1293
+                    }
+                ],
+                "branches": [
+                    {
+                        "code": "1105965",
+                        "nameEn": "Khaosan Road market",
+                        "count": 21,
+                        "nameLn": "카오산 거리 시장",
+                        "latitude": 13.75843526298494,
+                        "longitude": 100.49830469444282
+                    }
+                ]
+            },
+            "others": {
+                "freeBreakfast": [
+                    {
+                        "includedOrNot": true,
+                        "count": 3
+                    }
+                ],
+                "freeWifi": [
+                    {
+                        "includedOrNot": true,
+                        "count": 2
+                    }
+                ]
+            }
+        },
+        "sortOrder": "Recommend",
+        "hotels": [
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "1 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 3,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/04f31824_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "2 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/07ffe0c2_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "3 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/0cef1987_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "4JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/0f58731f_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "5 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/0f8c4569_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "6JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/1104c015_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "7 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/1d343ee4_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "8 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/20444199_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "9 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/20b5e341_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "10 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/20cc1998_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "11 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/212b75b8_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "12 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/248d15ad_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "13 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/287c1953_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "14 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/2a42c535_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "15 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/2b6d1c3f_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "16 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/30906b76_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "17 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/32cc8ad0_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "18 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/3ba244ea_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "19 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/403e0fa8_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "20 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/41cfb2a0_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "21 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/4499b809_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "22 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/4b2d31dc_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "23 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/4c2b0550_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "24 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/4e43b4d6_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "25 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/517faad4_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "26 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/54c5312b_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "27 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/5c22e205_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            },
+            {
+                "hotelCode": "233411",
+                "hotelNameLn": "28 JW메리어트 호텔 방콕",
+                "hotelTypeCode": "HT-019",
+                "hotelTypeName": "Hotel",
+                "pageViewCount": 4,
+                "bookingCount": 3,
+                "roomType": {
+                    "index": 1,
+                    "roomTypeCode": "123451",
+                    "roomTypeName": "Standard",
+                    "payTypeCode": "H1231",
+                    "payTypeName": "PrePay",
+                    "billingProductAmount": 750000.00,
+                    "billingTaxAmount": 8000.00,
+                    "billingAmountSum": 757000.00,
+                    "taxIncludedYn": true,
+                    "guaranteeTypeCode": "K4398192",
+                    "guaranteeTypeName": "DoubleRate",
+                    "billingOriginAmount": 758000.00,
+                    "billingDiscountAmount": 1000.00,
+                    "freeWifiYn": true,
+                    "freeBreakfastYn": true,
+                    "freeBreakfastName": "IncludeBreakfast",
+                    "dynamicRateYn": false,
+                    "leftRooms": 100,
+                    "inPolicyYn": true,
+                    "specialRateCode": "B19283",
+                    "policyCurrencyCode": "USD",
+                    "policyAmount": 750000.00,
+                    "rackAmount": 30000.00,
+                    "vendorCurrencyCode": "THB",
+                    "vendorNetAmount": 800.00,
+                    "vendorTaxAmount": 80.00,
+                    "markupItemSeq": 129381,
+                    "markupFomula": "1.05"
+                },
+                "hotelNameEn": "JW Marriott Hotel Bangkok",
+                "starRating": "5",
+                "hotelChainCode": "2599",
+                "hotelBrandCode": "259923",
+                "hotelBrandName": "JW Marriott",
+                "zipCode": "10110",
+                "addressEn": "4 Sukhumvit Road Soi 2",
+                "addressLn": "4 Sukhumvit Road Soi 2",
+                "defaultPhotoUrl": "https://i.travelapi.com/hotels/1000000/60000/54700/54653/636cd128_z.jpg",
+                "latitude": 13.74193300000000,
+                "longitude": 100.55215300000000,
+                "checkInTime": "15:00",
+                "checkOutTime": "12:00",
+                "hotelIntro": "proident incididunt labore amet reprehenderit",
+                "recommendYn": true,
+                "designatedYn": false,
+                "wishedHotelYn": false,
+                "tripAdvisor": {
+                    "rating": 4,
+                    "reviewCount": 2622,
+                    "ratingUrl": "http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-39958-4.png"
+                },
+                "hotelPhotos": [
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/",
+                    "https://www.marriott.com/hotels/hotel-photos/bkkdt-jw-marriott-hotel-bangkok/"
+                ],
+                "pois": [
+                    {
+                        "poiTypeCode": "T19283",
+                        "poiCode": "Sukhumvit Road",
+                        "distance": 31375448.446013406
+                    }
+                ]
+            }
+        ]
+    }
+}

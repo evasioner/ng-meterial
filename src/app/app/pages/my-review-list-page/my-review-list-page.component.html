@@ -1,0 +1,126 @@
+<div id="wrap" class="p-mypage-mileage">
+
+    <!-- header -->
+    <app-header></app-header>
+    <app-mypage-header [headerType]="headerType" [headerConfig]="headerConfig"></app-mypage-header>
+
+    <!-- contents -->
+    <div id="contents">
+        <div class="page-contents-type2">
+            <div class="common-list-top">
+                <span>전체 <span class="color-point2">4</span>건</span>
+            </div>
+            <!-- 액티비티 이용후기 아이템 (작성 전) -->
+            <div class="round-box review-list-item">
+                <h2 class="product-title">[투어] 로스앤젤레스 자연사 박물관 입장권</h2>
+                <ul>
+                    <li>
+                        <span>이용일</span>
+                        <span>2019.12.20(수) 09:00</span>
+                    </li>
+                    <li>
+                        <span>작성기한</span>
+                        <span>2019.12.20(수) <span class="color-point2">[D-9]</span></span>
+                    </li>
+                </ul>
+                <div class="btn-group mt20">
+                    <a (click)="reviewWrite()" class="btn md default">이용후기 쓰기</a>
+                </div>
+            </div>
+            <!-- 액티비티 이용후기 아이템 (평점만 작성 후) -->
+            <div class="round-box review-list-item">
+                <h2 class="product-title">[투어] 로스앤젤레스 자연사 박물관 입장권</h2>
+                <ul>
+                    <li>
+                        <span>이용일</span>
+                        <span>2019.12.20(수) 09:00</span>
+                    </li>
+                    <li>
+                        <span>작성기한</span>
+                        <span>2019.12.20(수) <span class="color-point2">[D-9]</span></span>
+                    </li>
+                </ul>
+                <div class="btn-group mt20">
+                    <a (click)="addPhotoClick()" class="btn md dark">상품명/사진 추가</a>
+                </div>
+            </div>
+            <!-- 액티비티 이용후기 아이템 (상품평까지 완료 후) -->
+            <div class="round-box review-list-item">
+                <h2 class="product-title">[투어] 로스앤젤레스 자연사 박물관 입장권</h2>
+                <ul>
+                    <li>
+                        <span>이용일</span>
+                        <span>2019.12.20(수) 09:00</span>
+                    </li>
+                    <li>
+                        <span>작성일자</span>
+                        <span>2019.12.20(수)</span>
+                    </li>
+                </ul>
+                <div class="btn-group mt20">
+                    <a href="javascript:void(0);" class="btn md light-sub line2">작성완료</a>
+                </div>
+            </div>
+            <!-- 호텔 이용후기 아이템 (작성 전) -->
+            <div class="round-box review-list-item">
+                <h2 class="product-title">[호텔] 밀레니엄 빌트모어 로스앤젤레스 Millennium Biltmore LosAngeles</h2>
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>2019.12.20(수)-2019.12.20(수), 5박</span>
+                    </li>
+                    <li>
+                        <span>작성기한</span>
+                        <span>2019.12.20(수) <span class="color-point2">[D-9]</span></span>
+                    </li>
+                </ul>
+                <div class="btn-group mt20">
+                    <a href="javascript:void(0);" class="btn md default">이용후기 쓰기</a>
+                </div>
+            </div>
+            <!-- 호텔 이용후기 아이템 (평점만 작성 후) -->
+            <div class="round-box review-list-item">
+                <h2 class="product-title">[호텔] 밀레니엄 빌트모어 로스앤젤레스 Millennium Biltmore LosAngeles</h2>
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>2019.12.20(수)-2019.12.20(수), 5박</span>
+                    </li>
+                    <li>
+                        <span>작성기한</span>
+                        <span>2019.12.20(수) <span class="color-point2">[D-9]</span></span>
+                    </li>
+                </ul>
+                <div class="btn-group mt20">
+                    <a href="javascript:void(0);" class="btn md dark">상품명/사진 추가</a>
+                </div>
+            </div>
+            <!-- 호텔 이용후기 아이템 (상품평까지 완료 후) -->
+            <div class="round-box review-list-item">
+                <h2 class="product-title">[호텔] 밀레니엄 빌트모어 로스앤젤레스 Millennium Biltmore LosAngeles</h2>
+                <ul>
+                    <li>
+                        <span>여행일</span>
+                        <span>2019.12.20(수)-2019.12.20(수), 5박</span>
+                    </li>
+                    <li>
+                        <span>작성일자</span>
+                        <span>2019.12.20(수)</span>
+                    </li>
+                </ul>
+                <div class="btn-group mt20">
+                    <a href="javascript:void(0);" class="btn md light-sub line2">작성완료</a>
+                </div>
+            </div>
+
+            <!-- 후기 없음
+        <div class="nodata full type1">
+            <div class="nodata-msg">
+            <span class="icon alert2"></span>
+            <p class="text">작성가능한 이용후기가 없습니다.<br>예약을 먼저 진행해 주세요.</p>
+            </div>
+        </div>
+        -->
+        </div>
+    </div>
+</div>

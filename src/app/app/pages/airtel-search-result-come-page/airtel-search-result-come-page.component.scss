@@ -1,0 +1,24 @@
+/**
+* 페이지 컴포넌트
+* p-{페이지명}
+ */
+.p-airtel-search-result-come-page {
+
+    .contents-item-area {
+
+        .contents-item {
+            margin-top: 45px;
+        }
+
+        &:first-child {
+            .contents-item {
+                margin-top: 0px;
+            }
+        }
+    }
+
+    .modal-dep-3 {
+        z-index: 1200;
+    }
+
+}
