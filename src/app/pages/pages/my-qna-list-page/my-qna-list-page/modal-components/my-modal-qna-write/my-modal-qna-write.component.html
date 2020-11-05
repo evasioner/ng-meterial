@@ -1,0 +1,119 @@
+<!-- Modal -->
+<div class="modal bg">
+    <!-- modal header -->
+    <div class="modal-header">
+        <h1>고객문의 작성</h1>
+        <div class="right">
+            <a (click)="modalClose()" class="icon sm common-close">닫기</a>
+        </div>
+    </div>
+    <!-- modal contents -->
+    <div class="modal-contents">
+        <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate #f="ngForm">
+            <div class="page-contents-type2 fixed-btn-footer">
+                <div class="row-group mb30">
+
+                    <div class="row mt0">
+                        <h2 class="row-title">문의</h2>
+                        <div class="select-box line">
+                            <select formControlName="postCategoryCode" (change)="changeCategory($event)">
+                                <option value="" selected>선택하세요</option>
+                                <option [value]="item.code" *ngFor="let item of postCategoryCode">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h2 class="row-title">예약번호</h2>
+                        <div class="select-box line">
+                            <select formControlName="selectNumber" required [attr.disabled]="mainForm?.controls.postCategoryCode.value? null : true">
+                                <option value="" selected>선택하세요</option>
+                                <option [value]="code.items[0].bookingItemCode" *ngFor="let code of viewModel.list">{{code.bookingName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h2 class="row-title">상담 분류</h2>
+                        <div class="select-box line">
+                            <select formControlName="boardMasterSeq" required [attr.disabled]="mainForm?.controls.selectNumber.value? null : true">
+                                <option value="" selected>선택하세요</option>
+                                <option [value]="item.code" *ngFor="let item of boardMaster">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div *ngIf="false" class="row">
+                        <h2 class="row-title">BEST 5 FAQ</h2>
+                        <div class="round-box faq-list-item active">
+                            <p class="title"><span>[항공] 2020년 2월 유류할증료 안내</span></p>
+                            <div class="faq-list-detail">
+                                예약 시 취소나 변경 규정은 노랑풍선 호텔 요금 조회 시
+                                확인이 가능합니다. 요금 검색 결과에서 취소 규정 보기
+                                를 클릭하시어 해당 호텔의 취소 규정 및 수수료에 대한
+                                시점을 확인하실 수 있으며 예약 시 반드시 취소 규정을
+                                확인 후 예약 진행을 해주시면 되겠습니다.
+                            </div>
+                        </div>
+                        <div class="round-box faq-list-item">
+                            <p class="title"><span>[항공] 2020년 2월 유류할증료 안내</span></p>
+                            <div class="faq-list-detail">
+                                예약 시 취소나 변경 규정은 노랑풍선 호텔 요금 조회 시
+                                확인이 가능합니다. 요금 검색 결과에서 취소 규정 보기
+                                를 클릭하시어 해당 호텔의 취소 규정 및 수수료에 대한
+                                시점을 확인하실 수 있으며 예약 시 반드시 취소 규정을
+                                확인 후 예약 진행을 해주시면 되겠습니다.
+                            </div>
+                        </div>
+                        <div class="round-box faq-list-item">
+                            <p class="title"><span>[항공] 2020년 2월 유류할증료 안내</span></p>
+                            <div class="faq-list-detail">
+                                예약 시 취소나 변경 규정은 노랑풍선 호텔 요금 조회 시
+                                확인이 가능합니다. 요금 검색 결과에서 취소 규정 보기
+                                를 클릭하시어 해당 호텔의 취소 규정 및 수수료에 대한
+                                시점을 확인하실 수 있으며 예약 시 반드시 취소 규정을
+                                확인 후 예약 진행을 해주시면 되겠습니다.
+                            </div>
+                        </div>
+                        <div class="round-box faq-list-item">
+                            <p class="title"><span>[항공] 2020년 2월 유류할증료 안내</span></p>
+                            <div class="faq-list-detail">
+                                예약 시 취소나 변경 규정은 노랑풍선 호텔 요금 조회 시
+                                확인이 가능합니다. 요금 검색 결과에서 취소 규정 보기
+                                를 클릭하시어 해당 호텔의 취소 규정 및 수수료에 대한
+                                시점을 확인하실 수 있으며 예약 시 반드시 취소 규정을
+                                확인 후 예약 진행을 해주시면 되겠습니다.
+                            </div>
+                        </div>
+                        <div class="round-box faq-list-item">
+                            <p class="title"><span>[항공] 2020년 2월 유류할증료 안내</span></p>
+                            <div class="faq-list-detail">
+                                예약 시 취소나 변경 규정은 노랑풍선 호텔 요금 조회 시
+                                확인이 가능합니다. 요금 검색 결과에서 취소 규정 보기
+                                를 클릭하시어 해당 호텔의 취소 규정 및 수수료에 대한
+                                시점을 확인하실 수 있으며 예약 시 반드시 취소 규정을
+                                확인 후 예약 진행을 해주시면 되겠습니다.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h2 class="row-title">상담 제목</h2>
+                        <div class="input line">
+                            <input type="text" formControlName="postTitle" placeholder="상담 제목을 입력해 주세요">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h2 class="row-title">상담 내용</h2>
+                        <div class="textarea line">
+                            <textarea formControlName="postDetail" cols="30" rows="10" placeholder="상담 내용을 입력해 주세요"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group fixed-bottom pd bg2">
+                    <button (click)="writeComplete()" class="btn lg default" role="button">문의 요청</button>
+                    <ul class="text-list mt20">
+                        <li>업무시간(오전9시~오후6시) 중 평균 1시간 내 응답</li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>

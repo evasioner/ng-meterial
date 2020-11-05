@@ -1,0 +1,375 @@
+<div id="wrap" class="p-cm-qna-list" infiniteScroll [infiniteScrollDistance]="infiniteScrollConfig.distance" [infiniteScrollThrottle]="infiniteScrollConfig.throttle" (scrolled)="onScroll()">
+
+    <!-- header -->
+    <!-- header -->
+    <div id="header" class="main">
+        <div class="left">
+            <a (click)="onBackClick()" class="icon sm common-back">뒤로가기</a>
+        </div>
+        <h1>고객 문의</h1>
+        <div class="right">
+            <a (click)="onMenuClick($event)" class="icon sm common-menu">메뉴</a>
+        </div>
+    </div>
+    <!-- contents -->
+    <div id="contents" class="content-area">
+        <div class="tab-wrap">
+            <div class="tab-header type4 top-blank line">
+                <a (click)="selectTab(0)" class="tab-header-item" [ngClass]="{'active': tabNo === 0}"><span>예약 문의</span></a>
+                <a (click)="selectTab(1)" class="tab-header-item" [ngClass]="{'active': tabNo === 1}"><span>상품 문의</span></a>
+            </div>
+            <div class="tab-body">
+                <div class="tab-item active">
+                    <!-- Tab content 예약 문의 -->
+                    <ng-container *ngIf="tabNo === 0">
+                        <div class="tab-item active">
+                            <div class="folding fixed line center">
+                                <!--
+                                - .folding-menu 누를때마다 .active 토글
+                                - .folding-menu에 .active를 추가하면 .folding-list 가 자동으로 보여짐 (css)
+                                - .folding-list에서 선택한 값이 .folding-menu에 들어가야함
+                              -->
+                                <a (click)="selectFolding()" class="folding-menu" [class.active]="foldingKey">
+                                    <strong class="text">{{selCateStr}}</strong>
+                                    <span class="arrow"></span>
+                                </a>
+                                <div class="folding-detail">
+                                    <ul class="folding-list">
+                                        <li>
+                                            <a (click)="selectCate(0)" class="folding-list-item" [ngClass]="{'active': selCate === 0}">전체</a>
+                                        </li>
+                                        <li>
+                                            <a (click)="selectCate(1)" class="folding-list-item" [ngClass]="{'active': selCate === 1}">항공</a>
+                                        </li>
+                                        <li>
+                                            <a (click)="selectCate(2)" class="folding-list-item" [ngClass]="{'active': selCate === 2}">호텔</a>
+                                        </li>
+                                        <li>
+                                            <a (click)="selectCate(3)" class="folding-list-item" [ngClass]="{'active': selCate === 3}">렌터카</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="page-contents-type3 qna-list fixed-btn-footer">
+                                <!-- 예약 문의 내역 있을때 -->
+                                <!-- 전체 갯수는 문의 내역이 없을때 보여주지 않는다. -->
+                                <div class="common-list-top">
+                                    <span>전체 <span class="color-point2">{{totalCount}}</span>건</span>
+                                </div>
+                                <ng-container *ngFor="let item of viewModel.list; index as i ">
+                                    <ng-container *ngIf="selCate === 0">
+                                        <!-- 항공 -->
+                                        <ng-container>
+                                            <div *ngIf="item.postCategoryCode === 'IC01'" class="round-box reservation-question-item" (click)="detailView(i)">
+                                                <div class="reservation-title">
+                                                    <span class="icon sm flight2"></span>
+                                                    <span class="text">{{item.bookingItemCode}}</span>
+                                                    <span class="label sm type1">문의접수</span>
+                                                </div>
+                                                <div class="question-summary">
+                                                    <h2 class="product-title">{{item.postTitle}}</h2>
+                                                    <ul>
+                                                        <li>
+                                                            <span>출발일</span>
+                                                            <span>{{item.travelFromDate}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>상담분류</span>
+                                                            <span>{{item.boardMasterSeq}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>상담내용</span>
+                                                            <span>{{item.postDetail}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>접수일시</span>
+                                                            <span>{{writeDay}}</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+                                        <!-- 호텔 -->
+                                        <ng-container>
+                                            <div *ngIf="item.postCategoryCode === 'IC02'" class="round-box reservation-question-item" (click)="detailView(i)">
+                                                <div class="reservation-title">
+                                                    <span class="icon sm hotel4"></span>
+                                                    <span class="text">{{item.bookingItemCode}}</span>
+                                                    <!-- 답변 완료시 .label에 .type2추가 -->
+                                                    <span class="label sm type2">답변완료</span>
+                                                </div>
+                                                <div class="question-summary">
+                                                    <h2 class="product-title">{{item.postTitle}}</h2>
+                                                    <ul>
+                                                        <li>
+                                                            <span>이용일</span>
+                                                            <span>{{item.travelFromDate}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>상담분류</span>
+                                                            <span>{{item.boardMasterSeq}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>상담내용</span>
+                                                            <span>{{item.postDetail}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>접수일시</span>
+                                                            <span>2019.12.20 13:00</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+                                        <!-- 렌터카 -->
+                                        <ng-container>
+                                            <div *ngIf="item.postCategoryCode === 'IC03'" class="round-box reservation-question-item" (click)="detailView(i)">
+                                                <div class="reservation-title">
+                                                    <span class="icon sm rentalcar3"></span>
+                                                    <span class="text">{{item.bookingItemCode}}</span>
+                                                    <span class="label sm type1">문의접수</span>
+                                                </div>
+                                                <div class="question-summary">
+                                                    <h2 class="product-title">{{item.postTitle}}</h2>
+                                                    <ul>
+                                                        <li>
+                                                            <span>이용일</span>
+                                                            <span>{{item.travelFromDate}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>상담분류</span>
+                                                            <span>{{item.boardMasterSeq}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>상담내용</span>
+                                                            <span>{{item.postDetail}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>접수일시</span>
+                                                            <span>2019.12.20 13:00</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+
+                                        <!-- 묶음할인 -->
+                                        <ng-container>
+                                            <div *ngIf="item.postCategoryCode === 'IC05'" class="round-box reservation-question-item" (click)="detailView(i)">
+                                                <div class="reservation-title">
+                                                    <span class="icon sm flight2"></span>
+                                                    <span class="figure">+</span>
+                                                    <span class="icon sm hotel4"></span>
+                                                    <span class="text">{{item.bookingItemCode}}</span>
+                                                    <span class="label sm type2">답변완료</span>
+                                                </div>
+                                                <div class="question-summary">
+                                                    <h2 class="product-title">{{item.postTitle}}</h2>
+                                                    <ul>
+                                                        <li>
+                                                            <span>이용일</span>
+                                                            <span>{{item.travelFromDate}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>상담분류</span>
+                                                            <span>{{item.boardMasterSeq}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>상담내용</span>
+                                                            <span>{{item.postDetail}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>접수일시</span>
+                                                            <span>2019.12.20 13:00</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                    </ng-container>
+                                    <!-- 항공 -->
+                                    <ng-container *ngIf="selCate === 1">
+                                        <div *ngIf="item.postCategoryCode === 'IC01'" class="round-box reservation-question-item" (click)="detailView(i)">
+                                            <div class="reservation-title">
+                                                <span class="icon sm flight2"></span>
+                                                <span class="text">{{item.bookingItemCode}}</span>
+                                                <span class="label sm type1">문의접수</span>
+                                            </div>
+                                            <div class="question-summary">
+                                                <h2 class="product-title">{{item.postTitle}}</h2>
+                                                <ul>
+                                                    <li>
+                                                        <span>출발일</span>
+                                                        <span>{{item.travelFromDate}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>상담분류</span>
+                                                        <span>{{item.boardMasterSeq}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>상담내용</span>
+                                                        <span>{{item.postDetail}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>접수일시</span>
+                                                        <span>{{writeDay}}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+
+                                    <!-- 호텔 -->
+                                    <ng-container *ngIf="selCate === 2">
+                                        <div *ngIf="item.postCategoryCode === 'IC02'" class="round-box reservation-question-item" (click)="detailView(i)">
+                                            <div class="reservation-title">
+                                                <span class="icon sm hotel4"></span>
+                                                <span class="text">{{item.bookingItemCode}}</span>
+                                                <!-- 답변 완료시 .label에 .type2추가 -->
+                                                <span class="label sm type2">답변완료</span>
+                                            </div>
+                                            <div class="question-summary">
+                                                <h2 class="product-title">{{item.postTitle}}</h2>
+                                                <ul>
+                                                    <li>
+                                                        <span>이용일</span>
+                                                        <span>{{item.travelFromDate}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>상담분류</span>
+                                                        <span>{{item.boardMasterSeq}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>상담내용</span>
+                                                        <span>{{item.postDetail}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>접수일시</span>
+                                                        <span>2019.12.20 13:00</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+
+                                    <!-- 렌터카 -->
+                                    <ng-container *ngIf="selCate === 3">
+                                        <div *ngIf="item.postCategoryCode === 'IC03'" class="round-box reservation-question-item" (click)="detailView(i)">
+                                            <div class="reservation-title">
+                                                <span class="icon sm rentalcar3"></span>
+                                                <span class="text">{{item.bookingItemCode}}</span>
+                                                <span class="label sm type1">문의접수</span>
+                                            </div>
+                                            <div class="question-summary">
+                                                <h2 class="product-title">{{item.postTitle}}</h2>
+                                                <ul>
+                                                    <li>
+                                                        <span>이용일</span>
+                                                        <span>{{item.travelFromDate}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>상담분류</span>
+                                                        <span>{{item.boardMasterSeq}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>상담내용</span>
+                                                        <span>{{item.postDetail}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>접수일시</span>
+                                                        <span>2019.12.20 13:00</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+
+                                    <!-- 묶음할인 -->
+                                    <ng-container>
+                                        <div *ngIf="item.postCategoryCode === 'IC05'" class="round-box reservation-question-item" (click)="detailView(i)">
+                                            <div class="reservation-title">
+                                                <span class="icon sm flight2"></span>
+                                                <span class="figure">+</span>
+                                                <span class="icon sm hotel4"></span>
+                                                <span class="text">{{item.bookingItemCode}}</span>
+                                                <span class="label sm type2">답변완료</span>
+                                            </div>
+                                            <div class="question-summary">
+                                                <h2 class="product-title">{{item.postTitle}}</h2>
+                                                <ul>
+                                                    <li>
+                                                        <span>이용일</span>
+                                                        <span>{{item.travelFromDate}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>상담분류</span>
+                                                        <span>{{item.boardMasterSeq}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>상담내용</span>
+                                                        <span>{{item.postDetail}}</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>접수일시</span>
+                                                        <span>2019.12.20 13:00</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+
+                                    <!-- 예약 문의 없을때-->
+                                    <div *ngIf="item.length === 0" class="nodata full">
+                                        <div class="nodata-msg">
+                                            <span class="icon alert2"></span>
+                                            <p class="text">등록된 예약 문의가 없습니다.</p>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group pd bg2 fixed-bottom">
+                                        <a (click)="writeQna()" class="btn lg default">문의하기</a>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <!-- Tab content 상품 문의 -->
+                    <ng-container *ngIf="tabNo === 1">
+                        <div class="tab-item active">
+                            <div class="page-contents-type2 qna-list product">
+                                <!-- 전체 갯수는 문의 내역이 없을때 보여주지 않는다. -->
+                                <div class="common-list-top">
+                                    <span>전체 <span class="color-point2">{{activityCount}}</span>건</span>
+                                </div>
+                                <ng-container *ngFor="let item of viewModel.list; index as i ">
+                                    <!-- 상품 문의 있을때 -->
+                                    <div class="round-box no-pd product-question-item" *ngIf="item.postCategoryCode === 'IC04'" (click)="detailView(i)">
+                                        <div class="product-image" style="background: url('../../assets/images/temp/@temp-hotel-image.png') 50% 50% no-repeat; background-size: cover;"></div>
+                                        <div class="product-information">
+                                            <div>
+                                                <p class="main-name">{{item.postTitle}}</p>
+                                                <p class="sub-name">{{item.bookingVendorCompName}}</p>
+                                            </div>
+                                            <p class="date">2019.09.20 11:00</p>
+                                            <span class="label sm type1">문의접수</span>
+                                        </div>
+                                        <!-- 상담 문의 없을때 -->
+                                        <div *ngIf="activityCount === 0" class="nodata full">
+                                            <div class="nodata-msg">
+                                                <span class="icon alert2"></span>
+                                                <p class="text">등록된 상품 문의가 없습니다.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </ng-container>
+
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
