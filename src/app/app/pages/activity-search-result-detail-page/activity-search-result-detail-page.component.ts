@@ -32,7 +32,8 @@ import { ApiAlertService } from '../../common-source/services/api-alert/api-aler
 import { environment } from '@/environments/environment';
 
 import { HeaderTypes } from '../../common-source/enums/header-types.enum';
-import { ActivityEnums } from '../activity-page/enums/activity-enums.enum';
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
 
 import { ActivityModalReviewComponent } from './modal-components/activity-modal-review/activity-modal-review.component';
 import { ActivityModalProductQnaComponent } from './modal-components/activity-modal-product-qna/activity-modal-product-qna.component';
@@ -67,7 +68,7 @@ export class ActivitySearchResultDetailPageComponent extends BasePageComponent i
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         @Inject(DOCUMENT) private document: Document,
         titleService: Title,
         metaTagService: Meta,
@@ -176,10 +177,10 @@ export class ActivitySearchResultDetailPageComponent extends BasePageComponent i
     }
 
     sessionInit() {
-        const sessionItem = JSON.parse(localStorage.getItem(ActivityEnums.STORE_COMMON));
+        const sessionItem = JSON.parse(localStorage.getItem(ActivityStore.STORE_COMMON));
         if (!_.isEmpty(sessionItem.activitySessionStorages.entities)) {
-            if (sessionItem.activitySessionStorages.entities[ActivityEnums.STORE_RESULT_DETAIL_RQ]) {
-                this.sessionInfo = _.cloneDeep(sessionItem.activitySessionStorages.entities[ActivityEnums.STORE_RESULT_DETAIL_RQ].option);
+            if (sessionItem.activitySessionStorages.entities[ActivityStore.STORE_RESULT_DETAIL_RQ]) {
+                this.sessionInfo = _.cloneDeep(sessionItem.activitySessionStorages.entities[ActivityStore.STORE_RESULT_DETAIL_RQ].option);
                 this.storeActivitySessionInit();
             }
         }
@@ -204,22 +205,23 @@ export class ActivitySearchResultDetailPageComponent extends BasePageComponent i
                             this.transactionSetId = res['transactionSetId'];
                             this.dataModel.response = _.cloneDeep(res.result);
                             this.setViewModel();
+                            this.storageS.makeRecentData(
+                                'local',
+                                {
+                                    resolveData: this.rqInfo,
+                                    // activityCode: this.dataModel.response.activityCode,
+                                    activityNameEn: res.result.activityNameEn || '',
+                                    continentNameLn: res.result.serviceCities[0].continentNameLn,
+                                    cityNameLn: res.result.serviceCities[0].cityNameLn,
+                                    amountSum: res.result.amountSum,
+                                    vendorCompName: res.result.vendorCompName,
+                                },
+                                'activity'
+                            );
                         } else {
                             this.alertService.showApiAlert(res.errorMessage);
                         }
-                        this.storageS.makeRecentData(
-                            'local',
-                            {
-                                resolveData: this.rqInfo,
-                                // activityCode: this.dataModel.response.activityCode,
-                                activityNameEn: res.result.activityNameEn,
-                                continentNameLn: res.result.serviceCities[0].continentNameLn,
-                                cityNameLn: res.result.serviceCities[0].cityNameLn,
-                                amountSum: res.result.amountSum,
-                                vendorCompName: res.result.vendorCompName,
-                            },
-                            'activity'
-                        );
+
                     },
                     (err: any) => {
                         this.alertService.showApiAlert(err);
@@ -441,13 +443,13 @@ export class ActivitySearchResultDetailPageComponent extends BasePageComponent i
         if (!this.isLogin) {
             this.upsertOneSession(
                 {
-                    id: ActivityEnums.STORE_RESULT_DETAIL_RQ,
+                    id: ActivityStore.STORE_RESULT_DETAIL_RQ,
                     result: _.cloneDeep(this.rqInfo)
                 }
             );
 
             const qsStr = qs.stringify(this.rqInfo);
-            const path = ActivityEnums.PAGE_SEARCH_RESULT_DETAIL + qsStr;
+            const path = ActivityCommon.PAGE_SEARCH_RESULT_DETAIL + qsStr;
 
             const returnUrl = this.utilUrlService.getOrigin() + path;
             const res = this.jwtService.getLoginUrl(returnUrl);
@@ -490,7 +492,7 @@ export class ActivitySearchResultDetailPageComponent extends BasePageComponent i
 
         this.rxAlive = false;
         const qsStr = qs.stringify(activityOptionInfo);
-        const path = ActivityEnums.PAGE_SEARCH_RESULT_OPTION + qsStr;
+        const path = ActivityCommon.PAGE_SEARCH_RESULT_OPTION + qsStr;
         this.router.navigate([path], { relativeTo: this.route });
     }
 }

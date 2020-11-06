@@ -25,7 +25,7 @@ export class FaqListComponent extends BaseChildComponent implements OnInit {
     };
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private apiMypageService: ApiMypageService,
         private alertService: ApiAlertService
     ) {

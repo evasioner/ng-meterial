@@ -327,4 +327,38 @@ export class CommonValidatorService {
 
         return isError;
     }
+
+    /**
+     * 액티비티 > 예약자 정보 입력 >  나이 체크
+     * @param config  tgDay: 비교 날짜, tgAge: { from: 이상, to: 이하 } 비교 나이
+     */
+    activityAgeFormValidator(config: any): ValidatorFn {
+        console.info('activityAgeFormValidator', config);
+        return (control: FormControl) => {
+            const compare = config.compare;
+            const regExp: RegExp = /^(19|20)\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])*$/;
+
+            //생년월일 정규식 불일치
+            if (control.value && !String(control.value).match(regExp)) {
+                return {
+                    invalidMsg: '생년월일은 \'-\'를 제외한 8자리(2000101) 숫자만으로 입력해주세요.'
+                };
+            }
+
+            //tgDay, tgAge 기준으로 입력한 생년월일이 조건에 맞지 않으면 invalid
+            if (control.value && String(control.value).match(regExp)) {
+                const age: number = this.utilDateS.getOld(config.tgDay, control.value);   //만 나이 구하기
+                const fromAgeBool: Boolean = this.ageCompare('above', age, Number(config.tgAge.from));
+                const toAgeBool: Boolean = this.ageCompare('below', age, Number(config.tgAge.to));
+
+                if (!(fromAgeBool && toAgeBool)) {
+                    return {
+                        ageCompareMsg: '선택 하신 상품 옵션과 다른 이용자가 있습니다.<br/>연령 기준에 맞게 생년월일 정보를 다시 입력하시거나<br/>다시 조회하여 이용바랍니다.'
+                    };
+                }
+            }
+            return {};
+
+        };
+    }
 }

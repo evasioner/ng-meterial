@@ -3,10 +3,6 @@ import { Component, Inject, OnInit, PLATFORM_ID, OnDestroy } from '@angular/core
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { BaseChildComponent } from '../../../../pages/base-page/components/base-child/base-child.component';
-/*
-import {ActivityEnums} from "../../../activity-page/enums/activity-enums.enum";
-import * as activitySearchResultPageSelectors from "../../../../store/activity-search-result-page/activity-result-search/activity-result-search.selectors";
-*/
 import * as _ from 'lodash';
 
 @Component({
@@ -24,7 +20,7 @@ export class TravelConvenienceSellerComponent extends BaseChildComponent impleme
     loadingBool: boolean = false;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public bsModalRef: BsModalRef
     ) {
         super(platformId);

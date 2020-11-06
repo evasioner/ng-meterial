@@ -26,7 +26,7 @@
                     <div class="row">
                         <h2 class="row-title">예약번호</h2>
                         <div class="select-box line">
-                            <select formControlName="selectNumber" required [attr.disabled]="mainForm?.controls.postCategoryCode.value? null : true">
+                            <select formControlName="bookingItemCode" required [attr.disabled]="mainForm?.controls.postCategoryCode.value? null : true">
                                 <option value="" selected>선택하세요</option>
                                 <option [value]="code.items[0].bookingItemCode" *ngFor="let code of viewModel.list">{{code.bookingName}}</option>
                             </select>
@@ -35,7 +35,7 @@
                     <div class="row">
                         <h2 class="row-title">상담 분류</h2>
                         <div class="select-box line">
-                            <select formControlName="boardMasterSeq" required [attr.disabled]="mainForm?.controls.selectNumber.value? null : true">
+                            <select formControlName="boardMasterSeq" required [attr.disabled]="mainForm?.controls.bookingItemCode.value? null : true">
                                 <option value="" selected>선택하세요</option>
                                 <option [value]="item.code" *ngFor="let item of boardMaster">{{item.name}}</option>
                             </select>
@@ -98,13 +98,13 @@
                     <div class="row">
                         <h2 class="row-title">상담 제목</h2>
                         <div class="input line">
-                            <input type="text" formControlName="postTitle" placeholder="상담 제목을 입력해 주세요">
+                            <input type="text" formControlName="questionTitle" placeholder="상담 제목을 입력해 주세요">
                         </div>
                     </div>
                     <div class="row">
                         <h2 class="row-title">상담 내용</h2>
                         <div class="textarea line">
-                            <textarea formControlName="postDetail" cols="30" rows="10" placeholder="상담 내용을 입력해 주세요"></textarea>
+                            <textarea formControlName="questionDetail" cols="30" rows="10" placeholder="상담 내용을 입력해 주세요"></textarea>
                         </div>
                     </div>
                 </div>

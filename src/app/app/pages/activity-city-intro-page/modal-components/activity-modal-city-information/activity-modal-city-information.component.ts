@@ -10,9 +10,9 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 
-import { ActivityEnums } from '@/app/pages/activity-page/enums/activity-enums.enum';
-
 import { ViewModel, ViewModelSet, ViewModelCurrencySet, ViewModeltimeSet, ViewModelPlugSet, ViewModelWeatherSet } from './models/activity-modal-city-information.model';
+
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
 
 import { BaseChildComponent } from '../../../../pages/base-page/components/base-child/base-child.component';
 import { ViewModelWeather } from '../../components/activity-city-search/models/activity-city-search.model';
@@ -30,7 +30,7 @@ export class ActivityModalCityInformationComponent extends BaseChildComponent im
     public viewModel: ViewModel;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public bsModalRef: BsModalRef,
         private store: Store<any>,
     ) {
@@ -81,10 +81,10 @@ export class ActivityModalCityInformationComponent extends BaseChildComponent im
     private observableInit(): void {
         this.observableList = {
             activityCityRq$: this.store.pipe(
-                select(getSelectId([ActivityEnums.STORE_CITYINTRO_RQ]))
+                select(getSelectId([ActivityStore.STORE_CITYINTRO_RQ]))
             ),
             activiTyCityRs$: this.store.pipe(
-                select(getSelectId(ActivityEnums.STORE_CITYINTRO_RS))
+                select(getSelectId(ActivityStore.STORE_CITYINTRO_RS))
             )
         };
     }

@@ -31,8 +31,9 @@ import { ApiAlertService } from '@/app/common-source/services/api-alert/api-aler
 import { environment } from '@/environments/environment';
 
 import { HeaderTypes } from '../../common-source/enums/header-types.enum';
-import { ActivityEnums } from '../activity-page/enums/activity-enums.enum';
 import { AgeCode } from './enums/age-code.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
 
 import { BasePageComponent } from '../base-page/base-page.component';
 
@@ -54,7 +55,7 @@ export class ActivitySearchResultOptionPageComponent extends BasePageComponent i
 
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -139,7 +140,7 @@ export class ActivitySearchResultOptionPageComponent extends BasePageComponent i
                     }
                 ),
             this.store
-                .pipe(select(activityCalendarSelectors.getSelectId([ActivityEnums.STORE_CALENDAR])))
+                .pipe(select(activityCalendarSelectors.getSelectId([ActivityStore.STORE_CALENDAR])))
                 .pipe(
                     distinct(
                         (item: any) => {
@@ -150,13 +151,13 @@ export class ActivitySearchResultOptionPageComponent extends BasePageComponent i
                     )
                 )
                 .subscribe(
-                    (resp: any): void => {
-                        if (resp) {
-                            console.log('선택 날짜 : ', resp);
+                    (res: any): void => {
+                        if (res) {
+                            console.log('선택 날짜 : ', res);
 
                             this.resetViewModel();
-                            if (resp.result[1].fullDate) {
-                                this.rqInfo.rq.condition.serviceDate = moment(resp.result[0].fullDate, 'YYYY.MM.DD').format('YYYY-MM-DD');
+                            if (res.result[1].fullDate) {
+                                this.rqInfo.rq.condition.serviceDate = moment(res.result[0].fullDate, 'YYYY.MM.DD').format('YYYY-MM-DD');
                                 this.getOption();
                             }
                         }
@@ -185,18 +186,18 @@ export class ActivitySearchResultOptionPageComponent extends BasePageComponent i
         this.subscriptionList.push(
             this.apiActivityService.POST_ACTIVITY_OPTION(this.rqInfo.rq)
                 .subscribe(
-                    (resp: any) => {
-                        if (resp.succeedYn) {
-                            this.dataModel.response = _.cloneDeep(resp.result);
-                            this.dataModel.transactionSetId = resp.transactionSetId;
+                    (res: any) => {
+                        if (res.succeedYn) {
+                            this.dataModel.response = _.cloneDeep(res.result);
+                            this.dataModel.transactionSetId = res.transactionSetId;
                             this.upsertOne({
-                                id: ActivityEnums.STORE_RESULT_OPTION_RS,
+                                id: ActivityStore.STORE_RESULT_OPTION_RS,
                                 result: this.dataModel.response
                             });
 
                             this.setViewModel();
                         } else {
-                            this.alertService.showApiAlert(resp.errorMessage);
+                            this.alertService.showApiAlert(res.errorMessage);
                         }
                     },
                     (err: any) => {
@@ -265,7 +266,7 @@ export class ActivitySearchResultOptionPageComponent extends BasePageComponent i
     private makeCondition() {
         return {
             activityCode: this.dataModel.response.activityCode,
-            optionCode: this.viewModel.selectOption,
+            optionCode: Number(this.viewModel.selectOption),
             serviceDate: this.dataModel.response.date,
             travelers: this.viewModel.age.map(
                 (ageItem: any): any => {
@@ -448,8 +449,8 @@ export class ActivitySearchResultOptionPageComponent extends BasePageComponent i
             view: this.viewModel,
         };
 
-        this.modelInit(ActivityEnums.STORE_BOOKING_INFORMATION, rqData, true);
-        this.router.navigate([ActivityEnums.PAGE_BOOKING_INFORMATION], { relativeTo: this.route });
+        this.modelInit(ActivityStore.STORE_BOOKING_INFORMATION, rqData, true);
+        this.router.navigate([ActivityCommon.PAGE_BOOKING_INFORMATION], { relativeTo: this.route });
     }
 }
 

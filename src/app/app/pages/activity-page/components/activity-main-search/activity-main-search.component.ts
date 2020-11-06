@@ -17,7 +17,9 @@ import * as qs from 'qs';
 
 import { environment } from '@/environments/environment';
 
-import { ActivityEnums } from '../../enums/activity-enums.enum';
+
+import { ActivityInput } from '@/app/common-source/enums/activity/activity-input.enum';
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
 
 import { BaseChildComponent } from '../../../base-page/components/base-child/base-child.component';
 import { ModalDestinationComponent } from '@/app/common-source/modal-components/modal-destination/modal-destination.component';
@@ -45,7 +47,7 @@ export class ActivityMainSearchComponent extends BaseChildComponent implements O
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private readonly store: Store<any>,
         public translateService: TranslateService,
         private readonly route: ActivatedRoute,
@@ -124,10 +126,10 @@ export class ActivityMainSearchComponent extends BaseChildComponent implements O
                         if (ev) {
                             this.vm.searchType = ev.type; // CITY : 도시 선택, CATEGORY : 카테고리 선택, DETAIL : 상품 선택.
 
-                            if (this.vm.searchType === ActivityEnums.SEARCH_TYPE_CITY) {
+                            if (this.vm.searchType === ActivityInput.SEARCH_TYPE_CITY) {
                                 this.vm.searchCityCode = ev.val;
                                 this.vm.searchCityName = ev.name;
-                            } else if (this.vm.searchType === ActivityEnums.SEARCH_TYPE_DETAIL) {
+                            } else if (this.vm.searchType === ActivityInput.SEARCH_TYPE_DETAIL) {
                                 this.vm.detailId = Number(ev.val);
                             }
 
@@ -151,7 +153,7 @@ export class ActivityMainSearchComponent extends BaseChildComponent implements O
         let rqCondition = {};
         let tmpPath = '';
 
-        if (this.vm.searchType === ActivityEnums.SEARCH_TYPE_DETAIL) {
+        if (this.vm.searchType === ActivityInput.SEARCH_TYPE_DETAIL) {
             if (this.vm.detailId === null) { // Defensive coding
                 return;
             }
@@ -159,7 +161,7 @@ export class ActivityMainSearchComponent extends BaseChildComponent implements O
             rqCondition = {
                 activityCode: this.vm.detailId
             };
-            tmpPath = ActivityEnums.PAGE_SEARCH_RESULT_DETAIL;
+            tmpPath = ActivityCommon.PAGE_SEARCH_RESULT_DETAIL;
         } else {
             if (this.vm.searchCategoryCode === null && this.vm.searchCityCode === null) { // Defensive coding
                 return;
@@ -170,7 +172,7 @@ export class ActivityMainSearchComponent extends BaseChildComponent implements O
                     cityCode: this.vm.searchCityCode,
                     limits: [0, 10]
                 };
-                tmpPath = ActivityEnums.PAGE_CITY_INTRO;
+                tmpPath = ActivityCommon.PAGE_CITY_INTRO;
             } else { // searchCityCode, searchCategoryCode 값이 있는 경우
                 rqCondition = {
                     activityCategoryCode: this.vm.searchCategoryCode,
@@ -178,7 +180,7 @@ export class ActivityMainSearchComponent extends BaseChildComponent implements O
                     filter: {},
                     limits: [0, 10]
                 };
-                tmpPath = ActivityEnums.PAGE_SEARCH_RESULT;
+                tmpPath = ActivityCommon.PAGE_SEARCH_RESULT;
             }
         }
 
@@ -201,7 +203,7 @@ export class ActivityMainSearchComponent extends BaseChildComponent implements O
         };
 
         console.log('activity-main-search.component : ', activityMainInfo);
-        // this.location.replaceState(ActivityEnums.PAGE_MAIN+);
+        // this.location.replaceState(ActivityStore.PAGE_MAIN+);
         this.router.navigate([path], extras);
     }
 
@@ -214,7 +216,7 @@ export class ActivityMainSearchComponent extends BaseChildComponent implements O
                     language: 'KO', // TODO - user setting
                     stationTypeCode: environment.STATION_CODE,
                     condition: {
-                        itemCategoryCode: ActivityEnums.IITEM_CATEGORY_CODE,
+                        itemCategoryCode: ActivityCommon.IITEM_CATEGORY_CODE,
                         compCode: environment.COMP_CODE
                     }
                 }
@@ -225,7 +227,7 @@ export class ActivityMainSearchComponent extends BaseChildComponent implements O
                     language: 'KO', // TODO - user setting
                     stationTypeCode: environment.STATION_CODE,
                     condition: {
-                        itemCategoryCode: ActivityEnums.IITEM_CATEGORY_CODE,
+                        itemCategoryCode: ActivityCommon.IITEM_CATEGORY_CODE,
                         keyword: null,
                         limits: [0, 20]
                     }

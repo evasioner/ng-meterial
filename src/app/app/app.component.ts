@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, OnDestroy {
     rxAlive: boolean = true;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object
+        @Inject(PLATFORM_ID) public platformId: any
     ) { }
 
     ngOnInit() {

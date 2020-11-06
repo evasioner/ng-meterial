@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { MyComQsResolveService } from '../common-source/guard/resolve/my-com-qs-resolve/my-com-qs-resolve.service';
-
 import { LoginGuard } from '../common-source/guard/login/login.guard';
+
+import { MyComQsResolveService } from '../common-source/guard/resolve/my-com-qs-resolve/my-com-qs-resolve.service';
 
 /**
  * 페이지 라우트
@@ -260,8 +260,8 @@ export const pageRoutes: Routes = [
     },
     // 액티비티 결제하기
     {
-        path: 'activity-booking',
-        loadChildren: () => import('../pages/activity-booking-page/activity-booking-page.module').then(mod => mod.ActivityBookingPageModule)
+        path: 'activity-booking-payment',
+        loadChildren: () => import('../pages/activity-booking-payment-page/activity-booking-payment-page.module').then(mod => mod.ActivityBookingPaymentPageModule)
     },
     // 액티비티 결제완료
     {
@@ -355,55 +355,55 @@ export const pageRoutes: Routes = [
     {
         path: 'my-reservation-flight-cancel',
         loadChildren: () => import('../pages/my-reservation-flight-detail-page/my-reservation-flight-detail-page.module').then(mod => mod.MyReservationFlightDetailPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 호텔 예약취소
     {
         path: 'my-reservation-hotel-cancel',
         loadChildren: () => import('../pages/my-reservation-hotel-detail-page/my-reservation-hotel-detail-page.module').then(mod => mod.MyReservationHotelDetailPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 렌터카 예약취소
     {
         path: 'my-reservation-rent-cancel',
         loadChildren: () => import('../pages/my-reservation-rent-detail-page/my-reservation-rent-detail-page.module').then(mod => mod.MyReservationRentDetailPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 액티비티 예약취소
     {
         path: 'my-reservation-activity-cancel',
         loadChildren: () => import('../pages/my-reservation-activity-detail-page/my-reservation-activity-detail-page.module').then(mod => mod.MyReservationActivityDetailPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 예약문의 리스트
     {
         path: 'my-reservation-qna-list',
         loadChildren: () => import('../pages/my-reservation-qna-list-page/my-reservation-qna-list-page.module').then(mod => mod.MyReservationQnaListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 장바구니
     {
         path: 'my-basket-list',
         loadChildren: () => import('../pages/my-basket-list-page/my-basket-list-page.module').then(mod => mod.MyBasketListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 최근 본 상품 리스트
     {
         path: 'my-recent-list',
         loadChildren: () => import('../pages/my-recent-list-page/my-recent-list-page.module').then(mod => mod.MyRecentListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 문의하기 리스트
     {
         path: 'my-qna-list',
         loadChildren: () => import('../pages/my-qna-list-page/my-qna-list-page.module').then(mod => mod.MyQnaListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 마일리지 리스트
     {
         path: 'my-mileage-list',
         loadChildren: () => import('../pages/my-mileage-list-page/my-mileage-list-page.module').then(mod => mod.MyMileageListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 FAQ 리스트
     {
@@ -415,37 +415,37 @@ export const pageRoutes: Routes = [
     {
         path: 'my-notice-list',
         loadChildren: () => import('../pages/my-notice-list-page/my-notice-list-page.module').then(mod => mod.MyNoticeListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 쿠폰 리스트
     {
         path: 'my-coupon-list',
         loadChildren: () => import('../pages/my-coupon-list-page/my-coupon-list-page.module').then(mod => mod.MyCouponListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 항공 부가서비스
     {
         path: 'my-flight-svc',
         loadChildren: () => import('../pages/my-flight-extra-svc-page/my-flight-extra-svc-page.module').then(mod => mod.MyFlightExtraSvcPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 후기 리스트
     {
         path: 'my-review-list',
         loadChildren: () => import('../pages/my-review-list-page/my-review-list-page.module').then(mod => mod.MyReviewListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 이벤트 리스트
     {
         path: 'my-event-list',
         loadChildren: () => import('../pages/my-event-list-page/my-event-list-page.module').then(mod => mod.MyEventListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     // 마이페이지 이용약관
     {
         path: 'my-agreement-list',
         loadChildren: () => import('../pages/my-agreement-list-page/my-agreement-list-page.module').then(mod => mod.MyAgreementListPageModule),
-        // canActivate: [LoginGuard],
+        canActivate: [LoginGuard]
     },
     //------------------------------------------[여행편의]
     // 여행편의 메인

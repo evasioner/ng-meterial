@@ -102,7 +102,7 @@
                             <div class="row mt0">
                                 <h5 class="row-title">예약자 명</h5>
                                 <div class="input line">
-                                    <input #nameInput id="userName" formControlName="userName" [class.valid-error]="isValidError(travelerForm.controls.userName, f.submitted)" type="text" placeholder="한글 이름" readonly>
+                                    <input #nameInput id="userName" formControlName="userName" [class.valid-error]="isValidError(travelerForm.controls.userName)" type="text" placeholder="한글 이름" readonly>
                                     <ng-container *ngIf="travelerForm.controls.userName.errors">
                                         <span *ngIf="travelerForm.controls.userName.errors.required" class="valid-msg">예약자 명은 필수값입니다.</span>
                                         <span *ngIf="travelerForm.controls.userName.errors.invalidMsg" class="valid-msg">{{travelerForm.controls.userName.errors.invalidMsg}}</span>
@@ -112,7 +112,7 @@
                             <div class="row">
                                 <h5 class="row-title">휴대폰 번호</h5>
                                 <div class="input line">
-                                    <input #phoneInput id="mobileNo" maxlength="11" formControlName="mobileNo" [numOnly]="travelerForm.controls.mobileNo" [class.valid-error]="isValidError(travelerForm.controls.mobileNo, f.submitted)" type="tel" placeholder="'-' 제외하고 입력">
+                                    <input #phoneInput id="mobileNo" maxlength="11" formControlName="mobileNo" [numOnly]="travelerForm.controls.mobileNo" [class.valid-error]="isValidError(travelerForm.controls.mobileNo)" type="tel" placeholder="'-' 제외하고 입력">
                                     <a (click)="userInfoReset($event, 2)" class=" icon sm input-delete2">삭제</a>
                                     <ng-container *ngIf="travelerForm.controls.mobileNo.errors">
                                         <span *ngIf="travelerForm.controls.mobileNo.errors.required" class="valid-msg">휴대폰 번호는 10자리 이상으로 입력해야 합니다.</span>
@@ -124,7 +124,7 @@
                             <div class="row">
                                 <h5 class="row-title">이메일</h5>
                                 <div class="input line">
-                                    <input #emailInput id="email" formControlName="email" [class.valid-error]="isValidError(travelerForm.controls.email, f.submitted)" type="email" placeholder="example@mail.com">
+                                    <input #emailInput id="email" formControlName="email" [class.valid-error]="isValidError(travelerForm.controls.email)" type="email" placeholder="example@mail.com">
                                     <a (click)="userInfoReset($event, 3)" class="icon sm input-delete2">삭제</a>
                                     <ng-container *ngIf="travelerForm.controls.email.errors">
                                         <span *ngIf="travelerForm.controls.email.errors.required" class="valid-msg">이메일
@@ -169,7 +169,7 @@
                                             <h5 class="row-title">한글 이름</h5>
                                             <div class="row col2 basis">
                                                 <div class="input line">
-                                                    <input id="lastNameLn{{i}}" [formControlName]="'lastNameLn'" type="text" placeholder="한글 성" [koOnly]="travelers.at(i).get('lastNameLn')" [class.valid-error]="isValidError(travelers.at(i).get('lastNameLn'), f.submitted)">
+                                                    <input id="lastNameLn{{i}}" [formControlName]="'lastNameLn'" [koOnly]="travelers.at(i).get('lastNameLn')" [class.valid-error]="isValidError(travelers.at(i).get('lastNameLn'))" type="text" placeholder="한글 성">
                                                     <ng-container *ngIf="travelers.at(i).get('lastNameLn').errors">
                                                         <span *ngIf="travelers.at(i).get('lastNameLn').errors.required" class="valid-msg">한글 성(은) 필수값입니다.</span>
                                                         <span *ngIf="travelers.at(i).get('lastNameLn').errors.maxlength" class="valid-msg">한글 성의 글자수는 16자 까지 입력 가능합니다</span>
@@ -177,7 +177,7 @@
                                                     </ng-container>
                                                 </div>
                                                 <div class="input line">
-                                                    <input id="firstNameLn{{i}}" [formControlName]="'firstNameLn'" type="text" placeholder="한글 이름" [koOnly]="travelers.at(i).get('firstNameLn')" [class.valid-error]="isValidError(travelers.at(i).get('firstNameLn'), f.submitted)">
+                                                    <input id="firstNameLn{{i}}" [formControlName]="'firstNameLn'" [koOnly]="travelers.at(i).get('firstNameLn')" [class.valid-error]="isValidError(travelers.at(i).get('firstNameLn'))" type="text" placeholder="한글 이름">
                                                     <ng-container *ngIf="travelers.at(i).get('firstNameLn').errors">
                                                         <span *ngIf="travelers.at(i).get('firstNameLn').errors.required" class="valid-msg">한글 이름(은) 필수값입니다.</span>
                                                         <span *ngIf="travelers.at(i).get('firstNameLn').errors.maxlength" class="valid-msg">한글 이름의 글자수는 16자 까지 입력
@@ -191,7 +191,7 @@
                                             <div class="row">
                                                 <h5 class="row-title">한글 이름</h5>
                                                 <div class="input line">
-                                                    <input id="name{{i}}" type="text" placeholder="한글 이름 입력" [formControlName]="'name'" [koOnly]="travelers.at(i).get('name')" [class.valid-error]="isValidError(travelers.at(i).get('name'), f.submitted)">
+                                                    <input id="name{{i}}" [formControlName]="'name'" [koOnly]="travelers.at(i).get('name')" [class.valid-error]="isValidError(travelers.at(i).get('name'))" type="text" placeholder="한글 이름 입력">
                                                     <ng-container *ngIf="travelers.at(i).get('name').errors">
                                                         <span *ngIf="travelers.at(i).get('name').errors.required" class="valid-msg">예약자 명은 필수값입니다.</span>
                                                         <span *ngIf="travelers.at(i).get('name').errors.maxlength" class="valid-msg">한글 이름의 글자수는 33자 까지 입력 가능합니다.</span>
@@ -204,7 +204,7 @@
                                             <h5 class="row-title">영문 성/이름</h5>
                                             <div class="row col2 basis">
                                                 <div class="input line">
-                                                    <input id="lastName{{i}}" [formControlName]="'lastName'" type="text" placeholder="영문 성" [enOnly]="travelers.at(i).get('lastName')" [class.valid-error]="isValidError(travelers.at(i).get('lastName'), f.submitted)" oninput="this.value = this.value.toUpperCase()">
+                                                    <input id="lastName{{i}}" [formControlName]="'lastName'" type="text" placeholder="영문 성" [enOnly]="travelers.at(i).get('lastName')" [class.valid-error]="isValidError(travelers.at(i).get('lastName'))" oninput="this.value = this.value.toUpperCase()">
                                                     <ng-container *ngIf="travelers.at(i).get('lastName').errors">
                                                         <span *ngIf="travelers.at(i).get('lastName').errors.required" class="valid-msg">영문 성(은) 필수값입니다.</span>
                                                         <span *ngIf="travelers.at(i).get('lastName').errors.maxlength" class="valid-msg">영문 성의 글자수는 50자 까지 입력 가능합니다</span>
@@ -212,7 +212,7 @@
                                                     </ng-container>
                                                 </div>
                                                 <div class="input line">
-                                                    <input id="firstName{{i}}" [formControlName]="'firstName'" type="text" placeholder="영문 이름" [enOnly]="travelers.at(i).get('firstName')" [class.valid-error]="isValidError(travelers.at(i).get('firstName'), f.submitted)" oninput="this.value = this.value.toUpperCase()">
+                                                    <input id="firstName{{i}}" [formControlName]="'firstName'" type="text" placeholder="영문 이름" [enOnly]="travelers.at(i).get('firstName')" [class.valid-error]="isValidError(travelers.at(i).get('firstName'))" oninput="this.value = this.value.toUpperCase()">
                                                     <ng-container *ngIf="travelers.at(i).get('firstName').errors">
                                                         <span *ngIf="travelers.at(i).get('firstName').errors.required" class="valid-msg">영문 이름(은) 필수값입니다.</span>
                                                         <span *ngIf="travelers.at(i).get('firstName').errors.maxlength" class="valid-msg">영문 이름의 글자수는 50자 까지 입력
@@ -226,7 +226,7 @@
                                             <h5 class="row-title">생년월일</h5>
                                             <div class="row">
                                                 <div class="input line">
-                                                    <input id="birthDay{{i}}" type="text" placeholder="생년월일 입력(8자리)" maxlength="8" [formControlName]="'birthDay'" [numOnly]="travelers.at(i).get('birthDay')" [class.valid-error]="isValidError(travelers.at(i).get('birthDay'), f.submitted)">
+                                                    <input id="birthDay{{i}}" type="text" placeholder="생년월일 입력(8자리)" maxlength="8" [formControlName]="'birthDay'" [numOnly]="travelers.at(i).get('birthDay')" [class.valid-error]="isValidError(travelers.at(i).get('birthDay'))">
                                                     <ng-container *ngIf="travelers.at(i).get('birthDay').errors">
                                                         <span *ngIf="travelers.at(i).get('birthDay').errors.required" class="valid-msg">생년월일은 필수값입니다.</span>
                                                         <span *ngIf="travelers.at(i).get('birthDay').errors.minlength" class="valid-msg">생년월일은 8자리(ex> 20001010) 입력해주세요.</span>
@@ -251,7 +251,7 @@
                                         <div class="row">
                                             <h5 class="row-title">국적</h5>
                                             <div class="select-box line">
-                                                <select id="nationalityCode{{i}}" formControlName="nationalityCode" [class.valid-error]="isValidError(travelers.at(i).get('nationalityCode'), f.submitted)">
+                                                <select id="nationalityCode{{i}}" formControlName="nationalityCode" [class.valid-error]="isValidError(travelers.at(i).get('nationalityCode'))">
                                                     <option value="KR">대한민국</option>
                                                 </select>
                                             </div>
@@ -265,7 +265,7 @@
                                                 <h5 class="row-title">여권번호</h5>
                                                 <div class="row">
                                                     <div class="input line">
-                                                        <input id="passportNo{{i}}" formControlName="passportNo" [class.valid-error]="isValidError(travelers.at(i).get('passportNo'), f.submitted)" maxlength="10" type="text" placeholder="여권번호 입력">
+                                                        <input id="passportNo{{i}}" formControlName="passportNo" [class.valid-error]="isValidError(travelers.at(i).get('passportNo'))" maxlength="10" type="text" placeholder="여권번호 입력">
                                                         <ng-container *ngIf="travelers.at(i).get('passportNo').errors">
                                                             <span *ngIf="travelers.at(i).get('passportNo').errors.required" class="valid-msg">여권번호는 필수값입니다.</span>
                                                             <span *ngIf="travelers.at(i).get('passportNo').errors.invalidMsg" class="valid-msg">{{travelers.at(i).get('passportNo').errors.invalidMsg}}</span>
@@ -277,7 +277,7 @@
                                                 <h5 class="row-title">여권만료일</h5>
                                                 <div class="row">
                                                     <div class="input line">
-                                                        <input id="expireDate{{i}}" formControlName="expireDate" [class.valid-error]="isValidError(travelers.at(i).get('expireDate'), f.submitted)" maxlength="8" type="text" placeholder="여권만료일 입력(8자리)">
+                                                        <input id="expireDate{{i}}" formControlName="expireDate" [class.valid-error]="isValidError(travelers.at(i).get('expireDate'))" maxlength="8" type="text" placeholder="여권만료일 입력(8자리)">
                                                         <ng-container *ngIf="travelers.at(i).get('expireDate').errors">
                                                             <span *ngIf="travelers.at(i).get('expireDate').errors.required" class="valid-msg">여권만료일은 필수값입니다.</span>
                                                             <span *ngIf="travelers.at(i).get('expireDate').errors.invalidMsg" class="valid-msg">{{travelers.at(i).get('expireDate').errors.invalidMsg}}</span>
@@ -288,7 +288,7 @@
                                             <div class="row">
                                                 <h5 class="row-title">여권 발행국</h5>
                                                 <div class="select-box line">
-                                                    <select id="issueCountryCode{{i}}" formControlName="issueCountryCode" [class.valid-error]="isValidError(travelers.at(i).get('issueCountryCode'), f.submitted)">
+                                                    <select id="issueCountryCode{{i}}" formControlName="issueCountryCode" [class.valid-error]="isValidError(travelers.at(i).get('issueCountryCode'))">
                                                         <option value="KO">대한민국</option>
                                                     </select>
                                                 </div>

@@ -132,7 +132,7 @@ export class FlightBookingInformationPageComponent extends BasePageComponent imp
     public amountSum: number;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -228,9 +228,9 @@ export class FlightBookingInformationPageComponent extends BasePageComponent imp
         });
     }
 
-    isValidError(control: AbstractControl, submitted: boolean): boolean {
+    public isValidError(control: AbstractControl): boolean {
         const formControl = control as FormControl;
-        return formControl.errors && (submitted || formControl.dirty || formControl.touched);
+        return formControl.errors && (this.submitted || formControl.dirty || formControl.touched);
     }
 
     subscribeInit() {
@@ -257,7 +257,7 @@ export class FlightBookingInformationPageComponent extends BasePageComponent imp
     }
 
     sessionInit() {
-        const sessionItem = JSON.parse(localStorage.getItem(FlightStore.STORE_COMMON));
+        const sessionItem = JSON.parse(localStorage.getItem(FlightStore.STORE_FLIGHT_COMMON));
         if (!_.isEmpty(sessionItem.flightSessionStorages.entities)) {
             this.sessionRQ = sessionItem.flightSessionStorages.entities[FlightStore.STORE_FLIGHT_BOOKING_INFORMATION].option;
             this.fareRuleRQ = sessionItem.flightSessionStorages.entities[FlightStore.STORE_FLIGHT_BOOKING_INFORMATION].option.fareRuleRq;
@@ -604,7 +604,7 @@ export class FlightBookingInformationPageComponent extends BasePageComponent imp
                         currency: 'KRW',
                         language: 'KO',
                         condition: {
-                            domainAddress: 'minim',
+                            domainAddress: window.location.hostname,
                             deviceTypeCode: 'MA', // MA: Mobile App, MW: Mobile Web, PC: PC
                             booker: {
                                 name: this.travelerForm.get('userName').value,

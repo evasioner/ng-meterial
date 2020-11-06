@@ -37,7 +37,7 @@ export class MyModalHotelBookerModifyComponent extends BaseChildComponent implem
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         private el: ElementRef,
         private route: ActivatedRoute,

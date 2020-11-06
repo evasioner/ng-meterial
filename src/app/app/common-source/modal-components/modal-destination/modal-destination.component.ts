@@ -68,7 +68,7 @@ export class ModalDestinationComponent extends BaseChildComponent implements OnI
     viewPageName: string;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public translateService: TranslateService,
         private apiCommonService: ApiCommonService,
@@ -198,10 +198,10 @@ export class ModalDestinationComponent extends BaseChildComponent implements OnI
         this.subscriptionList.push(
             this.apiCommonService.POST_MAJOR_DESTINATION(this.majorDestinationRq.rq)
                 .subscribe(
-                    (resp: any) => {
-                        console.info('[주요 도시 목록 데이터 가져오기 > res]', resp.result);
-                        if (resp.succeedYn) {
-                            this.majorDestinationInfo = resp.result;
+                    (res: any) => {
+                        console.info('[주요 도시 목록 데이터 가져오기 > res]', res.result);
+                        if (res.succeedYn) {
+                            this.majorDestinationInfo = res.result;
 
                             const recentData = this.storageS.getItem('local', 'recent');
                             if (_.has(recentData, ['cities', this.viewPageName])) {
@@ -220,7 +220,7 @@ export class ModalDestinationComponent extends BaseChildComponent implements OnI
                                 console.info('recentList', this.recentList);
                             }
                         } else {
-                            this.alertService.showApiAlert(resp.errorMessage);
+                            this.alertService.showApiAlert(res.errorMessage);
                         }
                     },
                     (error: any) => {
@@ -282,13 +282,13 @@ export class ModalDestinationComponent extends BaseChildComponent implements OnI
                     finalize(() => this.hideLoading())
                 )
                 .subscribe(
-                    (resp: any) => {
-                        if (resp.succeedYn) {
-                            this.searchCompleteInit(resp);
+                    (res: any) => {
+                        if (res.succeedYn) {
+                            this.searchCompleteInit(res);
                             this.searchStateOn();
                             console.info('[검색된 결과 데이터]', this.destinationInfo);
                         } else {
-                            this.alertService.showApiAlert(resp.errorMessage);
+                            this.alertService.showApiAlert(res.errorMessage);
                         }
                         this.hideLoading();
                     },
@@ -342,7 +342,7 @@ export class ModalDestinationComponent extends BaseChildComponent implements OnI
      * @param keyList 검색할 key 리스트
      * @return 출력데이터
      */
-    private getFindKeyList(tempResult: Object, keyList: Array<any>): Array<any> {
+    private getFindKeyList(tempResult: any, keyList: Array<any>): Array<any> {
         // 검색할 리스트
         const findKeyList = keyList;
         // 출력 리스트

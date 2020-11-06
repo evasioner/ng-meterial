@@ -17,7 +17,7 @@ export class BaseChildComponent implements OnInit {
     isServer: boolean = false;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object
+        @Inject(PLATFORM_ID) public platformId: any
     ) { }
 
     ngOnInit(): void {

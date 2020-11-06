@@ -30,7 +30,7 @@ export class RentModalBranchofficeComponent extends BaseChildComponent implement
     vehicleName: any;
     vehicleVendorCode: any;
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         @Inject(DOCUMENT) private document: Document,
         private store: Store<any>,
         public translateService: TranslateService,

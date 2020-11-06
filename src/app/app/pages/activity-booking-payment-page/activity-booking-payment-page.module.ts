@@ -1,14 +1,14 @@
-import { NgModule, Component, Inject, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { NgModule, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
+import { RouterModule } from '@angular/router';
+import { Observable, of } from 'rxjs';
+
 import { CommonSourceModule } from '../../common-source/common-source.module';
 
-import { JwtService } from '../../common-source/services/jwt/jwt.service';
+import { ActivityBookingPaymentPageRoutes } from './activity-booking-payment-page.routing';
 
-// store
-// import * as storePage from "../../store/activity-page"; // TODO
+import { JwtService } from '../../common-source/services/jwt/jwt.service';
 
 // 디렉티브
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -20,10 +20,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import * as translationKo from 'src/assets/i18n/activity-booking-page/ko.json';
 // @ts-ignore
 import * as translationEn from 'src/assets/i18n/activity-booking-page/en.json';
-import { Observable, of } from 'rxjs';
 
-import { ActivityBookingPageComponent } from './activity-booking-page.component';
-import { ActivityBookingPageRoutingModule } from './activity-booking-page-routing.module';
+import { ActivityBookingPaymentPageComponent } from './activity-booking-payment-page.component';
 
 /**
  * 필수 디렉티브
@@ -54,19 +52,16 @@ export function JSONModuleLoaderFactory(http: HttpClient, platform) {
 }
 // ------------------------------------[end 다국어]
 
+
 @NgModule({
-    declarations: [ActivityBookingPageComponent],
-    providers: [
-        JwtService
-    ],
     imports: [
-        RouterModule,
         CommonModule,
+        RouterModule,
         CommonSourceModule,
         FormsModule,
         ReactiveFormsModule,
 
-        ActivityBookingPageRoutingModule,
+        ActivityBookingPaymentPageRoutes,
 
         // 다국어
         TranslateModule.forRoot({
@@ -77,9 +72,10 @@ export function JSONModuleLoaderFactory(http: HttpClient, platform) {
             },
             isolate: true
         }),
-
-        // store-page
-        // StoreModule.forFeature(storePage.pageFeatureKey, storePage.reducers), // TODO
-    ]
+    ],
+    declarations: [ActivityBookingPaymentPageComponent],
+    providers: [
+        JwtService
+    ],
 })
-export class ActivityBookingPageModule { }
+export class ActivityBookingPaymentPageModule { }

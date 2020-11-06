@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HotelCouponDownComponent implements OnInit, OnDestroy {
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
     ) { }
 

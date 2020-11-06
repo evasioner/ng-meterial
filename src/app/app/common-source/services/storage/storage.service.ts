@@ -176,7 +176,7 @@ export class StorageService {
     }
 
     storeageFiltering(storageArr: Array<any>, dataObj: any) {
-        const returnObj = _.filter(storageArr, function (o) {
+        const returnObj = _.filter(storageArr, (o) => {
             return !_.isEqual(o, dataObj);
         });
 

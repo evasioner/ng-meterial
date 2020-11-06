@@ -15,7 +15,7 @@ export class MyModalHotelReceiptComponent extends BaseChildComponent implements 
     mode: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         @Inject(DOCUMENT) private document: Document,
         public translateService: TranslateService,
         private location: Location,

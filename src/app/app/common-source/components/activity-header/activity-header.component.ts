@@ -44,7 +44,7 @@ export class ActivityHeaderComponent extends BaseChildComponent implements OnIni
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private translateService: TranslateService,
         private location: Location,

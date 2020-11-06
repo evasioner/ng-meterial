@@ -111,7 +111,7 @@ export class AirtelMainSearchComponent extends BaseChildComponent implements OnI
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         private store: Store<any>,
         private bsModalService: BsModalService,

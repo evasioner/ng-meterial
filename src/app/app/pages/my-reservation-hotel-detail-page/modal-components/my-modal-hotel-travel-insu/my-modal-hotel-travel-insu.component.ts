@@ -14,7 +14,7 @@ export class MyModalHotelTravelInsuComponent extends BaseChildComponent implemen
     $element: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         @Inject(DOCUMENT) private document: Document,
         public translateService: TranslateService,
         private location: Location,

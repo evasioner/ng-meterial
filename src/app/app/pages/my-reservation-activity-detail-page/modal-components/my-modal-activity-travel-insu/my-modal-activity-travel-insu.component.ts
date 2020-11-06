@@ -12,7 +12,7 @@ import { BaseChildComponent } from 'src/app/pages/base-page/components/base-chil
 })
 export class MyModalActivityTravelInsuComponent extends BaseChildComponent implements OnInit {
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         public bsModalRef: BsModalRef
     ) {

@@ -50,7 +50,7 @@ export class NoticeListActivityComponent extends BaseChildComponent implements O
     bsModalRef: BsModalRef;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private fb: FormBuilder,
         private apiMypageService: ApiMypageService,
         private loadingBar: LoadingBarService,

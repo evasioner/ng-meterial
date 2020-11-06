@@ -1,6 +1,6 @@
 <app-common-modal-loading *ngIf="bookingLoading"></app-common-modal-loading>
 
-<div id="wrap" class="p-activity-booking-information">
+<div *ngIf="!bookingLoading" id="wrap" class="p-activity-booking-information">
     <!-- header -->
     <app-activity-header [headerType]="headerType" [headerConfig]="headerConfig"></app-activity-header>
 
@@ -104,7 +104,7 @@
                                 <div class="row">
                                     <h5 class="row-title">예약자 명</h5>
                                     <div class="input line">
-                                        <input formControlName="name" [class.valid-error]="mainForm.controls.name.errors && (form.submitted || mainForm.controls.name.dirty || mainForm.controls.name.touched)" type="text" placeholder="예약자명 입력" readonly>
+                                        <input formControlName="name" [class.valid-error]="isValidError(mainForm.controls.name)" type="text" placeholder="예약자명 입력" readonly>
 
                                         <ng-container *ngIf="mainForm.controls.name.errors">
                                             <span *ngIf="mainForm.controls.name.errors.required" class="valid-msg">예약자명은 필수값입니다.</span>
@@ -115,9 +115,8 @@
                                 <div class="row">
                                     <h5 class="row-title">휴대폰 번호</h5>
                                     <div class="input line">
-                                        <input formControlName="mobileNo" [class.valid-error]="mainForm.controls.mobileNo.errors && (form.submitted ||  mainForm.controls.mobileNo.dirty || mainForm.controls.mobileNo.touched)" type="text" placeholder="'-' 제외하고 입력">
+                                        <input formControlName="mobileNo" [class.valid-error]="isValidError(mainForm.controls.mobileNo)" type="text" placeholder="'-' 제외하고 입력">
                                         <a *ngIf="mainForm.controls.mobileNo.value" (click)="userInfoReset($event, 2)" class="icon sm input-delete2">삭제</a>
-
                                         <ng-container *ngIf="mainForm.controls.mobileNo.errors">
                                             <span *ngIf="mainForm.controls.mobileNo.errors.required" class="valid-msg">휴대폰 번호는 10자리 이상으로 입력해야 합니다.</span>
                                             <span *ngIf="mainForm.controls.mobileNo.errors.invalidMsg" class="valid-msg">{{mainForm.controls.userPhone.errors.invalidMsg}}</span>
@@ -127,7 +126,7 @@
                                 <div class="row">
                                     <h5 class="row-title">이메일 주소</h5>
                                     <div class="input line">
-                                        <input formControlName="email" [class.valid-error]="mainForm.controls.email.errors && (form.submitted ||  mainForm.controls.email.dirty || mainForm.controls.email.touched)" type="email" placeholder="example@mail.com">
+                                        <input formControlName="email" [class.valid-error]="isValidError(mainForm.controls.email)" type="email" placeholder="example@mail.com">
 
                                         <a *ngIf="mainForm.controls.email.value" (click)="userInfoReset($event, 3)" class="icon sm input-delete2">삭제</a>
                                         <ng-container *ngIf="mainForm.controls.email.errors">
@@ -175,7 +174,7 @@
                                 <div class="row">
                                     <h5 class="row-title">한글 이름</h5>
                                     <div class="input line">
-                                        <input (keyup)="onKeyupKrName($event)" formControlName="name" type="text" [class.valid-error]="item.get('name').errors && (form.submitted ||  item.get('name').dirty || item.get('name').touched)" placeholder="이름 입력">
+                                        <input formControlName="name" [class.valid-error]="isValidError(item.get('name'))" [koOnly]="item.get('name')" type="text" placeholder="이름 입력">
                                         <ng-container *ngIf="item.get('name').errors">
                                             <span *ngIf="item.get('name').errors.required" class="valid-msg">한글 이름은 필수값입니다.</span>
                                             <span *ngIf="item.get('name').errors.maxlength" class="valid-msg">한글 이름의 글자수는 33자 까지 입력 가능합니다.</span>
@@ -187,7 +186,7 @@
                                     <h5 class="row-title">영문 성/이름</h5>
                                     <div class="row col2">
                                         <div class="input line">
-                                            <input formControlName="lastName" [class.valid-error]="item.get('lastName').errors && (form.submitted ||  item.get('lastName').dirty || item.get('lastName').touched)" type="text" placeholder="영문 성">
+                                            <input formControlName="lastName" [class.valid-error]="isValidError(item.get('lastName'))" [enOnly]="item.get('lastName')" type="text" placeholder="영문 성">
                                             <ng-container *ngIf="item.get('lastName').errors">
                                                 <span *ngIf="item.get('lastName').errors.required" class="valid-msg">영문 성(은) 필수값입니다.</span>
                                                 <span *ngIf="item.get('lastName').errors.maxlength" class="valid-msg">영문 성의 글자수는 50자 까지 입력 가능합니다.</span>
@@ -195,7 +194,7 @@
                                             </ng-container>
                                         </div>
                                         <div class="input line">
-                                            <input formControlName="firstName" [class.valid-error]="item.get('firstName').errors && (form.submitted ||  item.get('firstName').dirty || item.get('firstName').touched)" type="text" placeholder="영문 이름">
+                                            <input formControlName="firstName" [class.valid-error]="isValidError(item.get('firstName'))" [enOnly]="item.get('firstName')" type="text" placeholder="영문 이름">
                                             <ng-container *ngIf="item.get('firstName').errors">
                                                 <span *ngIf="item.get('firstName').errors.required" class="valid-msg">영문 이름(은) 필수값입니다.</span>
                                                 <span *ngIf="item.get('firstName').errors.maxlength" class="valid-msg">영문 이름의 글자수는 50자 까지 입력 가능합니다.</span>
@@ -207,10 +206,11 @@
                                 <div class="row">
                                     <h5 class="row-title">생년월일</h5>
                                     <div class="input line">
-                                        <input formControlName="birthday" [class.valid-error]="item.get('birthday').errors && (form.submitted ||  item.get('birthday').dirty || item.get('birthday').touched)" type="tel" placeholder="생년월일 입력(8자리)" maxlength="8" numberonly>
+                                        <input formControlName="birthday" [class.valid-error]="isValidError(item.get('birthday'))" [numOnly]="item.get('birthday')" type="tel" placeholder="생년월일 입력(8자리)" maxlength="8" numberonly>
                                         <ng-container *ngIf="item.get('birthday').errors">
                                             <span *ngIf="item.get('birthday').errors.required" class="valid-msg">생년월일은 필수값입니다.</span>
                                             <span *ngIf="item.get('birthday').errors.invalidMsg" class="valid-msg">{{item.get('birthday').errors.invalidMsg}}</span>
+                                            <span *ngIf="item.get('birthday').errors.ageCompareMsg" [innerHTML]="item.get('birthday').errors.ageCompareMsg" class="valid-msg"></span>
                                         </ng-container>
                                     </div>
                                 </div>
@@ -255,7 +255,7 @@
                                         Q{{ (index + 1 )}}. {{ item.value.infoName }} <ng-container *ngIf="item.value.addValue !== ''"> / {{ item.value.addValue }}</ng-container>
                                     </h5>
                                     <div class="input line">
-                                        <input formControlName="userInputValue" [class.valid-error]="item.get('userInputValue').errors && (form.submitted ||  item.get('userInputValue').dirty || item.get('userInputValue').touched)" type="text" placeholder="답변 입력">
+                                        <input formControlName="userInputValue" [class.valid-error]="isValidError(item.get('userInputValue'))" type="text" placeholder="답변 입력">
                                         <ng-container *ngIf="item.get('userInputValue').errors">
                                             <span *ngIf="item.get('userInputValue').errors.required" class="valid-msg">답변은 필수값입니다.</span>
                                             <span *ngIf="item.get('userInputValue').errors.maxlength" class="valid-msg">답변의 글자수는 50자 까지 입력 가능합니다.</span>

@@ -1,11 +1,10 @@
 import { Component, Inject, OnInit, PLATFORM_ID, OnDestroy } from '@angular/core';
-import { Subscription, combineLatest } from 'rxjs';
+import { Subscription } from 'rxjs';
 
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 
 import { upsertActivityCalendar } from '@/app/store/activity-search-result-option-page/activity-calendar/activity-calendar.actions';
 
-import * as activitySearchResultOptionPageSelectors from '@/app/store/activity-search-result-option-page/activity-search-result-option-page/activity-search-result-option-page.selectors';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -14,7 +13,7 @@ import * as _ from 'lodash';
 
 import { CalendarRqSet } from './models/activity-calendar.model';
 
-import { ActivityEnums } from '../../../activity-page/enums/activity-enums.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
 
 import { BaseChildComponent } from '@/app/pages/base-page/components/base-child/base-child.component';
 import { ApiCommonService } from '@/app/api/common/api-common.service';
@@ -26,11 +25,10 @@ import { ApiCommonService } from '@/app/api/common/api-common.service';
 export class ActivityCalendarComponent extends BaseChildComponent implements OnInit, OnDestroy {
     public viewModel: any;
     private dataModel: any;
-    private observableList: any;
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public translateService: TranslateService,
         private apiCommonS: ApiCommonService
@@ -66,7 +64,6 @@ export class ActivityCalendarComponent extends BaseChildComponent implements OnI
             }
         };
         this.dataModel = {};
-        this.observableList = {};
         this.subscriptionList = [];
         this.subscribeInit();
     }
@@ -79,10 +76,10 @@ export class ActivityCalendarComponent extends BaseChildComponent implements OnI
         this.subscriptionList = [
             this.apiCommonS.POST_CALENDAR(CalendarRqSet)
                 .subscribe(
-                    (resp: any): void => {
-                        console.log(resp);
+                    (res: any): void => {
+                        console.log(res);
 
-                        this.dataModel = _.cloneDeep(resp.result);
+                        this.dataModel = _.cloneDeep(res.result);
 
                         if (this.dataModel) {
                             this.setViewModel();
@@ -229,7 +226,7 @@ export class ActivityCalendarComponent extends BaseChildComponent implements OnI
         ];
         this.setMonth();
         this.upsertOne({
-            id: ActivityEnums.STORE_CALENDAR,
+            id: ActivityStore.STORE_CALENDAR,
             result: _.cloneDeep(this.viewModel.header)
         });
     }
@@ -306,7 +303,7 @@ export class ActivityCalendarComponent extends BaseChildComponent implements OnI
 
             if (newDate) {
                 this.upsertOne({
-                    id: ActivityEnums.STORE_CALENDAR,
+                    id: ActivityStore.STORE_CALENDAR,
                     result: _.cloneDeep(this.viewModel.header)
                 });
             }

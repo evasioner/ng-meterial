@@ -9,7 +9,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class FlightModalChildrenInformaionComponent extends BaseChildComponent implements OnInit, OnDestroy {
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public bsModalRef: BsModalRef
     ) {
         super(platformId);

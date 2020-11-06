@@ -18,7 +18,7 @@ export class AirtelModalStepPageComponent extends BaseChildComponent implements 
     ctx: any = this;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private router: Router,
         private route: ActivatedRoute,
         public bsModalRef: BsModalRef

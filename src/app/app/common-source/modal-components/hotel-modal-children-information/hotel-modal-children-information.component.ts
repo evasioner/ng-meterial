@@ -15,7 +15,7 @@ export class HotelModalChildrenInformationComponent extends BaseChildComponent i
     isBrowser: boolean = false;
     isServer: boolean = false;
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private el: ElementRef,
         public bsModalRef: BsModalRef
     ) {

@@ -51,8 +51,8 @@ export class RentSearchResultPageComponent extends BasePageComponent implements 
 
     vehiclesLocationsList: Array<any>; // api rs 위치정보
     vehiclesList: Array<any>; // api rs 렌터카 정보
-    venhiclesFilter: object; // api rs 필터 정보
-    venhiclesSelectFilter: object; // api rs 선택한 필터 정보
+    venhiclesFilter: any; // api rs 필터 정보
+    venhiclesSelectFilter: any; // api rs 선택한 필터 정보
     transactionSetId: string; // 트랜잭션 ID
 
     loadingBool: boolean = false;
@@ -78,7 +78,7 @@ export class RentSearchResultPageComponent extends BasePageComponent implements 
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,

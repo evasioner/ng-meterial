@@ -200,7 +200,7 @@ export class HotelComService {
         const decArr = _.split(incodStr, decStep);
         _.forEach(decArr, (dec1) => {
             if (decKey) {
-                const dObj: object = {};
+                const dObj: any = {};
                 dObj[decKey] = dec1;
                 decCoding.push(dObj);
             } else {

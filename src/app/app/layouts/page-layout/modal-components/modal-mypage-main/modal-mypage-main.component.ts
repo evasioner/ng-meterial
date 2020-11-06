@@ -52,7 +52,7 @@ export class ModalMypageMainComponent extends BasePageComponent implements OnIni
     summary: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         titleService: Title,
         metaTagService: Meta,

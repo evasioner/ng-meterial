@@ -30,7 +30,7 @@ export class HotelModalLocationMapComponent extends BaseChildComponent implement
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public bsModalRef: BsModalRef
     ) {

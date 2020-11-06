@@ -10,7 +10,7 @@ import { BaseChildComponent } from '@/app/pages/base-page/components/base-child/
 export class CommonModalLoadingComponent extends BaseChildComponent implements OnInit, OnDestroy {
 
     constructor(
-        @Inject(PLATFORM_ID) platformId: object
+        @Inject(PLATFORM_ID) public platformId: any
     ) {
         super(platformId);
     }

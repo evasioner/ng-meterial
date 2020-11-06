@@ -12,7 +12,6 @@ import { MomentModule } from 'ngx-moment';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
-import { CanActivateService, Permissions, UserToken } from './guard/canActivate/can-activate.service';
 import { JwtService } from './services/jwt/jwt.service';
 import { WebShareService } from './services/web-share/web-share.service';
 import { StorageService } from './services/storage/storage.service';
@@ -74,8 +73,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { CommonModalPhotoListComponent } from './modal-components/common-modal-photo-list/common-modal-photo-list.component';
 import { CommonModalPhotoDetailComponent } from './modal-components/common-modal-photo-detail/common-modal-photo-detail.component';
 import { CommonModalLoadingComponent } from './modal-components/common-modal-loading/common-modal-loading.component';
-
-
+import { InicisFormComponent } from './components/inicis-form/inicis-form.component';
 
 @NgModule({
     declarations: [
@@ -159,7 +157,8 @@ import { CommonModalLoadingComponent } from './modal-components/common-modal-loa
 
         CommonModalPhotoListComponent,
         CommonModalPhotoDetailComponent,
-        CommonModalLoadingComponent
+        CommonModalLoadingComponent,
+        InicisFormComponent
     ],
     imports: [
         CommonModule,
@@ -177,15 +176,11 @@ import { CommonModalLoadingComponent } from './modal-components/common-modal-loa
         ScrollToModule.forRoot()
     ],
     providers: [
-        CanActivateService,
-        Permissions,
-        UserToken,
         JwtService,
         DatePipe,
         WebShareService,
         StorageService,
         NumberPadPipe
-
     ],
     exports: [
         NgxTimerModule,
@@ -223,7 +218,8 @@ import { CommonModalLoadingComponent } from './modal-components/common-modal-loa
         InputSliderComponent,
         ImgViewComponent,
         MainHeaderComponent,
-        CommonModalLoadingComponent
+        CommonModalLoadingComponent,
+        InicisFormComponent
     ]
 })
 export class CommonSourceModule { }

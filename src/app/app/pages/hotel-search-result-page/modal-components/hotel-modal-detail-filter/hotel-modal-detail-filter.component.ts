@@ -87,7 +87,7 @@ export class HotelModalDetailFilterComponent extends BaseChildComponent implemen
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private router: Router,
         private fb: FormBuilder,

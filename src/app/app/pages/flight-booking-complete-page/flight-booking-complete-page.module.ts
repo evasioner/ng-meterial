@@ -40,7 +40,6 @@ export function JSONModuleLoaderFactory(http: HttpClient, platform) {
         return new JSONModuleLoader();
     }
 }
-
 // ------------------------------------[end 다국어]
 
 @NgModule({

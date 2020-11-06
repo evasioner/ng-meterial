@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { pageRoutes } from './page-routes';
-import { CanActivateService } from '../common-source/guard/canActivate/can-activate.service';
+
 import { PageLayoutComponent } from '../layouts/page-layout/page-layout.component';
 import { IndexPageComponent } from '../pages/index-page/index-page.component';
 
@@ -34,13 +35,13 @@ const layoutRoutes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(layoutRoutes, {
-            initialNavigation: 'enabled',
-            scrollPositionRestoration: 'top'
-        })
-    ],
-    providers: [
-        CanActivateService
+        RouterModule.forRoot(
+            layoutRoutes,
+            {
+                initialNavigation: 'enabled',
+                scrollPositionRestoration: 'top'
+            }
+        )
     ],
     exports: [RouterModule]
 })

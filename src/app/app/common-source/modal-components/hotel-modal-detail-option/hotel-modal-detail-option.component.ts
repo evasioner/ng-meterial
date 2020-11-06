@@ -22,7 +22,7 @@ import { HotelComService } from '../../services/hotel-com-service/hotel-com-serv
     styleUrls: ['./hotel-modal-detail-option.component.scss']
 })
 export class HotelModalDetailOptionComponent extends BaseChildComponent implements OnInit, AfterViewInit, OnDestroy {
-    updateModel: object = {
+    updateModel: any = {
         id: 'hotelDetailOpt'
     };
 
@@ -72,7 +72,7 @@ export class HotelModalDetailOptionComponent extends BaseChildComponent implemen
 
     hotelListRq: any;
     hotelDetailOpt: any;
-    modalDetailOpt: object;
+    modalDetailOpt: any;
 
     rxAlive: boolean = true;
     loadingBool: boolean = false;
@@ -80,7 +80,7 @@ export class HotelModalDetailOptionComponent extends BaseChildComponent implemen
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private route: ActivatedRoute,
         public translateService: TranslateService,

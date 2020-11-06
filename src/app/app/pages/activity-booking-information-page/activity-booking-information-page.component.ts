@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Inject, PLATFORM_ID, OnDestroy, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, forkJoin } from 'rxjs';
@@ -30,12 +30,16 @@ import { ApiAlertService } from '@/app/common-source/services/api-alert/api-aler
 import { ApiBookingService } from '../../api/booking/api-booking.service';
 
 import { DeliveryList, GenderSet } from './models/activity-booking-information.model';
+import { CondisionSet, Condition } from '@/app/common-source/models/common/condition.model';
 
 import { HeaderTypes } from '../../common-source/enums/header-types.enum';
-import { ActivityEnums } from '../activity-page/enums/activity-enums.enum';
+import { UserStore } from '@/app/common-source/enums/common/user-store.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
 
 import { BasePageComponent } from '../base-page/base-page.component';
 import { ActivityModalAgreementComponent } from './modal-components/activity-modal-agreement/activity-modal-agreement.component';
+import { CommonModalAlertComponent } from '@/app/common-source/modal-components/common-modal-alert/common-modal-alert.component';
 
 @Component({
     selector: 'app-activity-booking-information-page',
@@ -55,8 +59,10 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
     public mainForm: FormGroup;
     public bookingLoading: boolean;
 
+    submitted: boolean;
+
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -67,11 +73,11 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
         private bsModalService: BsModalService,
         private jwtService: JwtService,
         private fb: FormBuilder,
-        private activityComServiceService: ActivityComServiceService,
+        private activityComS: ActivityComServiceService,
         private apiActivityService: ApiActivityService,
         private comValidatorS: CommonValidatorService,
         private el: ElementRef,
-        private apiBookingService: ApiBookingService,
+        private apiBookingS: ApiBookingService,
         private location: Location,
         private alertService: ApiAlertService,
     ) {
@@ -135,6 +141,7 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
      * 화면 초기화
      */
     private initialize(): void {
+        this.submitted = false;
         this.viewModel = {
             neededInfoList: []
         };
@@ -158,15 +165,19 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
         };
     }
 
+    /**
+     * loginInit
+     * 로그인 체크
+     */
     private loginInit() {
         const curUrl = this.route.snapshot['_routerState'].url;
         this.jwtService.loginGuardInit(curUrl)
             .then(
-                (resp: any) => {
-                    if (resp) {
+                (res: any) => {
+                    if (res) {
                         this.subscribeInit();
                         this.sessionInit();
-                        resp && this.sendActivityInfomation();
+                        res && this.sendActivityInformation();
                     }
                 },
                 (err: any) => {
@@ -175,6 +186,10 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
             );
     }
 
+    /**
+     * formInit
+     * 폼 초기화
+     */
     private formInit() {
         this.mainForm = this.fb.group({
             userNo: [''],
@@ -188,7 +203,8 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
             mobileNo: [
                 '',
                 [
-                    Validators.required, this.comValidatorS.customPattern({ pattern: /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/, msg: '\'-\'를 제외한 숫자만 입력해주세요.' })
+                    Validators.required,
+                    this.comValidatorS.customPattern({ pattern: /^01([0|1|6|7|8|9]?)([0-9]{3,4})([0-9]{4})$/, msg: '\'-\'를 제외한 숫자만 입력해주세요.' })
                 ]
             ], // - 입력도 포함
             email: ['', [Validators.required, Validators.email]],
@@ -230,15 +246,14 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
         this.subscriptionList.push(
             this.store
                 .pipe(
-                    select(commonUserInfoSelectors.getSelectId(['commonUserInfo'])),
+                    select(commonUserInfoSelectors.getSelectId([UserStore.STORE_COMMON_USER])),
                     distinct((item: any) => item)
                 )
                 .subscribe(
-                    (resp: any): void => {
-                        if (resp) {
-                            this.dataModel.user = _.cloneDeep(resp.userInfo.user);
-                            this.dataModel.traveler = _.cloneDeep(resp.traveler);
-
+                    (res: any): void => {
+                        if (res) {
+                            this.dataModel.user = _.cloneDeep(res.userInfo.user);
+                            this.dataModel.traveler = _.cloneDeep(res.traveler);
                             this.mainForm.patchValue({
                                 userNo: this.dataModel.user.userNo,
                                 name: this.dataModel.user.nameKo,
@@ -256,11 +271,11 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
      * 세션 데이터 초기화
      */
     private sessionInit(): void {
-        const sessionItem = JSON.parse(localStorage.getItem(ActivityEnums.STORE_COMMON));
+        const sessionItem = JSON.parse(localStorage.getItem(ActivityStore.STORE_COMMON));
 
         if (!_.isEmpty(sessionItem.activitySessionStorages.entities)) {
-            const request = this.activityComServiceService.afterEncodingRq(
-                _.cloneDeep(sessionItem.activitySessionStorages.entities[ActivityEnums.STORE_BOOKING_INFORMATION].result)
+            const request = this.activityComS.afterEncodingRq(
+                _.cloneDeep(sessionItem.activitySessionStorages.entities[ActivityStore.STORE_BOOKING_INFORMATION].result)
             );
 
             this.dataModel.conditionRequest = _.cloneDeep(request.rq);
@@ -271,10 +286,10 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
     }
 
     /**
-     * sendActivityInfomation
+     * sendActivityInformation
      * 액티비티 정보 api call
      */
-    private sendActivityInfomation(): void {
+    private sendActivityInformation(): void {
         this.subscriptionList.push(
             forkJoin(
                 this.apiActivityService.POST_ACTIVITY_CONDITION(this.dataModel.conditionRequest),
@@ -285,34 +300,34 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
                     finalize(() => { this.bookingLoading = false; })
                 )
                 .subscribe(
-                    ([resp1, resp2]: any) => {
-                        console.log('이게 뭘까요??? : ', resp1, resp2);
-
-                        if (resp1.succeedYn && resp2.succeedYn) {
-                            this.dataModel.conditionResponse = _.cloneDeep(resp1.result);
-                            this.dataModel.informationResponse = _.cloneDeep(resp2.result);
-                            this.upsertOne({
-                                id: ActivityEnums.STORE_BOOKING_INFORMATION_RQ,
-                                result: _.cloneDeep(resp1.result)
-                            });
-                            this.upsertOneSession({
-                                id: ActivityEnums.STORE_BOOKING_INFORMATION_RQ,
-                                result: _.cloneDeep(resp1.result)
-                            });
-                            this.dataModel.transactionSetId = resp1.transactionSetId;
-                            this.setNeededInfos();
-                            this.setActivityItems();
-                            this.setViewModel();
-                        } else {
-                            if (resp1.errorMessage) {
-                                this.alertService.showApiAlert(resp1.errorMessage);
+                    ([res1, res2]: any) => {
+                        try {
+                            if (res1.succeedYn && res2.succeedYn) {
+                                this.dataModel.conditionResponse = _.cloneDeep(res1.result);
+                                this.dataModel.informationResponse = _.cloneDeep(res2.result);
+                                this.upsertOneSession({
+                                    id: ActivityStore.STORE_BOOKING_INFORMATION_RQ,
+                                    result: _.cloneDeep(res1.result)
+                                });
+                                this.dataModel.transactionSetId = res1.transactionSetId;
+                                this.setNeededInfos();
+                                this.setActivityItems();
+                                this.setViewModel();
                             } else {
-                                this.alertService.showApiAlert(resp2.errorMessage);
+                                if (res1.errorMessage) {
+                                    this.alertService.showApiAlert(res1.errorMessage);
+                                } else {
+                                    this.alertService.showApiAlert(res2.errorMessage);
+                                }
                             }
+                        } catch (err) {
+                            console.log(err);
+                            this.alertService.showApiAlert(err);
                         }
                     },
-                    (error: any) => {
-                        this.alertService.showApiAlert(error.error.errorMessage);
+                    (err: any) => {
+                        console.log(err);
+                        this.alertService.showApiAlert(err);
                     }
                 )
         );
@@ -323,30 +338,30 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
      * 필수 답변 사항 초기화
      */
     private setNeededInfos() {
-        this.dataModel.conditionResponse.neededInfos.map(
-            (item: any) => {
-                console.log(this.neededInfoFormArray);
-                this.neededInfoFormArray.push(
-                    this.fb.group(
-                        {
-                            infoCode: new FormControl(item.infoCode),
-                            infoName: new FormControl(item.infoName),
-                            addValue: new FormControl(item.addValue || ''),
-                            // 사용자 답변
-                            userInputValue: new FormControl(
-                                '',
-                                [
-                                    Validators.required,
-                                    Validators.maxLength(50)
-                                ]
-                            ),
-                            // 해당 값이 Y이면 this.itemTravelers의 neededInfos의 모든 값을 넣어줘야함
-                            perTravelerYn: new FormControl(item.perTravelerYn)
-                        }
-                    )
-                );
-            }
-        );
+        this.dataModel.conditionResponse.neededInfos
+            .map(
+                (item: any) => {
+                    this.neededInfoFormArray.push(
+                        this.fb.group(
+                            {
+                                infoCode: new FormControl(item.infoCode),
+                                infoName: new FormControl(item.infoName),
+                                addValue: new FormControl(item.addValue || ''),
+                                // 사용자 답변
+                                userInputValue: new FormControl(
+                                    '',
+                                    [
+                                        Validators.required,
+                                        Validators.maxLength(50)
+                                    ]
+                                ),
+                                // 해당 값이 Y이면 this.itemTravelers의 neededInfos의 모든 값을 넣어줘야함
+                                perTravelerYn: new FormControl(item.perTravelerYn)
+                            }
+                        )
+                    );
+                }
+            );
     }
 
     /**
@@ -374,10 +389,7 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
      * 화면 구성 데이터 생성
      */
     private setViewModel() {
-        console.log('제대로 내려오고 있나요? ', this.dataModel);
         const index: any = _.findIndex(this.dataModel.informationResponse.photos, { displayOrder: 1 });
-        console.log(index);
-
         this.viewModel = {
             date: moment(this.dataModel.conditionRequest.condition.serviceDate).format('YYYY.MM.DD(ddd)'),
             defaultPhoto: index > 0 && this.dataModel.informationResponse.photos[index].photoUrl,
@@ -389,21 +401,12 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
             cancelMainDeadLineTime: moment(this.dataModel.conditionResponse.cancelDeadline.clientCancelDeadline).format('HH:mm'),
             cancelDeadLineList: this.dataModel.conditionResponse.chargeConditions.map(
                 (item: any) => {
-                    if (Number(item.chargeAmount) > 0) {
-                        return {
-                            charged: true,
-                            chargeAmount: item.chargeAmount,
-                            startDate: item.clientFromTime,
-                            endDate: item.clientToTime
-                        };
-                    } else {
-                        return {
-                            charged: false,
-                            chargeAmount: item.chargeAmount,
-                            startDate: item.clientFromTime,
-                            endDate: item.clientToTime
-                        };
-                    }
+                    return {
+                        charged: Number(item.chargeAmount) > 0 ? true : false,
+                        chargeAmount: item.chargeAmount,
+                        startDate: item.clientFromTime,
+                        endDate: item.clientToTime
+                    };
                 }
             ),
             travelerInfoList: _.cloneDeep(this.dataModel.traveler).map(
@@ -420,7 +423,7 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
                 'AAG05': 'INF'
             },
             genderList: GenderSet,
-            neededInfoList: this.dataModel.conditionResponse.neededInfos
+            neededInfoList: this.dataModel.conditionResponse.neededInfos || []
         };
 
         this.viewModel.travelerSum = this.dataModel.optionView.age.map(
@@ -441,7 +444,6 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
                 };
             }
         );
-
 
         if (this.dataModel.conditionResponse.chargeConditions.length > 0) {
             const noFreeBool = _.every(
@@ -474,58 +476,7 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
     private addTraveler(item: any, travelerIndex: number) {
         console.log('ttttt traveler ', item);
 
-        this.travelers.push(
-            this.fb.group({
-                ageTypeCode: new FormControl(item.code),
-                birthday: new FormControl(
-                    '',
-                    [
-                        Validators.required,
-                        this.comValidatorS.customPattern(
-                            {
-                                pattern: /^(19|20)\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])*$/,
-                                msg: '생년월일을 \'-\'를 제외한 제외한 8자리(2000101) 숫자만으로 입력해주세요.'
-                            }
-                        )
-                    ]
-                ),
-                firstName: new FormControl(
-                    '',
-                    [
-                        Validators.required,
-                        Validators.maxLength(50),
-                        this.comValidatorS.customPattern({ pattern: /^[a-zA-Z]*$/, msg: '영문만 입력해주세요.' })
-                    ]
-                ),
-                gender: new FormControl('M', Validators.required),
-                lastName: new FormControl(
-                    '',
-                    [
-                        Validators.required,
-                        Validators.maxLength(50),
-                        this.comValidatorS.customPattern({ pattern: /^[a-zA-Z]*$/, msg: '영문만 입력해주세요.' })
-                    ]
-                ),
-                middleName: new FormControl(''),
-                name: new FormControl(
-                    '',
-                    [
-                        Validators.required,
-                        Validators.maxLength(33),
-                        this.comValidatorS.customPattern({ pattern: /^[가-힣]*$/, msg: '한글만 입력해주세요.' })
-                    ]
-                ),
-                nationalityCode: new FormControl('KR'),
-                travelerIndex: new FormControl(travelerIndex),
-                userNo: new FormControl(''),
-                type: new FormControl(item.name),
-                infoIndex: new FormControl(''),
-                issueCountryCode: new FormControl('KR'),
-                optionCodedData: new FormControl(item.optionCodedData),
-                firstNameLn: new FormControl(''),
-                lastNameLn: new FormControl('')
-            })
-        );
+        this.travelers.push(this.newTraveler(item, travelerIndex));
 
         this.travelerFormArray.push(
             this.fb.group({
@@ -545,7 +496,6 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
         const formData = this.mainForm.value;
         formData.activityItems.map(
             (aItem: any) => {
-
                 aItem.travelers = formData.travelers.map(
                     (item: any) => {
                         console.log('aaaaaaaa iiiiiinnnnnnnn tttttttt : ', item, aItem);
@@ -572,97 +522,103 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
             }
         );
 
-        const rq: any = {
-            stationTypeCode: environment.STATION_CODE,
-            currency: 'KRW',
-            language: 'KO',
-            transactionSetId: this.dataModel.transactionSetId,
-            condition: {
-                activityItems: formData.activityItems.map(
-                    (item: any) => {
-                        console.log('aaaaaaaa : ', item);
-
-                        return {
-                            activityCode: item.activityCode,
-                            amountSum: item.amountSum,
-                            conditionCodedData: item.conditionCodedData,
-                            currencyCode: item.currencyCode,
-                            deliveryAddress: item.deliveryAddress === '' && undefined,
-                            deliveryZipCode: item.deliveryZipCode === '' && undefined,
-                            neededInfos: item.neededInfos.map(
-                                (infoItem: any) => {
-                                    return {
-                                        infoCode: infoItem.infoCode,
-                                        addValue: infoItem.addValue,
-                                        userInputValue: infoItem.userInputValue
-                                    };
-                                }
-                            ),
-                            optionCode: item.optionCode,
-                            promotionSeq: item.promotionSeq === '' && undefined,
-                            serviceFromDate: item.serviceFromDate,
-                            serviceToDate: item.serviceToDate,
-                            travelers: item.travelers
-                        };
-                    }
-                ),
-                booker: {
-                    userNo: formData.userNo,
-                    email: formData.email,
-                    mobileNo: _.replace(formData.mobileNo, new RegExp('-', 'g'), ''),
-                    name: formData.name,
-                    // picUno: 예약담당자가 있을 경우 담당자 userNo를 integer type으로 넣는다
-                },
-                deviceTypeCode: environment.DEVICE_TYPE,
-                domainAddress: window.location.href,
-                travelers: formData.travelers.map(
-                    (item: any) => {
-                        console.log('ttttt : ', item);
-
-                        return {
-                            ageTypeCode: this.viewModel.ageTypeCode[item.ageTypeCode],
-                            birthday: moment(item.birthday, 'YYYYMMDD').format('YYYY-MM-DD'),
-                            firstName: _.upperCase(item.firstName),
-                            firstNameLn: item.firstNameLn === '' && undefined,
-                            gender: item.gender,
-                            issueCountryCode: item.issueCountryCode,
-                            lastName: _.upperCase(item.lastName),
-                            lastNameLn: item.lastNameLn === '' && undefined,
-                            middleName: item.middleName === '' && undefined,
-                            name: item.name,
-                            nationalityCode: item.nationalityCode,
-                            travelerIndex: item.travelerIndex,
-                            userNo: formData.userNo // 왜 예약자 userNo를 넘기는지 물어볼 것
-                        };
-                    }
-                )
-            }
+        const rq: Condition = CondisionSet;
+        rq.transactionSetId = this.dataModel.transactionSetId;
+        rq.condition = {
+            activityItems: formData.activityItems.map(
+                (item: any, index: number) => {
+                    return {
+                        itemIndex: (index + 1),
+                        activityCode: item.activityCode,
+                        amountSum: item.amountSum,
+                        conditionCodedData: item.conditionCodedData,
+                        currencyCode: item.currencyCode,
+                        deliveryAddress: item.deliveryAddress === '' && undefined,
+                        deliveryZipCode: item.deliveryZipCode === '' && undefined,
+                        neededInfos: item.neededInfos.map(
+                            (infoItem: any) => {
+                                return {
+                                    infoCode: infoItem.infoCode,
+                                    addValue: infoItem.addValue,
+                                    userInputValue: infoItem.userInputValue
+                                };
+                            }
+                        ),
+                        optionCode: Number(item.optionCode),
+                        promotionSeq: item.promotionSeq === '' && undefined,
+                        serviceFromDate: item.serviceFromDate,
+                        serviceToDate: item.serviceToDate,
+                        travelers: item.travelers,
+                        productAmount: item.productAmount,
+                        discountAmount: item.discountAmount
+                    };
+                }
+            ),
+            booker: {
+                userNo: formData.userNo,
+                email: formData.email,
+                mobileNo: _.replace(formData.mobileNo, new RegExp('-', 'g'), ''),
+                name: formData.name,
+                // picUno: 예약담당자가 있을 경우 담당자 userNo를 integer type으로 넣는다
+            },
+            deviceTypeCode: environment.DEVICE_TYPE,
+            domainAddress: window.location.hostname,
+            travelers: formData.travelers.map(
+                (item: any) => {
+                    return {
+                        ageTypeCode: this.viewModel.ageTypeCode[item.ageTypeCode],
+                        birthday: moment(item.birthday, 'YYYYMMDD').format('YYYY-MM-DD'),
+                        firstName: _.upperCase(item.firstName),
+                        firstNameLn: item.firstNameLn === '' && undefined,
+                        gender: item.gender,
+                        issueCountryCode: item.issueCountryCode,
+                        lastName: _.upperCase(item.lastName),
+                        lastNameLn: item.lastNameLn === '' && undefined,
+                        middleName: item.middleName === '' && undefined,
+                        name: item.name,
+                        nationalityCode: item.nationalityCode,
+                        travelerIndex: item.travelerIndex,
+                        userNo: formData.userNo // 왜 예약자 userNo를 넘기는지 물어볼 것
+                    };
+                }
+            )
         };
 
         this.sendBookingApi(rq);
-        console.log('rrrrrrrrrrrqqqqqqqqqqqq : ', rq);
     }
 
     private sendBookingApi(rq: any) {
+        this.bookingLoading = true;
+
+        this.upsertOneSession({
+            id: ActivityStore.STORE_BOOKING_RQ,
+            result: _.cloneDeep(rq)
+        });
+
         this.subscriptionList.push(
-            this.apiBookingService.POST_BOOKING(rq)
+            this.apiBookingS.POST_BOOKING(rq)
                 .subscribe(
                     (res: any) => {
-                        console.info('[예약완료 결제로 가잣 > res]', res.result);
-                        if (res.succeedYn) {
-                            this.upsertOneSession({
-                                id: ActivityEnums.STORE_BOOKING,
-                                result: res.result,
-                            });
+                        try {
+                            console.info('[예약완료 결제로 가잣 > res]', res.result);
+                            if (res.succeedYn) {
+                                this.upsertOneSession({
+                                    id: ActivityStore.STORE_BOOKING_RS,
+                                    result: res.result,
+                                });
 
-                            this.location.replaceState('/activity-main'); // 예약 완료 페이지에서 뒤로가기시 메인페이지로 가기
-                            this.router.navigate(['/activity-booking/'], { relativeTo: this.route });
-                        } else {
-                            this.alertService.showApiAlert(res.errorMessage);
+                                this.location.replaceState(ActivityCommon.PAGE_MAIN); // 예약 완료 페이지에서 뒤로가기시 메인페이지로 가기
+                                this.router.navigate([ActivityCommon.PAGE_BOOKING_PAYMENT], { relativeTo: this.route });
+                            } else {
+                                this.alertService.showApiAlert(res.errorMessage);
+                            }
+                        } catch (err) {
+                            this.alertService.showApiAlert(err);
                         }
                     },
                     (err: any) => {
-                        this.alertService.showApiAlert(err);
+                        //this.alertService.showApiAlert(err);
+                        this.bookingFailEvt();
                     }
                 )
         );
@@ -689,15 +645,50 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
         console.info('[activity-booking-information > onSubmit > value]', this.mainForm.value);
         console.info('[activity-booking-information > onSubmit > valid]', this.mainForm.valid);
 
+        this.submitted = true;
         if (this.mainForm.valid) {
-            console.info('[1. 유효성 체크 성공]');
-            this.goBooking();
+            const chargeAmountBool: boolean = !(this.viewModel.refundableYn && _.has(this.viewModel, 'freeCancel')) ? true : false;
+            console.info('[1. 유효성 체크 성공]', chargeAmountBool);
+            if (chargeAmountBool) { // 환불 불가 이거나 무료 취소(chargeAmount === 0) 가 없을 때, 예약 진행 여부 묻기
+                const titleTxt: string = '예약 시점 환불 위약금 발생';
+                let alertHtml: string = '이 상품은 후 취소시 위약금이 발생합니다.<br/>';
+                alertHtml += '선택하신 상품은 취소마감일이 경과하여 예약 취소 시 결제한 금액 전액이 수수료로 부과될 수 있습니다.<br/>';
+                alertHtml += '위 사항에 대한 사실을 반드시 숙지하신 후 예약을 진행하시기 바랍니다.';
+                const evtObj: any = {
+                    ok: {
+                        name: '예',
+                        fun: () => {
+                            this.goBooking();
+                        }
+                    },
+                    cancel: {
+                        name: '아니오',
+                        fun: () => { }
+                    }
+                };
+                this.modalConfirmEvt(titleTxt, alertHtml, evtObj);
+            } else {
+                this.goBooking();
+            }
         } else {
+            let ageCompareMsg: string;
             _.forEach(
-                this.mainForm.controls, (value: any, key: string) => {
-                    console.info('[key | 유효성 체크 실패]', key);
+                this.travelers.controls, (value: any) => {
+                    _.forEach(
+                        value.controls, (value2: any, key2: string) => {
+                            if (!value2.valid) {
+                                if (key2 === 'birthday' && _.has(value2.errors, 'ageCompareMsg'))
+                                    ageCompareMsg = value2.errors.ageCompareMsg;
+                            }
+                        }
+                    );
                 }
             );
+
+            if (ageCompareMsg)
+                this.validationAlert(ageCompareMsg);
+            else
+                this.validationAlert();
         }
     }
 
@@ -881,5 +872,152 @@ export class ActivityBookingInformationPageComponent extends BasePageComponent i
         };
 
         this.bsModalService.show(ActivityModalAgreementComponent, { initialState, ...configInfo });
+    }
+
+    public isValidError(control: AbstractControl): boolean {
+        const formControl = control as FormControl;
+        return formControl.errors && (this.submitted || formControl.dirty || formControl.touched);
+    }
+
+    /*
+     * @param titleTxt
+     * @param alertHtml
+     * @param evtObj
+     */
+    private modalConfirmEvt(titleTxt: string, alertHtml: string, evtObj: any) {
+        const initialState: any = {
+            titleTxt: titleTxt
+        };
+
+        if (alertHtml)
+            initialState.alertHtml = alertHtml;
+
+        if (evtObj.ok) {
+            initialState.okObj = {
+                name: evtObj.ok.name,
+                fun: evtObj.ok.fun
+            };
+        }
+
+        if (evtObj.cancel) {
+            initialState.cancelObj = {
+                name: evtObj.cancel.name,
+                fun: evtObj.cancel.fun
+            };
+        }
+
+        if (evtObj.close)
+            initialState.closeObj = {
+                fun: () => { }
+            };
+
+        this.bsModalService.show(CommonModalAlertComponent, { initialState, ...{ class: 'm-ngx-bootstrap-modal', animated: false } });
+        if (evtObj.close) {
+            this.subscriptionList.push(
+                this.bsModalService.onHidden
+                    .subscribe(
+                        () => {
+                            evtObj.close.fun();
+                        }
+                    )
+            );
+        }
+    }
+
+    private validationAlert(txt?: string, alertHtmlVal?: string) {
+        const defalutTxt = '입력 값이 올바르지 않은 항목이 있습니다.';
+        const titleTxt: string = txt ? txt : defalutTxt;
+        const alertHtml: string = alertHtmlVal ? alertHtmlVal : null;
+        const evtObj: any = {
+            close: {
+                fun: () => { }
+            }
+        };
+
+        this.modalConfirmEvt(titleTxt, alertHtml, evtObj);
+    }
+
+    private bookingFailEvt() {
+        const titleTxt: string = '예약 생성에 실패 하였습니다.';
+        const alertHtml: string = '다시 예약을 시도해 주세요.';
+        const evtObj: any = {
+            ok: {
+                name: '확인',
+                fun: () => {
+                    const path = '/activity-main/';
+                    this.router.navigate([path]);
+                }
+            }
+        };
+
+        this.modalConfirmEvt(
+            titleTxt,
+            alertHtml,
+            evtObj
+        );
+    }
+
+    private newTraveler(item: any, travelerIndex: number): FormGroup {
+        const birthDayValidators = [Validators.required, Validators.minLength(8)];
+        if (item.code === 'AAG04' || item.code === 'AAG05') {
+            console.info('테스트');
+            birthDayValidators.push(
+                this.comValidatorS.activityAgeFormValidator({
+                    tgDay: this.viewModel.date,
+                    tgAge: { from: item.fromAge, to: item.toAge }
+                })
+            );
+        } else {
+            birthDayValidators.push(
+                this.comValidatorS.customPattern(
+                    {
+                        pattern: /^(19|20)\d{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])*$/,
+                        msg: '생년월일을 \'-\'를 제외한 제외한 8자리(2000101) 숫자만으로 입력해주세요.'
+                    }
+                )
+            );
+        }
+
+        const formGroupObj: any = {
+            ageTypeCode: new FormControl(item.code),
+            birthday: new FormControl('', birthDayValidators),
+            firstName: new FormControl(
+                '',
+                [
+                    Validators.required,
+                    Validators.maxLength(50),
+                    this.comValidatorS.customPattern({ pattern: /^[a-zA-Z]*$/, msg: '영문만 입력해주세요.' })
+                ]
+            ),
+            gender: new FormControl('M', Validators.required),
+            lastName: new FormControl(
+                '',
+                [
+                    Validators.required,
+                    Validators.maxLength(50),
+                    this.comValidatorS.customPattern({ pattern: /^[a-zA-Z]*$/, msg: '영문만 입력해주세요.' })
+                ]
+            ),
+            middleName: new FormControl(''),
+            name: new FormControl(
+                '',
+                [
+                    Validators.required,
+                    Validators.maxLength(33),
+                    this.comValidatorS.customPattern({ pattern: /^[가-힣]*$/, msg: '한글만 입력해주세요.' })
+                ]
+            ),
+            nationalityCode: new FormControl('KR'),
+            travelerIndex: new FormControl(travelerIndex),
+            userNo: new FormControl(''),
+            type: new FormControl(item.name),
+            infoIndex: new FormControl(''),
+            issueCountryCode: new FormControl('KR'),
+            optionCodedData: new FormControl(item.optionCodedData),
+            firstNameLn: new FormControl(''),
+            lastNameLn: new FormControl('')
+        };
+
+        return this.fb.group(formGroupObj);
     }
 }

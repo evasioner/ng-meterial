@@ -9,7 +9,8 @@ import { BaseChildComponent } from '../base-page/components/base-child/base-chil
 export class CmSystemErrorComponent extends BaseChildComponent implements OnInit, OnDestroy {
 
     constructor(
-        @Inject(PLATFORM_ID) platformId: object) {
+        @Inject(PLATFORM_ID) public platformId: any
+    ) {
         super(platformId);
     }
 

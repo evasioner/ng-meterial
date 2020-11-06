@@ -1,12 +1,12 @@
 <app-common-modal-loading *ngIf="bookingLoading"></app-common-modal-loading>
 
-<div id="wrap" class="p-hotel-booking-information">
+<div *ngIf="!bookingLoading" id="wrap" class="p-hotel-booking-information">
 
     <!-- header -->
     <app-hotel-header [headerType]="headerType" [headerConfig]="headerConfig"></app-hotel-header>
 
     <!-- contents -->
-    <div *ngIf="!bookingLoading" id="contents">
+    <div id="contents">
         <div class="page-contents-type2" id="type2">
             <form [formGroup]="mainForm" (ngSubmit)="onSubmit(mainForm)" novalidate #f="ngForm">
                 <div class="contents-item">

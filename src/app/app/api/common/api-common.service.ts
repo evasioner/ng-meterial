@@ -23,7 +23,7 @@ export class ApiCommonService {
     /**
      * 목적지 검색
      */
-    POST_DESTINATION($body?: any, $opt?: Object) {
+    POST_DESTINATION($body?: any, $opt?: any) {
         return this.httpPost('/common/destination', $body, $opt);
     }
 
@@ -168,7 +168,7 @@ export class ApiCommonService {
     }
 
 
-    httpPost($url, $body?: any, $opt?: Object) {
+    httpPost($url, $body?: any, $opt?: any) {
         const url = this.baseUrl + $url;
         const body = $body || {};
         const options = { ...this.httpOptions, ...$opt };

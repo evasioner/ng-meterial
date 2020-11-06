@@ -74,7 +74,7 @@ export class AirtelSearchRoomtypePageComponent extends BasePageComponent impleme
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         titleService: Title,
         metaTagService: Meta,
         seoCanonicalService: SeoCanonicalService,

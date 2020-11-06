@@ -41,7 +41,7 @@ export class FlightModalScheduleComponent extends BaseChildComponent implements 
     public viewModel: any;
 
 
-    storeModel: object;                     // 항공 스토어 모델
+    storeModel: any;                     // 항공 스토어 모델
 
     resultList: any;                       // 항공일정 리스트
     originResultList: any;
@@ -71,7 +71,7 @@ export class FlightModalScheduleComponent extends BaseChildComponent implements 
     };
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public bsModalRef: BsModalRef,
         private router: Router,
         private route: ActivatedRoute,
@@ -409,13 +409,17 @@ export class FlightModalScheduleComponent extends BaseChildComponent implements 
         const flightArray = _.cloneDeep(flights);
 
         flightArray.map(
-            (item: any): void => {
-                _.forEach(item.itineraries, item1 => {
-                    _.forEach(item1.segments, item2 => {
-                        item2.groundMinutes = undefined;
-                        item2.inFlightService = undefined;
-                    });
-                });
+            (flightItem: any) => {
+                flightItem.itineraries.map(
+                    (itinItem: any) => {
+                        itinItem.segments.map(
+                            (segItem: any) => {
+                                segItem.groundMinutes = undefined;
+                                segItem.inFlightService = undefined;
+                            }
+                        );
+                    }
+                );
             }
         );
 
@@ -426,8 +430,8 @@ export class FlightModalScheduleComponent extends BaseChildComponent implements 
             stationTypeCode: environment.STATION_CODE,
             condition: {
                 tripTypeCode: this.viewModel.flightTripType,
-                fare: flightArray[0].price.fares[0],
-                itineraries: flightArray[0].itineraries
+                // fare: flightArray[0].price.fares[0],
+                // itineraries: flightArray[0].itineraries
             }
         };
     }

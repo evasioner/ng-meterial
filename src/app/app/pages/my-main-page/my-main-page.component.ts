@@ -18,7 +18,7 @@ export class MyMainPageComponent extends BasePageComponent implements OnInit, On
     rxAlive: boolean = true;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,

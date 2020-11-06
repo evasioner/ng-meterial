@@ -58,7 +58,7 @@ export class HotelModalMapFilterComponent extends BaseChildComponent implements 
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private apiHotelService: ApiHotelService,
         private comService: HotelComService,

@@ -33,7 +33,7 @@ export class MyMileageListPageComponent extends BasePageComponent implements OnI
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -100,7 +100,7 @@ export class MyMileageListPageComponent extends BasePageComponent implements OnI
 
         // ---------[rent-list-rq-info 스토어에 저장]
         this.upsertOne({
-            id: 'rent-booking-infomation-rq-info',
+            id: 'rent-booking-information-rq-info',
             result: $resolveData
         });
 
@@ -125,7 +125,7 @@ export class MyMileageListPageComponent extends BasePageComponent implements OnI
         //                         listFilterRs: res2['result']
         //                     };
         //                     this.upsertOne({
-        //                         id: 'rent-booking-infomation-rs',
+        //                         id: 'rent-booking-information-rs',
         //                         result: res
         //                     });
         //                     this.loadingBool = true;

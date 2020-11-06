@@ -1,49 +1,47 @@
-  <!-- Modal -->
-  <div class="modal bg">
+<!-- Modal -->
+<div class="modal bg">
     <!-- modal header -->
     <div class="modal-header">
-      <h1>고객문의 작성</h1>
-      <div class="right">
-        <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
-      </div>
+        <h1>고객문의 작성</h1>
+        <div class="right">
+            <a (click)="onCloseClick()" class="icon sm common-close">닫기</a>
+        </div>
     </div>
     <!-- modal contents -->
     <div class="modal-contents">
-      <div class="page-contents-type2 fixed-btn-footer">
-        <div class="row-group">
-          <div class="row mt0">
-            <h2 class="row-title">예약번호</h2>
-            <div class="select-box line">
-              <select name="" id="" required>
-                <option value="" selected disabled>선택하세요</option>
-                <option value="">YB1234567890</option>
-                <option value="">옵션2</option>
-              </select>
+        <div class="page-contents-type2 fixed-btn-footer">
+            <div class="row-group">
+                <div class="row mt0">
+                    <h2 class="row-title">예약번호</h2>
+                    <div class="select-box line">
+                        <select name="" id="" required>
+                            <option value="" selected disabled>선택하세요</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2 class="row-title">상담 분류</h2>
+                    <div class="select-box line">
+                        <select name="" id="" required>
+                            <option value="" selected disabled>선택하세요</option>
+                            <option value="">옵션1</option>
+                            <option value="">옵션2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2 class="row-title">상담 내용</h2>
+                    <div class="textarea line">
+                        <textarea formControlName="questionDetail" cols="30" rows="10" placeholder="상담 내용을 입력해 주세요"></textarea>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <h2 class="row-title">상담 분류</h2>
-            <div class="select-box line">
-              <select name="" id="" required>
-                <option value="" selected disabled>선택하세요</option>
-                <option value="">옵션1</option>
-                <option value="">옵션2</option>
-              </select>
+            <ul class="text-list mt20">
+                <li>업무시간(오전9시~오후6시) 중 평균 1시간 내 응답</li>
+            </ul>
+            <div class="btn-group fixed-bottom pd bg2">
+                <button (click)="writeComplete()" class="btn lg default" role="button">등록하기</button>
             </div>
-          </div>
-          <div class="row">
-            <h2 class="row-title">상담 내용</h2>
-            <div class="textarea line">
-              <textarea name="" id="" cols="30" rows="10" placeholder="상담 내용을 입력해 주세요"></textarea>
-            </div>
-          </div>
         </div>
-        <ul class="text-list mt20">
-          <li>업무시간(오전9시~오후6시) 중 평균 1시간 내 응답</li>
-        </ul>
-        <div class="btn-group fixed-bottom pd bg2">
-          <button class="btn lg default" role="button">등록하기</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>

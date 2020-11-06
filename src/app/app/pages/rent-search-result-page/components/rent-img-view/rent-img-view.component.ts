@@ -22,7 +22,7 @@ export class RentImgViewComponent extends BaseChildComponent implements OnInit {
     slideConfig = { 'slidesToShow': 1, 'slidesToScroll': 1 };
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private el: ElementRef
     ) {
         super(platformId);

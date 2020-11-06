@@ -7,6 +7,8 @@ import { deleteCommonUserInfo, upsertCommonUserInfo } from '../../../store/commo
 
 import { CookieService } from 'ngx-cookie-service';
 
+import { environment } from '@/environments/environment';
+
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { ApiUserService } from '../../../api/user/api-user.service';
@@ -14,7 +16,6 @@ import { UtilUrlService } from '../util-url/util-url.service';
 import { ApiBookingService } from '../../../api/booking/api-booking.service';
 import { ApiAlertService } from '../api-alert/api-alert.service';
 
-import { environment } from '@/environments/environment';
 
 @Injectable({
     providedIn: 'root'

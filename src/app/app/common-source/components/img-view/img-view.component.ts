@@ -59,7 +59,7 @@ export class ImgViewComponent extends BaseChildComponent implements OnInit, DoCh
     bsModalRef: BsModalRef;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private bsModalService: BsModalService,
         public translateService: TranslateService
     ) {

@@ -76,7 +76,7 @@ export class HotelModalResearchComponent extends BaseChildComponent implements O
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public translateService: TranslateService,
         private fb: FormBuilder,
@@ -381,7 +381,7 @@ export class HotelModalResearchComponent extends BaseChildComponent implements O
         };
 
         if (!_.isEmpty(this.vm.detailOption)) {
-            const detailObj: object = {};
+            const detailObj: any = {};
             let price: string;
             let review: string;
             let star: string;

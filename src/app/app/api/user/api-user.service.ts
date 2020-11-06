@@ -22,19 +22,19 @@ export class ApiUserService {
     /**
      * 로그인
      */
-    POST_USER_LOGIN($body?: any, $opt?: Object) {
+    POST_USER_LOGIN($body?: any, $opt?: any) {
         return this.httpPost('/user/login', $body, $opt);
     }
 
     /**
      * 사용자 정보
      */
-    POST_USER_GETINFO($body?: any, $opt?: Object) {
+    POST_USER_GETINFO($body?: any, $opt?: any) {
         return this.httpPost('/user/get-info', $body, $opt);
     }
 
 
-    httpPost($url, $body?: any, $opt?: Object) {
+    httpPost($url, $body?: any, $opt?: any) {
         const url = this.baseUrl + $url;
         const body = $body || {};
         const options = { ...this.httpOptions, ...$opt };

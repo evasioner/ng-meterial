@@ -65,7 +65,7 @@ export class RentModalResearchComponent extends BaseChildComponent implements On
     locationType: boolean = true;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public translateService: TranslateService,
         private fb: FormBuilder,

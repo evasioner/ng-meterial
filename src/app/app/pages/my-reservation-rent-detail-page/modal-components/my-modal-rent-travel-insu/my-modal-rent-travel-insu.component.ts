@@ -14,7 +14,7 @@ export class MyModalRentTravelInsuComponent extends BaseChildComponent implement
     // bsModalRef: BsModalRef;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         private el: ElementRef,
         public bsModalRef: BsModalRef

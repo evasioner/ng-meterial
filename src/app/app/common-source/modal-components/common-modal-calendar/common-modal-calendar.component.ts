@@ -355,7 +355,7 @@ export class CommonModalCalendarComponent implements OnInit, AfterViewChecked, O
                 const weekItem = $weekItem; // 주
 
                 // 일 : dayItem
-                _.forEach(weekItem, ($dayItem, $dayIdx) => {
+                _.forEach(weekItem, ($dayItem, dayIdx: number) => {
 
                     const dayItem = $dayItem; // 일
 

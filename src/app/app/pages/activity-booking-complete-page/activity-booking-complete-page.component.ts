@@ -1,24 +1,35 @@
 import { Component, OnInit, ViewEncapsulation, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
-import { select, Store } from '@ngrx/store';
-import { HeaderTypes } from '../../common-source/enums/header-types.enum';
-import { ActivityEnums } from '../activity-page/enums/activity-enums.enum';
-import { BasePageComponent } from '../base-page/base-page.component';
-import { SeoCanonicalService } from '../../common-source/services/seo-canonical/seo-canonical.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+
+import * as commonUserInfoSelectors from '@/app/store/common/common-user-info/common-user-info.selectors';
+
 import { TranslateService } from '@ngx-translate/core';
-import { JwtService } from '../../common-source/services/jwt/jwt.service';
-import { environment } from '@/environments/environment';
-import { clearActivityModalDestinations } from 'src/app/store/activity-common/activity-modal-destination/activity-modal-destination.actions';
-import { clearActivityResultSearchs } from 'src/app/store/activity-search-result-page/activity-result-search/activity-result-search.actions';
-import { clearActivityCitySearchs } from 'src/app/store/activity-city-intro-page/activity-city-search/activity-city-search.actions';
-import { clearActivitySearchResultDetailPages } from 'src/app/store/activity-search-result-detail-page/activity-search-result-detail-page/activity-search-result-detail-page.actions';
-import { clearActivitySearchResultOptionPages } from 'src/app/store/activity-search-result-option-page/activity-search-result-option-page/activity-search-result-option-page.actions';
-import { clearActivitySessionStorages } from 'src/app/store/activity-common/activity-session-storage/activity-session-storage.actions';
-import * as commonUserInfoSelectors from 'src/app/store/common/common-user-info/common-user-info.selectors';
+
 import * as qs from 'qs';
 import * as _ from 'lodash';
-import { Subscription } from 'rxjs';
+
+import { SeoCanonicalService } from '../../common-source/services/seo-canonical/seo-canonical.service';
+import { JwtService } from '../../common-source/services/jwt/jwt.service';
+import { ApiBookingService } from '@/app/api/booking/api-booking.service';
+import { ApiAlertService } from '@/app/common-source/services/api-alert/api-alert.service';
+
+import { environment } from '@/environments/environment';
+
+import { InicisCallBack } from '@/app/common-source/models/payment/inicis-payment.model';
+
+import { HeaderTypes } from '../../common-source/enums/header-types.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
+import { UserStore } from '@/app/common-source/enums/common/user-store.enum';
+
+import { CondisionSet, Condition } from '@/app/common-source/models/common/condition.model';
+
+import { BasePageComponent } from '../base-page/base-page.component';
+import { MyCommon } from '@/app/common-source/enums/my/my-common.enum';
 
 @Component({
     selector: 'app-activity-booking-complete-page',
@@ -27,26 +38,26 @@ import { Subscription } from 'rxjs';
     encapsulation: ViewEncapsulation.None
 })
 export class ActivityBookingCompletePageComponent extends BasePageComponent implements OnInit, OnDestroy {
-    headerType: any;
-    headerConfig: any;
-
-    public loadingBool: Boolean = false;
-
-    private dataModel: any;
     private subscriptionList: Subscription[];
+    private dataModel: any;
 
+    public headerType: any;
+    public headerConfig: any;
     public viewModel: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
         public translate: TranslateService,
         private store: Store<any>,
         private route: ActivatedRoute,
-        private router: Router,
-        public jwtService: JwtService) {
+        public jwtService: JwtService,
+        private apiBookingS: ApiBookingService,
+        private alertService: ApiAlertService,
+        private router: Router
+    ) {
         super(
             platformId,
             titleService,
@@ -60,7 +71,6 @@ export class ActivityBookingCompletePageComponent extends BasePageComponent impl
 
     ngOnInit() {
         super.ngOnInit();
-        this.headerInit();
     }
 
     ngOnDestroy() {
@@ -72,29 +82,22 @@ export class ActivityBookingCompletePageComponent extends BasePageComponent impl
     }
 
     private initialize(): void {
-        this.dataModel = {};
-        this.viewModel = {};
         this.subscriptionList = [];
+        this.dataModel = {};
+        this.viewModel = {
+            paymentLoading: true
+        };
         this.sessionInit();
-        this.storeClear(); // store > activity-common 초기화
-        this.loginInit();
+        this.getQueryParams();
     }
 
     private sessionInit() {
-        const sessionItem = JSON.parse(localStorage.getItem(ActivityEnums.STORE_COMMON));
-
+        const sessionItem = JSON.parse(localStorage.getItem(ActivityStore.STORE_COMMON));
+        // this.headerInit();
         if (!_.isEmpty(sessionItem.activitySessionStorages.entities)) {
-            console.log('abcd : ', sessionItem.activitySessionStorages.entities)
-            this.dataModel.booking = _.cloneDeep(sessionItem.activitySessionStorages.entities[ActivityEnums.STORE_BOOKING].result);
+            console.log('abcd : ', sessionItem.activitySessionStorages.entities);
+            this.dataModel.booking = _.cloneDeep(sessionItem.activitySessionStorages.entities[ActivityStore.STORE_BOOKING_RS].result);
         }
-    }
-
-    private storeClear() {
-        this.store.dispatch(clearActivityModalDestinations());
-        this.store.dispatch(clearActivityCitySearchs());
-        this.store.dispatch(clearActivityResultSearchs());
-        this.store.dispatch(clearActivitySearchResultDetailPages());
-        this.store.dispatch(clearActivitySearchResultOptionPages());
     }
 
     private loginInit() {
@@ -105,47 +108,109 @@ export class ActivityBookingCompletePageComponent extends BasePageComponent impl
                 (e) => {
                     console.info('[jwtService.loginGuardInit > ok]', e);
                     if (e) {
-                        this.setViewModel();
+                        this.loginInit();
+                        this.subscribeInit();
                     }
                 },
                 (err) => {
                     console.info('[jwtService.loginGuardInit > err]', err);
                 }
             );
+    }
 
+    /**
+    * getQueryParams
+    * 쿼리 데이터 받는 곳
+    */
+    private getQueryParams() {
         this.subscriptionList.push(
-            this.store
+            this.route.queryParams
                 .pipe(
-                    select(commonUserInfoSelectors.getSelectId(['commonUserInfo']))
+                    mergeMap(
+                        (params: InicisCallBack) => {
+                            console.log('rrrroute queryParams : ', params);
+                            try {
+                                if (params.P_STATUS === '00') {
+                                    this.dataModel.inicisData = params;
+                                    this.dataModel.callBackData = qs.parse(params.P_NOTI);
+                                    this.makeBookingData();
+                                    console.log(this.dataModel.bookingRq);
+                                    return this.apiBookingS.POST_BOOKING_V2(this.dataModel.bookingRq);
+                                } else {
+                                    this.alertService.showApiAlert(params.P_RMESG1);
+                                }
+                            } catch (err) {
+                                console.log(err);
+                                this.alertService.showApiAlert(err);
+                            }
+                        }
+                    )
                 )
                 .subscribe(
+                    (res: any) => {
+                        console.log('결제 완료 : ', res);
+                        try {
+                            if (res.succeedYn) {
+                                this.dataModel.inicisResult = _.cloneDeep(res.result);
+                                this.setViewModel();
+                            } else {
+                                this.alertService.showApiAlert(res.errorMessage);
+                            }
+                        } catch (err) {
+                            this.alertService.showApiAlert(err);
+                        }
+                    },
+                    err => {
+                        console.log(err);
+                        this.alertService.showApiAlert(err);
+                    }
+                )
+        );
+    }
+
+    private makeBookingData() {
+        console.log('하하하하하 : ', this.dataModel);
+        this.dataModel.bookingRq = CondisionSet;
+        this.dataModel.bookingRq.transactionSetId = this.dataModel.transactionSetId;
+        this.dataModel.bookingRq.condition = this.dataModel.beforeBookingRq.condition;
+        this.dataModel.bookingRq.condition.bookingCode = this.dataModel.beforeBookingRs.bookingCode;
+        this.dataModel.bookingRq.condition.domainAddress = window.location.hostname;
+        this.dataModel.bookingRq.condition.deviceTypeCode = environment.DEVICE_TYPE;
+        this.dataModel.bookingRq.condition.payment = {
+            easyPay: {
+                amount: Number(this.dataModel.inicisData.P_AMT),
+                encodedData: window.btoa(encodeURIComponent(JSON.stringify(this.dataModel.inicisData)))
+            }
+        };
+
+        this.dataModel.bookingRq.condition.hotelItems.map(
+            (item: any, index: number) => {
+                item.itemIndex = index;
+                return item;
+            }
+        );
+    }
+
+    private setViewModel() {
+        this.viewModel.bookingItemCode = this.dataModel.callBackData.code;
+        this.viewModel.paymentLoading = false;
+    }
+
+    private subscribeInit() {
+        this.subscriptionList.push(
+            this.store
+                .select(commonUserInfoSelectors.getSelectId([UserStore.STORE_COMMON_USER]))
+                .subscribe(
                     (ev: any) => {
+                        console.info('[userInfo]', ev);
                         if (ev) {
-                            this.dataModel.userInfo = _.cloneDeep(ev.userInfo);
-                            this.dataModel.traveler = _.cloneDeep(ev.traveler);
-                            console.info('[userInfo]', this.dataModel.userInfo);
-                            console.info('[traveler]', this.dataModel.traveler);
+                            this.dataModel.userInfo = ev.userInfo;
                         }
                     }
                 )
         );
     }
 
-    private setViewModel() {
-        this.loadingBool = true;
-        this.viewModel = {
-            bookingItemCode: this.dataModel.booking.bookingItems[0].bookingItemCode,
-        };
-    }
-
-    private headerInit() {
-        this.headerType = HeaderTypes.PAGE;
-        this.headerConfig = null;
-    }
-
-    private storeActivitySessionInit() {
-        this.store.dispatch(clearActivitySessionStorages());
-    }
 
     /**
      * 액티비티예약상세 마이페이지 상세페이지 이동
@@ -153,19 +218,9 @@ export class ActivityBookingCompletePageComponent extends BasePageComponent impl
     detailLink(event: MouseEvent) {
         event && event.preventDefault();
 
-        this.storeActivitySessionInit();
-        const rqMypageInfo =
-        {
-            'stationTypeCode': environment.STATION_CODE,
-            'currency': 'KRW', // TODO - user setting
-            'language': 'KO', // TODO - user setting
-            'condition': {
-                'userNo': this.dataModel.userInfo.user.userNo,
-                'bookingItemCode': this.viewModel.bookingItemCode
-            }
-        };
-
-        const path = '/my-reservation-activity-detail/' + qs.stringify(rqMypageInfo);
+        const rq: Condition = CondisionSet;
+        rq.condition = { userNo: this.dataModel.user.userNo };
+        const path = MyCommon.PAGE_RESERVATION_LIST + qs.stringify(rq);
         this.router.navigate([path]);
     }
 
@@ -175,19 +230,9 @@ export class ActivityBookingCompletePageComponent extends BasePageComponent impl
     listLink(event: MouseEvent) {
         event && event.preventDefault();
 
-        this.storeActivitySessionInit();
-        const rqMypageInfo =
-        {
-            'selectCode': '3',  //항공:1, 호텔:2, 액티비티:3, 렌터카:4, 묶음할인:5
-            'stationTypeCode': environment.STATION_CODE,
-            'currency': 'KRW', // TODO - user setting
-            'language': 'KO', // TODO - user setting
-            'condition': {
-                'userNo': this.dataModel.userInfo.user.userNo,
-            }
-        };
-
-        const path = '/my-reservation-list/' + qs.stringify(rqMypageInfo);
+        const rq: Condition = CondisionSet;
+        rq.condition = { userNo: this.viewModel.bookingItemCode };
+        const path = MyCommon.PAGE_RESERVATION_ACTIVITY_DETAIL + qs.stringify(rq);
         this.router.navigate([path]);
     }
 }

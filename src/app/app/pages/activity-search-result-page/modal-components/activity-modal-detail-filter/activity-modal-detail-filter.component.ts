@@ -16,10 +16,12 @@ import * as qs from 'qs';
 
 import { ActivityComServiceService } from 'src/app/common-source/services/activity-com-service/activity-com-service.service';
 
-import { ActivityEnums } from '../../../activity-page/enums/activity-enums.enum';
+import { ViewModelCheckBoxGuideSet } from './models/activity-modal-detail-filter.model';
+
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
 
 import { BaseChildComponent } from '../../../../pages/base-page/components/base-child/base-child.component';
-import { ViewModelCheckBoxGuideSet } from './models/activity-modal-detail-filter.model';
 
 @Component({
     selector: 'app-activity-modal-detail-filter',
@@ -67,7 +69,7 @@ export class ActivityModalDetailFilterComponent extends BaseChildComponent imple
     transactionSetId: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private router: Router,
         private fb: FormBuilder,
@@ -117,9 +119,9 @@ export class ActivityModalDetailFilterComponent extends BaseChildComponent imple
 
     observableInit() {
         this.activityListRq$ = this.store
-            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityEnums.STORE_RESULT_LIST_RQ)));
+            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityStore.STORE_RESULT_LIST_RQ)));
         this.activityListRs$ = this.store
-            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityEnums.STORE_RESULT_LIST_RS)));
+            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityStore.STORE_RESULT_LIST_RS)));
     }
 
     subscribeInit() {
@@ -528,7 +530,7 @@ export class ActivityModalDetailFilterComponent extends BaseChildComponent imple
 
         // 결과페이지 라우터 이동
         const qsStr = qs.stringify(rsData);
-        const path = ActivityEnums.PAGE_SEARCH_RESULT + qsStr;
+        const path = ActivityCommon.PAGE_SEARCH_RESULT + qsStr;
 
         // 페이지 이동후 생명주기 재실행
         this.router.navigateByUrl('/', { skipLocationChange: true })

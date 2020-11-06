@@ -1,6 +1,7 @@
-<app-common-modal-loading *ngIf="!loadingBool"></app-common-modal-loading>
+<app-common-modal-loading *ngIf="viewModel.paymentLoading"></app-common-modal-loading>
 
-<div *ngIf="loadingBool" id="wrap" class="p-activity-booking-complete">
+<div *ngIf="!viewModel.paymentLoading" id="wrap" class="p-activity-booking-complete">
+
     <!-- header -->
     <app-header></app-header>
     <app-activity-header [headerType]="headerType" [headerConfig]="headerConfig"></app-activity-header>
@@ -29,9 +30,11 @@
                         <div class="right"><strong class="font-lg color-point2">2019.09.17 17:00까지</strong></div>
                     </div>
                 </div>
+
                 <div class="btn-group mt25">
                     <a (click)="detailLink($event)" class="btn lg default" role="button">예약 상세내역</a>
                 </div>
+
                 <div class="btn-group both mt10">
                     <a href="#" class="btn lg line light" role="button"><i class="icon sm share"></i><span>공유하기</span></a>
                     <a (click)="listLink($event)" class="btn lg line light" role="button"><i class="icon sm user"></i><span>마이페이지</span></a>
@@ -53,11 +56,13 @@
                     </div>
                 </div>
             </div>
+
             <div class="contents-item">
                 <div class="banner-box">
                     <img src="/assets/images/temp/@temp-event-banner2.png" alt="" class="w-100">
                 </div>
             </div>
+
             <div class="contents-item">
                 <h3 class="contents-title">비슷한 시기에 로스엔젤레스를<br />여행하는 회원들이 많이 예약한 상품입니다.</h3>
                 <h4 class="contents-sub-text line">최대 27% 할인된 요금으로 추가 할인 혜택을 받아보세요.</h4>

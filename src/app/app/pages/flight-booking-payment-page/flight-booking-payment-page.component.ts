@@ -50,7 +50,7 @@ export class FlightBookingPaymentPageComponent extends BasePageComponent impleme
     public viewModel: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -132,7 +132,7 @@ export class FlightBookingPaymentPageComponent extends BasePageComponent impleme
     * 세션 저장 데이터 꺼내기
     */
     private sessionInit(): void {
-        const sessionItem = JSON.parse(localStorage.getItem(FlightStore.STORE_COMMON));
+        const sessionItem = JSON.parse(localStorage.getItem(FlightStore.STORE_FLIGHT_COMMON));
 
         if (!_.isEmpty(sessionItem.flightSessionStorages.entities)) {
             const bookingRsOption = sessionItem.flightSessionStorages.entities[FlightStore.STORE_FLIGHT_BOOKING_RS].option;
@@ -307,10 +307,10 @@ export class FlightBookingPaymentPageComponent extends BasePageComponent impleme
         this.subscriptionList.push(
             this.apibookingSvc.POST_BOOKING(request)
                 .subscribe(
-                    (resp: any): void => {
-                        console.info('[API 호출 | 예약결과 >]', resp);
-                        if (resp.succeedYn) {
-                            this.dataModel.response = _.cloneDeep(resp);
+                    (res: any): void => {
+                        console.info('[API 호출 | 예약결과 >]', res);
+                        if (res.succeedYn) {
+                            this.dataModel.response = _.cloneDeep(res);
                         }
                     },
                     (error: any): void => {
@@ -419,8 +419,8 @@ export class FlightBookingPaymentPageComponent extends BasePageComponent impleme
         this.subscriptionList.push(
             this.apiPaymentS.PUT_PAYMENT(request)
                 .subscribe(
-                    (resp: any): void => {
-                        if (resp.succeedYn) {
+                    (res: any): void => {
+                        if (res.succeedYn) {
                             const flightRev: any = {
                                 userNo: this.dataModel.request[0].condition.booker.userNo,
                                 bookingItemCode: request.condition.bookingItemCode
@@ -430,7 +430,7 @@ export class FlightBookingPaymentPageComponent extends BasePageComponent impleme
                             this.location.replaceState('/flight-main'); // 예약 완료 페이지에서 뒤로가기시 메인페이지로 가기
                             this.router.navigate(['/flight-booking-complete'], { relativeTo: this.route });
                         } else {
-                            this.alertService.showApiAlert(resp.errorMessage);
+                            this.alertService.showApiAlert(res.errorMessage);
                         }
                     },
                     (err: any) => {

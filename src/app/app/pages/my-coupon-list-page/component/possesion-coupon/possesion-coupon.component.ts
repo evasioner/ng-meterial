@@ -17,7 +17,7 @@ export class PossesionCouponComponent extends BaseChildComponent implements OnIn
     foldingKey: boolean = false;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         public rentUtilSvc: RentUtilService,
         public bsModalService: BsModalService,

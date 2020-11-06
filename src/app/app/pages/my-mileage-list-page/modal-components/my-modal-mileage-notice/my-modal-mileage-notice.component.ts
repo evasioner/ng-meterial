@@ -10,7 +10,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class MyModalMileageNoticeComponent extends BaseChildComponent implements OnInit {
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         public bsModalRef: BsModalRef
     ) {

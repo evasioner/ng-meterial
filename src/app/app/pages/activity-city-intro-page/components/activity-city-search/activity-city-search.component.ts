@@ -17,10 +17,13 @@ import * as qs from 'qs';
 
 import { environment } from '@/environments/environment';
 
-import { ActivityEnums } from '../../../activity-page/enums/activity-enums.enum';
 import { ViewModelSet, ViewModel, ViewModelCurrencySet, ViewModelPlugSet, ViewModeltimeSet, ViewModelWeatherSet, ViewModelCategorySet, ViewModelCategory } from './models/activity-city-search.model';
 
 import { BaseChildComponent } from '../../../base-page/components/base-child/base-child.component';
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
+import { ActivityInput } from '@/app/common-source/enums/activity/activity-input.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
+
 import { ActivityModalCityInformationComponent } from '../../modal-components/activity-modal-city-information/activity-modal-city-information.component';
 import { ModalDestinationComponent } from '@/app/common-source/modal-components/modal-destination/modal-destination.component';
 
@@ -36,7 +39,7 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
     private subscribeList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public translateService: TranslateService,
         private route: ActivatedRoute,
@@ -95,11 +98,11 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
             modalDestinationSearch$: this.store
                 .pipe(select(activityModalDestinationSelectors.getSelectId(['search']))),
             activityCityRq$: this.store
-                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityEnums.STORE_CITYINTRO_RQ))),
+                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityStore.STORE_CITYINTRO_RQ))),
             activityCityRs$: this.store
-                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityEnums.STORE_CITYINTRO_RS))),
+                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityStore.STORE_CITYINTRO_RS))),
             activityCityName$: this.store
-                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityEnums.STORE_CITYINTRO_CITYNAME))),
+                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityStore.STORE_CITYINTRO_CITYNAME))),
             translate$: this.translateService.getTranslation(
                 this.translateService.getDefaultLang()
             )
@@ -193,10 +196,10 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
     private setDestinationSearch(): void {
         this.dataModel.modal.searchType = this.dataModel.modal.type; // INPUT : 검색어 입력, CITY : 도시 선택, CATEGORY : 카테고리 선택, DETAIL : 상품 선택.
 
-        if (this.dataModel.modal.type === ActivityEnums.SEARCH_TYPE_CITY) {
+        if (this.dataModel.modal.type === ActivityInput.SEARCH_TYPE_CITY) {
             this.dataModel.modal.cityCode = this.dataModel.modal.val;
             this.dataModel.modal.cityName = this.dataModel.modal.name;
-        } else if (this.dataModel.modal.type === ActivityEnums.SEARCH_TYPE_DETAIL) {
+        } else if (this.dataModel.modal.type === ActivityInput.SEARCH_TYPE_DETAIL) {
             this.dataModel.modal.detailId = Number(this.dataModel.modal.val);
         }
 
@@ -220,7 +223,7 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
                     language: 'KO', // TODO - user setting
                     stationTypeCode: environment.STATION_CODE,
                     condition: {
-                        itemCategoryCode: ActivityEnums.IITEM_CATEGORY_CODE,
+                        itemCategoryCode: ActivityCommon.IITEM_CATEGORY_CODE,
                         compCode: environment.COMP_CODE
                     }
                 }
@@ -231,7 +234,7 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
                     language: 'KO', // TODO - user setting
                     stationTypeCode: environment.STATION_CODE,
                     condition: {
-                        itemCategoryCode: ActivityEnums.IITEM_CATEGORY_CODE,
+                        itemCategoryCode: ActivityCommon.IITEM_CATEGORY_CODE,
                         cityCode: this.dataModel.response.result.city.cityCode,
                         keyword: null,
                         limits: [0, 20]
@@ -281,9 +284,9 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
     public onGoCategorySearchClick(event: any, index: number) {
         event && event.preventDefault();
 
-        console.log(ActivityEnums.SEARCH_TYPE_CATEGORY);
+        console.log(ActivityInput.SEARCH_TYPE_CATEGORY);
 
-        this.dataModel.modal.searchType = ActivityEnums.SEARCH_TYPE_CATEGORY;
+        this.dataModel.modal.searchType = ActivityInput.SEARCH_TYPE_CATEGORY;
         this.dataModel.modal.categoryCode = this.viewModel.categoryList[index].code;
 
         if (this.viewModel.categoryList[index].code === 'ALL') {
@@ -318,7 +321,7 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
         let rqCondition = {};
         let tmpPath = '';
 
-        if (this.dataModel.modal.searchType === ActivityEnums.SEARCH_TYPE_DETAIL) {
+        if (this.dataModel.modal.searchType === ActivityInput.SEARCH_TYPE_DETAIL) {
             if (!this.dataModel.modal.detailId) { // Defensive coding
                 return;
             }
@@ -327,7 +330,7 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
             rqCondition = {
                 activityCode: this.dataModel.modal.detailId
             };
-            tmpPath = ActivityEnums.PAGE_SEARCH_RESULT_DETAIL;
+            tmpPath = ActivityCommon.PAGE_SEARCH_RESULT_DETAIL;
         } else {
             if (!this.dataModel.modal.categoryCode && !this.dataModel.modal.cityCode) { // Defensive coding
                 return;
@@ -338,7 +341,7 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
                     cityCode: this.dataModel.modal.cityCode,
                     limits: [0, 10]
                 };
-                tmpPath = ActivityEnums.PAGE_CITY_INTRO;
+                tmpPath = ActivityCommon.PAGE_CITY_INTRO;
             } else { // searchCityCode, searchCategoryCode 값이 있는 경우
                 rqCondition = {
                     cityCode: this.dataModel.response.result.city.cityCode,
@@ -350,7 +353,7 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
                     rqCondition['activityCategoryCode'] = this.dataModel.modal.categoryCode;
                 }
 
-                tmpPath = ActivityEnums.PAGE_SEARCH_RESULT;
+                tmpPath = ActivityCommon.PAGE_SEARCH_RESULT;
             }
         }
 
@@ -372,7 +375,7 @@ export class ActivityCitySearchComponent extends BaseChildComponent implements O
         };
 
         this.viewModel.loadingFlag = true;
-        if (tmpPath !== ActivityEnums.PAGE_CITY_INTRO) {
+        if (tmpPath !== ActivityCommon.PAGE_CITY_INTRO) {
             this.router.navigate([path], extras);
         } else {
             // 같은 페이지 재호출시 상위 컴포넌트에 onInit을 다시 실행하기 위해 아래의 코드로 작성.

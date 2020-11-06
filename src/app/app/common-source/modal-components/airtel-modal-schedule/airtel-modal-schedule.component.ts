@@ -42,7 +42,7 @@ export class AirtelModalScheduleComponent extends BaseChildComponent implements 
     headerType: any;                        // 헤더 타입
     headerConfig: any;                      // 헤더 Config
 
-    storeModel: object;                     // 항공 스토어 모델
+    storeModel: any;                     // 항공 스토어 모델
 
     resultList: any;                       // 항공일정 리스트
     flightSelectedRQ: any;                 // 항공일정 리스트 API RQ
@@ -69,7 +69,7 @@ export class AirtelModalScheduleComponent extends BaseChildComponent implements 
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private router: Router,
         private route: ActivatedRoute,
         private store: Store<any>,
@@ -241,8 +241,8 @@ export class AirtelModalScheduleComponent extends BaseChildComponent implements 
         const flightObj = _.cloneDeep(flight);
         console.info('[flightObj >]', flightObj);
 
-        const passengerFares: object[] = [];
-        const itineraries: object[] = [];
+        const passengerFares: Array<any> = [];
+        const itineraries: Array<any> = [];
 
         _.forEach(flightObj.price.fares[0].passengerFares, (val, idx) => {
             const passengerFare: any = {

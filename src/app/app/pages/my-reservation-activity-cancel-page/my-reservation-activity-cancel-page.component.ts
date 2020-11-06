@@ -23,7 +23,7 @@ export class MyReservationActivityCancelPageComponent extends BasePageComponent 
 
     travelers: Array<any>;
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,

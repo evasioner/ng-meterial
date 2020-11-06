@@ -17,7 +17,7 @@ export class HotelNewSearchListComponent extends BaseChildComponent implements O
     dataModel: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private storageS: StorageService,
         private hotelComS: HotelComService,
     ) {

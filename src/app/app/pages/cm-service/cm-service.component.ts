@@ -24,7 +24,7 @@ export class CmServiceComponent extends BasePageComponent implements OnInit, OnD
 
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         titleService: Title,
         metaTagService: Meta,
         seoCanonicalService: SeoCanonicalService,

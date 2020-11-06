@@ -46,7 +46,7 @@ export class FlightReservationListComponent extends BaseChildComponent implement
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private readonly router: Router,
         private readonly route: ActivatedRoute,
         private readonly apiMypageService: ApiMypageService,

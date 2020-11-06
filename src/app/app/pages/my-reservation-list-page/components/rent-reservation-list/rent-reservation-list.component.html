@@ -12,7 +12,7 @@
             <div class="reservation-title">
                 <span class="icon sm rentalcar3"></span>
                 <span class="text">{{res.items[0].bookingStatusName}}</span>
-                <a (click)="goReservationQnaPage()" class="btn-link">문의하기</a>
+                <a (click)="goReservationQnaPage(res.items[0].bookingItemCode)" class="btn-link">문의하기</a>
             </div>
             <div class="reservation-summary">
                 <h2 class="product-title">[{{res.categories[0].name}}] [{{res.items[0].rent.vehicleVendorCode}}] {{res.items[0].rent.vehicleVendorName}} </h2>

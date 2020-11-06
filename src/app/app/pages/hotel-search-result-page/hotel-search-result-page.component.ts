@@ -85,7 +85,7 @@ export class HotelSearchResultPageComponent extends BasePageComponent implements
     public alignUpdate: Boolean;         // 정렬필터 변경 유무
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -576,7 +576,7 @@ export class HotelSearchResultPageComponent extends BasePageComponent implements
 
         if (_.has(this.researchRq.condition, 'filter')) {
             const filter: any = this.researchRq.condition.filter;
-            const detailObj: object = {};
+            const detailObj: any = {};
             let price: any;
             let review: any;
             let star: any;

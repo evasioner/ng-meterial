@@ -46,7 +46,7 @@ export class MyReviewListPageComponent extends BasePageComponent implements OnIn
     turmNo: any = 0;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -149,16 +149,16 @@ export class MyReviewListPageComponent extends BasePageComponent implements OnIn
         this.subscriptionList.push(
             this.apiMypageService.POST_REVIEW_LIST(rq)
                 .subscribe(
-                    (resp: any) => {
-                        if (resp.succeedYn) {
-                            this.dataModel.response = _.cloneDeep(resp.result);
-                            this.dataModel.transactionSetId = resp.transactionSetId;
+                    (res: any) => {
+                        if (res.succeedYn) {
+                            this.dataModel.response = _.cloneDeep(res.result);
+                            this.dataModel.transactionSetId = res.transactionSetId;
                             this.upsertOne({
                                 id: 'my-review-list',
                                 result: this.dataModel.response
                             });
                         } else {
-                            this.alertService.showApiAlert(resp.errorMessage);
+                            this.alertService.showApiAlert(res.errorMessage);
                         }
                     },
                     (err: any) => {

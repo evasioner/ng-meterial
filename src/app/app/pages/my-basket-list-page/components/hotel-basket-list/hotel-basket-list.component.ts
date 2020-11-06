@@ -74,7 +74,7 @@ export class HotelBasketListComponent extends BaseChildComponent implements OnIn
     };
     lastMessage: any;
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public translateService: TranslateService,
         private comService: HotelComService,

@@ -1,14 +1,21 @@
 import { Component, Inject, OnInit, PLATFORM_ID, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
-import { environment } from '@/environments/environment';
-import { ActivityEnums } from '../../../activity-page/enums/activity-enums.enum';
-import { BaseChildComponent } from '../../../base-page/components/base-child/base-child.component';
+
+import { select, Store } from '@ngrx/store';
+
 import * as activityCityIntroPageSelectors from '../../../../store/activity-city-intro-page/activity-city-search/activity-city-search.selectors';
+
 import * as _ from 'lodash';
 import * as qs from 'qs';
+
+import { environment } from '@/environments/environment';
+
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
+
+import { BaseChildComponent } from '../../../base-page/components/base-child/base-child.component';
 
 @Component({
     selector: 'app-activity-city-hotplace',
@@ -31,7 +38,7 @@ export class ActivityCityHotplaceComponent extends BaseChildComponent implements
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private readonly route: ActivatedRoute,
         private readonly router: Router,
@@ -67,9 +74,9 @@ export class ActivityCityHotplaceComponent extends BaseChildComponent implements
      */
     observableInit() {
         this.activityCityRs$ = this.store
-            .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityEnums.STORE_CITYINTRO_RS)));
+            .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityStore.STORE_CITYINTRO_RS)));
         this.activityCityName$ = this.store
-            .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityEnums.STORE_CITYINTRO_CITYNAME)));
+            .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityStore.STORE_CITYINTRO_CITYNAME)));
     }
 
     /**
@@ -142,9 +149,9 @@ export class ActivityCityHotplaceComponent extends BaseChildComponent implements
 
         this.rxAlive = false;
         // const base64Str = this.base64Svc.base64EncodingFun(activityMainInfo);
-        // const path = ActivityEnums.PAGE_CITY_INTRO + base64Str;
+        // const path = ActivityStore.PAGE_CITY_INTRO + base64Str;
         const qsStr = qs.stringify(activityMainInfo);
-        const path = ActivityEnums.PAGE_CITY_INTRO + qsStr;
+        const path = ActivityCommon.PAGE_CITY_INTRO + qsStr;
         const extras = {
             relativeTo: this.route
         };

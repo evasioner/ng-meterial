@@ -21,7 +21,7 @@ export class FlightRecentListComponent extends BaseChildComponent implements OnI
 
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private storageS: StorageService,
         private router: Router,
         private route: ActivatedRoute

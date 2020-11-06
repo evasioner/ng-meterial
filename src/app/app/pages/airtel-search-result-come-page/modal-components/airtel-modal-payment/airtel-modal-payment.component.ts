@@ -51,7 +51,7 @@ export class AirtelModalPaymentComponent extends BaseChildComponent implements O
 
     cabinClassTxt: any;
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public bsModalRef: BsModalRef,
         private bsModalSvc: BsModalService,

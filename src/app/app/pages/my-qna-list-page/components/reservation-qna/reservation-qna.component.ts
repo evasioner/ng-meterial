@@ -20,7 +20,7 @@ export class ReservationQnaComponent extends BaseChildComponent implements OnIni
     foldingKey: boolean = false;
     mainForm: any; // 생성된 폼 저장
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         private route: ActivatedRoute,
         private router: Router,

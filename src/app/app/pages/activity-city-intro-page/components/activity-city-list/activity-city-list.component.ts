@@ -9,9 +9,9 @@ import { TranslateService } from '@ngx-translate/core';
 import * as activityCityIntroPageSelectors from '../../../../store/activity-city-intro-page/activity-city-search/activity-city-search.selectors';
 import * as _ from 'lodash';
 
-import { ActivityEnums } from '../../../activity-page/enums/activity-enums.enum';
-
 import { ViewModelSet, ViewModel, ViewModelActivety } from './models/activity-city-list.model';
+
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
 
 import { BaseChildComponent } from '../../../base-page/components/base-child/base-child.component';
 
@@ -28,7 +28,7 @@ export class ActivityCityListComponent extends BaseChildComponent implements OnI
     private subscribeList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public translateService: TranslateService,
         private router: Router
@@ -76,9 +76,9 @@ export class ActivityCityListComponent extends BaseChildComponent implements OnI
     private observableInit(): void {
         this.observableList = {
             activityCityRs$: this.store
-                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityEnums.STORE_CITYINTRO_RS))),
+                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityStore.STORE_CITYINTRO_RS))),
             activityCityName$: this.store
-                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityEnums.STORE_CITYINTRO_CITYNAME)))
+                .pipe(select(activityCityIntroPageSelectors.getSelectId(ActivityStore.STORE_CITYINTRO_CITYNAME)))
         };
     }
 

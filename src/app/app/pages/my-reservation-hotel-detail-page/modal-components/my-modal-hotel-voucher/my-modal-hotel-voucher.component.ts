@@ -17,7 +17,7 @@ export class MyModalHotelVoucherComponent extends BaseChildComponent implements 
     loadingBool: Boolean = false;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public bsModalRef: BsModalRef,
         private apiBookingSvc: ApiBookingService,
         public translateService: TranslateService,

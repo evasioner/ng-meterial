@@ -92,7 +92,7 @@ export class RentBookingInformationPageComponent extends BasePageComponent imple
     public bookingLoading: boolean;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -307,7 +307,7 @@ export class RentBookingInformationPageComponent extends BasePageComponent imple
         console.info('[pageInit > this.resolveData.rq.condition]', this.resolveData.rq.condition);
         // ---------[rent-list-rq-info 스토어에 저장]
         this.upsertOne({
-            id: 'rent-booking-infomation-rq-info',
+            id: 'rent-booking-information-rq-info',
             result: this.resolveData
         });
         // ---------[헤더 초기화]
@@ -353,7 +353,7 @@ export class RentBookingInformationPageComponent extends BasePageComponent imple
                             listFilterRs: this.listFilterRs
                         };
                         this.upsertOne({
-                            id: 'rent-booking-infomation-rs',
+                            id: 'rent-booking-information-rs',
                             result: res
                         });
 

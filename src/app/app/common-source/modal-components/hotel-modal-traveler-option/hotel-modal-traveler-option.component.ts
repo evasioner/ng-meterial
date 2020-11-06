@@ -23,7 +23,7 @@ import { HotelModalChildrenInformationComponent } from '../hotel-modal-children-
 })
 export class HotelModalTravelerOptionComponent extends BaseChildComponent implements OnInit, OnDestroy {
 
-    updateModel: object;
+    updateModel: any;
 
     rxAlive: boolean = true;
     loadingBool: boolean = false;
@@ -76,7 +76,7 @@ export class HotelModalTravelerOptionComponent extends BaseChildComponent implem
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private route: ActivatedRoute,
         private store: Store<any>,
         private bsModalService: BsModalService,

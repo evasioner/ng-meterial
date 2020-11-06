@@ -54,7 +54,7 @@ export class MainPageComponent extends BasePageComponent implements OnInit, OnDe
 
     constructor(
         @Inject(DOCUMENT) private document: Document,
-        @Inject(PLATFORM_ID) platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,

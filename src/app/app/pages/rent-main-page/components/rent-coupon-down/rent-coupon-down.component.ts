@@ -10,7 +10,7 @@ import { BaseChildComponent } from '../../../base-page/components/base-child/bas
 export class RentCouponDownComponent extends BaseChildComponent implements OnInit {
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
     ) {
         super(platformId);
     }

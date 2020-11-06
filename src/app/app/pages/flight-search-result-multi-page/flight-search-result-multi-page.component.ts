@@ -46,7 +46,7 @@ export class FlightSearchResultMultiPageComponent extends BasePageComponent impl
     headerConfig: any;          // 헤더 Config
     ItineraryCount: number = 0; // 여정 카운트( 여정1,2,3,4 )
 
-    storeModel: object;         // 항공 스토어 모델
+    storeModel: any;         // 항공 스토어 모델
     flightStepRQ: any;          // 항공Step API RQ
     flightSearhRQ: any;         // 항공검색 API RQ
     resultList: any;            // 항공조회 결과 리스트
@@ -104,7 +104,7 @@ export class FlightSearchResultMultiPageComponent extends BasePageComponent impl
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,

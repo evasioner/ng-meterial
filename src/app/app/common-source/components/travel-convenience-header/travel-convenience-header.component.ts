@@ -16,7 +16,8 @@ import * as _ from 'lodash';
 
 import { CommonLayoutSideMenuService } from '../../services/common-layout-side-menu/common-layout-side-menu.service';
 
-import { ActivityEnums } from '../../../pages/activity-page/enums/activity-enums.enum';
+import { CommonStore } from '../../enums/common/common-store.enum';
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
 
 @Component({
     selector: 'app-travel-convenience-header',
@@ -40,19 +41,24 @@ export class TravelConvenienceHeaderComponent implements OnInit, OnDestroy {
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private translateService: TranslateService,
         private location: Location,
-        private readonly router: Router,
+        private router: Router,
         public commonLayoutSideMenuService: CommonLayoutSideMenuService
     ) {
         this.subscriptionList = [];
     }
 
     ngOnInit(): void {
-        if (isPlatformBrowser(this.platformId)) this.isBrowser = true;
-        if (isPlatformServer(this.platformId)) this.isServer = true;
+        if (isPlatformBrowser(this.platformId)) {
+            this.isBrowser = true;
+        }
+
+        if (isPlatformServer(this.platformId)) {
+            this.isServer = true;
+        }
 
         this.headerTitleInit();
         this.observableInit();
@@ -82,7 +88,7 @@ export class TravelConvenienceHeaderComponent implements OnInit, OnDestroy {
 
                         if (this.headerType !== 'page' && this.headerConfig != null) {
                             //  도시인트로, 검색결과 페이지는 헤더명이 동적으로 변경되야 함. 해당값은 title에 각 페이지에서 넣는다.
-                            if (this.headerConfig.title == null || this.headerConfig.title == undefined) {
+                            if (this.headerConfig.title == undefined || this.headerConfig.title == null) {
                                 this.headerConfig.title = ev.HEADER.TITLE;
                             }
                         }
@@ -124,22 +130,22 @@ export class TravelConvenienceHeaderComponent implements OnInit, OnDestroy {
 
     commonLayoutStoreUpdate() {
         this.upsertOne({
-            id: 'commonLayout',
+            id: CommonStore.COMMON_LAYOUT,
             sideMenuBool: this.vm.sideMenuBool
         });
     }
 
-    upsertOne($obj) {
-        this.store.dispatch(upsertCommonLayout({
-            commonLayout: $obj
-        }));
+    upsertOne(obj) {
+        this.store.dispatch(
+            upsertCommonLayout({ commonLayout: obj })
+        );
     }
 
     /**
      * 메뉴클릭
      * @param e
      */
-    onMenuClick(e) {
+    onMenuClick(_e) {
         // console.info('[메뉴클릭]');
         this.commonLayoutSideMenuService.setOpen();
     }
@@ -157,6 +163,6 @@ export class TravelConvenienceHeaderComponent implements OnInit, OnDestroy {
      * 메인가기
      */
     onGoMainClick() {
-        this.router.navigate([ActivityEnums.PAGE_TOTAL_MAIN]);
+        this.router.navigate([ActivityCommon.PAGE_TOTAL_MAIN]);
     }
 }

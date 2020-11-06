@@ -9,5 +9,6 @@ export const CategoryList: PostCategoryCode[] = [
     { name: '렌터카', code: 'IC03' },
     { name: '티켓/투어', code: 'IC04' },
     { name: '묶음상품', code: 'IC05' },
+    { name: '기타', code: 'IC09' },
 ];
 

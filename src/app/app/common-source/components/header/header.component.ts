@@ -13,7 +13,7 @@ export class HeaderComponent extends BaseChildComponent implements OnInit {
     public viewModel: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
     ) {
         super(platformId);
 

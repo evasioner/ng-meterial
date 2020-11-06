@@ -22,68 +22,68 @@ export class ApiRentService {
     /**
      * 추천 렌터카 조회
      */
-    POST_RENT_RECOMMEND($body?: any, $opt?: Object) {
+    POST_RENT_RECOMMEND($body?: any, $opt?: any) {
         return this.httpPost('/rent/recommend', $body, $opt);
     }
 
     /**
      * 렌터카 검색
      */
-    POST_RENT_LIST($body?: any, $opt?: Object) {
+    POST_RENT_LIST($body?: any, $opt?: any) {
         return this.httpPost('/rent/list', $body, $opt);
     }
 
     /**
      * 렌터카 상세
      */
-    POST_RENT_RENTRULE($body?: any, $opt?: Object) {
+    POST_RENT_RENTRULE($body?: any, $opt?: any) {
         return this.httpPost('/rent/rent-rule', $body, $opt);
     }
 
     /**
      * 렌터카 옵션 검색
      */
-    POST_RENT_OPTION($body?: any, $opt?: Object) {
+    POST_RENT_OPTION($body?: any, $opt?: any) {
         return this.httpPost('/rent/option', $body, $opt);
     }
 
     /**
      * 렌터카 현재 상황 조회
      */
-    POST_RENT_STATS($body?: any, $opt?: Object) {
+    POST_RENT_STATS($body?: any, $opt?: any) {
         return this.httpPost('/rent/stats', $body, $opt);
     }
 
     /**
      * 렌터카 운임규정 조회
      */
-    POST_RENT_CONDITION($body?: any, $opt?: Object) {
+    POST_RENT_CONDITION($body?: any, $opt?: any) {
         return this.httpPost('/rent/condition', $body, $opt);
     }
 
     /**
      * 렌터카 위시에 추가
      */
-    POST_RENT_BASKET($body?: any, $opt?: Object) {
+    POST_RENT_BASKET($body?: any, $opt?: any) {
         return this.httpPost('/rent/basket', $body, $opt);
     }
 
     /**
      * 렌터카 멤버쉽 입력
      */
-    POST_RENT_MEMEBERSHIP($body?: any, $opt?: Object) {
+    POST_RENT_MEMEBERSHIP($body?: any, $opt?: any) {
         return this.httpPost('/rent/memebership', $body, $opt);
     }
 
     /**
      * 렌터카 취소하기
      */
-    POST_RENT_CANCEL($body?: any, $opt?: Object) {
+    POST_RENT_CANCEL($body?: any, $opt?: any) {
         return this.httpPost('/booking/rent/cancel', $body, $opt);
     }
 
 
-    httpPost($url, $body?: any, $opt?: Object) {
+    httpPost($url, $body?: any, $opt?: any) {
         const url = this.baseUrl + $url;
         const body = $body || {};
         const options = { ...this.httpOptions, ...$opt };

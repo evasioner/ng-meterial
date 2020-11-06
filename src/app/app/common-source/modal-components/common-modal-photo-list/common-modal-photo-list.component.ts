@@ -24,7 +24,7 @@ export class CommonModalPhotoListComponent extends BaseChildComponent implements
 
     bsModalPhotoDetailRef: any;
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private bsModalService: BsModalService,
         private bsModalRef: BsModalRef
     ) {

@@ -3,23 +3,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Store } from '@ngrx/store';
-import { take } from 'rxjs/operators';
-import { BaseChildComponent } from 'src/app/pages/base-page/components/base-child/base-child.component';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
-import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+
+
+import { forkJoin, Subscription } from 'rxjs';
 import * as _ from 'lodash';
 import { environment } from '@/environments/environment';
+
+import { upsertMyMileage } from 'src/app/store/my-mileage/my-mileage/my-mileage.actions';
 
 import { ApiMypageService } from 'src/app/api/mypage/api-mypage.service';
 import { ApiAlertService } from '@/app/common-source/services/api-alert/api-alert.service';
 import { ApiBookingService } from '../../../../api/booking/api-booking.service';
-import { upsertMyMileage } from 'src/app/store/my-mileage/my-mileage/my-mileage.actions';
-
 import { JwtService } from 'src/app/common-source/services/jwt/jwt.service';
+
 import { PostCategoryCode, CategoryList } from '@/app/common-source/models/my-qna/post-category-code.model';
 import { BoardMaster, BoardMasterList } from '@/app/common-source/models/my-qna/board-master.model';
+
+import { BaseChildComponent } from 'src/app/pages/base-page/components/base-child/base-child.component';
 
 @Component({
     selector: 'app-my-modal-qna-write',
@@ -45,7 +49,7 @@ export class MyModalQnaWriteComponent extends BaseChildComponent implements OnIn
     userInfoRes: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         public bsModalRef: BsModalRef,
         public bsModalService: BsModalService,
@@ -120,10 +124,10 @@ export class MyModalQnaWriteComponent extends BaseChildComponent implements OnIn
     mainFormCreate() {
         this.mainForm = this.fb.group({
             postCategoryCode: new FormControl('', [Validators.required]),
-            selectNumber: new FormControl('', [Validators.required]),
+            bookingItemCode: new FormControl('', [Validators.required]),
             boardMasterSeq: new FormControl(0, [Validators.required]),
-            postTitle: new FormControl('', [Validators.required]),
-            postDetail: new FormControl('', [Validators.required]),
+            questionTitle: new FormControl('', [Validators.required]),
+            questionDetail: new FormControl('', [Validators.required]),
         });
 
         console.log(this.mainForm, 'this.mainForm');
@@ -154,23 +158,25 @@ export class MyModalQnaWriteComponent extends BaseChildComponent implements OnIn
             currency: 'KRW',
             language: 'KO',
             condition: {
-                boardMasterSeq: Number(this.mainForm.get('boardMasterSeq').value),
-                postCategoryCode: this.mainForm.get('postCategoryCode').value,
+                consultingCategoryCode: this.mainForm.get('postCategoryCode').value,
+                consultingTypeCode: 'CS001',
                 userNo: this.userInfoRes.result.user.userNo,
-                postTitle: this.mainForm.get('postTitle').value,
-                postDetail: this.mainForm.get('postDetail').value,
-                bookingItemCode: this.mainForm.get('selectNumber').value
+                smsReceiveYn: true,
+                questionTitle: this.mainForm.get('questionTitle').value,
+                questionDetail: this.mainForm.get('questionDetail').value,
+                bookingItemCode: this.mainForm.get('bookingItemCode').value,
             },
         };
 
+
         this.subscriptionList.push(
-            this.apiMypageService.PUT_QNA(rqInfo)
+            this.apiMypageService.PUT_CONSULTING(rqInfo)
                 .subscribe(
-                    (resp: any) => {
-                        if (resp.succeedYn) {
+                    (res: any) => {
+                        if (res.succeedYn) {
                             this.modalClose();
-                            this.dataModel.response = _.cloneDeep(resp.result);
-                            this.dataModel.transactionSetId = resp.transactionSetId;
+                            this.dataModel.response = _.cloneDeep(res.result);
+                            this.dataModel.transactionSetId = res.transactionSetId;
                             this.dataModel.form = this.mainForm;
                             console.log('성공이다~~~~');
 
@@ -180,8 +186,7 @@ export class MyModalQnaWriteComponent extends BaseChildComponent implements OnIn
                             });
 
                         } else {
-                            console.log('error');
-                            this.alertService.showApiAlert(resp.errorMessage);
+                            this.alertService.showApiAlert(res.errorMessage);
                         }
                     },
                     (err: any) => {

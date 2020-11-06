@@ -37,7 +37,7 @@ export class MyModalFlightBookerEditComponent extends BaseChildComponent impleme
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         private route: ActivatedRoute,
         public bsModalRef: BsModalRef,

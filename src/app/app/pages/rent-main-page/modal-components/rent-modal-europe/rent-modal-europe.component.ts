@@ -26,7 +26,7 @@ export class RentModalEuropeComponent extends BaseChildComponent implements OnIn
     };
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         public bsModalRef: BsModalRef,
         private el: ElementRef,

@@ -15,7 +15,7 @@ import { AirtelModalChildrenInformationComponent } from '../airtel-modal-childre
 export class AirtelModalTravelerOptionComponent extends BaseChildComponent implements OnInit, OnDestroy {
     @Input() selectedOption: any;
 
-    storeModel: object;
+    storeModel: any;
 
     modalTravelerOption$: Observable<any>;  // 좌석등급, 인원 수
 
@@ -53,7 +53,7 @@ export class AirtelModalTravelerOptionComponent extends BaseChildComponent imple
     };
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         public bsModalRef: BsModalRef,
         private bsModalService: BsModalService

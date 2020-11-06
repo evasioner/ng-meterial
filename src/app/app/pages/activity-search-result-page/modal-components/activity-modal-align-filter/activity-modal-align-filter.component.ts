@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, PLATFORM_ID, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 
@@ -15,7 +15,8 @@ import * as qs from 'qs';
 
 import { ActivityComServiceService } from 'src/app/common-source/services/activity-com-service/activity-com-service.service';
 
-import { ActivityEnums } from '../../../activity-page/enums/activity-enums.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
 
 import { BaseChildComponent } from '../../../../pages/base-page/components/base-child/base-child.component';
 
@@ -31,36 +32,12 @@ export class ActivityModalAlignFilterComponent extends BaseChildComponent implem
 
     vm: any = {
         sortOrderList: [
-            {
-                name: '추천순',
-                val: 'Recommend',
-                chk: false
-            },
-            {
-                name: '인기순',
-                val: 'Popularity',
-                chk: false
-            },
-            {
-                name: '낮은가격순',
-                val: 'AmountLowest',
-                chk: false
-            },
-            {
-                name: '높은가격순',
-                val: 'AmountHighest',
-                chk: false
-            },
-            {
-                name: '최근순',
-                val: 'Newest',
-                chk: false
-            },
-            {
-                name: '평점순',
-                val: 'ReviewAverage',
-                chk: false
-            }
+            { name: '추천순', val: 'Recommend', chk: false },
+            { name: '인기순', val: 'Popularity', chk: false },
+            { name: '낮은가격순', val: 'AmountLowest', chk: false },
+            { name: '높은가격순', val: 'AmountHighest', chk: false },
+            { name: '최근순', val: 'Newest', chk: false },
+            { name: '평점순', val: 'ReviewAverage', chk: false }
         ]
     };
 
@@ -71,11 +48,10 @@ export class ActivityModalAlignFilterComponent extends BaseChildComponent implem
     loadingBool: boolean = false;
 
     transactionSetId: any;
-    private alignUpdate: boolean;
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private router: Router,
         private fb: FormBuilder,
@@ -84,7 +60,6 @@ export class ActivityModalAlignFilterComponent extends BaseChildComponent implem
     ) {
         super(platformId);
 
-        this.alignUpdate = false;
         this.subscriptionList = [];
     }
 
@@ -122,9 +97,9 @@ export class ActivityModalAlignFilterComponent extends BaseChildComponent implem
 
     observableInit() {
         this.activityListRq$ = this.store
-            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityEnums.STORE_RESULT_LIST_RQ)));
+            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityStore.STORE_RESULT_LIST_RQ)));
         this.activityListRs$ = this.store
-            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityEnums.STORE_RESULT_LIST_RS)));
+            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityStore.STORE_RESULT_LIST_RS)));
     }
 
     subscribeInit() {
@@ -174,7 +149,8 @@ export class ActivityModalAlignFilterComponent extends BaseChildComponent implem
         this.bsModalRef.hide();
     }
 
-    onCloseClick(e) {
+    onCloseClick(event: MouseEvent) {
+        event && event.preventDefault();
         this.modalClose();
     }
 
@@ -195,11 +171,10 @@ export class ActivityModalAlignFilterComponent extends BaseChildComponent implem
          * 결과페이지 라우터 이동
          */
         const qsStr = qs.stringify(rsData);
-        const path = ActivityEnums.PAGE_SEARCH_RESULT + qsStr;
+        const path = ActivityCommon.PAGE_SEARCH_RESULT + qsStr;
 
         // 페이지 이동후 생명주기 재실행
         this.router.navigateByUrl('/', { skipLocationChange: true })
             .then(() => this.router.navigate([path]));
     }
-
 }

@@ -19,7 +19,7 @@ import { ActivityComServiceService } from '@/app/common-source/services/activity
 import { ApiAlertService } from '@/app/common-source/services/api-alert/api-alert.service';
 
 import { HeaderTypes } from '../../common-source/enums/header-types.enum';
-import { ActivityEnums } from '../activity-page/enums/activity-enums.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
 
 import { BasePageComponent } from '../base-page/base-page.component';
 
@@ -39,7 +39,7 @@ export class ActivityCityIntroPageComponent extends BasePageComponent implements
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -47,8 +47,8 @@ export class ActivityCityIntroPageComponent extends BasePageComponent implements
         private store: Store<any>,
         private route: ActivatedRoute,
         private router: Router,
-        private readonly activityComServiceService: ActivityComServiceService,
-        private readonly apiActivityService: ApiActivityService,
+        private activityComServiceService: ActivityComServiceService,
+        private apiActivityService: ApiActivityService,
         private alertService: ApiAlertService
     ) {
         super(
@@ -108,7 +108,7 @@ export class ActivityCityIntroPageComponent extends BasePageComponent implements
     pageInit() {
         // ---------[activity-cityintro-rq-info 스토어에 저장]
         this.upsertOne({
-            id: ActivityEnums.STORE_CITYINTRO_RQ,
+            id: ActivityStore.STORE_CITYINTRO_RQ,
             result: this.resolveData
         });
 
@@ -125,11 +125,11 @@ export class ActivityCityIntroPageComponent extends BasePageComponent implements
                             this.headerInit(cityName);
 
                             this.upsertOne({
-                                id: ActivityEnums.STORE_CITYINTRO_RS,
+                                id: ActivityStore.STORE_CITYINTRO_RS,
                                 result: res['result']
                             });
                             this.upsertOne({
-                                id: ActivityEnums.STORE_CITYINTRO_CITYNAME,
+                                id: ActivityStore.STORE_CITYINTRO_CITYNAME,
                                 result: cityName
                             });
                         } else {

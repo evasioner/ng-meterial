@@ -28,7 +28,7 @@ export class RentHeaderComponent extends BaseChildComponent implements OnInit, O
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         public rentUtilSvc: RentUtilService,
         private location: Location,

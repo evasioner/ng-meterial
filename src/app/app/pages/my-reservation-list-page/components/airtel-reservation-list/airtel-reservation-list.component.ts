@@ -35,7 +35,7 @@ export class AirtelReservationListComponent extends BaseChildComponent implement
     lastMessage: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private router: Router,
         private route: ActivatedRoute,
         private apiMypageService: ApiMypageService,

@@ -33,7 +33,6 @@ export class ApiAlertService {
     }
 
     public showApiAlert(message?: string): void {
-        // ngx-bootstrap config
         const configInfo = {
             class: 'm-ngx-bootstrap-modal',
             animated: false

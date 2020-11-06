@@ -39,7 +39,7 @@ export class FlightModalAgreementComponent extends BaseChildComponent implements
     agreeList: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         public bsModalRef: BsModalRef,
         private route: ActivatedRoute,
@@ -121,19 +121,20 @@ export class FlightModalAgreementComponent extends BaseChildComponent implements
         console.info('[Tab 클릭]', this.storeId);
         this.storeId = $storeId;
     }
+
     getApiList(rq) {
         this.subscriptionList.push(
             this.ApiCommonService.POST_TERMS(rq)
                 .subscribe(
-                    (resp: any) => {
-                        if (resp.succeedYn) {
-                            this.dataModel.response = _.cloneDeep(resp.result);
-                            this.dataModel.transactionSetId = resp.transactionSetId;
+                    (res: any) => {
+                        if (res.succeedYn) {
+                            this.dataModel.response = _.cloneDeep(res.result);
+                            this.dataModel.transactionSetId = res.transactionSetId;
                             this.agreeList = this.dataModel.response;
                             this.setViewModel();
                             console.log(this.dataModel, 'this.dataModel');
                         } else {
-                            this.alertService.showApiAlert(resp.errorMessage);
+                            this.alertService.showApiAlert(res.errorMessage);
                         }
                     },
                     (err: any) => {
@@ -142,6 +143,7 @@ export class FlightModalAgreementComponent extends BaseChildComponent implements
                 )
         );
     }
+
     setViewModel() {
         console.log('제대로 내려오고 있나요? ', this.dataModel);
         this.agreeList = {
@@ -149,6 +151,7 @@ export class FlightModalAgreementComponent extends BaseChildComponent implements
             personal: this.dataModel.response.terms[2].termsDetail
         };
     }
+
     /**
      * 페이지 초기화
      *  api 호출 (

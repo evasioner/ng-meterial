@@ -1,11 +1,16 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { TranslateService } from '@ngx-translate/core';
-import { environment } from '@/environments/environment';
-import { BaseChildComponent } from '../../../base-page/components/base-child/base-child.component';
-import { ActivityEnums } from '../../enums/activity-enums.enum';
+
 import * as _ from 'lodash';
 import * as qs from 'qs';
+
+import { environment } from '@/environments/environment';
+
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
+
+import { BaseChildComponent } from '../../../base-page/components/base-child/base-child.component';
 
 @Component({
     selector: 'app-activity-hotplace-list',
@@ -18,10 +23,10 @@ export class ActivityHotplaceListComponent extends BaseChildComponent implements
     searchCityName = null;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
-        private readonly route: ActivatedRoute,
-        private readonly router: Router,
+        private route: ActivatedRoute,
+        private router: Router,
     ) {
         super(platformId);
     }
@@ -56,7 +61,7 @@ export class ActivityHotplaceListComponent extends BaseChildComponent implements
         // const base64Str = this.base64Svc.base64EncodingFun(activityMainInfo);
         // const path = "/activity-city-intro/" + base64Str;
         const qsStr = qs.stringify(activityMainInfo);
-        const path = ActivityEnums.PAGE_CITY_INTRO + qsStr;
+        const path = ActivityCommon.PAGE_CITY_INTRO + qsStr;
         const extras = {
             relativeTo: this.route
         };

@@ -16,7 +16,7 @@ export class AirtelMainPageComponent extends BasePageComponent implements OnInit
     headerConfig: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         titleService: Title,
         metaTagService: Meta,
         seoCanonicalService: SeoCanonicalService,

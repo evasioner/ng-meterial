@@ -25,16 +25,20 @@ import * as _ from 'lodash';
 import { SeoCanonicalService } from '../../common-source/services/seo-canonical/seo-canonical.service';
 import { ApiHotelService } from 'src/app/api/hotel/api-hotel.service';
 import { HotelComService } from 'src/app/common-source/services/hotel-com-service/hotel-com-service.service';
-import { ApiBookingService } from 'src/app/api/booking/api-booking.service';
 import { UtilUrlService } from '../../common-source/services/util-url/util-url.service';
 import { JwtService } from '../../common-source/services/jwt/jwt.service';
 import { CommonValidatorService } from '@/app/common-source/services/common-validator/common-validator.service';
 import { ApiAlertService } from '@/app/common-source/services/api-alert/api-alert.service';
+import { ApiBookingService } from '@/app/api/booking/api-booking.service';
 
 import { environment } from '@/environments/environment';
 
+import { CondisionSet, Condition } from '@/app/common-source/models/common/condition.model';
+
 import { HeaderTypes } from '../../common-source/enums/header-types.enum';
+import { HotelStore } from '@/app/common-source/enums/hotel/hotel-store.enum';
 import { HotelCommon } from '@/app/common-source/enums/hotel/hotel-common.enum';
+import { UserStore } from '@/app/common-source/enums/common/user-store.enum';
 
 //component
 import { BasePageComponent } from '../base-page/base-page.component';
@@ -88,25 +92,25 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
     public bookingLoading: boolean;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
         public translateService: TranslateService,
         private store: Store<any>,
         private fb: FormBuilder,
-        private router: Router,
         private route: ActivatedRoute,
-        private location: Location,
         private apiHotelService: ApiHotelService,
-        private apiBookingService: ApiBookingService,
         private bsModalService: BsModalService,
         private comHotelS: HotelComService,
         private comValidator: CommonValidatorService,
-        public jwtService: JwtService,
+        private jwtService: JwtService,
         public utilUrlService: UtilUrlService,
         private el: ElementRef,
-        private alertService: ApiAlertService
+        private alertService: ApiAlertService,
+        private apiBookingS: ApiBookingService,
+        private location: Location,
+        private router: Router
     ) {
         super(
             platformId,
@@ -125,6 +129,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
         super.ngOnInit();
         this.sessionInit();
         this.vmInit();
+
         if (this.isBrowser) {
             this.loginInit();
         }
@@ -152,36 +157,27 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
     }
 
     sessionInit() {
-        const session = JSON.parse(localStorage.getItem('hotel-common'));
+        const session: any = JSON.parse(localStorage.getItem(HotelStore.STORE_HOTEL_COMMON));
         console.info(session);
         if (!_.isEmpty(session.hotelSessionStorages.entities)) {
-            this.hotelSessionRq =
-                session.hotelSessionStorages.entities[
-                    'hotel-booking-information-rq'
-                ].result;
+            this.hotelSessionRq = session.hotelSessionStorages.entities[HotelStore.STORE_HOTEL_BOOKING_INFORMATION_RQ].result;
         }
     }
 
     vmInit() {
-        const SESSOION_DATA = this.hotelSessionRq;
-
+        const SESSOION_DATA: any = this.hotelSessionRq;
         this.vm = {
             roomConRq: SESSOION_DATA.roomConRq,
             rq: SESSOION_DATA.rq,
-
             userInfo: null,
             traveler: null,
-
             hotelInfoRs: null,
             roomConditoinRs: null
         };
-
-
         this.upsertOne({
-            id: 'hotel-resolve-data',
+            id: HotelStore.STORE_HOTEL_BOOKING_RESOLVE_DATA,
             result: this.vm
         });
-
     }
 
     loginInit() {
@@ -202,9 +198,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
     commonUserInfoInit() {
         this.subscriptionList = [
             this.store
-                .pipe(
-                    select(commonUserInfoSelectors.getSelectId('commonUserInfo')), // 스토어 ID
-                    takeWhile(() => this.rxAlive))
+                .pipe(select(commonUserInfoSelectors.getSelectId(UserStore.STORE_COMMON_USER))) // 스토어 ID
                 .subscribe(
                     (ev: any) => {
                         if (ev) { // 변경 되이터
@@ -240,7 +234,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
         //this.resolveData = $resolveData;
         // ---------[hotel-list-rq-info 스토어에 저장]
         // this.upsertOne({
-        //   id: 'hotel-booking-infomation-rq-info',
+        //   id: 'hotel-booking-information-rq-info',
         //   res: $resolveData
         // });
 
@@ -249,9 +243,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
         console.info('[2. 헤더, api rq 초기화 Start]');
         console.info('[2-1. 헤더 초기화 Start]');
         const checkInDate = moment(this.vm.rq.checkInDate).format('MM.DD');
-        const checkOutDate = moment(this.vm.rq.checkOutDate).format(
-            'MM.DD'
-        );
+        const checkOutDate = moment(this.vm.rq.checkOutDate).format('MM.DD');
         const range = Moment.range(
             this.vm.rq.checkInDate,
             this.vm.rq.checkOutDate
@@ -422,11 +414,11 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
 
                             console.info('upsert vm', _.pick(this.vm, ['roomConRq', 'hotelInfoRs', 'rq']));
                             this.upsertOne({
-                                id: 'hotel-booking-infomation-rs',
+                                id: HotelStore.STORE_HOTEL_BOOKING_INFORMATION_RS,
                                 result: this.vm
                             });
                             this.upsertOneSession({
-                                id: 'hotel-booking-infomation-rs',
+                                id: HotelStore.STORE_HOTEL_BOOKING_INFORMATION_RS,
                                 result: _.pick(this.vm, ['roomConRq', 'hotelInfoRs', 'rq'])
                             });
                             this.bookingLoading = false;
@@ -437,7 +429,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
                                 this.alertService.goBackApiAlert(res2.errorMessage);
                             }
                         }
-                    }, err => {
+                    }, () => {
                         this.alertService.goBackApiAlert();
                     }
                 )
@@ -450,14 +442,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
      * 헤더 초기화
      */
     headerInit($iconType, $headerTitle, $headerDetail) {
-        console.info(
-            '[headerInit] iconType: ',
-            $iconType,
-            ' headerTitle: ',
-            $headerTitle,
-            ' headerDetail',
-            $headerDetail
-        );
+        console.info('[headerInit] iconType: ', $iconType, ' headerTitle: ', $headerTitle, ' headerDetail', $headerDetail);
         this.headerType = HeaderTypes.SUB_PAGE;
         this.headerConfig = {
             icon: $iconType,
@@ -558,10 +543,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
     get agreeList(): FormArray { return this.mainForm.get('agreeList') as FormArray; }
 
     isValid(field: string) {
-        if (
-            !this.mainForm.get(field).valid &&
-            this.mainForm.get(field).touched
-        ) {
+        if (!this.mainForm.get(field).valid && this.mainForm.get(field).touched) {
             const control = this.mainForm.controls[field];
             return control;
         } else {
@@ -569,12 +551,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
         }
     }
 
-    isGuestValid(
-        $roomIdx: number,
-        $guestIdx: number,
-        field: string,
-        field2: string
-    ) {
+    isGuestValid($roomIdx: number, $guestIdx: number, field: string, field2: string) {
         const guest = this.rooms.at($roomIdx).get(field).get(`${$guestIdx}`);
 
         if (!guest.get(field2).valid && guest.get(field2).touched) {
@@ -627,7 +604,6 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
         }
 
         returntxt = '성인 ' + adultNum + '명';
-
         returntxt += (childrenNum > 0) ? ` 아동 ${childrenNum}명` : '';
 
         //인원수 정보
@@ -640,17 +616,13 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
      */
     upsertOne($obj) {
         this.store.dispatch(
-            upsertHotelBookingInformation({
-                hotelBookingInformation: $obj,
-            })
+            upsertHotelBookingInformation({ hotelBookingInformation: $obj })
         );
     }
 
     upsertOneSession($obj) {
         this.store.dispatch(
-            upsertHotelSessionStorage({
-                hotelSessionStorage: _.cloneDeep($obj),
-            })
+            upsertHotelSessionStorage({ hotelSessionStorage: _.cloneDeep($obj) })
         );
     }
 
@@ -668,8 +640,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
             if (index > 0) {
                 roomString += '@';
             }
-            roomString += `${item.adultCount}^${item.childCount
-                }^${item.childAges.join(',')}`;
+            roomString += `${item.adultCount}^${item.childCount}^${item.childAges.join(',')}`;
         });
 
         return roomString;
@@ -684,9 +655,19 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
      */
     public userInfoReset(event?: any, num?: number) {
         event && event.preventDefault();
-        if (num === 1) this.mainForm.get('userName').patchValue('');
-        else if (num === 2) this.mainForm.get('userPhone').patchValue('');
-        else if (num === 3) this.mainForm.get('userEmail').patchValue('');
+        switch (num) {
+            case 1:
+                this.mainForm.get('userName').patchValue('');
+                break;
+
+            case 2:
+                this.mainForm.get('userPhone').patchValue('');
+                break;
+
+            case 3:
+                this.mainForm.get('userEmail').patchValue('');
+                break;
+        }
     }
 
     //---------------------[호텔 정보]-----------------------------------------//
@@ -703,9 +684,11 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
 
         const hotelGradeCodeSplit = $star.split('.');
         let result = hotelGradeCodeSplit[0];
+
         if (hotelGradeCodeSplit[1] > 0) {
             result += 'h';
         }
+
         return result;
     }
 
@@ -968,13 +951,20 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
         const initialState = {
             storeId: storeId,
             okFun: ((store) => {
-                console.info('[okFun]',);
-                if (store === 'normal')
-                    tabNumber = 0;
-                else if (store === 'cancel')
-                    tabNumber = 1;
-                else if (store === 'personalInfo')
-                    tabNumber = 2;
+                console.info('[okFun]');
+                switch (store) {
+                    case 'normal':
+                        tabNumber = 0;
+                        break;
+
+                    case 'cancel':
+                        tabNumber = 1;
+                        break;
+
+                    case 'personalInfo':
+                        tabNumber = 2;
+                        break;
+                }
 
                 this.onChangeAgreement(tabNumber);
             })
@@ -1000,26 +990,23 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
         let chkBool: boolean = true;
 
         //checkbox change 이벤트 발생 시
-        if (!_.isEmpty(event)) {
+        if (event) {
             //checked false 경우
-            if (!event.target.checked)
-                chkBool = false;
+            chkBool = event.target.checked;
         }
 
         //form update
-        {
-            this.agreeList.controls[idx].setValue(chkBool);
-        }
+        this.agreeList.controls[idx].setValue(chkBool);
 
         //모든 동의 checkbox checked
         const isTotChk = _.every(this.agreeList.value);
         const totChk = this.element.querySelector(`[data-target="agreeAllChk"] input[type='checkbox']`);
+
         if (isTotChk) { // 모두 동의
             totChk.checked = true;
         } else {
             totChk.checked = false;
         }
-
         console.info('[onChangeAgreement formArray]', this.agreeList);
     }
 
@@ -1066,27 +1053,37 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
             firstName: firstName,
         };
 
-        if (ageTypeCode === 'CHD')
-            returnObj.birthday = moment(String(item.birthday)).format(
-                'YYYY-MM-DD'
-            );
+        if (ageTypeCode === 'CHD') {
+            returnObj.birthday = moment(String(item.birthday)).format('YYYY-MM-DD');
+        }
+
         return returnObj;
     }
 
     /**
+     * hotelBookingApi
      * booking api 호출
+     *
      * @param rq
      */
-    hotelBookingApi(rq) {
+    private hotelBookingApi(rq: any) {
+        console.log(_.cloneDeep(rq));
+        this.upsertOneSession({
+            id: HotelStore.STORE_HOTEL_BOOKING_RQ,
+            result: _.cloneDeep(rq)
+        });
+        const newRq: Condition = _.cloneDeep(rq);
+        newRq.condition = _.omit(rq.condition, ['deviceTypeCode', 'domainAddress', 'booker', 'travelers']);
+
         this.subscriptionList.push(
-            this.apiBookingService.POST_BOOKING(rq)
+            this.apiBookingS.POST_BOOKING_DISCOUNT_INFO(newRq)
                 .subscribe(
                     (res: any) => {
                         console.info('[예약진행 > res]', res);
                         if (res.succeedYn) {
                             this.upsertOneSession({
-                                id: 'hotel-booking-rs',
-                                result: res['result'],
+                                id: HotelStore.STORE_HOTEL_BOOKING_RS,
+                                result: res.result,
                             });
 
                             this.location.replaceState(HotelCommon.PAGE_MAIN); // 예약 완료 페이지에서 뒤로가기시 메인페이지로 가기
@@ -1125,15 +1122,13 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
             specialRequest.memoRequest = specialRequestVal;
             precodedRemarks.push(specialRequest);
         }
-        const tg = this.element.querySelectorAll(
-            `[data-target="requestChk"] input[type='checkbox']`
-        );
+        const tg = this.element.querySelectorAll(`[data-target="requestChk"] input[type='checkbox']`);
         _.forEach($form.value.requestList, ($item, requestIdx) => {
             const rqChecked = $item;
             if (rqChecked) {
                 //선택요청사항 checked true 경우 rq 에 담기
                 const tgCodeValue = tg[requestIdx].value;
-                const obj: object = {
+                const obj: any = {
                     code: tgCodeValue,
                 };
                 if (tgCodeValue === 'BRQ03') {
@@ -1151,7 +1146,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
         const travelerList = [];
         let travelerIndex: number = 0;
         _.forEach($form.value.rooms, (room, roomIdx) => {
-            const roomObj = {
+            const roomObj: any = {
                 // smokingOptionCode or bedTypeOptionCode ???
                 roomNo: roomIdx + 1, //필수
                 travelerIndexes: [], //필수
@@ -1183,102 +1178,89 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
                 roomObj.travelerIndexes.push(travelerIndex);
             });
 
-            if (_.has(roomType, 'doubleBedYn'))
+            if (_.has(roomType, 'doubleBedYn')) {
                 roomObj['doubleBedYn'] = roomType.doubleBedYn;
+            }
 
             roomList.push(roomObj);
         });
 
+        console.log(travelerList);
         // ---------[booking rq 셋팅]
-        const rq: any = {
-            stationTypeCode: environment.STATION_CODE,
-            currency: 'KRW',
-            language: 'KO',
-            condition: {
-                // condition 필수 : domainAddress / deviceTypeCode / booker / travelers
-                domainAddress: window.location.hostname, // 현재 도메인
-                deviceTypeCode: 'MA', // MA: Mobile App, MW: Mobile Web, PC: PC
-                booker: {
-                    userNo: $form.value.userNo,
-                    email: $form.value.userEmail,
-                    mobileNo: _.replace(
-                        $form.value.userPhone,
-                        new RegExp('-', 'g'),
-                        ''
-                    ),
-                    // picUno: 14830548,
-                    name: $form.value.userName,
-                },
-                travelers: travelerList, //필수
-                hotelItems: [
-                    {
-                        hotelCode: this.hotelSessionRq.rq.hotelCode, //필수
-                        checkInDate: this.hotelSessionRq.rq.checkInDate, //필수
-                        checkOutDate: this.hotelSessionRq.rq.checkOutDate, //필수
-                        roomTypeCode: roomType.roomTypeCode, //필수
-                        roomTypeName: roomType.roomTypeName, //필수
-                        payTypeCode: roomType.payTypeCode, //필수
-                        productAmount: roomType.productAmount, //필수
-                        taxAmount: roomType.taxAmount, //필수
-                        amountSum: roomType.amountSum, //필수
-                        taxIncludedYn: roomType.taxIncludedYn, //필수
-                        refundableYn: roomType.refundableYn,
-                        clientCancelDeadline: clientCancelDeadline,
-                        rooms: roomList, //필수
-                        guaranteeTypeCode: 'GRT99',
-                        freeBreakfastYn: roomType.freeBreakfastYn,
-                        freeBreakfastName: roomType.freeBreakfastName,
-                        dynamicRateYn: false,
-                        // specialRateCode: 'false',
-                        // rackAmount: 47959318.62613943,
-                        roomTypeCodedData: roomType.roomTypeCodedData,
-                        roomConditionCodedData:
-                            roomConditoin.roomConditionCodedData,
-                    },
-                ],
-                // bookingCode: 'minim',
-                // itineraryMasterSeq: -18401997
+        const rq: Condition = CondisionSet;
+        rq.transactionSetId = this.vm.roomConRq.transactionSetId;
+        // condition 필수 : domainAddress / deviceTypeCode / booker / travelers
+        rq.condition = {
+            deviceTypeCode: environment.DEVICE_TYPE,
+            domainAddress: window.location.hostname, // 현재 도메인
+            booker: {
+                userNo: $form.value.userNo,
+                email: $form.value.userEmail,
+                mobileNo: _.replace($form.value.userPhone, new RegExp('-', 'g'), ''),
+                // picUno: 14830548,
+                name: $form.value.userName
             },
+            hotelItems: [
+                {
+                    itemIndex: 0,
+                    hotelCode: this.hotelSessionRq.rq.hotelCode, //필수
+                    checkInDate: this.hotelSessionRq.rq.checkInDate, //필수
+                    checkOutDate: this.hotelSessionRq.rq.checkOutDate, //필수
+                    roomTypeCode: roomType.roomTypeCode, //필수
+                    roomTypeName: roomType.roomTypeName, //필수
+                    payTypeCode: roomType.payTypeCode, //필수
+                    productAmount: roomType.productAmount, //필수
+                    taxAmount: roomType.taxAmount, //필수
+                    amountSum: roomType.amountSum, //필수
+                    taxIncludedYn: roomType.taxIncludedYn, //필수
+                    refundableYn: roomType.refundableYn,
+                    clientCancelDeadline: clientCancelDeadline,
+                    rooms: roomList, //필수
+                    guaranteeTypeCode: 'GRT99',
+                    freeBreakfastYn: roomType.freeBreakfastYn,
+                    freeBreakfastName: roomType.freeBreakfastName,
+                    dynamicRateYn: false,
+                    // specialRateCode: 'false',
+                    // rackAmount: 47959318.62613943,
+                    roomTypeCodedData: roomType.roomTypeCodedData,
+                    roomConditionCodedData: roomConditoin.roomConditionCodedData,
+                },
+            ],
+            travelers: travelerList, //필수
         };
 
-        if (precodedRemarks.length > 0)
+        if (precodedRemarks.length > 0) {
             rq.condition.hotelItems[0]['preCodedRemarks'] = precodedRemarks;
+        }
 
-        if (_.has(this.hotelSessionRq.rq, 'freeWifiYn'))
-            rq.condition.hotelItems[0][
-                'freeWifiYn'
-            ] = this.hotelSessionRq.rq.freeWifiYn;
+        if (_.has(this.hotelSessionRq.rq, 'freeWifiYn')) {
+            rq.condition.hotelItems[0]['freeWifiYn'] = this.hotelSessionRq.rq.freeWifiYn;
+        }
 
-        if (_.has(this.hotelSessionRq.rq, 'regionCode'))
-            rq.condition.hotelItems[0][
-                'regionCode'
-            ] = this.hotelSessionRq.rq.regionCode;
+        if (_.has(this.hotelSessionRq.rq, 'regionCode')) {
+            rq.condition.hotelItems[0]['regionCode'] = this.hotelSessionRq.rq.regionCode;
+        }
 
-        if (_.has(roomType, 'originAmount'))
+        if (_.has(roomType, 'originAmount')) {
             //없으면 조립안함
             rq.condition.hotelItems[0]['originAmount'] = roomType.originAmount;
+        }
 
-        if (_.has(roomType, 'discountAmount'))
+        if (_.has(roomType, 'discountAmount')) {
             //없으면 조립안함
-            rq.condition.hotelItems[0]['discountAmount'] =
-                roomType.discountAmount;
-
-        if (_.has(roomConditoin, 'specialCheckInInstructions')) {
-            if (roomConditoin.specialCheckInInstructions)
-                rq.condition.hotelItems[0]['specialCheckInInstructions'] =
-                    roomConditoin.specialCheckInInstructions;
+            rq.condition.hotelItems[0]['discountAmount'] = roomType.discountAmount;
         }
 
-        if (_.has(roomConditoin, 'cancelPolicyDescription')) {
-            if (roomConditoin.cancelPolicyDescription)
-                rq.condition.hotelItems[0]['cancelPolicyDescription'] =
-                    roomConditoin.cancelPolicyDescription;
+        if (_.has(roomConditoin, 'specialCheckInInstructions') && roomConditoin.specialCheckInInstructions) {
+            rq.condition.hotelItems[0]['specialCheckInInstructions'] = roomConditoin.specialCheckInInstructions;
         }
 
-        if (_.has(roomConditoin, 'checkInInstructions')) {
-            if (roomConditoin.checkInInstructions)
-                rq.condition.hotelItems[0]['checkInInstructions'] =
-                    roomConditoin.checkInInstructions;
+        if (_.has(roomConditoin, 'cancelPolicyDescription') && roomConditoin.cancelPolicyDescription) {
+            rq.condition.hotelItems[0]['cancelPolicyDescription'] = roomConditoin.cancelPolicyDescription;
+        }
+
+        if (_.has(roomConditoin, 'checkInInstructions') && roomConditoin.checkInInstructions) {
+            rq.condition.hotelItems[0]['checkInInstructions'] = roomConditoin.checkInInstructions;
         }
 
         console.info('[goBooking] rq', rq);
@@ -1293,6 +1275,7 @@ export class HotelBookingInformationPageComponent extends BasePageComponent impl
             this.bookingLoading = true;
             this.rxAlive = false;
             console.info('[1. 유효성 체크 성공]');
+            this.bookingLoading = true;
             this.goBooking($form);
         } else {
             _.forEach($form.controls, ($val, $key) => {

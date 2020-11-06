@@ -38,7 +38,7 @@ export class RentModalAgreementComponent extends BaseChildComponent implements O
     countryType: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         private route: ActivatedRoute,
         private el: ElementRef,
@@ -110,14 +110,14 @@ export class RentModalAgreementComponent extends BaseChildComponent implements O
         this.subscriptionList.push(
             this.ApiCommonService.POST_TERMS(rq)
                 .subscribe(
-                    (resp: any) => {
-                        if (resp.succeedYn) {
-                            this.dataModel.response = _.cloneDeep(resp.result);
-                            this.dataModel.transactionSetId = resp.transactionSetId;
+                    (res: any) => {
+                        if (res.succeedYn) {
+                            this.dataModel.response = _.cloneDeep(res.result);
+                            this.dataModel.transactionSetId = res.transactionSetId;
                             this.viewModel = this.dataModel.response;
                             this.setViewModel();
                         } else {
-                            this.alertService.showApiAlert(resp.errorMessage);
+                            this.alertService.showApiAlert(res.errorMessage);
                         }
                     },
                     (err: any) => {

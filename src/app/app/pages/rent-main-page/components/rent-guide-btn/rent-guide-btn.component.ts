@@ -16,7 +16,7 @@ import { RentModalEuropeComponent } from '../../modal-components/rent-modal-euro
 export class RentGuideBtnComponent extends BaseChildComponent implements OnInit {
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private bsModalService: BsModalService,
     ) {
         super(platformId);

@@ -12,12 +12,16 @@ import * as _ from 'lodash';
 import { SeoCanonicalService } from 'src/app/common-source/services/seo-canonical/seo-canonical.service';
 import { ApiMypageService } from 'src/app/api/mypage/api-mypage.service';
 import { ApiAlertService } from '@/app/common-source/services/api-alert/api-alert.service';
+import { JwtService } from 'src/app/common-source/services/jwt/jwt.service';
 
 import { HeaderTypes } from '../../common-source/enums/header-types.enum';
 
 import { BasePageComponent } from '../base-page/base-page.component';
 import { MyModalReservationQnaViewComponent } from './modal-components/my-modal-reservation-qna-view/my-modal-reservation-qna-view.component';
 import { MyModalReservationQnaWriteComponent } from './modal-components/my-modal-reservation-qna-write/my-modal-reservation-qna-write.component';
+import { environment } from '@/environments/environment';
+
+
 
 @Component({
     selector: 'app-my-reservation-qna-list-page',
@@ -25,6 +29,7 @@ import { MyModalReservationQnaWriteComponent } from './modal-components/my-modal
     styleUrls: ['./my-reservation-qna-list-page.component.scss']
 })
 export class MyReservationQnaListPageComponent extends BasePageComponent implements OnInit, OnDestroy {
+
     headerType: any;
     headerConfig: any;
     result: any;
@@ -41,9 +46,15 @@ export class MyReservationQnaListPageComponent extends BasePageComponent impleme
     limitStart: 0;
     checkBoxValue: boolean = true;
     private subscriptionList: Subscription[];
+    private dataModel: any;
+    public viewModel: any;
+
+    userInfoRes: any;
+    userNo: any;
+    bookingItemCode: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -51,7 +62,8 @@ export class MyReservationQnaListPageComponent extends BasePageComponent impleme
         private route: ActivatedRoute,
         public bsModalService: BsModalService,
         private apiMypageService: ApiMypageService,
-        private alertService: ApiAlertService
+        private alertService: ApiAlertService,
+        public jwtService: JwtService,
 
     ) {
         super(
@@ -63,9 +75,11 @@ export class MyReservationQnaListPageComponent extends BasePageComponent impleme
         );
 
         this.subscriptionList = [];
+        this.initialize();
     }
 
     ngOnInit(): void {
+
         super.ngOnInit();
         this.headerInit();
         this.subscriptionList.push(
@@ -74,22 +88,22 @@ export class MyReservationQnaListPageComponent extends BasePageComponent impleme
                 .subscribe(
                     (data: any) => {
                         this.resolveData = _.cloneDeep(data.resolveData);
+                        this.callDetailApi();
+                        console.log(this.bookingItemCode, 'bookingItemCode');
 
-                        // .map((o) => {
-                        //     return Number(o);
-                        // });
-                        //     console.info('Number(userNo)>>', userNo);
-                        // this.resolveData.condition.userNo = userNo;
                         console.info('[1. route 통해 데이터 전달 받기]', data);
-                        this.pageInit();
+
+
                     }
                 )
         );
+        console.log(this.resolveData, ' this.resolveData');
+        console.log(this.bookingItemCode, ' this.bookingItemCode');
+
     }
 
     ngOnDestroy() {
         this.rxAlive = false;
-        this.closeAllModals();
         this.subscriptionList && this.subscriptionList.map(
             (item: Subscription) => {
                 item.unsubscribe();
@@ -97,10 +111,11 @@ export class MyReservationQnaListPageComponent extends BasePageComponent impleme
         );
     }
 
-    private closeAllModals() {
-        for (let i = 1; i <= this.bsModalService.getModalsCount(); i++) {
-            this.bsModalService.hide(i);
-        }
+    initialize() {
+        this.dataModel = {};
+        this.viewModel = {
+            list: []
+        };
     }
 
     headerInit() {
@@ -111,35 +126,35 @@ export class MyReservationQnaListPageComponent extends BasePageComponent impleme
         };
     }
 
-    pageInit() {
-        // ---------[api 호출 | 액티비티 리스트]
-        // const resData = await this.callHotelReservationtDetailApi($resolveData.rq);
-        // this.callHotelReservationtDetailApi($resolveData);
-        // default
-        // this.transactionSetId = resData['transactionSetId'];
-        // this.resultCount = resData['result'].forFilter.totalActivityCount;
-        // this.resultList = resData['result'].activities;
-        // this.activityFilter = resData['result'].forFilter;
+    async callDetailApi() {
 
-        // this.upsertOne({
-        //   id:'activity-list-rs',
-        //   result: resData
-        // });
-        // ---------[End api 호출 | 액티비티 리스트]
-    }
+        this.userInfoRes = await this.jwtService.getUserInfo();
 
-    // API 호출 호텔 예약상세
-    async callHotelReservationtDetailApi($rq) {
-        console.info('>>>> call api start');
+        const rq = {
+            stationTypeCode: environment.STATION_CODE,
+            currency: 'KRW',
+            language: 'KO',
+            condition: {
+                userNo: this.userInfoRes.result.user.userNo,
+                limits: [0, 10],
+            },
+        };
+
         this.loadingBool = false;
-        await this.apiMypageService.POST_BOOKING_HOTEL_DETAIL($rq)
+        await this.apiMypageService.POST_CONSULTING(rq)
             .toPromise()
             .then((res: any) => {
-                console.info('[호텔예약상세 > res]', res);
+                console.info('[예약상세 > res]', res);
 
                 if (res.succeedYn) {
                     this.loadingBool = true;
+                    this.dataModel = _.cloneDeep(res.result);
+                    console.log(this.dataModel, 'this.dataModel');
+
+                    this.setViewModel();
+
                     return res;
+
                 } else {
                     this.alertService.showApiAlert(res.errorMessage);
                 }
@@ -154,14 +169,27 @@ export class MyReservationQnaListPageComponent extends BasePageComponent impleme
 
     }
 
+    private setViewModel() {
+        this.viewModel.list = this.dataModel.list;
+        this.totalCount = this.dataModel.totalCount;
+        console.log(this.viewModel.list, 'viewModel.list');
+
+    }
+
     // 고객문의 상세 모달
     openQnaView() {
         const initialState = {
-            list: [
-                'Open a modal with component', 'Pass your data', 'Do something else', '...'
-            ],
-            title: 'Modal with component'
+            bookingItemCode: this.dataModel.list.bookingItemCode,
+            boardMasterSeq: this.dataModel.list.boardMasterSeq,
+            requestDatetime: this.dataModel.list.requestDatetime,
+            questionTitle: this.dataModel.list.questionTitle,
+            questionDetail: this.dataModel.list.questionDetail,
+            answerDetail: this.dataModel.list.answerDetail,
+            handleFinishDatetime: this.dataModel.list.handleFinishDatetime,
+
         };
+        console.log(initialState, 'initialState');
+
         const configInfo = {
             class: 'm-ngx-bootstrap-modal',
             animated: true
@@ -172,11 +200,10 @@ export class MyReservationQnaListPageComponent extends BasePageComponent impleme
     // 고객문의 등록 모달
     openQnaWrite() {
         const initialState = {
-            list: [
-                'Open a modal with component', 'Pass your data', 'Do something else', '...'
-            ],
-            title: 'Modal with component'
+            bookingItemCode: this.dataModel.list.bookingItemCode,
         };
+        console.log(initialState, 'initialState');
+
         const configInfo = {
             class: 'm-ngx-bootstrap-modal',
             animated: true
@@ -194,7 +221,7 @@ export class MyReservationQnaListPageComponent extends BasePageComponent impleme
             this.lastMessage = '마지막 데이터입니다.';
             return false;                                                   // api결과 갯수가 pageCount보다 작으면 마지막 data로 봄
         } else {
-            this.result = await this.callHotelReservationtDetailApi(null);
+            this.result = await this.callDetailApi();
             console.info('this.result>>>>>', this.result);
             // 전체리스트 중 묶음할인인 경우 여러경우의 수가 나오므로 ~.items[..]에 ~.categories.code값을 세팅에서 items[..]로만 templete을 renderring함
             this.result.result.list.forEach((el) => {

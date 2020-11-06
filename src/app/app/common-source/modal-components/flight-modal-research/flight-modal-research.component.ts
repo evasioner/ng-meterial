@@ -100,7 +100,7 @@ export class FlightModalResearchComponent extends BaseChildComponent implements 
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private fb: FormBuilder,
         public bsModalRef: BsModalRef,

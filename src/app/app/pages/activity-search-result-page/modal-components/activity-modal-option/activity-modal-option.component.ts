@@ -10,7 +10,8 @@ import * as _ from 'lodash';
 import * as qs from 'qs';
 import { BaseChildComponent } from '@/app/pages/base-page/components/base-child/base-child.component';
 import { ActivityComServiceService } from '@/app/common-source/services/activity-com-service/activity-com-service.service';
-import { ActivityEnums } from '@/app/pages/activity-page/enums/activity-enums.enum';
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
 
 @Component({
     selector: 'app-activity-modal-option',
@@ -42,15 +43,13 @@ export class ActivityModalOptionComponent extends BaseChildComponent implements 
 
 
     rxAlive: boolean = true;
-    activityListRq$: Observable<any>; // 액티비티 검색 request
-    activityListRs$: Observable<any>; // 액티비티 검색 결과
 
     loadingBool: Boolean = false;
     transactionSetId: any;
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private router: Router,
         private readonly activityComServiceService: ActivityComServiceService,
@@ -68,7 +67,6 @@ export class ActivityModalOptionComponent extends BaseChildComponent implements 
         bodyEl.classList.add('overflow-none');
 
         this.vmInit();
-        this.observableInit();
         this.subscribeInit();
     }
 
@@ -90,17 +88,10 @@ export class ActivityModalOptionComponent extends BaseChildComponent implements 
         }
     }
 
-    observableInit() {
-        this.activityListRq$ = this.store
-            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityEnums.STORE_RESULT_LIST_RQ)));
-        this.activityListRs$ = this.store
-            .pipe(select(activitySearchResultPageSelectors.getSelectId(ActivityEnums.STORE_RESULT_LIST_RS)));
-    }
-
     subscribeInit() {
         this.subscriptionList.push(
-            this.activityListRq$
-                .pipe(takeWhile(() => this.rxAlive))
+            this.store
+                .select(activitySearchResultPageSelectors.getSelectId(ActivityStore.STORE_RESULT_LIST_RQ))
                 .subscribe(
                     (ev: any) => {
                         // console.info('[activityListRq$ > subscribe]', ev);
@@ -115,8 +106,8 @@ export class ActivityModalOptionComponent extends BaseChildComponent implements 
         );
 
         this.subscriptionList.push(
-            this.activityListRs$
-                .pipe(takeWhile(() => this.rxAlive))
+            this.store
+                .select(activitySearchResultPageSelectors.getSelectId(ActivityStore.STORE_RESULT_LIST_RS))
                 .subscribe(
                     (ev: any) => {
                         // console.info('[activityListRs$ > subscribe]', ev);
@@ -555,9 +546,9 @@ export class ActivityModalOptionComponent extends BaseChildComponent implements 
              * 결과페이지 라우터 이동
              */
             // const base64Str = this.base64Svc.base64EncodingFun(this.rqInfo);
-            // const path = ActivityEnums.PAGE_SEARCH_RESULT + base64Str;
+            // const path = ActivityStore.PAGE_SEARCH_RESULT + base64Str;
             const qsStr = qs.stringify(rsData);
-            const path = ActivityEnums.PAGE_SEARCH_RESULT + qsStr;
+            const path = ActivityCommon.PAGE_SEARCH_RESULT + qsStr;
 
             // 페이지 이동후 생명주기 재실행
             this.router.navigateByUrl('/', { skipLocationChange: true })

@@ -25,7 +25,9 @@ import { ApiAlertService } from '@/app/common-source/services/api-alert/api-aler
 
 import { environment } from '@/environments/environment';
 
-import { ActivityEnums } from '../activity-page/enums/activity-enums.enum';
+import { ActivityCommon } from '@/app/common-source/enums/activity/activity-common.enum';
+import { ActivityInput } from '@/app/common-source/enums/activity/activity-input.enum';
+import { ActivityStore } from '@/app/common-source/enums/activity/activity-store.enum';
 
 import { BasePageComponent } from '../base-page/base-page.component';
 import { ActivityModalAlignFilterComponent } from './modal-components/activity-modal-align-filter/activity-modal-align-filter.component';
@@ -81,7 +83,7 @@ export class ActivitySearchResultPageComponent extends BasePageComponent impleme
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -186,7 +188,7 @@ export class ActivitySearchResultPageComponent extends BasePageComponent impleme
     async pageInit() {
         // ---------[activity-list-rq-info 스토어에 저장]
         this.upsertOne({
-            id: ActivityEnums.STORE_RESULT_LIST_RQ,
+            id: ActivityStore.STORE_RESULT_LIST_RQ,
             result: this.resolveData
         });
 
@@ -227,7 +229,7 @@ export class ActivitySearchResultPageComponent extends BasePageComponent impleme
         }
 
         this.upsertOne({
-            id: ActivityEnums.STORE_RESULT_LIST_RS,
+            id: ActivityStore.STORE_RESULT_LIST_RS,
             result: resData
         });
         // ---------[End api 호출 | 액티비티 리스트]
@@ -278,10 +280,7 @@ export class ActivitySearchResultPageComponent extends BasePageComponent impleme
 
         this.curLimitsIncrease();
         const res = await this.callListApi(_.cloneDeep(this.resolveData.rq));
-        console.log(res, 'res');
-
         this.resultList = [...this.resultList, ...res['result'].activities];
-        console.log(this.resultList, 'this.resultList');
     }
 
     /**
@@ -308,7 +307,7 @@ export class ActivitySearchResultPageComponent extends BasePageComponent impleme
         let rqCondition = {};
         let tmpPath = '';
 
-        if (this.vm.searchType === ActivityEnums.SEARCH_TYPE_DETAIL) {
+        if (this.vm.searchType === ActivityInput.SEARCH_TYPE_DETAIL) {
             if (this.vm.detailId === null) { // Defensive coding
                 return;
             }
@@ -317,7 +316,7 @@ export class ActivitySearchResultPageComponent extends BasePageComponent impleme
             rqCondition = {
                 activityCode: this.vm.detailId
             };
-            tmpPath = ActivityEnums.PAGE_SEARCH_RESULT_DETAIL;
+            tmpPath = ActivityCommon.PAGE_SEARCH_RESULT_DETAIL;
         } else {
             if (this.vm.searchCityCode === null) { // Defensive coding
                 return;
@@ -328,7 +327,7 @@ export class ActivitySearchResultPageComponent extends BasePageComponent impleme
                 limits: [0, 10]
             };
 
-            tmpPath = ActivityEnums.PAGE_CITY_INTRO;
+            tmpPath = ActivityCommon.PAGE_CITY_INTRO;
         }
 
         const activityMainInfo = {
@@ -352,7 +351,7 @@ export class ActivitySearchResultPageComponent extends BasePageComponent impleme
         this.router.navigate([path], extras);
 
 
-        if (tmpPath !== ActivityEnums.PAGE_SEARCH_RESULT) {
+        if (tmpPath !== ActivityCommon.PAGE_SEARCH_RESULT) {
             this.router.navigate([path], extras);
         } else {
             // 같은 페이지 재호출시 상위 컴포넌트에 onInit을 다시 실행하기 위해 아래의 코드로 작성.
@@ -557,9 +556,9 @@ export class ActivitySearchResultPageComponent extends BasePageComponent impleme
 
         this.rxAlive = false;
         // const base64Str = this.base64Svc.base64EncodingFun(activityOptionInfo);
-        // const path = ActivityEnums.PAGE_SEARCH_RESULT_DETAIL + base64Str;
+        // const path = ActivityStore.PAGE_SEARCH_RESULT_DETAIL + base64Str;
         const qsStr = qs.stringify(activityOptionInfo);
-        const path = ActivityEnums.PAGE_SEARCH_RESULT_DETAIL + qsStr;
+        const path = ActivityCommon.PAGE_SEARCH_RESULT_DETAIL + qsStr;
         const extras = {
             relativeTo: this.route
         };

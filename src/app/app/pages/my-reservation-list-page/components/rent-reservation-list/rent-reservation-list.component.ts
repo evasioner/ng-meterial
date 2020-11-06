@@ -43,7 +43,7 @@ export class RentReservationListComponent extends BaseChildComponent implements 
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private readonly router: Router,
         private readonly route: ActivatedRoute,
         private readonly apiMypageService: ApiMypageService,
@@ -161,22 +161,29 @@ export class RentReservationListComponent extends BaseChildComponent implements 
         this.increase();
     }
 
-    goReservationQnaPage() {
+    goReservationQnaPage(code) {
+
         const rqInfo =
         {
-            'stationTypeCode': environment.STATION_CODE,
-            'currency': this.resolveData.currency,
-            'language': this.resolveData.language,
-            'condition': {
-                'userNo': null,
-                'bookingItemCode': null
-            }
+            stationTypeCode: environment.STATION_CODE,
+            currency: this.resolveData.currency,
+            language: this.resolveData.language,
+            condition: {
+                userNo: null,
+                bookingItemCode: null
+            },
+
         };
-        const path = '/my-reservation-qna-list';
+
+        rqInfo.condition.userNo = this.resolveData.condition.userNo;
+        rqInfo.condition.bookingItemCode = '' + code + '';
+
+        const path = '/my-reservation-qna-list/';
+
         const extras = {
-            relativeTo: this.route
+            relativeTo: this.route,
         };
-        console.log('path >>>>>', path);
+        console.log('rqInfo >>>>>', rqInfo);
 
         this.router.navigate([path], extras);
     }
@@ -343,7 +350,7 @@ export class RentReservationListComponent extends BaseChildComponent implements 
             'language': this.resolveData.language,
             'condition': {
                 'userNo': null,
-                'bookingItemCode': null
+                'bookingItemCode': null,
             }
         };
         rqInfo.condition.userNo = this.resolveData.condition.userNo;

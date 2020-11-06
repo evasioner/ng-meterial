@@ -124,7 +124,7 @@ export class FlightMainSearchComponent extends BaseChildComponent implements OnI
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public rentUtilSvc: RentUtilService,
         private store: Store<any>,
         private router: Router,

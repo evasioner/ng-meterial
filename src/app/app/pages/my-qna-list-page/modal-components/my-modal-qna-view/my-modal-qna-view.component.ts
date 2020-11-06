@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID, ElementRef } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -13,16 +13,17 @@ import { BaseChildComponent } from 'src/app/pages/base-page/components/base-chil
 export class MyModalQnaViewComponent extends BaseChildComponent implements OnInit {
     element: any;
     $element: any;
-    // bsModalRef: BsModalRef;
     public viewModel: any;
     bookingItemCode: any;
     boardMasterSeq: any;
-    handleDatetime: any;
-    postTitle: any;
-    postDetail: any;
+    requestDatetime: any;
+    questionTitle: any;
+    questionDetail: any;
+    answerDetail: any;
+    handleFinishDatetime: any;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public translateService: TranslateService,
         public bsModalRef: BsModalRef
     ) {

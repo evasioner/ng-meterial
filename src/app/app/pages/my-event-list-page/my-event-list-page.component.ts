@@ -37,7 +37,7 @@ export class MyEventListPageComponent extends BasePageComponent implements OnIni
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public titleService: Title,
         public metaTagService: Meta,
         public seoCanonicalService: SeoCanonicalService,
@@ -120,7 +120,7 @@ export class MyEventListPageComponent extends BasePageComponent implements OnIni
         //                 listFilterRs: res2['result']
         //             };
         //             this.upsertOne({
-        //                 id: 'rent-booking-infomation-rs',
+        //                 id: 'rent-booking-information-rs',
         //                 result: res
         //             });
         //             this.loadingBool = true;

@@ -77,7 +77,7 @@ export class FlightModalDetailFilterComponent extends BaseChildComponent impleme
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private router: Router,
         public el: ElementRef,
         private fb: FormBuilder,

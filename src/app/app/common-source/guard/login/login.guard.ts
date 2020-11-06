@@ -1,15 +1,18 @@
 import { Inject, Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
+import { Store } from '@ngrx/store';
+
+import { upsertCommonUserInfo, deleteCommonUserInfo } from '../../../store/common/common-user-info/common-user-info.actions';
+
 import { UtilUrlService } from '../../services/util-url/util-url.service';
 import { RentUtilService } from '../../services/rent-com-service/rent-util.service';
 import { JwtService } from '../../services/jwt/jwt.service';
-import { DOCUMENT } from '@angular/common';
-import { Store } from '@ngrx/store';
-import { upsertCommonUserInfo, deleteCommonUserInfo } from '../../../store/common/common-user-info/common-user-info.actions';
 import { ApiBookingService } from '../../../api/booking/api-booking.service';
-import { environment } from '@/environments/environment';
 import { ApiAlertService } from '../../services/api-alert/api-alert.service';
+
+import { environment } from '@/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -20,8 +23,6 @@ export class LoginGuard implements CanActivate {
     constructor(
         @Inject(DOCUMENT) private document: Document,
         private store: Store<any>,
-        private router: Router,
-        private route: ActivatedRoute,
         public rentUtilSvc: RentUtilService,
         public jwtService: JwtService,
         public utilUrlService: UtilUrlService,
@@ -29,9 +30,7 @@ export class LoginGuard implements CanActivate {
         private alertService: ApiAlertService
     ) { }
 
-    async canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot) {
+    async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         console.info('[next]', next);
         console.info('[state]', state.url);
 
@@ -82,7 +81,6 @@ export class LoginGuard implements CanActivate {
                 this.deleteOne('commonUserInfo');
                 this.goToLogin(state.url);
             }
-
         }
         else {
             this.goToLogin(state.url);

@@ -15,15 +15,16 @@ import { FlightMainPageModule } from './flight-main-page/flight-main-page.module
 import { FlightBookingCompletePageModule } from './flight-booking-complete-page/flight-booking-complete-page.module';
 import { FlightBookingInformationPageModule } from './flight-booking-information-page/flight-booking-information-page.module';
 import { ActivityBookingInformationPageModule } from './activity-booking-information-page/activity-booking-information-page.module';
-import { ActivityBookingPageModule } from './activity-booking-page/activity-booking-page.module';
 import { ActivityBookingCompletePageModule } from './activity-booking-complete-page/activity-booking-complete-page.module';
 import { IndexPageModule } from './index-page/index-page.module';
 import { HotelBookingPaymentPageModule } from './hotel-booking-payment-page/hotel-booking-payment-page.module';
+import { CommonPaymentCompletePageModule } from './common-payment-complete-page/common-payment-complete-page.module';
 import { FlightBookingPaymentPageModule } from './flight-booking-payment-page/flight-booking-payment-page.module';
 
 import { BaseChildComponent } from './base-page/components/base-child/base-child.component';
 import { BasePageComponent } from './base-page/base-page.component';
 import { CmSystemErrorModule } from './cm-system-error/cm-system-error.module';
+import { ActivityBookingPaymentPageModule } from './activity-booking-payment-page/activity-booking-payment-page.module';
 
 @NgModule({
     declarations: [
@@ -56,9 +57,11 @@ import { CmSystemErrorModule } from './cm-system-error/cm-system-error.module';
         // ActivitySearchResultDetailPageModule,
         // ActivitySearchResultOptionPageModule,
         ActivityBookingInformationPageModule,
-        ActivityBookingPageModule,
         ActivityBookingCompletePageModule,
+
+        CommonPaymentCompletePageModule,
         CmSystemErrorModule,
+        ActivityBookingPaymentPageModule,
 
         SamplePageModule
     ],

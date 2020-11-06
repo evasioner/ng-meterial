@@ -61,7 +61,7 @@ export class FlightModalPaymentComponent extends BaseChildComponent implements O
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public bsModalRef: BsModalRef,
         public jwtService: JwtService,
         private bsModalSvc: BsModalService,
@@ -192,7 +192,7 @@ export class FlightModalPaymentComponent extends BaseChildComponent implements O
         // this.subscriptionList.push(
         //     this.apiFlightService.PUT_FLIGHT_BASKET(rq)
         //         .subscribe(
-        //             (resp: any): any => {
+        //             (res: any): any => {
         //                 if (res.succeedYn) {
         //                     const initialState = {
         //                         titleTxt: ',
@@ -200,14 +200,14 @@ export class FlightModalPaymentComponent extends BaseChildComponent implements O
         //                     }
         //                     this.bsModalSvc.show(CommonModalAlertComponent, { initialState, ...this.configInfo });
 
-        //                     console.info('[예약리스트 > res]', resp);
+        //                     console.info('[예약리스트 > res]', res);
         //                     this.limitStart += this.pageCount;
         //                     this.limitEnd += this.pageCount;
         //                     this.loadingBool = true;
         //                     this.loadingBar.complete();
         //                     return resp;
         //                 } else {
-        //     this.alertService.showApiAlert(resp.errorMessage);
+        //     this.alertService.showApiAlert(res.errorMessage);
         // }
         //             },
         //             (error: any): void => {

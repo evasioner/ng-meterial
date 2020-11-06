@@ -15,7 +15,7 @@ export class CommonModalPhotoDetailComponent extends BaseChildComponent implemen
     loadingBool: boolean = false;
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         public bsModalRef: BsModalRef
     ) {
         super(platformId);

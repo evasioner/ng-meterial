@@ -25,8 +25,6 @@ import { PagesModule } from './pages/pages.module';
 import { ApiModule } from './api/api.module';
 import { CommonSourceModule } from './common-source/common-source.module';
 
-import { ApiInterceptorService } from './common-source/services/api-inter-ceptor/api-interceptor.service';
-
 import { environment } from '@/environments/environment';
 
 import { TransferHttpCacheModule } from '@nguniversal/common';
@@ -125,11 +123,6 @@ export function JSONModuleLoaderFactory(http: HttpClient, platform) {
         ApiModule
     ],
     providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: ApiInterceptorService,
-            multi: true
-        },
         CookieService
     ],
     bootstrap: [AppComponent]

@@ -45,7 +45,7 @@ export class FlightHeaderComponent extends BaseChildComponent implements OnInit,
     private subscriptionList: Subscription[];
 
     constructor(
-        @Inject(PLATFORM_ID) public platformId: object,
+        @Inject(PLATFORM_ID) public platformId: any,
         private store: Store<any>,
         private translateService: TranslateService,
         private location: Location,
