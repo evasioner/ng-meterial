@@ -10,7 +10,7 @@ import { MyComQsResolveService } from '../common-source/guard/resolve/my-com-qs-
 export const pageRoutes: Routes = [
     //------------------------------------------[공통]
     {
-        path: 'cm-system-error',
+        path: 'system-error',
         loadChildren: () => import('../pages/cm-system-error/cm-system-error.module').then(mod => mod.CmSystemErrorModule)
     },
 

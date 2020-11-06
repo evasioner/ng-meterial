@@ -13,6 +13,7 @@ import { ApiMypageService } from '@/app/api/mypage/api-mypage.service';
 import { ApiAlertService } from '@/app/common-source/services/api-alert/api-alert.service';
 
 import { BaseChildComponent } from 'src/app/pages/base-page/components/base-child/base-child.component';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
     selector: 'app-my-modal-hotel-booker-modify',
@@ -98,7 +99,7 @@ export class MyModalHotelBookerModifyComponent extends BaseChildComponent implem
         console.info('>>>> call api start', $rq);
         this.loadingBool = false;
         this.loadingBar.start();
-        return this.apiMypageService.POST_BOOKING_RENT_DETAIL($rq)
+        return this.apiMypageService.POST_BOOKING_HOTEL_DETAIL($rq)
             .toPromise()
             .then((res: any) => {
                 console.info('[호텔예약상세 > res]', res);
@@ -122,7 +123,6 @@ export class MyModalHotelBookerModifyComponent extends BaseChildComponent implem
         const res = await this.callHotelReservationtDetailApi(resolveData);
 
         this.booker = res['result']['booker'];
-        this.summary = res['result']['summary'];
 
         console.info('this.booker>>>', this.booker);
     }

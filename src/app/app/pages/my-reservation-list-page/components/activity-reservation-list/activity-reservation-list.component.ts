@@ -134,13 +134,8 @@ export class ActivityReservationListComponent extends BaseChildComponent impleme
             this.result = await this.callReservationtListApi(null);
             console.info('this.result>>>>>', this.result);
             // 전체리스트 중 묶음할인인 경우 여러경우의 수가 나오므로 ~.items[..]에 ~.categories.code값을 세팅에서 items[..]로만 templete을 renderring함
-            this.result.result.list.forEach((el, idx) => {
-                if (Object.keys(el.items).length > 1) {
-                    el.items.forEach((e, i) => {
-                        e.cateCode = el.categories[i].code;
-                        e.cateName = el.categories[i].name;
-                    });
-                }
+            this.result.result.list.forEach(() => {
+
             });
         }
 

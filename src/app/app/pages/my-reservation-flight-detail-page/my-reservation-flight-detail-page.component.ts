@@ -286,17 +286,22 @@ export class MyReservationFlightDetailPageComponent extends BasePageComponent im
 
     // 예약자 정보변경 모달
     openBookerEdit() {
-        const initialState = {
-            list: [
-                'Open a modal with component', 'Pass your data', 'Do something else', '...'
-            ],
-            title: 'Modal with component'
+        const rqInfo =
+        {
+            'stationTypeCode': environment.STATION_CODE,
+            'currency': 'KRW',
+            'language': 'KO',
+            'condition': {
+                'bookingItemCode': "2007271004-F01",
+                // bookingItemCode: this.hotelBookingInfo.summary.bookingItemCode,
+                userNo: Number(this.booker.userNo),
+
+            }
         };
-        const configInfo = {
-            class: 'm-ngx-bootstrap-modal',
-            animated: true
+        const initialState: any = {
+            rq: rqInfo
         };
-        this.bsModalRef = this.bsModalService.show(MyModalFlightBookerEditComponent, { initialState, ...configInfo });
+        this.bsModalRef = this.bsModalService.show(MyModalFlightBookerEditComponent, { initialState, ...this.configInfo });
     }
 
     // 여권정보 등록/수정
@@ -340,7 +345,7 @@ export class MyReservationFlightDetailPageComponent extends BasePageComponent im
             'language': 'KO',
             'condition': {
                 'bookingItemCode': "2007271004-F01",//this.resolveData.bookingItemCode
-                userNo: Number(this.resolveData.userNo),
+
 
             }
         };

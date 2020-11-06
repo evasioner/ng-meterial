@@ -21,13 +21,13 @@
               <a (click)="openTravelInsu();" class="folding-list-item">여행자보험</a>
             </li> -->
                     <li>
-                        <a (click)="onBookingCancel($event);" class="folding-list-item">예약 취소</a>
+                        <a (click)="onBookingCancel();" class="folding-list-item">예약 취소</a>
                     </li>
                     <li>
-                        <a (click)="openHotelVoucher($event)" class="folding-list-item">바우처</a>
+                        <a (click)="openHotelVoucher()" class="folding-list-item">바우처</a>
                     </li>
                     <li>
-                        <a (click)="openHotelInvoice($event)" class="folding-list-item">인보이스</a>
+                        <a (click)="openHotelInvoice()" class="folding-list-item">인보이스</a>
                     </li>
                     <li style="display: none;">
                         <a (click)="openHotelReceipt()" class="folding-list-item">영수증</a>
@@ -192,7 +192,7 @@
                             <span>{{booker.email}}</span>
                         </li>
                     </ul>
-                    <a (click)="openBookerEdit()" class="btn sm line light icon-only absolute"><span class="icon xs edit">수정</span></a>
+                    <a (click)="openBookerModify()" class="btn sm line light icon-only absolute"><span class="icon xs edit">수정</span></a>
                 </div>
             </div>
             <div class="contents-item">

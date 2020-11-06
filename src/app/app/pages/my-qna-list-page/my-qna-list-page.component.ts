@@ -67,7 +67,7 @@ export class MyQnaListPageComponent extends BasePageComponent implements OnInit,
     travelFromDate: any;
     qnaList = [];
     userInfoRes: any;
-
+    photoUrl: any;
     public boardMaster: BoardMaster[];
 
     qnaTransactionSetId: any;

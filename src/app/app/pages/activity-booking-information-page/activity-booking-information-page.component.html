@@ -7,93 +7,94 @@
     <!-- contents -->
     <div id="contents">
         <div class="page-contents-type2">
-            <div class="contents-item">
-                <h2 class="contents-title">예약 정보 확인</h2>
-                <div class="round-box activity-reserved-contents">
-                    <div class="activity-image" [ngStyle]="{background: 'url(' + viewModel.defaultPhoto + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat', 'background-size': 'cover'}"></div>
-                    <div class="reserved-information">
-                        <p class="name">{{ viewModel.activityNameLn }}</p>
-                        <p class="name2">{{ viewModel.activityNameEn }}</p>
-                        <div class="item-group line">
-                            <div class="item-row col">
-                                <div class="left days">이용일</div>
-                                <div class="right">{{ viewModel.date }}</div>
-                            </div>
-                            <div *ngIf="viewModel.getCity" class="item-row col">
-                                <div class="left city">수령 도시</div>
-                                <div class="right">{{ viewModel.date }}</div>
-                            </div>
-                            <div *ngIf="viewModel.getAirport" class="item-row col">
-                                <div class="left airport">수령 공항</div>
-                                <div class="right">{{ viewModel.getAirport}}</div>
-                            </div>
-                            <div class="item-row col">
-                                <div class="left piece">수량</div>
-                                <div class="right">
-                                    <ng-container *ngFor="let item of viewModel.travelerSum; index as index;">
-                                        <ng-container *ngIf="index === 0">
-                                            {{ item.traveler }}
+            <form [formGroup]="mainForm" (ngSubmit)="onSubmit($event)" #form="ngForm" novalidate>
+                <div class="contents-item">
+                    <h2 class="contents-title">예약 정보 확인</h2>
+                    <div class="round-box activity-reserved-contents">
+                        <div class="activity-image" [ngStyle]="{background: 'url(' + viewModel.defaultPhoto + ') 50% 50% no-repeat, url(/assets/images/icons/ico-nodata-image.png) 50% 50% #f5f5f5 no-repeat', 'background-size': 'cover'}"></div>
+                        <div class="reserved-information">
+                            <p class="name">{{ viewModel.activityNameLn }}</p>
+                            <p class="name2">{{ viewModel.activityNameEn }}</p>
+                            <div class="item-group line">
+                                <div class="item-row col">
+                                    <div class="left days">이용일</div>
+                                    <div class="right">{{ viewModel.date }}</div>
+                                </div>
+                                <div *ngIf="viewModel.getCity" class="item-row col">
+                                    <div class="left city">수령 도시</div>
+                                    <div class="right">{{ viewModel.date }}</div>
+                                </div>
+                                <div *ngIf="viewModel.getAirport" class="item-row col">
+                                    <div class="left airport">수령 공항</div>
+                                    <div class="right">{{ viewModel.getAirport}}</div>
+                                </div>
+                                <div class="item-row col">
+                                    <div class="left piece">수량</div>
+                                    <div class="right">
+                                        <ng-container *ngFor="let item of viewModel.travelerSum; index as index;">
+                                            <ng-container *ngIf="index === 0">
+                                                {{ item.traveler }}
+                                            </ng-container>
+                                            <ng-container *ngIf="index > 0">
+                                                /{{ item.traveler }}
+                                            </ng-container>
                                         </ng-container>
-                                        <ng-container *ngIf="index > 0">
-                                            /{{ item.traveler }}
-                                        </ng-container>
-                                    </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-group mt20">
+                                <div *ngFor="let item of viewModel.travelerSum" class="item-row col">
+                                    <div class="left">{{ item.traveler }}인</div>
+                                    <div class="right">{{ item.amountSum | number }}원</div>
+                                </div>
+                                <div class="item-row col last">
+                                    <div class="left">결제금액</div>
+                                    <div class="right">{{ viewModel.amountSum | number }}원</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="item-group mt20">
-                            <div *ngFor="let item of viewModel.travelerSum" class="item-row col">
-                                <div class="left">{{ item.traveler }}인</div>
-                                <div class="right">{{ item.amountSum | number }}원</div>
-                            </div>
-                            <div class="item-row col last">
-                                <div class="left">결제금액</div>
-                                <div class="right">{{ viewModel.amountSum | number }}원</div>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="round-box">
-                    <ng-container *ngIf="viewModel.refundableYn;else elseRefundableYn">
-                        <ng-container *ngIf="viewModel?.freeCancel;else elseNoFreeBool">
-                            <div class="check-time auto">
-                                <span class="cal">취소 마감일 : {{viewModel.freeCancel.deadline}}</span>
-                                <span class="ml-auto">{{viewModel.freeCancel.time}}</span>
-                            </div>
+                    <div class="round-box">
+                        <ng-container *ngIf="viewModel.refundableYn;else elseRefundableYn">
+                            <ng-container *ngIf="viewModel?.freeCancel;else elseNoFreeBool">
+                                <div class="check-time auto">
+                                    <span class="cal">취소 마감일 : {{viewModel.freeCancel.deadline}}</span>
+                                    <span class="ml-auto">{{viewModel.freeCancel.time}}</span>
+                                </div>
+                            </ng-container>
+                            <ng-template #elseNoFreeBool>
+                                <div class="check-time auto">
+                                    <span class="cal">취소 마감일 : {{ viewModel.cancelMainDeadLineDate }}</span>
+                                    <span class="ml-auto">{{ viewModel.cancelMainDeadLineTime }}까지</span>
+                                </div>
+                            </ng-template>
                         </ng-container>
-                        <ng-template #elseNoFreeBool>
+                        <ng-template #elseRefundableYn>
                             <div class="check-time auto">
-                                <span class="cal">취소 마감일 : {{ viewModel.cancelMainDeadLineDate }}</span>
-                                <span class="ml-auto">{{ viewModel.cancelMainDeadLineTime }}까지</span>
+                                <span class="cal">취소 마감일 : 환불불가</span>
                             </div>
                         </ng-template>
-                    </ng-container>
-                    <ng-template #elseRefundableYn>
-                        <div class="check-time auto">
-                            <span class="cal">취소 마감일 : 환불불가</span>
-                        </div>
-                    </ng-template>
-                    <ul class="text-list dash spacing color-sub6">
-                        <ng-container *ngFor="let item of viewModel.cancelDeadLineList">
-                            <li>
-                                {{ item.startDate }} - {{ item.endDate }}
-                                <br>취소 시 :
-                                <ng-container *ngIf="!item.charged;else billingElseif">취소 수수료 없이 취소 가능</ng-container>
-                                <ng-template #billingElseif>
-                                    <span class="cancel-price">{{ item.chargeAmount | number }}원 청구</span>
-                                </ng-template>
+                        <ul class="text-list dash spacing color-sub6">
+                            <ng-container *ngFor="let item of viewModel.cancelDeadLineList">
+                                <li>
+                                    {{ item.startDate }} - {{ item.endDate }}
+                                    <br>취소 시 :
+                                    <ng-container *ngIf="!item.charged;else billingElseif">취소 수수료 없이 취소 가능</ng-container>
+                                    <ng-template #billingElseif>
+                                        <span class="cancel-price">{{ item.chargeAmount | number }}원 청구</span>
+                                    </ng-template>
+                                </li>
+                            </ng-container>
+                            <li>위 날짜 이후 취소 시, 전체 상품요금이 청구됩니다.</li>
+                            <li class="none-pd color-sub3">
+                                <p>※ 취소 마감일 이전까지 결제를 완료해주세요.</p>
+                                <p>※ 무료 취소 가능 기간 이후 취소 시, 수수료가 발생합니다.</p>
                             </li>
-                        </ng-container>
-                        <li>위 날짜 이후 취소 시, 전체 상품요금이 청구됩니다.</li>
-                        <li class="none-pd color-sub3">
-                            <p>※ 취소 마감일 이전까지 결제를 완료해주세요.</p>
-                            <p>※ 무료 취소 가능 기간 이후 취소 시, 수수료가 발생합니다.</p>
-                        </li>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <form [formGroup]="mainForm" (ngSubmit)="onSubmit($event)" #form="ngForm" novalidate>
+
                 <div class="contents-item">
                     <h2 class="contents-title line">예약자 정보를 입력해 주세요.</h2>
                     <h3 class="contents-sub-text">배송 상품의 경우, 입력된 배송지 정보로 배송됩니다.</h3>
@@ -250,7 +251,7 @@
                         <h3 class="contents-sub-text">이 상품은 현지 공급 업체의 요청으로 예약을 위한 필수 질문 사항이 있습니다.</h3>
                         <div [formGroupName]="activityIndex" class="round-box">
                             <div formArrayName="neededInfos" class="row-group">
-                                <div *ngFor="let item of getNeedeInfos(activityItem); index as index;" [formGroupName]="index" class="row mt0">
+                                <div *ngFor="let item of getNeedeInfos(activityItem); index as index;" [formGroupName]="index" [class.mt0]="index === 0" class="row">
                                     <h5 class="row-title">
                                         Q{{ (index + 1 )}}. {{ item.value.infoName }} <ng-container *ngIf="item.value.addValue !== ''"> / {{ item.value.addValue }}</ng-container>
                                     </h5>
@@ -314,7 +315,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </div>

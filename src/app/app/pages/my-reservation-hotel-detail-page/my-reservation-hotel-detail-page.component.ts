@@ -42,6 +42,7 @@ export class MyReservationHotelDetailPageComponent extends BasePageComponent imp
     loadingBool: Boolean = false;
     foldingYn: boolean = false;
     booker: any;
+    result: any;
     cancelPolicy: any[] = [];
     consultings: any[] = [];
     mileageCards: any[] = [];
@@ -65,6 +66,7 @@ export class MyReservationHotelDetailPageComponent extends BasePageComponent imp
     };
 
     private subscriptionList: Subscription[];
+    hotelDetail: any;
 
     constructor(
         @Inject(PLATFORM_ID) public platformId: any,
@@ -149,6 +151,7 @@ export class MyReservationHotelDetailPageComponent extends BasePageComponent imp
                 if (res.succeedYn) {
                     this.loadingBool = true;
                     this.loadingBar.complete();
+                    this.hotelDetail = res['result']
                     return res;
                 } else {
                     this.alertService.showApiAlert(res.errorMessage);
@@ -267,24 +270,23 @@ export class MyReservationHotelDetailPageComponent extends BasePageComponent imp
     }
 
     // 예약자 정보변경 모달
-    openBookerEdit() {
-        const initialState = {
-            list: [
-                'Open a modal with component',
-                'Pass your data',
-                'Do something else',
-                '...',
-            ],
-            title: 'Modal with component',
+    openBookerModify() {
+        const rqInfo =
+        {
+            'stationTypeCode': environment.STATION_CODE,
+            'currency': 'KRW',
+            'language': 'KO',
+            'condition': {
+                'bookingItemCode': "2007271004-F01",
+                // bookingItemCode: this.hotelBookingInfo.summary.bookingItemCode,
+                userNo: Number(this.booker.userNo),
+
+            }
         };
-        const configInfo = {
-            class: 'm-ngx-bootstrap-modal',
-            animated: true,
+        const initialState: any = {
+            rq: rqInfo
         };
-        this.bsModalRef = this.bsModalService.show(
-            MyModalFlightBookerEditComponent,
-            { initialState, ...configInfo }
-        );
+        this.bsModalRef = this.bsModalService.show(MyModalHotelBookerModifyComponent, { initialState, ...this.configInfo });
     }
 
     // // 여행자보험 모달
@@ -303,8 +305,8 @@ export class MyReservationHotelDetailPageComponent extends BasePageComponent imp
     // }
 
     // 호텔 바우처 모달
-    openHotelVoucher(e) {
-        console.info('호텔 바우쳐', e);
+    openHotelVoucher() {
+        console.info('호텔 바우쳐');
 
         const rqInfo =
         {
@@ -312,7 +314,7 @@ export class MyReservationHotelDetailPageComponent extends BasePageComponent imp
             'currency': 'KRW',
             'language': 'KO',
             'condition': {
-                bookingItemCode: this.hotelBookingInfo.summary.bookingItemCode,
+                'bookingItemCode': "2007271004-F01",
                 userNo: Number(this.booker.userNo),
 
             }
@@ -324,8 +326,8 @@ export class MyReservationHotelDetailPageComponent extends BasePageComponent imp
     }
 
     // 호텔 인보이스 모달
-    openHotelInvoice(e) {
-        console.info('호텔 인보이스', e);
+    openHotelInvoice() {
+        console.info('호텔 인보이스');
 
         const rqInfo =
         {
@@ -370,28 +372,10 @@ export class MyReservationHotelDetailPageComponent extends BasePageComponent imp
     // }
 
     // 호텔 예약자변경 모달
-    openBookerModify() {
-        const initialState = {
-            list: [
-                'Open a modal with component',
-                'Pass your data',
-                'Do something else',
-                '...',
-            ],
-            title: 'Modal with component',
-        };
-        const configInfo = {
-            class: 'm-ngx-bootstrap-modal',
-            animated: true,
-        };
-        this.bsModalRef = this.bsModalService.show(
-            MyModalHotelBookerModifyComponent,
-            { initialState, ...configInfo }
-        );
-    }
 
-    onBookingCancel(e) {
-        console.info('예약 취소하기', e);
+
+    onBookingCancel() {
+        console.info('예약 취소하기');
         let alertHtml = '';
         if (this.hotelBookingInfo.summary.bookingStatusCode === 'BKS02') {
             //예약 취소 가능한 경우

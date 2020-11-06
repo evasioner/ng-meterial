@@ -27,7 +27,8 @@ import { JwtService } from '../../common-source/services/jwt/jwt.service';
 import { UtilUrlService } from '../../common-source/services/util-url/util-url.service';
 import { ApiActivityService } from '@/app/api/activity/api-activity.service';
 import { WebShareService } from '@/app/common-source/services/web-share/web-share.service';
-import { ApiAlertService } from '../../common-source/services/api-alert/api-alert.service';
+import { ApiMypageService } from 'src/app/api/mypage/api-mypage.service';
+import { ApiAlertService } from '@/app/common-source/services/api-alert/api-alert.service';
 
 import { environment } from '@/environments/environment';
 
@@ -85,7 +86,8 @@ export class ActivitySearchResultDetailPageComponent extends BasePageComponent i
         private countdownTimerService: CountdownTimerService,
         private webShareS: WebShareService,
         private storageS: StorageService,
-        private alertService: ApiAlertService
+        private alertService: ApiAlertService,
+        private apiMypageService: ApiMypageService,
     ) {
         super(
             platformId,
@@ -439,7 +441,42 @@ export class ActivitySearchResultDetailPageComponent extends BasePageComponent i
     /**
      * 문의하기 클릭 - 문의하기 모달팝업
      */
-    onGoQna() {
+    async onGoQna() {
+
+        const userInfoRes = await this.jwtService.getUserInfo();
+
+        const rqInfo =
+        {
+            stationTypeCode: environment.STATION_CODE,
+            currency: 'KRW',
+            language: 'KO',
+            condition: {
+                boardMasterSeq: 1000020,
+                postCategoryCode: 'IC04',
+                userNo: userInfoRes.result.user.userNo,
+                postTitle: this.dataModel.response.activityNameEn
+            },
+        };
+
+        this.subscriptionList.push(
+            this.apiMypageService.PUT_QNA(rqInfo)
+                .subscribe(
+                    (res: any) => {
+                        if (res.succeedYn) {
+                            this.dataModel.response = _.cloneDeep(res.result);
+                            console.log('성공이다~~~~');
+
+                        } else {
+                            this.alertService.showApiAlert(res.errorMessage);
+                        }
+                    },
+                    (err: any) => {
+                        console.log('error');
+                        this.alertService.showApiAlert(err.error.errorMessage);
+                    }
+                )
+        );
+
         if (!this.isLogin) {
             this.upsertOneSession(
                 {
@@ -454,6 +491,10 @@ export class ActivitySearchResultDetailPageComponent extends BasePageComponent i
             const returnUrl = this.utilUrlService.getOrigin() + path;
             const res = this.jwtService.getLoginUrl(returnUrl);
             this.document.location.href = res;
+            console.log(this.rqInfo, 'this.rqInfo');
+            console.log(res, 'res');
+
+
         } else {
             const initialState: any = {
                 storeId: 'activity-modal-qna'
