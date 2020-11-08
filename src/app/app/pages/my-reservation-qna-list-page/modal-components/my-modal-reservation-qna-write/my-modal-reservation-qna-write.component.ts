@@ -52,6 +52,10 @@ export class MyModalReservationQnaWriteComponent extends BaseChildComponent impl
         super.ngOnInit();
         const bodyEl = document.getElementsByTagName('body')[0];
         bodyEl.classList.add('overflow-none');
+        this.route.params.subscribe(params => {
+          this.rqCode = params['currency'];
+        });
+
     }
 
     modalClose() {

@@ -175,8 +175,10 @@ export class FlightReservationListComponent extends BaseChildComponent implement
         const path = '/my-reservation-qna-list';
         const extras = {
             relativeTo: this.route,
+            queryParams: rqInfo
         };
         console.log('path >>>>>', path);
+
 
         this.router.navigate([path], extras);
     }
