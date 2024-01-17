@@ -1,5 +1,5 @@
-{
-  "constructor": {
+[
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -15,7 +15,7 @@
     "stateMutability": "payable",
     "type": "constructor"
   },
-  "AdminChanged": {
+  {
     "anonymous": false,
     "inputs": [
       {
@@ -34,7 +34,7 @@
     "name": "AdminChanged",
     "type": "event"
   },
-  "BeaconUpgraded": {
+  {
     "anonymous": false,
     "inputs": [
       {
@@ -47,7 +47,7 @@
     "name": "BeaconUpgraded",
     "type": "event"
   },
-  "Upgraded": {
+  {
     "anonymous": false,
     "inputs": [
       {
@@ -60,12 +60,12 @@
     "name": "Upgraded",
     "type": "event"
   },
-  "Fallback": {
+  {
     "stateMutability": "payable",
     "type": "fallback"
   },
-  "Receive": {
+  {
     "stateMutability": "payable",
     "type": "receive"
   }
-}
+]
