@@ -1,26 +1,5 @@
 [
    {
-      "inputs":[
-         {
-            "internalType":"string",
-            "name":"baseURI",
-            "type":"string"
-         },
-         {
-            "internalType":"string",
-            "name":"_contractURI",
-            "type":"string"
-         },
-         {
-            "internalType":"address[]",
-            "name":"admins",
-            "type":"address[]"
-         }
-      ],
-      "stateMutability":"nonpayable",
-      "type":"constructor"
-   },
-   {
       "anonymous":false,
       "inputs":[
          {
@@ -37,6 +16,25 @@
          }
       ],
       "name":"AdminActionPerformed",
+      "type":"event"
+   },
+   {
+      "anonymous":false,
+      "inputs":[
+         {
+            "indexed":false,
+            "internalType":"address",
+            "name":"previousAdmin",
+            "type":"address"
+         },
+         {
+            "indexed":false,
+            "internalType":"address",
+            "name":"newAdmin",
+            "type":"address"
+         }
+      ],
+      "name":"AdminChanged",
       "type":"event"
    },
    {
@@ -69,49 +67,25 @@
       "inputs":[
          {
             "indexed":true,
-            "internalType":"uint256",
-            "name":"badgeId",
-            "type":"uint256"
-         },
-         {
-            "indexed":true,
             "internalType":"address",
-            "name":"from",
-            "type":"address"
-         },
-         {
-            "indexed":true,
-            "internalType":"address",
-            "name":"burner",
+            "name":"beacon",
             "type":"address"
          }
       ],
-      "name":"BadgeBurned",
+      "name":"BeaconUpgraded",
       "type":"event"
    },
    {
       "anonymous":false,
       "inputs":[
          {
-            "indexed":true,
-            "internalType":"uint256",
-            "name":"badgeId",
-            "type":"uint256"
-         },
-         {
-            "indexed":true,
-            "internalType":"address",
-            "name":"to",
-            "type":"address"
-         },
-         {
-            "indexed":true,
-            "internalType":"address",
-            "name":"minter",
-            "type":"address"
+            "indexed":false,
+            "internalType":"uint8",
+            "name":"version",
+            "type":"uint8"
          }
       ],
-      "name":"BadgeMinted",
+      "name":"Initialized",
       "type":"event"
    },
    {
@@ -328,6 +302,19 @@
       "type":"event"
    },
    {
+      "anonymous":false,
+      "inputs":[
+         {
+            "indexed":true,
+            "internalType":"address",
+            "name":"implementation",
+            "type":"address"
+         }
+      ],
+      "name":"Upgraded",
+      "type":"event"
+   },
+   {
       "stateMutability":"payable",
       "type":"fallback"
    },
@@ -350,7 +337,7 @@
       "inputs":[
          
       ],
-      "name":"POP_ADMIN_ROLE",
+      "name":"NAODA_ADMIN_ROLE",
       "outputs":[
          {
             "internalType":"bytes32",
@@ -427,6 +414,66 @@
    {
       "inputs":[
          {
+            "internalType":"address",
+            "name":"account",
+            "type":"address"
+         },
+         {
+            "internalType":"uint256",
+            "name":"id",
+            "type":"uint256"
+         },
+         {
+            "internalType":"uint256",
+            "name":"value",
+            "type":"uint256"
+         },
+         {
+            "internalType":"string",
+            "name":"reason",
+            "type":"string"
+         }
+      ],
+      "name":"burnWithAdminAuthority",
+      "outputs":[
+         
+      ],
+      "stateMutability":"nonpayable",
+      "type":"function"
+   },
+   {
+      "inputs":[
+         {
+            "internalType":"address",
+            "name":"account",
+            "type":"address"
+         },
+         {
+            "internalType":"uint256[]",
+            "name":"ids",
+            "type":"uint256[]"
+         },
+         {
+            "internalType":"uint256[]",
+            "name":"values",
+            "type":"uint256[]"
+         },
+         {
+            "internalType":"string",
+            "name":"reason",
+            "type":"string"
+         }
+      ],
+      "name":"burnWithAdminAuthority",
+      "outputs":[
+         
+      ],
+      "stateMutability":"nonpayable",
+      "type":"function"
+   },
+   {
+      "inputs":[
+         {
             "internalType":"bytes",
             "name":"approvalSignature",
             "type":"bytes"
@@ -438,12 +485,12 @@
          },
          {
             "internalType":"address",
-            "name":"currencyTokenAddress",
+            "name":"paymentTokenAddress",
             "type":"address"
          },
          {
             "internalType":"uint256",
-            "name":"badgePrice",
+            "name":"paymentTokenAmount",
             "type":"uint256"
          },
          {
@@ -491,66 +538,6 @@
          }
       ],
       "stateMutability":"view",
-      "type":"function"
-   },
-   {
-      "inputs":[
-         {
-            "internalType":"address",
-            "name":"account",
-            "type":"address"
-         },
-         {
-            "internalType":"uint256",
-            "name":"id",
-            "type":"uint256"
-         },
-         {
-            "internalType":"uint256",
-            "name":"value",
-            "type":"uint256"
-         },
-         {
-            "internalType":"string",
-            "name":"reason",
-            "type":"string"
-         }
-      ],
-      "name":"forciblyBurn",
-      "outputs":[
-         
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
-   },
-   {
-      "inputs":[
-         {
-            "internalType":"address",
-            "name":"account",
-            "type":"address"
-         },
-         {
-            "internalType":"uint256[]",
-            "name":"ids",
-            "type":"uint256[]"
-         },
-         {
-            "internalType":"uint256[]",
-            "name":"values",
-            "type":"uint256[]"
-         },
-         {
-            "internalType":"string",
-            "name":"reason",
-            "type":"string"
-         }
-      ],
-      "name":"forciblyBurnBatch",
-      "outputs":[
-         
-      ],
-      "stateMutability":"nonpayable",
       "type":"function"
    },
    {
@@ -696,6 +683,31 @@
    {
       "inputs":[
          {
+            "internalType":"string",
+            "name":"baseURI",
+            "type":"string"
+         },
+         {
+            "internalType":"string",
+            "name":"_contractURI",
+            "type":"string"
+         },
+         {
+            "internalType":"address[]",
+            "name":"admins",
+            "type":"address[]"
+         }
+      ],
+      "name":"initialize",
+      "outputs":[
+         
+      ],
+      "stateMutability":"nonpayable",
+      "type":"function"
+   },
+   {
+      "inputs":[
+         {
             "internalType":"address",
             "name":"account",
             "type":"address"
@@ -754,14 +766,14 @@
    {
       "inputs":[
          {
-            "internalType":"uint256",
-            "name":"badgeId",
-            "type":"uint256"
-         },
-         {
             "internalType":"address",
             "name":"to",
             "type":"address"
+         },
+         {
+            "internalType":"uint256",
+            "name":"badgeId",
+            "type":"uint256"
          },
          {
             "internalType":"bytes",
@@ -779,14 +791,14 @@
    {
       "inputs":[
          {
-            "internalType":"uint256",
-            "name":"badgeId",
-            "type":"uint256"
-         },
-         {
             "internalType":"address[]",
             "name":"to",
             "type":"address[]"
+         },
+         {
+            "internalType":"uint256",
+            "name":"badgeId",
+            "type":"uint256"
          },
          {
             "internalType":"bytes",
@@ -819,14 +831,14 @@
    {
       "inputs":[
          {
-            "internalType":"uint256[]",
-            "name":"badgeIds",
-            "type":"uint256[]"
-         },
-         {
             "internalType":"address[]",
             "name":"to",
             "type":"address[]"
+         },
+         {
+            "internalType":"uint256[]",
+            "name":"badgeIds",
+            "type":"uint256[]"
          },
          {
             "internalType":"bytes",
@@ -844,14 +856,14 @@
    {
       "inputs":[
          {
-            "internalType":"uint256[]",
-            "name":"badgeIds",
-            "type":"uint256[]"
-         },
-         {
             "internalType":"address",
             "name":"to",
             "type":"address"
+         },
+         {
+            "internalType":"uint256[]",
+            "name":"badgeIds",
+            "type":"uint256[]"
          },
          {
             "internalType":"bytes",
@@ -902,6 +914,21 @@
             "internalType":"bool",
             "name":"",
             "type":"bool"
+         }
+      ],
+      "stateMutability":"view",
+      "type":"function"
+   },
+   {
+      "inputs":[
+         
+      ],
+      "name":"proxiableUUID",
+      "outputs":[
+         {
+            "internalType":"bytes32",
+            "name":"",
+            "type":"bytes32"
          }
       ],
       "stateMutability":"view",
@@ -1180,6 +1207,41 @@
    {
       "inputs":[
          {
+            "internalType":"address",
+            "name":"newImplementation",
+            "type":"address"
+         }
+      ],
+      "name":"upgradeTo",
+      "outputs":[
+         
+      ],
+      "stateMutability":"nonpayable",
+      "type":"function"
+   },
+   {
+      "inputs":[
+         {
+            "internalType":"address",
+            "name":"newImplementation",
+            "type":"address"
+         },
+         {
+            "internalType":"bytes",
+            "name":"data",
+            "type":"bytes"
+         }
+      ],
+      "name":"upgradeToAndCall",
+      "outputs":[
+         
+      ],
+      "stateMutability":"payable",
+      "type":"function"
+   },
+   {
+      "inputs":[
+         {
             "internalType":"uint256",
             "name":"badgeId",
             "type":"uint256"
@@ -1200,16 +1262,16 @@
       "inputs":[
          {
             "internalType":"address",
-            "name":"currencyTokenAddress",
+            "name":"tokenAddress",
             "type":"address"
          },
          {
             "internalType":"uint256",
-            "name":"amount",
+            "name":"tokenAmount",
             "type":"uint256"
          }
       ],
-      "name":"withdrawCurrency",
+      "name":"withdraw",
       "outputs":[
          
       ],
