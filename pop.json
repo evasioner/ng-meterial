@@ -67,6 +67,56 @@
       "inputs":[
          {
             "indexed":true,
+            "internalType":"uint256",
+            "name":"badgeId",
+            "type":"uint256"
+         },
+         {
+            "indexed":true,
+            "internalType":"address",
+            "name":"from",
+            "type":"address"
+         },
+         {
+            "indexed":true,
+            "internalType":"address",
+            "name":"burner",
+            "type":"address"
+         }
+      ],
+      "name":"BadgeBurned",
+      "type":"event"
+   },
+   {
+      "anonymous":false,
+      "inputs":[
+         {
+            "indexed":true,
+            "internalType":"uint256",
+            "name":"badgeId",
+            "type":"uint256"
+         },
+         {
+            "indexed":true,
+            "internalType":"address",
+            "name":"to",
+            "type":"address"
+         },
+         {
+            "indexed":true,
+            "internalType":"address",
+            "name":"minter",
+            "type":"address"
+         }
+      ],
+      "name":"BadgeMinted",
+      "type":"event"
+   },
+   {
+      "anonymous":false,
+      "inputs":[
+         {
+            "indexed":true,
             "internalType":"address",
             "name":"beacon",
             "type":"address"
@@ -337,7 +387,7 @@
       "inputs":[
          
       ],
-      "name":"NAODA_ADMIN_ROLE",
+      "name":"OTTM_ADMIN_ROLE",
       "outputs":[
          {
             "internalType":"bytes32",
