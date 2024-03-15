@@ -1,0 +1,20 @@
+{
+  "name": "Gaming Enthusiast",
+  "description": "Your diverse gaming collection reflects your passion for exploring the gaming world.",
+  "image": "https://ottm.gg/ottm-platform/videos/pop/24_3R_H.mp4",
+  "external_url": "https://ottm.gg/pop-quest/pops/240300",
+  "attributes": [
+    {
+      "trait_type": "app",
+      "value": "overtake"
+    },
+    {
+      "trait_type": "tier",
+      "value": "RARE"
+    },
+    {
+      "trait_type": "category",
+      "value": "GAME"
+    }
+  ]
+}
