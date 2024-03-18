@@ -15,6 +15,10 @@
       {
          "trait_type":"category",
          "value":"GAME"
+      },
+      {
+        "trait_type": "collection",
+        "value": "Steam"
       }
    ]
 }
